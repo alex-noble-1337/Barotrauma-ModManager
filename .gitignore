@@ -26,3 +26,5 @@ steam.dll
 bufferscript
 crashhandler.dll.old
 crashhandler.dll
+.ntfs_transaction_failed
+.crash
