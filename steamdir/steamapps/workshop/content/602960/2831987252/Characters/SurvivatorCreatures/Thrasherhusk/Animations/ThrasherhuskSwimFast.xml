@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ThrasherhuskSwimFast animationtype="SwimFast" usesinemovement="False" flip="False" mirror="False" waveamplitude="15.72979" wavelength="43.06902" rotatetowardsmovement="True" torsotorque="2.5" headtorque="280" tailtorque="286" tailtorquemultiplier="1" foottorque="10" footangles="" tailangle="90" steertorque="2.5" movementspeed="5.52" cyclespeed="1" headangle="91" torsoangle="91" type="Thrasherhusk" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

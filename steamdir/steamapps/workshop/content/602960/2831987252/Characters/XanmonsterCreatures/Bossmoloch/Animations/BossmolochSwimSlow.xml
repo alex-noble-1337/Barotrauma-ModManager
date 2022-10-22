@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<BossmolochSwimSlow animationtype="SwimSlow" flip="True" mirror="True" waveamplitude="1" wavelength="300" rotatetowardsmovement="False" torsotorque="250" headtorque="25" foottorque="25" tailtorque="50" footangles="" steertorque="175" movementspeed="3.5952497" cyclespeed="1" headangle="0" torsoangle="-4" tailangle="NaN" usesinemovement="True" tailtorquemultiplier="1" type="Bossmoloch" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

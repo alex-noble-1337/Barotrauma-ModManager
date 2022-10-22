@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ThalamidSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="-93.06244" wavelength="24.199753" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="100" movementspeed="6.4700637" cyclespeed="1" headangle="NaN" torsoangle="NaN" />

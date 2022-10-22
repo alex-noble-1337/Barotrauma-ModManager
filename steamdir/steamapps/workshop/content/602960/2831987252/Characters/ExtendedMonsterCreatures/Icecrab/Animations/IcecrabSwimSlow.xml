@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<IcecrabSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="4.3428774" wavelength="19.331182" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="7: 2.687807,9: 2.5307274" tailangle="NaN" steertorque="25" movementspeed="1" cyclespeed="1" headangle="146" torsoangle="161" legtorque="25" armikstrength="1" handikstrength="1" />

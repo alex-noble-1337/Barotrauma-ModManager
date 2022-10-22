@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<DeepseaclownSwimFast footrotatestrength="25" type="Deepseaclown" LegMoveAmount="0.73113173" LegCycleLength="17.74718" HandMoveAmount="-0.03611315,0.015945073" HandCycleSpeed="-0.1444526" HandMoveOffset="0,0" FootAngle="-50" ArmMoveStrength="1" HandMoveStrength="0.5" FixedHeadAngle="True" SteerTorque="25" LegTorque="25" MovementSpeed="5.261175" CycleSpeed="5.261175" HeadAngle="61.000004" TorsoAngle="-1" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

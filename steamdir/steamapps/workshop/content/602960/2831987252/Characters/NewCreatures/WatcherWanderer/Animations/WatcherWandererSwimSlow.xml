@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CharybdisreSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" mirror="True" waveamplitude="-97.27735" wavelength="198.69418" rotatetowardsmovement="True" torsotorque="0" headtorque="0" tailtorque="0" foottorque="50" footangles="7: 1.521676,3: 1.204156,6: 0" tailangle="-139" steertorque="0" movementspeed="4.676509" cyclespeed="1" headangle="0" torsoangle="90" tailtorquemultiplier="1" type="Charybdisre" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

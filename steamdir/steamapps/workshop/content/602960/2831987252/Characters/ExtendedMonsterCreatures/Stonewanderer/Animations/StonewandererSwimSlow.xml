@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<StonewandererSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="7.3694105" wavelength="5.4966383" rotatetowardsmovement="False" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="26" steertorque="25" movementspeed="0.90963906" cyclespeed="1" headangle="0" torsoangle="NaN" legtorque="25" armikstrength="1" handikstrength="1" />

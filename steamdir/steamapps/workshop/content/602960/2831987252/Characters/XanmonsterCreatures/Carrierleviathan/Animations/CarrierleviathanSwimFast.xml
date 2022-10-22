@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CarrierleviathanSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" mirror="True" waveamplitude="0" wavelength="0" rotatetowardsmovement="True" torsotorque="35" headtorque="35" tailtorque="5" tailtorquemultiplier="1" foottorque="0" footangles="" tailangle="2" steertorque="0" movementspeed="6.053269" cyclespeed="3.9999986" headangle="13" torsoangle="0" type="Carrierleviathan" flipcooldown="21" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

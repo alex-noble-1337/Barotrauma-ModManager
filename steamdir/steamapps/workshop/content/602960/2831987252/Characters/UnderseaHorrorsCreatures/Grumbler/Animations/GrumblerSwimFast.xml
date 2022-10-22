@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LeucocyteSwimFast UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="True" WaveAmplitude="5" WaveLength="10" RotateTowardsMovement="False" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="1" LegTorque="25" MovementSpeed="5" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="0" HeadTorque="25" TorsoTorque="1" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

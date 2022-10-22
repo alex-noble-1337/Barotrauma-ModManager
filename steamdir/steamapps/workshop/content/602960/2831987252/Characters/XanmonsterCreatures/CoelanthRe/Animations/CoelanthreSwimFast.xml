@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CoelanthreSwimFast waveamplitude="-4.2513165" wavelength="162.41414" steertorque="300" movementspeed="6" flip="True" mirror="False" rotatetowardsmovement="True" torsotorque="80" headtorque="25" foottorque="25" tailtorque="50" footangles="" cyclespeed="1" headangle="21" torsoangle="21" animationtype="SwimFast" usesinemovement="False" tailtorquemultiplier="1" tailangle="NaN" type="Coelanthre" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

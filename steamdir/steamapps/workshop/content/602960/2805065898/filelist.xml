@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Let Them All In" modversion="1.0.9" corepackage="False" steamworkshopid="2805065898" gameversion="0.17.15.0" expectedhash="1250984E77A2BFB054E8BFF76642A4BF">
-  <Item file="%ModDir%/dummyitem.xml" />
-  <Item file="%ModDir%/dummyitemx2.xml" />
-  <Other file="%ModDir%/Lua/Autorun/letthemallin.lua" />
-</contentpackage>

@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<CharybdissavageSwimFast animationtype="SwimFast" usesinemovement="False" flip="False" mirror="False" waveamplitude="99.99166" wavelength="49.59898" rotatetowardsmovement="True" torsotorque="200" headtorque="200" tailtorque="200" foottorque="50" footangles="3: 0,7: 1.928149" tailangle="90" steertorque="80" movementspeed="15" cyclespeed="1" headangle="90" torsoangle="90" tailtorquemultiplier="1" type="Charybdissavage" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

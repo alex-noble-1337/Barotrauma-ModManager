@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<MinogaSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" mirror="True" waveamplitude="9.560374" wavelength="24.666756" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" foottorque="25" footangles="" tailangle="90" steertorque="25" movementspeed="4.979223" cyclespeed="1" headangle="86.97694" torsoangle="91.40162" tailtorquemultiplier="1" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" />

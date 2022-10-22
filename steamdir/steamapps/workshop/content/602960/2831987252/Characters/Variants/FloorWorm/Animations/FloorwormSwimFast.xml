@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<FloorwormSwimFast UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="True" MirrorLerp="True" WaveAmplitude="3.2998037" WaveLength="300" RotateTowardsMovement="True" TailTorque="0" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="500" LegTorque="25" MovementSpeed="7.9711466" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="500" TorsoTorque="50" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<PraywhalebabySwimSlow type="Praywhalebaby" UseSineMovement="False" Flip="True" FlipCooldown="2" FlipDelay="2" Mirror="True" MirrorLerp="True" WaveAmplitude="1" WaveLength="800" RotateTowardsMovement="True" TailTorque="20" TailTorqueMultiplier="1" FootAngles="" TailAngle="105" SteerTorque="2" LegTorque="25" MovementSpeed="3" CycleSpeed="3" HeadAngle="88" TorsoAngle="99" HeadTorque="500" TorsoTorque="0" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

@@ -1,3 +1,0 @@
-Hook.Add("roundStart", "Remove Player Halo", function()
-     lightEffect.World ~= transform
-end)

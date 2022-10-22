@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<MudbouncerSwimSlow spemovementspeeded="2" waveamplitude="-28.229143" wavelength="200" flip="False" mirror="False" rotatetowardsmovement="True" torsotorque="200" headtorque="200" foottorque="25" tailtorque="50" footangles="" steertorque="200" movementspeed="5.192757" cyclespeed="1" headangle="0" torsoangle="0" animationtype="SwimSlow" usesinemovement="False" tailtorquemultiplier="1" tailangle="NaN" type="Mudbouncer" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

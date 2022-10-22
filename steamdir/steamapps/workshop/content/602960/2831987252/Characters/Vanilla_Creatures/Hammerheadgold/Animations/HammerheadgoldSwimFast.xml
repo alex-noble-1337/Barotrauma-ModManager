@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<HammerheadgoldSwimSlow UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="True" WaveAmplitude="83.03234" WaveLength="135" RotateTowardsMovement="True" TailTorque="190" TailTorqueMultiplier="1" FootAngles="" TailAngle="90" SteerTorque="45" LegTorque="25" MovementSpeed="15" CycleSpeed="1" HeadAngle="90" TorsoAngle="90" HeadTorque="170" TorsoTorque="170" FootTorque="50" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

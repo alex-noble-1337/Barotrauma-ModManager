@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ImmortalSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="1.7580676" wavelength="151.35503" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="500" footangles="8: 0,11: 0,18: 0,19: 0" tailangle="NaN" steertorque="25" movementspeed="2.414782" cyclespeed="1" headangle="NaN" torsoangle="NaN" legtorque="25" armikstrength="1" handikstrength="1" />

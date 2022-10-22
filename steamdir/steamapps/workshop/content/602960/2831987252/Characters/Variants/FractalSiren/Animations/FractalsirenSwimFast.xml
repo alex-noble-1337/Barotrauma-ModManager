@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<FractalsirenSwimFast LegMoveAmount="0.3069939" LegCycleLength="11.008848" HandMoveAmount="0,0" HandCycleSpeed="0" HandMoveOffset="-3,0" FootAngle="0" ArmMoveStrength="1" HandMoveStrength="1" FixedHeadAngle="True" SteerTorque="3" LegTorque="25" MovementSpeed="4.9646645" CycleSpeed="4.9646645" HeadAngle="90" TorsoAngle="48" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

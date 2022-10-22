@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<LegacycrawlerSwimFast UseSineMovement="False" Flip="True" FlipCooldown="1" FlipDelay="0.5" Mirror="True" MirrorLerp="True" WaveAmplitude="0.1420578" WaveLength="30" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="5: 0.9673765,7: 0.3874607,9: 0.3782401" TailAngle="NaN" SteerTorque="20" LegTorque="25" MovementSpeed="8" CycleSpeed="1" HeadAngle="81.45164" TorsoAngle="4.429057" HeadTorque="25" TorsoTorque="25" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

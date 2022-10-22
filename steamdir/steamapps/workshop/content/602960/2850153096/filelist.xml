@@ -1,9 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Material IO" modversion="0.1.4" corepackage="False" steamworkshopid="2850153096" gameversion="0.18.15.0" expectedhash="5613EB69483D59A62A046CD6675567A2">
-  <Item file="%ModDir%/io_toolbox.xml" />
-  <Item file="%ModDir%/io_toolbox_medical.xml" />
-  <Item file="%ModDir%/water_proof_crate.xml" />
-  <Text file="%ModDir%/Texts/SimplifiedChinese.xml" />
-  <Text file="%ModDir%/Texts/Russian.xml" />
-  <Text file="%ModDir%/Texts/English.xml" />
-</contentpackage>

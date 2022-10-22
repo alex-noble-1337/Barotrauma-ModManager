@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<VoidstalkerSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="100" wavelength="200" rotatetowardsmovement="True" torsotorque="30" headtorque="115" tailtorque="500" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="25" movementspeed="10.622225" cyclespeed="1" headangle="NaN" torsoangle="NaN" legtorque="25" armikstrength="1" handikstrength="1" />

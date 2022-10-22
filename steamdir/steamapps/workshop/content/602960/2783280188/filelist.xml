@@ -1,8 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<contentpackage name="Consent Required" modversion="1.0.3" corepackage="False" steamworkshopid="2783280188" gameversion="0.17.16.0" altnames="Consent Required (v1.0.1)" expectedhash="BBF7C6077962A7C28114DBD10BE947CD">
-  <Other file="%ModDir%/Lua/Autorun/init.lua" />
-  <Other file="%ModDir%/Lua/com/github/cintique/ConsentRequired/Main.lua" />
-  <Other file="%ModDir%/Lua/com/github/cintique/ConsentRequired/Api.lua" />
-  <Other file="%ModDir%/Lua/com/github/cintique/ConsentRequired/Config.lua" />
-  <Other file="%ModDir%/Lua/com/github/cintique/ConsentRequired/OnItemApplied.lua" />
-</contentpackage>

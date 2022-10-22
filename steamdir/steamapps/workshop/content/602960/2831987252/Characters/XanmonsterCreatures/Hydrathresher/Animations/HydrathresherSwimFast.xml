@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<HydrathresherSwimFast type="Hydrathresher" UseSineMovement="False" Flip="True" FlipCooldown="1" FlipDelay="0.5" Mirror="True" MirrorLerp="True" WaveAmplitude="100" WaveLength="200" RotateTowardsMovement="False" TailTorque="75" TailTorqueMultiplier="5" FootAngles="" TailAngle="0" SteerTorque="0" LegTorque="25" MovementSpeed="9.177326" CycleSpeed="0.8999982" HeadAngle="1" TorsoAngle="0" HeadTorque="0" TorsoTorque="25" FootTorque="0" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<VoidleechSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="2.1355338" wavelength="88.48834" rotatetowardsmovement="True" torsotorque="30" headtorque="115" tailtorque="10" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="25" movementspeed="2.7013566" cyclespeed="1" headangle="NaN" torsoangle="NaN" type="Voidleech" />

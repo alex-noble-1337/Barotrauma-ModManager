@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<EndwormcoralSwimFast movementspeed="4.67" waveamplitude="38.81179" wavelength="86.79199" flip="False" mirror="False" rotatetowardsmovement="True" torsotorque="200" headtorque="200" foottorque="200" tailtorque="50" footangles="" steertorque="25" cyclespeed="1" headangle="0" torsoangle="0" animationtype="SwimFast" usesinemovement="False" tailtorquemultiplier="1" tailangle="NaN" type="Endwormcoral" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

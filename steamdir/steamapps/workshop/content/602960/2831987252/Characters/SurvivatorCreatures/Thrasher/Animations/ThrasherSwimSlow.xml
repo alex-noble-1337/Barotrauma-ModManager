@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ThrasherSwimSlow type="Thrasher" UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="True" WaveAmplitude="6.647034" WaveLength="24.03828" RotateTowardsMovement="True" TailTorque="1" TailTorqueMultiplier="1" FootAngles="" TailAngle="90" SteerTorque="2" LegTorque="25" MovementSpeed="2.837925" CycleSpeed="1" HeadAngle="90" TorsoAngle="90" HeadTorque="5" TorsoTorque="2.5" FootTorque="10" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

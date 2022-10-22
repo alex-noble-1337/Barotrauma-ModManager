@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<NightsquidSwimFast UseSineMovement="True" Flip="True" FlipCooldown="4" FlipDelay="1" Mirror="True" MirrorLerp="False" WaveAmplitude="10.0577545" WaveLength="200" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="25" LegTorque="25" MovementSpeed="3.360509" CycleSpeed="1" HeadAngle="-22" TorsoAngle="-121" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

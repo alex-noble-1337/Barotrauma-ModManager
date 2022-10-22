@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<ThalamuscarrierSwimSlow UseSineMovement="False" Flip="True" FlipCooldown="10" FlipDelay="5" Mirror="True" MirrorLerp="False" WaveAmplitude="13.897587" WaveLength="55.710377" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="25" LegTorque="25" MovementSpeed="1" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="25" TorsoTorque="25" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<SpinelingSwimSlow type="Spineling" UseSineMovement="False" Flip="False" FlipCooldown="2" FlipDelay="0.1" Mirror="False" MirrorLerp="False" WaveAmplitude="-10.160153" WaveLength="74.03128" RotateTowardsMovement="True" TailTorque="5" TailTorqueMultiplier="50" FootAngles="" TailAngle="155" SteerTorque="4" LegTorque="25" MovementSpeed="4" CycleSpeed="1" HeadAngle="90" TorsoAngle="90" HeadTorque="10" TorsoTorque="25" FootTorque="20" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

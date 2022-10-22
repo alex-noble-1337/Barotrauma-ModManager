@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<WastemantisSwimFast movementspeed="6" waveamplitude="1" wavelength="20" steertorque="25" flip="True" mirror="True" rotatetowardsmovement="True" headangle="114.85579" torsotorque="25" headtorque="30" foottorque="25" tailtorque="50" footangles="8: -3.098032,10: 0.3156534" cyclespeed="1" torsoangle="NaN" animationtype="SwimFast" usesinemovement="False" tailangle="NaN" tailtorquemultiplier="1" type="Wastemantis" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<AbyssalhammerheadSwimFast animationtype="SwimFast" flip="False" mirror="False" waveamplitude="51.39365" wavelength="100.5997" rotatetowardsmovement="True" torsotorque="140" headtorque="110" foottorque="50" tailtorque="190" steertorque="40" movementspeed="9.012078" cyclespeed="1" headangle="90" torsoangle="90" tailangle="90" usesinemovement="False" footangles="" tailtorquemultiplier="1" type="Abyssalhammerhead" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

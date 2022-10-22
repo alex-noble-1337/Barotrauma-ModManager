@@ -1,2 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<WandererSwimFast footrotatestrength="15" LegMoveAmount="-2" LegCycleLength="4.6647973" HandMoveAmount="0.022995837,-0.0069875265" HandCycleSpeed="0.09198335" HandMoveOffset="0,0" FootAngle="65" ArmMoveStrength="2" HandMoveStrength="0.5" FixedHeadAngle="True" SteerTorque="2" LegTorque="12" MovementSpeed="7.02292" CycleSpeed="7.02292" HeadAngle="94" TorsoAngle="74" HeadTorque="50" TorsoTorque="50" FootTorque="1" AnimationType="SwimFast" ArmIKStrength="3" HandIKStrength="10" />
