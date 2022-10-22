@@ -1,0 +1,57 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Huskartifactfaraday" group="husk" humanoid="True" needsair="False" blooddecal="blackblood" visibility="300" noise="300" speciestranslationoverride="" displayname="" hasinfo="False" husk="False" usehuskappendage="False" needswater="False" canspeak="False" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter particle="blackblood" particleamount="5" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="heavygib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="100" doesbleed="False" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0">
+    <Limb name="Head">
+      <VitalityMultiplier type="damage" multiplier="2.0" />
+    </Limb>
+    <Limb name="Torso" />
+    <Limb name="LeftArm">
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+    <Limb name="RightArm">
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+    <Limb name="LeftLeg">
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+    <Limb name="RightLeg">
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+  </health>
+  <sound file="Content/Characters/Husk/HUSK_attack1.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_attack2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_attack3.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_attack4.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_idle1.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_idle2.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_idle3.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_idle4.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_damage1.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_damage2.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_damage3.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_death1.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_death2.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <ai combatstrength="100" sight="0.5" hearing="1" aggressiveboarding="True" attackwhenprovoked="True" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" avoidgunfire="True" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="False">
+    <target tag="decoy" state="Attack" priority="500" reactdistance="0" attackdistance="0" />
+    <target tag="provocative" state="Attack" priority="100" reactdistance="0" attackdistance="0" />
+    <target tag="weapon" state="Attack" priority="100" reactdistance="0" attackdistance="0" />
+    <target tag="light" state="Attack" priority="100" reactdistance="0" attackdistance="0" />
+    <target tag="crawler" state="Attack" priority="100" reactdistance="0" attackdistance="0" />
+    <target tag="human" state="Attack" priority="80" reactdistance="0" attackdistance="0" />
+    <target tag="nasonov" state="Attack" priority="70" reactdistance="0" attackdistance="0" />
+    <target tag="wall" state="Attack" priority="40" reactdistance="0" attackdistance="0" />
+    <target tag="sonar" state="Attack" priority="30" reactdistance="0" attackdistance="0" />
+    <target tag="door" state="Attack" priority="30" reactdistance="0" attackdistance="0" />
+    <target tag="room" state="Attack" priority="20" reactdistance="0" attackdistance="0" />
+    <target tag="turret" state="Attack" priority="1" reactdistance="0" attackdistance="0" />
+  </ai>
+  <inventory slots="RightHand, LeftHand, Head, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="1" CanBeAutoMovedToCorrectSlots="True">
+    <Item identifier="huskeggs" />
+    <Item identifier="faradayartifact" slot="RightHand,Lefthand" />
+  </inventory>
+</Character>

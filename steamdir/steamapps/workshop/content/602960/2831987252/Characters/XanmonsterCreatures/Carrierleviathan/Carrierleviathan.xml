@@ -1,0 +1,242 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Carrierleviathan" humanoid="False" displayname="" group="husk" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="False" noise="100" visibility="100" blooddecal="blackblood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="5" pathfinderpriority="0.4999999" hideinsonar="False" sonardisruption="0" speciestranslationoverride="" caninteract="False" usebosshealthbar="False" bleedparticlemultiplier="1" caneat="False" usepathfinding="True" hideinthermalgoggles="False" distantsonarrange="0" disabledistance="25000" soundinterval="20">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <health vitality="500" doesbleed="False" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="8.999996" burnreduction="2" constanthealthregeneration="0" healthregenerationwheneating="0" stunimmunity="False" applyafflictioncolors="False" />
+  <ai combatstrength="1000" sight="7" hearing="2" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="150" attackwhenprovoked="True" avoidgunfire="False" aggressiveboarding="False" enforceaggressivebehaviorformissions="True" targetinnerwalls="False" randomattack="True" targetouterwalls="True" avoidtime="3" minfleetime="20" canopendoors="False" keepdoorsclosed="False" avoidabyss="True" stayinabyss="False" patrolflooded="False" patroldry="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Target">
+    <target state="Attack" priority="300" tag="decoy" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Attack" priority="150" tag="provocative" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Attack" priority="150" tag="weapon" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Escape" priority="110" tag="stronger" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Attack" priority="80" tag="light" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Aggressive" priority="100" tag="human" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Attack" priority="100" tag="sonar" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Attack" priority="100" tag="nasonov" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Attack" priority="100" tag="wall" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target state="Aggressive" priority="70" tag="weaker" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="600">
+    <RemoveCharacter />
+  </StatusEffect>
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/Carrier_Attack_1.ogg" state="Attack" range="6000" volume="2" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/Carrier_Attack_2.ogg" state="Attack" range="5000" volume="2" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/Carrier_Death.ogg" state="Die" range="10000" volume="2" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/Carrier_Idle_1.ogg" state="Idle" range="8000" volume="2" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/Carrier_Idle_2.ogg" state="Idle" range="8000" volume="2" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/SonarSweep1.ogg" state="Idle" range="18000" volume="1" gender="None" dontmuffle="false" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/SonarSweep2.ogg" state="Idle" range="18000" volume="1" gender="None" dontmuffle="false" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/SonarSweep3.ogg" state="Idle" range="18000" volume="1" gender="None" dontmuffle="false" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/SonarSweep4.ogg" state="Idle" range="18000" volume="1" gender="None" dontmuffle="false" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/SonarSweep5.ogg" state="Idle" range="18000" volume="1" gender="None" dontmuffle="false" />
+  <Inventory slots="Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="huskeggs" />
+    <Item identifier="unstablehuskeggs" />
+    <Item identifier="brockite" />
+    <Item identifier="fuelrod" />
+    <Item identifier="fuelrod" />
+    <Item identifier="calyxanide" />
+    <Item identifier="huskeggs" />
+    <Item identifier="pulselaserammo" />
+    <Item identifier="pulselaserammo" />
+  </Inventory>
+  <Inventory slots="Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="huskeggs" />
+    <Item identifier="unstablehuskeggs" />
+    <Item identifier="thorianite" />
+    <Item identifier="fuelrod" />
+    <Item identifier="fuelrod" />
+    <Item identifier="calyxanide" />
+    <Item identifier="huskeggs" />
+    <Item identifier="shotgununique" count="8" />
+    <Item identifier="spearunique" />
+  </Inventory>
+  <Inventory slots="Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+    <Item identifier="thorianite" />
+    <Item identifier="amblygonite" />
+    <Item identifier="pyromorphite" />
+    <Item identifier="fuelrod" />
+    <Item identifier="fuelrod" />
+    <Item identifier="thoriumfuelrod" />
+    <Item identifier="pyromorphite" />
+  </Inventory>
+  <Inventory slots="Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+    <Item identifier="titanite" />
+    <Item identifier="quartz" />
+    <Item identifier="diamond" />
+    <Item identifier="diamond" />
+    <Item identifier="fulguriumfuelrod" />
+    <Item identifier="fulguriumfuelrod" />
+    <Item identifier="40mmstungrenade" />
+    <Item identifier="shotgun" />
+  </Inventory>
+  <Inventory slots="Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="titanite" />
+    <Item identifier="titanite" />
+    <Item identifier="thoriumfuelrod" />
+    <Item identifier="thoriumfuelrod" />
+    <Item identifier="thoriumfuelrod" />
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+    <Item identifier="shotgun" />
+    <Item identifier="shotgunammo" count="8" />
+  </Inventory>
+  <StatusEffect type="Always" target="This">
+    <ReduceAffliction identifier="Paralysis" amount="100" />
+    <ReduceAffliction identifier="Morbusinepoisoning" amount="100" />
+    <ReduceAffliction identifier="Sufforinpoisoning" amount="100" />
+    <ReduceAffliction identifier="Cyanidepoisoning" amount="100" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" tag="EMI" duration="0.1" stackable="false" range="10000">
+    <Affliction identifier="carrierbeacon" strength="1" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" duration="0.1" delay="50" stackable="false" range="10000">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/Carrier_Idle_2.ogg" range="10000" volume="2" dontmuffle="true" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="NearbyCharacters" range="10000">
+    <ReduceAffliction identifier="carrierbeacon" strength="999" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="0" target="This" targetlimb="Body">
+    <Explosion range="450" structuredamage="300" force="300" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="100" camerashakerange="2000" flashrange="10000" flashduration="1.0" screencolor="255,255,255,25" screencolorrange="5000" screencolorduration="1.0">
+      <Affliction identifier="burn" strength="10" />
+      <Affliction identifier="stun" strength="5" />
+    </Explosion>
+    <sound file="Content/Characters/Carrier/CARRIER_death1.ogg" range="10000" volume="2" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="5" scalemax="5" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="3" target="This">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictreactordie.ogg" range="8000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="3.5" target="This" targetlimb="Body" offset="500,0">
+    <Explosion range="950" structuredamage="200" force="300" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="300" camerashakerange="10000" flashrange="0" flashduration="0.0" screencolor="255,255,255,55" screencolorrange="5000" screencolorduration="3.0">
+      <Affliction identifier="burn" strength="50" />
+      <Affliction identifier="stun" strength="10" />
+    </Explosion>
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="blackwaterblood" drawontop="True" particleamount="10" scalemin="9" scalemax="10" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="heavygib" particleamount="2" scalemin="15" scalemax="15" velocitymin="0" velocitymax="0" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="gib" particleamount="200" scalemin="1" scalemax="2" velocitymin="100" velocitymax="300" anglemin="0" anglemax="360" />
+    <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" range="10000" volume="2" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="5" target="This" targetlimb="Body" offset="0,100">
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="6" target="This" targetlimb="Body">
+    <SpawnCharacter speciesname="Huskcombatold" count="1" spread="100" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="8" target="This" targetlimb="Body">
+    <SpawnCharacter speciesname="Huskold" count="1" spread="100" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="9" target="This" targetlimb="Body" offset="0,100">
+    <Explosion range="950" structuredamage="200" force="300" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="300" camerashakerange="10000" flashrange="0" flashduration="0.0" screencolor="255,255,255,55" screencolorrange="5000" screencolorduration="3.0">
+      <Affliction identifier="burn" strength="50" />
+      <Affliction identifier="stun" strength="10" />
+    </Explosion>
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" range="10000" volume="2" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="10" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+    <SpawnCharacter speciesname="Paralyser" count="1" spread="50" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="12" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="14" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="16" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="18" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="20" target="This" targetlimb="Head">
+    <SpawnCharacter speciesname="Huskold" count="1" spread="100" />
+    <SpawnCharacter speciesname="Huskslasher" count="1" spread="100" />
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="22" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="24" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="26" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="28" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="30" target="This" targetlimb="Head" offset="100,50">
+    <SpawnCharacter speciesname="Huskabyssold" count="1" spread="100" />
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="32" target="This" targetlimb="Head" offset="100,0">
+    <SpawnCharacter speciesname="Huskold" count="1" spread="100" />
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="33" target="This" targetlimb="Head" offset="0,100">
+    <SpawnCharacter speciesname="Huskslasher" count="1" spread="100" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="34" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="36" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="38" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="40" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="42" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="44" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="46" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="48" target="This" targetlimb="Body">
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/derelictalarm.ogg" range="10000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="50" target="This" targetlimb="Head" offset="0,100">
+    <Explosion range="1000" structuredamage="400" force="300" emp="100" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="400" camerashakerange="10000" flashrange="9000" flashduration="1" screencolor="255,255,255,55" screencolorrange="5000" screencolorduration="3.0">
+      <Affliction identifier="burn" strength="40" />
+      <Affliction identifier="stun" strength="10" />
+      <Affliction identifier="radiationsickness" strength="5" />
+    </Explosion>
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/ReactorBigBoom.ogg" range="10000" volume="2" dontmuffle="true" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="51" target="This" targetlimb="Head" offset="0,100">
+    <Explosion range="1000" structuredamage="400" force="300" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="400" camerashakerange="10000" flashrange="0" flashduration="0.0" screencolor="255,255,255,55" screencolorrange="5000" screencolorduration="3.0">
+      <Affliction identifier="burn" strength="40" />
+      <Affliction identifier="stun" strength="2" />
+      <Affliction identifier="radiationsickness" strength="5" />
+    </Explosion>
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" range="10000" volume="2" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="55" target="This" targetlimb="Head" offset="0,100">
+    <Explosion range="1200" structuredamage="400" force="300" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="600" camerashakerange="10000" flashrange="0" flashduration="0.0" screencolor="255,255,255,100" screencolorrange="5000" screencolorduration="3.0">
+      <Affliction identifier="burn" strength="40" />
+      <Affliction identifier="stun" strength="2" />
+      <Affliction identifier="radiationsickness" strength="40" />
+    </Explosion>
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" range="10000" volume="2" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+</Character>

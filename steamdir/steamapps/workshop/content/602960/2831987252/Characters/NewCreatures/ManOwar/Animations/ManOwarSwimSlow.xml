@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MolochSwimSlow animationtype="SwimSlow" flip="True" mirror="True" waveamplitude="1" wavelength="300" rotatetowardsmovement="False" torsotorque="250" headtorque="25" foottorque="25" tailtorque="50" footangles="" steertorque="175" movementspeed="1.5" cyclespeed="1" headangle="0" torsoangle="-30" tailangle="NaN" usesinemovement="True" tailtorquemultiplier="1" flipcooldown="5" flipdelay="3" mirrorlerp="False" legtorque="25" armikstrength="1" handikstrength="1" />

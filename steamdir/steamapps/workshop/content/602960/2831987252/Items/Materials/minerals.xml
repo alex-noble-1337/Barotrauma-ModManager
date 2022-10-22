@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Waste Blood" identifier="wasteblood" category="Material" Tags="smallitem,chem,medical" canbepicked="true" description="" useinhealthinterface="true" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0.2" />
+    <Price baseprice="400" soldeverywhere="false">
+      <Price locationtype="research" multiplier="1.1" sold="true" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Items/Herbs/CreatureLoot.png" sourcerect="0,0,50,101" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Items/Herbs/CreatureLoot.png" sourcerect="0,0,50,101" depth="0.6" origin="0.5,0.5" />
+    <Body width="45" height="30" density="50" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="5,0" handle1="-5,0" holdangle="10" reload="1.0">
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" tags="poison" target="Character">
+        <Affliction identifier="wasteinfection" strength="10" />
+        <Reduceaffliction identifier="bloodloss" strength="2.5" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+</Items>

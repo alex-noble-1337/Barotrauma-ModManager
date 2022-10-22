@@ -1,0 +1,284 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <MonsterMission name="Kill a Husk Immortal" description="An Anomalous Husk lifeform has appeared between [location1] and [location2].Researchers advise that the only way to dispatch the creature is by overloading its system with poisons or Antibiotics, after that, its demise is only a matter of time.     A reward of [reward] has been promised to any crew brave enough subjugate it and administer the lethal substances." successmessage="The Immortal has been terminated." identifier="killimmortal" type="Monster" tags="killmonster,killmonster_set3" commonness="10" difficulty="4" reward="8000" sonarlabel="Husk lifeform" maxsonarmarkerdistance="10000">
+    <monster character="immortal" count="1" />
+    <Reputation identifier="location" amount="50" />
+    <Reputation identifier="coalition" amount="9" />
+    <Reputation identifier="huskcult" amount="-15" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="758,256,256,256" color="214,50,48" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Kill a Husk Immortal" description="An Anomalous Husk lifeform has appeared between [location1] and [location2].Researchers advise that the only way to dispatch the creature is by overloading its system with poisons or Antibiotics, after that, its demise is only a matter of time.     A reward of [reward] has been promised to any crew brave enough subjugate it and administer the lethal substances " successmessage="The Immortal has been terminated." identifier="killimmortal2" type="Monster" tags="killmonster,killmonster_set3" commonness="80" difficulty="4" reward="10000" sonarlabel="Husk lifeform" maxsonarmarkerdistance="10000">
+    <monster character="immortal" count="1" />
+    <Reputation identifier="location" amount="50" />
+    <Reputation identifier="coalition" amount="10" />
+    <Reputation identifier="huskcult" amount="-20" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="758,256,256,256" color="214,50,48" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Kill two Husk Immortals" description="A failed experiment has caused a couple anomalous Husk lifeforms to escape and wander the area around [location1] and [location2].Researchers advise that the only way to dispatch the creature is by overloading its system with poisons or Antibiotics, after that, its demise is only a matter of time.     A reward of [reward] has been promised to any crew brave enough subjugate it and administer the lethal substances " successmessage="The Immortals has been terminated." identifier="killimmortal3" type="Monster" tags="killmonster,killmonster_set3" commonness="50" difficulty="4" reward="10000" sonarlabel="Husk lifeform" maxsonarmarkerdistance="10000">
+    <monster character="immortal" count="2" />
+    <Reputation identifier="location" amount="100" />
+    <Reputation identifier="coalition" amount="15" />
+    <Reputation identifier="huskcult" amount="-20" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="758,256,256,256" color="214,50,48" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Dybbuk" description="A particurarly aggressive Dybbuk has been causing severe psychological damage to nearby vessels traveling between [location1] and [location2],A reward of [reward] Marks has been promised to anyone who can eliminate it." successmessage="The Observer has been terminated." identifier="killobserver" type="Monster" tags="killmonster,killmonster_set3" commonness="37" difficulty="3" reward="5500" sonarlabel="Dybbuk" maxsonarmarkerdistance="10000" monsterfile="Observer">
+    <Reputation identifier="location" amount="25" />
+    <Reputation identifier="coalition" amount="4" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="0,256,256,256" color="214,50,48" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a lone Hydrathresher" description="A lone Hydrathresher has been spotted in the routes between [location1] and [location2], A reward of [reward] Marks has been promised to any crew capable of eliminating it before it can become a serious threat." successmessage="The Hydrathresher has been terminated." identifier="killhydrathresher" type="Monster" tags="killmonster_set3" commonness="30" difficulty="2" reward="5500" sonarlabel="Hydrathresher" maxsonarmarkerdistance="10000" monsterfile="Hydrathresher">
+    <Reputation identifier="location" amount="15" />
+    <Reputation identifier="coalition" amount="2" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,768,256,256" color="214,50,48" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Slay a Juvenile Charybdis" description="A juvenile Charybdis has been attacking vessels traveling between [location1] and [location2], A reward of [reward] Marks has been promised to anyone who can eliminate it." successmessage="The Juvenile Charybdis has been terminated." identifier="killcharybdisre" type="Monster" tags="killmonster,killmonster_set2" commonness="30" difficulty="3" reward="8000" sonarlabel="Juvenile Charybdis" maxsonarmarkerdistance="10000" monsterfile="Charybdisre">
+    <Reputation identifier="location" amount="20" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="758,0,256,256" color="214,50,48" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Slay a pack of Juvenile Charybdis" description="A pack of juvenile Charybdis has been attacking vessels traveling between [location1] and [location2], A reward of [reward] Marks has been promised to anyone who can eliminate them." successmessage="The Juvenile Charybdis's has been terminated." identifier="killcharybdisre2" type="Monster" tags="killswarm_set3" commonness="30" difficulty="3" reward="8000" sonarlabel="Juvenile Charybdis" maxsonarmarkerdistance="10000">
+    <monster character="Charybdisre" min="3" max="4" />
+    <Reputation identifier="location" amount="20" />
+    <Reputation identifier="coalition" amount="3" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="758,0,256,256" color="214,50,48" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Slay an Anomalous Moloch" description="A Peculiar Moloch specimen has been spotted between [location1] and [location2], its aggressive nature has been detrimental to the trading routes,and as such,A reward of [reward] Marks has been promised to anyone who can eliminate it." successmessage="The Moloch has been terminated." identifier="killbossmoloch" tags="killmonster_set4" type="Monster" commonness="10" difficulty="4" reward="8600" sonarlabel="Moloch" maxsonarmarkerdistance="10000" monsterfile="Bossmoloch">
+    <Reputation identifier="location" amount="25" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="512,0,256,256" color="214,50,48" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Slay an Anomalous Moloch" description="A Peculiar Moloch specimen has been spotted between [location1] and [location2], its aggressive nature has been detrimental to the trading routes,and as such,A reward of [reward] Marks has been promised to anyone who can eliminate it." successmessage="The Moloch has been terminated." identifier="killbossmoloch2" type="Monster" tags="killmonster_set4" commonness="80" reward="9000" difficulty="4" sonarlabel="Moloch" maxsonarmarkerdistance="10000" monsterfile="Bossmoloch">
+    <Reputation identifier="location" amount="50" />
+    <Reputation identifier="coalition" amount="4" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="512,0,256,256" color="214,50,48" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType from="WasteyardDE" to="City" />
+    <LocationType from="WasteyardDE" to="Military" />
+    <LocationType from="WasteyardDE" to="Outpost" />
+    <LocationType from="WasteyardDE" to="Research" />
+    <LocationType from="WasteyardDE" to="None" />
+    <LocationType from="WasteyardDE" to="Lair" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Scavenger Galore" description="Some Scavengers established their territory between [location1] and [location2], and as such they developed an aggressive territorial behaviour, Anyone that clears out the threat will be free to keep whatever they found" successmessage="The Scavengers have been terminated." identifier="killScavengers" type="Monster" tags="killswarm_set2" commonness="25" difficulty="2" reward="3500" sonarlabel="Scavengers" maxsonarmarkerdistance="10000" monsterfile="xan_scavenger" monstercount="5">
+    <Reputation identifier="location" amount="15" />
+    <Reputation identifier="coalition" amount="1" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <message header="Targets eliminated" text="The targets have been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Kill a Scavenger" description="A rogue Scavenger is wandering around the area between [location1] and [location2], The authorities are awarding [reward] marks to anyone who eliminates it. Anyone that kills the creature will be free to keep whatever they found" successmessage="The Scavenger have been terminated." identifier="killScavenger" type="Monster" tags="killmonster_set1" commonness="31" difficulty="2" reward="3500" sonarlabel="Scavenger" maxsonarmarkerdistance="10000" monsterfile="xan_scavenger" monstercount="1">
+    <Reputation identifier="location" amount="5" />
+    <Reputation identifier="coalition" amount="1" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <message header="Targets eliminated" text="The targets have been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Scavenger Galore" description="Some Scavengers established their territory between [location1] and [location2], and as such they developed an aggressive territorial behaviour, Anyone that clears out the threat will be free to keep whatever they found in the Scavengers' bodies" successmessage="The Scavengers have been terminated." identifier="killScavengers2" type="Monster" tags="killmonster,killswarm,killswarm_set2" commonness="90" difficulty="2" reward="0" sonarlabel="Scavengers" maxsonarmarkerdistance="10000" monsterfile="xan_scavenger" monstercount="5">
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType from="WasteyardDE" to="City" />
+    <LocationType from="WasteyardDE" to="Military" />
+    <LocationType from="WasteyardDE" to="Outpost" />
+    <LocationType from="WasteyardDE" to="Research" />
+    <LocationType from="WasteyardDE" to="None" />
+    <LocationType from="WasteyardDE" to="Lair" />
+    <message header="Targets eliminated" text="The targets have been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Large Thresher swarm" description="A huge swarm of threshers has been attacking vessels between [location1] and [location2]. Witnesses report also the appearence of less-known thresher lifeforms. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmajorthesher" type="Monster" tags="killswarm,killswarm_set2" commonness="20" difficulty="3" reward="9000" sonarlabel="Thresher" maxsonarmarkerdistance="10000">
+    <monster character="Xanothresher" />
+    <monster character="bonethresher" min="2" max="3" />
+    <monster character="abyssalthresher" min="2" max="4" />
+    <monster character="tigerthresher" min="5" max="8" />
+    <Reputation identifier="location" amount="20" />
+    <Reputation identifier="coalition" amount="10" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,758,256,256" color="214,50,48" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Large Mudraptor swarm" description="A large swarm of Mudraptors has been attacking vessels between [location1] and [location2]. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmajormudraptor" type="Monster" tags="killswarm_set1" commonness="25" difficulty="2" reward="5500" sonarlabel="Mudraptor Swarm" maxsonarmarkerdistance="10000">
+    <monster character="mudraptor" count="8" />
+    <monster character="mudraptor_unarmored" count="2" />
+    <Reputation identifier="location" amount="20" />
+    <Reputation identifier="coalition" amount="3" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,512,256,256" color="214,50,48" />
+    <message header="Targets  eliminated" text="The targets has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Major Mudraptor swarm" description="A huge swarm of Mudraptors has been attacking vessels between [location1] and [location2]. Witnesses report also the presence of a veteran Mudraptor. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmajormudraptor2" type="Monster" tags="killmonster,killswarm,killswarm_set2" commonness="30" difficulty="3" reward="7500" sonarlabel="Mudraptor Swarm" maxsonarmarkerdistance="10000">
+    <monster character="mudraptor_veteran" min="1" max="2" />
+    <monster character="mudraptor" count="9" />
+    <monster character="mudraptor_unarmored" count="3" />
+    <Reputation identifier="location" amount="30" />
+    <Reputation identifier="coalition" amount="4" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,512,256,256" color="214,50,48" />
+    <message header="Targets  eliminated" text="The targets has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Massive Mudraptor swarm" description="A massive swarm of Mudraptors has been rally up around [location1] and [location2]. Witnesses report a large number of veteran Mudraptors and a Mudbouncer. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmajormudraptor3" type="Monster" tags="killswarm_set4" commonness="30" difficulty="4" reward="8700" sonarlabel="Mudraptor Swarm" maxsonarmarkerdistance="10000">
+    <monster character="mudraptor_veteran" min="2" max="3" />
+    <monster character="mudraptor" min="10" max="16" />
+    <monster character="mudbouncer" />
+    <Reputation identifier="location" amount="30" />
+    <Reputation identifier="coalition" amount="4" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,512,256,256" color="214,50,48" />
+    <message header="Targets  eliminated" text="The targets has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Massive Mudraptor swarm" description="A massive swarm of Mudraptors has been rally up around [location1] and [location2]. Witnesses report a large number of veteran Mudraptors and a Mudbouncer. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmajormudraptor4" type="Monster" tags="killswarm_set4" commonness="30" difficulty="4" reward="8700" sonarlabel="Mudraptor Swarm" maxsonarmarkerdistance="10000">
+    <monster character="mudraptor_veteran" min="2" max="3" />
+    <monster character="mudraptor" min="10" max="16" />
+    <monster character="mudbouncer" />
+    <Reputation identifier="location" amount="30" />
+    <Reputation identifier="coalition" amount="4" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,512,256,256" color="214,50,48" />
+    <message header="Targets  eliminated" text="The targets has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Massive Thresher swarm" description="A massive swarm of Threshers has been attacking vessels between [location1] and [location2], effectively stopping all commercial routes. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmmassivethresher" type="Monster" tags="killswarm_set4" commonness="31" difficulty="4" reward="10000" sonarlabel="Thresher" maxsonarmarkerdistance="10000">
+    <monster character="Hydrathresher" />
+    <monster character="tigerthresher" count="11" />
+    <monster character="abyssalthresher" count="3" />
+    <monster character="xanothresher" count="3" />
+    <monster character="bonethresher" count="4" />
+    <Reputation identifier="location" amount="50" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,758,256,256" color="214,50,48" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a Massive Thresher swarm" description="A massive swarm of Threshers has been attacking vessels between [location1] and [location2], effectively stopping all commercial routes. A reward of [reward] has been promised to any crew capable of terminating the swarm" successmessage="The swarm has been terminated." identifier="killmmassivethresher2" type="Monster" tags="killswarm_set4" commonness="80" difficulty="4" reward="10000" sonarlabel="Thresher" maxsonarmarkerdistance="10000">
+    <monster character="Hydrathresher" />
+    <monster character="tigerthresher" count="11" />
+    <monster character="abyssalthresher" count="3" />
+    <monster character="xanothresher" count="3" />
+    <monster character="bonethresher" count="4" />
+    <Reputation identifier="location" amount="25" />
+    <Reputation identifier="coalition" amount="15" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,758,256,256" color="214,50,48" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="UnderAttack" from="Research" />
+    <LocationType to="UnderAttack" from="City" />
+    <LocationType to="UnderAttack" from="Military" />
+    <LocationType to="UnderAttack" from="Outpost" />
+    <LocationType to="UnderAttack" from="Research" />
+    <LocationType to="UnderAttack" from="None" />
+    <LocationType to="UnderAttack" from="Lair" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <!--<MonsterMission name="Terminate a Thresher brood nest" identifier="lairmissionthreshers" type="Monster" tags="killmonster,killmonsterrare,killswarm" description="The path between [location1] and [location2] has now became a breeding ground for Threshers due to the failure to wipe out the swarming population within a few weeks. All forms of travel have been canceled in this path and the Coalition is offering a total of 10000 marks to whoever can clear out the entire nesting ground. The stakes are high and there will be nobody to rescue you in this situation if you mess this up so be very well prepared for this task." commonness="400" difficulty="4" reward="10000" sonarlabel="Targets" maxsonarmarkerdistance="10000" successmessage="The swarm has been terminated.">
+    <monster character="Hydrathresher" count="2" spread="100"/>
+    <monster character="tigerthresher" count="20" spread="100"/>
+    <monster character="abyssalthresher" count="8" spread="100"/>
+    <monster character="xanothresher" count="6" spread="100"/>
+    <monster character="bonethresher" count="15" spread="100" />
+    <Reputation identifier="location" amount="25" />
+    <Reputation identifier="coalition" amount="15" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,758,256,256" color="214,50,48" />
+    <LocationType to="Lair" from="Research" />	
+    <LocationType to="Lair" from="City" />
+    <LocationType to="Lair" from="Military" />
+    <LocationType to="Lair" from="Outpost" />
+    <LocationType to="Lair" from="Research" />
+    <LocationType to="Lair" from="None" />
+    <message header="Target  eliminated" text="Most of the threshers have ran off or been killed, hopefully they never come back. Report to [location2] to announce your victory." />
+  </MonsterMission>-->
+  <MonsterMission name="Investigating A Missing Shipment" description="A small shipment of Brute Security Robots has gone missing between [location1] and [location2] a couple of weeks ago.While it was assumed the shipment was lost to the abyss, the Brutes' rescue beacons recently activated.Anyone willing to investigate the beacons will be rewarded" successmessage="You meet a representative of the company responsible for the production of the Brutes, he introduces himself and gives you [reward] Marks for the &quot;inconvenience&quot;; he then leaves as quickly as he arrived." identifier="killbrute" type="Monster" tags="killswarm_set1" commonness="35" difficulty="2" reward="3000" sonarlabel="Rescue beacons" maxsonarmarkerdistance="10000">
+    <monster character="Bruteflora" count="4" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="1" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="512,256,256,256" color="214,50,48" />
+    <message header="Targets investigated" text="The missing Brutes appears to have been taken over by some sort of parasitic growth, but they have been dispatched . You should report the incident to [location2]." />
+  </MonsterMission>
+  <MonsterMission name="Investigating A Missing Shipment" description="A large shipment of Brute Security Robots has gone missing between [location1] and [location2] a couple of weeks ago. While it was assumed the shipment was lost to the abyss,the Brutes' rescue beacons recently activated. Anyone willing to investigate the beacons will be rewarded " successmessage="You meet a representative of the company responsible for the production of the Brutes, he introduces himself and gives you [reward] Marks for the &quot;inconvenience&quot;; he then leaves as quickly as he arrived." identifier="killbrute2" type="Monster" tags="killswarm_set2" commonness="30" difficulty="2" reward="3000" sonarlabel="Rescue beacons" maxsonarmarkerdistance="10000">
+    <monster character="Bruteflora" count="8" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="2" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="500,256,256,256" color="214,50,48" />
+    <message header="Targets investigated" text="The missing Brutes appears to have been taken over by some sort of parasitic growth, but they have been dispatched . You should report the incident to [location2]." />
+  </MonsterMission>
+  <MonsterMission name="Kill the mysterious creature" description="Various Vessels have gone missing between [location1] and [location2].The only Witnesses suffer from heavy psychosis and hallucinations and thus we don't have a description of what's causing the disappereances,however a particular infrasonic signal has been marked as the prime suspect.Anyone willing to investigate the signal will be rewarded. " successmessage="The Researchers of [location2] are particularly interested in the encounter and offer [reward] for your troubles" identifier="killvoidstalker" type="Monster" tags="killmonster_set2" commonness="14" reward="7000" difficulty="3" sonarlabel="Infrasonic Signal" maxsonarmarkerdistance="10000" monsterfile="Voidstalker">
+    <Reputation identifier="location" amount="20" />
+    <Reputation identifier="coalition" amount="4" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="256,0,256,256" color="214,50,48" />
+    <message header="Signal investigated" text="The Strange Creature has been terminated. You should report the incident to [location2]." />
+  </MonsterMission>
+  <MonsterMission name="Kill the mysterious creature" description="Various Vessels have gone missing between [location1] and [location2]. The only Witnesses suffer from heavy psychosis and hallucinations and thus we don't have a description of what's causing the disappereances,however a particular infrasonic signal has been marked as the prime suspect.Anyone willing to investigate the signal will be rewarded. " successmessage="The Researchers of [location2] are particularly interested in the encounter and offer [reward] for your troubles" identifier="killvoidstalker2" type="Monster" tags="killmonster_set3" commonness="80" reward="7000" difficulty="4" sonarlabel="Infrasonic Signal" maxsonarmarkerdistance="10000" monsterfile="Voidstalker">
+    <Reputation identifier="location" amount="20" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="%ModDir%/UI/XanIcons.png" sourcerect="256,0,256,256" color="214,50,48" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <message header="Signal investigated" text="The Strange Creature has been terminated. You should report the incident to [location2]." />
+  </MonsterMission>
+</Missions>

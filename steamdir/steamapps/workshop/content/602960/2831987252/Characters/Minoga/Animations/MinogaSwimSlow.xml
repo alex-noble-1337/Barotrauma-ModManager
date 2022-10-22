@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MinogaSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" mirror="True" waveamplitude="4.6327252" wavelength="34.330257" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" foottorque="25" footangles="" tailangle="91.4667" steertorque="25" movementspeed="2.4763749" cyclespeed="1" headangle="88.28782" torsoangle="89.83231" tailtorquemultiplier="1" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" />

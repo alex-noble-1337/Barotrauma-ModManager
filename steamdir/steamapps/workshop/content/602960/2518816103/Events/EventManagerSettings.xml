@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <EventManagerSettings>
+    <!-- DefaultEventThreshold
+      Event threshold determines how low the intensity of the current situation has to be for a new random event to be created.
+      The threshold may increase over time, but is reset to this default value after creating a new event. 
+	  Avoid decreasing this value as nothing will spawn. -->
+    <!-- EventThresholdIncrease
+      How much the event threshold increases per second. Can be used to make sure that new events will be created
+      eventually even if the current crisis situation is not resolved (e.g. sub laying flooded on the ocean floor...) 
+	  Avoid decreasing this value as nothing will spawn.-->
+    <!-- EventCooldown
+      Minimum amount of time between creating new random events.
+	  This value can be edited to safely increase or decrease the difficulty. -->
+    <!-- MinLevelDifficulty/MaxLevelDifficulty
+      DO NOT EDIT THESE VALUES, these values control the imbedded biome location handling and will break the areas at which enemies can spawn at. -->
+    <!-- FreezeDurationWhenCrewAway
+      Additional main events don't trigger during this time when the crew (or more specifically, more than 50% of the non-bot characters) 
+      is outside the sub (exploring a wreck, cave, ruin or a beacon station). Diving events will still trigger during this time. -->
+    <!--> 
+  <Example (this is only an example to explain each value for the sets below)
+    DefaultEventThreshold="0.5" Intensity Settings, Avoid editing
+    EventThresholdIncrease="0.005" Intensity Delay, Avoid editing
+    EventCooldown="120.0" Edit this line's numberic value (in seconds) to change the difficulty, this can make the difficulty change exponentially
+    MinLevelDifficulty="0.0" Biome boundaries, DO NOT EDIT
+    MaxLevelDifficulty="100.0" Biome boundaries, DO NOT EDIT
+    FreezeDurationWhenCrewAway="180"/>  Edit this to grant a "grace period" when first diving.
+<!-->
+    <Easiest DefaultEventThreshold="0.5" EventThresholdIncrease="0.005" EventCooldown="30.0" MinLevelDifficulty="0.0" MaxLevelDifficulty="15.0" FreezeDurationWhenCrewAway="360" />
+    <Easy DefaultEventThreshold="0.6" EventThresholdIncrease="0.006" EventCooldown="25.0" MinLevelDifficulty="15.0" MaxLevelDifficulty="35.0" FreezeDurationWhenCrewAway="300" />
+    <Medium DefaultEventThreshold="0.7" EventThresholdIncrease="0.007" EventCooldown="20.0" MinLevelDifficulty="35.0" MaxLevelDifficulty="50.0" FreezeDurationWhenCrewAway="240" />
+    <Challenging DefaultEventThreshold="0.8" EventThresholdIncrease="0.008" EventCooldown="15.0" MinLevelDifficulty="50.0" MaxLevelDifficulty="65.0" FreezeDurationWhenCrewAway="180" />
+    <Hard DefaultEventThreshold="0.9" EventThresholdIncrease="0.009" EventCooldown="10.0" MinLevelDifficulty="65.0" MaxLevelDifficulty="80.0" FreezeDurationWhenCrewAway="120" />
+    <Hellish DefaultEventThreshold="1" EventThresholdIncrease="0.01" EventCooldown="5.0" MinLevelDifficulty="80.0" MaxLevelDifficulty="100.0" FreezeDurationWhenCrewAway="60" />
+  </EventManagerSettings>
+</Override>

@@ -1,0 +1,4 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Molochhusk" speciesname="Molochblackhusk" speciestranslationoverride="Molochblack" hideinsonar="True" sonardistruption="2" texture="%ModDir:Improved Husks%/Characters/Molochhusk/Molochblackhusk.png">
+  <health vitality="1850" />
+</Charactervariant>

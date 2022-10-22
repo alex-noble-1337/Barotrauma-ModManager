@@ -1,0 +1,283 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!-- Name: DTPA -->
+  <!-- Description: Diethylenetriamine pentaacetic acid or DTPA, binds itself to radioactive metallic particle, preventing them to be fixed inside the body and to evacuate them via urine. -->
+  <!-- *************************************************************************************************************************************************************************** -->
+  <DTPA name="" identifier="DTPA" category="Medical" maxstacksize="8" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer primary="medcab" minamount="3" maxamount="6" spawnprobability="1" />
+    <PreferredContainer primary="wreckmedcab,abandonedmedcab" minamount="3" maxamount="6" spawnprobability="0.75" />
+    <PreferredContainer primary="outpostmedcompartment" minamount="1" maxamount="2" spawnprobability="0.25" />
+    <Price baseprice="125">
+      <Price storeidentifier="merchantoutpost" sold="false" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" minavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="18" />
+      <RequiredItem identifier="ethanol" />
+      <RequiredItem identifier="ethanol" />
+      <RequiredItem identifier="elastin" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="ethanol" copycondition="true" mincondition="0.1" />
+      <Item identifier="ethanol" copycondition="true" mincondition="0.1" />
+      <Item identifier="elastin" copycondition="true" mincondition="0.1" />
+    </Deconstruct>
+    <SuitableTreatment identifier="radiationsickness,contamination" suitability="100" />
+    <Sprite texture="%ModDir%/Content/Items/Medical/radmedicines.png" sourcerect="0,0,24,47" origin="0.5,0.5" depth="0.6" />
+    <InventoryIcon texture="%ModDir%/Content/Items/Medical/radmedicinesiconatlas.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Body width="35" height="65" density="20" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="-5,0" holdangle="0" reload="1.0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnFailure" target="This" Condition="-50.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" target="This" Condition="-50.0" disabledeltatime="true" />
+      <RequiredSkill identifier="medical" level="35" />
+      <StatusEffect tags="medical" type="OnUse" target="Character" duration="60">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <ReduceAffliction identifier="radiationsickness" amount="1.25" />
+        <ReduceAffliction identifier="contamination" amount="1" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnUse" target="Character">
+        <Affliction identifier="antiradeffect" strength="60" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnUse" target="Character" condition="-50" duration="20">
+        <conditional lethalradiation="lt 20" />
+        <ReduceAffliction identifier="lethalradiation" amount="0.2" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character" condition="-50" duration="60">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <ReduceAffliction identifier="radiationsickness" amount="0.75" />
+        <ReduceAffliction identifier="contamination" amount="0.5" />
+        <Affliction identifier="nausea" amount="1.05" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character" condition="-50" duration="20">
+        <conditional lethalradiation="lt 20" />
+        <ReduceAffliction identifier="lethalradiation" amount="0.2" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </DTPA>
+  <!-- Name: Potassium iodide -->
+  <!-- Prevent radio element to fix themselves inside the body. -->
+  <!-- *************************************************************************************************************************************************************************** -->
+  <Potassiumiodide name="" identifier="Potassiumiodide" category="Medical" maxstacksize="8" Tags="smallitem,chem,medical" description="Protects against radiation and radioactive contamination. Must be taken regulary in order to keep its full protective effect." cargocontaineridentifier="mediccrate" scale="0.5" useinhealthinterface="true">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer primary="medfabcab" minamount="2" maxamount="6" spawnprobability="1" />
+    <PreferredContainer primary="wreckmedcab" minamount="2" maxamount="4" spawnprobability="0.5" />
+    <PreferredContainer primary="outpostmedcompartment" minamount="0" maxamount="1" spawnprobability="0.25" />
+    <Price baseprice="60" soldeverywhere="false">
+      <Price storeidentifier="merchantoutpost" sold="false" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" minavailable="2" />
+    </Price>
+    <Sprite texture="%ModDir%/Content/Items/Medical/radmedicines.png" sourcerect="24,0,32,58" origin="0.5,0.5" depth="0.6" />
+    <InventoryIcon texture="%ModDir%/Content/Items/Medical/radmedicinesiconatlas.png" sourcerect="64,0,64,64" origin="0.5,0.5" />
+    <Body width="35" height="70" density="20" />
+    <SuitableTreatment identifier="radiationsickness" suitability="30" />
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+      <RequiredSkill identifier="medical" level="18" />
+      <RequiredItem identifier="potassium" />
+      <RequiredItem identifier="iodine" />
+    </Fabricate>
+    <Deconstruct time="20">
+      <Item identifier="potassium" copycondition="true" mincondition="0.1" />
+      <Item identifier="iodine" copycondition="true" mincondition="0.1" />
+    </Deconstruct>
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="-5,0" holdangle="0" reload="1.0" msg="ItemMsgPickUpSelect">
+      <RequiredSkill identifier="medical" level="15" />
+      <StatusEffect type="OnFailure" target="This" Condition="-20.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" target="This" Condition="-20.0" disabledeltatime="true" />
+      <StatusEffect tags="medical" type="OnUse" target="Character" disabledeltatime="true">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <Affliction identifier="radiationresistance" amount="600" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character" disabledeltatime="true">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <Affliction identifier="radiationresistance" amount="300" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Potassiumiodide>
+  <!-- Name: DNA stabiliser -->
+  <!-- Description: Complex compound able to stabilise and restore damaged DNA strands -->
+  <!-- *************************************************************************************************************************************************************************** -->
+  <DNAstabiliser name="" identifier="DNAstabiliser" aliases="DNA stabiliser" category="Medical" maxstacksize="8" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical" description="Rare and complex compound able to slowly restore damaged DNA over a long period of time, dangerous if injected by untrained personel." useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <PreferredContainer primary="medcab" minamount="1" maxamount="2" />
+    <PreferredContainer primary="wreckmedcab,abandonedmedcab" minamount="1" maxamount="2" spawnprobability="0.25" />
+    <PreferredContainer primary="supplycab" minamount="0" maxamount="0" spawnprobability="0.25" />
+    <PreferredContainer primary="outposttrashcan" minamount="0" maxamount="1" spawnprobability="0.15" />
+    <Price baseprice="300">
+      <Price storeidentifier="merchantoutpost" sold="false" />
+      <Price storeidentifier="merchantcity" sold="false" />
+      <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+      <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmine" sold="false" />
+      <Price storeidentifier="merchantengineering" sold="false" minavailable="2" />
+    </Price>
+    <SuitableTreatment identifier="dnadamage" suitability="100" />
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="100">
+      <RequiredSkill identifier="medical" level="40" />
+      <RequiredItem identifier="deusizine" mincondition="0.25" usecondition="true" />
+      <RequiredItem identifier="elastin" />
+      <RequiredItem identifier="ethanol" />
+    </Fabricate>
+    <Deconstruct time="5">
+      <Item identifier="deusizine" maxcondition="0.25" />
+      <Item identifier="elastin" copycondition="true" mincondition="0.1" />
+      <Item identifier="ethanol" copycondition="true" mincondition="0.1" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Content/Items/Medical/radmedicines.png" sourcerect="56,0,39,69" origin="0.5,0.5" depth="0.6" />
+    <InventoryIcon texture="%ModDir%/Content/Items/Medical/radmedicinesiconatlas.png" sourcerect="0,64,64,64" origin="0.5,0.5" />
+    <Body width="35" height="65" density="20" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-4,0" holdangle="180" reload="1.0" msg="ItemMsgPickUpSelect">
+      <RequiredSkill identifier="medical" level="70" />
+      <StatusEffect type="OnFailure" target="This" Condition="-100.0" disabledeltatime="true" />
+      <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+      <StatusEffect tags="medical" type="OnUse" target="Character" duration="375">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <ReduceAffliction identifier="dnadamage" amount="0.16" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnUse" target="Character">
+        <Affliction identifier="dnaregeneration" strength="375" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character">
+        <Affliction identifier="dnaregeneration" strength="375" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character" duration="375">
+        <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        <Affliction identifier="internaldamage" strength="0.1" />
+        <Affliction identifier="bloodvomit" amount="1.3" />
+        <ReduceAffliction identifier="dnadamage" amount="0.06" />
+      </StatusEffect>
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+  </DNAstabiliser>
+  <Override>
+    <Item name="" identifier="radiotoxin" category="Material" maxstacksize="8" cargocontaineridentifier="chemicalcrate" Tags="smallitem,chem,medical,syringe" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <PreferredContainer primary="toxcab,abandonedtoxcab" spawnprobability="0.05" />
+      <Price baseprice="200" soldeverywhere="false">
+        <Price locationtype="outpost" multiplier="1" sold="false" />
+        <Price locationtype="city" multiplier="0.9" minavailable="1" />
+        <Price locationtype="research" multiplier="0.9" minavailable="1" />
+        <Price locationtype="military" multiplier="1.1" minavailable="1" />
+        <Price locationtype="mine" multiplier="1.1" sold="false" />
+      </Price>
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="90">
+        <RequiredSkill identifier="medical" level="56" />
+        <RequiredItem identifier="thorium" />
+        <RequiredItem identifier="uranium" />
+      </Fabricate>
+      <Deconstruct time="20">
+        <Item identifier="thorium" copycondition="true" mincondition="0.1" />
+        <Item identifier="uranium" copycondition="true" mincondition="0.1" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="128,640,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="0,69,37,69" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="65" density="20" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-4,0" holdangle="180" reload="1.0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+        <StatusEffect tags="poison" type="OnUse" target="Character" duration="5">
+          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+          <Affliction identifier="radiationsickness" amount="8" />
+          <Affliction identifier="contamination" amount="8" />
+        </StatusEffect>
+        <StatusEffect tags="poison" type="OnUse" target="Character">
+          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+          <Affliction identifier="lethalradiation" amount="61" />
+        </StatusEffect>
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" launchrotation="-90">
+        <StatusEffect type="OnImpact" target="This" Condition="-100.0" disabledeltatime="true">
+          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect tags="poison" type="OnImpact" target="Character" duration="5">
+          <Affliction identifier="radiationsickness" amount="4" />
+          <Affliction identifier="contamination" amount="4" />
+        </StatusEffect>
+        <StatusEffect tags="poison" type="OnImpact" target="Character">
+          <Affliction identifier="lethalradiation" amount="61" />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+  </Override>
+  <Override>
+    <Item name="" identifier="antirad" category="Medical" maxstacksize="8" cargocontaineridentifier="mediccrate" Tags="smallitem,chem,medical,syringe" description="" useinhealthinterface="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <PreferredContainer primary="medcab" spawnprobability="0.5" />
+      <PreferredContainer primary="wreckmedcab,abandonedmedcab" minamount="0" maxamount="2" spawnprobability="0.5" />
+      <PreferredContainer primary="outpostmedcompartment" minamount="0" maxamount="2" spawnprobability="0.25" />
+      <Price baseprice="125">
+        <Price storeidentifier="merchantoutpost" sold="false" />
+        <Price storeidentifier="merchantcity" sold="false" />
+        <Price storeidentifier="merchantresearch" multiplier="1.25" minavailable="2" />
+        <Price storeidentifier="merchantmilitary" sold="false" multiplier="1.25" />
+        <Price storeidentifier="merchantmine" sold="false" />
+        <Price storeidentifier="merchantengineering" sold="false" minavailable="2" />
+      </Price>
+      <Fabricate suitablefabricators="medicalfabricator" requiredtime="30">
+        <RequiredSkill identifier="medical" level="35" />
+        <RequiredItem identifier="radiotoxin" />
+        <RequiredItem identifier="stabilozine" />
+      </Fabricate>
+      <Deconstruct time="20">
+        <Item identifier="stabilozine" copycondition="true" mincondition="0.1" />
+      </Deconstruct>
+      <SuitableTreatment identifier="radiationsickness,contamination,lethalradiation" suitability="100" />
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="128,704,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Medical/Medicines.png" sourcerect="149,142,37,67" depth="0.6" origin="0.5,0.5" />
+      <Body width="35" height="70" density="20" />
+      <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="-4,0" holdangle="180" reload="1.0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnFailure" target="This" Condition="-100.0" disabledeltatime="true" />
+        <StatusEffect type="OnUse" target="This" Condition="-100.0" disabledeltatime="true" />
+        <RequiredSkill identifier="medical" level="5" />
+        <StatusEffect tags="medical" type="OnUse" target="Character" duration="5.0">
+          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+          <ReduceAffliction identifier="radiationsickness" amount="25.0" />
+          <ReduceAffliction identifier="contamination" amount="25.0" />
+          <ReduceAffliction identifier="lethalradiation" amount="50" />
+        </StatusEffect>
+        <StatusEffect tags="medical" type="OnFailure" target="Character" duration="4.0">
+          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+          <ReduceAffliction identifier="radiationsickness" amount="12.5" />
+          <ReduceAffliction identifier="contamination" amount="12.5" />
+          <ReduceAffliction identifier="lethalradiation" amount="25" />
+        </StatusEffect>
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </MeleeWeapon>
+      <Projectile characterusable="false" launchimpulse="20.0" sticktocharacters="true" launchrotation="-90">
+        <StatusEffect type="OnImpact" target="This" Condition="-100.0" disabledeltatime="true">
+          <Sound file="Content/Items/Medical/Syringe.ogg" range="500" />
+        </StatusEffect>
+        <StatusEffect tags="medical" type="OnImpact" target="Character" duration="1">
+          <ReduceAffliction identifier="radiationsickness" amount="25.0" />
+          <ReduceAffliction identifier="contamination" amount="25.0" />
+          <ReduceAffliction identifier="lethalradiation" amount="25" />
+        </StatusEffect>
+      </Projectile>
+    </Item>
+  </Override>
+</Items>

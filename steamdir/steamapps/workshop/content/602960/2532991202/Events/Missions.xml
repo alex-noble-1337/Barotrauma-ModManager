@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <NestMission name="Destroy a Crawler Lair" identifier="DEcrawlerlair" tags="lair" type="Nest" spawntype="cave" reward="4000" itemspawnradius="2000" approachitemsradius="800" monsterspawnradius="4000" nestobjectradius="3000" nestobjectamount="30" difficulty="4" commonness="1000">
+    <Items>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="5" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="11" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="17" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="20" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="25" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="31" />
+      </Item>
+      <Item identifier="crawleregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="37" />
+      </Item>
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+    </Items>
+    <Monster character="Crawlerbroodmother" min="0" max="1" multiplayeronly="true" />
+    <Monster character="Crawler" min="2" max="6" />
+    <Monster character="Swarmcrawler" min="2" max="4" />
+    <Monster character="Crawler_Hatchling" min="2" max="4" />
+    <Monster character="Crawler" min="2" max="6" multiplayeronly="true" />
+    <Reputation identifier="coalition" amount="15" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <LocationType from="Any" to="Lair" />
+  </NestMission>
+  <NestMission name="Destroy a Mudraptor Lair" identifier="DEmudraptorlair" tags="lair" type="Nest" spawntype="cave" reward="6000" itemspawnradius="2000" approachitemsradius="800" monsterspawnradius="4000" nestobjectradius="3000" nestobjectamount="30" difficulty="4" commonness="1000">
+    <Items>
+      <Item identifier="largemudraptoregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" />
+      </Item>
+      <Item identifier="largemudraptoregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="9" />
+      </Item>
+      <Item identifier="largemudraptoregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="10" />
+      </Item>
+      <Item identifier="largemudraptoregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="19" />
+      </Item>
+      <Item identifier="largemudraptoregg" />
+      <Item identifier="largemudraptoregg" />
+      <Item identifier="largemudraptoregg" />
+      <Item identifier="largemudraptoregg" />
+    </Items>
+    <Monster character="Mudraptor_veteran" min="0" max="1" multiplayeronly="true" />
+    <Monster character="Mudraptor" min="1" max="2" />
+    <Monster character="Mudraptor_unarmored" min="1" max="2" />
+    <Monster character="Mudraptor_hatchling" min="1" max="2" />
+    <Monster character="Mudraptor" min="1" max="2" multiplayeronly="true" />
+    <Reputation identifier="coalition" amount="15" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <LocationType from="Any" to="Lair" />
+  </NestMission>
+  <NestMission name="Destroy a Thresher Lair" identifier="DEtigerthresherlair" tags="lair" type="Nest" spawntype="cave" reward="7500" itemspawnradius="2000" approachitemsradius="800" monsterspawnradius="4000" nestobjectradius="3000" nestobjectamount="30" difficulty="4" commonness="1000">
+    <Items>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="8" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="11" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="15" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="18" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="20" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="21" />
+      </Item>
+      <Item identifier="tigerthresheregg">
+        <StatusEffectOnApproach target="This" Scale="1.0" setvalue="true" delay="25" />
+      </Item>
+      <Item identifier="tigerthresheregg" />
+      <Item identifier="tigerthresheregg" />
+      <Item identifier="tigerthresheregg" />
+      <Item identifier="tigerthresheregg" />
+      <Item identifier="tigerthresheregg" />
+      <Item identifier="tigerthresheregg" />
+    </Items>
+    <Monster character="Tigerthresher" min="2" max="6" />
+    <Monster character="Tigerthresher_hatchling" min="2" max="4" />
+    <Monster character="Bonethresher" min="0" max="1" multiplayeronly="true" />
+    <Monster character="Tigerthresher" min="2" max="6" multiplayeronly="true" />
+    <Reputation identifier="coalition" amount="15" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <LocationType from="Any" to="Lair" />
+  </NestMission>
+  <NestMission name="Destroy a Husked Crawler Lair" identifier="DEhuskcrawlerlair" tags="lair" type="Nest" spawntype="cave" reward="5000" itemspawnradius="2000" approachitemsradius="800" monsterspawnradius="4000" nestobjectradius="3000" nestobjectamount="30" difficulty="4" commonness="1000">
+    <Items>
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+      <Item identifier="crawleregg" />
+    </Items>
+    <Monster character="Crawlerhusk" min="6" max="8" />
+    <Reputation identifier="coalition" amount="15" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="256,256,256,256" color="214,50,48" />
+    <LocationType from="Any" to="HuskgroundsDE" />
+  </NestMission>
+</Missions>

@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<JuggernautSwimSlow animationtype="SwimSlow" legmoveamount="1.1041081" legcyclelength="20" handmoveamount="1.4630843,2.104558" handmovestrength="0.10000002" handcyclespeed="5.8523374" handmoveoffset="0,0" footangle="0" footrotatestrength="25" steertorque="25" movementspeed="1.2015755" cyclespeed="0.50157535" headangle="NaN" torsoangle="NaN" armmovestrength="1" legtorque="25" headtorque="50" torsotorque="50" foottorque="25" armikstrength="1" handikstrength="1" />

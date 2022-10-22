@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="Ghostshrimp" SpeciesTranslationOverride="" DisplayName="Ghost Shrimp" Group="shrimp" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" CanSpeak="False" UseBossHealthBar="False" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="0.4999999" HideInSonar="True" HideInThermalGoggles="True" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter Particle="blood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="1" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="200" VelocityMax="700" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="heavygib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <health Vitality="70" DoesBleed="True" CrushDepth="0" UseHealthWindow="False" BleedingReduction="0" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="1" StunImmunity="False" PoisonImmunity="True" ApplyAfflictionColors="False" />
+  <sound File="Content/Characters/Legacycrawler/attack1.ogg" State="Attack" Range="500" Volume="1" Tags="" />
+  <sound File="Content/Characters/Legacycrawler/attack2.ogg" State="Attack" Range="500" Volume="1" Tags="" />
+  <sound File="Content/Characters/Legacycrawler/idle1.ogg" State="Idle" Range="500" Volume="1" Tags="" />
+  <sound File="Content/Characters/Legacycrawler/idle2.ogg" State="Idle" Range="500" Volume="1" Tags="" />
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="stannite" />
+    <Item Identifier="alienblood" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="esperite" />
+    <Item Identifier="alienblood" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="quartz" />
+    <Item Identifier="steel" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="amblygonite" />
+    <Item Identifier="alienblood" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="titanite" />
+    <Item Identifier="alienblood" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="brockite" />
+    <Item Identifier="alienblood" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any" AccessibleWhenAlive="False" Commonness="3">
+    <Item Identifier="swimbladder" />
+    <Item Identifier="alienblood" />
+  </Inventory>
+  <ai CombatStrength="100" Sight="0" Hearing="2" AggressionHurt="100" AggressionGreed="10" FleeHealthThreshold="10" AttackWhenProvoked="False" AvoidGunfire="True" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="True" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="False" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+    <latchonto attachtowalls="true" attachtosub="true" mindeattachspeed="3.0" maxdeattachspeed="10.0" damageondetach="1000" detachstun="5.0" attachlimb="Head" localattachpos="10,32" attachlimbrotation="40" />
+    <targetpriority Tag="human" State="Idle" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="True" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="weapon" State="Avoid" Priority="80" ReactDistance="1000" AttackDistance="500" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="provocative" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="tool" State="PassiveAggressive" Priority="50" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority Tag="nasonov" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority Tag="stronger" State="Avoid" Priority="60" ReactDistance="500" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority Tag="dead" State="Eat" Priority="55" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority Tag="sonar" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority Tag="room" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority Tag="weaker" State="Attack" Priority="50" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="Carrier" State="Aggressive" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="Thalamuscarrier" State="Aggressive" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="Carrierleviathan" State="Aggressive" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="watcher" State="Protect" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" onlyoutside="true" delay="400">
+    <RemoveCharacter />
+  </StatusEffect>
+</Character>

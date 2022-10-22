@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Huskmutantcocoonbonethresher" speciesname="Huskmutantcocoontigerthresher" speciestranslationoverride="Huskmutantcocooncrawler" texture="%ModDir:Improved Husks%/Characters/Variants/Huskcocoons/huskmutantcocoontigerthresher.png">
+  <health vitality="300" />
+  <ragdoll scalemultiplier="0.8" />
+  <attack damagemultiplier="0.8" />
+</Charactervariant>

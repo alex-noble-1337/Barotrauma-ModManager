@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HuskerSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" mirror="True" waveamplitude="12.23233" wavelength="51.70057" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="108" steertorque="25" movementspeed="5.161522" cyclespeed="1" headangle="97" torsoangle="94" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

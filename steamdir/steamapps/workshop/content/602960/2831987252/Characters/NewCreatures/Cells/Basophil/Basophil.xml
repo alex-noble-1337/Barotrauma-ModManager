@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Basophil" humanoid="False" displayname="" group="thalamus" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="True" canspeak="False" noise="300" visibility="300" blooddecal="" bleedparticlewater="" bleedparticleair="" eatingspeed="10" pathfinderpriority="0.5" hideinsonar="True">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <damageemitter particle="shockwavesmall" particleamount="1" highqualitycollisiondetection="False" copyentityangle="False" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" />
+  <gibemitter particle="leucogib" particleburstamount="1" velocitymin="-20" velocitymax="20" anglemin="0" anglemax="360" scalemin="1" scalemax="2" emitinterval="0.2" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" particleamount="0" />
+  <health vitality="25" doesbleed="False" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellIdle1.ogg" state="Idle" range="1000" volume="0.75" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellIdle2.ogg" state="Idle" range="1000" volume="0.75" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellIdle3.ogg" state="Idle" range="1000" volume="0.75" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellIdle4.ogg" state="Idle" range="1000" volume="0.75" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellIdle5.ogg" state="Idle" range="1000" volume="0.75" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellAttack1.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellAttack2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellAttack3.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellDamage1.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellDamage2.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Leucocyte/CARRIER_cellDamage3.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <ai combatstrength="50" sight="1" hearing="1" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" attackwhenprovoked="True" avoidgunfire="False" aggressiveboarding="True" randomattack="True" enforceaggressivebehaviorformissions="True" targetinnerwalls="True">
+    <target tag="human" state="Aggressive" priority="100" reactdistance="1000" attackdistance="0" />
+    <target tag="weaker" state="Aggressive" priority="100" reactdistance="1000" attackdistance="0" />
+    <target tag="stronger" state="Aggressive" priority="100" reactdistance="1000" attackdistance="0" />
+    <target tag="door" state="Attack" priority="40" reactdistance="0" attackdistance="0" />
+    <target tag="wall" state="Attack" priority="30" reactdistance="0" attackdistance="0" />
+    <target tag="room" state="Attack" priority="20" reactdistance="0" attackdistance="0" />
+  </ai>
+  <Inventory slots="Any" accessiblewhenalive="False" commonness="1">
+    <Item identifier="paralyxis" />
+  </Inventory>
+  <StatusEffect type="OnDeath" target="This" targetlimb="Torso">
+    <ParticleEmitter particle="cellgib" particleamount="15" scalemin="1" scalemax="2" velocitymin="100" velocitymax="150" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="leucogib" particleamount="1" scalemin="2.5" scalemax="3.5" velocitymin="20" velocitymax="20" />
+    <sound file="Content/Characters/Leucocyte/CARRIER_cellDeath1.ogg" range="1000" volume="1" selectionmode="Random" />
+    <sound file="Content/Characters/Leucocyte/CARRIER_cellDeath2.ogg" range="1000" volume="1" selectionmode="Random" />
+    <sound file="Content/Characters/Leucocyte/CARRIER_cellDeath3.ogg" range="1000" volume="1" selectionmode="Random" />
+  </StatusEffect>
+</Character>

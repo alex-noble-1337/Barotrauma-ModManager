@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HammerheadhuskSwimFast animationtype="SwimFast" flip="False" mirror="False" waveamplitude="86.09863" wavelength="124.1194" rotatetowardsmovement="True" torsotorque="140" headtorque="110" foottorque="50" tailtorque="190" steertorque="40" movementspeed="9.004102" cyclespeed="1" headangle="90" torsoangle="90" tailangle="90" usesinemovement="False" footangles="" tailtorquemultiplier="1" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

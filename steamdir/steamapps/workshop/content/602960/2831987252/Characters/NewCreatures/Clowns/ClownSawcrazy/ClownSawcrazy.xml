@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character genders="true" SpeciesName="ClownSawcrazy" SpeciesTranslationOverride="" DisplayName="Lost Clown" Group="clown" Humanoid="False" HasInfo="False" CanInteract="True" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" CanSpeak="True" UseBossHealthBar="False" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blackblood" BleedParticleWater="blackwaterblood" BleedParticleMultiplier="1" CanEat="False" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter Particle="blood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="5" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="0" ScaleMin="1" ScaleMax="1" VelocityMin="0" VelocityMax="0" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="1" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="blackgib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="blackgib" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="500" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <health Vitality="110" DoesBleed="True" CrushDepth="-Infinity" UseHealthWindow="True" BleedingReduction="0" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="False" ApplyAfflictionColors="False" />
+  <ai infiltrate="True" CombatStrength="200" Sight="2" Hearing="2" AggressionHurt="0" AggressionGreed="0" FleeHealthThreshold="25" AttackWhenProvoked="True" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="True" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="False" RandomAttack="True" CanOpenDoors="True" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="100" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+    <target damagethreshold="0" Tag="provocative" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="weapon" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="human" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="sonar" State="Attack" Priority="30" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="room" State="Attack" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="turret" State="Attack" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="clownwanderer" State="Protect" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="True" Threshold="1" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="stronger" State="Escape" Priority="10" ReactDistance="2000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="True" Commonness="1">
+    <Item count="5" Identifier="meth" />
+    <Item count="2" Identifier="ethanol" />
+    <Item slot="RightHand" Identifier="Chainsawold" />
+    <Item slot="LeftHand" Identifier="Chainsawold" />
+    <Item slot="Card" Identifier="idcard" />
+    <Item slot="Headset" Identifier="headset" />
+    <Item slot="Head" Identifier="cultistmask" />
+    <Item slot="InnerClothes" Identifier="cultistcostume" />
+    <Item Identifier="plasmacutter">
+      <Item identifier="oxygentank" />
+    </Item>
+    <Item Identifier="bikehorn" />
+  </inventory>
+  <inventory arrowslot="9" Slots="Card, Headset, Head, InnerClothes, OuterClothes, LeftHand, RightHand, Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="True" Commonness="1">
+    <Item count="5" Identifier="meth" />
+    <Item count="2" Identifier="ethanol" />
+    <Item slot="RightHand" Identifier="Chainsawold" />
+    <Item slot="LeftHand" Identifier="Chainsawold" />
+    <Item slot="Card" Identifier="idcard" />
+    <Item slot="Headset" Identifier="headset" />
+    <Item slot="Head" Identifier="clowndivingmask" />
+    <Item slot="InnerClothes" Identifier="clowncostume" />
+    <Item Identifier="plasmacutter">
+      <Item identifier="oxygentank" />
+    </Item>
+    <Item Identifier="bikehorn" />
+  </inventory>
+  <StatusEffect type="OnDeath" target="This" onlyoutside="true" disabledeltatime="true" stackable="false" delay="400">
+    <RemoveCharacter />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="this">
+    <Sound file="%ModDir%/Characters/NewCreatures/Clowns/ClownSawcrazy/dblsawloop.ogg" loop="true" range="1600" />
+  </StatusEffect>
+</Character>

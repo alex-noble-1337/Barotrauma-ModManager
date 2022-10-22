@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MicoteronSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.5" mirror="False" mirrorlerp="True" waveamplitude="15.590313" wavelength="28.039253" rotatetowardsmovement="True" tailtorque="0" tailtorquemultiplier="1" footangles="" tailangle="0" steertorque="5" legtorque="25" movementspeed="2.459682" cyclespeed="1" headangle="90" torsoangle="90" headtorque="50" torsotorque="15" foottorque="25" armikstrength="1" handikstrength="1" />

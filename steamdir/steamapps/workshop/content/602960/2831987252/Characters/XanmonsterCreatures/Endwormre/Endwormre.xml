@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Endwormre" humanoid="False" displayname="Europan Polychaetes" group="endworm" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="False" noise="100" visibility="100" blooddecal="blood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="200" pathfinderpriority="1" hideinsonar="False" sonardisruption="0" speciestranslationoverride="" distantsonarrange="30000" disabledistance="100000" usebosshealthbar="True" bleedparticlemultiplier="1">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <gibemitter particle="brownchunks" particleamount="40" velocitymin="50" velocitymax="1000" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackwaterblood" particleamount="40" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="5" scalemax="10" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="9000" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Endwormre/Endwormre1.ogg" state="Attack" range="10000" volume="1.8000002" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Endwormre/Endwormre2.ogg" state="Attack" range="10000" volume="1.5000001" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Endwormre/Endwormre3.ogg" state="Attack" range="10000" volume="2" gender="None" dontmuffle="true" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Endwormre/Endwormre4.ogg" state="Attack" range="10000" volume="2" gender="None" dontmuffle="true" />
+  <ai targetinnerwalls="False" CombatStrength="6000" Sight="1.0000002" Hearing="5" AggressionHurt="100" AggressionGreed="0" FleeHealthThreshold="0" AttackWhenProvoked="True" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="True" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+    <targetpriority damagethreshold="0" Tag="decoy" State="Attack" Priority="600" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority damagethreshold="0" Tag="sonar" State="Attack" Priority="260" ReactDistance="11000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="weaker" State="Attack" Priority="150" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="human" State="Attack" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="wall" State="Attack" Priority="120" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="dead" State="Eat" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="300">
+    <RemoveCharacter />
+  </StatusEffect>
+  <StatusEffect type="Always" target="This">
+    <ReduceAffliction identifier="Paralysis" amount="100" />
+    <ReduceAffliction identifier="Morbusinepoisoning" amount="100" />
+    <ReduceAffliction identifier="Sufforinpoisoning" amount="100" />
+    <ReduceAffliction identifier="Cyanidepoisoning" amount="100" />
+  </StatusEffect>
+  <inventory slots="Any, Any, Any, Any" accessiblewhenalive="False" commonness="1">
+    <item identifier="k_em_endwormfang" />
+    <item identifier="k_em_endwormfang" />
+    <item identifier="dementonite" />
+    <item identifier="dementonite" />
+  </inventory>
+</Character>

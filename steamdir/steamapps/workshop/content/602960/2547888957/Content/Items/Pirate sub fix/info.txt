@@ -1,0 +1,3 @@
+The fix only mark sub reactor room as dangerous so IA doesn't stand there like idiots and die from radiation before the player reach them. 
+
+They still likely blow themselves up when performing repairs on it though.

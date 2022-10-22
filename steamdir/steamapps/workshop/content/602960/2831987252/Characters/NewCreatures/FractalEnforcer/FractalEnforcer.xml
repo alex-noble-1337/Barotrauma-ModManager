@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character speciesname="FractalEnforcer" humanoid="False" caninteract="True" blooddecal="blood" speciestranslationoverride="" displayname="" group="ancientalien" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="False" usebosshealthbar="False" noise="100" visibility="100" bleedparticleair="blooddrop" bleedparticlewater="waterblood" bleedparticlemultiplier="1" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" hideinthermalgoggles="True" sonardisruption="0" distantsonarrange="0" disabledistance="25000" soundinterval="10" caneat="False" usepathfinding="True">
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <health vitality="350" doesbleed="False" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="100" burnreduction="1" constanthealthregeneration="0" healthregenerationwheneating="0" stunimmunity="True" applyafflictioncolors="False">
+      <Limb name="Torso">
+        <VitalityMultiplier type="bleeding" multiplier="0" />
+        <VitalityMultiplier type="burn" multiplier="0.25" />
+        <VitalityMultiplier type="lacerations" multiplier="0.5" />
+        <VitalityMultiplier type="bitewounds" multiplier="0.5" />
+      </Limb>
+      <Limb name="Head">
+        <VitalityMultiplier type="bleeding" multiplier="0" />
+        <VitalityMultiplier type="burn" multiplier="0.25" />
+        <VitalityMultiplier type="bitewounds" multiplier="0.5" />
+      </Limb>
+      <Limb name="RightArm">
+        <VitalityMultiplier type="bleeding" multiplier="0" />
+        <VitalityMultiplier type="burn" multiplier="0.1" />
+        <VitalityMultiplier type="lacerations" multiplier="0.5" />
+        <VitalityMultiplier type="bitewounds" multiplier="0.5" />
+      </Limb>
+      <Limb name="LeftArm">
+        <VitalityMultiplier type="bleeding" multiplier="0" />
+        <VitalityMultiplier type="burn" multiplier="0.1" />
+        <VitalityMultiplier type="lacerations" multiplier="0.5" />
+        <VitalityMultiplier type="bitewounds" multiplier="0.5" />
+      </Limb>
+      <Limb>
+        <!-- Tail -->
+        <VitalityMultiplier type="bleeding" multiplier="0" />
+        <VitalityMultiplier type="burn" multiplier="0.1" />
+        <VitalityMultiplier type="lacerations" multiplier="0.5" />
+        <VitalityMultiplier type="bitewounds" multiplier="0.5" />
+      </Limb>
+    </health>
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_idle1.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_idle2.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_idle1.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_idle2.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_idle3.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_idle4.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_attack1.ogg" state="Attack" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_attack2.ogg" state="Attack" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_attack3.ogg" state="Attack" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_attack4.ogg" state="Attack" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_attack5.ogg" state="Attack" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_attack1.ogg" state="Attack" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_damage.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_damage2.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_damage3.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_damage4.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_damage5.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_damage1.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_damage2.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_damage3.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_damage4.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_damage5.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_death1.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_death2.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_death3.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN1_death4.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_death1.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_death2.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Fractalguardian/FRACTALGUARDIAN2_death3.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <ai combatstrength="350" sight="2" hearing="1" aggressiveboarding="False" fleehealththreshold="0" aggressionhurt="0" aggressiongreed="0" attackwhenprovoked="True" avoidgunfire="False" avoidtime="3" minfleetime="20" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="True" canopendoors="True" keepdoorsclosed="False" avoidabyss="True" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Target" patrolflooded="True" patroldry="False">
+      <target tag="guardianshelter" state="FleeTo" priority="1000" reactdistance="25" offset="0,60" thresholdmin="30" thresholdmax="99" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" />
+      <target tag="human" state="Attack" priority="100" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="700" sweepstrength="10" sweepspeed="0.5" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <target tag="stronger" state="Attack" priority="100" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="700" sweepstrength="10" sweepspeed="0.5" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <target tag="weaker" state="Attack" priority="100" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" attackpattern="Straight" sweepdistance="700" sweepstrength="10" sweepspeed="0.5" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    </ai>
+    <inventory slots="RightHand, LeftHand, Any" accessiblewhenalive="True" commonness="1">
+      <Item identifier="enforcerflamer" slot="RightHand" />
+    </inventory>
+    <StatusEffect type="OnActive">
+      <Conditional HealthPercentage="lte 50" />
+      <Affliction identifier="internaldamage" strength="0.4" />
+      <Affliction identifier="strengthen" strength="50" />
+      <Sound file="Content/Characters/Fractalguardian/ALIEN_fractalGuardianPanicLoop.ogg" loop="true" range="3000" />
+    </StatusEffect>
+  </Character>
+</Override>

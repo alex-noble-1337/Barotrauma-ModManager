@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CharybdisSwimSlow UseSineMovement="False" Flip="True" FlipCooldown="0" FlipDelay="0" Mirror="False" MirrorLerp="False" WaveAmplitude="100" WaveLength="200" RotateTowardsMovement="True" TailTorque="500" TailTorqueMultiplier="2" FootAngles="" TailAngle="90" SteerTorque="100" LegTorque="25" MovementSpeed="20" CycleSpeed="1" HeadAngle="65" TorsoAngle="80" HeadTorque="350" TorsoTorque="500" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

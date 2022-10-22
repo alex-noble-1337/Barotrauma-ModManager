@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MineraleaterSwimSlow UseSineMovement="False" Flip="True" FlipCooldown="0" FlipDelay="0" Mirror="True" MirrorLerp="False" WaveAmplitude="0.65482223" WaveLength="22.411646" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="50" LegTorque="25" MovementSpeed="1" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="432" TorsoTorque="50" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

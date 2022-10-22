@@ -1,0 +1,533 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Items>
+    <Item name="" identifier="headset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="divingcab,crewcab" minamount="0" maxamount="2" spawnprobability="0.75" />
+      <PreferredContainer primary="storagecab" />
+      <Price baseprice="50">
+        <Price locationtype="outpost" multiplier="1" minavailable="1" />
+        <Price locationtype="city" multiplier="0.9" minavailable="3" />
+        <Price locationtype="research" multiplier="1" minavailable="1" />
+        <Price locationtype="military" multiplier="1" minavailable="2" />
+        <Price locationtype="mine" multiplier="1" minavailable="2" />
+      </Price>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="28,321,49,62" origin="0.5,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="wificomponent" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10">
+        <RequiredSkill identifier="electrical" level="30" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="wificomponent" />
+      </Fabricate>
+      <WifiComponent range="10000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" sourcerect="28,321,49,62" origin="0.5,0.6" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="5000" setvalue="true">
+          <RequiredItem item="mobilebattery" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-4" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-2" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-10" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.8" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="" identifier="autoinjectorheadset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <Price baseprice="140">
+        <Price locationtype="outpost" multiplier="1" sold="false" />
+        <Price locationtype="city" multiplier="0.9" sold="false" />
+        <Price locationtype="research" multiplier="2" minavailable="1" />
+        <Price locationtype="military" multiplier="1" sold="false" />
+        <Price locationtype="mine" multiplier="1" sold="false" />
+      </Price>
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="253,301,76,64" origin="0.35,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="headset" />
+        <Item identifier="rubber" />
+        <Item identifier="aluminium" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" requiresrecipe="true">
+        <RequiredSkill identifier="mechanical" level="30" />
+        <RequiredItem identifier="headset" />
+        <RequiredItem identifier="rubber" />
+        <RequiredItem identifier="aluminium" />
+        <RequiredItem identifier="magnesium" />
+        <RequiredItem identifier="zinc" />
+      </Fabricate>
+      <WifiComponent range="15000.0" LinkToChat="true" MinChatMessageInterval="0.0" />
+      <ItemContainer capacity="1" maxstacksize="1" autoinject="true">
+        <Containable items="chem,medical" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="Content/Items/JobGear/TalentGear.png" sourcerect="253,305,76,58" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" origin="0.5,0.5" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="5000" setvalue="true" />
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.6" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <!--<Item name="Tactical Headset" identifier="tacticalheadset" scale="0.5" category="Equipment" tags="smallitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light"
+	description="The Tactical Headset features twin auto-injectors and several optical support mounts to attach head-mounted visors for tactical use in combat with a helmet, these include Health HUD and Thermal goggles.">
+	<Deconstruct time="20">
+		<Item identifier="autoinjectorheadset" />
+		<Item identifier="fulgurium" />
+		<Item identifier="fpgacircuit" />
+		<Item identifier="fpgacircuit" />
+		<Item identifier="rubber" />
+	</Deconstruct>
+	<Fabricate suitablefabricators="fabricator" requiredtime="30">
+		<RequiredSkill identifier="electrical" level="85" />
+		<RequiredSkill identifier="mechanical" level="75" />
+		<RequiredSkill identifier="medical" level="65" />
+		<RequiredItem identifier="autoinjectorheadset" />
+		<RequiredItem identifier="fulgurium" />
+		<RequiredItem identifier="fpgacircuit" />
+		<RequiredItem identifier="fpgacircuit" />
+		<RequiredItem identifier="rubber" />
+   </Fabricate>
+	<InventoryIcon texture="Mods/MoreHeadsets/Items/ModularHeadset.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
+	<Sprite name="modulartacticalheadset" texture="Mods/MoreHeadsets/Items/ModularHeadset.png" depth="0.6" sourcerect="253,301,76,64" origin="0.35,0.5" />
+	<Body radius="20" height="20" density="30"/>
+    <StatusHUD range="5000" drawhudwhenequipped="true" showtexts="false" thermalgoggles="false">
+		<StatusEffect type="OnWearing" target="This" showtexts="false" setvalue="true"/>
+		<StatusEffect type="OnWearing" target="This"  showtexts="true" setvalue="true">
+			<RequiredItem items="healthscanner" type="Contained" />
+		</StatusEffect>
+		<StatusEffect type="OnWearing" target="This" thermalgoggles="false" setvalue="true"/>
+		<StatusEffect type="OnWearing" target="This" thermalgoggles="true" setvalue="true">
+			<RequiredItem items="thermalgoggles" type="Contained" />
+		</StatusEffect>
+	</StatusHUD>
+	<Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+		<sprite name="modulartacticalheadset Wearable" texture="Mods/MoreHeadsets/Items/ModularHeadset.png" sourcerect="253,305,76,58" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" origin="0.5,0.5" />
+		<WifiComponent range="35000.0" LinkToChat="true" targettype="Contained,Character" MinChatMessageInterval="0.0" comparison="And">
+			<Conditional HasStatusTag="neq EMI"/>
+			<Conditional HasStatusTag="neq EMD"/>
+		</WifiComponent>
+		<WifiComponent range="17500.0" LinkToChat="true" targettype="Contained,Character" MinChatMessageInterval="0.0" comparison="And">
+			<Conditional HasStatusTag="eq EMI"/>
+			<Conditional HasStatusTag="neq EMD"/>
+		</WifiComponent>
+	</Wearable>
+	<ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="battery" containedstateindicatorslot="0" autoinject="true">
+      <Containable items="none" />
+      <SlotIcon slotindex="0" texture="Content/UI/WeaponUI.png" sourcerect="64,961,32,22" origin="0.5,0.45" />
+      <SlotIcon slotindex="1" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
+	  <SlotIcon slotindex="2" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
+	  <SlotIcon slotindex="3" texture="Content/Items/InventoryIconAtlas.png" sourcerect="704,256,64,64" origin="0.5,0.5" />
+	  <SlotIcon slotindex="4" texture="Content/Items/JobGear/TalentGear.png" sourcerect="0,224,63,31" origin="0.5,0.5" />
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="mobilebattery" />
+      </SubContainer>
+      <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="chem,medical" />
+      </SubContainer>
+	  <SubContainer capacity="1" maxstacksize="1">
+        <Containable items="chem,medical" />
+      </SubContainer>
+	  <SubContainer capacity="1" maxstacksize="1">
+		<Containable items="healthscanner" />
+      </SubContainer>
+	  <SubContainer capacity="1" maxstacksize="1">
+		<Containable items="thermalgoggles" />
+      </SubContainer>
+	  <SubContainer capacity="1" maxstacksize="1">
+		<Containable items="handheldelectricalmonitor, reactorpda, handheldsonar" />
+      </SubContainer>
+	  
+    </ItemContainer>
+  </Item>-->
+    <!-- Ek -->
+    <Item name="Engineering Headset" identifier="ekutility_advancedheadset" scale="0.5" category="Equipment" tags="smallitem,headset,advancedheadset" description="The perfect headset for the working class. Equipped with noise suppression, high frequency emitters, and adjustable comfort suspension. This headset is designed for onboard use by engineering teams as it does not suffer from common machine interferance." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <Price baseprice="200" minleveldifficulty="15">
+        <Price locationtype="outpost" multiplier="1" minavailable="1" />
+        <Price locationtype="city" multiplier="0.9" minavailable="3" />
+        <Price locationtype="research" multiplier="1" minavailable="0" />
+        <Price locationtype="military" multiplier="1" minavailable="1" />
+        <Price locationtype="mine" multiplier="0.8" minavailable="2" />
+      </Price>
+      <InventoryIcon texture="BTheadsets.png" sourcerect="64,0,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="128,112,64,80" origin="0.5,0.5" />
+      <Body radius="15" height="10" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="headset" />
+        <Item identifier="copper" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30">
+        <RequiredSkill identifier="electrical" level="50" />
+        <RequiredItem identifier="headset" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="copper" />
+        <RequiredItem identifier="carbon" />
+        <RequiredItem identifier="iron" />
+      </Fabricate>
+      <WifiComponent range="20000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,184,120,32" />
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="false" sourcerect="128,112,64,80" origin="0.5,0.6" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="10000" setvalue="true">
+          <RequiredItem item="mobilebattery" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-2" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-1" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-3" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.4" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="Long Range Radio" identifier="ekutility_longrangeradio" scale="0.5" category="Equipment" tags="mediumitem,headset,radio,mobilecontainer" description="A waterproof high-power radio transmitter pack with self charging arrays designed for use by coalition combat expedition crews, its beefy headset design also provides noise cancelling as well." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <Price baseprice="680" minleveldifficulty="25">
+        <Price locationtype="outpost" multiplier="1" minavailable="1" />
+        <Price locationtype="city" multiplier="0.9" minavailable="1" />
+        <Price locationtype="research" multiplier="1" minavailable="1" />
+        <Price locationtype="military" multiplier="0.8" minavailable="1" />
+        <Price locationtype="mine" multiplier="1" minavailable="1" />
+      </Price>
+      <InventoryIcon texture="BTheadsets.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="132,0,128,112" origin="0.5,0.5" />
+      <Body width="112" height="100" density="12" />
+      <Deconstruct time="10">
+        <Item identifier="ekutility_advancedheadset" />
+        <Item identifier="aluminium" />
+        <Item identifier="copper" />
+        <Item identifier="fulguriumbatterycell" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="50">
+        <RequiredSkill identifier="electrical" level="65" />
+        <RequiredItem tag="advancedheadset" />
+        <RequiredItem identifier="aluminium" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="physicorium" />
+        <RequiredItem identifier="fulguriumbatterycell" />
+      </Fabricate>
+      <WifiComponent range="100000.0" LinkToChat="true" MinChatMessageInterval="0.0" />
+      <ItemContainer capacity="6">
+        <Containable items="smallitem,explosive,tool,ore" excludeditems="toolbelt,toolbox,mobilecontainer,rucksack,backpack,waistbelt" />
+      </ItemContainer>
+      <Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Select" allowswappingwhenpicked="false" />
+      <Wearable limbtype="Head" slots="Any,Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="Headset Wearable" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="196,112,64,80" origin="0.5,0.6" scale="0.35" />
+        <sprite name="Backpack Wearable" texture="BTheadsets.png" limb="Torso" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="256,0,80,256" origin="1.4,0.8" scale="0.35" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="0.1" stackable="false" />
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.3" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="Security Radio" identifier="ek_security_radio" scale="0.35" category="Equipment" tags="smallitem,headset" description="A low-profile radio communication system used mainly by ship and station security officers, this coalition special forces setup is excellent for diving teams as the frequency minimizes distortions from naturally occurring sources and battery usage by using UHF in a relatively compact package." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <Price baseprice="200" minleveldifficulty="15">
+        <Price locationtype="outpost" multiplier="1.2" minavailable="2" />
+        <Price locationtype="city" multiplier="0.9" minavailable="4" />
+        <Price locationtype="research" multiplier="1.4" minavailable="2" />
+        <Price locationtype="military" multiplier="0.6" minavailable="8" />
+        <Price locationtype="mine" multiplier="1.3" minavailable="1" />
+      </Price>
+      <InventoryIcon texture="BTheadsets.png" sourcerect="0,66,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="0,132,48,96" origin="0.5,0.5" />
+      <Body width="35" height="55" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="copper" />
+        <Item identifier="copper" />
+        <Item identifier="wificomponent" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="15">
+        <RequiredSkill identifier="electrical" level="35" />
+        <RequiredItem identifier="plastic" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="fpgacircuit" />
+        <RequiredItem identifier="wificomponent" />
+        <RequiredItem identifier="rubber" />
+      </Fabricate>
+      <WifiComponent range="15000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,184,120,32" />
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-1" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-0.5" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-10" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <sprite name="Radio Head" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="56,204,24,24" origin="0.95,0.55" scale="0.4" />
+        <sprite name="Radio Torso" texture="BTheadsets.png" limb="Torso" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="48,132,48,70" origin="0.15,1.05" scale="0.4" />
+      </Wearable>
+    </Item>
+    <!-- BaroPlus overrides -->
+    <Item name="Engineering Headset" identifier="eheadset" scale="0.5" category="Equipment" tags="smallitem,headset" description="The perfect headset for the working class. Equipped with noise suppression, high frequency emitters, and adjustable comfort suspension. This headset is designed for onboard use by engineering teams as it does not suffer from common machine interferance." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="BTheadsets.png" sourcerect="64,0,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="128,112,64,80" origin="0.5,0.5" />
+      <Body radius="15" height="10" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="headset" />
+        <Item identifier="copper" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <WifiComponent range="20000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,184,120,32" />
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="false" sourcerect="128,112,64,80" origin="0.5,0.6" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="10000" setvalue="true">
+          <RequiredItem item="mobilebattery" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-2" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-1" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-3" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.4" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="Engineering Headset" identifier="mcheadset" scale="0.5" category="Equipment" tags="smallitem,headset" hideinmenus="true" description="The perfect headset for the working class. Equipped with noise suppression, high frequency emitters, and adjustable comfort suspension. This headset is designed for onboard use by engineering teams as it does not suffer from common machine interferance." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="BTheadsets.png" sourcerect="64,0,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="128,112,64,80" origin="0.5,0.5" />
+      <Body radius="15" height="10" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="headset" />
+        <Item identifier="copper" />
+        <Item identifier="copper" />
+      </Deconstruct>
+      <WifiComponent range="20000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,184,120,32" />
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="true" hideotherwearables="false" sourcerect="128,112,64,80" origin="0.5,0.6" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="10000" setvalue="true">
+          <RequiredItem item="mobilebattery" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-2" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-1" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-3" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.4" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="Security Radio" identifier="cheadset" scale="0.35" category="Equipment" tags="smallitem,headset" hideinmenus="true" description="A low-profile radio communication system used mainly by ship and station security officers, this coalition special forces setup is excellent for diving teams as the frequency minimizes distortions from naturally occurring sources and battery usage by using UHF in a relatively compact package." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="BTheadsets.png" sourcerect="0,66,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="0,132,48,96" origin="0.5,0.5" />
+      <Body width="35" height="55" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="copper" />
+        <Item identifier="copper" />
+        <Item identifier="wificomponent" />
+      </Deconstruct>
+      <WifiComponent range="15000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,184,120,32" />
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-1" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-0.5" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-10" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <sprite name="Radio Head" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="56,204,24,24" origin="0.95,0.55" scale="0.4" />
+        <sprite name="Radio Torso" texture="BTheadsets.png" limb="Torso" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="48,132,48,70" origin="0.15,1.05" scale="0.4" />
+      </Wearable>
+    </Item>
+    <Item name="Auto-Injector Headset" identifier="meheadset" scale="0.5" category="Equipment" tags="smallitem,mobileradio,mobilebattery" hideinmenus="true" description="A modifed headset utilizing an integrated battery, capable of injecting medicine placed within once the user's vitals drop to a certain level." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="Content/Items/JobGear/TalentGear.png" sourcerect="113,264,58,45" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="Content/Items/JobGear/TalentGear.png" depth="0.6" sourcerect="253,301,76,64" origin="0.35,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="headset" />
+        <Item identifier="rubber" />
+        <Item identifier="aluminium" />
+      </Deconstruct>
+      <WifiComponent range="15000.0" LinkToChat="true" MinChatMessageInterval="0.0" />
+      <ItemContainer capacity="1" maxstacksize="1" autoinject="true">
+        <Containable items="chem,medical" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="Content/Items/JobGear/TalentGear.png" sourcerect="253,305,76,58" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" origin="0.5,0.5" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="5000" setvalue="true" />
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.6" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="Security Radio" identifier="seheadset" scale="0.35" category="Equipment" tags="smallitem,headset" hideinmenus="true" description="A low-profile radio communication system used mainly by ship and station security officers, this coalition special forces setup is excellent for diving teams as the frequency minimizes distortions from naturally occurring sources and battery usage by using UHF in a relatively compact package." cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="BTheadsets.png" sourcerect="0,66,64,64" origin="0.5,0.5" />
+      <Sprite texture="BTheadsets.png" depth="0.6" sourcerect="0,132,48,96" origin="0.5,0.5" />
+      <Body width="35" height="55" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="copper" />
+        <Item identifier="copper" />
+        <Item identifier="wificomponent" />
+      </Deconstruct>
+      <WifiComponent range="15000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true">
+        <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,184,120,32" />
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-0.5" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-0.1" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-10" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <sprite name="Radio Head" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="56,204,24,24" origin="0.95,0.55" scale="0.4" />
+        <sprite name="Radio Torso" texture="BTheadsets.png" limb="Torso" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="48,132,48,70" origin="0.15,1.05" scale="0.4" />
+      </Wearable>
+    </Item>
+    <Item name="Headset" identifier="aheadset" scale="0.5" category="Equipment" tags="smallitem,mobileradio" description="Allows remote communication among the crew." hideinmenus="true" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light">
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="256,0,64,64" origin="0.5,0.5" />
+      <Sprite name="Headset" texture="Content/Items/Jobgear/headgears.png" depth="0.6" sourcerect="28,321,49,62" origin="0.5,0.5" />
+      <Body radius="20" height="20" density="30" />
+      <Deconstruct time="10">
+        <Item identifier="plastic" />
+        <Item identifier="wificomponent" />
+      </Deconstruct>
+      <WifiComponent range="10000.0" LinkToChat="true" MinChatMessageInterval="0.0">
+        <RequiredItems items="mobilebattery" type="Contained" mincondition="0.01" />
+      </WifiComponent>
+      <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="battery">
+        <Containable items="mobilebattery" />
+      </ItemContainer>
+      <Wearable limbtype="Head" slots="Any,Headset" msg="ItemMsgPickUpSelect" displaycontainedstatus="true">
+        <sprite name="Headset Wearable" texture="Content/Items/Jobgear/headgears.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.7" hideotherwearables="false" sourcerect="28,321,49,62" origin="0.5,0.6" />
+        <StatusEffect tags="headset" type="OnWearing" target="Character" duration="1" delay="0.1" stackable="false" SoundRange="5000" setvalue="true">
+          <RequiredItem item="mobilebattery" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-4" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="batterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-2" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem items="fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" targettype="Contained,Character" Condition="-10" stackable="false" delay="1" comparison="And">
+          <Conditional IsPlayer="True" />
+          <RequiredItem excludedidentifiers="batterycell,fulguriumbatterycell" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained" stackable="false" comparison="And">
+          <Conditional condition="lt 5.0" />
+          <RequiredItem items="mobilebattery,batterycell,fulguriumbatterycell" type="Contained" playsoundonrequireditemfailure="true" />
+          <Sound file="Content/Items/WarningBeepSlow.ogg" range="100" loop="true" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.8" setvalue="true" disabledeltatime="true" />
+      </Wearable>
+    </Item>
+    <Item name="Long Range Radio" identifier="vheadset" scale="0.5" category="Equipment" tags="mediumitem,headset,mobilecontainer" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" description="A waterproof high-power radio transmitter pack with self charging arrays designed for use by coalition combat expedition crews, its beefy headset design also provides noise cancelling as well.">&gt;
+    <InventoryIcon texture="BTheadsets.png" sourcerect="0,0,64,64" origin="0.5,0.5" /><Sprite texture="BTheadsets.png" depth="0.6" sourcerect="132,0,128,112" origin="0.5,0.5" /><Body width="112" height="100" density="12" /><Deconstruct time="10"><Item identifier="ekutility_advancedheadset" /><Item identifier="aluminium" /><Item identifier="copper" /><Item identifier="fulguriumbatterycell" /></Deconstruct><WifiComponent range="100000.0" LinkToChat="true" MinChatMessageInterval="0.0" /><ItemContainer capacity="6"><Containable items="smallitem,explosive,tool,ore" excludeditems="toolbelt,toolbox,mobilecontainer,rucksack,backpack,waistbelt" /></ItemContainer><Holdable slots="RightHand+LeftHand" holdpos="0,-70" handle1="-5,0" handle2="10,-20" holdangle="0" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Select" allowswappingwhenpicked="false" /><Wearable limbtype="Head" slots="Any,Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select"><sprite name="Headset Wearable" texture="BTheadsets.png" limb="Head" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="196,112,64,80" origin="0.5,0.6" scale="0.35" /><sprite name="Backpack Wearable" texture="BTheadsets.png" limb="Torso" hidelimb="false" inheritlimbdepth="true" inherittexturescale="false" hideotherwearables="false" sourcerect="256,0,80,256" origin="1.4,0.8" scale="0.35" /><StatusEffect tags="headset" type="OnWearing" target="Character" duration="0.1" stackable="false" /><StatusEffect type="OnWearing" target="Character" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true" /></Wearable></Item>
+  </Items>
+</Override>

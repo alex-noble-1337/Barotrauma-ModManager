@@ -1,0 +1,805 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--TAR-4A3-->
+  <Item name="" identifier="scp_tar4a3" description="" tags="mediumitem,weapon,gun,gunsmith,alien,aliengun" Scale="0.4" category="Alien" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.025" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.015" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.001" />
+    <Price baseprice="1000" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="35">
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="287,1,69,76" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="1,361,253,114" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="55,-10" handle1="-20,-15" handle2="30,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.09" barrelpos="64,9" spread="6" unskilledspread="12" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="0" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/tar41.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/tar42.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/tar43.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/tar43.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="tar4ammo" />
+      <RequiredSkill identifier="weapons" level="69" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="tar4ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.125" />
+    </Quality>
+  </Item>
+  <!--65 round 4x48mm box mag-->
+  <Item name="" identifier="scp_tar4mag" description="" tags="smallitem,tar4ammo,alien,alienammo,ehaammo" category="Alien" maxstacksize="5" impactsoundtag="impact_metal_light" scale="0.4">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="8" spawnprobability="0.07" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="5" spawnprobability="0.05" />
+    <Price baseprice="500" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="3" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="physicorium" />
+      <Item identifier="thorium" />
+    </Deconstruct>
+    <InventoryIcon name="tar4maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="345,63,61,66" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="350,0,32,48" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_tar4projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_tar4projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-1.53846153846" disabledeltatime="true">
+        <SpawnItem identifier="scp_tar4projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--4x48mm round-->
+  <Item name="" identifier="scp_tar4projectile" tags="smallitem,tar4ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="50,255,50,150" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="1" itemdamage="20" severlimbsprobability="0.15">
+        <Affliction identifier="bleeding" strength="24" />
+        <Affliction identifier="gunshotwound" strength="26" />
+        <Affliction identifier="burn" strength="4" />
+        <Affliction identifier="radiationsickness" strength="8" />
+        <Affliction identifier="psychosis" strength="3" />
+        <Affliction identifier="stun" strength="0.145" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--TBR-6A4-->
+  <Item name="" identifier="scp_tbr6a4" description="" tags="mediumitem,weapon,gun,gunsmith,alien,aliengun" Scale="0.45" category="Alien" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.025" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.001" />
+    <Price baseprice="1250" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="35">
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="144,2,69,75" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="2,208,274,78" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="55,-10" handle1="-30,-15" handle2="35,1" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.1" barrelpos="85,11" spread="8" unskilledspread="15" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="3.0,3.0" colormultiplier="255,25,200,255" />
+      <Sound file="%ModDir%/Sounds/tbr61.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/tbr62.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/tbr63.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/tbr64.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="8.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="tbr6ammo" />
+      <RequiredSkill identifier="weapons" level="80" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="tbr6ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.125" />
+    </Quality>
+  </Item>
+  <!--50 round 7.5x42mm box mag-->
+  <Item name="" identifier="scp_tbr6mag" description="" tags="smallitem,tbr6ammo,alien,alienammo,ehaammo" category="Alien" maxstacksize="3" impactsoundtag="impact_metal_light" scale="0.4">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="6" spawnprobability="0.1" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="3" spawnprobability="0.1" />
+    <Price baseprice="600" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="physicorium" />
+      <Item identifier="thorium" />
+    </Deconstruct>
+    <InventoryIcon name="tbr6maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="42,66,45,59" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="31,0,32,59" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_tbr6projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_tbr6projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-2" disabledeltatime="true">
+        <SpawnItem identifier="scp_tbr6projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--7.5x42mm round-->
+  <Item name="" identifier="scp_tbr6projectile" tags="smallitem,tbr6ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="50,255,50,175" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="4" itemdamage="20" severlimbsprobability="0.15">
+        <Affliction identifier="bleeding" strength="25" />
+        <Affliction identifier="gunshotwound" strength="30" />
+        <Affliction identifier="burn" strength="10" />
+        <Affliction identifier="radiationsickness" strength="5" />
+        <Affliction identifier="psychosis" strength="5" />
+        <Affliction identifier="stun" strength="0.2" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--TB-1 pistol-->
+  <Item name="" identifier="scp_tb1" description="" tags="smallitem,weapon,gun,gunsmith,alien,aliengun" Scale="0.25" category="Alien" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.075" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.001" />
+    <Price baseprice="1100" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="2" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="25">
+      <Item identifier="steel" />
+      <Item identifier="dementonite" />
+      <Item identifier="physicorium" amount="1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="1,2,68,76" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="0,1,186,119" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-30,-4" handle2="-50,-15" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.65" barrelpos="64,9" spread="8" unskilledspread="15" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="0" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/tb11.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/tb12.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="100.0" force="5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="11.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="tb1ammo" />
+      <RequiredSkill identifier="weapons" level="65" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="tb1ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.125" />
+    </Quality>
+  </Item>
+  <!--10 round 14.5x41mm mag-->
+  <Item name="" identifier="scp_tb1mag" description="" tags="smallitem,tb1ammo,alien,alienammo,ehaammo" category="Alien" maxstacksize="3" impactsoundtag="impact_metal_light" scale="0.4">
+    <PreferredContainer primary="scp_tb1" minamount="0" maxamount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="6" spawnprobability="0.035" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="3" spawnprobability="0.01" />
+    <Price baseprice="450" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="3" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="lead" copycondition="true" />
+      <Item identifier="uranium" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="tb1maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="0,67,39,57" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="0,0,30,54" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_tb1projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_tb1projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-10" disabledeltatime="true">
+        <SpawnItem identifier="scp_tb1projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--14.5x41mm round-->
+  <Item name="" identifier="scp_tb1projectile" tags="smallitem,tb1ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="50,255,50,175" scalemultiplier="1,0.8" />
+      <Attack structuredamage="1.0" targetforce="7" itemdamage="20" severlimbsprobability="0.15" penetration="0.2">
+        <Affliction identifier="bleeding" strength="60" />
+        <Affliction identifier="gunshotwound" strength="60" />
+        <Affliction identifier="burn" strength="25" />
+        <Affliction identifier="radiationsickness" strength="35" />
+        <Affliction identifier="psychosis" strength="20" />
+        <Affliction identifier="stun" strength="0.8" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--TBSR-7-->
+  <Item name="" identifier="scp_tbsr7" description="" tags="mediumitem,weapon,gun,gunsmith,alien,aliengun" Scale="0.38" category="Alien" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.01" />
+    <PreferredContainer primary="ruinstorage" minamount="0" maxamount="1" spawnprobability="0.01" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.001" />
+    <Price baseprice="1600" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="45">
+      <Item identifier="steel" />
+      <Item identifier="dementonite" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="74,81,68,75" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="0,604,391,121" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="75,-5" handle1="-50,-15" handle2="30,8" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="TBSR Worn" texture="%ModDir%/Weapons/alienweapons.png" canbehiddenbyotherwearables="false" sourcerect="0,604,391,121" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.42" origin="0.5,0.7" />
+    </Wearable>
+    <RangedWeapon reload="1.75" barrelpos="64,9" spread="2" unskilledspread="8" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="8.0,8.0" colormultiplier="255,25,200,255" />
+      <Sound file="%ModDir%/Sounds/tbsr7.ogg" type="OnUse" range="5000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="200.0" force="7" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="30.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="tbsr7ammo" />
+      <RequiredSkill identifier="weapons" level="90" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="tbsr7ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.125" />
+    </Quality>
+  </Item>
+  <!--10 round 15x120mm box mag-->
+  <Item name="" identifier="scp_tbsr7mag" description="" tags="smallitem,tbsr7ammo,alien,alienammo,ehaammo" category="Alien" maxstacksize="2" impactsoundtag="impact_metal_light" scale="0.4">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="4" spawnprobability="0.05" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.04" />
+    <Price baseprice="600" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1.1" minavailable="2" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="thorium" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="tbsr7maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="88,63,66,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="66,0,54,59" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_tbsr7projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_tbsr7projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-20" disabledeltatime="true">
+        <SpawnItem identifier="scp_tbsr7projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--15x120mm round-->
+  <Item name="" identifier="scp_tbsr7projectile" tags="smallitem,tbsr7ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="25,255,25,225" scalemultiplier="1,1" />
+      <Attack structuredamage="75" targetforce="15" itemdamage="30" severlimbsprobability="0.5" penetration="0.45">
+        <Affliction identifier="bleeding" strength="60" />
+        <Affliction identifier="gunshotwound" strength="95" />
+        <Affliction identifier="burn" strength="50" />
+        <Affliction identifier="radiationsickness" strength="45" />
+        <Affliction identifier="psychosis" strength="30" />
+        <Affliction identifier="stun" strength="2" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--TMG12-->
+  <Item name="" description="" identifier="scp_tmg12" category="Alien" tags="mediumitem,weapon,gun,gunsmith,alien,aliengun" Scale="0.35" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.0125" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.005" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.01" />
+    <Price baseprice="1450" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1.12" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="35">
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+      <Item identifier="dementonite" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="2,82,69,75" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="3,482,377,113" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="60,-15" aimpos="75,-5" handle1="-60,-17" handle2="15,-3" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="TMG Worn" texture="%ModDir%/Weapons/alienweapons.png" canbehiddenbyotherwearables="false" sourcerect="3,482,377,113" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.35" origin="0.5,0.8" />
+    </Wearable>
+    <RangedWeapon reload="0.0925" barrelpos="95,10" spread="16" unskilledspread="27" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="6.0,6.0" colormultiplier="255,25,200,255" />
+      <Sound file="%ModDir%/Sounds/tmg1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/tmg2.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/tmg3.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="9" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="95ammo" />
+      <RequiredSkill identifier="weapons" level="45" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="95ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.12" />
+    </Quality>
+  </Item>
+  <!--150 Round 9.5x64mm TMG12 box mag-->
+  <Item name="" identifier="scp_tmgboxmag" description="" tags="smallitem,95ammo,alienammo,ehaammo" category="Alien" impactsoundtag="impact_metal_light" scale="0.45">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="2" spawnprobability="0.025" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.025" />
+    <PreferredContainer primary="scp_tmg12" spawnprobability="0.15" />
+    <Price baseprice="550" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1.1" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="physicorium" copycondition="true" />
+      <Item identifier="lead" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="tmg12maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="156,76,45,50" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="123,2,45,50" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_95tmgprojectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_95tmgprojectile" />
+      <StatusEffect type="OnUse" target="This" condition="-1" disabledeltatime="true">
+        <SpawnItem identifier="scp_95tmgprojectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--9.5x71mm TMG12 round-->
+  <Item name="" identifier="scp_95tmgprojectile" tags="smallitem,95ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="50,255,50,150" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="3" itemdamage="20" severlimbsprobability="0.15" penetration="0.2">
+        <Affliction identifier="bleeding" strength="35" />
+        <Affliction identifier="gunshotwound" strength="20" />
+        <Affliction identifier="radiationsickness" strength="35" />
+        <Affliction identifier="burn" strength="10" />
+        <Affliction identifier="stun" strength="0.15" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--TSG15-->
+  <Item name="" identifier="scp_tsg15" description="" category="Alien" tags="mediumitem,weapon,gun,gunsmith,alien,aliengun" Scale="0.39" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.025" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.005" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.001" />
+    <Price baseprice="1300" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="215,1,70,75" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="0,290,289,71" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="60,-8" handle1="-45,-15" handle2="30,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.55" barrelpos="64,9" spread="12.5" unskilledspread="20" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/tsg151.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/tsg152.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/tsg153.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="3" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="14.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="tsg15ammo" />
+      <RequiredSkill identifier="weapons" level="65" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="tsg15ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <!--20 round 10 gauge TSG15 drum magazine-->
+  <Item name="" identifier="scp_tsg15drummag" description="" tags="smallitem,tsg15ammo,alien,alienammo,ehaammo" category="Alien" maxstacksize="2" impactsoundtag="impact_metal_light" scale="0.75">
+    <PreferredContainer primary="scp_tsg15" minamount="0" maxamount="1" spawnprobability="0.2" />
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="2" spawnprobability="0.025" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="2" spawnprobability="0.01" />
+    <Price baseprice="500" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="2" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="lead" />
+      <Item identifier="physicorium" />
+      <Item identifier="uranium" />
+    </Deconstruct>
+    <InventoryIcon name="tsg15maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="315,0,33,36" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="171,17,33,36" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="shotgunshell" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="tsg15shell" />
+      <StatusEffect type="OnUse" target="This" condition="-5" disabledeltatime="true">
+        <SpawnItem identifier="tsg15shell" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--TSG15 shell-->
+  <Item name="" identifier="tsg15shell" category="Alien" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem,tsg15shell,alien" Scale="0.5" hideinmenus="true" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/Ammo/tsg15shellinv.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/tsg15shell.png" sourcerect="189,299,23,11" depth="0.55" origin="0.5,0.5" />
+    <Body width="23" height="10" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" hitscancount="10" removeonhit="true" spread="12">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="50,255,50,150" scalemultiplier="1,0.5" />
+      <Attack structuredamage="0.5" targetforce="5" itemdamage="15" severlimbsprobability="0.35" penetration="0.15">
+        <Affliction identifier="bleeding" strength="15" />
+        <Affliction identifier="gunshotwound" strength="10" />
+        <Affliction identifier="burn" strength="10" />
+        <Affliction identifier="radiationsickness" strength="10" />
+        <Affliction identifier="stun" strength="0.3" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+    </Projectile>
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <!--TPDW-57-->
+  <Item name="" identifier="scp_tpdw57" description="" category="Alien" tags="smallitem,weapon,gun,gunsmith,aliengun" Scale="0.35" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="2" spawnprobability="0.02" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="2" spawnprobability="0.01" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.01" />
+    <Price baseprice="1000" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="2" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/alieninv.png" sourcerect="71,5,70,73" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="0,122,218,79" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-15" aimpos="43,-4" handle1="10,-4" handle2="20,-4" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.0875" barrelpos="64,9" spread="10" unskilledspread="20" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/tpdw571.ogg" type="OnUse" range="2500" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/tpdw572.ogg" type="OnUse" range="2500" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.2" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.3" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="57aammo" />
+      <RequiredSkill identifier="weapons" level="65" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="57aammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.05" />
+    </Quality>
+  </Item>
+  <!--50 Round 5.7x35mm mag-->
+  <Item name="" identifier="scp_tpdw57mag" description="" tags="smallitem,57aammo,alien,alienammo,ehaammo" maxstacksize="3" category="Alien" impactsoundtag="impact_metal_light" scale="0.6">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="3" spawnprobability="0.02" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="3" spawnprobability="0.01" />
+    <PreferredContainer primary="scp_tpdw57" spawnprobability="0.15" />
+    <Price baseprice="400" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="2" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="plastic" />
+      <Item identifier="physicorium" />
+      <Item identifier="lead" />
+    </Deconstruct>
+    <InventoryIcon name="tpdw57maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="286,80,57,46" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="215,32,58,9" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_a57projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_a57projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-2" disabledeltatime="true">
+        <SpawnItem identifier="scp_a57projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--5.7x35mm TPDW57 round-->
+  <Item name="" identifier="scp_a57projectile" tags="smallitem,57ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="50,255,50,150" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="0.8" itemdamage="20" severlimbsprobability="0.15" penetration="0.125">
+        <Affliction identifier="bleeding" strength="25" />
+        <Affliction identifier="gunshotwound" strength="20" />
+        <Affliction identifier="radiationsickness" strength="12.5" />
+        <Affliction identifier="burn" strength="8" />
+        <Affliction identifier="stun" strength="0.05" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--Scary Chaingun Thing-->
+  <Item name="" identifier="scp_tm3" category="Alien" description="" cargocontaineridentifier="metalcrate" hideinmenus="true" tags="mediumitem,weapon,gun,alien,aliengun" Scale="0.35" impactsoundtag="impact_metal_heavy">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="1" spawnprobability="0.005" />
+    <PreferredContainer primary="scp_tm3" spawnprobability="0.15" />
+    <Price baseprice="2000" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1.25" sold="false" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="20">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <InventoryIcon name="tm3inv" texture="%ModDir%/Weapons/alieninv.png" sourcerect="215,79,73,76" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/alienweapons.png" sourcerect="321,3,436,138" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="55,-60" aimpos="55,-60" handle1="-200,5" handle2="-7,30" holdangle="-13" msg="ItemMsgPickUpSelect" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="TM3 Worn" texture="%ModDir%/Weapons/alienweapons.png" canbehiddenbyotherwearables="false" sourcerect="321,3,436,138" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.35" origin="0.5,0.9" />
+    </Wearable>
+    <RangedWeapon reload="0.04" barrelpos="180,15" spread="16" unskilledspread="35" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="7.0,7.0" colormultiplier="200,50,100,255" />
+      <StatusEffect type="OnUse" target="This" Condition="-50" />
+      <StatusEffect type="Always" target="This" Condition="2">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" Condition="6">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Sounds/alienjam.ogg" type="OnUse" range="900.0" loop="false" volume="1.2" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" Condition="60" disabledeltatime="true" delay="3.2" stackable="false" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="2" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="10.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems items="scp_tm3mag" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="95" />
+    </RangedWeapon>
+    <RepairTool firedamage="0.0" structurefixamount="0.0" range="0" barrelpos="100,35" combatpriority="10" spread="0" unskilledspread="0">
+      <sound file="%ModDir%/Sounds/minigun.ogg" type="OnUse" range="3500.0" loop="true" volume="1.65" />
+      <RequiredItems items="scp_tm3mag" type="Contained" msg="ItemMsgAmmoRequired" />
+    </RepairTool>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_tm3mag" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+  </Item>
+  <Item name="" identifier="scp_tm3mag" description="" tags="mediumitem,tm3ammo,alien,alienammo,ehaammo" maxstacksize="1" category="Alien" hideinmenus="true" impactsoundtag="impact_metal_light" scale="0.6">
+    <PreferredContainer primary="ruinstoragelarge" minamount="0" maxamount="2" spawnprobability="0.02" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.01" />
+    <PreferredContainer primary="scp_tm3" spawnprobability="0.15" />
+    <Price baseprice="950" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.5" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="1" />
+      <Price locationtype="military" multiplier="0.9" sold="false" />
+      <Price locationtype="mine" multiplier="1.25" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="plastic" />
+      <Item identifier="physicorium" />
+      <Item identifier="lead" />
+    </Deconstruct>
+    <InventoryIcon name="tm3maginv" texture="%ModDir%/Ammo/alienammo.png" sourcerect="408,65,69,65" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/alienammo.png" depth="0.54" sourcerect="407,1,58,60" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_tm3proj" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_tm3proj" />
+      <StatusEffect type="OnUse" target="This" condition="-0.5" disabledeltatime="true">
+        <SpawnItem identifier="scp_tm3proj" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <Item name="" identifier="scp_tm3proj" tags="smallitem,tm3ammo" Scale="0.3" category="Alien" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="200,50,100,255" scalemultiplier="1,0.6" />
+      <Attack structuredamage="3" targetforce="2" itemdamage="20" severlimbsprobability="0.15" penetration="0.125">
+        <Affliction identifier="bleeding" strength="15" />
+        <Affliction identifier="gunshotwound" strength="15" />
+        <Affliction identifier="radiationsickness" strength="5" />
+        <Affliction identifier="burn" strength="8" />
+        <Affliction identifier="stun" strength="0.01" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+</Items>

@@ -1,0 +1,465 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<npcsets>
+  <npcset identifier="abandonedoutpostnpcsbt">
+    <npc identifier="bandit_medic" commonness="0" moduleflags="crewmodule,engineeringmodule" job="medicaldoctor" behavior="Patrol" healthmultiplier="0.75" healthmultiplierinmultiplayer="1.0" aimspeed="0.5" aimaccuracy="0.1" reportrange="1000">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="banditclothes2" equip="true" />
+        <Item identifier="divingknifedementonite" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygenitetank" />
+        </Item>
+        <Item identifier="opium" />
+        <Item identifier="opium" />
+        <Item identifier="opium" />
+        <Item identifier="opium" />
+        <Item identifier="meth" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibloodloss1" />
+      </ItemSet>
+    </npc>
+    <npc identifier="sep_recruit" commonness="0" moduleflags="crewmodule,engineeringmodule" job="securityofficer" behavior="Patrol" healthmultiplier="0.75" healthmultiplierinmultiplayer="1.0" aimspeed="0.5" aimaccuracy="0.3" reportrange="100">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothesnovice" equip="true" />
+        <Item identifier="piratebandana" equip="true" />
+        <Item identifier="opium" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="safetyharness" equip="true" />
+        <Item identifier="screwdriverhardened" />
+        <Item identifier="wrenchdementonite" />
+        <Item identifier="weldingtool">
+          <Item identifier="weldingfueltank" />
+        </Item>
+        <Item identifier="crowbarhardened" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="toolbelt" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothesnovice" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="ethanol" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="piratebandana" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="plasmacutter">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="boardingaxe" equip="true" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothesnovice" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="meth" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="clowndivingmask" equip="true">
+          <Item identifier="oxygenitetank" />
+        </Item>
+        <Item identifier="divingknifedementonite" equip="true" />
+        <Item identifier="divingknifedementonite" equip="true" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="opium" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="divingknifehardened" equip="true" />
+        <Item identifier="revolver" equip="true">
+          <Item identifier="revolverrounddepletedfuel" />
+          <Item identifier="revolverrounddepletedfuel" />
+          <Item identifier="revolverrounddepletedfuel" />
+          <Item identifier="revolverrounddepletedfuel" />
+          <Item identifier="revolverrounddepletedfuel" />
+          <Item identifier="revolverrounddepletedfuel" />
+        </Item>
+        <Item identifier="revolverrounddepletedfuel" />
+        <Item identifier="revolverrounddepletedfuel" />
+        <Item identifier="revolverrounddepletedfuel" />
+        <Item identifier="revolverrounddepletedfuel" />
+        <Item identifier="revolverrounddepletedfuel" />
+        <Item identifier="revolverrounddepletedfuel" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="opium" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="divingknifedementonite" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="harpoongun">
+          <Item identifier="alienspear" />
+          <Item identifier="alienspear" />
+          <Item identifier="alienspear" />
+          <Item identifier="alienspear" />
+          <Item identifier="alienspear" />
+          <Item identifier="alienspear" />
+        </Item>
+        <Item identifier="alienspear" />
+        <Item identifier="alienspear" />
+        <Item identifier="alienspear" />
+        <Item identifier="alienspear" />
+        <Item identifier="alienspear" />
+        <Item identifier="alienspear" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="opium" />
+        <Item identifier="divingknifehardened" />
+        <Item identifier="smgunique">
+          <Item identifier="smgmagazinedepletedfuel" />
+        </Item>
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratebandana" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="divingknifehardened" />
+        <Item identifier="harpoongun">
+          <Item identifier="spearunique" />
+          <Item identifier="spearunique" />
+          <Item identifier="spearunique" />
+          <Item identifier="spearunique" />
+          <Item identifier="spearunique" />
+          <Item identifier="spearunique" />
+        </Item>
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="opium" />
+        <Item identifier="divingknifehardened" />
+        <Item identifier="bandolier" equip="true">
+          <Item identifier="smgmagazinedepletedfuel" />
+          <Item identifier="smgmagazinedepletedfuel" />
+          <Item identifier="smgmagazinedepletedfuel" />
+          <Item identifier="smgmagazinedepletedfuel" />
+        </Item>
+        <Item identifier="smgunique">
+          <Item identifier="smgmagazinedepletedfuel" />
+        </Item>
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="divingmask" equip="true">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="flamerunique" equip="true">
+          <Item identifier="incendiumfueltank" />
+        </Item>
+        <Item identifier="incendiumfueltank" />
+        <Item identifier="crowbarhardened" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="divingknifehardened" />
+        <Item identifier="shotgun">
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+        </Item>
+      </ItemSet>
+    </npc>
+    <npc identifier="sep_medic" commonness="0" moduleflags="crewmodule,engineeringmodule" job="medicaldoctor" behavior="Patrol" healthmultiplier="0.75" healthmultiplierinmultiplayer="1.0" aimspeed="0.5" aimaccuracy="0.1" reportrange="1000">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclothes" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="autoinjectorheadset" equip="true">
+          <Item identifier="hyperzine" />
+        </Item>
+        <Item identifier="healthscanner" equip="true" />
+        <Item identifier="syringegun" equip="true">
+          <Item identifier="chloralhydrate" />
+          <Item identifier="chloralhydrate" />
+          <Item identifier="chloralhydrate" />
+          <Item identifier="chloralhydrate" />
+        </Item>
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="antidama1" />
+        <Item identifier="antidama1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibleeding1" />
+        <Item identifier="antibloodloss1" />
+        <Item identifier="antibloodloss1" />
+      </ItemSet>
+    </npc>
+    <npc identifier="sep_elite" commonness="0" moduleflags="crewmodule,engineeringmodule" job="securityofficer" behavior="StayInHull" healthmultiplier="1.0" healthmultiplierinmultiplayer="1.25" aimspeed="0.3" aimaccuracy="0.75" reportrange="1000">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclotheshard" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="headset" equip="true">
+          <Item identifier="batterycell" />
+        </Item>
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="antidama1" />
+        <Item identifier="divingknifehardened" />
+        <Item identifier="assaultrifle" equip="true">
+          <Item identifier="assaultriflemagazine" />
+        </Item>
+        <Item identifier="bandolier" equip="true">
+          <Item identifier="assaultriflemagazine" />
+          <Item identifier="assaultriflemagazine" />
+          <Item identifier="assaultriflemagazine" />
+          <Item identifier="assaultriflemagazine" />
+        </Item>
+        <Item identifier="fraggrenade" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclotheshard" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="headset" equip="true">
+          <Item identifier="batterycell" />
+        </Item>
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="opium" />
+        <Item identifier="stunbaton">
+          <Item identifier="fulguriumbatterycell" />
+        </Item>
+        <Item identifier="divingknifehardened" />
+        <Item identifier="stungun">
+          <Item identifier="stungundartfulgurium" />
+          <Item identifier="stungundartfulgurium" />
+        </Item>
+        <Item identifier="stungundartfulgurium" />
+        <Item identifier="stungundartfulgurium" />
+        <Item identifier="stungrenade" equip="true" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclotheshard" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="headset" equip="true">
+          <Item identifier="batterycell" />
+        </Item>
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="divingknifehardened" />
+        <Item identifier="harpoongun">
+          <Item identifier="explosivespear" />
+          <Item identifier="explosivespear" />
+          <Item identifier="explosivespear" />
+          <Item identifier="explosivespear" />
+          <Item identifier="explosivespear" />
+          <Item identifier="explosivespear" />
+        </Item>
+        <Item identifier="spearunique" />
+        <Item identifier="spearunique" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="pirateclotheshard" equip="true" />
+        <Item identifier="piratebodyarmor" equip="true" />
+        <Item identifier="piratehelmet" equip="true" />
+        <Item identifier="headset" equip="true">
+          <Item identifier="batterycell" />
+        </Item>
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="divingknifehardened" />
+        <Item identifier="shotgun">
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+        </Item>
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+      </ItemSet>
+    </npc>
+    <npc identifier="sep_general" commonness="0" moduleflags="crewmodule,engineeringmodule" job="captain" behavior="StayInHull" healthmultiplier="1.25" healthmultiplierinmultiplayer="1.5" aimspeed="0.1" aimaccuracy="0.85" reportrange="3000">
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="vipclothes2" equip="true" />
+        <Item identifier="piratecaptainhat" equip="true" />
+        <Item identifier="abyssdivingsuit" equip="true">
+          <Item identifier="oxygenitetank" />
+        </Item>
+        <Item identifier="autoinjectorheadset" equip="true">
+          <Item identifier="hyperzine" />
+        </Item>
+        <Item identifier="cigar" />
+        <Item identifier="divingknifeunique" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="shotgununique">
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+        </Item>
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunslugexplosive" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+        <Item identifier="shotgunshell" />
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="vipclothes2" equip="true" />
+        <Item identifier="piratecaptainhat" equip="true" />
+        <Item identifier="abyssdivingsuit" equip="true">
+          <Item identifier="oxygenitetank" />
+        </Item>
+        <Item identifier="autoinjectorheadset" equip="true">
+          <Item identifier="hyperzine" />
+        </Item>
+        <Item identifier="cigar" />
+        <Item identifier="divingknifeunique" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="autoshotgun" equip="true">
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+          <Item identifier="shotgunshell" />
+        </Item>
+      </ItemSet>
+      <ItemSet commonness="1">
+        <Item identifier="idcard" equip="true" />
+        <Item identifier="vipclothes2" equip="true" />
+        <Item identifier="piratecaptainhat" equip="true" />
+        <Item identifier="abyssdivingsuit" equip="true">
+          <Item identifier="oxygenitetank" />
+        </Item>
+        <Item identifier="autoinjectorheadset" equip="true">
+          <Item identifier="hyperzine" />
+        </Item>
+        <Item identifier="cigar" />
+        <Item identifier="divingknifeunique" />
+        <Item identifier="divingmask">
+          <Item identifier="oxygentank" />
+        </Item>
+        <Item identifier="grenadelauncher" equip="true">
+          <Item identifier="40mmstungrenade" />
+        </Item>
+        <Item identifier="handcannon">
+          <Item identifier="handcannonround" />
+          <Item identifier="handcannonround" />
+          <Item identifier="handcannonround" />
+          <Item identifier="handcannonround" />
+          <Item identifier="handcannonround" />
+          <Item identifier="handcannonround" />
+        </Item>
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="handcannonround" />
+        <Item identifier="40mmgrenade" />
+      </ItemSet>
+    </npc>
+  </npcset>
+</npcsets>

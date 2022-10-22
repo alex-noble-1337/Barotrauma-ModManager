@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Huskmutanthunter" speciesname="Huskmutanthunterranged" speciestranslationoverride="Huskmutanthunter">
+  <!-- This variant of the huskmutanthunter exists solely to allow the spawning of husk mutant hunters that can throw heads without having to pick them up first. -->
+  <!-- Check the normal version of this character to see the effects of this variant. -->
+</Charactervariant>

@@ -1,0 +1,186 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character SpeciesName="Latcher" SpeciesTranslationOverride="" DisplayName="" Group="abyss" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" CanSpeak="False" UseBossHealthBar="True" Noise="100" Visibility="100" BloodDecal="blackblood" BleedParticleAir="" BleedParticleWater="blackwaterblood" BleedParticleMultiplier="5" CanEat="True" EatingSpeed="1000" UsePathFinding="True" PathFinderPriority="0.6999999" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="0" DisableDistance="100000" SoundInterval="10" DrawLast="True">
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <damageemitter drawontop="True" Particle="blackgib" AngleMin="0" AngleMax="360" ScaleMin="0.5" ScaleMax="1" VelocityMin="200" VelocityMax="300" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="2" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <bloodemitter drawontop="True" Particle="blackwaterblood" AngleMin="0" AngleMax="360" ScaleMin="7" ScaleMax="15" VelocityMin="0" VelocityMax="100" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter Particle="blackwaterblood" AngleMin="0" AngleMax="360" ScaleMin="7" ScaleMax="15" VelocityMin="0" VelocityMax="100" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="2" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter drawontop="True" Particle="blackwaterblood" AngleMin="0" AngleMax="360" ScaleMin="0.5" ScaleMax="1" VelocityMin="200" VelocityMax="700" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <gibemitter Particle="blackgib" AngleMin="0" AngleMax="360" ScaleMin="2" ScaleMax="4" VelocityMin="50" VelocityMax="1000" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+    <health Vitality="6000" DoesBleed="True" CrushDepth="-Infinity" UseHealthWindow="False" BleedingReduction="0" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="True" ApplyAfflictionColors="False">
+      <Limb name="Head" />
+      <Limb name="Torso" />
+      <Limb name="LeftArm" />
+      <Limb name="RightArm" />
+      <Limb name="LeftLeg" />
+      <Limb name="RightLeg" />
+    </health>
+    <sound File="Content/Characters/Latcher/ABYSSM_idle.ogg" State="Idle" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_idle_1.ogg" State="Idle" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_idle_2.ogg" State="Idle" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_idle_3.ogg" State="Idle" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_attack.ogg" State="Attack" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_attack_1.ogg" State="Attack" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_attack_2.ogg" State="Attack" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_attack_3.ogg" State="Attack" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_attack_4.ogg" State="Attack" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_damage.ogg" State="Damage" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_damage_1.ogg" State="Damage" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_damage_2.ogg" State="Damage" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_damage_3.ogg" State="Damage" Range="20000" Volume="2" Tags="" />
+    <sound File="Content/Characters/Latcher/ABYSSM_escape.ogg" State="Die" Range="30000" Volume="2" Tags="" dontmuffle="true" />
+    <sound File="Content/Characters/Latcher/ABYSSM_escape_1.ogg" State="Die" Range="30000" Volume="2" Tags="" dontmuffle="true" />
+    <ai CombatStrength="6000" Sight="3" Hearing="10" AggressionHurt="100" AggressionGreed="0" FleeHealthThreshold="0" AttackWhenProvoked="False" AvoidGunfire="True" DamageThreshold="80" AvoidTime="10" MinFleeTime="20" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="True" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="10" WallTargetingMethod="Target">
+      <target Tag="decoy" State="Attack" Priority="500" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="provocative" State="Attack" Priority="200" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="dead" State="Eat" Priority="150" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="weaker" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="human" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="wall" State="Attack" Priority="80" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="True" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="4000" CircleRotationSpeed="3" CircleStrikeDistanceMultiplier="1" CircleMaxRandomOffset="10" />
+      <target Tag="room" State="Attack" Priority="80" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="True" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="4000" CircleRotationSpeed="3" CircleStrikeDistanceMultiplier="1" CircleMaxRandomOffset="10" />
+      <target Tag="sonar" State="Attack" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="True" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="4000" CircleRotationSpeed="3" CircleStrikeDistanceMultiplier="1" CircleMaxRandomOffset="10" />
+      <target Tag="terminalcell" State="Idle" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="leucocyte" State="Idle" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    </ai>
+    <inventory slots="Any,Any,Any,Any,Any,Any,Any,Any,Any" accessiblewhenalive="False" commonness="1">
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="titanite" />
+      <item identifier="titanite" />
+      <item identifier="titanite" />
+      <item identifier="diamond" />
+      <item identifier="diamond" />
+      <item identifier="alientrinket3" />
+      <item identifier="skillbookhandyseaman" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+    </inventory>
+    <inventory slots="Any,Any,Any,Any,Any,Any,Any,Any,Any" accessiblewhenalive="False" commonness="1">
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="ilmenite" />
+      <item identifier="ilmenite" />
+      <item identifier="ilmenite" />
+      <item identifier="ilmenite" />
+      <item identifier="ilmenite" />
+      <item identifier="fulgurium" />
+      <item identifier="fulgurium" />
+      <item identifier="fulgurium" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="hydroxyapatite" />
+      <item identifier="hydroxyapatite" />
+      <item identifier="hydroxyapatite" />
+      <item identifier="hydroxyapatite" />
+      <item identifier="deusizine" />
+    </inventory>
+    <inventory slots="Any,Any,Any,Any,Any,Any,Any,Any" accessiblewhenalive="False" commonness="1">
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="stannite" />
+      <item identifier="stannite" />
+      <item identifier="stannite" />
+      <item identifier="stannite" />
+      <item identifier="stannite" />
+      <item identifier="galena" />
+      <item identifier="galena" />
+      <item identifier="galena" />
+      <item identifier="galena" />
+      <item identifier="galena" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+    </inventory>
+    <inventory slots="Any,Any,Any,Any,Any,Any" accessiblewhenalive="False" commonness="1">
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+      <item identifier="fishscale" />
+    </inventory>
+    <inventory slots="Any,Any,Any,Any,Any,Any,Any" accessiblewhenalive="False" commonness="1">
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="alienblood" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="fishoil" />
+      <item identifier="langbeinite" />
+      <item identifier="langbeinite" />
+      <item identifier="langbeinite" />
+      <item identifier="langbeinite" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="fishbone" />
+      <item identifier="handcannonround" />
+      <item identifier="handcannonround" />
+      <item identifier="handcannonround" />
+      <item identifier="handcannonround" />
+    </inventory>
+    <StatusEffect type="OnActive" target="this">
+      <Sound file="Content/Characters/Latcher/ABYSSM_movingLoop.ogg" loop="true" volume="2" range="20000" dontmuffle="true" />
+    </StatusEffect>
+    <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="400">
+      <RemoveCharacter />
+    </StatusEffect>
+  </Character>
+</Override>

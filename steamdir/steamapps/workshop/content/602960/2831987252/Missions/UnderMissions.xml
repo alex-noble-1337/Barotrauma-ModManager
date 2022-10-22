@@ -1,0 +1,241 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <MonsterMission successmessage="The mines have successfully been destroyed." sonarlabel="Mine Signal" reward="2000" maxsonarmarkerdistance="18000" commonness="15" difficulty="1" description="Some naval mines that were placed between the path from [location1] and [location2] have now been thrown off from their position and now dangerously roam the path. The administrators are offering [reward] to anyone who gets rid of these naval mines to allow commercial flights to enter the path safely again." type="Monster" tags="killmonster_set1" identifier="demining1" name="Demining Operations">
+    <monster character="Minemission" min="2" max="3" scatter="1000" />
+    <monster character="Minesmallmission" min="0" max="3" scatter="1000" />
+    <monster character="Minedetachedmission" min="2" max="3" scatter="1000" />
+    <Reputation identifier="location" amount="10" />
+    <Icon color="105,105,105" sourcerect="4,263,243,244" texture="Content/UI/MissionIcons.png" />
+    <LocationType from="City" to="None" />
+    <LocationType from="City" to="City" />
+    <LocationType from="City" to="Outpost" />
+    <LocationType from="City" to="Military" />
+    <LocationType from="City" to="Research" />
+    <LocationType from="City" to="Mine" />
+    <LocationType from="City" to="Lair" />
+    <LocationType from="Outpost" to="None" />
+    <LocationType from="Outpost" to="City" />
+    <LocationType from="Outpost" to="Outpost" />
+    <LocationType from="Outpost" to="Military" />
+    <LocationType from="Outpost" to="Research" />
+    <LocationType from="Outpost" to="Mine" />
+    <LocationType from="Outpost" to="Lair" />
+    <LocationType from="Military" to="None" />
+    <LocationType from="Military" to="City" />
+    <LocationType from="Military" to="Outpost" />
+    <LocationType from="Military" to="Military" />
+    <LocationType from="Military" to="Research" />
+    <LocationType from="Military" to="Mine" />
+    <LocationType from="Military" to="Lair" />
+    <LocationType from="Research" to="None" />
+    <LocationType from="Research" to="City" />
+    <LocationType from="Research" to="Outpost" />
+    <LocationType from="Research" to="Military" />
+    <LocationType from="Research" to="Research" />
+    <LocationType from="Research" to="Mine" />
+    <LocationType from="Research" to="Lair" />
+    <LocationType from="Mine" to="None" />
+    <LocationType from="Mine" to="City" />
+    <LocationType from="Mine" to="Outpost" />
+    <LocationType from="Mine" to="Military" />
+    <LocationType from="Mine" to="Research" />
+    <LocationType from="Mine" to="Mine" />
+    <LocationType from="Mine" to="Lair" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <message text="The mines that threatened the path have now been cleared and the path is now safe for travel again. Navigate the submarine out of the cavern to claim the reward." header="Target terminated" />
+  </MonsterMission>
+  <MonsterMission successmessage="The mines have successfully been destroyed." sonarlabel="Mine Signal" reward="2500" maxsonarmarkerdistance="18000" commonness="15" difficulty="1" description="Some naval mines that were placed between the path from [location1] and [location2] have now been thrown off from their position and now dangerously roam the path. The administrators are offering [reward] to anyone who gets rid of these naval mines to allow commercial flights to enter the path safely again." type="Monster" tags="killmonster_set2" identifier="demining2" name="Demining Operations">
+    <monster character="Minemission" min="4" max="5" scatter="1000" />
+    <monster character="Minesmallmission" min="2" max="3" scatter="1000" />
+    <monster character="Minedetachedmission" min="0" max="5" scatter="1000" />
+    <Reputation identifier="location" amount="10" />
+    <Icon color="105,105,105" sourcerect="4,263,243,244" texture="Content/UI/MissionIcons.png" />
+    <LocationType from="City" to="None" />
+    <LocationType from="City" to="City" />
+    <LocationType from="City" to="Outpost" />
+    <LocationType from="City" to="Military" />
+    <LocationType from="City" to="Research" />
+    <LocationType from="City" to="Mine" />
+    <LocationType from="City" to="Lair" />
+    <LocationType from="Outpost" to="None" />
+    <LocationType from="Outpost" to="City" />
+    <LocationType from="Outpost" to="Outpost" />
+    <LocationType from="Outpost" to="Military" />
+    <LocationType from="Outpost" to="Research" />
+    <LocationType from="Outpost" to="Mine" />
+    <LocationType from="Outpost" to="Lair" />
+    <LocationType from="Military" to="None" />
+    <LocationType from="Military" to="City" />
+    <LocationType from="Military" to="Outpost" />
+    <LocationType from="Military" to="Military" />
+    <LocationType from="Military" to="Research" />
+    <LocationType from="Military" to="Mine" />
+    <LocationType from="Military" to="Lair" />
+    <LocationType from="Research" to="None" />
+    <LocationType from="Research" to="City" />
+    <LocationType from="Research" to="Outpost" />
+    <LocationType from="Research" to="Military" />
+    <LocationType from="Research" to="Research" />
+    <LocationType from="Research" to="Mine" />
+    <LocationType from="Research" to="Lair" />
+    <LocationType from="Mine" to="None" />
+    <LocationType from="Mine" to="City" />
+    <LocationType from="Mine" to="Outpost" />
+    <LocationType from="Mine" to="Military" />
+    <LocationType from="Mine" to="Research" />
+    <LocationType from="Mine" to="Mine" />
+    <LocationType from="Mine" to="Lair" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <message text="The mines that threatened the path have now been cleared and the path is now safe for travel again. Navigate the submarine out of the cavern to claim the reward." header="Target terminated" />
+  </MonsterMission>
+  <MonsterMission successmessage="The mines have successfully been destroyed." sonarlabel="Mine Signals" reward="4000" maxsonarmarkerdistance="18000" commonness="10" difficulty="3" description="The authorities have detected a large formation of naval mines around [location1] and [location2]. These mines are unhooked and are purpously placed to destroy and disrupt a transportation route. The authorities are offering [reward] to anyone who could disarm or explode the mines in the area to resume commercial flights." type="Monster" tags="killmonster_set3" identifier="massdemining" name="Clearing a Massive Minefield">
+    <monster character="Minedetachedmission" min="14" max="22" scatter="1000" />
+    <Reputation identifier="location" amount="60" />
+    <Reputation identifier="coalition" amount="1" />
+    <Icon color="105,105,105" sourcerect="4,263,243,244" texture="Content/UI/MissionIcons.png" />
+    <LocationType from="City" to="None" />
+    <LocationType from="City" to="City" />
+    <LocationType from="City" to="Outpost" />
+    <LocationType from="City" to="Military" />
+    <LocationType from="City" to="Research" />
+    <LocationType from="City" to="Mine" />
+    <LocationType from="City" to="Lair" />
+    <LocationType from="Outpost" to="None" />
+    <LocationType from="Outpost" to="City" />
+    <LocationType from="Outpost" to="Outpost" />
+    <LocationType from="Outpost" to="Military" />
+    <LocationType from="Outpost" to="Research" />
+    <LocationType from="Outpost" to="Mine" />
+    <LocationType from="Outpost" to="Lair" />
+    <LocationType from="Military" to="None" />
+    <LocationType from="Military" to="City" />
+    <LocationType from="Military" to="Outpost" />
+    <LocationType from="Military" to="Military" />
+    <LocationType from="Military" to="Research" />
+    <LocationType from="Military" to="Mine" />
+    <LocationType from="Military" to="Lair" />
+    <LocationType from="Research" to="None" />
+    <LocationType from="Research" to="City" />
+    <LocationType from="Research" to="Outpost" />
+    <LocationType from="Research" to="Military" />
+    <LocationType from="Research" to="Research" />
+    <LocationType from="Research" to="Mine" />
+    <LocationType from="Research" to="Lair" />
+    <LocationType from="Mine" to="None" />
+    <LocationType from="Mine" to="City" />
+    <LocationType from="Mine" to="Outpost" />
+    <LocationType from="Mine" to="Military" />
+    <LocationType from="Mine" to="Research" />
+    <LocationType from="Mine" to="Mine" />
+    <LocationType from="Mine" to="Lair" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <message text="The mines that threatened the path have now been cleared and the path is now safe for travel again. Navigate the submarine out of the cavern to claim the reward." header="Target terminated" />
+  </MonsterMission>
+  <MonsterMission name="Salvaging a Massive Coalition Submarine" identifier="killdeadnought" type="Monster" tags="killmonster_set3" description="A Massive Coalition Attack-Class submarine carrying dangerous chemical weapons went MIA six months ago between [location1] and [location2]. While the vessel was presumed to be taken by the abyss, the vehicle's and the crew's emergency beacons were recently activated, A reward of [reward] Marks has been promised to any crew who can investigate the beacon." commonness="8" difficulty="4" reward="11250" sonarlabel="Emergency Beacon" maxsonarmarkerdistance="18000" successmessage="The researchers of [location2] are eager to know all the details of the encounter, but seem hesitant to answer any questions regarding the vessel. They do however offer you [reward] Marks as &quot;reimbursement for your troubles&quot;.">
+    <monster character="deadnought" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,0,256,256" color="214,50,48" />
+    <LocationType from="City" to="None" />
+    <LocationType from="City" to="City" />
+    <LocationType from="City" to="Outpost" />
+    <LocationType from="City" to="Military" />
+    <LocationType from="City" to="Research" />
+    <LocationType from="City" to="Mine" />
+    <LocationType from="City" to="Lair" />
+    <LocationType from="Outpost" to="None" />
+    <LocationType from="Outpost" to="City" />
+    <LocationType from="Outpost" to="Outpost" />
+    <LocationType from="Outpost" to="Military" />
+    <LocationType from="Outpost" to="Research" />
+    <LocationType from="Outpost" to="Mine" />
+    <LocationType from="Outpost" to="Lair" />
+    <LocationType from="Military" to="None" />
+    <LocationType from="Military" to="City" />
+    <LocationType from="Military" to="Outpost" />
+    <LocationType from="Military" to="Military" />
+    <LocationType from="Military" to="Research" />
+    <LocationType from="Military" to="Mine" />
+    <LocationType from="Military" to="Lair" />
+    <LocationType from="Research" to="None" />
+    <LocationType from="Research" to="City" />
+    <LocationType from="Research" to="Outpost" />
+    <LocationType from="Research" to="Military" />
+    <LocationType from="Research" to="Research" />
+    <LocationType from="Research" to="Mine" />
+    <LocationType from="Research" to="Lair" />
+    <LocationType from="Mine" to="None" />
+    <LocationType from="Mine" to="City" />
+    <LocationType from="Mine" to="Outpost" />
+    <LocationType from="Mine" to="Military" />
+    <LocationType from="Mine" to="Research" />
+    <LocationType from="Mine" to="Mine" />
+    <LocationType from="Mine" to="Lair" />
+    <message header="Target Investigated" text="The missing vessel appears to have been taken over by some sort of parasitic growth, but it seems to be incapacitated now. You should report the incident to [location2]." />
+  </MonsterMission>
+  <MonsterMission name="Salvaging a Massive Coalition Submarine" identifier="killdeadnought2" type="Monster" tags="killmonster,killmonsterrare" description="A Massive Coalition Attack-Class submarine carrying dangerous chemical weapons went MIA six months ago between [location1] and [location2]. While the vessel was presumed to be taken by the abyss, the vehicle's and the crew's emergency beacons were recently activated, A reward of [reward] Marks has been promised to any crew who can investigate the beacon." commonness="130" difficulty="4" reward="11250" sonarlabel="Emergency Beacons" maxsonarmarkerdistance="18000" successmessage="The researchers of [location2] are eager to know all the details of the encounter, but seem hesitant to answer any questions regarding the vessel. They do however offer you [reward] Marks as &quot;reimbursement for your troubles&quot;.">
+    <monster character="deadnought" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="0,0,256,256" color="214,50,48" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="UnderAttack" from="Research" />
+    <LocationType to="UnderAttack" from="City" />
+    <LocationType to="UnderAttack" from="Military" />
+    <LocationType to="UnderAttack" from="Outpost" />
+    <LocationType to="UnderAttack" from="Research" />
+    <LocationType to="UnderAttack" from="None" />
+    <LocationType to="UnderAttack" from="Lair" />
+    <message header="Target Investigated" text="The missing vessel appears to have been taken over by some sort of parasitic growth, but it seems to be incapacitated now. You should report the incident to [location2]." />
+  </MonsterMission>
+  <BeaconMission name="Activate Beacon" identifier="beaconbt2" textidentifier="beaconmission" tags="beacon,beaconnoreward" type="Beacon" description="The beacon station between [location1] and [location2] is down - get in there and get it back online and transmitting an active sonar signal." difficulty="3" commonness="30" reward="2500">
+    <monster character="carrier" min="1" max="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <Reputation identifier="coalition" amount="5" />
+    <message header="Beacon reactivated" text="The beacon station is back online. Make sure it stays transmitting, and navigate the submarine to [location2] to claim your reward." />
+  </BeaconMission>
+  <MonsterMission name="Hunting grounds" identifier="underhuntinggroundsnoreward1" textidentifier="huntinggrounds" tags="huntinggroundsnoreward,huntinggrounds,killmonsterrare" type="Monster" sideobjective="true" difficulty="4" commonness="8" reward="11250" sonarlabel="target" spawntype="Abyss" maxsonarmarkerdistance="20000" successmessage="" monsterfile="Endwhale">
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,768,256,256" color="214,50,48" />
+    <message header="Target terminated" text="The monster is dead. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Hunting grounds" identifier="underhuntinggroundsnoreward2" textidentifier="huntinggrounds" tags="huntinggroundsnoreward,huntinggrounds,killmonsterrare" type="Monster" sideobjective="true" difficulty="4" commonness="7" reward="11250" sonarlabel="target" spawntype="Abyss" maxsonarmarkerdistance="20000" successmessage="" monsterfile="Deadnought">
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,768,256,256" color="214,50,48" />
+    <message header="Target terminated" text="The monster is dead. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+</Missions>

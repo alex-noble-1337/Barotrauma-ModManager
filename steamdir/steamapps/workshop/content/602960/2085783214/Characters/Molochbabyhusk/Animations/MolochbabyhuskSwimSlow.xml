@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MolochbabyhuskSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" flipcooldown="3" flipdelay="1" mirror="True" mirrorlerp="False" waveamplitude="5" wavelength="10" rotatetowardsmovement="True" torsotorque="5" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="1" movementspeed="0.60587996" cyclespeed="1" headangle="NaN" torsoangle="0" legtorque="25" armikstrength="1" handikstrength="1" />

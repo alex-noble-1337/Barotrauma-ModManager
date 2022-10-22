@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character speciesname="Coelanth" humanoid="false">
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <bloodemitter particle="waterblood" particleamount="1" scalemin="1" scalemax="2" />
+    <gibemitter particle="gib" particleamount="30" velocitymin="200" velocitymax="1000" anglemin="0" anglemax="360" scalemin="1" scalemax="2" />
+    <gibemitter particle="heavygib" particleamount="15" velocitymin="50" velocitymax="700" anglemin="0" anglemax="360" scalemin="1" scalemax="2" />
+    <health vitality="500" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0.5" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" stunimmunity="False" applyafflictioncolors="False" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/attack1.ogg" state="Attack" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/attack2.ogg" state="Attack" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/attack3.ogg" state="Attack" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/idle1.ogg" state="Idle" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/idle2.ogg" state="Idle" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/idle3.ogg" state="Idle" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/damage1.ogg" state="Damage" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/damage2.ogg" state="Damage" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/damage3.ogg" state="Damage" range="5000" volume="1" gender="None" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/death1.ogg" state="Die" range="5000" volume="1" gender="None" dontmuffle="true" />
+    <sound file="%ModDir%/Characters/Vanilla_Creatures/Coelanth/death2.ogg" state="Die" range="5000" volume="1" gender="None" dontmuffle="true" />
+    <Inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="1">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="alienblood" />
+      <Item identifier="k_em_coelanthfang" />
+      <Item identifier="k_em_coelanthfang" />
+    </Inventory>
+    <Inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="1">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="alienblood" />
+      <Item identifier="alienblood" />
+      <Item identifier="k_em_coelanthfang" />
+    </Inventory>
+    <Inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="1">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="alienblood" />
+      <Item identifier="k_em_coelanthfang" />
+      <Item identifier="k_em_coelanthfang" />
+    </Inventory>
+    <ai combatstrength="5000" sight="0.1" hearing="1" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" attackwhenprovoked="False" avoidgunfire="True" aggressiveboarding="True" enforceaggressivebehaviorformissions="True" targetinnerwalls="False" randomattack="False" targetouterwalls="True" avoidtime="3" minfleetime="20" canopendoors="False" avoidabyss="False" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Target" keepdoorsclosed="False" patrolflooded="False" patroldry="False">
+      <targetpriority tag="decoy" state="Attack" priority="600" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="stronger" state="PassiveAggressive" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="human" state="Attack" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="room" state="Attack" priority="50" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="weaker" state="Attack" priority="50" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="sonar" state="Attack" priority="45" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="dead" state="Eat" priority="40" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <targetpriority tag="nasonov" state="Attack" priority="30" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <target tag="Carrier" state="Aggressive" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+      <target tag="Thalamuscarrier" state="Aggressive" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+      <target tag="Carrierleviathan" state="Aggressive" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+      <target tag="light" state="Attack" priority="85" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+      <target tag="watcher" state="Protect" priority="1" ignoreinside="True" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+      <target tag="watcherwanderer" state="Protect" priority="1" ignoreinside="True" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    </ai>
+    <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" onlyoutside="true" delay="200">
+      <RemoveCharacter />
+    </StatusEffect>
+  </Character>
+</Override>

@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FractaldestroyerSwimFast UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="False" WaveAmplitude="20.190315" WaveLength="68.88024" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="25" LegTorque="25" MovementSpeed="15" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="25" TorsoTorque="25" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

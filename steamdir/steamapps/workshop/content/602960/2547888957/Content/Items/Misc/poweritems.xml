@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="fulguriumbatterycell" category="Equipment,Electrical" maxstacksize="8" tags="smallitem,loadable,mobilebattery" scale="0.5" cargocontaineridentifier="metalcrate" description="" impactsoundtag="impact_metal_light">
+      <Upgrade gameversion="0.10.0.0" scale="0.5" />
+      <PreferredContainer primary="batterycellrecharger" maxcondition="80" />
+      <PreferredContainer secondary="divingcab,engcab,reactorcab" />
+      <Price baseprice="250" soldeverywhere="false">
+        <Price locationtype="outpost" multiplier="0" sold="false" />
+        <Price locationtype="city" multiplier="0" sold="false" />
+        <Price locationtype="research" multiplier="1.5" minavailable="1" />
+        <Price locationtype="military" multiplier="1.5" sold="false" />
+        <Price locationtype="mine" multiplier="0" sold="false" />
+      </Price>
+      <Deconstruct time="10">
+        <Item identifier="zinc" />
+        <Item identifier="fulgurium" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="15">
+        <RequiredSkill identifier="electrical" level="40" />
+        <RequiredItem identifier="fulgurium" />
+        <RequiredItem identifier="zinc" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="514,832,62,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Electricity/signalcomp.png" sourcerect="968,25,37,21" depth="0.8" />
+      <Body width="32" height="20" density="30" />
+      <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgPickUpSelect" />
+      <Quality>
+        <QualityStat stattype="Condition" value="0.1" />
+      </Quality>
+    </Item>
+  </Override>
+  <Item name="" identifier="manual" description="Contains all important elements around nuclear reactors and its related hazards." category="Electrical" Tags="smallitem,logic" cargocontaineridentifier="metalcrate" scale="0.25" impactsoundtag="impact_metal_light" isshootable="true">
+    <Upgrade gameversion="0.9.9000.0" scale="0.25" />
+    <PreferredContainer primary="reactorcab" minamount="1" maxamount="1" spawnprobability="1" />
+    <Price baseprice="10" soldeverywhere="true" />
+    <Deconstruct time="10">
+      <Item identifier="fpgacircuit" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="15">
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="323,193,60,61" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Electricity/detectors.png" sourcerect="177,108,69,93" depth="0.55" origin="0.5,0.5" />
+    <Body width="60" height="90" density="8" />
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="-10,0" msg="ItemMsgPickUpSelect" allowingameediting="False" />
+    <Terminal canbeselected="true" msg="ItemMsgInteractSelect" AllowInGameEditing="false" drawhudwhenequipped="true" welcomemessage="terminalwelcomemsg.manual">
+      <GuiFrame relativesize="0.5,0.5" anchor="Center" style="ItemUI" />
+    </Terminal>
+  </Item>
+</Items>

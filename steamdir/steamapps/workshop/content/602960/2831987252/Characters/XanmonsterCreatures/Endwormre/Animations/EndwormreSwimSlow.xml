@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EndwormreSwimSlow spemovementspeeded="2" waveamplitude="99.99983" wavelength="1586" flip="True" mirror="True" rotatetowardsmovement="True" torsotorque="200" headtorque="160" foottorque="25" tailtorque="155" footangles="" steertorque="200" movementspeed="5.0326514" cyclespeed="1" headangle="0" torsoangle="0" animationtype="SwimSlow" usesinemovement="False" tailtorquemultiplier="1" tailangle="NaN" type="Endwormre" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" />

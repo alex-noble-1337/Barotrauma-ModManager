@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Hotdog" humanoid="False" speciestranslationoverride="" displayname="Hotdog" group="human" hasinfo="False" husk="False" usehuskappendage="False" needsair="True" needswater="False" canspeak="False" noise="100" visibility="100" blooddecal="blood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <damageemitter particle="gib" drawontop="True" particleamount="10" velocitymin="50" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blood" particleamount="10" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="waterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="gib" particleamount="20" velocitymin="200" velocitymax="700" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="heavygib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="300" doesbleed="True" crushdepth="-400" usehealthwindow="False" bleedingreduction="0.20000005" burnreduction="0.10000002" constanthealthregeneration="0.10000002" healthregenerationwheneating="0.5" />
+  <ai combatstrength="100" sight="2.4999995" hearing="2" aggressionhurt="100" aggressiongreed="90" fleehealththreshold="15" attackwhenprovoked="False" avoidgunfire="True" aggressiveboarding="False" enforceaggressivebehaviorformissions="False" targetouterwalls="False" randomattack="False" avoidtime="0" minfleetime="0" infiltrate="False">
+    <latchonto attachtowalls="false" />
+    <target tag="owner" state="Follow" priority="100" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="0" sweepspeed="0" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="human" state="Follow" priority="50" reactdistance="100" attackdistance="100" timer="10" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="0" sweepspeed="0" ignoreinside="False" ignoreoutside="True" ignoreincapacitated="False" threshold="0" />
+    <target tag="husk" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="crawler" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="mudraptor" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="icecrab" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="minoga" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="lionthresher" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="swarmcrawler" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="teleglitch" state="Avoid" priority="50" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="magmaworm" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="mantisnew" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <target tag="coralshrimp" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignorewhileinside="False" ignorewhileoutside="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" threshold="0" />
+    <petbehavior maxhappiness="100" happinessdecreaserate="0.010" hungerincreaserate="0.02" playforce="6.0">
+      <eat tag="dogfood" ignorecontained="true" requiredhunger="30-100" hunger="-90" happiness="5" priority="900" reactdistance="100" />
+      <eat tag="dead" requiredhunger="70-100" hunger="-100" happiness="10" priority="900" reactdistance="100" />
+      <itemproduction rate="0.0" invhungerrate="0.002" requiredhunger="0-30">
+        <item identifier="poop" commonness="100" />
+      </itemproduction>
+    </petbehavior>
+    <target tag="thresher" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" />
+    <target tag="Mantis" state="Attack" priority="1000" reactdistance="100" attackdistance="100" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" />
+  </ai>
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogBark1.ogg" state="Happy" range="800" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogPain.ogg" state="Unhappy" range="2500" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogBark2.ogg" state="Idle" range="160" volume="0.5" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogBark3.ogg" state="Idle" range="160" volume="0.5" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogGrowl.ogg" state="Attack" range="900" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogAttack1.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogAttack2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogBark1.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogBark2.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogBark3.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogPain.ogg" state="Damage" range="2500" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/OtherCreatures/Hotdog/DogDie.ogg" state="Die" range="5000" volume="1" gender="None" />
+  <inventory slots="Any, Any" accessiblewhenalive="True" commonness="1" />
+  <StatusEffect type="OnDeath" target="This" range="10000">
+    <Explosion range="600.0" ballastfloradamage="60" structuredamage="300" levelwalldamage="600" itemdamage="1000" stun="5" force="20.0" severlimbsprobability="0.6" decal="explosion" decalsize="0.5">
+      <Affliction identifier="burn" strength="200" />
+      <Affliction identifier="explosiondamage" strength="50" />
+    </Explosion>
+  </StatusEffect>
+</Character>

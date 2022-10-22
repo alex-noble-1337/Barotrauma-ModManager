@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HotdogSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="8.400891" wavelength="24.221827" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="3: 2.8274333,5: 2.6179938,10: 0,11: 0,2: 0,4: 0" tailangle="102" steertorque="25" movementspeed="1.9894655" cyclespeed="1" headangle="60" torsoangle="96" />

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Rusty Chainsaw" identifier="Chainsawold" category="Equipment" Tags="smallitem,cuttingequipment,tools" description="A large, rusty electrical chainsaw that has been noncommissioned to Europan miners. Its edges are still sharp and it seems to be bloodied. What use can this tool make?" cargocontaineridentifier="metalcrate" Scale="0.32" impactsoundtag="impact_metal_light">
+    <!--<Price baseprice="200" >
+      <Price locationtype="City" buyprice="200" />
+      <Price locationtype="Research" buyprice="240" />
+      <Price locationtype="Military" buyprice="200" />
+      <Price locationtype="Outpost" buyprice="200" />
+      <Price locationtype="Mine" buyprice="174" />
+	  </Price>-->
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+      <Item identifier="titanium" />
+    </Deconstruct>
+    <!--<Fabricate suitablefabricators="fabricator" requiredtime="20">
+        <RequiredSkill identifier="mechanical" level="40" />
+        <RequiredItem identifier="steel" />
+		<RequiredItem identifier="titanium" />
+		<RequiredItem identifier="titaniumaluminiumalloy" />
+        <RequiredItem identifier="plastic" />
+      </Fabricate>-->
+    <InventoryIcon texture="halloweenInventoryAtlas.png" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="halloweenItems.png" sourcerect="0,0,308,91" depth="0.55" origin="0.5,0.5" />
+    <Body radius="50" width="180" density="40" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="75,-25" handle1="-125,-25" handle2="-10,0" holdangle="45" swingamount="10,20" swingspeed="1" swingwhenusing="true" msg="ItemMsgPickUpSelect"></Holdable>
+    <RepairTool structurefixamount="-0.125" range="30" barrelpos="45,10" combatpriority="20" targetforce="-30">
+      <RequiredItems identifier="batterycell,fulguriumbatterycell" type="Contained" msg="ItemMsgBatteryCellRequired" />
+      <StatusEffect type="OnUse" target="Contained" targetidentifiers="batterycell" Condition="-2.0" />
+      <StatusEffect type="OnUse" target="Contained" targetidentifiers="fulguriumbatterycell" Condition="-1.0" />
+      <StatusEffect type="OnUse" target="UseTarget" targetidentifiers="door,windoweddoor,hatch,ductblock,aliendoor,alienhatch" Stuck="-20.0" Condition="-3.0">
+        <sound file="%ModDir%/Items/Tools/chainsawMetal.ogg" range="500.0" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="UseTarget" targetidentifiers="structure">
+        <sound file="%ModDir%/Items/Tools/chainsawMetal.ogg" range="500.0" loop="true" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Limb" severlimbsprobability="0.01">
+        <Conditional EntityType="eq Limb" />
+        <Affliction identifier="internaldamage" strength="20" />
+        <Affliction identifier="lacerations" strength="15" />
+        <Affliction identifier="bleeding" amount="40" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" range="800" selectionmode="Random" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="800" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="800" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="800" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="800" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="800" />
+        <!--  temporary workaround to a bug in v0.9.4.0: due to a bug in the MatchOnEmpty logic, 
+                conditionals would always be considered true if the StatusEffect has not targets or RequiredItems,
+                which in this case causing the sounds to always play when there's no valid Limb to target -->
+        <RequiredItems identifier="batterycell,fulguriumbatterycell" type="Contained" />
+      </StatusEffect>
+      <ParticleEmitterHitStructure particle="spark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+      <ParticleEmitterHitItem identifiers="door,hatch,ductblock" particle="spark" particlespersecond="100" anglemin="-40" anglemax="40" velocitymin="100" velocitymax="800" />
+      <ParticleEmitterHitItem identifiers="ore" particle="iceshards" particlespersecond="5" anglemin="-40" anglemax="40" velocitymin="10" velocitymax="300" scalemin="0.5" scalemax="1.0" />
+      <ParticleEmitterHitCharacter particle="blood" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+      <sound file="%ModDir%/Items/Tools/chainsawGas.ogg" type="OnUse" range="500.0" loop="true" />
+      <Fixable identifier="structure" />
+    </RepairTool>
+    <ItemContainer capacity="1" hideitems="true" itempos="20,-30" containedspritedepth="0.56" maxstacksize="1">
+      <ContainedStateIndicator texture="Content/UI/ContainerIndicators.png" sourcerect="0,157,92,27" />
+      <Containable identifiers="batterycell,fulguriumbatterycell" />
+    </ItemContainer>
+  </Item>
+</Items>

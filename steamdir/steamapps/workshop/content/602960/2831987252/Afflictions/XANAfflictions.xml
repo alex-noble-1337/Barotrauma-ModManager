@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="Observer Presense" identifier="observerpresense" description="" type="gaze" limbspecific="false" indicatorlimb="Head" causeofdeathdescription="" selfcauseofdeathdescription="" activationthreshold="0" showinhealthscannerthreshold="1000" showiconthreshold="1000" showicontoothersthreshold="1000" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-4">
+      <StatusEffect target="Character" checkconditionalalways="true" comparison="and">
+        <Conditional HasStatusTag="eq headset" />
+        <Conditional psychosisresistance="e 0" />
+        <Affliction identifier="observersgaze" strength="5" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="Observer's Interference" identifier="observersgaze" description="Your headset is screeching an unknown spectrogram that causes pressure inside your skull. You have a sudden urge to throw off your headset." type="gaze" limbspecific="false" indicatorlimb="Head" showiconthreshold="1" showicontoothersthreshold="1" karmachangeonapplied="0" maxstrength="100">
+    <Effect minstrength="0" maxstrength="10" minscreendistort="0" maxscreendistort="0.1" minscreenblur="0" maxscreenblur="0.1" minradialdistort="0" maxradialdistort="0" minchromaticaberration="0" maxchromaticaberration="0" strengthchange="-1">
+      <StatusEffect target="Character">
+        <Conditional ishuman="true" />
+        <Affliction identifier="psychosis" strength="1" />
+        <Sound file="%ModDir%/Characters/XanmonsterCreatures/Observer/headphonejack.ogg" loop="True" volume="1" dontmuffle="true" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="10" maxstrength="50" minscreendistort="0.4" maxscreendistort="0.5" minscreenblur="0.4" maxscreenblur="0.5" minradialdistort="0" maxradialdistort="0" minchromaticaberration="0" maxchromaticaberration="0" strengthchange="-3">
+      <StatusEffect target="Character">
+        <Conditional ishuman="true" />
+        <Affliction identifier="psychosis" strength="2" />
+        <Sound file="%ModDir%/Characters/XanmonsterCreatures/Observer/headphonejack.ogg" loop="True" volume="3" dontmuffle="true" range="1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="50" maxstrength="100" minscreendistort="0.5" maxscreendistort="1" minscreenblur="0.5" maxscreenblur="1" minradialdistort="0" maxradialdistort="2" minchromaticaberration="0" maxchromaticaberration="50" minvitalitydecrease="0" maxvitalitydecrease="1" multiplybymaxvitality="true" strengthchange="-4">
+      <StatusEffect target="Character">
+        <Conditional ishuman="true" />
+        <Affliction identifier="psychosis" strength="5" />
+        <Affliction identifier="nausea" strength="1" />
+        <Sound file="%ModDir%/Characters/XanmonsterCreatures/Observer/headphonejack.ogg" loop="True" volume="3" dontmuffle="true" range="1" />
+      </StatusEffect>
+      <StatusEffect target="Character" SpeedMultiplier="0.2" setvalue="true">
+        <Conditional ishuman="true" />
+      </StatusEffect>
+      <StatusEffect type="OnDeath" target="Character" stackable="false">
+        <Conditional ishuman="true" />
+        <SpawnCharacter speciesname="teleglitch" count="1" spread="0" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/CommandUIAtlas.png" sourcerect="768,896,128,128" origin="0,0" />
+  </Affliction>
+  <Affliction name="Specialxan1" identifier="specialxan1" description="" type="poison" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="false" indicatorlimb="Torso" showiconthreshold="20" karmachangeonapplied="0" maxstrength="100">
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,640,128,128" color="106,106,106,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Morbusine Gas" identifier="morbusinegas" description="The patient is surrounded by morbusine gas" type="poison" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="false" indicatorlimb="Torso" showiconthreshold="100" karmachangeonapplied="0" maxstrength="10" strengthchange="-9">
+    <Effect minstrength="0" maxstrength="10" minvitalitydecrease="0" maxvitalitydecrease="0.1" strengthchange="-1" minscreendistort="0.0" maxscreendistort="0.0" minscreenblur="0.0" maxscreenblur="0.0" minchromaticaberration="0.0" maxchromaticaberration="0.0">
+      <StatusEffect type="Always" target="Character" stackable="false" delay="5" comparison="and">
+        <Conditional oxygenlow="gte 1" />
+        <Conditional morbusinepoisoning="eq 0" />
+        <Affliction identifier="morbusinepoisoning" amount="0.1" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="640,640,128,128" color="106,106,106,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Distress Beacon" identifier="carrierbeacon" description="" type="gaze" limbspecific="false" indicatorlimb="Head" causeofdeathdescription="" selfcauseofdeathdescription="" activationthreshold="0" showinhealthscannerthreshold="1000" showiconthreshold="1000" showicontoothersthreshold="1000" maxstrength="10">
+    <Effect minstrength="1" maxstrength="10" strengthchange="-9">
+      <StatusEffect target="Character" comparison="and" targetlimb="Head" checkconditionalalways="true">
+        <Conditional HasStatusTag="eq headset" />
+        <Conditional IsPlayer="True" />
+        <Sound file="%ModDir%/Characters/XanmonsterCreatures/Carrierleviathan/RadioLoop2.ogg" loop="True" volume="1" dontmuffle="true" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <!-- Due to games mod fractor breaking the file paths for other mods. I have to copy Huskmods so I could get this creature fixed and prevent crashing-->
+  <Affliction name="Watcher husk's broadcast" identifier="xanwatcherhuskbroadcast" description="The watcher husk's screech shakes you to your core..." type="xanwatcherhuskbroadcast" limbspecific="false" indicatorlimb="Torso" activationthreshold="0" showinhealthscannerthreshold="1000" showiconthreshold="1000" showicontoothersthreshold="1000" maxstrength="100" iconcolors="60,140,195,255;60,107,195,255;60,0,195,255">
+    <Effect minstrength="0" maxstrength="100" strengthchange="-3" minscreendistort="0.5" maxscreendistort="1" minscreenblur="0.5" maxscreenblur="1" minradialdistort="0" maxradialdistort="2" minchromaticaberration="0" maxchromaticaberration="50" />
+    <PeriodicEffect mininterval="2" maxinterval="6">
+      <StatusEffect target="Character" duration="2" comparison="and">
+        <Conditional isdead="false" />
+        <Conditional speciesname="eq human" />
+        <Affliction identifier="xanwatcherderailed" amount="20" />
+        <Affliction identifier="psychosis" amount="1" />
+      </StatusEffect>
+    </PeriodicEffect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="0,512,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Derailed" identifier="xanwatcherderailed" description="" type="xanwatcherderailed" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="false" showinhealthscannerthreshold="1000" showiconthreshold="1000" showicontoothersthreshold="1000" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" minscreendistort="0.7" maxscreendistort="0.9" minradialdistort="0.7" maxradialdistort="0.9" minscreenblur="0.8" maxscreenblur="1.2" minchromaticaberration="0.5" maxchromaticaberration="1.0" strengthchange="-5.0" MinAfflictionOverlayAlphaMultiplier="0" MaxAfflictionOverlayAlphaMultiplier="0.7" mingrainstrength="0" maxgrainstrength="1">
+      <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true" />
+      <StatusEffect target="Character">
+        <Conditional IsLocalPlayer="True" />
+        <Sound file="%ModDir%/Characters/XanmonsterCreatures/Huskbroodemperor/derailed.ogg" loop="true" volume="1" selectionmode="Random" />
+      </StatusEffect>
+    </Effect>
+    <AfflictionOverlay texture="%ModDir%/Characters/XanmonsterCreatures/Huskbroodemperor/zombiemaster.png" />
+  </Affliction>
+</Afflictions>

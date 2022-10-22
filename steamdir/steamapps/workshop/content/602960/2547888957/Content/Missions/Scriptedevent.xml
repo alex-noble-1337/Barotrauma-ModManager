@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <Override>
+    <!-- Events specific to military outposts -->
+    <EventSet identifier="outpostevent.military.randomevents" minleveldifficulty="20" locationtype="military" allowatstart="true">
+      <ScriptedEvent identifier="salvagewreckwarhead" commonness="150" probability="0.5" />
+    </EventSet>
+    <!-- Events specific to research outposts -->
+    <EventSet identifier="outpostevent.research.randomevents" minleveldifficulty="20" locationtype="research" allowatstart="true">
+      <ScriptedEvent identifier="salvagewreckwarhead" commonness="150" probability="0.5" />
+    </EventSet>
+  </Override>
+</Randomevents>

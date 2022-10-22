@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AcidhammerheadSwimFast animationtype="SwimFast" usesinemovement="False" flip="False" mirror="False" waveamplitude="100" wavelength="149.115" rotatetowardsmovement="True" torsotorque="200" headtorque="280" tailtorque="100" foottorque="100" footangles="" tailangle="90" steertorque="65" movementspeed="8" cyclespeed="1" headangle="90" torsoangle="90" tailtorquemultiplier="1" type="Acidhammerhead" />

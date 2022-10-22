@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Peanuthusk" humanoid="False" blooddecal="blackblood" group="husk" husk="True" needsair="False" canspeak="True" noise="100" visiblity="100" eatingspeed="5" displayname="" visibility="100" pathfinderpriority="1" hasinfo="False" usehuskappendage="False" speciestranslationoverride="peanut" needswater="False" bleedparticleair="blackblood" bleedparticlewater="blackwaterblood" hideinsonar="False" sonardisruption="0" soundinterval="30" usebosshealthbar="False" bleedparticlemultiplier="1" distantsonarrange="0" disabledistance="25000" caninteract="False" caneat="False" usepathfinding="True" hideinthermalgoggles="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter particle="blackblood" particleamount="5" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="40" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0.2" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="10" stunimmunity="False" applyafflictioncolors="False">
+    <Limb name="Torso" />
+  </health>
+  <Inventory slots="Any, Any" accessiblewhenalive="True" commonness="1" />
+  <ai combatstrength="70" sight="2" hearing="2" fleehealththreshold="0" aggressiveboarding="True" aggressiongreed="10" aggressionhurt="200" attackwhenprovoked="True" avoidgunfire="False" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="False" avoidtime="3" minfleetime="20" infiltrate="False" avoidabyss="False" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" canopendoors="False" keepdoorsclosed="False" patrolflooded="False" patroldry="False" walltargetingmethod="Target">
+    <target tag="stronger" state="Attack" priority="50" reactdistance="1000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="weaker" state="Attack" priority="50" reactdistance="1000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="human" state="Attack" priority="100" reactdistance="1000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This">
+    <particleemitter particle="blackblood" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="1" scalemax="1.5" />
+    <particleemitter particle="blackgib" particleamount="50" velocitymin="0" velocitymax="700" anglemin="0" anglemax="360" scalemin="1" scalemax="1.5" />
+    <ParticleEmitter particle="bloodsplash" particlespersecond="100" scalemin="1" scalemax="2" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="blackblood" particlespersecond="100" scalemin="1" scalemax="2" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+    <Sound file="%ModDir:Improved Husks%/Characters/Pets/death.ogg" range="1500" />
+    <RemoveCharacter />
+  </StatusEffect>
+  <sound file="%ModDir:Improved Husks%/Characters/Peanuthusk/attack1.ogg" state="Attack" range="1500" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Peanuthusk/attack2.ogg" state="Attack" range="1500" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Peanuthusk/idle1.ogg" state="Idle" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Peanuthusk/idle2.ogg" state="Idle" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Peanuthusk/damage1.ogg" state="Damage" range="1500" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Peanuthusk/damage2.ogg" state="Damage" range="1500" volume="1" gender="None" />
+</Character>

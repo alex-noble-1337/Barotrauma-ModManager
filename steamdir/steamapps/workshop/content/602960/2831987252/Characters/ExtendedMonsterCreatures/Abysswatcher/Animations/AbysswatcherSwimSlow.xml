@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<AbysswatcherSwimSlow movementspeed="0.5" waveaplitude="0" mirror="True" rotatetowardsmovement="False" flip="True" waveamplitude="4.5" wavelength="29.933521" footangle="NaN" steertorque="25" headangle="-90" torsoangle="NaN" animationtype="SwimSlow" usesinemovement="False" flipcooldown="1" flipdelay="0.1" mirrorlerp="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" cyclespeed="1" type="Abysswatcher" />

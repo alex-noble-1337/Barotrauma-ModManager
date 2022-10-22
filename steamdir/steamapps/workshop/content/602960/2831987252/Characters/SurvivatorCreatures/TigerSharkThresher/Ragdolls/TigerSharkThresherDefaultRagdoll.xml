@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ragdoll type="tigerthresher" minscale="0.8" maxscale="1.2" canentersubmarine="True" canwalk="False" texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/TigerSharkThresher.png" spritesheetorientation="0" limbscale="1" jointscale="1" texturescale="1" colliderheightfromfloor="45" impacttolerance="50" draggable="True" mainlimb="Torso" color="255,255,255,255">
+  <collider radius="50" height="185" name="Main Collider" width="0" />
+  <!-- head -->
+  <limb id="0" radius="12" height="100" type="Head" steerforce="1" name="Limb 0" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" width="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <sprite sourcerect="371,15,66,136" depth="0.02" origin="0.5,0.5" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False" />
+    <!--
+    <deformablesprite sourcerect="371,15,66,136" depth="0.02" origin ="0.5,0.5" subdivisions="15,15">
+      <spritedeformation type="noise" resolution="15,15" frequency="10" amplitude="0.05" changespeed="10" blendmode="add"/>
+    </deformablesprite>    
+    -->
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="371,15,66,136" origin="0.5,0.5" />
+  </limb>
+  <!-- lower yaw -->
+  <limb id="1" width="16" height="103" name="Limb 1" type="None" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" radius="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="391,169,28,110" depth="0.025" origin="0.5,0.5" subdivisions="15,15" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="noise" resolution="15,15" frequency="10" amplitude="0.05" changespeed="10" blendmode="Add" sync="-1" typename="noise" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="391,169,28,110" origin="0.5,0.5" />
+    <attack range="300" damagerange="150" duration="0.5" structuredamage="50" structuresoundtype="StructureSlash" force="80" torque="80" targetforce="-50" severlimbsprobability="0.8" context="Any" targettype="Any" targetlimbtype="None" hitdetectiontype="Distance" afterattack="Pursue" afterattackdelay="0" reverse="False" retreat="False" cooldown="5" secondarycooldown="0" cooldownrandomfactor="0" itemdamage="0" stun="0" onlyhumans="False" applyforceonlimbs="" rootforceworldstart="0,0" rootforceworldmiddle="0,0" rootforceworldend="0,0" roottransitioneasing="Linear" applyforcesonlyonce="False" targetimpulse="0" targetimpulseworld="0,0" targetforceworld="0,0" priority="0" fullspeedafterattack="False" penetration="0" levelwalldamage="40" ranged="False" avoidfriendlyfire="False" requiredangle="20" submarineimpactmultiplier="1" blink="False">
+      <affliction identifier="bitewounds" strength="25" probability="1" />
+      <affliction identifier="lacerations" strength="15" probability="1" />
+      <affliction identifier="bleeding" strength="10" probability="1" />
+      <affliction identifier="paralysis" strength="0.1" probability="0.5" />
+      <affliction identifier="stun" strength="1" probability="1" />
+    </attack>
+  </limb>
+  <!-- body front -->
+  <limb id="2" radius="50" height="185" type="Torso" steerforce="0.1" name="Limb 2" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" width="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="251,0,113,285" depth="0.016" origin="0.6,0.5" subdivisions="5,15" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="5,15" multiplier="1.0" axis="y" start="true" control="false" end="true" sync="-1" typename="bendjoint" blendmode="Add" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="251,0,113,285" origin="0.6,0.5" />
+  </limb>
+  <!-- body rear -->
+  <limb id="3" radius="40" height="175" type="Tail" name="Limb 3" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" width="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="0,180,125,261" depth="0.015" origin="0.6,0.5" subdivisions="10,10" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="10,10" multiplier="1.0" axis="y" start="true" control="false" end="true" sync="-1" typename="bendjoint" blendmode="Add" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="0,180,125,261" origin="0.6,0.5" />
+  </limb>
+  <!-- tail -->
+  <limb id="4" radius="17" height="135" type="Tail" name="Limb 4" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" width="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="0,0,87,172" depth="0.02" origin="0.35,0.5" subdivisions="5,10" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="5,10" multiplier="1.0" axis="y" start="false" control="false" end="true" sync="-1" typename="bendjoint" blendmode="Add" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="0,0,87,172" origin="0.35,0.5" />
+  </limb>
+  <!-- tail tip -->
+  <limb id="5" radius="15" height="170" type="Tail" name="Limb 5" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" width="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="150,222,48,211" depth="0.021" origin="0.35,0.5" subdivisions="5,10" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="5,10" multiplier="1.0" axis="y" start="false" end="true" control="false" sync="-1" typename="bendjoint" blendmode="Add" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="150,222,48,211" origin="0.35,0.5" />
+  </limb>
+  <!-- front fins -->
+  <limb id="6" width="50" height="200" name="Limb 6" type="None" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" radius="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="120,5,90,205" depth="0.008" origin="0.7,0.5" subdivisions="15,15" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="noise" resolution="15,15" frequency="10" amplitude="0.05" changespeed="10" blendmode="Add" sync="-1" typename="noise" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="120,5,90,205" origin="0.7,0.5" />
+  </limb>
+  <!-- back fins -->
+  <limb id="7" width="25" height="100" name="Limb 7" type="None" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" radius="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="387,304,38,128" depth="0.01" origin="0.7,0.5" subdivisions="15,15" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="noise" resolution="15,15" frequency="10" amplitude="0.05" changespeed="10" blendmode="Add" sync="-1" typename="noise" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>-
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="387,304,38,128" origin="0.7,0.5" /></limb>
+  <!-- long "fins" -->
+  <limb id="8" width="10" height="270" ignorecollisions="True" name="Limb 8" type="None" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" radius="0" density="10" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" healthindex="0" friction="0.3" restitution="0.05" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" blinktransitionin="Linear" blinktransitionout="Linear" inheritlimbdepth="None" onlyblinkinwater="False">
+    <deformablesprite sourcerect="217,10,26,275" depth="0.01" origin="0.5,0.5" subdivisions="15,15" texture="" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="noise" resolution="15,15" frequency="10" amplitude="0.05" changespeed="10" blendmode="Add" sync="-1" typename="noise" strength="1" maxrotation="90" usemovementsine="False" stopwhenhostisdead="False" onlyinwater="False" sineoffset="0" />
+    </deformablesprite>
+    <damagedsprite texture="%ModDir%/Characters/SurvivatorCreatures/TigerSharkThresher/damagedTigerSharkThresher.png" sourcerect="217,10,26,275" origin="0.5,0.5" />
+  </limb>
+  <!-- body to head -->
+  <joint limb1="0" limb1anchor="-22,-63" limb2="2" limb2anchor="-46,80" lowerlimit="-10" upperlimit="10" name="Joint 0 - 2" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- body to lower yaw -->
+  <joint limb1="1" limb1anchor="0,-39" limb2="2" limb2anchor="11,115" lowerlimit="-10" upperlimit="30" name="Joint 1 - 2" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- body front to body rear -->
+  <joint limb1="2" limb1anchor="-12,-100" limb2="3" limb2anchor="0,90" lowerlimit="-10" upperlimit="30" name="Joint 2 - 3" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- body rear to tail -->
+  <joint limb1="3" limb1anchor="-7,-113" limb2="4" limb2anchor="8,80" lowerlimit="-30" upperlimit="30" name="Joint 3 - 4" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- tail to tail tip -->
+  <joint limb1="4" limb1anchor="0,-71" limb2="5" limb2anchor="4,95" lowerlimit="-10" upperlimit="30" name="Joint 4 - 5" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- body to front fin -->
+  <joint limb1="2" limb1anchor="4,13" limb2="6" limb2anchor="6,89" lowerlimit="-50" upperlimit="0" name="Joint 2 - 6" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- body to back fin -->
+  <joint limb1="3" limb1anchor="11,60" limb2="7" limb2anchor="-2,57" lowerlimit="-50" upperlimit="0" name="Joint 3 - 7" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+  <!-- body to long -->
+  <joint limb1="3" limb1anchor="-3,-45" limb2="8" limb2anchor="-8,132" lowerlimit="-30" upperlimit="0" name="Joint 3 - 8" canbesevered="True" severanceprobabilitymodifier="0" breaksound="gore" limitenabled="True" stiffness="0.25" scale="1" weldjoint="False" clockwiserotation="False" />
+</Ragdoll>

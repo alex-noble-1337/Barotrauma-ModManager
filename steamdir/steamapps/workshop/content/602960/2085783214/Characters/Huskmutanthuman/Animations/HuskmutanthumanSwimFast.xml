@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HuskmutanthumanSwimFast movementspeed="4" steertorque="1" headangle="91" torsoangle="0" legmoveamount="2" handmoveamount="1.2143965,-0.0066333124" handmoveoffset="0,0" handcyclespeed="4.857586" legcyclelength="5.1599464" cyclespeed="3.640148" animationtype="SwimFast" footangle="65" footrotatestrength="15" handmovestrength="0" armmovestrength="0.40000004" armikstrength="3" handikstrength="2.5" torsotorque="30" headtorque="40" legtorque="12" foottorque="5" />

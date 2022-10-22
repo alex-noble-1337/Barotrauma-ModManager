@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MantishuskSwimSlow movementspeed="3.5" waveamplitude="4.2084436" wavelength="25" steertorque="25" flip="True" mirror="False" rotatetowardsmovement="True" headangle="42.43602" torsotorque="25" headtorque="50" foottorque="25" tailtorque="50" footangles="8: -2.92749,10: 0.3396946" cyclespeed="1" torsoangle="55" animationtype="SwimSlow" usesinemovement="False" tailangle="NaN" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" tailtorquemultiplier="1" type="Mantishusk" legtorque="25" armikstrength="1" handikstrength="1" />

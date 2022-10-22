@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LatcherSwimFast type="Latcher" UseSineMovement="True" Flip="False" FlipCooldown="5" FlipDelay="3" Mirror="False" MirrorLerp="False" WaveAmplitude="200" WaveLength="1200" RotateTowardsMovement="True" TailTorque="200" TailTorqueMultiplier="5" FootAngles="" TailAngle="0" SteerTorque="150" LegTorque="100" MovementSpeed="15" CycleSpeed="1" HeadAngle="0" TorsoAngle="0" HeadTorque="500" TorsoTorque="400" FootTorque="200" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

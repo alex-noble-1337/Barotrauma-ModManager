@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!--template
+  </Item>
+        <Item name="" identifier="geneticmaterial" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" spawnprobability="0.02" />
+    <Deconstruct>
+      <Item identifier="geneticmaterial" outconditionmin="0.3" outconditionmax="0.6"/>
+    </Deconstruct>
+  </Item>
+-->
+<Items>
+  <!--Gene mats-->
+  <Item name="" identifier="geneticmaterialwatcher_unresearched" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <Deconstruct>
+      <Item identifier="geneticmaterialwatcher" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialfractalguardian_unresearched" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <Deconstruct>
+      <Item identifier="geneticmaterialfractalguardian" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialpsilotoad_unresearched" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <Deconstruct>
+      <Item identifier="geneticmaterialpsilotoad" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialhammerheadgold_unresearched" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialhammerheadgold" />
+    </Deconstruct>
+  </Item>
+  <!--tier 2 mat-->
+  <Item name="" identifier="geneticmaterialwatcher_unresearched2" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" minamount="0" maxamount="1" spawnprobability="0.02" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialwatcher" minamount="0" maxamount="1" outconditionmin="0.2" outconditionmax="0.4" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialfractalguardian_unresearched2" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" minamount="0" maxamount="1" spawnprobability="0.25" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialfractalguardian" minamount="0" maxamount="1" outconditionmin="0.2" outconditionmax="0.4" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialpsilotoad_unresearched2" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" minamount="0" maxamount="1" spawnprobability="0.03" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialpsilotoad" minamount="0" maxamount="1" outconditionmin="0.2" outconditionmax="0.4" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialhammerheadgold_unresearched2" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" spawnprobability="0.025" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialhammerheadgold" outconditionmin="0.3" outconditionmax="0.6" />
+    </Deconstruct>
+  </Item>
+  <!--Tier 3 material, outcondition 0.3...0.6-->
+  <Item name="" identifier="geneticmaterialfractalguardian_unresearched3" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" spawnprobability="0.02" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialfractalguardian" outconditionmin="0.3" outconditionmax="0.6" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialwatcher_unresearched3" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" spawnprobability="0.02" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialwatcher" outconditionmin="0.3" outconditionmax="0.6" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialpsilotoad_unresearched3" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" spawnprobability="0.015" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialpsilotoad" outconditionmin="0.3" outconditionmax="0.6" />
+    </Deconstruct>
+  </Item>
+  <Item name="" identifier="geneticmaterialhammerheadgold_unresearched3" nameidentifier="unidentifiedgeneticmaterial" variantof="geneticmaterialcrawler_unresearched">
+    <PreferredContainer secondary="geneticstorage" spawnprobability="0.015" />
+    <Deconstruct>
+      <Item identifier="geneticmaterialhammerheadgold" outconditionmin="0.3" outconditionmax="0.6" />
+    </Deconstruct>
+  </Item>
+</Items>

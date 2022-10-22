@@ -1,0 +1,116 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="corpse1" tags="container,suppliescontainer,securitycorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="0,0,370,77" origin="0.5,0.5" />
+    <ItemContainer capacity="2" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse2" tags="container,suppliescontainer,securitycorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="1,95,421,111" origin="0.5,0.5" />
+    <ItemContainer capacity="3" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse3" tags="container,suppliescontainer,securitycorpse,medcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="0,223,316,206" origin="0.5,0.5" />
+    <ItemContainer capacity="6" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse4" tags="container,suppliescontainer,securitycorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="1,435,370,77" origin="0.5,0.5" />
+    <ItemContainer capacity="2" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse5" tags="container,suppliescontainer,securitycorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="3,518,317,189" origin="0.5,0.5" />
+    <ItemContainer capacity="6" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse6" tags="container,suppliescontainer,renegadecorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="430,0,360,103" origin="0.5,0.5" />
+    <ItemContainer capacity="2" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse7" tags="container,suppliescontainer,renegadecorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="428,106,433,107" origin="0.5,0.5" />
+    <ItemContainer capacity="2" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse8" tags="container,suppliescontainer,renegadecorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="437,217,440,93" origin="0.5,0.5" />
+    <ItemContainer capacity="3" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse9" tags="container,suppliescontainer,renegadecorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="436,310,423,79" origin="0.5,0.5" />
+    <ItemContainer capacity="2" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="corpse10" tags="container,suppliescontainer,renegadecorpse,secarmcab" linkable="false" pickdistance="150" waterproof="true" scale="0.46">
+    <Sprite texture="%ModDir%/Misc/corpses.png" depth="0.8" sourcerect="441,391,297,212" origin="0.5,0.5" />
+    <ItemContainer capacity="2" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.18,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="scp_armory" description="" tags="locker,container,securecontainer,secarmcab" linkable="false" spritecolor="255,255,255,255" pickdistance="150" waterproof="true" scale="0.5">
+    <Sprite texture="%ModDir%/Misc/containers.png" depth="0.84" sourcerect="0,0,346,371" origin="0.5,0.5" />
+    <ItemContainer capacity="45" slotsperrow="5" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.24,0.64" anchor="Center" style="ItemUI" />
+      <RequiredItem items="idcard" type="Picked" msg="ItemMsgUnauthorizedAccess" ignoreineditor="true" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="scp_engineeringcab" tags="locker,container,securecontainer,storagecab,engcab" linkable="true" spritecolor="255,255,255,255" pickdistance="150" waterproof="true" scale="0.5">
+    <Sprite texture="%ModDir%/Misc/containers.png" depth="0.84" sourcerect="350,0,509,399" origin="0.5,0.5" />
+    <ItemContainer capacity="45" slotsperrow="5" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.3,0.65" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="scp_weaponrack" tags="container,weaponcontainer" pickdistance="120" scale="0.5" canflipx="false" canflipy="true">
+    <Sprite texture="%ModDir%/Misc/containers.png" depth="0.84" sourcerect="1,404,373,208" origin="0.5,0.5" />
+    <ItemContainer hideitems="false" drawinventory="true" capacity="6" slotsperrow="3" itempos="53,-100" iteminterval="56,0" itemrotation="90" canbeselected="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.2,0.2" anchor="Center" style="ItemUI" />
+      <Containable items="gun" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="scp_smallweaponrack" tags="container,weaponcontainer" pickdistance="120" scale="0.5" canflipx="false" canflipy="true">
+    <Sprite texture="%ModDir%/Misc/containers.png" depth="0.84" sourcerect="386,404,209,209" origin="0.5,0.5" />
+    <ItemContainer hideitems="false" drawinventory="true" capacity="3" itempos="53,-100" iteminterval="56,0" itemrotation="90" canbeselected="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.2,0.2" anchor="Center" style="ItemUI" />
+      <Containable items="gun" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="scp_coilgunammocabinet" tags="container,coilgunammocontainer,ammocontainer" linkable="true" pickdistance="150" waterproof="true" scale="0.5">
+    <Sprite texture="containers.png" depth="0.8" sourcerect="965,99,230,299" canflipx="false" origin="0.5,0.5" />
+    <ItemContainer capacity="12" slotsperrow="3" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.2,0.3" anchor="Center" style="ItemUI" />
+      <Containable items="ammobox,coilgunammo" />
+    </ItemContainer>
+  </Item>
+  <Item name="" identifier="scp_railguncabinet" description="A large cabinet for storing railgun shells." tags="locker,container,railgunammocontainer" linkable="false" spritecolor="255,255,255,255" pickdistance="150" waterproof="true" scale="0.5">
+    <Sprite texture="%ModDir%/Misc/containers.png" depth="0.84" sourcerect="1194,29,346,371" origin="0.5,0.5" />
+    <ItemContainer capacity="12" slotsperrow="3" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.24,0.5" anchor="Center" style="ItemUI" />
+      <Containable items="railgunshell,nuclearshell,railgunammo" />
+    </ItemContainer>
+  </Item>
+</Items>

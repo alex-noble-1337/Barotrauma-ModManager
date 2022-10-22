@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="PressureStarter" group="" humanoid="False" displayname="" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" canspeak="False" noise="100" visibility="100" blooddecal="blood" eatingspeed="10" pathfinderpriority="1" needswater="False" bleedparticleair="blooddrop" bleedparticlewater="waterblood" hideinsonar="False" sonardisruption="0" speciestranslationoverride="">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter particle="blackblood" particleamount="5" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="heavygib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health usehealthwindow="False" vitality="260" crushdepth="-30000" doesbleed="True" bleedingreduction="20" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" />
+  <name firstname="Content/Characters/Human/firstnames_[GENDER].txt" lastname="Content/Characters/Human/lastnames.txt" />
+  <ai combatstrength="0" sight="1.0000001" hearing="1" aggressiveboarding="False" attackwhenprovoked="False" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" avoidgunfire="True" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="False" avoidtime="3" minfleetime="20" infiltrate="False" />
+  <inventory slots="Card, Head, Headset, InnerClothes, OuterClothes, LeftHand, RightHand,  Bag, Any, Any, Any, Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="1" />
+  <StatusEffect target="NearbyCharacters" type="Always" range="100000">
+    <Conditional ishuman="true" />
+    <Affliction identifier="pressure2" amount="9999" />
+  </StatusEffect>
+</Character>

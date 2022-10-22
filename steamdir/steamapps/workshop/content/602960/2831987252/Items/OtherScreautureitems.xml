@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="blackholegrab" identifier="blackgrab" tags="grabtool" health="50" hideinmenus="true" category="" sonarsize="0" scale="1" damagedbyexplosions="false" damagedbyprojectiles="false" damagedbyrepairtools="false" damagedbymeleeweapons="false">
+    <InventoryIcon texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="15" density="10" />
+    <Rope targetpullforce="230" projectilepullforce="0" maxlength="1500" snaponcollision="false" spritewidth="50" tile="true">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <EndSprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.56" origin="0.5,0.5" />
+      <!-- Automatically snap after 20 seconds -->
+      <StatusEffect type="OnUse" target="This" Snapped="true" delay="20" />
+      <!-- Remove 1 second after snapping -->
+      <StatusEffect type="Always" target="This" delay="1" checkconditionalalways="true">
+        <Conditional Snapped="true" />
+        <Remove />
+      </StatusEffect>
+      <!-- Snap after 2 seconds if not stuck to anything -->
+      <StatusEffect type="OnUse" target="This" Snapped="true" delay="2" checkconditionalalways="true">
+        <Conditional targetitemcomponent="Projectile" IsStuckToTarget="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.5" setvalue="true" projectilepullforce="300" />
+      <StatusEffect type="OnDeath" target="This" Snapped="true" />
+    </Rope>
+    <Projectile characterusable="false" launchimpulse="15.0" sticktocharacters="true" stickpermanently="true" maxtargetstohit="1">
+      <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" setvalue="true" comparison="And">
+        <Conditional IsStuckToTarget="true" />
+        <Affliction identifier="drag" strength="5" />
+        <Affliction identifier="stun" strength="2" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" condition="-25" comparison="And">
+        <Conditional IsStuckToTarget="true" />
+        <Conditional IsDead="true" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="abyssalcrawlergrab" identifier="abyssalcrawlergrab" tags="grabber" health="50" hideinmenus="true" category="" sonarsize="0" scale="1" damagedbyexplosions="false" damagedbyprojectiles="false" damagedbyrepairtools="false" damagedbymeleeweapons="false">
+    <InventoryIcon texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="15" density="10" />
+    <Rope targetpullforce="230" projectilepullforce="0" maxlength="1500" snaponcollision="false" spritewidth="50" tile="true">
+      <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <EndSprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="0,0,2,2" depth="0.56" origin="0.5,0.5" />
+      <!-- Automatically snap after 20 seconds -->
+      <StatusEffect type="OnUse" target="This" Snapped="true" delay="5" />
+      <!-- Remove 1 second after snapping -->
+      <StatusEffect type="Always" target="This" delay="1" checkconditionalalways="true">
+        <Conditional Snapped="true" />
+        <Remove />
+      </StatusEffect>
+      <!-- Snap after 2 seconds if not stuck to anything -->
+      <StatusEffect type="OnUse" target="This" Snapped="true" delay="2" checkconditionalalways="true">
+        <Conditional targetitemcomponent="Projectile" IsStuckToTarget="false" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" delay="0.5" setvalue="true" projectilepullforce="300" />
+      <StatusEffect type="OnDeath" target="This" Snapped="true" />
+    </Rope>
+    <Projectile characterusable="false" launchimpulse="15.0" sticktocharacters="true" stickpermanently="true" maxtargetstohit="1">
+      <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" setvalue="true" comparison="And">
+        <Conditional IsStuckToTarget="true" />
+        <Affliction identifier="drag" strength="5" />
+        <Affliction identifier="stun" strength="2" />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="UseTarget,This" checkconditionalalways="true" condition="-25" comparison="And">
+        <Conditional IsStuckToTarget="true" />
+        <Conditional IsDead="true" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+</Items>

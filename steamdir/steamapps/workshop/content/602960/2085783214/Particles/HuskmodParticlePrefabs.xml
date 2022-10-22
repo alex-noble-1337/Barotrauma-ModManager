@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<prefabs>
+  <huskmutantacidsplash lifetime="0.5" startdelaymin="0" startdelaymax="0.2" angularvelocitymin="0" angularvelocitymax="0" startrotationmin="0" startrotationmax="360" rotatetodirection="False" drag="0" waterdrag="0" velocitychange="0,-5" velocitychangewater="0,-0.1" collisionradius="1" usecollision="True" deleteoncollision="False" friction="0.5" restitution="0.5" startsizemin="1,1" startsizemax="1,1" sizechangemin="1,1" sizechangemax="1.2,1.2" growtime="0.1" startcolor="5,0,0,255" endcolor="200,200,0,255" drawtarget="Both" blendstate="AlphaBlend" animduration="1" loopanim="True" drawontop="True">
+    <animatedsprite texture="Content/Particles/Spatter1.png" sourcerect="0,0,1024,1024" columns="4" rows="8" origin="0.2,0.5" />
+    <animatedsprite texture="Content/Particles/Spatter2.png" sourcerect="0,0,1024,1024" columns="4" rows="8" origin="0.5,0.5" />
+    <animatedsprite texture="Content/Particles/Spatter3.png" sourcerect="0,0,1024,1024" columns="4" rows="8" origin="0.3,0.5" />
+  </huskmutantacidsplash>
+  <huskgoo startsizemin="0.1,0.1" startsizemax="0.1,0.1" sizechangemin="1,1" sizechangemax="1.8,1.8" startrotationmin="0" startrotationmax="360" startcolor="5,0,0,200" startalpha="255,255,255,0" lifetime="3" growtime="0.2" usecollision="False" friction="0.01" restitution="0.2" collisionradius="30" velocitychange="0,0" startdelaymin="0" startdelaymax="0" angularvelocitymin="0" angularvelocitymax="0" rotatetodirection="False" drag="0" waterdrag="0" velocitychangewater="0,0" deleteoncollision="False" endcolor="5,5,0,0" drawtarget="Both" blendstate="AlphaBlend" animduration="1" loopanim="True" drawontop="False">
+    <sprite texture="Content/Particles/ParticleAtlas.png" sourcerect="256,128,128,128" />
+    <sprite texture="Content/Particles/ParticleAtlas.png" sourcerect="256,254,128,128" />
+    <sprite texture="Content/Particles/ParticleAtlas.png" sourcerect="384,128,128,128" />
+  </huskgoo>
+  <watcherscreechparticle lifetime="4" startdelaymin="0" startdelaymax="0" angularvelocitymin="0" angularvelocitymax="0" startrotationmin="0" startrotationmax="360" rotatetodirection="False" drag="0" waterdrag="0" velocitychange="0,0" velocitychangewater="0,0" collisionradius="1" usecollision="False" deleteoncollision="False" friction="0.5" restitution="0.5" startsizemin="2,2" startsizemax="2.5,2.5" sizechangemin="30,30" sizechangemax="35,35" growtime="2" startcolor="0,0,0,255" endcolor="200,200,200,0" drawtarget="Both" blendstate="AlphaBlend" animduration="1.0" loopanim="True" drawontop="True">
+    <sprite texture="%ModDir:Improved Husks%/Particles/watcherscreechparticle.png" sourcerect="0,0,128,128" />
+  </watcherscreechparticle>
+  <watcherhuskblood startsizemin="2,2" startsizemax="3.5,3.5" sizechangemin="0.1,0.1" sizechangemax="0.6,0.6" startrotationmin="0" startrotationmax="360" startcolor="15,15,0,255" endcolor="0,0,0,0" growtime="2" lifetime="38" velocitychange="0,0" startdelaymin="0" startdelaymax="0" angularvelocitymin="-10" angularvelocitymax="10" rotatetodirection="False" drag="100" waterdrag="100" velocitychangewater="0,0" collisionradius="1" usecollision="True" deleteoncollision="True" friction="0.5" restitution="0.5" drawtarget="Water" blendstate="AlphaBlend" animduration="1" loopanim="True" drawontop="True">
+    <sprite texture="Content/Particles/ParticleAtlas.png" sourcerect="384,254,128,128" />
+  </watcherhuskblood>
+  <huskheadclaws startsizemin="1,1" startsizemax="1,1" sizechangemin="1,1" sizechangemax="1.1,1.1" startrotationmin="0" startrotationmax="360" startcolor="255,255,255,255" startalpha="255,255,255,255" lifetime="0.6" growtime="0.1" usecollision="False" friction="0.01" restitution="0.2" collisionradius="30" velocitychange="0,0" startdelaymin="0" startdelaymax="0" angularvelocitymin="0" angularvelocitymax="0" rotatetodirection="False" drag="0" waterdrag="0" velocitychangewater="0,0" deleteoncollision="False" endcolor="255,255,255,200" drawtarget="Both" blendstate="AlphaBlend" animduration="0.2" loopanim="True" drawontop="True">
+    <animatedsprite texture="%ModDir:Improved Husks%/Particles/huskheadattackparticle.png" sourcerect="0,0,144,32" columns="4" rows="1" origin="0.5,0.5" />
+  </huskheadclaws>
+  <blackgoo lifetime="10" startdelaymin="0" startdelaymax="0" angularvelocitymin="0" angularvelocitymax="0" startrotationmin="10" startrotationmax="360" rotatetodirection="False" drag="0" waterdrag="0" velocitychange="0,0" velocitychangewater="0,0" collisionradius="10" usecollision="False" deleteoncollision="False" friction="0" restitution="0.5" startsizemin="2,2" startsizemax="3,3" sizechangemin="0.1,0.1" sizechangemax="0.1,0.1" growtime="1" startcolor="0,0,0,255" endcolor="0,0,0,0" drawtarget="Both" blendstate="AlphaBlend" animduration="3" loopanim="True" drawontop="False">
+    <animatedsprite texture="Content/Particles/ballastfloraSpore.png" sourcerect="0,0,1024,512" columns="8" rows="4" origin="0.5,0.5" />
+  </blackgoo>
+</prefabs>

@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FractalburrowerSwimSlow UseSineMovement="False" Flip="True" FlipCooldown="1" FlipDelay="0.5" Mirror="True" MirrorLerp="True" WaveAmplitude="4.6324515" WaveLength="76.19873" RotateTowardsMovement="True" TailTorque="30" TailTorqueMultiplier="4.98" FootAngles="" TailAngle="90.00006" SteerTorque="25" LegTorque="25" MovementSpeed="1.6881251" CycleSpeed="1" HeadAngle="89" TorsoAngle="92" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

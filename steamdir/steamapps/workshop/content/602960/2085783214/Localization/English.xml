@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="English" nowhitespace="false" translatedname="English">
+  <!-- Characters -->
+  <character.huskmutantcrawler>Mutant Crawler</character.huskmutantcrawler>
+  <character.huskmutantmudraptor>Mutant Mudraptor</character.huskmutantmudraptor>
+  <character.huskmutantarmored>Armored Mutant Husk</character.huskmutantarmored>
+  <character.huskmutanthunter>Hunter Mutant Husk</character.huskmutanthunter>
+  <character.huskmutanthuman>Mutant Husk</character.huskmutanthuman>
+  <character.huskmutantcocooncrawler>Husk Cocoon</character.huskmutantcocooncrawler>
+  <character.huskmutanttigerthresher>Mutant Thresher</character.huskmutanttigerthresher>
+  <character.huskmutantbonethresher>Mutant Thresher</character.huskmutantbonethresher>
+  <character.snatcher>Snatcher</character.snatcher>
+  <character.nibbler>Nibbler</character.nibbler>
+  <character.micoteron>Micoteron</character.micoteron>
+  <!-- Items -->
+  <entityname.unstablehuskeggs>Unstable Velonaceps Calyx Eggs</entityname.unstablehuskeggs>
+  <entitydescription.unstablehuskeggs>Eggs of the Europan lifeform colloquially referred to as 'husk parasite'. These ones are teeming with activity!</entitydescription.unstablehuskeggs>
+  <entityname.unstablehuskstinger>Unstable Husk Stinger</entityname.unstablehuskstinger>
+  <entitydescription.unstablehuskstinger>A hardened Black Stinger. It seems to pulse every so often.</entitydescription.unstablehuskstinger>
+  <entityname.endwormhuskprojectile>Wriggling Mass</entityname.endwormhuskprojectile>
+  <entityname.huskmutantembryo>Mutant Embryo</entityname.huskmutantembryo>
+  <entitydescription.huskmutantembryo>A strange underdeveloped creature. It is currently inactive.</entitydescription.huskmutantembryo>
+  <entityname.calyxinjector>Calyx Injector</entityname.calyxinjector>
+  <entitydescription.calyxinjector>An ominous injector-like contraption. Used for crafting.</entitydescription.calyxinjector>
+  <entityname.calyxinjectorsymbiotic>Symbiotic Calyx Injector</entityname.calyxinjectorsymbiotic>
+  <entitydescription.calyxinjectorsymbiotic>An ominous injector-like contraption. Injects a modified version of the husk infection that will bring the benefits (and drawbacks) of being a husk to its host.</entitydescription.calyxinjectorsymbiotic>
+  <entityname.calyxinjectorbooster>Booster Calyx Injector</entityname.calyxinjectorbooster>
+  <entitydescription.calyxinjectorbooster>An ominous injector-like contraption. Injects a concotion that temporarily boost the some of the patient's internal processes' speed, such as healing and growth. May have unintended side effects.</entitydescription.calyxinjectorbooster>
+  <!-- Afflictions -->
+  <afflictionname.huskmutation>Husk Mutation</afflictionname.huskmutation>
+  <afflictiondescription.huskmutation>The skin contorts and the bones crack... something foul is happening.</afflictiondescription.huskmutation>
+  <afflictionname.symbiotichusk>Symbiotic Husk Infection</afflictionname.symbiotichusk>
+  <afflictiondescription.symbiotichusk>Something alien but benevolent thrives within...</afflictiondescription.symbiotichusk>
+  <afflictionname.huskinfectionhealing>Husk Infection Healing</afflictionname.huskinfectionhealing>
+  <afflictiondescription.huskinfectionhealing>The symbiotic husk keeps your body oxygenated and produces other beneficial substances that can make you recover from a critical state.</afflictiondescription.huskinfectionhealing>
+  <afflictionname.huskinfectionaffinity>Husk Infection Affinity</afflictionname.huskinfectionaffinity>
+  <afflictiondescription.huskinfectionaffinity>The symbiotic husk has fully established itself within your body, providing pressure resistance and control over the common husk infection, preventing it from taking over you entirely.</afflictiondescription.huskinfectionaffinity>
+  <afflictionname.huskheadhijacking1>Head Hijacking</afflictionname.huskheadhijacking1>
+  <afflictiondescription.huskheadhijacking1>A severed head is attempting to dislocate your skull! Attempting to push it away by yourself seems to be futile... You need to ask someone else to shoot it off!</afflictiondescription.huskheadhijacking1>
+  <afflictionname.blacktoxin>Black Toxin</afflictionname.blacktoxin>
+  <afflictiondescription.blacktoxin>Throbbing black veins are spreading around the patient's skin, spreading some sort of black liquid at an alarming rate.</afflictiondescription.blacktoxin>
+  <afflictionname.boosterhusk>Booster Husk Infection</afflictionname.boosterhusk>
+  <afflictiondescription.boosterhusk>A powerful but volatile mixture of stem-like cells quickly integrate themselves in your body, allowing for extremely quick healing.</afflictiondescription.boosterhusk>
+  <afflictionname.growth>Growth</afflictionname.growth>
+</infotexts>

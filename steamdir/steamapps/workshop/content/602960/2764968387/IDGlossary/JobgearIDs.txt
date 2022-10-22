@@ -1,0 +1,33 @@
+==============
+Coalition (Standard) Equipment
+
+- scp_bodyrig (Plate Carrier Rig)
+- scp_heavyvest (Heavy Body Armor)
+- scp_heavyrig (Heavy Body Armor Rig)
+- scp_specialrig (Special Carrier Rig)
+- scp_heavyuniform (Heavy Combat Uniform)
+- scp_combatmedicuniform (Combat Medic Uniform)
+
+==============
+Renegade Equipment
+
+- scp_renegadeuniform
+- scp_renegadecaptainuniform
+- scp_renegadevest
+- scp_renegadeplatecarrier
+- scp_renegadehelmet
+- scp_renegadedivingsuit
+
+==============
+Backpacks
+
+- scp_assaultpack
+- scp_tacpack
+- scp_fieldpack
+- scp_heavypack (Collosal Backpack)
+
+==============
+Utility Equipment
+
+- scp_heavymechanicuniform (Engineering Suit)
+- scp_heavyhazmatuniform (Heavy HAZMAT Suit)

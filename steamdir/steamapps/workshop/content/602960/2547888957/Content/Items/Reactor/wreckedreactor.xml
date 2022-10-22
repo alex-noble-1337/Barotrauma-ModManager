@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Item name="" identifier="reactor1wrecked" nameidentifier="reactor1" tags="reactor" type="Reactor" category="Wrecked">
+    <!--<trigger />-->
+    <Sprite texture="Content/Items/Shipwrecks/WreckedItems.png" sourcerect="3,625,321,192" depth="0.8" origin="0.5,0.5" />
+    <ItemContainer capacity="6" slotsperrow="3" canbeselected="true" hideitems="true" msg="ItemMsgInteractSelect">
+      <GuiFrame relativesize="0.15,0.25" anchor="Center" style="ItemUI" />
+      <Containable items="smallitem,mediumitem" />
+      <StatusEffect type="Always" target="This" delay="0" disabledeltatime="true" stackable="false" comparison="And">
+        <sound file="%ModDir%/Content/Items/Reactor/highradiation.ogg" type="OnUse" range="500.0" loop="true" volume="0.5" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This">
+        <ParticleEmitter particle="smoke" particleburstamount="3" particleburstinterval="0.5" particlespersecond="2" scalemin="1" scalemax="2.5" anglemin="0" anglemax="359" velocitymin="-50" velocitymax="50" underwaterbubble="false" />
+        <ParticleEmitter particle="swirlysmoke" particlespersecond="3" scalemin="1" scalemax="2" anglemin="0" anglemax="360" velocitymin="0" velocitymax="10" />
+        <Conditional condition="e 0" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="This" stackable="false" delay="0.5">
+        <Conditional condition="e 0" />
+        <Explosion range="500" structuredamage="0" force="0.001" flames="false" sparks="false" shockwave="false" camerashake="0" ignorecover="false" smoke="false" flashrange="0" underwaterbubble="false">
+          <Affliction identifier="radiationsickness" strength="20" />
+          <Affliction identifier="radiationgeiger" strength="20" />
+          <Affliction identifier="contamination" strength="10" />
+        </Explosion>
+      </StatusEffect>
+    </ItemContainer>
+    <Upgrade gameversion="0.1500.7.0" noninteractable="false" />
+  </Item>
+</Override>

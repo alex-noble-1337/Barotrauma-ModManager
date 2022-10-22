@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="Fractaldestroyer" SpeciesTranslationOverride="" DisplayName="Fractal Destroyer" Group="ancientalien" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" CanSpeak="False" UseBossHealthBar="True" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="False" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="False" SonarDisruption="20" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <health Vitality="6800" DoesBleed="False" CrushDepth="-Infinity" UseHealthWindow="False" BleedingReduction="0" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="True" ApplyAfflictionColors="False" />
+  <Limb name="RightArm">
+    <VitalityMultiplier type="bleeding" multiplier="0" />
+    <VitalityMultiplier type="burn" multiplier="0.1" />
+    <VitalityMultiplier type="lacerations" multiplier="0.5" />
+    <VitalityMultiplier type="bitewounds" multiplier="0.5" />
+  </Limb>
+  <sound gender="None" dontmuffle="True" File="%ModDir%/Characters/ExtendedMonsterCreatures/fractaldestroyer/FRACTALDESTROYER_idle1.ogg" State="Attack" Range="5000" Volume="2" Tags="" />
+  <StatusEffect type="OnActive" target="this">
+    <Sound file="%ModDir%/Characters/ExtendedMonsterCreatures/Fractaldestroyer/Fractalspawn.ogg" loop="false" range="40000" dontmuffle="true" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" targetlimb="Head">
+    <Explosion range="10" structuredamage="0" force="1" smoke="false" sparks="true" shockwave="true" underwaterbubble="false" severlimbsprobability="1.0" camerashake="300" camerashakerange="10000" flashrange="10000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0"></Explosion>
+    <sound file="%ModDir%/Characters/ExtendedMonsterCreatures/fractaldestroyer/FRACTALDESTROYER_die1.ogg" range="5000" volume="8" selectionmode="All" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="2" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="4" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="6" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="8" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="10" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="12" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="14" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="16" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="18" target="This" targetlimb="Head">
+    <Explosion range="100" structuredamage="0" force="1" smoke="false" sparks="false" shockwave="true" underwaterbubble="false" severlimbsprobability="0.0" camerashake="1" camerashakerange="5000" flashrange="5000" flashduration="1.0" screencolor="155,100,0,25" screencolorrange="5000" screencolorduration="2.0">
+      <!-- <Affliction identifier="burn" strength="1" /> -->
+    </Explosion>
+    <sound file="Content/Items/Weapons/Emp.ogg" range="5000" volume="2" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="20" target="This" targetlimb="Head">
+    <sound file="Content/Items/Weapons/ElectricalDischarger.ogg" range="6000" volume="8" selectionmode="All" />
+    <sound file="Content/Items/Weapons/Emp.ogg" range="8000" volume="8" />
+    <Explosion range="8000" force="0.1" smoke="false" sparks="true" empstrength="15" shockwave="true" underwaterbubble="false" severlimbsprobability="0.1" camerashake="300" camerashakerange="10000" flashrange="10000" flashduration="5.0" screencolor="155,100,0,255" screencolorrange="5000" screencolorduration="3.0">
+      <Affliction identifier="explosiondamage" strength="5" />
+      <Affliction identifier="stun" strength="5" />
+    </Explosion>
+  </StatusEffect>
+  <StatusEffect target="NearbyCharacters" range="10000">
+    <Affliction identifier="radiationsickness" strength="0.08" />
+    <Sound file="Content/Items/Alien/ALIEN_guardianPodLoop.ogg" loop="true" gender="None" range="10000" dontmuffle="true" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" delay="20" target="This" targetlimb="Head">
+    <sound file="Content/Items/Weapons/ExplosionLarge1.ogg" range="6000" volume="8" selectionmode="All" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="30" scalemax="30" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+    <Explosion range="1500" stun="0.5" structuredamage="1000" force="0.1" smoke="false" sparks="true" empstrength="25" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="800" camerashakerange="10000">
+      <Affliction identifier="burn" strength="40" />
+      <Affliction identifier="radiationsickness" strength="100" />
+      <Affliction identifier="explosiondamage" strength="10" />
+      <Affliction identifier="stun" strength="10" />
+    </Explosion>
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="200">
+    <RemoveCharacter />
+  </StatusEffect>
+  <StatusEffect type="OnActive">
+    <Conditional HealthPercentage="lte 30" />
+    <Affliction identifier="internaldamage" strength="0.4" />
+    <Affliction identifier="strengthen" strength="50" />
+  </StatusEffect>
+  <Inventory Slots="Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="True" Commonness="1">
+    <Item Identifier="decorem" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item Identifier="fulguriumfuelrod" />
+    <Item Identifier="fulguriumfuelrod" />
+    <Item Identifier="fulguriumfuelrod" />
+    <Item count="2" Identifier="coalitionmedal" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="True" Commonness="5">
+    <Item count="3" Identifier="cigar" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item count="2" Identifier="coalitionmedal" />
+    <Item Identifier="fulguriumfuelrod" />
+    <Item Identifier="fulguriumfuelrod" />
+    <Item Identifier="alientrinket3" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="True" Commonness="8">
+    <Item count="8" Identifier="handcannonammo" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item Identifier="thoriumfuelrod" />
+    <Item Identifier="alientrinket1" />
+    <Item count="2" Identifier="coalitionmedal" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="True" Commonness="10">
+    <Item Identifier="alientrinket2" />
+    <Item Identifier="k_em_fractalsensor" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item Identifier="k_em_fractalthorn" />
+    <Item Identifier="thoriumfuelrod" />
+    <Item Identifier="fuelrod" />
+    <Item count="2" Identifier="coalitionmedal" />
+  </Inventory>
+  <ai CombatStrength="20000" Sight="7" Hearing="7" AggressionHurt="100" AggressionGreed="10" FleeHealthThreshold="0" AttackWhenProvoked="True" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="True" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="1" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="6">
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="decoy" State="Attack" Priority="300" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="nasonov" State="Attack" Priority="200" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="stronger" State="PassiveAggressive" Priority="200" ReactDistance="2000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="leucocyte" State="Avoid" Priority="10" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="weapon" State="Attack" Priority="100" ReactDistance="2000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="wall" State="Attack" Priority="80" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="2" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="sonar" State="Attack" Priority="20" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="2" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="room" State="Attack" Priority="80" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="human" State="Attack" Priority="25" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="weaker" State="Attack" Priority="25" ReactDistance="2000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="turret" State="Attack" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="terminalcell" State="Idle" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target ignorewhileinside="False" ignorewhileoutside="False" damagethreshold="0" Tag="magmalarva" State="Idle" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+</Character>

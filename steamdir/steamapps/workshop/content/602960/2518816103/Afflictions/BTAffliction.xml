@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="Consumed" identifier="consumed" target="human" description="You are being eaten alive" type="consumed" limbspecific="false" indicatorlimb="Torso" causeofdeathdescription="Consumed" selfcauseofdeathdescription="You've been consumed" activationthreshold="0" showinhealthscannerthreshold="1" showiconthreshold="1" showicontoothersthreshold="1" maxstrength="1">
+    <Effect minstrength="0.1" maxstrength="1" minvitalitydecrease="0" maxvitalitydecrease="2" multiplybymaxvitality="true" strengthchange="0.1">
+      <StatusEffect target="Character" comparison="and">
+        <Conditional speciesname="human" />
+        <Affliction identifier="Bleeding" strength="100" />
+      </StatusEffect>
+      <StatusEffect type="OnDeath" target="Character">
+        <RemoveCharacter />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/MainIconsAtlas.png" sourcerect="0,512,128,128" color="195,136,60,255" origin="0,0" />
+  </Affliction>
+</Afflictions>

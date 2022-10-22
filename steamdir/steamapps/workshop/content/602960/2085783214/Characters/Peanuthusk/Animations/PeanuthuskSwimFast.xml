@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PeanutSwimFast movementspeed="3" steertorque="3" waveamplitude="3.4006948" wavelength="26.57285" flip="True" headangle="128" torsoangle="33" mirror="True" rotatetowardsmovement="True" torsotorque="15" headtorque="15" foottorque="10" tailtorque="1" footangle="0" cyclespeed="5" animationtype="SwimFast" footangles="10: 1.580441,15: 0,11: 0" usesinemovement="False" tailangle="NaN" tailtorquemultiplier="1" flipcooldown="0.5" flipdelay="0.1" mirrorlerp="True" type="Peanut" legtorque="25" armikstrength="1" handikstrength="1" />

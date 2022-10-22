@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Observer" humanoid="False" displayname="Dybbuk" group="anomaly" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="True" noise="100" visibility="100" blooddecal="blood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0" speciestranslationoverride="" usebosshealthbar="True" bleedparticlemultiplier="1" distantsonarrange="0" disabledistance="25000">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter particle="blood" particleamount="10" scalemin="1" scalemax="2" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="waterblood" particleamount="1" scalemin="1" scalemax="2" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="gib" particleamount="30" velocitymin="200" velocitymax="1500" anglemin="0" anglemax="360" scalemin="1" scalemax="2" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="heavygib" particleamount="15" velocitymin="50" velocitymax="1000" anglemin="0" anglemax="360" scalemin="1" scalemax="2" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="1000" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0.5" burnreduction="0.5" constanthealthregeneration="0.1" healthregenerationwheneating="0" />
+  <sound file="Content/Characters/legacywatcher/attack1.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/attack2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/attack3.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/watch1.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/watch2.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/watch3.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/watch4.ogg" state="Idle" range="500" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/watch5.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacywatcher/watch6.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <ai combatstrength="1000" attackwhenprovoked="True" sight="7" hearing="5" aggressionhurt="100" aggressiongreed="10" fleehealththreshold="0" avoidgunfire="False" aggressiveboarding="False" enforceaggressivebehaviorformissions="True" targetinnerwalls="False" randomattack="False" targetouterwalls="True" avoidtime="3" minfleetime="20" infiltrate="False" canopendoors="False" avoidabyss="True" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Heading,Steering">
+    <target tag="decoy" state="Observe" priority="600" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="stronger" state="Escape" priority="15" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="human" state="Observe" priority="10" reactdistance="4000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="True" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Circle" circlestartdistance="5000" circlerotationspeed="2" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="light" state="Observe" priority="10" reactdistance="5000" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Circle" circlestartdistance="5000" circlerotationspeed="2" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="provocative" state="Attack" priority="20" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+  </ai>
+  <StatusEffect type="OnActive" target="NearbyCharacters" tag="EMI" range="12000">
+    <Affliction identifier="observerpresense" strength="10" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" tag="EMI" range="10000">
+    <Affliction identifier="observerpresense" strength="20" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" tag="EMI" range="7000">
+    <Affliction identifier="observerpresense" strength="50" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyCharacters" tag="EMI" range="5000">
+    <Affliction identifier="observerpresense" strength="100" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="NearbyItems" targettags="junctionbox" range="5000.0" setvalue="true" stackable="false" extraload="500" delay="1" />
+  <StatusEffect type="OnDeath" target="NearbyCharacters" range="20000">
+    <ReduceAffliction identifier="observerpresense" strength="100" />
+    <ReduceAffliction identifier="observersgaze" strength="100" />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="This" checkconditionalways="true" comparison="and" delay="10" stackable="false">
+    <Conditional isdead="false" />
+    <SpawnItem identifier="electropulse" spawnposition="This" count="2" spread="3000" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="500">
+    <RemoveCharacter />
+  </StatusEffect>
+  <inventory slots="Any, Any" accessiblewhenalive="False" commonness="1">
+    <item identifier="swimbladder" />
+    <item identifier="elastin" />
+  </inventory>
+</Character>

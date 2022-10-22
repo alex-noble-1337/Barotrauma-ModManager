@@ -1,0 +1,310 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Afflictions>
+  <Affliction name="Waterborne Waste Spores" identifier="waterbornespores" description="Spores are in the water." type="gaze" targets="human" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="false" indicatorlimb="Torso" showiconthreshold="1" showinhealthscannerthreshold="1000" maxstrength="10" iconcolors="128,128,0,255">
+    <Effect minstrength="0" maxstrength="1" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="-1" />
+    <Effect minstrength="1" maxstrength="10" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="-1">
+      <StatusEffect type="Always" target="Character" stackable="false" delay="1">
+        <SpawnItem identifier="wastewaterdetector" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+  <Affliction name="Waste Spores" identifier="wastespores" description="You can visibly see yellow spores floating around you like a foul stench." type="gaze" targets="human" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="false" indicatorlimb="Torso" activationthreshold="0" showiconthreshold="1" showinhealthscannerthreshold="1" karmachangeonapplied="-1" maxstrength="10" strengthchange="-0.1" iconcolors="128,128,0,255">
+    <Effect minstrength="1" maxstrength="10" minvitalitydecrease="0" maxvitalitydecrease="0">
+      <StatusEffect type="Always" target="Character" stackable="false" delay="10">
+        <SpawnItem identifier="wastesporeemitter" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="Character" stackable="false" delay="5" comparison="and">
+        <Conditional wasteinfection="e 0" />
+        <Conditional oxygenlow="ne 0" />
+        <Affliction identifier="wasteinfection" amount="0.1" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/UI/Thalicons.png" sourcerect="512,768,128,128" color="60,107,195,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Waste infection" identifier="wasteinfection" description="Patient complains about itching and internal burning sensations. The skin is a pale green." type="alieninfection" targets="human" huskedspeciesname="Wastemutant[speciesname]" causeofdeathdescription="Melted by waste infection" selfcauseofdeathdescription="Your body melted from waste infection" limbspecific="false" indicatorlimb="Torso" activationthreshold="0" showiconthreshold="100" showinhealthscannerthreshold="50" karmachangeonapplied="-1" maxstrength="200" transformthresholdondeath="85" causespeechimpediment="false" sendmessages="false" needsair="false" iconcolors="128,128,0,255">
+    <Effect minstrength="0" maxstrength="50" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="0.2" minfacetint="0,255,0,0" maxfacetint="0,255,0,20">
+      <StatusEffect Type="Always" target="Character">
+        <Conditional ishuman="true" />
+        <ReduceAffliction identifier="oxygenlow" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="50" maxstrength="100" strengthchange="0.4" minchromaticaberration="0.0" maxchromaticaberration="5.0" minfacetint="0,255,0,20" maxfacetint="0,255,0,40">
+      <StatusEffect target="Character" stackable="false" delay="0.1">
+        <Conditional ishuman="true" />
+        <Affliction identifier="organdamage" amount="1" />
+        <Affliction identifier="nausea" amount="0.5" />
+      </StatusEffect>
+      <StatusEffect Type="Always" target="Character">
+        <Conditional ishuman="true" />
+        <ReduceAffliction identifier="oxygenlow" amount="1" />
+        <ReduceAffliction identifier="bleeding" amount="0.01" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="100" maxstrength="150" minscreendistort="0.0" maxscreendistort="1.0" strengthchange="0.6" minchromaticaberration="5.0" maxchromaticaberration="10.0" minradialdistort="0.0" maxradialdistort="1.0" minfacetint="0,255,0,40" maxfacetint="0,255,0,60">
+      <StatusEffect target="Character" Type="Always" targetlimbs="Head" duration="1" stackable="false" delay="30">
+        <Conditional HideFace="eq False" />
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+        <SpawnItem identifier="wastesporeemitter" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="5" velocitymin="50" velocitymax="200" />
+      </StatusEffect>
+      <StatusEffect Type="Always" target="Character" stackable="false" delay="0.1">
+        <Conditional ishuman="true" />
+        <Affliction identifier="organdamage" amount="1" />
+        <Affliction identifier="burn" amount="0.5" />
+        <Affliction identifier="nausea" amount="1" />
+      </StatusEffect>
+      <StatusEffect Type="Always" target="Character">
+        <Conditional ishuman="true" />
+        <ReduceAffliction identifier="oxygenlow" amount="1" />
+        <ReduceAffliction identifier="bleeding" amount="0.1" />
+        <ReduceAffliction identifier="bloodloss" amount="0.01" />
+      </StatusEffect>
+      <StatusEffect type="OnDeath" target="Character" setvalue="true" stackable="false" duration="10">
+        <particleemitter particle="heavygib" particleamount="2" emitinterval="3" particlespersecond="0" velocitymin="60" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="100" scalemin="1" scalemax="2" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+        <particleemitter particle="bloodsplash" particleamount="1" emitinterval="2" particlespersecond="0" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <particleemitter particle="whitegoosplash" particleamount="4" emitinterval="2" particlespersecond="0" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <Sound file="%ModDir%/Audio/acid_rain.ogg" loop="False" volume="2" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="150" maxstrength="199" minscreendistort="1.0" maxscreendistort="2.0" strengthchange="0.8" minchromaticaberration="10.0" maxchromaticaberration="10.0" minradialdistort="1.0" maxradialdistort="2.0" minfacetint="0,255,0,60" maxfacetint="0,255,0,80">
+      <StatusEffect target="Character" targetlimbs="Head" stackable="false" delay="1">
+        <Conditional ishuman="true" />
+        <ParticleEmitter particle="MistSmoke" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="5" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+      </StatusEffect>
+      <StatusEffect target="Character" Type="Always" targetlimbs="Head" duration="1" stackable="false" delay="20">
+        <Conditional HideFace="eq False" />
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+        <SpawnItem identifier="wastesporeemitter" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="5" velocitymin="50" velocitymax="200" />
+      </StatusEffect>
+      <StatusEffect target="Character" stackable="false" delay="0.1">
+        <Conditional ishuman="true" />
+        <Affliction identifier="organdamage" amount="1" />
+        <Affliction identifier="nausea" amount="5" />
+        <Affliction identifier="burn" amount="1" />
+        <ReduceAffliction identifier="oxygenlow" amount="10" />
+      </StatusEffect>
+      <StatusEffect Type="Always" target="Character">
+        <Conditional ishuman="true" />
+        <ReduceAffliction identifier="oxygenlow" amount="1" />
+        <ReduceAffliction identifier="bleeding" amount="0.5" />
+        <ReduceAffliction identifier="bloodloss" amount="0.1" />
+      </StatusEffect>
+      <StatusEffect type="OnDeath" target="Character" setvalue="true" stackable="false" duration="10">
+        <particleemitter particle="heavygib" particleamount="2" emitinterval="3" particlespersecond="0" velocitymin="60" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="100" scalemin="1" scalemax="2" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+        <particleemitter particle="bloodsplash" particleamount="1" emitinterval="2" particlespersecond="0" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <particleemitter particle="whitegoosplash" particleamount="4" emitinterval="2" particlespersecond="0" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <Sound file="%ModDir%/Audio/acid_rain.ogg" loop="False" volume="2" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="199" maxstrength="200" minscreendistort="2.0" maxscreendistort="3.0" strengthchange="1" minchromaticaberration="10.0" maxchromaticaberration="10.0" minradialdistort="2.0" maxradialdistort="5.0" minfacetint="0,255,0,80" maxfacetint="0,255,0,120">
+      <StatusEffect target="Character" targetlimbs="Head">
+        <Conditional ishuman="true" />
+        <ParticleEmitter particle="MistSmoke" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="1" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+      </StatusEffect>
+      <StatusEffect target="Character" Type="Always" targetlimbs="Head" duration="1" stackable="false" delay="10">
+        <Conditional HideFace="eq False" />
+        <ParticleEmitter particle="bloodsplash" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="50" velocitymin="50" velocitymax="200" scalemin="0.1" scalemax="0.2" />
+        <SpawnItem identifier="wastesporeemitter" copyentityangle="true" anglemin="-10" anglemax="10" particlespersecond="5" velocitymin="50" velocitymax="200" />
+      </StatusEffect>
+      <StatusEffect Type="Always" target="Character" stackable="false" delay="0.1">
+        <Conditional ishuman="true" />
+        <Affliction identifier="burn" amount="3" />
+        <Affliction identifier="nausea" amount="10" />
+        <Affliction identifier="organdamage" amount="10" />
+        <Affliction identifier="internaldamage" amount="10" />
+      </StatusEffect>
+      <StatusEffect Type="Always" target="Character">
+        <Conditional ishuman="true" />
+        <ReduceAffliction identifier="oxygenlow" amount="1" />
+        <ReduceAffliction identifier="bleeding" amount="1" />
+        <ReduceAffliction identifier="bloodloss" amount="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnDeath" target="Character" setvalue="true" stackable="false" duration="10">
+        <particleemitter particle="heavygib" particlespersecond="2" velocitymin="30" velocitymax="60" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="10" scalemin="1" scalemax="2" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+        <particleemitter particle="bloodsplash" particlespersecond="1" velocitymin="10" velocitymax="30" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <particleemitter particle="whitegoosplash" particlespersecond="4" velocitymin="10" velocitymax="30" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" copyentityangle="True" />
+        <Sound file="%ModDir%/Audio/acid_rain.ogg" loop="False" volume="2" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="%ModDir%/UI/Thalicons2.png" sourcerect="0,384,128,128" color="60,107,195,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Waste Infection Resistance" identifier="wasteinfectionresistance" description="Waste be gone." type="resistance" isbuff="true" limbspecific="false" maxstrength="600">
+    <Effect minstrength="0" maxstrength="600" strengthchange="-1" resistancefor="wasteinfection" minresistance="0" maxresistance="0.75" />
+    <icon texture="%ModDir%/UI/Thalicons2.png" sourcerect="384,896,128,128" color="10,193,114,255" origin="0,0" />
+  </Affliction>
+  <!--<Affliction
+    name="Temporary Morbusine Poisoning"
+    identifier="tempmorb"
+    description="You suddenly feel like you can't breathe anymore and you can feel your body going cold."
+    type="poison"
+    targets="human"
+    causeofdeathdescription="Died of sudden morbusine poisoning"
+    selfcauseofdeathdescription="You've died from morbusine poisoning"
+    limbspecific="false"
+    indicatorlimb="Torso"
+    activationthreshold="0"
+    showiconthreshold="10"    
+    karmachangeonapplied="-1"
+    maxstrength="100"
+    iconcolors="60,140,195,255;60,107,195,255;60,0,195,255">
+  </Affliction>-->
+  <Affliction name="Growth" identifier="growthmod1" description="The creature is growing." type="creaturegrowth" limbspecific="false" indicatorlimb="Torso" showiconthreshold="0" activationthreshold="0" showinhealthscannerthreshold="0" showicontoothersthreshold="0" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" strengthchange="0">
+      <StatusEffect target="Character" SpeedMultiplier="1.1" setvalue="true" />
+    </Effect>
+    <PeriodicEffect mininterval="1" maxinterval="10">
+      <!-- Grow creatures to enhanced forms when affliction reaches 100 strength -->
+      <StatusEffect target="Character" comparison="and">
+        <Conditional speciesname="Lionthresher" />
+        <Conditional isdead="false" />
+        <Conditional growth="gte 100" />
+        <SpawnCharacter speciesname="TigerSharkThresher" count="1" spread="0" />
+        <RemoveCharacter />
+      </StatusEffect>
+    </PeriodicEffect>
+  </Affliction>
+  <Affliction name="Mysterious Signal" identifier="spooky1" description="You begin to hear strange screams from your headset, perhaps a nearby relay is emitting these sounds?" type="gaze" limbspecific="false" indicatorlimb="Head" causeofdeathdescription="" selfcauseofdeathdescription="" activationthreshold="0" showinhealthscannerthreshold="1000" showiconthreshold="0" showicontoothersthreshold="0" maxstrength="10">
+    <Effect minstrength="1" maxstrength="10" strengthchange="-9">
+      <StatusEffect target="Character" comparison="and" targetlimb="Head" checkconditionalalways="true">
+        <Conditional HasStatusTag="eq headset" />
+        <Conditional IsPlayer="True" />
+        <Sound file="%ModDir%/Audio/Spook.ogg" loop="True" volume="1" dontmuffle="true" />
+      </StatusEffect>
+    </Effect>
+    <Icon texture="Content/UI/TalentsIcons2.png" sourcerect="901,645,118,119" color="155,0,0,255" origin="0,0" />
+  </Affliction>
+  <Affliction name="Reflected" identifier="shocker" description="" type="shocker" causeofdeathdescription="" selfcauseofdeathdescription="" limbspecific="false" showinhealthscannerthreshold="1000" showiconthreshold="1000" showicontoothersthreshold="1000" maxstrength="100">
+    <Effect minstrength="0" maxstrength="100" minscreendistort="0.7" maxscreendistort="0.9" minradialdistort="0.7" maxradialdistort="0.9" minscreenblur="0.8" maxscreenblur="1.2" minchromaticaberration="0.5" maxchromaticaberration="1.0" strengthchange="-3">
+      <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true" />
+    </Effect>
+    <PeriodicEffect mininterval="3" maxinterval="6">
+      <StatusEffect target="Character">
+        <Conditional IsPlayer="True" />
+        <Conditional speciesname="eq human" />
+        <Affliction identifier="stun" amount="1" />
+        <Affliction identifier="psychosis" amount="5" />
+        <Sound file="%ModDir%/Audio/heartbeat.ogg" volume="1" />
+      </StatusEffect>
+      <AfflictionOverlay texture="%ModDir%/Ambient/screenblack.png" />
+    </PeriodicEffect>
+  </Affliction>
+  <!--<Affliction name="Carved (Internal)" identifier="thal_gutted" description="INTERNAL USE ONLY" type="resistance" causeofdeathdescription="Carved Organs" selfcauseofdeathdescription="You have died from having your muscles carved out of you." limbspecific="false" indicatorlimb="Torso" showiconthreshold="1000" maxstrength="100" 
+    showicontoothersthreshold="1000"
+    showinhealthscannerthreshold="1000" >
+    <Effect minstrength="0" maxstrength="100" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="0.0"></Effect>
+    <icon texture="Mods/Survivor Other Creature fixes/UI/Thalicons.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0" />
+  </Affliction>
+  
+  <Affliction name="Carved" identifier="thal_unguttable" description="The patient's muscles are removed." type="resistance" causeofdeathdescription="Carved Organs" selfcauseofdeathdescription="You have died from having your muscles carved out of you." limbspecific="false" indicatorlimb="Torso" showiconthreshold="0" maxstrength="1"  >
+    <Effect minstrength="0" maxstrength="100" minvitalitydecrease="0" maxvitalitydecrease="0" strengthchange="0.0">
+    <StatusEffect target="Character" type="Always" delay="1" stackable="false" >
+			<Conditional thal_gutted="gt 1" />
+			<ReduceAffliction identifier="thal_gutted" amount="300" />
+    </StatusEffect>
+    </Effect>
+    <icon texture="Mods/Survivor Other Creature fixes/UI/Thalicons.png" sourcerect="896,640,128,128" color="139,60,42,255" origin="0,0" />
+  </Affliction>
+	
+  <Affliction name="Repletion" identifier="yummyeating" description="The patient's stomach is busy digesting food; At maximum affliction, they are full. When repletion reaches 100, they will be unable to consume any food. Notably seperate from nutrition, which is beneficial." type="resistance" causeofdeathdescription="Ate themselves to death." selfcauseofdeathdescription="You have eaten yourself to death." limbspecific="false" indicatorlimb="Torso" showiconthreshold="0" maxstrength="100">
+    <Effect minstrength="0" maxstrength="97" strengthchange="-0.1"></Effect>
+    <Effect minstrength="97" maxstrength="100" strengthchange="-0.04"></Effect>
+    <icon texture="Mods/Survivor Other Creature fixes/UI/Thalicons.png" sourcerect="0,640,128,128" color="139,60,42,255" origin="0,0" />
+  </Affliction>
+  
+  <Affliction name="Nutrition" identifier="bodynutrition" description="The patient's body is benefitting from the nutrition of a previous meal. Natural regenerative processes of cells are sped up, and buffs circulate in the bloodstream for longer.  These effects become more pronounced the more nutrition there is. Healthy food has a better nutrition to fillingness ratio." type="resistance" isbuff="true" causeofdeathdescription="Ate themselves to death." selfcauseofdeathdescription="You have eaten yourself to death." limbspecific="false" indicatorlimb="Torso" showiconthreshold="0" maxstrength="100">
+    <Effect minstrength="0" maxstrength="30" strengthchange="-0.1" minbuffmultiplier="1.2" maxbuffmultiplier="1.3">
+      <StatusEffect target="Character" SpeedMultiplier="1.1" setvalue="true">
+        <ReduceAffliction identifier="bleeding" amount="0.02" />
+        <ReduceAffliction identifier="bloodloss" amount="0.01" />
+        <ReduceAffliction identifier="damage" strength="0.05" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="30" maxstrength="60" strengthchange="-0.1" minbuffmultiplier="1.3" maxbuffmultiplier="1.4">
+      <StatusEffect target="Character" SpeedMultiplier="1.15" setvalue="true">
+        <ReduceAffliction identifier="bleeding" amount="0.05" />
+        <ReduceAffliction identifier="bloodloss" amount="0.04" />
+        <ReduceAffliction identifier="damage" strength="0.05" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="60" maxstrength="90" strengthchange="-0.1" minbuffmultiplier="1.4" maxbuffmultiplier="1.4">
+      <StatusEffect target="Character" SpeedMultiplier="1.15" setvalue="true">
+        <ReduceAffliction identifier="bleeding" amount="0.08" />
+        <ReduceAffliction identifier="bloodloss" amount="0.4" />
+        <ReduceAffliction identifier="damage" strength="0.07" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="90" maxstrength="100" strengthchange="-0.1" minbuffmultiplier="1.4" maxbuffmultiplier="1.6">
+      <StatusEffect target="Character" SpeedMultiplier="1.2" setvalue="true">
+        <ReduceAffliction identifier="bleeding" amount="0.1" />
+        <ReduceAffliction identifier="bloodloss" amount="0.4" />
+        <ReduceAffliction identifier="damage" strength="0.10" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Mods/Survivor Other Creature fixes/UI/Thalicons.png" sourcerect="128,640,128,128" color="139,60,42,255" origin="0,0" />
+  </Affliction>
+  
+  <Affliction name="Dark Craving" identifier="darkcraving" description="You have a compelling urge to eat human flesh." type="poison" causeofdeathdescription="Unknown." selfcauseofdeathdescription="You have lost yourself." limbspecific="false" indicatorlimb="Torso" showiconthreshold="10" maxstrength="100">
+    <Effect minstrength="5" maxstrength="30" minscreendistort="0.0" maxscreendistort="0.5" strengthchange="-0.1">
+      <StatusEffect target="Character" SpeedMultiplier="0.8" setvalue="true">
+        <ReduceAffliction identifier="thal_nutrition" amount="0.1" />
+        <Affliction identifier="thal_diarrhea" amount="0.05" />
+		<Affliction identifier="psychosis" amount="0.01" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="30" maxstrength="100" minscreendistort="0.5" maxscreendistort="0.9" strengthchange="-0.1">
+      <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true">
+        <ReduceAffliction identifier="thal_nutrition" amount="0.1" />
+        <Affliction identifier="thal_diarrhea" amount="0.1" />
+      </StatusEffect>
+    </Effect>-
+	
+  <Affliction name="Food Poisoning" identifier="foodpoison" description="You feel extreme discomfort in your abdomen, likely stemming from eating infected or unclean food. It's hard for you to walk." type="poison" causeofdeathdescription="Died of food poisoning." selfcauseofdeathdescription="You have died of food poisoning." limbspecific="True" indicatorlimb="Torso" showiconthreshold="10" maxstrength="100">
+    <Effect minstrength="5" maxstrength="30" minscreendistort="0.0" maxscreendistort="0.5" strengthchange="-0.1">
+      <StatusEffect target="Character" SpeedMultiplier="0.8" setvalue="true">
+        <ReduceAffliction identifier="bodynutrition" amount="0.1" />
+        <Affliction identifier="organdamage" amount="0.1" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="30" maxstrength="100" minscreendistort="0.5" maxscreendistort="0.9" strengthchange="-0.1">
+      <StatusEffect target="Character" SpeedMultiplier="0.6" setvalue="true">
+        <ReduceAffliction identifier="bodynutrition" amount="0.1" />
+        <Affliction identifier="organdamage" amount="0.2" />
+      </StatusEffect>
+    </Effect>
+  </Affliction>
+	
+   <Affliction name="Kuru" identifier="brainprion" description="You feel like you've lost sense of your body and cannot move at all." type="poison" causeofdeathdescription="Died of Kuru." selfcauseofdeathdescription="Died of Kuru. (Avoid eating any brain parts!)" limbspecific="false" indicatorlimb="Torso" showiconthreshold="40" maxstrength="100">
+    <Effect minstrength="0" maxstrength="30" strengthchange="-0.01">
+      <StatusEffect target="Character" SpeedMultiplier="0.8" setvalue="true">
+        <Affliction identifier="internaldamage" amount="0.05" />
+        <Affliction identifier="nausea" amount="0.05" />
+        <Affliction identifier="progressivestun" amount="0.02" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="30" maxstrength="60" strengthchange="0">
+      <StatusEffect target="Character" SpeedMultiplier="0.5" setvalue="true">
+        <Affliction identifier="internaldamage" amount="0.08" />
+        <Affliction identifier="nausea" amount="0.1" />
+        <Affliction identifier="progressivestun" amount="0.10" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="60" maxstrength="90" strengthchange="-0.1" minbuffmultiplier="1.4" maxbuffmultiplier="1.4">
+      <StatusEffect target="Character" SpeedMultiplier="0.4" setvalue="true">
+        <Affliction identifier="internaldamage" amount="0.08" />
+        <Affliction identifier="nausea" amount="0.1" />
+        <Affliction identifier="progressivestun" amount="0.10" />
+      </StatusEffect>
+    </Effect>
+    <Effect minstrength="90" maxstrength="100" strengthchange="-0.1" minbuffmultiplier="1.4" maxbuffmultiplier="1.6">
+      <StatusEffect target="Character" SpeedMultiplier="0.4" setvalue="true">
+        <Affliction identifier="internaldamage" amount="0.10" />
+        <Affliction identifier="nausea" amount="1" />
+        <Affliction identifier="paralysis" amount="1" />
+        <Affliction identifier="progressivestun" amount="1" />
+      </StatusEffect>
+    </Effect>
+    <icon texture="Content/UI/Thalicons2.png" sourcerect="640,640,128,128" color="106,106,106,255" origin="0,0"/>
+  </Affliction>-->
+</Afflictions>

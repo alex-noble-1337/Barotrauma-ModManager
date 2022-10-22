@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CharybdishuskSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" flipcooldown="0" flipdelay="0" mirror="False" mirrorlerp="False" waveamplitude="100" wavelength="200" rotatetowardsmovement="True" torsotorque="500" headtorque="1500" tailtorque="500" tailtorquemultiplier="2" foottorque="25" footangles="" tailangle="90" steertorque="100" movementspeed="18" cyclespeed="1" headangle="83" torsoangle="80" type="Charybdishusk" legtorque="25" armikstrength="1" handikstrength="1" />

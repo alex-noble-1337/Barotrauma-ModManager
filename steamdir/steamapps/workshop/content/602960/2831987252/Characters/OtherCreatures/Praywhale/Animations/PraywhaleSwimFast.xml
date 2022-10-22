@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<PraywhaleSwimFast type="Praywhale" UseSineMovement="False" Flip="True" FlipCooldown="1" FlipDelay="0.5" Mirror="True" MirrorLerp="True" WaveAmplitude="39.42606" WaveLength="450" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="101" SteerTorque="25" LegTorque="25" MovementSpeed="16" CycleSpeed="1" HeadAngle="36" TorsoAngle="56" HeadTorque="80" TorsoTorque="25" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

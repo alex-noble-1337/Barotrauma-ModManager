@@ -1,0 +1,11 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<huskappendage>
+  <limb id="13" name="eyeball" type="None" inheritlimbdepth="Head" width="0.1" height="0.1" notes="" flip="True" healthindex="0" attackpriority="0" steerforce="0" stepoffset="0,0" radius="20" mass="0" density="5" pullpos="0,0" refjoint="-1" ignorecollisions="False" friction="0.3" restitution="0.05" spriteorientation="NaN" mirrorvertically="False" mirrorhorizontally="False" hide="False" angulardamping="7" mouthpos="0,0" constanttorque="0" constantangle="0" scale="0.5" attackforcemultiplier="1" minseverancedamage="0.8" severedfadeouttime="0" applytailangle="False" applysinemovement="True">
+    <sprite sourcerect="437,5,68,96" origin="0.3,0.3" depth="0.049" color="255,255,255,255" deadcolor="70,70,70,255" deadcolortime="20" texture="%ModDir:Genes+Revived%/Textures/Genetic.png" />
+    <damagemodifier armorsector="0,360" afflictiontypes="damage" damagemultiplier="0.1" damagesound="LimbArmor" damageparticle="brownchunks" deflectprojectiles="True" afflictionidentifiers="" probabilitymultiplier="1" />
+    <damagemodifier armorsector="0,360" afflictiontypes="bleeding" damagemultiplier="0" damagesound="LimbArmor" deflectprojectiles="True" afflictionidentifiers="" probabilitymultiplier="1" damageparticle="" />
+    <damagemodifier armorsector="0,360" afflictiontypes="burn" damagemultiplier="0.25" damagesound="" deflectprojectiles="True" afflictionidentifiers="" probabilitymultiplier="1" damageparticle="" />
+  </limb>
+  <!-- Head to husk appendage -->
+  <joint name="Head to Watcher Eyeball" limb1="1" limb2="13" limb1anchor="6,-5" limb2anchor="0,0" upperlimit="76" weldjoint="false" lowerlimit="60" canbesevered="False" limitenabled="True" />
+</huskappendage>

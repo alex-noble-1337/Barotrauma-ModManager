@@ -1,0 +1,99 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <MonsterMission name="Salvaging an artifact" identifier="surprisefractal" tags="killmonster_set4" type="Monster" description="Researchers of [location1] have picked up an infrasonic signal highly similar to those emitted by alien artifacts previously discovered on Europa. Investigate the signal and retrieve the potential artifact." difficulty="4" commonness="15" reward="7500" sonarlabel="Infrasonic signal" successmessage="It turns out the signal was emitted by a massive artifact. The researchers of [location1] have agreed to pay you the reward nevertheless for getting rid of the problem." monsterfile="Fractaldestroyer">
+    <Reputation identifier="location" amount="15" />
+    <Reputation identifier="coalition" amount="2" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="512,0,256,256" color="49,93,233" />
+  </MonsterMission>
+  <BeaconMission name="Activate Beacon" identifier="beaconbtem6" textidentifier="beaconmission" tags="beacon,beaconnoreward" type="Beacon" description="The beacon station between [location1] and [location2] is down - get in there and get it back online and transmitting an active sonar signal." difficulty="3" commonness="200" reward="2500">
+    <monster character="Brainmoss3" min="1" max="3" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <Reputation identifier="coalition" amount="5" />
+    <message header="Beacon reactivated" text="The beacon station is back online. Make sure it stays transmitting, and navigate the submarine to [location2] to claim your reward." />
+  </BeaconMission>
+  <MonsterMission name="Terminate a Infested Submarine" description="Scouts have reported of a large Wrecked Carrier that has been taken over by infestated growth. It is now still moving around [location1] and [location2] and the authorities are offering a reward of [reward] to any submarine that takes out the mobile thalamus. Be warned that it has a hook on its front side and must be approached carefully." successmessage="The ship has been terminated." identifier="killthalamuscarrier" type="Monster" tags="killmonster_set3" commonness="20" difficulty="3" reward="7900" sonarlabel="Thalamus Carrier" maxsonarmarkerdistance="10000">
+    <monster character="Thalamuscarrier" />
+    <Reputation identifier="location" amount="34" />
+    <Reputation identifier="coalition" amount="3" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <MonsterMission name="Terminate a large Shadow Whale swarm" description="Scouts have reported of a large swarm of Shadow Whales wandering the area between [location1] and [location2]. These Whales are invisible on sonar and can pose a big threat towards unprepared ships. The authorities are offering a reward of [reward] to any submarine that takes out the large swarm." successmessage="The swarm has been terminated." identifier="killshadowwhales" type="Monster" tags="killmonster_set4" commonness="20" difficulty="3" reward="7900" sonarlabel="Specified Location" maxsonarmarkerdistance="10000">
+    <monster character="Shadowwhale" min="5" max="8" />
+    <Reputation identifier="location" amount="34" />
+    <Reputation identifier="coalition" amount="3" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <message header="Target  eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern." />
+  </MonsterMission>
+  <BeaconMission name="Activate Beacon" identifier="beaconbtem7" textidentifier="beaconmission" tags="beacon,beaconnoreward" type="Beacon" description="The beacon station between [location1] and [location2] is down - get in there and get it back online and transmitting an active sonar signal." difficulty="3" commonness="200" reward="2500">
+    <monster character="Paralyticshark" min="1" max="3" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <Reputation identifier="coalition" amount="5" />
+    <message header="Beacon reactivated" text="The beacon station is back online. Make sure it stays transmitting, and navigate the submarine to [location2] to claim your reward." />
+  </BeaconMission>
+  <BeaconMission name="Activate Beacon" identifier="beaconbtem8" textidentifier="beaconmission" tags="beacon,beaconnoreward" type="Beacon" description="The beacon station between [location1] and [location2] is down - get in there and get it back online and transmitting an active sonar signal." difficulty="3" commonness="200" reward="2500">
+    <monster character="Icecrab" min="2" max="5" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <Reputation identifier="coalition" amount="5" />
+    <message header="Beacon reactivated" text="The beacon station is back online. Make sure it stays transmitting, and navigate the submarine to [location2] to claim your reward." />
+  </BeaconMission>
+  <BeaconMission name="Activate Beacon" identifier="beaconbtem10" textidentifier="beaconmission" tags="beacon,beaconnoreward" type="Beacon" description="The beacon station between [location1] and [location2] is down - get in there and get it back online and transmitting an active sonar signal." difficulty="3" commonness="200" reward="2500">
+    <monster character="Brainmoss1" min="2" max="3" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <Reputation identifier="coalition" amount="5" />
+    <message header="Beacon reactivated" text="The beacon station is back online. Make sure it stays transmitting, and navigate the submarine to [location2] to claim your reward." />
+  </BeaconMission>
+  <BeaconMission name="Activate Beacon" identifier="beaconbttroll" textidentifier="beaconmission" tags="beacon,beaconnoreward" type="Beacon" description="The beacon station between [location1] and [location2] is down - get in there and get it back online and transmitting an active sonar signal." difficulty="4" commonness="10" reward="2500">
+    <monster character="fractaldestroyer" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,256,256,256" color="243,146,55" />
+    <Reputation identifier="coalition" amount="5" />
+    <message header="Beacon reactivated" text="Wait, what was that noise?" />
+  </BeaconMission>
+  <MonsterMission name="Hunting grounds" identifier="huntinggroundsnoreward3" textidentifier="huntinggrounds" tags="huntinggroundsnoreward,huntinggrounds,killmonsterrare" type="Monster" sideobjective="true" difficulty="4" commonness="9" reward="11250" sonarlabel="target" spawntype="Abyss" maxsonarmarkerdistance="20000" successmessage="" monsterfile="Voidleviathan">
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,768,256,256" color="214,50,48" />
+    <message header="Target terminated" text="The monster is dead. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Hunting grounds" identifier="huntinggroundsnoreward5" textidentifier="huntinggrounds" tags="huntinggroundsnoreward,huntinggrounds,killmonsterrare" type="Monster" sideobjective="true" difficulty="4" commonness="7" reward="11250" sonarlabel="target" spawntype="Abyss" maxsonarmarkerdistance="20000" successmessage="" monsterfile="Fractaldestroyer">
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="5" />
+    <Icon texture="Content/UI/MissionIcons2.png" sourcerect="256,768,256,256" color="214,50,48" />
+    <message header="Target terminated" text="The monster is dead. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="Beast from the Abyss" identifier="killvoidleviathan" tags="killmonster_set3" type="Monster" description="Seismic readings are indicating that something colossal has emerged from the depths of Europa into the passageway between [location1] and [location2]. All transports through the passageway have been canceled for now and a reward of [reward] has been promised to those who get rid of whatever is causing the seismic activity." difficulty="4" commonness="60" reward="11250" sonarlabel="Seismic Activity" successmessage="The Leviathan is dead and the passageway is open for transport again." monsterfile="Voidleviathan">
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <LocationType to="UnderAttack" from="Research" />
+    <LocationType to="UnderAttack" from="City" />
+    <LocationType to="UnderAttack" from="Military" />
+    <LocationType to="UnderAttack" from="Outpost" />
+    <LocationType to="UnderAttack" from="Research" />
+    <LocationType to="UnderAttack" from="None" />
+    <LocationType to="UnderAttack" from="Lair" />
+    <Reputation identifier="location" amount="100" />
+    <Reputation identifier="coalition" amount="15" />
+    <message header="Target terminated" text="The beast is dead. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission name="The Twins" identifier="twins" type="Monster" tags="killmonster_set4" description="A week ago some divers uncovered a ruin between [location1] and [location2]. While they were inside, one of the divers recorded triggering some sort of mechanism and the entire ruin shooked. The subs sonar captured a massive wave of sonar disruption and all their electronics were fried. Upon further investigation, the scientists at base realize the large level of disruption is still seen between the path at [location1] and [location2] and are offering [reward] towards anyone who is willing to investigate. " difficulty="4" commonness="15" reward="11250" sonarlabel="Disruption Zone" successmessage="The cause of the massive sonar disruption was infact from two robotic Fractal Destroyers, the scientists are very excited to hear about your encounter.">
+    <monster character="fractaldestroyer" count="1" />
+    <monster character="twin" count="1" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="City" />
+    <LocationType to="WasteyardDE" from="Military" />
+    <LocationType to="WasteyardDE" from="Outpost" />
+    <LocationType to="WasteyardDE" from="Research" />
+    <LocationType to="WasteyardDE" from="None" />
+    <LocationType to="WasteyardDE" from="Lair" />
+    <LocationType to="WasteyardDE" from="WasteyardDE" />
+    <Reputation identifier="location" amount="100" />
+    <Reputation identifier="coalition" amount="15" />
+    <message header="Target terminated" text="The beast is dead. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+</Missions>

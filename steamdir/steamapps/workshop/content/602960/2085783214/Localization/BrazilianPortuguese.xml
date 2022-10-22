@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Brazilian Portuguese" nowhitespace="false" translatedname="Português brasileiro">
+  <!-- Characters -->
+  <character.huskmutantcrawler>Reptante Mutante</character.huskmutantcrawler>
+  <character.huskmutantmudraptor>Raptor de Terra Mutante</character.huskmutantmudraptor>
+  <character.huskmutantarmored>Parasita-Carcaça Mutante Blindado</character.huskmutantarmored>
+  <character.huskmutanthunter>Parasita-Carcaça Mutante Caçador</character.huskmutanthunter>
+  <character.huskmutanthuman>Parasita-Carcaça Mutante</character.huskmutanthuman>
+  <character.huskmutantcocooncrawler>Casulo de Parasita-Carcaça</character.huskmutantcocooncrawler>
+  <character.huskmutanttigerthresher>Debrulhador Mutante</character.huskmutanttigerthresher>
+  <character.huskmutantbonethresher>Debrulhador Mutante</character.huskmutantbonethresher>
+  <character.snatcher>Aranha-Sequestradora</character.snatcher>
+  <character.nibbler>Verme Faminto</character.nibbler>
+  <character.micoteron>Micoteron</character.micoteron>
+  <!-- Items -->
+  <entityname.unstablehuskeggs>Ovos de Velonaceps Calyx Instáveis</entityname.unstablehuskeggs>
+  <entitydescription.unstablehuskeggs>Ovos dormentes da forma de vida europana conhecida popularmente como 'Parasita-Carcaça'. Esses estão repletos de atividade!</entitydescription.unstablehuskeggs>
+  <entityname.unstablehuskstinger>Ferrão de Parasita-Carcaça Instável</entityname.unstablehuskstinger>
+  <entitydescription.unstablehuskstinger>Um ferrão escuro rígido. Parece pulsar vez ou outra.</entitydescription.unstablehuskstinger>
+  <entityname.endwormhuskprojectile>Massa Contorcida</entityname.endwormhuskprojectile>
+  <entityname.huskmutantembryo>Embrião Mutante</entityname.huskmutantembryo>
+  <entitydescription.huskmutantembryo>Uma criatura estranha pouco desenvolvida. Atualmente está inativa.</entitydescription.huskmutantembryo>
+  <entityname.calyxinjector>Injetor de Calyx</entityname.calyxinjector>
+  <entitydescription.calyxinjector>Uma engenhoca que parece ser um injetor. Usado para fabricação.</entitydescription.calyxinjector>
+  <entityname.calyxinjectorsymbiotic>Injetor de Calyx Simbiótico</entityname.calyxinjectorsymbiotic>
+  <entitydescription.calyxinjectorsymbiotic>Uma engenhoca que parece ser um injetor. Injeta uma versão modificada da infecção de parasita-carcaça que trará benefícios (e efeitos colaterais) de ser um parasita-carcaça ao usuário.</entitydescription.calyxinjectorsymbiotic>
+  <entityname.calyxinjectorbooster>Injetor de Reforço Calyx</entityname.calyxinjectorbooster>
+  <entitydescription.calyxinjectorbooster>Uma engenhoca que parece ser um injetor. Injeta uma mistura que aumenta temporariamente a velocidade de alguns processos internos do paciente, como cura e crescimento. Pode ter efeitos colaterais indesejados.</entitydescription.calyxinjectorbooster>
+  <!-- Afflictions -->
+  <afflictionname.huskmutation>Mutação de Parasita-Carcaça</afflictionname.huskmutation>
+  <afflictiondescription.huskmutation>A pele se contorce e os ossos racham... algo horrível está acontecendo.</afflictiondescription.huskmutation>
+  <afflictionname.symbiotichusk>Infecção de Parasita-Carcaça Simbiótica</afflictionname.symbiotichusk>
+  <afflictiondescription.symbiotichusk>Algo alienígena, mas benéfico, prospera internamente...</afflictiondescription.symbiotichusk>
+  <afflictionname.huskinfectionhealing>Regeneração de Parasita-Carcaça</afflictionname.huskinfectionhealing>
+  <afflictiondescription.huskinfectionhealing>O parasita-carcaça simbiótico mantém seu corpo oxigenado e produz outras substâncias benéficas que podem fazer você se recuperar de um estado crítico.</afflictiondescription.huskinfectionhealing>
+  <afflictionname.huskinfectionaffinity>Afinidade a Infecção de Parasita-Carcaça</afflictionname.huskinfectionaffinity>
+  <afflictiondescription.huskinfectionaffinity>O parasita-carcaça simbiótico estabeleceu-se totalmente dentro do seu corpo, proporcionando resistência à pressão e controle sobre a infecção comum de parasita-carcaça, impedindo que ela o domine completamente.</afflictiondescription.huskinfectionaffinity>
+  <afflictionname.huskheadhijacking1>Deslocamento de Cabeça</afflictionname.huskheadhijacking1>
+  <afflictiondescription.huskheadhijacking1>Uma cabeça decepada está tentando deslocar seu crânio! Tentar afastá-la sozinho parece ser inútil... Você precisa pedir a outra pessoa para atirar nela!</afflictiondescription.huskheadhijacking1>
+  <afflictionname.blacktoxin>Toxina Escura</afflictionname.blacktoxin>
+  <afflictiondescription.blacktoxin>Veias pretas latejantes estão se espalhando pela pele do paciente, espalhando algum tipo de líquido escuro a uma taxa alarmante.</afflictiondescription.blacktoxin>
+  <afflictionname.boosterhusk>Infecção de Parasita-Carcaça de Reforço</afflictionname.boosterhusk>
+  <afflictiondescription.boosterhusk>Uma mistura poderosa, mas volátil, de células-tronco se integram rapidamente ao seu corpo, permitindo uma cura extremamente rápida.</afflictiondescription.boosterhusk>
+  <afflictionname.growth>Crescimento</afflictionname.growth>
+</infotexts>

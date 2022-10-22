@@ -1,0 +1,320 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="English" nowhitespace="false" translatedname="English">
+  <!-- Afflictions -->
+  <afflictionname.dnadamage>DNA damage</afflictionname.dnadamage>
+  <afflictiondescription.dnadamage>Patient's DNA is getting too damaged to maintain vital body functions.</afflictiondescription.dnadamage>
+  <afflictioncauseofdeath.dnadamage>DNA damaged beyond viability threshold</afflictioncauseofdeath.dnadamage>
+  <afflictioncauseofdeathself.dnadamage>Your DNA can no longer maintain vital body functions.</afflictioncauseofdeathself.dnadamage>
+  <afflictionname.radiationresistance>Radio protectant</afflictionname.radiationresistance>
+  <afflictiondescription.radiationresistance>Prevents contamination and greatly protects against radiation.</afflictiondescription.radiationresistance>
+  <afflictionname.contamination>Radioactive material contamination</afflictionname.contamination>
+  <afflictiondescription.contamination>Patient has been contaminated with radioactive materials causing chronic radiation sickness and DNA damage.</afflictiondescription.contamination>
+  <afflictionname.lethalradiation>Acute radiation syndrome</afflictionname.lethalradiation>
+  <afflictiondescription.lethalradiation>Patient has been heavely irradiated for too long or recieved a fatal radiation dose and will die shortly without emergency treatment.</afflictiondescription.lethalradiation>
+  <afflictioncauseofdeath.lethalradiation>Lethal irradiation.</afflictioncauseofdeath.lethalradiation>
+  <afflictioncauseofdeathself.lethalradiation>You've died of a lethal radiation exposure.</afflictioncauseofdeathself.lethalradiation>
+  <!-- QoL Afflictions -->
+  <afflictionname.burningrod>Hot rod</afflictionname.burningrod>
+  <afflictiondescription.burningrod>You're holding a 2800°C hot fuel rod without appropriate tool!</afflictiondescription.burningrod>
+  <afflictioncauseofdeath.burningrod>Burned to death holding an overheated fuel rod.</afflictioncauseofdeath.burningrod>
+  <afflictionname.hazardexposure>Rod hazard exposure</afflictionname.hazardexposure>
+  <afflictiondescription.hazardexposure>You're within range of a fuel rod's harmfull effect wear appropriate protection.</afflictiondescription.hazardexposure>
+  <afflictionname.dnaregeneration>DNA regeneration</afflictionname.dnaregeneration>
+  <afflictiondescription.dnaregeneration>Patient's DNA is slowly getting restored.</afflictiondescription.dnaregeneration>
+  <afflictionname.antiradeffect>Anti-radiation drug effect</afflictionname.antiradeffect>
+  <afflictiondescription.antiradeffect>Patient's body is slowly getting purged from radioactive contaminants and radiation.</afflictiondescription.antiradeffect>
+  <!-- Medical items -->
+  <entityname.DTPA>DTPA</entityname.DTPA>
+  <entitydescription.DTPA>A more accessible but much slower acting alternative to anti-rad, useless against acute radiation syndrome.</entitydescription.DTPA>
+  <entityname.Potassiumiodide>Potassium iodide</entityname.Potassiumiodide>
+  <entitydescription.Potassiumiodide>Protects against radiation and radioactive contamination. Must be taken regulary in order to keep its full protective effects. Doesn't protect from lethal radiation sources.</entitydescription.Potassiumiodide>
+  <entityname.DNAstabiliser>DNA stabiliser</entityname.DNAstabiliser>
+  <entitydescription.DNAstabiliser>Rare and complex compound able to slowly restore damaged DNA over a long period of time, dangerous if injected by untrained personel.</entitydescription.DNAstabiliser>
+  <entityname.antirad>AntiRad</entityname.antirad>
+  <entitydescription.antirad>Very potent medecine able to purge in seconds the body of all radioactive elementes alogn radiation, better kept for medical emergencies.</entitydescription.antirad>
+  <entityname.radiotoxin>Radiotoxin</entityname.radiotoxin>
+  <entitydescription.radiotoxin>An extremely radioactif element able to cause acute radiation syndrome.</entitydescription.radiotoxin>
+  <!-- Containers -->
+  <entityname.fuelcrate>Radioactive material storage crate</entityname.fuelcrate>
+  <entitydescription.fuelcrate>A heavy secure storage crate to transport radioactive materials and fuel rods.</entitydescription.fuelcrate>
+  <entityname.fueltransportcylinder>Single unit fuel rod carrier</entityname.fueltransportcylinder>
+  <entitydescription.fueltransportcylinder>A single slot rod storage unit, a lot less bulky than its fuel crate counterpart, is secure enough to be able to store them in most lockers or crates.</entitydescription.fueltransportcylinder>
+  <entityname.ekutility_handtruck_reactorfuel>Fuelrod Handling Truck</entityname.ekutility_handtruck_reactorfuel>
+  <entitydescription.ekutility_handtruck_reactorfuel>A hand truck with shielded pig for moving around fuel rods.</entitydescription.ekutility_handtruck_reactorfuel>
+  <!-- Reactor items -->
+  <entityname.fuelrod>Uranium fuel rod</entityname.fuelrod>
+  <entitydescription.fuelrod>Standard nuclear fuel rod.</entitydescription.fuelrod>
+  <entityname.thoriumfuelrod>Thorium fuel rod</entityname.thoriumfuelrod>
+  <entitydescription.thoriumfuelrod>Can last up to three time as long as uranium rods.</entitydescription.thoriumfuelrod>
+  <entityname.fulguriumfuelrod>Fulgurium fuel rod</entityname.fulguriumfuelrod>
+  <entitydescription.fulguriumfuelrod>While it does not provide as much heat as any other fuel rods, it has fission monitoring capability coupled with high longevity to make it an excellent complementary fuel rod. Too stable to be used as is and needs to be pre-heated to be usable as fuel.</entitydescription.fulguriumfuelrod>
+  <entityname.fulguriumfuelrodvolatile>Volatile Fulgurium Fuel Rod</entityname.fulguriumfuelrodvolatile>
+  <entitydescription.fulguriumfuelrodvolatile>An amalgam rod of incendium and fulgurium, it doesn't have the potency of incendium and the longevity of fulgurium but has roughly half their respective strength but for nearly all their drawbacks.</entitydescription.fulguriumfuelrodvolatile>
+  <entityname.ekutility_incendiumfuelrod>Incendium fuel rod</entityname.ekutility_incendiumfuelrod>
+  <entitydescription.ekutility_incendiumfuelrod>Extremely potent but also very unstable, self heating if left uncontained to the point of exploding and melting the hull. Impact sensitive even in secure containers.</entitydescription.ekutility_incendiumfuelrod>
+  <entityname.supercritical_incendium>Supercritical incendium rod</entityname.supercritical_incendium>
+  <entitydescription.supercritical_incendium>This fuel rod has reached a supercritical state during the meltdown and is at risk of unleashing all its energy at once at the slightest impact, its realeased energy is enough to damage the hull around it but also seem to drain it quickly.</entitydescription.supercritical_incendium>
+  <entityname.supercritical_fulgurium>Supercritical volatile fulgurium rod</entityname.supercritical_fulgurium>
+  <entitydescription.supercritical_fulgurium>This fuel rod has reached a supercritical state during the meltdown and is at risk of unleashing all its energy at once at the slightest impact, its realeased energy is enough to damage the hull around it but also seem to drain it quickly. However the fulgurium amalgam make it burn much longer</entitydescription.supercritical_fulgurium>
+  <entityname.molten_rods>Corium</entityname.molten_rods>
+  <entitydescription.molten_rods>Solidified radioactive magma, emits an extreme amount of radiation.</entitydescription.molten_rods>
+  <!-- Weapons -->
+  <entityname.nukerod>Crisis warhead</entityname.nukerod>
+  <entitydescription.nukerod>A stasis locked supercritical alien fuel rod, the stasis emitters are very impact sensitive and may fail if hitting anything making it a very potent warhead.</entitydescription.nukerod>
+  <entityname.nukerodenhanced>Enhanced Crisis warhead</entityname.nukerodenhanced>
+  <entitydescription.nukerodenhanced>Crisis warhead further enhanced with fissile materials for increased heat generation on detonation. Also cause a gamma-ray burst.</entitydescription.nukerodenhanced>
+  <entitydescription.nucleargun>A prototype charge cycle energy weapon built using the unique alien materials on Europa. The dangers for the user depend of the loaded fuel rod.</entitydescription.nucleargun>
+  <!-- Mission text -->
+  <missionname.salvagewreckwarhead>Recover Experimental Weapon</missionname.salvagewreckwarhead>
+  <missiondescription.salvagewreckwarhead>A military Coalition sub has sunk nearby carying an experimental explosive device. Search the area for signs of its distress beacon and recover its cargo.</missiondescription.salvagewreckwarhead>
+  <missionsonarlabel.salvagewreckwarhead>Sunken Coalition submarine</missionsonarlabel.salvagewreckwarhead>
+  <missionsuccess.salvagewreckwarhead>The warhead has been recovered.</missionsuccess.salvagewreckwarhead>
+  <missionfailure.salvagewreckwarhead>Failed to recover the warhead.</missionfailure.salvagewreckwarhead>
+  <missionheader0.salvagewreckwarhead>Warhead recovered.</missionheader0.salvagewreckwarhead>
+  <missionmessage0.salvagewreckwarhead>You have found the lost warhead. Bring it to [location2] without detonating it to claim your reward. Be warned that it is extremely sensitive to any sort of damage.</missionmessage0.salvagewreckwarhead>
+  <!-- Misc/material items -->
+  <entityname.geigercounter>Geiger counter</entityname.geigercounter>
+  <entitydescription.geigercounter>Small device translating nearby radiation levels into audio and visual cues. Also passively monitor its carrier for radiation poisoning.</entitydescription.geigercounter>
+  <entityname.iodine>Iodine</entityname.iodine>
+  <entityname.du_p_alloy>Depleted uranium - physicorium alloy</entityname.du_p_alloy>
+  <entitydescription.du_p_alloy>Extremely sturdy and heavy alloy.</entitydescription.du_p_alloy>
+  <entityname.AI_microchip>AI microchip</entityname.AI_microchip>
+  <entitydescription.AI_microchip>AI controller for stasis emitters.</entitydescription.AI_microchip>
+  <entityname.stasisemitter>Stasis emitter array</entityname.stasisemitter>
+  <entitydescription.stasisemitter>Emitter array of a stasis field generator used for reinforced rod storage container.</entitydescription.stasisemitter>
+  <entityname.fueltrasnportcylinderreinforced>Reinforced single unit fuel rod carrier</entityname.fueltrasnportcylinderreinforced>
+  <entitydescription.fueltrasnportcylinderreinforced>A heavely reinforced rod storage with build in stasis system for extreme hazards containement. Can only be filled at a fabricator.</entitydescription.fueltrasnportcylinderreinforced>
+  <entityname.iodinecrystal>Diiodine crystal</entityname.iodinecrystal>
+  <entitydescription.iodinecrystal>Crystals made exclusively out of iodine</entitydescription.iodinecrystal>
+  <entityname.manual>Reactor operating manual</entityname.manual>
+  <entitydescription.manual>Contains all important elements around nuclear reactors and its related hazards.</entitydescription.manual>
+  <terminalwelcomemsg.manual>
+
+______________________________Europa's Nuclear submarine reactor operating manual v2.6____________________________
+
+
+_________________________________________________Summary__________________________________________________
+
+
+ I.   Introduction
+ II.  Reactor operating hazards
+ III. Reactor crisis management
+ IV.  Fuel rod hazards
+ V.   Europa Coalition's ban on certain alien materials
+ VI.  Radiation, contamination and medical care
+
+
+________________________________________________I. Introduction______________________________________________
+
+
+First off, congratulation on owning or operating a nuclear submarine in Europa's ocean.
+
+While the ocean of Europa are as treacherous as extremely dangerous. Some of the biggest dangers lays inside the safe walls of your own submarine.
+
+Nuclear power might be the beating heart of your submarine but its also one of the biggest threat if not regulary maintained.
+
+This standart issue manual is here to inform you and your crew of all its dangers and how to tackle them.
+
+Important note :
+
+-PUCS have proven to offer full radiation protection, abyss suit with its enhanced environmental protection grants 90% resistance and any other suits protection are rated at 75%.
+-All diving suit are closed breathing apparatus and therefore fully protects against radioactive materials contamination.
+
+
+__________________________________________II. Reactor operating hazards_______________________________________
+
+
+Due to the usualy short lifespan of a standart submarine crew little incentive has been made to make it safe to use avaiable nuclear reactors.
+
+Nuclear reactor are outfitted with a geiger counter wich tick rate sounds informs the crew of the current reactor room radiation levels. Hearing it means the room is unsafe for long exposure.
+
+For this reason personel having to stay for extended periods in the reactor room need at least to be wearing a nuclear engineer jumpsuit.
+
+As the reactor gets more and more damaged the leaked radiation output will increase, therefore appropriate safety gear and medication are highly recommended.
+
+Powering down the reactor will stop ambiant radiations as long its not too damaged.
+
+The reactor also won't emit radiations at all as long its in good condition.
+
+Standart reactor repair safety procedure
+
+Nuclear reactor are difficult to maintain and multiple accident with lethal consequences have been reported all over Europa already.
+
+So keep following the following procedures to repair it :
+
+-Step 1 : Wear a protective suit at all time, idealy a PUCS due to its complete radiation protection, alternatively an abyss suit combined with potassium iodide offer high radiation protection too.
+-Step 2 : Shut down reactor completely (temperature at 0 and lights turned off)
+-Step 3 : Repair reactor.
+
+
+WARNING Repairing a running reactor has high chance to cause a contaminated steam gaz explosion further damaging the reactor and irradiate all nearby personel.
+WARNING Untrained rewiring of the reactor can lead to a fatal electroshock accident.
+  
+  
+____________________________________________III. Reactor crisis management______________________________________
+
+
+Reactor crisis are to be treated as primary emergency and to be dealt with it ASAP.
+To warn the crew of an impending crisis, reactors have outfited with a 3 stage alarm system, 2 of which are classed as crisis alarms.
+
+Important notes regarding crisis alarms:
+Those alarms are also a warning about the reactor leaking both dangerous heat levels via superheated steam from a coolant system rupture wich include radioactive contaminant. Reactor shutdown will not stop the meltdown at this point.
+
+Crisis alarms give the crew less than a minute before the reactor detonate.
+
+Alarms sound description and recommended actions:
+
+Alarm 1 : Deep sounding buzz, overheat alarm.
+Lower fission rate ; Wait for it to self stabilize ; Remove excess rods
+
+Alarm 2 : Old overheating alarm, crisis stage 1 alarm.
+Put protective gear and move in to remove ALL contained fuel rods.
+
+Alarm 3 : Lo/Hi alarm, crisis stage 2 alarm.
+All crew not assisting with the reactor are required to get inside a diving suit and keep maximum distance with the reactor.
+Immediately put whatever protective gear you can find then move in and remove ALL contained fuel rods ASAP, beware of fire hazard.
+
+If the reactor room is equiped with a emergency flooding system, completely flood the reactor room : the water will severly limit the explosion caused by the molten core getting exposed. Though the fuel is still lost.
+
+Note : The meltdown scenario of a reactor is dependent if fuel was contained or not and wich rods were present when the reactor is destroyed when not flooded.
+
+Beware incendium rods and its variants are impact sensitive and will explode when handled roughly.
+
+When repairing the reactor after a meltdown refere to the repair safety procedure, the reactor should be considered an extreme radiation hazard at this point.
+  
+
+__________________________________________IV. Fuel rods hazards_______________________________________________
+
+Important information before dealing with this section, the fissile materials used in the manufacture of fuel rods must be stored in a secure crate or in a room isolated from the crew.
+Although their emissions are low, storing large quantities of these materials in one place can be as dangerous as a radiation leak from a reactor.
+
+Fuel rods have multiple layers of lethal hazards attached to them and untrained personel will cause a lot more harm than good manipulating them. A rod is deemed hazardous once its partialy or completely depleted, it will be glowing at this point.
+Unless placed inside of a running reactor, rods are *nearly* totaly safe to handle.
+Once active however, rods are to be treated with extreme care and stored in the following appropriate containers :
+
+-Radioactive material storage crate
+-Fuel handling trucks
+-Single unit rod carrier
+-The reactor itself
+
+There are 2 type of fuel rod hazards different for each fuel rod :
+
+-Active rod hazards
+-Meltdown hazards
+
+Rod hazards
+
+Any rods that are active will severly burn anyone holding it bare handed, due to the simple fact the rod is still over 2800°C hot. Also unsurprisingly, they tend to start fires.
+
+Uranium/Thorium rods
+
+Active hazard : Radiation, half as much for thorium rod.
+
+Meltdown hazard : Massive irradiation and contamination on a very large area.
+
+
+Incendium rods
+
+WARNING Self igniting when not in a secure storage. Impact sensitive and searing hot at any given time. Immediately place it inside a secured container to prevent self combustion then on a crate rack to prevent impact induced explosions.
+
+Active hazard : Thermal hazard able to melt through the hull and burn nearby personnel, also able to evaporate water. Can cause massive fire when exposed to air.
+
+Reactor effect : Extreme heat stress, increasing required maintenance. May cause frequent heat spikes at random. The rod pushes the reactor coolant system to its limit, making the area around the Reactor an extreme heat hazard should it go critical. 
+
+Meldtodwn hazard : See combat observation report. 
+
+
+Fulgurium rods
+
+Active hazard : EMP anomaly rapidely damaging junction boxes alongside harmfull electrical discharges. Cause temporary power grid failure.
+
+Reactor effect : Act as fission monitor, stabilising the reactor to prevent overheating to some extent. Cools down and become inert when exposed to water until re-heated so it should not be used on its own.
+
+Meltdown hazard : Massive EMP destroying all electronics.
+
+Reports of nearby submarine crews having also suffered from the EMP despite being far away, implying the range of the pulse to be extremely large and akin to an actual EMP warhead.
+
+
+Volatile fulgurium rods
+
+WARNING Impact sensitive even when properly stored, place the rods in a carrier crate and store it in a crate rack to truly secure them.
+
+Active hazard : Electrical anomaly rapidely damaging junction boxes, this effects is always active. Do not carry the rod outside safe containers. Thermal hazard able to melt hulls.
+
+Meltdown hazard : Massive EMP, see combat observation report.
+
+
+Observation report: The European Coalition marine corps during skirmishes with Jovian Separatists submarine have sometime witnessed reactor shots causing a out of scale explosion, followed by a bright flare like light seemingly melting away whats left of the sub's wreck before disapearing during a massive secondary explosion when impacting the ground.
+
+Scientists speculate fuel rod materials may react to a meltdown, collecting them would require a specialy designed container, heavy protection and a lot of planning.
+  
+  
+_______________________________________V.Europa Coalition's ban on certain alien materials_______________________________
+
+
+In the aftermath of the total loss of the Debral 3 European Coalition garrison to a terror attack from the Jovian Separatists using an unknown explosive which contained traces of certain alien materials.
+
+The European Coalition have issued the following order :
+
+European Coalition controlled military and research outpost are hereby the ONLY outpost allowed to own, store, sell or buy incendium and fulgurium along any item making use of those.
+Non compliance will be taken as support to the Jovian separatist, the Coalition will make use of lethal force if needed to reclaim the contreband.
+ 
+ 
+_____________________________________VI. Radiation, contamination and medical care_____________________________
+
+
+Radiation, also nicknamed the invisible death, is not to be taken lightly.
+
+While the body can purge it slowly over time it is recommended to use anti radiation medication as soon as the first symptoms appears :
+
+-Chronic burns
+-Nausea
+-Visual impairement
+
+Radioactive contamiantion is characterized by chronic irradiation.
+
+While antirad quickly cure both, its avaiability and price make it more of an emergency drug.
+
+DTPA is cheaper and easier to get by albeit is much slower on its active effect.
+
+Radioprotectant, also called Potassium Iodide, helps to prevent both irradiation and radioactive contamination but has no curing effects neither does it protect against lethal radiation sources.
+
+In order to limit radiation induced death all submarine comes equiped with one Geiger counter in their reactor cab, carrying it will automaticaly pick up radiations and display via visual and audio cues their intensities. 
+
+It is also the only way to check if a crew member is irradiated without having obvious symptoms.
+
+Note that deconstructing radioactive materials require adequate protection as it will expose nearby personnel to radioactive that will contaminate them.
+
+Prolonged exposure to high radiation or even short exposure to extremely radioactive materials can lead to acute radiation syndrome (ARS), this should be taken as a medical emergency as without treatment the victim will die in a few minutes.
+
+Symptoms are :
+
+-Burns and internal damage throughout the entire body.
+-Extreme weakness and difficulty to stand.
+-Frequent vomiting of blood.
+-Visual impairement.
+-Uncounsciousness.
+
+Only anti-rad drug or large dose of stabilosine can save one at this point.
+
+Irradiation and radioactive contamination are of the leading cause of lethal DNA degradation, refered here as DNA damage, on Europa.
+
+DNA damage
+
+DNA degradation occure when irradiated, contaminated or both and is extremely lethal.
+
+Symptoms includes :
+
+-Weakness
+-Vomiting blood
+
+If left untreated DNA damage will cause blood loss, internal damage and in the worst case total organ failure.
+
+DNA stabilizer, while meant to be a mean to boost life expectancy for some of the residents of Europa, has been proven to be effective against radiation induced cellular degradation.
+
+However the medecine is expensive and just as dangerous if not injected by a skilled doctor.
+
+Reports of botched injections have been saying it to not only have little positive effects but also cause severe internal damage in the process.
+ 
+ </terminalwelcomemsg.manual>
+</infotexts>

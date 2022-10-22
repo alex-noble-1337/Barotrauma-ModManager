@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Jobs>
+  <Override>
+    <Job identifier="engineer" minkarma="30" initialcount="1" uicolor="0.88,0.72,0.43" vitalitymodifier="0" pricemultiplier="1" idlebehavior="Active">
+      <Jobicon>
+        <sprite texture="Content/UI/MainIconsAtlas.png" sourcerect="768,256,128,128" origin="0.5,0.5" />
+      </Jobicon>
+      <JobiconSmall>
+        <sprite texture="Content/UI/CommandUIAtlas.png" sourcerect="612,727,28,28" origin="0.5,0.5" />
+      </JobiconSmall>
+      <Skills>
+        <Skill identifier="electrical" level="40,50" primary="true" />
+        <Skill identifier="mechanical" level="25,35" />
+        <Skill identifier="weapons" level="15,25" />
+        <Skill identifier="medical" level="15,25" />
+        <Skill identifier="helm" level="5,10" />
+      </Skills>
+      <ItemSet>
+        <Item identifier="idcard" equip="true" showpreview="false" />
+        <Item identifier="orangejumpsuit1" equip="true" outfit="true" />
+        <Item identifier="headset" equip="true" showpreview="false" />
+        <Item identifier="toolbelt" equip="true" />
+        <Item identifier="screwdriver" />
+        <Item identifier="wrench" />
+        <Item identifier="Potassiumiodide" />
+        <Item identifier="geigercounter" />
+        <Item identifier="DTPA" />
+        <PreviewSprites dims="120,109">
+          <sprite texture="Content/Items/Jobgear/Engineer/engineer_torso_[GENDER]_1.png" sourcerect="2,38,120,109" offset="0,0" />
+          <sprite texture="Content/Items/Jobgear/Engineer/engineer_torso_[GENDER]_1.png" sourcerect="121,0,76,80" offset="-20,15" />
+        </PreviewSprites>
+      </ItemSet>
+      <ItemSet>
+        <Item identifier="idcard" equip="true" showpreview="false" />
+        <Item identifier="orangejumpsuit2" equip="true" outfit="true" />
+        <Item identifier="headset" equip="true" showpreview="false" />
+        <Item identifier="toolbelt" equip="true" />
+        <Item identifier="screwdriver" />
+        <Item identifier="wrench" />
+        <Item identifier="Potassiumiodide" />
+        <Item identifier="geigercounter" />
+        <Item identifier="DTPA" />
+        <PreviewSprites dims="120,109">
+          <sprite texture="Content/Items/Jobgear/Engineer/engineer_torso_[GENDER]_2.png" sourcerect="2,38,120,109" offset="0,0" />
+          <sprite texture="Content/Items/Jobgear/Engineer/engineer_torso_[GENDER]_2.png" sourcerect="121,0,76,80" offset="-20,15" />
+        </PreviewSprites>
+      </ItemSet>
+      <AutonomousObjectives>
+        <Order identifier="extinguishfires" prioritymodifier="1" />
+        <Order identifier="repairelectrical" prioritymodifier="1" />
+        <Order identifier="rescue" prioritymodifier="1" />
+        <Order identifier="fixleaks" prioritymodifier="0.75" />
+        <Order identifier="operatereactor" option="powerup" prioritymodifier="0.5" />
+        <Order identifier="repairsystems" prioritymodifier="0.5" />
+        <Order identifier="pumpwater" option="pumpout" prioritymodifier="0.1" />
+      </AutonomousObjectives>
+      <AppropriateOrders>
+        <Order identifier="operatereactor" />
+        <Order identifier="repairelectrical" />
+        <Order identifier="chargebatteries" />
+        <Order identifier="reportbrokendevices" />
+      </AppropriateOrders>
+    </Job>
+  </Override>
+</Jobs>

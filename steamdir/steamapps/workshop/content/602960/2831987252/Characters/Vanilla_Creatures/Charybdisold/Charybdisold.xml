@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character speciesname="Charybdisold" humanoid="False" group="charybdis" husk="False" needsair="False" canspeak="False" noise="100" blooddecal="blood" eatingspeed="100" displayname="Adult Leatherback" hasinfo="False" usehuskappendage="False" needswater="False" visibility="100" bleedparticleair="blooddrop" bleedparticlewater="waterblood" pathfinderpriority="0.4999999" hideinsonar="False" speciestranslationoverride="" sonardisruption="0" usebosshealthbar="True" bleedparticlemultiplier="1" distantsonarrange="0" disabledistance="25000" caninteract="False" caneat="True" usepathfinding="True" hideinthermalgoggles="False" soundinterval="10">
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <damageemitter particle="gib" drawontop="True" particleamount="10" velocitymin="50" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <bloodemitter particle="blood" particleamount="10" scalemin="2" scalemax="3" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <bloodemitter particle="waterblood" particleamount="4" scalemin="3" scalemax="5" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <gibemitter particle="gib" particleamount="50" velocitymin="200" velocitymax="1500" anglemin="0" anglemax="360" scalemin="2" scalemax="3" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <gibemitter particle="heavygib" particleamount="20" velocitymin="50" velocitymax="1000" anglemin="0" anglemax="360" scalemin="2" scalemax="3" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <health vitality="1000" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0.5" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="1" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_idle1.ogg" state="Idle" range="6000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_idle2.ogg" state="Idle" range="6000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_attack1.ogg" state="Attack" range="8000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_attack2.ogg" state="Attack" range="8000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_attack3.ogg" state="Attack" range="8000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_damage1.ogg" state="Damage" range="6000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_damage2.ogg" state="Damage" range="6000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_death1.ogg" state="Die" range="8000" volume="1" gender="None" />
+    <sound file="Content/Characters/Charybdisold/CHARYBDIS_death2.ogg" state="Die" range="8000" volume="1" gender="None" />
+    <Inventory slots="Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="1">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="k_em_charybdisfang" />
+      <Item identifier="k_em_charybdisfang" />
+      <Item identifier="yeastshroom" />
+      <Item identifier="slimebacteria" />
+      <Item identifier="aquaticpoppy" />
+    </Inventory>
+    <Inventory slots="Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="3">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="k_em_charybdisfang" />
+      <Item identifier="alienblood" />
+      <Item identifier="yeastshroom" />
+      <Item identifier="aquaticpoppy" />
+    </Inventory>
+    <Inventory slots="Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="3">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="k_em_charybdisfang" />
+      <Item identifier="alienblood" />
+    </Inventory>
+    <Inventory slots="Any, Any, Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+      <Item identifier="swimbladder" />
+      <Item identifier="adrenalinegland" />
+      <Item identifier="k_em_charybdisfang" />
+      <Item identifier="alienblood" />
+      <Item identifier="yeastshroom" />
+      <Item identifier="slimebacteria" />
+    </Inventory>
+    <ai targetinnerwalls="False" CombatStrength="2900" Sight="1" Hearing="3" AggressionHurt="100" AggressionGreed="10" FleeHealthThreshold="0" AttackWhenProvoked="True" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="True" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="True" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+      <target Tag="decoy" State="Attack" Priority="300" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="provocative" State="Attack" Priority="150" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="weapon" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="stronger" State="PassiveAggressive" Priority="110" ReactDistance="5000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="human" State="Aggressive" Priority="100" ReactDistance="6000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="sonar" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="2" SweepSpeed="9" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="nasonov" State="Attack" Priority="100" ReactDistance="10000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="wall" State="Attack" Priority="80" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="weaker" State="Aggressive" Priority="70" ReactDistance="6000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="dead" State="Eat" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="leucocyte" State="Avoid" Priority="50" ReactDistance="2000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="room" State="Attack" Priority="40" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="tool" State="Aggressive" Priority="30" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target Tag="terminalcell" State="Idle" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+      <target damagethreshold="0" Tag="Charybdissmall" State="Protect" Priority="71" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    </ai>
+    <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="400">
+      <RemoveCharacter />
+    </StatusEffect>
+  </Character>
+</Override>

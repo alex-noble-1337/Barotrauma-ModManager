@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Molochhusk" speciesname="Molochblack_mhusk" speciestranslationoverride="Molochblack" hideinsonar="True" sonardistruption="2" texture="%ModDir:Improved Husks%/Characters/Molochhusk/Molochblackhusk.png">
+  <health vitality="2000" />
+  <ragdoll scalemultiplier="1.15" />
+  <attack damagemultiplier="1.15" />
+</Charactervariant>

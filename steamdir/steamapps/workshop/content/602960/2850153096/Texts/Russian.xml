@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Russian" nowhitespace="false" translatedname="Русский">
+  <entityname.io_toolbox>IO Контейнер для хранения</entityname.io_toolbox>
+  <entitydescription.io_toolbox>Этот контейнер может быть отмечен предметом. Хранит до 1024+16 единиц отмеченного материала. Может использоваться в фабрикаторе напрямую, без изъятия из него ресурсов.. Состояние этого предмета показывает свободное место в нем. Кнопка "убрать отметку" работает только когда предмет пустой (отображает 100% состояние).</entitydescription.io_toolbox>
+  <transform>Отметить</transform>
+  <detransform>Убрать метку</detransform>
+  <take8>Взять 8 единиц</take8>
+  <entityname.mio_safestoragecrate>Безопасный ящик для хранения</entityname.mio_safestoragecrate>
+  <entitydescription.mio_safestoragecrate>Изготовлен из алюминия и резины, водонепроницаемый, огнеупорный.</entitydescription.mio_safestoragecrate>
+</infotexts>

@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Nibbler" speciesname="Nibbler2" speciestranslationoverride="Nibbler">
+  <!-- This variant of the nibbler exists solely to allow the spawning of nibblers that don't die over time. -->
+  <!-- Check the normal version of this character to see the effects of this variant. -->
+</Charactervariant>

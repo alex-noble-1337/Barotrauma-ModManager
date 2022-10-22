@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EndwormhuskSwimFast movementspeed="20" waveamplitude="100" wavelength="200" flip="False" mirror="False" rotatetowardsmovement="True" torsotorque="0" headtorque="1000" foottorque="0" tailtorque="2000" footangles="" steertorque="100" cyclespeed="1" headangle="0" torsoangle="0" animationtype="SwimFast" usesinemovement="False" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" tailtorquemultiplier="100" tailangle="NaN" type="Endwormhusk" legtorque="25" armikstrength="1" handikstrength="1" />

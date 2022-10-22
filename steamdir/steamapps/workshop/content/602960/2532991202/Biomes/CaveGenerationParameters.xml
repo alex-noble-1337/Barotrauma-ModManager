@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CaveGenerationParameters>
+  <Override>
+    <Cave identifier="icecave" minwidth="5000" maxwidth="7000" minheight="5000" maxheight="7000" commonness="1" minbranchcount="2" maxbranchcount="6" levelobjectamount="200" destructiblewallratio="0.5">
+      <Wall texture="Content/Map/Biomes/IceCave/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/IceCave/LevelWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestructibleWall.png" premultiplyalpha="false" />
+      <overridecommonness leveltype="coldcavernsbasic" commonness="0.6" />
+      <overridecommonness leveltype="coldcavernsmaze" commonness="0.6" />
+      <overridecommonness leveltype="ridgebasic" commonness="0" />
+      <overridecommonness leveltype="plateaubasic" commonness="0" />
+      <overridecommonness leveltype="greatseabasic" commonness="0" />
+      <overridecommonness leveltype="wastesbasic" commonness="0" />
+    </Cave>
+  </Override>
+  <Override>
+    <Cave identifier="crystalcave" minwidth="8000" maxwidth="10000" minheight="8000" maxheight="10000" commonness="1" minbranchcount="2" maxbranchcount="6" levelobjectamount="200" destructiblewallratio="0.3">
+      <Wall texture="Content/Map/Biomes/CrystalCave/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/CrystalCave/LevelWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestructibleWall.png" premultiplyalpha="false" />
+      <overridecommonness leveltype="coldcavernsbasic" commonness="0.1" />
+      <overridecommonness leveltype="coldcavernsmaze" commonness="0.1" />
+      <overridecommonness leveltype="ridgebasic" commonness="0" />
+      <overridecommonness leveltype="plateaubasic" commonness="0" />
+      <overridecommonness leveltype="greatseabasic" commonness="0.5" />
+      <overridecommonness leveltype="wastesbasic" commonness="0" />
+      <overridecommonness leveltype="abyss" commonness="0" />
+    </Cave>
+    <Override></Override>
+    <Cave identifier="rockcave" minwidth="7000" maxwidth="9000" minheight="7000" maxheight="9000" commonness="1" minbranchcount="2" maxbranchcount="4" levelobjectamount="200" destructiblewallratio="0.1">
+      <Wall texture="Content/Map/Biomes/RockCave/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/RockCave/LevelWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestructibleWall.png" premultiplyalpha="false" />
+      <overridecommonness leveltype="coldcavernsbasic" commonness="0.2" />
+      <overridecommonness leveltype="coldcavernsmaze" commonness="0.2" />
+      <overridecommonness leveltype="ridgebasic" commonness="0.5" />
+      <overridecommonness leveltype="plateaubasic" commonness="0" />
+      <overridecommonness leveltype="greatseabasic" commonness="0" />
+      <overridecommonness leveltype="wastesbasic" commonness="0.5" />
+    </Cave>
+    <Override></Override>
+    <Cave identifier="mushroomcave" minwidth="7000" maxwidth="9000" minheight="7000" maxheight="9000" commonness="1" minbranchcount="2" maxbranchcount="6" levelobjectamount="400" destructiblewallratio="0.1">
+      <Wall texture="Content/Map/Biomes/MushroomCave/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/MushroomCave/LevelWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestructibleWall.png" premultiplyalpha="false" />
+      <overridecommonness leveltype="coldcavernsbasic" commonness="0" />
+      <overridecommonness leveltype="coldcavernsmaze" commonness="0" />
+      <overridecommonness leveltype="ridgebasic" commonness="0.5" />
+      <overridecommonness leveltype="plateaubasic" commonness="0.5" />
+      <overridecommonness leveltype="greatseabasic" commonness="0.5" />
+      <overridecommonness leveltype="wastesbasic" commonness="0" />
+      <overridecommonness leveltype="abyss" commonness="0" />
+    </Cave>
+    <Override></Override>
+    <Cave identifier="forestcave" minwidth="6000" maxwidth="8000" minheight="6000" maxheight="8000" commonness="1" minbranchcount="3" maxbranchcount="6" levelobjectamount="400" destructiblewallratio="0.1">
+      <Wall texture="Content/Map/Biomes/ForestCave/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/ForestCave/LevelWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestructibleWall.png" premultiplyalpha="false" />
+      <overridecommonness leveltype="coldcavernsbasic" commonness="0" />
+      <overridecommonness leveltype="coldcavernsmaze" commonness="0" />
+      <overridecommonness leveltype="ridgebasic" commonness="0.5" />
+      <overridecommonness leveltype="plateaubasic" commonness="0.5" />
+      <overridecommonness leveltype="greatseabasic" commonness="0.5" />
+      <overridecommonness leveltype="wastesbasic" commonness="0" />
+      <overridecommonness leveltype="abyss" commonness="0" />
+    </Cave>
+    <Override></Override>
+    <Cave identifier="bioluminescentcave" minwidth="10000" maxwidth="10000" minheight="10000" maxheight="10000" commonness="1" minbranchcount="4" maxbranchcount="8" levelobjectamount="800" destructiblewallratio="0.1">
+      <Wall texture="Content/Map/Biomes/BioluminescentCave/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/BioluminescentCave/LevelWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestructibleWall.png" premultiplyalpha="false" />
+      <overridecommonness leveltype="coldcavernsbasic" commonness="0" />
+      <overridecommonness leveltype="coldcavernsmaze" commonness="0" />
+      <overridecommonness leveltype="ridgebasic" commonness="0" />
+      <overridecommonness leveltype="plateaubasic" commonness="0" />
+      <overridecommonness leveltype="greatseabasic" commonness="0.5" />
+      <overridecommonness leveltype="wastesbasic" commonness="0.5" />
+      <overridecommonness leveltype="abyss" commonness="0" />
+    </Cave>
+  </Override>
+</CaveGenerationParameters>

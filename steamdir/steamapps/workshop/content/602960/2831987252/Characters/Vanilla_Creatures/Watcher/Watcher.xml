@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character speciesname="Watcher" humanoid="False" speciestranslationoverride="" displayname="" group="watcher" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="True" canspeak="False" noise="50" visibility="50" blooddecal="blood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0" disabledistance="30000" caneat="False">
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <sound file="Content/Characters/Watcher/WATCHER_takeDamage1.ogg" state="Damage" range="10000" volume="1" gender="None" />
+    <sound file="Content/Characters/Watcher/WATCHER_takeDamage2.ogg" state="Damage" range="10000" volume="1" gender="None" />
+    <sound file="Content/Characters/Watcher/WATCHER_takeDamage3.ogg" state="Damage" range="10000" volume="1" gender="None" />
+    <sound file="Content/Characters/Watcher/WATCHER_takeDamage4.ogg" state="Damage" range="10000" volume="1" gender="None" />
+    <sound file="Content/Characters/Watcher/WATCHER_death1.ogg" state="Die" range="10000" volume="1" gender="None" dontmuffle="true" />
+    <sound file="Content/Characters/Watcher/WATCHER_death2.ogg" state="Die" range="10000" volume="1" gender="None" dontmuffle="true" />
+    <damageemitter particle="gib" particleamount="10" velocitymin="200" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.4" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <bloodemitter particle="blood" particleamount="10" scalemin="1" scalemax="2" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <bloodemitter particle="waterblood" particleamount="3" scalemin="1" scalemax="3" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <health vitality="500" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" stunimmunity="true">
+      <Limb name="Head">
+        <VitalityMultiplier identifier="acidburn" multiplier="0" />
+        <VitalityMultiplier identifier="watchersgaze" multiplier="0" />
+        <VitalityMultiplier identifier="psychosis" multiplier="0" />
+      </Limb>
+      <Limb name="Torso">
+        <VitalityMultiplier identifier="acidburn" multiplier="0" />
+        <VitalityMultiplier identifier="watchersgaze" multiplier="0" />
+        <VitalityMultiplier identifier="psychosis" multiplier="0" />
+      </Limb>
+      <Limb name="RightArm">
+        <VitalityMultiplier identifier="acidburn" multiplier="0" />
+        <VitalityMultiplier identifier="watchersgaze" multiplier="0" />
+        <VitalityMultiplier identifier="psychosis" multiplier="0" />
+      </Limb>
+      <Limb name="RightLeg">
+        <VitalityMultiplier identifier="acidburn" multiplier="0" />
+        <VitalityMultiplier identifier="watchersgaze" multiplier="0" />
+        <VitalityMultiplier identifier="psychosis" multiplier="0" />
+      </Limb>
+      <Limb name="LeftArm">
+        <VitalityMultiplier identifier="acidburn" multiplier="0" />
+        <VitalityMultiplier identifier="watchersgaze" multiplier="0" />
+        <VitalityMultiplier identifier="psychosis" multiplier="0" />
+      </Limb>
+      <Limb>
+        <!--Spikes-->
+        <VitalityMultiplier identifier="acidburn" multiplier="0" />
+        <VitalityMultiplier identifier="watchersgaze" multiplier="0" />
+        <VitalityMultiplier identifier="psychosis" multiplier="0" />
+      </Limb>
+    </health>
+    <ai combatstrength="400" sight="5" hearing="0" aggressionhurt="100" aggressiongreed="0" fleehealththreshold="75" attackwhenprovoked="False" avoidgunfire="True" avoidtime="5" minfleetime="45" aggressiveboarding="False" enforceaggressivebehaviorformissions="False" targetouterwalls="True" randomattack="False">
+      <target tag="weapon" state="Avoid" priority="500" reactdistance="3000" attackdistance="0" timer="0" ignoreifnotinsamesub="True" />
+      <target tag="decoy" state="Observe" priority="300" attackdistance="1000" timer="20" reactdistance="0" />
+      <target tag="provocative" state="Observe" priority="200" attackdistance="1000" timer="20" reactdistance="0" ignoreifnotinsamesub="True" />
+      <target tag="light" state="Observe" priority="100" attackdistance="1000" timer="20" reactdistance="0" />
+      <target tag="human" state="Observe" priority="20" attackdistance="1000" timer="20" reactdistance="0" />
+      <target tag="weaker" state="Observe" priority="20" attackdistance="1000" timer="20" reactdistance="0" />
+      <target tag="stronger" state="Observe" priority="20" reactdistance="1000" attackdistance="0" timer="0" />
+      <target tag="wall" state="Observe" priority="1" attackdistance="1500" timer="10" reactdistance="0" />
+    </ai>
+    <StatusEffect type="OnActive" target="NearbyCharacters" range="5000">
+      <Affliction identifier="watchersgaze" strength="5" />
+      <Sound file="Content/Characters/Watcher/WATCHER_idleLoop.ogg" loop="true" range="5000" dontmuffle="true" />
+    </StatusEffect>
+    <StatusEffect type="OnActive" target="NearbyCharacters" range="1500" onlyoutside="true">
+      <Affliction identifier="watchersgaze" strength="20" />
+    </StatusEffect>
+    <StatusEffect type="OnDeath" target="NearbyCharacters" range="20000">
+      <ReduceAffliction identifier="watchersgaze" strength="100" />
+      <Affliction identifier="nausea" strength="2" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" checkconditionalways="true" comparison="and" delay="0.4" stackable="false">
+      <RequiredAffliction type="damage,burn" minstrength="1" />
+      <Conditional isdead="false" />
+      <SpawnItem identifier="acidemitter" spawnposition="This" count="3" spread="500" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst1.ogg" range="5000" selectionmode="Random" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst2.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst3.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst4.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst5.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst6.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst7.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst8.ogg" range="5000" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" checkconditionalways="true" comparison="and" delay="0.6" stackable="false">
+      <RequiredAffliction type="damage,burn" minstrength="1" />
+      <Conditional isdead="false" />
+      <SpawnItem identifier="acidemitter" spawnposition="This" count="2" spread="300" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst1.ogg" range="5000" selectionmode="Random" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst2.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst3.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst4.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst5.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst6.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst7.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst8.ogg" range="5000" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" checkconditionalways="true" comparison="and" delay="0.8" stackable="false">
+      <RequiredAffliction type="damage,burn" minstrength="1" />
+      <Conditional isdead="false" />
+      <SpawnItem identifier="acidemitter" spawnposition="This" count="3" spread="400" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst1.ogg" range="5000" selectionmode="Random" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst2.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst3.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst4.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst5.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst6.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst7.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst8.ogg" range="5000" />
+    </StatusEffect>
+    <StatusEffect type="OnDamaged" target="This" checkconditionalways="true" comparison="and" delay="1.0" stackable="false">
+      <RequiredAffliction type="damage,burn" minstrength="1" />
+      <Conditional isdead="false" />
+      <SpawnItem identifier="acidemitter" spawnposition="This" count="1" spread="200" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst1.ogg" range="5000" selectionmode="Random" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst2.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst3.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst4.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst5.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst6.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst7.ogg" range="5000" />
+      <Sound file="Content/Characters/Watcher/WATCHER_burst8.ogg" range="5000" />
+    </StatusEffect>
+  </Character>
+</Override>

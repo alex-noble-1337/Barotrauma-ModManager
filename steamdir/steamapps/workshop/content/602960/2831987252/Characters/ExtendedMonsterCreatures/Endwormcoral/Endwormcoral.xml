@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="Endwormcoral" SpeciesTranslationOverride="" DisplayName="The Glacier" Group="" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="True" CanSpeak="False" UseBossHealthBar="True" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="1" HideInSonar="False" HideInThermalGoggles="True" SonarDisruption="0" DistantSonarRange="50000" DisableDistance="10000" SoundInterval="10" DrawLast="True">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <gibemitter Particle="brownchunks" AngleMin="0" AngleMax="360" ScaleMin="1" ScaleMax="1" VelocityMin="50" VelocityMax="1000" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="40" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="blackwaterblood" AngleMin="0" AngleMax="360" ScaleMin="5" ScaleMax="10" VelocityMin="0" VelocityMax="100" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="40" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <health Vitality="3000" DoesBleed="False" CrushDepth="-Infinity" UseHealthWindow="False" BleedingReduction="0" BurnReduction="0" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0.01" StunImmunity="True" PoisonImmunity="True" ApplyAfflictionColors="True" />
+  <sound gender="None" File="%ModDir%/Characters/ExtendedMonsterCreatures/Endwormcoral/idle.ogg" State="Idle" Range="10000" Volume="1" Tags="" />
+  <sound gender="None" File="%ModDir%/Characters/ExtendedMonsterCreatures/Endwormcoral/death.ogg" State="Die" Range="20000" Volume="1" Tags="" />
+  <Inventory Slots="Any, Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="alienblood" />
+    <Item Identifier="k_em_endwormfang" />
+    <Item Identifier="chamosite" />
+    <Item Identifier="esperite" />
+    <Item Identifier="diamond" />
+    <Item Identifier="quartz" />
+    <Item Identifier="quartz" />
+    <Item Identifier="quartz" />
+    <Item Identifier="quartz" />
+  </Inventory>
+  <Inventory Slots="Any, Any, Any, Any, Any, Any, Any, Any, Any" AccessibleWhenAlive="False" Commonness="1">
+    <Item Identifier="k_em_endwormfang" />
+    <Item Identifier="esperite" />
+    <Item Identifier="diamond" />
+    <Item Identifier="quartz" />
+  </Inventory>
+  <ai targetinnerwalls="False" CombatStrength="1000" Sight="0.4999999" Hearing="10" AggressionHurt="10" AggressionGreed="0" FleeHealthThreshold="0" AttackWhenProvoked="True" AvoidGunfire="False" DamageThreshold="0" AvoidTime="100" MinFleeTime="100" AggressiveBoarding="True" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="True" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Heading">
+    <targetpriority damagethreshold="0" Tag="decoy" State="Flee" Priority="600" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="1000" CircleRotationSpeed="0.1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority damagethreshold="0" Tag="weaker" State="Attack" Priority="120" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="1000" CircleRotationSpeed="0.1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority damagethreshold="0" Tag="room" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="True" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="200" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="10" CircleMaxRandomOffset="50" />
+    <targetpriority damagethreshold="0" Tag="sonar" State="Aggressive" Priority="180" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="1000" CircleRotationSpeed="0.1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <targetpriority damagethreshold="0" Tag="stronger" State="PassiveAggressive" Priority="30" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="True" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="1000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="600">
+    <RemoveCharacter />
+  </StatusEffect>
+  <StatusEffect type="OnActive" target="this">
+    <Sound file="%ModDir%/Characters/ExtendedMonsterCreatures/Endwormcoral/Endwormcoralambient.ogg" loop="true" range="20000" dontmuffle="true" />
+  </StatusEffect>
+</Character>

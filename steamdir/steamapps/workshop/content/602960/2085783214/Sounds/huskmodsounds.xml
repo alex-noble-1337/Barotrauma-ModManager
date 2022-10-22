@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<sounds>
+  <footstep_huskmutanthunter file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutanthunter/footstep1.ogg" range="500" />
+  <footstep_huskmutanthunter file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutanthunter/footstep2.ogg" range="500" />
+  <footstep_huskmutanthunter file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutanthunter/footstep3.ogg" range="500" />
+  <footstep_huskmutanthunter file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutanthunter/footstep4.ogg" range="500" />
+  <footstep_huskmutanthunter file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutanthunter/footstep5.ogg" range="500" />
+  <footstep_huskmutantarmored file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutantarmored/footstep1.ogg" range="1000" />
+  <footstep_huskmutantarmored file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutantarmored/footstep2.ogg" range="1000" />
+  <footstep_huskmutantarmored file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutantarmored/footstep3.ogg" range="1000" />
+  <footstep_huskmutantarmored file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutantarmored/footstep4.ogg" range="1000" />
+  <footstep_huskmutantarmored file="%ModDir:Improved Husks%/Sounds/Footsteps/Huskmutantarmored/footstep5.ogg" range="1000" />
+</sounds>

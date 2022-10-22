@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Abyssalcrawler" humanoid="False" blooddecal="blackblood" group="crawler" husk="False" needsair="False" canspeak="False" noise="100" visiblity="100" eatingspeed="9" displayname="Crawler" visibility="100" pathfinderpriority="0.6999999" hasinfo="False" usehuskappendage="False" speciestranslationoverride="" needswater="False" bleedparticleair="blackblood" bleedparticlewater="blackwaterblood" hideinsonar="False" sonardisruption="0" caninteract="False" usebosshealthbar="False" bleedparticlemultiplier="1" caneat="True" usepathfinding="True" hideinthermalgoggles="False" distantsonarrange="0" disabledistance="25000" soundinterval="10">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <damageemitter particle="blackgib" drawontop="True" particleamount="10" velocitymin="50" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackblood" particleamount="10" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="20" velocitymin="200" velocitymax="700" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="250" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0.2" burnreduction="0" constanthealthregeneration="0.5" healthregenerationwheneating="10" stunimmunity="False" applyafflictioncolors="False">
+    <Limb name="Torso" />
+    <Limb name="Head" />
+    <Limb name="LeftLeg" />
+    <Limb name="RightLeg" />
+  </health>
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/attack1.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/attack2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/attack3.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/idle1.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/idle2.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/idle3.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/idle4.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/death1.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/death2.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/damage1.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/damage2.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/damage3.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="2">
+    <Item identifier="poop" />
+    <Item identifier="alienblood" />
+    <Item identifier="stannite" />
+    <item identifier="plastic" />
+  </inventory>
+  <inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="4">
+    <Item identifier="poop" />
+    <Item identifier="alienblood" />
+    <Item identifier="ilmenite" />
+    <Item identifier="stannite" />
+  </inventory>
+  <ai combatstrength="450" sight="0.5" hearing="2" aggressiveboarding="True" attackwhenprovoked="True" aggressiongreed="5" aggressionhurt="150" fleehealththreshold="0" avoidgunfire="False" enforceaggressivebehaviorformissions="True" targetouterwalls="True" targetinnerwalls="True" randomattack="False" avoidtime="3" minfleetime="20" infiltrate="False" canopendoors="False" keepdoorsclosed="False" avoidabyss="False" stayinabyss="False" patrolflooded="False" patroldry="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Target">
+    <target tag="decoy" state="Attack" priority="500" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="provocative" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="weapon" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="human" state="Attack" priority="500" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="weaker" state="Attack" priority="700" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="stronger" state="Attack" priority="300" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="nasonov" state="Attack" priority="50" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="sonar" state="Attack" priority="30" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="wall" state="Attack" priority="80" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="crawler" state="Avoid" priority="80" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="Carrier" state="Aggressive" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="Thalamuscarrier" state="Aggressive" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="Carrierleviathan" state="Aggressive" priority="90" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="watcher" state="Protect" priority="1" ignoreinside="True" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="watcherwanderer" state="Protect" priority="1" ignoreinside="True" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+  </ai>
+  <StatusEffect type="OnActive" target="This" range="5000" delay="100" stackable="false">
+    <sound file="%ModDir%/Characters/NewCreatures/Abyssalcrawler/spawnfar.ogg" range="20000" volume="1" dontmuffle="true" selectionmode="All" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" onlyoutside="true" delay="200">
+    <RemoveCharacter />
+  </StatusEffect>
+</Character>

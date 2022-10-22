@@ -1,0 +1,729 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Storage Container [Aluminum]" identifier="toolboxaluminumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Aluminum." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Aluminum Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Aluminum Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="aluminium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Ballistic Fiber]" identifier="toolboxballisitcfiberb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Ballistic Fiber." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Ballistic Fiber Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Ballistic Fiber Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="ballisticfiber" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Calcium]" identifier="toolboxcalciumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Calcium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Calcium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Calcium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="calcium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Carbon]" identifier="toolboxcarbonb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Carbon." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Carbon Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Carbon Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="carbon" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Chlorine]" identifier="toolboxchlorineb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Chlorine." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Chlorine Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Chlorine Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="chlorine" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Copper]" identifier="toolboxcopperb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Copper." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Copper Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Copper Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="copper" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Dementonite]" identifier="toolboxdementoniteb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Dementonite." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Dementonite Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Dementonite Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="dementonite" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Flash Powder]" identifier="toolboxflashpowderb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Flash Powder." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Flash Powder Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Flash Powder Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="flashpowder" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Fulgurium]" identifier="toolboxfulguriumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Fulgurium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Fulgurium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Fulgurium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="fulgurium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Incendium]" identifier="toolboxincendiumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Incendium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Incendium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Incendium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="incendium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Iron]" identifier="toolboxironb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Iron." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Iron Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Iron Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="iron" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Lead]" identifier="toolboxleadb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Lead." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Lead Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Lead Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="lead" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Lithium]" identifier="toolboxlithiumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Lithium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Lithium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Lithium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="lithium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Magnesium]" identifier="toolboxmagnesiumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Magnesium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Magnesium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Magnesium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="magnesium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Organic Fiber]" identifier="toolboxorganicfiberb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Organic Fiber." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Organic Fiber Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Organic Fiber Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="organicfiber" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Oxygenite Shard]" identifier="toolboxoxygeniteshardb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Oxygenite Shard." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Oxygenite Shard Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Oxygenite Shard Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="oxygeniteshard" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Paralyxis]" identifier="toolboxparalyxisb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Paralyxis." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Paralyxis Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Paralyxis Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="paralyxis" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Phosphorus]" identifier="toolboxphosphorusb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Phosphorus." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Phosphorus Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Phosphorus Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="phosphorus" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Physicorium]" identifier="toolboxphysicoriumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Physicorium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Physicorium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Physicorium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="physicorium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Plastic]" identifier="toolboxplasticb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Plastic." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Plastic Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Plastic Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="plastic" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Potassium]" identifier="toolboxpotassiumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Potassium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Potassium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Potassium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="potassium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Rubber]" identifier="toolboxrubberb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Rubber." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Rubber Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Rubber Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="rubber" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Scrap]" identifier="toolboxscrapb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Scrap." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Scrap Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Scrap Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="scrap" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Silicon]" identifier="toolboxsiliconb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Silicon." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Silicon Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Silicon Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="silicon" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Sodium]" identifier="toolboxsodiumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Sodium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Sodium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Sodium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="sodium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Steel]" identifier="toolboxsteelb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Steel." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Steel Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Steel Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="steel" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Sulphurite Shard]" identifier="toolboxsulphuriteshardb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Sulphurite Shard." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Sulphurite Shard Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Sulphurite Shard Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="sulphuriteshard" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Thorium]" identifier="toolboxthoriumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Thorium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Thorium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Thorium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="thorium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Tin]" identifier="toolboxtinb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Tin." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Tin Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Tin Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="tin" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Titanium-Aluminum Alloy]" identifier="toolboxtitaniumaluminumalloyb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Titanium-Aluminum Alloy." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Titanium-Aluminum Alloy Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Titanium-Aluminum Alloy Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="titaniumaluminiumalloy" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Titanium]" identifier="toolboxtitaniumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Titanium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Titanium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Titanium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="titanium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Uranium]" identifier="toolboxuraniumb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Uranium." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Uranium Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Uranium Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="uranium" />
+    </ItemContainer>
+  </Item>
+  <Item name="Storage Container [Zinc]" identifier="toolboxzincb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for Zinc." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="Zinc Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="Zinc Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="zinc" />
+    </ItemContainer>
+  </Item>
+</Items>

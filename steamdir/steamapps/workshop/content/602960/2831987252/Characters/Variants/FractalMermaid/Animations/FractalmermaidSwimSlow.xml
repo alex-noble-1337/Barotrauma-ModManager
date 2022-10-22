@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FractalmermaidSwimSlow LegMoveAmount="0.23238732" LegCycleLength="15.771433" HandMoveAmount="0,0" HandCycleSpeed="2.0174422" HandMoveOffset="-5,0" FootAngle="73" ArmMoveStrength="1" HandMoveStrength="1" FixedHeadAngle="True" SteerTorque="2" LegTorque="25" MovementSpeed="2.4654245" CycleSpeed="2.4654245" HeadAngle="52" TorsoAngle="22" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="0" />

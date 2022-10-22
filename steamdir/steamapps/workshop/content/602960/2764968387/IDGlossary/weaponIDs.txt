@@ -1,0 +1,173 @@
+##In case looking through the XML files takes too long, which is very likely considering just how much shit there is.
+
+=====================
+!-Normal Weapons (30)
+--Pistols
+
+scp_pm (Improvised Pistol)
+scp_p226 (Pistol)
+scp_meusoc (Heavy Pistol)
+scp_python (Service Revolver)
+scp_rhino (Renegade Revolver)
+scp_anaconda (Light Hand Cannon)
+scp_deagle (Hand Cannon)
+scp_rsh12 (Assault Revolver)
+
+--Shotguns
+
+scp_m590 (Pump Action Shotgun)
+scp_m4s90 (Combat Shotgun)
+scp_saiga12 (Heavy Combat Shotgun)
+scp_ksg12 (Bullpup Pump Action Shotgun)
+scp_hs10 (Improvised Automatic Shotgun)
+scp_sawnoff (Sawn-Off Shotgun)
+
+--SMGs and PDWs
+
+scp_smg9 (Sub Machine Gun)
+scp_ump45 (Heavy Sub Machine Gun)
+
+--Assault Rifles/Battle Rifles
+
+scp_sg550 (Coalition Assault Rifle)
+scp_x95 (Converted SMG)
+scp_mdr (Precision Assault Rifle)
+scp_mxa1 (Caseless Assault Rifle)
+scp_kh2020 (Bullpup Caseless Assault Rifle)
+scp_spear (Heavy Assault Rifle)
+scp_scar17 (Battle Rifle)
+scp_val (Covert Assault Rifle)
+scp_ash12 (Heavy Battle Rifle)
+
+--Machine Guns
+
+scp_stoner99 (Caseless Light Machine Gun)
+scp_pkp (General Purpose Machine Gun)
+scp_lwmmg (Special Purpose Machine Gun)
+
+--Marksman Rifles
+
+scp_svch (Designated Marksman Rifle)
+scp_t5000  (Precision Rifle)
+scp_svch93 (Heavy Marksman Rifle)
+scp_ar50 (Anti-Materiel Rifle)
+
+=====================
+!-Renegade Weapons (4)
+
+--Pistols
+
+scp_mp443 (Renegade Pistol)
+
+--Assault Rifles/Battle Rifles 
+
+scp_aks74u (Renegade Assault Carbine)
+scp_ak74m (Renegade Assault Rifle)
+
+-- Machine Guns
+
+scp_rpk74m (Renegade Light Machine Gun)
+
+=====================
+!-Vintage Weapons (9)
+
+-- Pistols
+
+scp_m29 (Lucky Punk)
+scp_r8 (8-Shooter)
+
+--Assault/Battle Rifles
+
+scp_m35a2 (Hammerhead)
+scp_g3ka4 (Sturmgewehr)
+scp_fal (Fusil)
+scp_kir (Tihkiy)
+scp_sr3 (Potroshitel)
+
+--Marksman Rifles
+
+scp_nagant (Samorodok)
+scp_dmr540 (Raptor)
+
+=====================
+!- Alien Weapons (7)
+
+--Pistol
+
+scp_tb1 (Alien Hand Cannon)
+
+--Assault Rifles/Battle Rifles
+
+scp_tar4a3 (Alien Assault Rifle)
+scp_tbr6a4 (Alien Battle Rifle)
+
+--Shotgun
+
+scp_tsg15 (Alien Shotgun)
+
+--PDW
+
+scp_tpdw7 (Alien Personal Defence Weapon)
+
+--Machine Gun
+
+scp_tmg12 (Alien Machine Gun)
+
+--AMR
+
+scp_tbsr7 (Alien Anti-Materiel Rifle)
+
+=====================
+!- High Tier Weapons (The big cheat) (9)
+--Pistol
+
+scp_rsh14 (Experimental Revolver)
+scp_ruger9 (Advanced Pistol)
+
+--Rifles
+
+scp_hk433 (Advanced Assault Rifle)
+scp_ma37 (Advanced Bullpup Battle Rifle)
+scp_mk18 (Advanced Precision Marksman Rifle)
+scp_m107 (Heavy Anti-Material Rifle)
+
+--Shotguns
+
+scp_uts15 (Advanced Bullpup Pump Action Shotgun)
+scp_ks23 (Big Bore Shotgun)
+
+--Machine Gun
+
+scp_rpt93 (Heavy Machine Gun)
+
+=====================
+!- Explosives (Big bang bruh) (5)
+
+--Grenades
+
+scp_gho1 (Offensive Grenade)
+scp_f1 (Defensive Grenade)
+scp_latexgrenade (Preso Latex Grenade)
+scp_pipebomb
+
+--Grenade Launcher
+
+scp_m32 (Revolving Grenade Launcher)
+
+--Launcher
+
+scp_rpg7 (Rocket Propelled Grenade Launcher)
+
+=====================
+!- Melee Weapons (Useless because barotrauma netcode cringe) (5)
+
+scp_m9bayonet (Combat Knife)
+scp_improvisedmachete (Improvised Machete)
+scp_machete (Machete)
+scp_dementonitemachete (Dementonite Machete)
+scp_dementonitemachetelatex (Latex Coated Dementonite Machete)
+
+=====================
+!- Misc (1)
+
+scp_stunrifle (Stun Rifle)

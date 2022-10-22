@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="Barotrauma Audio Overhaul" modversion="1.0.6" corepackage="False" steamworkshopid="2451444967" gameversion="0.19.14.0" expectedhash="D0A230C5A055DDBA3D73F11FBB629DF4">
+  <Sounds file="%ModDir%/Content/Sounds/Sounds.xml" />
+  <Item file="%ModDir%/Content/Items/Misc/misc.xml" />
+</contentpackage>

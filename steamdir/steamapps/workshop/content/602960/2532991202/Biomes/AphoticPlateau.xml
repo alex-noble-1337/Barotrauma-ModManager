@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelGenerationParameters>
+  <Override>
+    <PlateauBasic identifier="plateaubasic" type="LocationConnection" biomes="theaphoticplateau" height="60000" initialdepthmin="300000" initialdepthmax="400000" levelobjectamount="8000" ambientlightcolor="10,10,0,255" backgroundtexturecolor="60,60,0,255" backgroundcolor="4,2,1,255" wallcolor="255,255,255,255" minwidth="180000" maxwidth="250000" voronoisiteinterval="2000,2000" voronoisitevariance="800,800" cellsubdivisionlength="1500" cellroundingamount="0.5" cellirregularity="0.1" mainpathnodeintervalrange="10000,20000" cavecount="3" itemcount="400" floatingicechunkcount="3" seafloordepth="-30000" seafloorvariance="500" mountaincountmin="3" mountaincountmax="5" mountainheightmin="1000" mountainheightmax="5000" ruincount="1" minwreckcount="1" maxwreckcount="3" thalamusprobability="0.5" bottomholeprobability="0.1" waterparticlescale="1" startposition="0.1,0.1" endposition="0.9,0.1" createholenexttoend="True" mintunnelradius="6500" mincorpsecount="1" maxcorpsecount="5" wreckhullfloodingchance="0.5" wreckfloodinghullminwaterpercentage="0.1" wreckfloodinghullmaxwaterpercentage="1" sidetunnelcount="3,5" minsidetunnelradius="1000,3000" icespirecount="5" walltexturesize="512" walledgetexturewidth="1024" walledgeexpandoutwardsamount="128" walledgeexpandinwardsamount="128" backgroundcreatureamount="80" islandcount="0" sidetunnelvariance="0.8" mainpathvariance="0.8" resourceintervalrange="19200,38400" caveresourceintervalrange="9600,19200" resourceclustersizerange="2,8" resourcespawnchance="0.3" caveresourcespawnchance="0.5">
+      <!--
+    <Background
+      texture="Content/Map/iceBackgroundFade.png" />
+    <BackgroundTop
+      texture="Content/Map/iceBackground.png"
+      premultiplyalpha="false" />
+      -->
+      <WaterParticles texture="Content/Map/Biomes/AphoticPlateau/BackgroundParticles.png" />
+      <Wall texture="Content/Map/Biomes/AphoticPlateau/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/AphoticPlateau/LevelWallEdge.png" />
+      <DestructibleWall texture="Content/Map/Biomes/DestructibleWall.png" />
+      <DestructibleWallEdge texture="Content/Map/Biomes/DestructibleWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestroyedWall.png" premultiplyalpha="false" />
+    </PlateauBasic>
+  </Override>
+</LevelGenerationParameters>

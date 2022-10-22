@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CaveeelSwimSlow UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="True" MirrorLerp="False" WaveAmplitude="12.162575" WaveLength="59.32591" RotateTowardsMovement="True" TailTorque="0" TailTorqueMultiplier="1" FootAngles="" TailAngle="90.00023" SteerTorque="150" LegTorque="25" MovementSpeed="4.4401364" CycleSpeed="1" HeadAngle="90" TorsoAngle="90.00008" HeadTorque="50" TorsoTorque="100" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

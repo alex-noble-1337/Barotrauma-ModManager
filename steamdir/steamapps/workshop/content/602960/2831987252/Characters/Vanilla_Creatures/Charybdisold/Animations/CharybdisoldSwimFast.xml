@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CharybdisoldSwimFast animationtype="SwimFast" usesinemovement="False" flip="False" mirror="False" waveamplitude="33.4345" wavelength="89.89194" rotatetowardsmovement="True" torsotorque="200" headtorque="200" tailtorque="200" foottorque="50" footangles="3: 0,7: 1.928149" tailangle="90" steertorque="80" movementspeed="7" cyclespeed="1" headangle="90" torsoangle="90" tailtorquemultiplier="1" />

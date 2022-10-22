@@ -1,0 +1,20 @@
+==============
+Kits
+
+- scp_smallcivkit
+- scp_largecivkit
+- scp_armykit
+- scp_largearmykit
+
+==============
+Pills
+
+- scp_huskpills (Anti-Calyx Pills)
+- scp_painkillers
+- scp_healthpills (Rejuvination Pills)
+
+==============
+Syringes
+
+- scp_firelatexhot (Refined Ignis Latex Syringe)
+- scp_replicatinglatexrefined (Diluted Preso Latex Syringe)

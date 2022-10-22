@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WatcherSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" flipcooldown="2" flipdelay="1" mirror="True" mirrorlerp="False" waveamplitude="18.636827" wavelength="39.90569" rotatetowardsmovement="True" torsotorque="60" headtorque="15" tailtorque="100" tailtorquemultiplier="1" foottorque="100" footangles="8: 0,7: 0.34906584" tailangle="60" steertorque="60" movementspeed="2" cyclespeed="1" headangle="90" torsoangle="90" />

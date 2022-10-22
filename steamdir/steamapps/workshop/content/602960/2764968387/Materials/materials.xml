@@ -1,0 +1,694 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" description="" maxstacksize="2" identifier="scp_replicatinglatex" category="equipment" Tags="smallitem,medical" useinhealthinterface="true" cargocontaineridentifier="mediccrate" scale="0.55" impactsoundtag="impact_soft" RequireAimToUse="True">
+    <PreferredContainer primary="medcab" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <PreferredContainer primary="toxcab" minamount="0" maxamount="2" spawnprobability="0.15" />
+    <PreferredContainer primary="wreckmedcab,abandonedmedcab" minamount="0" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer primary="outpostmedcompartment" minamount="0" maxamount="2" spawnprobability="0.15" />
+    <Price baseprice="600" displaynonempty="true" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" maxavailable="2" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
+      <RequiredSkill identifier="medical" level="30" />
+      <RequiredItem identifier="elastin" />
+      <RequiredItem identifier="carbon" />
+      <RequiredItem identifier="carbon" />
+      <RequiredItem identifier="morbusine" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <RequiredItem identifier="carbon" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Medical/medical.png" sourcerect="267,166,51,66" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Medical/medical.png" sourcerect="267,166,51,66" depth="0.6" origin="0.5,0.5" />
+    <Body width="25" height="40" density="20" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="10" reload="2.0" msg="ItemMsgPickUpSelect">
+      <RequiredSkill identifier="medical" level="55" />
+      <StatusEffect type="OnUse" target="This" Condition="-50" disabledeltatime="true" />
+      <StatusEffect type="OnFailure" target="This" Condition="-100" disabledeltatime="true" />
+      <StatusEffect tags="medical" type="OnUse" target="Character" duration="10.0">
+        <Sound file="%ModDir%/Medical/Sounds/latex.ogg" type="OnUse" range="100" />
+        <Affliction identifier="nausea" amount="3" />
+        <Affliction identifier="scp_presolatexinfection" amount="2.5" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character" duration="5.0">
+        <Sound file="%ModDir%/Medical/Sounds/latexfail.ogg" type="OnUse" range="1500" />
+        <Affliction identifier="nausea" amount="3" />
+        <Affliction identifier="scp_presolatexinfection" amount="1" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+  <Item name="" description="" maxstacksize="2" identifier="scp_firelatex" category="equipment" Tags="smallitem,medical" useinhealthinterface="true" cargocontaineridentifier="mediccrate" scale="0.55" impactsoundtag="impact_soft" RequireAimToUse="True">
+    <PreferredContainer primary="medcab" minamount="0" maxamount="2" spawnprobability="0.25" />
+    <PreferredContainer primary="toxcab" minamount="0" maxamount="2" spawnprobability="0.25" />
+    <PreferredContainer primary="wreckmedcab,abandonedmedcab" minamount="0" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer primary="outpostmedcompartment" minamount="0" maxamount="2" spawnprobability="0.15" />
+    <Price baseprice="600" displaynonempty="true" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="1" maxavailable="2" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="medicalfabricator" requiredtime="20">
+      <RequiredSkill identifier="medical" level="35" />
+      <RequiredItem identifier="incendium" mincondition="0.25" />
+      <RequiredItem identifier="carbon" amount="2" />
+      <RequiredItem identifier="sulphuricacid" />
+    </Fabricate>
+    <Deconstruct time="10">
+      <Item identifier="incendium" mincondition="0.1" outcondition="0.5" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Medical/medical.png" sourcerect="268,100,51,66" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Medical/medical.png" sourcerect="268,100,51,66" depth="0.6" origin="0.5,0.5" />
+    <Body width="25" height="40" density="20" />
+    <MeleeWeapon canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" aimpos="40,5" handle1="0,0" holdangle="10" reload="2.0" msg="ItemMsgPickUpSelect">
+      <RequiredSkill identifier="medical" level="55" />
+      <StatusEffect type="OnUse" target="This" Condition="-50" disabledeltatime="true" />
+      <StatusEffect type="OnFailure" target="This" Condition="-100" disabledeltatime="true" />
+      <StatusEffect tags="medical" type="OnUse" target="Character" duration="30.0">
+        <Sound file="%ModDir%/Medical/Sounds/latex.ogg" type="OnUse" range="300" />
+        <Affliction identifier="burn" amount="3" />
+        <Affliction identifier="organdamage" amount="1" />
+      </StatusEffect>
+      <StatusEffect tags="medical" type="OnFailure" target="Character" duration="15.0">
+        <Sound file="%ModDir%/Medical/Sounds/latexfail.ogg" type="OnUse" range="1500" />
+        <Affliction identifier="nausea" amount="1.2" />
+        <Affliction identifier="burn" amount="1.75" />
+        <Affliction identifier="organdamage" amount="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+  <Item name="" identifier="scp_pistolkit" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0.25" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <Price baseprice="400" displaynonempty="true" minleveldifficulty="5">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="0" maxavailable="1" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredSkill identifier="mechanical" level="20" />
+      <RequiredItem identifier="plastic" amount="2" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="titanium" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="plastic" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Materials/materials.png" sourcerect="0,0,148,71" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="0,0,148,71" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_shotgunkit" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0.15" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.075" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <Price baseprice="550" displaynonempty="true" minleveldifficulty="8">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="0" maxavailable="1" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="25">
+      <RequiredSkill identifier="weapons" level="40" />
+      <RequiredSkill identifier="mechanical" level="25" />
+      <RequiredItem identifier="plastic" amount="4" />
+      <RequiredItem identifier="steel" amount="2" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="2" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <RequiredItem identifier="rubber" mincondition="0.5" outcondition="0.1" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Materials/materials.png" sourcerect="0,71,197,115" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="0,71,197,115" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_riflekit" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0.075" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.055" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <Price baseprice="650" displaynonempty="true" minleveldifficulty="15">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="0" maxavailable="1" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="35">
+      <RequiredSkill identifier="weapons" level="45" />
+      <RequiredSkill identifier="mechanical" level="30" />
+      <RequiredItem identifier="plastic" amount="2" />
+      <RequiredItem identifier="steel" amount="4" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="3" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="titaniumaluminiumalloy" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Materials/materials.png" sourcerect="0,187,245,95" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="0,187,245,95" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_sniperkit" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0" />
+    <PreferredContainer primary="secarmcab" minamount="0" maxamount="1" spawnprobability="0.15" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <Price baseprice="750" displaynonempty="true" minleveldifficulty="20">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="40">
+      <RequiredSkill identifier="weapons" level="55" />
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem identifier="steel" amount="4" />
+      <RequiredItem identifier="plastic" amount="2" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="4" />
+      <RequiredItem identifier="copper" amount="2" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="titaniumaluminiumalloy" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Materials/materials.png" sourcerect="5,284,249,123" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="5,284,249,123" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_machinegunkit" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0.075" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.04" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <Price baseprice="900" displaynonempty="true" minleveldifficulty="25">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="2" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="50">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredSkill identifier="mechanical" level="50" />
+      <RequiredItem identifier="rubber" amount="4" />
+      <RequiredItem identifier="steel" amount="4" />
+      <RequiredItem identifier="titaniumaluminiumalloy" amount="4" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="plastic" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="titaniumaluminiumalloy" copycondition="true" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="1,408,338,148" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_explosiveskit" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="1" spawnprobability="0.04" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.025" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <Price baseprice="1000" displaynonempty="true" minleveldifficulty="28">
+      <Price storeidentifier="merchantoutpost" sold="false" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" sold="false" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="0" maxavailable="1" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="0" maxavailable="1" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="50">
+      <RequiredSkill identifier="weapons" level="55" />
+      <RequiredSkill identifier="mechanical" level="55" />
+      <RequiredItem identifier="steel" amount="4" />
+      <RequiredItem identifier="dementonite" amount="4" />
+      <RequiredItem identifier="plastic" amount="4" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="plastic" copycondition="true" />
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="dementonite" copycondition="true" />
+      <Item identifier="dementonite" copycondition="true" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="1,558,374,168" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_basicparts" description="" maxstacksize="3" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.27">
+    <PreferredContainer primary="storagecab,engcab" minamount="0" maxamount="3" spawnprobability="0.15" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab" minamount="0" maxamount="3" spawnprobability="0.3" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="2" spawnprobability="0.1" />
+    <Price baseprice="175" displaynonempty="true">
+      <Price storeidentifier="merchantoutpost" minavailable="0" maxavailable="2" multiplier="1.5" />
+      <Price storeidentifier="merchantcity" multiplier="1.25" minavailable="0" maxavailable="2" />
+      <Price storeidentifier="merchantresearch" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantmilitary" multiplier="0.95" minavailable="2" maxavailable="4" />
+      <Price storeidentifier="merchantmine" sold="false" multiplier="1.25" />
+      <Price storeidentifier="merchantarmory" multiplier="0.95" minavailable="2" maxavailable="4" />
+    </Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="20" amount="2">
+      <RequiredSkill identifier="weapons" level="15" />
+      <RequiredSkill identifier="mechanical" level="20" />
+      <RequiredItem identifier="aluminium" amount="2" />
+      <RequiredItem identifier="steel" />
+      <RequiredItem identifier="copper" />
+    </Fabricate>
+    <Deconstruct time="7">
+      <Item identifier="steel" copycondition="true" />
+      <Item identifier="aluminium" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Materials/materials.png" sourcerect="700,0,200,159" origin="0.5,0.5" />
+    <Sprite name="basicweaponsbox" texture="%ModDir%/Materials/materials.png" sourcerect="523,46,167,94" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <Item name="" identifier="scp_taucannonparts" description="" category="materials" tags="mediumitem" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.25">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer primary="wreckstoragecab,wrecksecarmcab,wreckengcab" minamount="0" maxamount="1" spawnprobability="0.01" />
+    <PreferredContainer primary="outpostcompartment" minamount="0" maxamount="1" spawnprobability="0.001" />
+    <Price baseprice="2000"></Price>
+    <Fabricate suitablefabricators="fabricator" requiredtime="50">
+      <RequiredSkill identifier="weapons" level="50" />
+      <RequiredSkill identifier="electrical" level="75" />
+      <RequiredItem identifier="fpgacircuit" amount="4" />
+      <RequiredItem identifier="lead" amount="3" />
+      <RequiredItem identifier="fulgurium" amount="3" />
+      <RequiredItem identifier="rubber" amount="2" />
+    </Fabricate>
+    <Deconstruct time="25">
+      <Item identifier="lead" />
+      <Item identifier="copper" />
+      <Item identifier="fulgurium" />
+    </Deconstruct>
+    <InventoryIcon name="taupartsinv" texture="%ModDir%/Materials/materials.png" sourcerect="681,542,219,90" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Materials/materials.png" sourcerect="8,729,361,155" depth="0.55" origin="0.5,0.5" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" holdangle="90" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1250" static="true" />
+  </Item>
+  <!--Wreck Items-->
+  <Item name="" identifier="scp_wrecktools" category="Material" maxstacksize="4" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="8" spawnprobability="0.32" />
+    <PreferredContainer secondary="wreckreactorcab" minamount="0" maxamount="4" spawnprobability="0.3" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="5" chooserandom="true" amount="3">
+      <Item identifier="iron" copycondition="true" commonness="0.7" />
+      <Item identifier="uranium" copycondition="true" commonness="0.125" />
+      <Item identifier="steel" copycondition="true" commonness="0.6" />
+      <Item identifier="aluminium" copycondition="true" commonness="0.7" />
+      <Item identifier="titaniumaluminiumalloy" copycondition="true" commonness="0.2" />
+      <Item identifier="copper" copycondition="true" commonness="0.75" />
+      <Item identifier="rubber" copycondition="true" commonness="0.75" />
+      <Item identifier="zinc" copycondition="true" commonness="0.5" />
+      <Item identifier="silicon" copycondition="true" commonness="0.5" />
+      <Item identifier="carbon" copycondition="true" commonness="0.55" />
+      <Item identifier="plastic" copycondition="true" commonness="0.5" />
+      <Item identifier="lead" copycondition="true" commonness="0.5" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="60,133,150,41" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="25" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckfuel" category="Material" maxstacksize="4" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="4" spawnprobability="0.35" />
+    <PreferredContainer secondary="wreckreactorcab" minamount="0" maxamount="8" spawnprobability="0.55" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="1">
+      <Item identifier="iron" copycondition="true" commonness="0.5" />
+      <Item identifier="thorium" outcondition="0.25" commonness="0.15" />
+      <Item identifier="depletedfuel" outcondition="0.25" commonness="0.1" />
+      <Item identifier="uranium" outcondition="0.25" commonness="0.2" />
+      <Item identifier="fulgurium" outcondition="0.25" commonness="0.075" />
+      <Item identifier="steel" copycondition="true" commonness="0.55" />
+      <Item identifier="carbon" copycondition="true" commonness="0.45" />
+      <Item identifier="lead" copycondition="true" commonness="0.5" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="389,59,93,69" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="37" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckglowingfuel" category="Material" maxstacksize="2" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="1" spawnprobability="0.1" />
+    <PreferredContainer secondary="wreckreactorcab" minamount="0" maxamount="2" spawnprobability="0.175" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="6" chooserandom="true" amount="2">
+      <Item identifier="iron" copycondition="true" commonness="0.5" />
+      <Item identifier="thorium" outcondition="0.5" commonness="0.25" />
+      <Item identifier="depletedfuel" outcondition="0.25" commonness="0.2" />
+      <Item identifier="uranium" outcondition="0.75" commonness="0.35" />
+      <Item identifier="fulgurium" outcondition="0.25" commonness="0.15" />
+      <Item identifier="steel" copycondition="true" commonness="0.65" />
+      <Item identifier="carbon" copycondition="true" commonness="0.6" />
+      <Item identifier="lead" outcondition="0.25" commonness="0.2" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="493,53,131,93" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="37" density="25" />
+    <LightComponent allowingameediting="false" lightcolor="100,255,100,150" canbeselected="false" range="150.0" ison="true" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="Always" target="This">
+        <sound file="%ModDir%/Sounds/geigerloop.ogg" range="200.0" loop="true" volume="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="NearbyCharacters" range="100">
+        <Affliction identifier="radiationsickness" strength="0.1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="NearbyCharacters" range="70">
+        <Affliction identifier="radiationsickness" strength="0.3" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckarmor" category="Material" maxstacksize="4" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="8" spawnprobability="0.35" />
+    <PreferredContainer secondary="wrecksecarmcab" minamount="0" maxamount="8" spawnprobability="0.55" />
+    <PreferredContainer secondary="abandonedsecarmcab" minamount="0" maxamount="8" spawnprobability="0.45" />
+    <PreferredContainer secondary="wreckarmcab" minamount="0" maxamount="8" spawnprobability="0.35" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="3">
+      <Item identifier="iron" copycondition="true" commonness="0.5" />
+      <Item identifier="ballisticfiber" copycondition="true" commonness="0.25" />
+      <Item identifier="organicfiber" copycondition="true" commonness="0.5" />
+      <Item identifier="aluminium" copycondition="true" commonness="0.65" />
+      <Item identifier="titaniumaluminiumalloy" outcondition="0.5" commonness="0.2" />
+      <Item identifier="rubber" copycondition="true" commonness="0.55" />
+      <Item identifier="titanium" copycondition="true" commonness="0.3" />
+      <Item identifier="carbon" copycondition="true" commonness="0.5" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="202,39,185,88" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="42" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckweapons" category="Material" maxstacksize="4" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="2" spawnprobability="0.2" />
+    <PreferredContainer secondary="wrecksecarmcab" minamount="0" maxamount="8" spawnprobability="0.5" />
+    <PreferredContainer secondary="abandonedsecarmcab,abandonedarmcab" minamount="0" maxamount="4" spawnprobability="0.25" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="3">
+      <Item identifier="iron" copycondition="true" commonness="0.75" />
+      <Item identifier="scp_basicparts" copycondition="true" commonness="0.25" />
+      <Item identifier="steel" copycondition="true" commonness="0.5" />
+      <Item identifier="aluminium" copycondition="true" commonness="0.65" />
+      <Item identifier="titaniumaluminiumalloy" copycondition="true" commonness="0.2" />
+      <Item identifier="copper" copycondition="true" commonness="0.65" />
+      <Item identifier="rubber" copycondition="true" commonness="0.5" />
+      <Item identifier="carbon" copycondition="true" commonness="0.65" />
+      <Item identifier="plastic" copycondition="true" commonness="0.6" />
+      <Item identifier="lead" copycondition="true" commonness="0.35" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="71,76,129,48" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="35" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckammo" category="Material" maxstacksize="6" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="3" spawnprobability="0.4" />
+    <PreferredContainer secondary="wrecksecarmcab" minamount="0" maxamount="12" spawnprobability="0.65" />
+    <PreferredContainer secondary="abandonedarmcab,abandonedsecarmcab" minamount="0" maxamount="6" spawnprobability="0.25" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="6" chooserandom="true" amount="3">
+      <Item identifier="iron" outcondition="0.5" commonness="0.4" />
+      <Item identifier="magnesium" outcondition="0.75" commonness="0.3" />
+      <Item identifier="flashpowder" outcondition="0.5" commonness="0.3" />
+      <Item identifier="steel" outcondition="0.25" commonness="0.55" />
+      <Item identifier="aluminium" copycondition="true" commonness="0.5" />
+      <Item identifier="copper" copycondition="true" commonness="0.5" />
+      <Item identifier="titanium" outcondition="0.25" commonness="0.15" />
+      <Item identifier="plastic" copycondition="true" commonness="0.6" />
+      <Item identifier="lead" outcondition="0.5" commonness="0.4" />
+      <Item identifier="physicorium" outcondition="0.4" commonness="0.1" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="73,178,128,51" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="39" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckflashpowder" category="Material" maxstacksize="4" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.27" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="8" spawnprobability="0.25" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="2">
+      <Item identifier="iron" outcondition="0.5" commonness="0.1" />
+      <Item identifier="magnesium" outcondition="0.5" commonness="0.3" />
+      <Item identifier="flashpowder" commonness="0.6" copycondition="true" />
+      <Item identifier="plastic" copycondition="true" commonness="0.6" />
+      <Item identifier="lead" outcondition="0.1" commonness="0.1" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="0,1,70,122" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="55" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckfractal" category="Material" maxstacksize="4" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="ruinstoragelarge" minamount="0" maxamount="12" spawnprobability="0.15" />
+    <PreferredContainer secondary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="4" spawnprobability="0.2" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="4" spawnprobability="0.1" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="250" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="3">
+      <Item identifier="iron" outcondition="0.5" commonness="0.5" />
+      <Item identifier="fulgurium" outcondition="0.5" commonness="0.3" />
+      <Item identifier="incendium" outcondition="0.5" commonness="0.3" />
+      <Item identifier="dementonite" outcondition="0.5" commonness="0.3" />
+      <Item identifier="physicorium" outcondition="0.25" commonness="0.3" />
+      <Item identifier="oxygeniteshard" commonness="0.2" />
+      <Item identifier="aluminium" copycondition="true" commonness="0.6" />
+      <Item identifier="silicon" copycondition="true" commonness="0.6" />
+      <Item identifier="lead" commonness="0.5" />
+      <Item identifier="steel" commonness="0.5" />
+      <Item identifier="uranium" commonness="0.4" />
+      <Item identifier="thorium" outcondition="0.5" commonness="0.3" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="358,131,124,78" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="40" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckfractalactive" category="Material" maxstacksize="2" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="ruinstoragelarge" minamount="0" maxamount="2" spawnprobability="0.15" />
+    <PreferredContainer secondary="ruinstorage,ruinstoragesmall" minamount="0" maxamount="1" spawnprobability="0.125" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="1" spawnprobability="0.05" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="9" soldeverywhere="false"></Price>
+    <Deconstruct time="5" chooserandom="true" amount="4">
+      <Item identifier="iron" outcondition="0.5" commonness="0.5" />
+      <Item identifier="fulgurium" commonness="0.5" />
+      <Item identifier="incendium" outcondition="0.5" commonness="0.5" />
+      <Item identifier="physicorium" outcondition="0.5" commonness="0.5" />
+      <Item identifier="dementonite" outcondition="0.5" commonness="0.5" />
+      <Item identifier="oxygeniteshard" commonness="0.3" />
+      <Item identifier="lead" commonness="0.5" />
+      <Item identifier="steel" commonness="0.5" />
+      <Item identifier="uranium" commonness="0.45" />
+      <Item identifier="thorium" outcondition="0.55" commonness="0.35" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="361,220,125,81" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="40" density="25" />
+    <LightComponent allowingameediting="false" lightcolor="175,100,255,150" canbeselected="false" range="250.0" ison="true" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="Always" target="This">
+        <sound file="%ModDir%/Sounds/fractalloop.ogg" range="300.0" loop="true" volume="1" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="NearbyCharacters" range="450">
+        <Affliction identifier="radiationsickness" strength="0.025" />
+        <Affliction identifier="psychosis" strength="0.15" />
+        <Affliction identifier="organdamage" strength="0.025" />
+      </StatusEffect>
+      <StatusEffect type="Always" target="NearbyCharacters" range="150">
+        <Affliction identifier="radiationsickness" strength="0.05" />
+        <Affliction identifier="psychosis" strength="0.3" />
+        <Affliction identifier="organdamage" strength="0.05" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckchem" category="Material" maxstacksize="2" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckmedcab" minamount="0" maxamount="4" spawnprobability="0.15" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="2" spawnprobability="0.125" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="50" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="4">
+      <Item identifier="iron" outcondition="0.75" commonness="0.5" />
+      <Item identifier="magnesium" outcondition="0.5" commonness="0.5" />
+      <Item identifier="alienblood" outcondition="0.5" commonness="0.5" />
+      <Item identifier="chlorine" commonness="0.5" />
+      <Item identifier="sodium" outcondition="0.75" commonness="0.5" />
+      <Item identifier="potassium" outcondition="0.75" commonness="0.5" />
+      <Item identifier="lithium" outcondition="0.75" commonness="0.5" />
+      <Item identifier="opium" outcondition="0.5" commonness="0.3" />
+      <Item identifier="ethanol" commonness="0.5" />
+      <Item identifier="sulphuricacid" outcondition="0.5" commonness="0.4" />
+      <Item identifier="elastin" commonness="0.5" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="88,233,96,82" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="35" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_wreckmetalpile" category="Material" maxstacksize="2" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="4" spawnprobability="0.25" />
+    <PreferredContainer secondary="abandonedarmcab" minamount="0" maxamount="4" spawnprobability="0.2" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="5" soldeverywhere="false"></Price>
+    <Deconstruct time="8" chooserandom="true" amount="3">
+      <Item identifier="iron" copycondition="true" commonness="0.75" />
+      <Item identifier="steel" copycondition="true" commonness="0.55" outcondition="0.5" />
+      <Item identifier="aluminium" copycondition="true" commonness="0.65" outcondition="0.5" />
+      <Item identifier="titaniumaluminiumalloy" copycondition="true" commonness="0.2" />
+      <Item identifier="copper" copycondition="true" commonness="0.35" />
+      <Item identifier="carbon" copycondition="true" commonness="0.5" />
+      <Item identifier="lead" copycondition="true" commonness="0.3" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="79,344,122,48" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="35" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="scp_effigium" category="Material" maxstacksize="2" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true">
+    <PreferredContainer primary="storagecab" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="2" spawnprobability="0.015" />
+    <PreferredContainer secondary="abandonedarmcab" minamount="0" maxamount="2" spawnprobability="0.015" />
+    <PreferredContainer primary="ruinstorage,ruinstoragesmall,ruinstoragelarge" minamount="0" maxamount="2" spawnprobability="0.035" />
+    <PreferredContainer secondary="locker" />
+    <Price baseprice="600" sold="false"></Price>
+    <Deconstruct time="12" chooserandom="true" amount="4">
+      <Item identifier="steel" commonness="0.55" />
+      <Item identifier="steel" commonness="0.55" />
+      <Item identifier="aluminium" commonness="0.65" />
+      <Item identifier="titaniumaluminiumalloy" commonness="0.25" />
+      <Item identifier="copper" copycondition="true" commonness="0.35" />
+      <Item identifier="titanium" copycondition="true" commonness="0.35" />
+      <Item identifier="fulgurium" copycondition="true" commonness="0.35" />
+      <Item identifier="lead" copycondition="true" commonness="0.3" />
+    </Deconstruct>
+    <Sprite texture="%ModDir%/Materials/wreckitems.png" sourcerect="683,131,54,38" depth="0.55" origin="0.5,0.5" />
+    <Body width="45" height="35" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnPicked" target="Character" delay="15" duration="10" probability="0.25">
+        <Affliction identifier="radiationsickness" amount="1" probability="0.25" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+</Items>

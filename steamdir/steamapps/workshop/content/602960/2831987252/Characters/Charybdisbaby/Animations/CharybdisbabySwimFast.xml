@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CharybdisbabySwimFast type="Charybdisbaby" UseSineMovement="False" Flip="True" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="True" WaveAmplitude="36.768845" WaveLength="124.1194" RotateTowardsMovement="True" TailTorque="190" TailTorqueMultiplier="1" FootAngles="" TailAngle="-127.00001" SteerTorque="40" LegTorque="25" MovementSpeed="12" CycleSpeed="1" HeadAngle="90" TorsoAngle="90" HeadTorque="110" TorsoTorque="140" FootTorque="50" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

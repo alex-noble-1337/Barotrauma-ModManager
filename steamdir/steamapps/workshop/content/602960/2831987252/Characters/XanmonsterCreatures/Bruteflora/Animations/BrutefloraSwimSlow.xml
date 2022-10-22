@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<BrutefloraSwimSlow footrotatestrength="25" type="Bruteflora" LegMoveAmount="0.5403046" LegCycleLength="20" HandMoveAmount="0.83573973,0.5061496" HandCycleSpeed="3.342959" HandMoveOffset="0,0" FootAngle="0" ArmMoveStrength="1" HandMoveStrength="0.10000002" FixedHeadAngle="True" SteerTorque="25" LegTorque="25" MovementSpeed="1.7950552" CycleSpeed="1.7950552" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

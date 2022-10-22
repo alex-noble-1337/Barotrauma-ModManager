@@ -1,0 +1,150 @@
+==============
+4.7x33
+
+scp_g11mag (Advanced Caseless Assault Rifle Magazine)
+
+==============
+5.45x39
+
+scp_ak74mag (Renegade Assault Rifle Magazine)
+scp_ak74apmag (Renegade Assault Rifle Armor-Piercing Magazine)
+scp_ak74dumag (Renegade Assault Rifle Depleted Uranium Magazine)
+scp_ak74extmag (Renegade Assault Rifle Casket Magazine)
+
+==============
+5.56x45
+
+scp_556mag (Assault Rifle Magazine)
+scp_556extmag (Assault Rifle Extended Magazine)
+scp_556apmag (Assault Rifle Armor-Piercing Magazine)
+
+==============
+5.7x48
+
+scp_m35a2mag (Hammerhead Magazine)
+
+==============
+6.5x39
+
+scp_65mag (Caseless Assault Rifle Magazine)
+scp_mxbigmag (Quad Stack Caseless Assault Rifle Magazine
+scp_65bullmag (Bullpup Caseless Assault Rifle Magazine)
+scp_stonermag (Caseless Light Machine Gun Box Magazine)
+
+==============
+6.8x51
+
+scp_spearmag (Heavy Assault Rifle Magazine)
+
+==============
+7.62x39
+
+scp_akmag (Renegade Heavy Assault Rifle Magazine)
+scp_akmapmag (Avtomat Magazine)
+scp_akmdrummag (Avtomat Drum Magazine)
+scp_ak_apmag (Renegade Heavy Assault Rifle Armor-Piercing Magazine)
+scp_akdumag (Renegade Heavy Assault Rifle Depleted Uranium Magazine)
+ 
+==============
+7.62x51
+
+scp_scarmag (Battle Rifle Magazine)
+scp_ma37mag (Advanced Bullpup Battle Rifle Mag)
+scp_762standround (7.62x51mm Round)
+
+==============
+7.62x54R
+
+scp_pkpboxmag (General Purpose Machine Gun Box Magazine)
+scp_svdmag (Marksman Rifle Magazine)
+scp_svdimag (Marksman Rifle Incendiary Magazine)
+
+==============
+7.62x67
+
+scp_dmr540mag (Raptor Magazine)
+
+==============
+7.92x33
+
+scp_stg44mag (Sturmgeweher Magazine)
+
+==============
+8.6x70
+
+scp_lwmmgmag (Special Purpose Machine Gun Box Magazine)
+scp_mk18mag (Advanced Precision Rifle Magazine)
+
+==============
+9x19
+
+scp_9mmmag (Pistol Magazine)
+scp_9mmsmgmag (Sub Machine Gun Magazine)
+scp_bizonmag (Zubr Magazine)
+
+==============
+9x33R
+
+scp_357round (Service Revolver Round)
+scp_357apround (Armor-Piercing Service Revolver Round)
+
+==============
+9x39
+
+scp_valmag (Covert Assault Rifle Magazine)
+scp_valextmag (Covert Assault Rifle Extended Magazine)
+scp_valbigmag (Potroshitel Magazine)
+
+==============
+10.9x33R
+
+scp_44round (Light Hand Cannon Round)
+scp_44apround (Light Hand Cannon Armor-Piercing Round)
+
+==============
+11.43x23R
+
+scp_45mag (Heavy Pistol Magazine)
+scp_umpmag (Heavy Sub Machine Gun Magazine)
+
+==============
+12.7x55
+
+scp_ash12mag (Heavy Battle Rifle Magazine)
+scp_ash12extmag (Heavy Battle Rifle Extended Magazine)
+scp_arevolverround (Assault Revolver Round)
+
+==============
+12.7x99
+
+scp_50bmgfmj (12.7x99mm FMJ Round)
+scp_50bmgapi (12.7x99mm AP-I Round)
+scp_m107fmjmag (Heavy Anti-Materiel Rifle FMJ Magazine)
+scp_m107apimag (Heavy Anti-Materiel Rifle AP-I Magazine)
+
+==============
+14.5x114
+
+scp_erevolverround (Experimental Revolver Round)
+
+==============
+12 Gauge
+
+scp_12gslug (12 Gauge Shotgun Slug)
+scp_12ghpbtslug (12 Gauge Hollow-Point-Ballistic-Tip Shotgun Slug)
+scp_12gmagbuck (12 Gauge Shotgun Magnum Buckshot)
+scp_12grubslug (12 Gauge Rubber Shotgun Slug)
+
+==============
+4 Gauge
+
+scp_4gshell (Big Bore Shotgun Buckshot Shell)
+scp_4gslug (Big Bore Rubber Shotgun Slug)
+
+==============
+Harpoons
+
+scp_harpoontitanium
+scp_harpoonserrated
+scp_harpoondu
+scp_harpoonuranium

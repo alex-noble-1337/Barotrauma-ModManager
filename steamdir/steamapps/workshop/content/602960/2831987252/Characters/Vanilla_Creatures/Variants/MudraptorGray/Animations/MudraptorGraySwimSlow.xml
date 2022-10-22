@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MudraptorGraySwimSlow animationtype="SwimSlow" flip="True" mirror="True" waveamplitude="9.840352" wavelength="107.6208" rotatetowardsmovement="True" torsotorque="20" headtorque="20" foottorque="5" tailtorque="10" footangles="17: -1.662421,26: 3.455584,22: -1.524673" steertorque="4" movementspeed="2.5" cyclespeed="1" headangle="109.1371" torsoangle="123.43891" tailangle="250" usesinemovement="False" tailtorquemultiplier="1" flipcooldown="1" flipdelay="0.1" mirrorlerp="True" />

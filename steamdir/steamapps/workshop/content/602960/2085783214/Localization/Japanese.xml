@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Japanese" nowhitespace="true" translatedname="日本語">
+  <!-- Characters -->
+  <character.huskmutantcrawler>変異体クローラー</character.huskmutantcrawler>
+  <character.huskmutantmudraptor>変異体ムドラプター</character.huskmutantmudraptor>
+  <character.huskmutantarmored>武装した変異体殻</character.huskmutantarmored>
+  <character.huskmutanthunter>変異体殻ハンター</character.huskmutanthunter>
+  <character.huskmutanthuman>変異体人殻</character.huskmutanthuman>
+  <character.huskmutantcocooncrawler>繭形殻変異体</character.huskmutantcocooncrawler>
+  <character.huskmutanttigerthresher>変異体タイガーシャーク</character.huskmutanttigerthresher>
+  <character.huskmutantbonethresher>変異体ボーンタイガーシャーク</character.huskmutantbonethresher>
+  <character.snatcher>スナッチャー</character.snatcher>
+  <character.nibbler>ニブラー</character.nibbler>
+  <character.micoteron>ミコテロン</character.micoteron>
+  <!-- Items -->
+  <entityname.unstablehuskeggs>不安定なベロナセプスの萼卵</entityname.unstablehuskeggs>
+  <entitydescription.unstablehuskeggs>‘殻寄生虫’と口語的に呼ばれるユーロパ生命体の卵。この卵は目覚めているみたいです</entitydescription.unstablehuskeggs>
+  <entityname.unstablehuskstinger>不安定なハスクスティンガー</entityname.unstablehuskstinger>
+  <entitydescription.unstablehuskstinger>硬化した黒いスティンガー，間に合わせの刺突器具。</entitydescription.unstablehuskstinger>
+  <entityname.endwormhuskprojectile>蠢くミサ</entityname.endwormhuskprojectile>
+  <entityname.huskmutantembryo>変異共生体殻の胚</entityname.huskmutantembryo>
+  <entitydescription.huskmutantembryo>開発が未完全な殻の胚，今だに眠っています</entitydescription.huskmutantembryo>
+  <entityname.calyxinjector>萼形生命体注射器</entityname.calyxinjector>
+  <entitydescription.calyxinjector>不気味な注射器形装置，合成として使いにられる</entitydescription.calyxinjector>
+  <entityname.calyxinjectorsymbiotic>殻共生体注射器</entityname.calyxinjectorsymbiotic>
+  <entitydescription.calyxinjectorsymbiotic>不気味な注射器形装置，遺伝子が操られていた殻の胚を含めている，普通のベロナセプスの萼感染と比べると，こういう共生体殻に持ち出す感染は宿主にもっとメリットになる</entitydescription.calyxinjectorsymbiotic>
+  <entityname.calyxinjectorbooster>肉体活性化注射器</entityname.calyxinjectorbooster>
+  <entitydescription.calyxinjectorbooster>不気味な注射器形装置，肉体を活性化し，新陳代謝を増幅する化合物が含めている，体を急速に回復や成長ができる。だが副作用をおこる可能性もあります。</entitydescription.calyxinjectorbooster>
+  <!-- Afflictions -->
+  <afflictionname.huskmutation>殻寄生虫感染変異状態</afflictionname.huskmutation>
+  <afflictiondescription.huskmutation>肌のフェスターと骨の擦れる音と共に、悪いことが起こってしまう</afflictiondescription.huskmutation>
+  <afflictionname.symbiotichusk>共生態殻寄生虫感染</afflictionname.symbiotichusk>
+  <afflictiondescription.symbiotichusk>何かおかしいだが違和感やダメージを感じられないものが身体に生えています...</afflictiondescription.symbiotichusk>
+  <afflictionname.huskinfectionhealing>殻共生プロテクト</afflictionname.huskinfectionhealing>
+  <afflictiondescription.huskinfectionhealing>共生態の殻寄生虫が体に酸素と有益な物質を提供する同時に，ピンチな時に素早く自我回復を与えられる</afflictiondescription.huskinfectionhealing>
+  <afflictionname.huskinfectionaffinity>殻寄生アフィニティ</afflictionname.huskinfectionaffinity>
+  <afflictiondescription.huskinfectionaffinity>共生態にいる殻寄生虫はあなたの生理システムと完全に馴染んでいた，水圧抗性を与える同時に普通の殻寄生虫感染を完全に免疫する</afflictiondescription.huskinfectionaffinity>
+  <afflictionname.huskheadhijacking1>殻寄生の頭侵害中</afflictionname.huskheadhijacking1>
+  <afflictiondescription.huskheadhijacking1>急いて誰かに撃ち落とせ！！</afflictiondescription.huskheadhijacking1>
+  <afflictionname.blacktoxin>污毒</afflictionname.blacktoxin>
+  <afflictiondescription.blacktoxin>黒い毒が静脈血管に登って，驚くほどのスピードで血脈系を侵入しています。</afflictiondescription.blacktoxin>
+  <afflictionname.boosterhusk>强化共生態殻回復</afflictionname.boosterhusk>
+  <afflictiondescription.boosterhusk>強力でありながら揮発性の幹細胞のような細胞混合物があなたの体に素早く溶け込み、あなたの回復を非常に速くします。</afflictiondescription.boosterhusk>
+  <afflictionname.growth>成長</afflictionname.growth>
+</infotexts>

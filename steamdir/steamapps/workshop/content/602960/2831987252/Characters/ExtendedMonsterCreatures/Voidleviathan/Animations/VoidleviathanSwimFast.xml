@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<VoidleviathanSwimFast animationtype="SwimFast" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.5" mirror="False" mirrorlerp="False" waveamplitude="-100" wavelength="65.60896" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="60" movementspeed="10" cyclespeed="6" headangle="0" torsoangle="NaN" legtorque="25" armikstrength="1" handikstrength="1" />

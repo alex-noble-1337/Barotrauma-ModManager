@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="DynamicEuropa" modversion="1.0.13" corepackage="False" steamworkshopid="2532991202" gameversion="0.17.16.0" expectedhash="B33E35B89ECAAB2F6D5DEED744672406">
+  <Text file="%ModDir%/Text/English.xml" />
+  <Other file="%ModDir%/GeneralAtlas.png" />
+  <LocationTypes file="%ModDir%/Map/LocationTypes.xml" />
+  <MapGenerationParameters file="%ModDir%/Map/MapGenerationParameters.xml" />
+  <Missions file="%ModDir%/Events/Missions.xml" />
+  <RandomEvents file="%ModDir%/Events/OutpostEvents.xml" />
+  <OutpostConfig file="%ModDir%/Map/OutpostGenerationParameters.xml" />
+  <LevelGenerationParameters file="%ModDir%/Biomes/AphoticPlateau.xml" />
+  <LevelGenerationParameters file="%ModDir%/Biomes/CaveGenerationParameters.xml" />
+  <LevelGenerationParameters file="%ModDir%/Biomes/ColdCaverns.xml" />
+  <LevelGenerationParameters file="%ModDir%/Biomes/EuropanRidge.xml" />
+  <LevelGenerationParameters file="%ModDir%/Biomes/HydrothermalWastes.xml" />
+  <LevelGenerationParameters file="%ModDir%/Biomes/TheGreatSea.xml" />
+  <Text file="%ModDir%/Text/English.xml" />
+</contentpackage>

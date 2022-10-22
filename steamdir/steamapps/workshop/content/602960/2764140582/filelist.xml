@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="BaroCraftables+" modversion="1.0.2" corepackage="False" steamworkshopid="2764140582" gameversion="0.19.11.0" expectedhash="49B95D20FA85194E00848D82A19BBB2B">
+  <Item file="%ModDir%/Items/Containers Override.xml" />
+  <Item file="%ModDir%/Items/Electricity Override.xml" />
+  <Item file="%ModDir%/Items/Engine Override.xml" />
+  <Item file="%ModDir%/Items/Fabricators Override.xml" />
+  <Item file="%ModDir%/Items/Pump Override.xml" />
+  <Item file="%ModDir%/Items/Command Override.xml" />
+  <Item file="%ModDir%/Items/Weapons Override.xml" />
+  <Item file="%ModDir%/Items/Item.xml" />
+  <Item file="%ModDir%/Items/Containers/Materials/(Material) Containers.xml" />
+  <Item file="%ModDir%/Items/Containers/Medical/(Medical) Containers.xml" />
+  <Item file="%ModDir%/Items/Containers/Componets/(Componet) Containers.xml" />
+</contentpackage>

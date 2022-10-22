@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Audio>
+  <footstep_xanhuskmutanthunter file="%ModDir%/Audio/Footsteps/xanHuskmutanthunter/footstep1.ogg" range="500" />
+  <footstep_xanhuskmutanthunter file="%ModDir%/Audio/Footsteps/xanHuskmutanthunter/footstep2.ogg" range="500" />
+  <footstep_xanhuskmutanthunter file="%ModDir%/Audio/Footsteps/xanHuskmutanthunter/footstep3.ogg" range="500" />
+  <footstep_xanhuskmutanthunter file="%ModDir%/Audio/Footsteps/xanHuskmutanthunter/footstep4.ogg" range="500" />
+  <footstep_xanhuskmutanthunter file="%ModDir%/Audio/Footsteps/xanHuskmutanthunter/footstep5.ogg" range="500" />
+  <footstep_xanHuskmutantarmored file="%ModDir%/Audio/Footsteps/xanHuskmutantarmored/footstep1.ogg" range="1000" />
+  <footstep_xanHuskmutantarmored file="%ModDir%/Audio/Footsteps/xanHuskmutantarmored/footstep2.ogg" range="1000" />
+  <footstep_xanhuskmutantarmored file="%ModDir%/Audio/Footsteps/xanHuskmutantarmored/footstep3.ogg" range="1000" />
+  <footstep_xanhuskmutantarmored file="%ModDir%/Audio/Footsteps/xanHuskmutantarmored/footstep4.ogg" range="1000" />
+  <footstep_xanhuskmutantarmored file="%ModDir%/Audio/Footsteps/xanHuskmutantarmored/footstep5.ogg" range="1000" />
+</Audio>

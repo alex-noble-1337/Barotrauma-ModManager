@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Watcherhusk" humanoid="False" speciestranslationoverride="Watcher" displayname="" group="husk" hasinfo="False" husk="True" usehuskappendage="False" needsair="False" needswater="True" canspeak="true" noise="50" visibility="50" blooddecal="blackblood" bleedparticleair="blackblood" bleedparticlewater="blackwaterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0" disabledistance="80000" caninteract="False" usebosshealthbar="False" bleedparticlemultiplier="1" caneat="False" usepathfinding="True" hideinthermalgoggles="False" distantsonarrange="0" soundinterval="10">
+  <ragdolls folder="%ModDir:Improved Husks%/Characters/Watcherhusk/Ragdolls/" />
+  <animations folder="%ModDir:Improved Husks%/Characters/Watcherhusk/Animations/" />
+  <damageemitter particle="blackgib" particleamount="10" velocitymin="200" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.4" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackblood" particleamount="10" scalemin="1" scalemax="2" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="3" scalemin="1" scalemax="3" anglemin="0" anglemax="0" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/idle1.ogg" state="Idle" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/idle2.ogg" state="Idle" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/idle3.ogg" state="Idle" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/idle4.ogg" state="Idle" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/attack1.ogg" state="Attack" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/attack2.ogg" state="Attack" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/attack3.ogg" state="Attack" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/damage1.ogg" state="Damage" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/damage2.ogg" state="Damage" range="10000" volume="0.8" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/damage3.ogg" state="Damage" range="10000" volume="0.8" gender="None" />
+  <health vitality="750" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0.5" healthregenerationwheneating="0" stunimmunity="False" />
+  <Inventory slots="Any, Any, Any, Any" accessiblewhenalive="False" commonness="10">
+    <Item identifier="swimbladder" />
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+    <Item identifier="huskstinger" />
+  </Inventory>
+  <ai combatstrength="1000" sight="2" hearing="5" aggressionhurt="100" aggressiongreed="0" fleehealththreshold="0" attackwhenprovoked="True" avoidgunfire="True" avoidtime="1" minfleetime="1" aggressiveboarding="False" enforceaggressivebehaviorformissions="False" targetouterwalls="True" randomattack="False" infiltrate="False" canopendoors="False" keepdoorsclosed="False" avoidabyss="False" stayinabyss="False" patrolflooded="False" patroldry="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Target">
+    <target tag="stronger" state="Attack" priority="500" reactdistance="3000" attackdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="weapon" state="Attack" priority="500" reactdistance="3000" attackdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="wall" state="Attack" priority="200" attackdistance="1500" reactdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="decoy" state="Attack" priority="300" attackdistance="1000" reactdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="provocative" state="Attack" priority="200" attackdistance="1000" reactdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="human" state="Attack" priority="20" attackdistance="1000" reactdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="weaker" state="Aggressive" priority="10" attackdistance="1000" reactdistance="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreincapacitated="False" sweepdistance="0" sweepstrength="10" sweepspeed="1" threshold="0" timer="0" ignoreifnotinsamesub="False" thresholdmin="-1" thresholdmax="-1" offset="0,0" attackpattern="Straight" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+  </ai>
+  <StatusEffect type="OnActive" target="NearbyCharacters" range="5000">
+    <Sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/idleloop.ogg" loop="true" volume="0.6" range="10000" dontmuffle="true" />
+  </StatusEffect>
+  <StatusEffect type="OnDamaged" target="This" delay="0.5" stackable="false">
+    <Conditional isdead="false" />
+    <SpawnItem identifier="huskinfectionexplosionwatcher" spawnposition="This" count="2" spread="500" />
+  </StatusEffect>
+  <StatusEffect type="OnDamaged" target="This" comparison="and">
+    <Conditional isdead="false" />
+    <Conditional isunconscious="false" />
+    <Affliction identifier="watcherdamage" amount="20" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" targetlimb="Torso">
+    <sound file="%ModDir:Improved Husks%/Characters/Watcherhusk/death.ogg" range="20000" volume="1" selectionmode="Random" dontmuffle="true" />
+    <SpawnItem identifier="huskinfectionexplosionwatcher" spawnposition="This" count="2" spread="500" />
+  </StatusEffect>
+</Character>

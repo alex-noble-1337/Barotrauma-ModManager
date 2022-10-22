@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<NibblerSwimSlow animationtype="SwimSlow" usesinemovement="True" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="8.283016" wavelength="18.920927" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="0" tailtorquemultiplier="1" foottorque="0" footangles="2: 0,4: 0,6: 0,8: 0" tailangle="-17" steertorque="75" movementspeed="1.9072193" cyclespeed="1" headangle="49" torsoangle="34" type="Nibbler" legtorque="25" armikstrength="1" handikstrength="1" />

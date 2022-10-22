@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ragdoll type="Leucocyte" Texture="%ModDir%/Characters/UnderseaHorrorsCreatures/Grumbler/Grumbler.png" Color="255,255,255,255" SpritesheetOrientation="0" LimbScale="0.93600005" JointScale="0.93600005" TextureScale="1" ColliderHeightFromFloor="45" ImpactTolerance="5" CanEnterSubmarine="False" CanWalk="False" Draggable="False" MainLimb="Head">
+  <collider Name="Main Collider" Radius="60" Height="0" Width="1" />
+  <limb Name="Tounge" ID="0" Type="None" Notes="" Scale="1" Flip="True" MirrorVertically="False" MirrorHorizontally="False" Hide="False" SpriteOrientation="NaN" InheritLimbDepth="None" SteerForce="0" Radius="1" Height="0" Width="0" Density="0.1" IgnoreCollisions="True" AngularDamping="7" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" ConstantTorque="0" ConstantAngle="0" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="False" SeveredFadeOutTime="10" ApplyTailAngle="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0" BlinkDurationIn="0.2" BlinkDurationOut="0.5" BlinkHoldTime="0" BlinkRotationIn="0" BlinkRotationOut="45" BlinkForce="50" OnlyBlinkInWater="False" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05">
+    <deformablesprite SourceRect="7,9,595,574" Origin="0.5,0.5" Depth="0" Texture="" IgnoreTint="False" Color="255,255,255,255" DeadColor="255,255,255,0" DeadColorTime="0.5">
+      <SpriteDeformation type="noise" typename="noise" Frequency="0.01" Amplitude="0.2" ChangeSpeed="4" Sync="1" BlendMode="Add" Strength="1" MaxRotation="90" UseMovementSine="False" StopWhenHostIsDead="True" OnlyInWater="False" SineOffset="0" Resolution="5,5" />
+      <SpriteDeformation type="noise" typename="noise" Frequency="0.1" Amplitude="0.3" ChangeSpeed="1" Sync="2" BlendMode="Add" Strength="1" MaxRotation="90" UseMovementSine="False" StopWhenHostIsDead="False" OnlyInWater="True" SineOffset="0" Resolution="5,5" />
+      <SpriteDeformation type="inflate" typename="inflate" Frequency="0.5" Scale="0.25" Sync="3" BlendMode="Add" Strength="1" MaxRotation="90" UseMovementSine="False" StopWhenHostIsDead="True" OnlyInWater="False" SineOffset="0" Resolution="5,5" />
+    </deformablesprite>
+    <attack StructureSoundType="StructureBlunt" Context="Water" TargetType="Structure" TargetLimbType="None" HitDetectionType="Distance" AfterAttack="Pursue" AfterAttackDelay="0.1" Reverse="False" Retreat="False" Range="4800" DamageRange="4800" MinRange="0" Duration="1" CoolDown="5" SecondaryCoolDown="0" CoolDownRandomFactor="0" FullSpeedAfterAttack="True" StructureDamage="0" EmitStructureDamageParticles="True" ItemDamage="0" Penetration="0" LevelWallDamage="0" Ranged="True" AvoidFriendlyFire="False" RequiredAngle="30" Stun="0" OnlyHumans="False" ApplyForceOnLimbs="0, 1" Force="0" RootForceWorldStart="0,0" RootForceWorldMiddle="0,0" RootForceWorldEnd="0,0" RootTransitionEasing="Linear" Torque="0" ApplyForcesOnlyOnce="False" TargetImpulse="0" TargetImpulseWorld="0,0" TargetForce="0" TargetForceWorld="0,0" SubmarineImpactMultiplier="1" SeverLimbsProbability="0" Priority="1" Blink="False">
+      <StatusEffect type="OnFailure" target="This">
+        <particleemitter drawontop="false" copyentityangle="true" particle="damagebubbles" particleamount="50" scalemin="1" scalemax="5" velocitymin="500" velocitymax="1000" anglemin="-40" anglemax="40" />
+        <sound file="Content/Characters/Latcher/ABYSSM_tongueMove.ogg" range="20000" volume="1" dontmuffle="false" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="This" delay="0.2">
+        <SpawnItem identifier="tonguetendon" spawnposition="This" count="1" aimspread="0" rotationtype="Collider" rotation="0" />
+      </StatusEffect>
+    </attack>
+  </limb>
+  <limb Name="Ball" ID="1" Type="Head" Notes="" Scale="1" Flip="True" MirrorVertically="False" MirrorHorizontally="False" Hide="False" SpriteOrientation="NaN" InheritLimbDepth="None" SteerForce="0" Radius="0" Height="567" Width="576" Density="10" IgnoreCollisions="False" AngularDamping="7" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" ConstantTorque="0" ConstantAngle="0" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="False" SeveredFadeOutTime="10" ApplyTailAngle="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0" BlinkDurationIn="0.2" BlinkDurationOut="0.5" BlinkHoldTime="0" BlinkRotationIn="0" BlinkRotationOut="45" BlinkForce="50" OnlyBlinkInWater="False" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05">
+    <sprite SourceRect="7,9,595,574" Origin="0.5,0.5" Depth="0" Texture="" IgnoreTint="False" Color="255,255,255,255" DeadColor="255,255,255,255" DeadColorTime="0" />
+    <deformablesprite SourceRect="1664,834,192,190" Origin="0.5,0.5" Depth="0" Texture="" IgnoreTint="False" Color="255,255,255,255" DeadColor="255,255,255,0" DeadColorTime="0.5">
+      <SpriteDeformation type="noise" typename="noise" Frequency="0.01" Amplitude="0.2" ChangeSpeed="7" Sync="1" BlendMode="Add" Strength="1" MaxRotation="90" UseMovementSine="False" StopWhenHostIsDead="True" OnlyInWater="False" SineOffset="0" Resolution="5,5" />
+      <SpriteDeformation type="noise" typename="noise" Frequency="0.1" Amplitude="0.3" ChangeSpeed="1" Sync="2" BlendMode="Add" Strength="1" MaxRotation="90" UseMovementSine="False" StopWhenHostIsDead="False" OnlyInWater="True" SineOffset="0" Resolution="5,5" />
+      <SpriteDeformation type="inflate" typename="inflate" Frequency="0.5" Scale="0.25" Sync="3" BlendMode="Add" Strength="1" MaxRotation="90" UseMovementSine="True" StopWhenHostIsDead="True" OnlyInWater="False" SineOffset="0" Resolution="5,5" />
+    </deformablesprite>
+    <attack StructureSoundType="StructureBlunt" Context="Any" TargetType="Structure" TargetLimbType="None" HitDetectionType="Contact" AfterAttack="FallBackUntilCanAttack" AfterAttackDelay="0.1" Reverse="False" Retreat="False" Range="600" DamageRange="600" MinRange="0" Duration="1" CoolDown="1" SecondaryCoolDown="1" CoolDownRandomFactor="0" FullSpeedAfterAttack="False" StructureDamage="0" EmitStructureDamageParticles="True" ItemDamage="0" Penetration="0" LevelWallDamage="0" Ranged="True" AvoidFriendlyFire="False" RequiredAngle="30" Stun="0" OnlyHumans="False" ApplyForceOnLimbs="0, 1" Force="0" RootForceWorldStart="0,0" RootForceWorldMiddle="0,0" RootForceWorldEnd="0,0" RootTransitionEasing="Linear" Torque="0" ApplyForcesOnlyOnce="False" TargetImpulse="0" TargetImpulseWorld="0,0" TargetForce="0" TargetForceWorld="0,0" SubmarineImpactMultiplier="1" SeverLimbsProbability="0" Priority="1" Blink="False">
+      <StatusEffect type="OnFailure" target="This" disabledeltatime="true">
+        <Explosion ignorecover="true" range="5000" force="0" flames="false" shockwave="false" structuredamage="20" sparks="false" flash="false" underwaterbubble="false" camerashake="400" playtinnitus="false" applyFireEffects="false" />
+        <SpawnItem identifier="acidemitter" spawnposition="This" count="10" spread="50" />
+        <sound file="Content/Characters/Hammerheadmatriarch/MHAMMERHEAD_explosion1.ogg" range="10000" volume="1" selectionmode="Random" dontmuffle="true" />
+        <sound file="Content/Characters/Hammerheadmatriarch/MHAMMERHEAD_explosion2.ogg" range="10000" volume="1" selectionmode="Random" dontmuffle="true" />
+        <sound file="Content/Characters/Hammerheadmatriarch/MHAMMERHEAD_explosion3.ogg" range="10000" volume="1" selectionmode="Random" dontmuffle="true" />
+        <Affliction identifier="internaldamage" strength="1000" />
+        <RemoveCharacter />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
+        <Explosion ignorecover="true" range="5000" force="0" flames="false" shockwave="false" structuredamage="20" sparks="false" flash="false" underwaterbubble="false" camerashake="400" playtinnitus="false" applyFireEffects="false" />
+        <SpawnItem identifier="acidemitter" spawnposition="This" count="10" spread="50" />
+        <sound file="Content/Characters/Hammerheadmatriarch/MHAMMERHEAD_explosion1.ogg" range="10000" volume="1" selectionmode="Random" dontmuffle="true" />
+        <sound file="Content/Characters/Hammerheadmatriarch/MHAMMERHEAD_explosion2.ogg" range="10000" volume="1" selectionmode="Random" dontmuffle="true" />
+        <sound file="Content/Characters/Hammerheadmatriarch/MHAMMERHEAD_explosion3.ogg" range="10000" volume="1" selectionmode="Random" dontmuffle="true" />
+        <Affliction identifier="internaldamage" strength="1000" />
+        <RemoveCharacter />
+      </StatusEffect>
+    </attack>
+  </limb>
+  <limb Name="CharacterTongueAttack" ID="2" Type="None" Notes="" Scale="1" Flip="True" MirrorVertically="False" MirrorHorizontally="False" Hide="True" SpriteOrientation="90" InheritLimbDepth="None" SteerForce="0" Radius="0" Height="201.6" Width="219.6" Density="1" IgnoreCollisions="True" AngularDamping="50" AttackPriority="1" PullPos="0,0" StepOffset="0,0" RefJoint="-1" MouthPos="0,0" ConstantTorque="0" ConstantAngle="0" AttackForceMultiplier="1" MinSeveranceDamage="1" CanBeSeveredAlive="False" SeveredFadeOutTime="10" ApplyTailAngle="False" SineFrequencyMultiplier="1" SineAmplitudeMultiplier="1" BlinkFrequency="0" BlinkDurationIn="0.2" BlinkDurationOut="0.5" BlinkHoldTime="0" BlinkRotationIn="0" BlinkRotationOut="45" BlinkForce="50" OnlyBlinkInWater="False" BlinkTransitionIn="Linear" BlinkTransitionOut="Linear" HealthIndex="0" Friction="0.3" Restitution="0.05">
+    <attack StructureSoundType="StructureBlunt" Context="Water" TargetType="Character" TargetLimbType="None" HitDetectionType="Distance" AfterAttack="FollowThroughUntilCanAttack" AfterAttackDelay="0" Reverse="False" Retreat="False" Range="2000" DamageRange="2000" MinRange="500" Duration="1" CoolDown="6" SecondaryCoolDown="2" CoolDownRandomFactor="0.1" FullSpeedAfterAttack="False" StructureDamage="0" EmitStructureDamageParticles="True" ItemDamage="0" Penetration="0" LevelWallDamage="0" Ranged="True" AvoidFriendlyFire="False" RequiredAngle="15" Stun="0" OnlyHumans="False" ApplyForceOnLimbs="" Force="0" RootForceWorldStart="0,0" RootForceWorldMiddle="0,0" RootForceWorldEnd="0,0" RootTransitionEasing="Linear" Torque="0" ApplyForcesOnlyOnce="False" TargetImpulse="0" TargetImpulseWorld="0,0" TargetForce="0" TargetForceWorld="0,0" SubmarineImpactMultiplier="1" SeverLimbsProbability="0" Priority="2" Blink="False">
+      <StatusEffect type="OnFailure" target="This">
+        <sound file="Content/Characters/Latcher/ABYSSM_tongueMove.ogg" range="20000" volume="1" dontmuffle="false" />
+      </StatusEffect>
+      <StatusEffect type="OnFailure" target="This" delay="0.2">
+        <SpawnItem identifier="tonguetendoncharacter" spawnposition="This" count="1" aimspread="0" rotationtype="Collider" rotation="0" />
+      </StatusEffect>
+    </attack>
+  </limb>
+  <joint Name="Joint 1 - 0" Limb1="1" Limb2="0" Limb1Anchor="-11,10" Limb2Anchor="2.02,20.21" CanBeSevered="False" SeveranceProbabilityModifier="0" BreakSound="gore" LimitEnabled="True" UpperLimit="0" LowerLimit="0" Stiffness="0.25" Scale="1" WeldJoint="False" ClockWiseRotation="False" />
+</Ragdoll>

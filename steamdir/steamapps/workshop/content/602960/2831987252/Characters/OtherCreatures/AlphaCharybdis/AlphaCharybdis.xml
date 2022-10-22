@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="AlphaCharybdis" SpeciesTranslationOverride="" DisplayName="The Typhon" Group="abyss" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" CanSpeak="False" UseBossHealthBar="True" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="True" EatingSpeed="270" UsePathFinding="True" PathFinderPriority="1" HideInSonar="True" HideInThermalGoggles="False" SonarDisruption="0" DistantSonarRange="30000" DisableDistance="100000" SoundInterval="10" DrawLast="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <damageemitter drawontop="True" Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="0.5" ScaleMax="1" VelocityMin="200" VelocityMax="300" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="2" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <bloodemitter Particle="waterblood" AngleMin="0" AngleMax="360" ScaleMin="7" ScaleMax="15" VelocityMin="0" VelocityMax="100" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="10" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="waterblood" AngleMin="0" AngleMax="360" ScaleMin="7" ScaleMax="15" VelocityMin="0" VelocityMax="100" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="2" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter drawontop="True" Particle="gib" AngleMin="0" AngleMax="360" ScaleMin="0.5" ScaleMax="1" VelocityMin="200" VelocityMax="700" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <gibemitter Particle="heavygib" AngleMin="0" AngleMax="360" ScaleMin="2" ScaleMax="4" VelocityMin="50" VelocityMax="1000" EmitInterval="0" ParticlesPerSecond="0" ParticleAmount="20" HighQualityCollisionDetection="False" CopyEntityAngle="False" />
+  <health Vitality="10000" DoesBleed="False" CrushDepth="-Infinity" UseHealthWindow="False" BleedingReduction="100" BurnReduction="10" ConstantHealthRegeneration="0" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="True" ApplyAfflictionColors="False">
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+    <Limb />
+  </health>
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_idle1.ogg" State="Idle" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_idle2.ogg" State="Idle" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_attack1.ogg" State="Attack" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_attack2.ogg" State="Attack" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_attack3.ogg" State="Attack" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_damage1.ogg" State="Damage" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_damage2.ogg" State="Damage" Range="20000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_death1.ogg" State="Die" Range="30000" Volume="1" Tags="" />
+  <sound gender="None" File="Content/Characters/Charybdis/CHARYBDIS_death2.ogg" State="Die" Range="30000" Volume="1" Tags="" />
+  <ai CombatStrength="10000" Sight="7" Hearing="5" AggressionHurt="100" AggressionGreed="10" FleeHealthThreshold="0" AttackWhenProvoked="False" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="False" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="True" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="25" WallTargetingMethod="6">
+    <target damagethreshold="0" Tag="decoy" State="Attack" Priority="600" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="provocative" State="Attack" Priority="200" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="weaker" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="human" State="Attack" Priority="100" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="True" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="dead" State="Eat" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="room" State="Attack" Priority="80" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="2" CircleMaxRandomOffset="10" />
+    <target damagethreshold="0" Tag="sonar" State="Attack" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Circle" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="2" CircleStrikeDistanceMultiplier="2" CircleMaxRandomOffset="10" />
+    <target damagethreshold="0" Tag="terminalcell" State="Idle" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target damagethreshold="0" Tag="leucocyte" State="Idle" Priority="1" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <StatusEffect type="OnActive" target="this">
+    <Sound file="Content/Sounds/MONSTER_farLayer.ogg" loop="true" range="25000" dontmuffle="true" volume="0.5" />
+  </StatusEffect>
+  <!-- Requires a separate status effect, because there can only be one sound channel per status effect -->
+  <StatusEffect type="OnActive" target="this">
+    <Sound file="Content/Characters/Charybdis/CHARYBDIS_IdleLoop.ogg" loop="true" range="20000" dontmuffle="true" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="400">
+    <RemoveCharacter />
+  </StatusEffect>
+</Character>

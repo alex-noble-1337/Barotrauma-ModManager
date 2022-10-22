@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!-- Elements ************************************************************************************************ -->
+  <Item name="" identifier="iodine" category="Material" maxstacksize="8" Tags="smallitem,petfood3" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="storagecab" minamount="0" maxamount="4" spawnprobability="1" />
+    <PreferredContainer secondary="wreckstoragecab" minamount="0" maxamount="3" spawnprobability="0.06" />
+    <Price baseprice="5" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.3" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1.1" sold="false" />
+      <Price locationtype="military" multiplier="1.1" sold="false" />
+      <Price locationtype="mine" multiplier="0.8" sold="true" minavailable="20" />
+    </Price>
+    <InventoryIcon texture="%ModDir%/Content/Items/Misc/IodineMatIcon.png" sourcerect="0,0,64,64" />
+    <Sprite texture="%ModDir%/Content/Items/Misc/Iodine material.png" depth="0.55" sourcerect="0,0,45,37" origin="0.5,0.5" />
+    <Body width="45" height="30" density="25" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+    <AiTarget sightrange="1000" static="true" />
+  </Item>
+  <Override>
+    <Item name="" identifier="fulgurium" category="Material,Alien" Tags="smallitem" maxstacksize="8" cargocontaineridentifier="metalcrate" canbepicked="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="storagecab" />
+      <PreferredContainer secondary="wreckstoragecab" minamount="1" maxamount="2" spawnprobability="0.1" />
+      <Price baseprice="200" soldeverywhere="false">
+        <Price locationtype="outpost" multiplier="0" sold="false" />
+        <Price locationtype="city" multiplier="0" sold="false" />
+        <Price locationtype="research" multiplier="1.5" sold="true" minavailable="1" />
+        <Price locationtype="military" multiplier="1.5" sold="true" minavailable="1" />
+        <Price locationtype="mine" multiplier="0" sold="false" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" displayname="scrapsavantitem" requiresrecipe="true">
+        <RequiredItem identifier="scrap" />
+        <RequiredItem identifier="scrap" />
+        <RequiredItem identifier="scrap" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="328,833,51,63" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="186,351,59,67" depth="0.55" origin="0.5,0.5" />
+      <Body radius="25" density="50" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" attachable="true" reattachable="false">
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </Holdable>
+      <ContainedSprite texture="Content/Items/Alien/AlienMaterials.png" usewhenattached="true" decorativespritebehavior="HideWhenNotVisible" depth="0.55" sourcerect="27,84,200,88" origin="0.5,0.5" />
+      <LevelResource deattachduration="4" randomoffsetfromwall="20">
+        <Commonness commonness="0.02" />
+        <RequiredItem items="cuttingequipment" type="Equipped" />
+      </LevelResource>
+    </Item>
+    <Item name="" identifier="incendium" category="Material,Alien" Tags="smallitem" maxstacksize="8" cargocontaineridentifier="metalcrate" canbepicked="true" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="storagecab,secarmcab,armcab" />
+      <PreferredContainer secondary="wreckstoragecab" minamount="1" maxamount="2" spawnprobability="0.1" />
+      <Price baseprice="200" soldeverywhere="false">
+        <Price locationtype="outpost" multiplier="0" sold="false" />
+        <Price locationtype="city" multiplier="0" sold="false" />
+        <Price locationtype="research" multiplier="1" sold="true" minavailable="1" />
+        <Price locationtype="military" multiplier="1.1" sold="true" minavailable="1" />
+        <Price locationtype="mine" multiplier="0" sold="false" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="10" displayname="scrapsavantitem" requiresrecipe="true">
+        <RequiredItem identifier="scrap" />
+        <RequiredItem identifier="scrap" />
+        <RequiredItem identifier="scrap" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="260,835,53,61" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Alien/AlienMaterials.png" sourcerect="105,439,52,61" depth="0.55" origin="0.5,0.5" />
+      <Body radius="20" height="10" density="60" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" characterusable="false" msg="ItemMsgPickUpSelect" attachable="true" reattachable="false">
+        <StatusEffect type="OnUse" target="This" Condition="0.0" setvalue="true">
+          <sound file="Content/Items/Weapons/ExplosionSmall3.ogg" range="5000" />
+          <sound file="Content/Items/Weapons/ExplosionDebris3.ogg" range="5000" />
+          <Explosion range="500.0" structuredamage="4" force="20.0">
+            <Affliction identifier="burn" strength="50" />
+            <Affliction identifier="stun" strength="3" />
+          </Explosion>
+          <Remove />
+          <Fire size="100.0" />
+        </StatusEffect>
+      </Holdable>
+    </Item>
+  </Override>
+  <Item name="" identifier="du_p_alloy" category="Material,Alien" Tags="smallitem" description="" maxstacksize="8" cargocontaineridentifier="metalcrate" canbepicked="true" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="200" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="0" sold="false" />
+      <Price locationtype="city" multiplier="0" sold="false" />
+      <Price locationtype="research" multiplier="1.5" sold="false" />
+      <Price locationtype="military" multiplier="1.5" sold="false" />
+      <Price locationtype="mine" multiplier="0" sold="false" />
+    </Price>
+    <Deconstruct time="60">
+      <Item identifier="depletedfuel" />
+      <Item identifier="physicorium" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="70">
+      <RequiredSkill identifier="mechanical" level="50" />
+      <RequiredItem identifier="depletedfuel" />
+      <RequiredItem identifier="physicorium" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/Items/Misc/du+p.png" sourcerect="0,0,58,30" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Misc/du+p.png" sourcerect="0,0,58,30" origin="0.5,0.5" depth="0.55" />
+    <Body width="50" height="25" density="50" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="AI_microchip" category="Material,Alien" Tags="smallitem" maxstacksize="8" description="" cargocontaineridentifier="metalcrate" canbepicked="true" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="200" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="0" sold="false" />
+      <Price locationtype="city" multiplier="0" sold="false" />
+      <Price locationtype="research" multiplier="1.5" sold="false" />
+      <Price locationtype="military" multiplier="1.5" sold="false" />
+      <Price locationtype="mine" multiplier="0" sold="false" />
+    </Price>
+    <Deconstruct time="60">
+      <Item identifier="copper" />
+      <Item identifier="copper" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="70">
+      <RequiredSkill identifier="electrical" level="50" />
+      <RequiredItem identifier="copper" />
+      <RequiredItem identifier="copper" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/Items/Misc/microcontroller.png" sourcerect="7,3,53,28" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Misc/microcontroller.png" sourcerect="7,3,53,28" depth="0.55" origin="0.5,0.5" scale="0.5" />
+    <Body width="40" height="22" density="40" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="stasisemitter" category="Material,Alien" Tags="smallitem" description="" maxstacksize="8" cargocontaineridentifier="metalcrate" canbepicked="true" scale="0.5" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="200" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="0" sold="false" />
+      <Price locationtype="city" multiplier="0" sold="false" />
+      <Price locationtype="research" multiplier="1.5" sold="false" />
+      <Price locationtype="military" multiplier="1.5" sold="false" />
+      <Price locationtype="mine" multiplier="0" sold="false" />
+    </Price>
+    <Deconstruct time="60">
+      <Item identifier="plastic" />
+      <Item identifier="plastic" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fpgacircuit" />
+      <Item identifier="fulguriumbatterycell" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="70">
+      <RequiredSkill identifier="electrical" level="50" />
+      <RequiredItem identifier="plastic" />
+      <RequiredItem identifier="plastic" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="fulguriumbatterycell" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Content/Items/Misc/Emitter_array.png" sourcerect="0,0,58,47" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Misc/Emitter_array.png" sourcerect="0,0,58,47" origin="0.5,0.5" depth="0.55" scale="0.5" />
+    <Body width="40" height="22" density="40" />
+    <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+      <!-- Remove the item when fully used -->
+      <StatusEffect type="OnBroken" target="This">
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="" identifier="fueltrasnportcylinderreinforced" tags="mediumitem,mobilecontainer,tool" description="" scale="0.5" linkable="true" pickdistance="150" impactsoundtag="impact_metal_heavy">
+    <Price baseprice="800" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1" minavailable="1" />
+      <Price locationtype="city" multiplier="0.9" minavailable="1" />
+      <Price locationtype="research" multiplier="1.25" minavailable="2" />
+      <Price locationtype="military" multiplier="1.1" minavailable="1" />
+      <Price locationtype="mine" multiplier="1.3" minavailable="1" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="fueltransportcylinder" />
+      <Item identifier="stasisemitter" />
+      <Item identifier="AI_microchip" />
+      <Item identifier="du_p_alloy" />
+      <Item identifier="du_p_alloy" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="70">
+      <RequiredSkill identifier="mechanical" level="40" />
+      <RequiredItem identifier="fueltransportcylinder" />
+      <RequiredItem identifier="AI_microchip" />
+      <RequiredItem identifier="stasisemitter" />
+      <RequiredItem identifier="du_p_alloy" />
+      <RequiredItem identifier="du_p_alloy" />
+    </Fabricate>
+    <Sprite texture="%ModDir%/Content/Items/Misc/RodCylinderSpritesheet.png" depth="0.55" sourcerect="22,2,116,31" origin="0.5,0.5" />
+    <InventoryIcon texture="%ModDir%/Content/Items/Misc/RodCylinderInvSpritesheet.png" sourcerect="6,7,51,50" origin="0.5,0.5" />
+    <Body width="215" height="30" density="30" />
+    <Holdable slots="RightHand,LeftHand" holdpos="0,-50" handle1="-10,0" handle2="10,0" aimable="false" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="Rod storage worn" texture="%ModDir%/Content/Items/Misc/RodCylinderSpritesheet.png" canbehiddenbyotherwearables="false" rotation="90" inheritlimbdepth="false" depth="0.6" sourcerect="0,32,116,32" origin="0.5,2" limb="Torso" ignorelimbscale="true" scale="0.5" />
+    </Wearable>
+  </Item>
+</Items>

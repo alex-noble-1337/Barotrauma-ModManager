@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Polish" nowhitespace="false" translatedname="Polski">
+  <!-- Characters -->
+  <character.huskmutantcrawler>Zainfekowany Pełzacz</character.huskmutantcrawler>
+  <character.huskmutantmudraptor>Zainfekowany Błotozaur</character.huskmutantmudraptor>
+  <character.huskmutantarmored>Opancerzony Skorupnik Mutant</character.huskmutantarmored>
+  <character.huskmutanthunter>Zainfekowana Krewoliszka łowca</character.huskmutanthunter>
+  <character.huskmutanthuman>Skorupnik Mutant</character.huskmutanthuman>
+  <character.huskmutantcocooncrawler>Kokon Skoupnika</character.huskmutantcocooncrawler>
+  <character.huskmutanttigerthresher>Zainfekowany Mutant młocarz tygrysi</character.huskmutanttigerthresher>
+  <character.huskmutantbonethresher>Młocarz Tygrysi Mutant</character.huskmutantbonethresher>
+  <character.snatcher>łazik</character.snatcher>
+  <character.nibbler>Dziobacz</character.nibbler>
+  <character.micoteron>Mikoteron</character.micoteron>
+  <!-- Items -->
+  <entityname.unstablehuskeggs>Niestabilne jajka skorupnika</entityname.unstablehuskeggs>
+  <entitydescription.unstablehuskeggs>Jajka Europejskiego skorupnika nazywanego "pasożytem", Jajka charekteryzują sie wysoką aktywnością!</entitydescription.unstablehuskeggs>
+  <entityname.unstablehuskstinger>Niestabilny kolec skorupnika</entityname.unstablehuskstinger>
+  <entitydescription.unstablehuskstinger>Wzmocniony kolec skorupnika. Widać jak bardzo pulsuje</entitydescription.unstablehuskstinger>
+  <entityname.endwormhuskprojectile>Masa do wirówki</entityname.endwormhuskprojectile>
+  <entityname.huskmutantembryo>Zmutowany enbriom skorupnika</entityname.huskmutantembryo>
+  <entitydescription.huskmutantembryo>Dziwne, niezindetifikowane ciało. Aktualnie nie daje oznak życia.</entitydescription.huskmutantembryo>
+  <entityname.calyxinjector>Strzykawka obcych</entityname.calyxinjector>
+  <entitydescription.calyxinjector>Strzykawka wykorzystywana w wytwórstwie.</entitydescription.calyxinjector>
+  <entityname.calyxinjectorsymbiotic>Strzykawka symbiozy skorupnika</entityname.calyxinjectorsymbiotic>
+  <entitydescription.calyxinjectorsymbiotic>Strzykawka skorupnika, wytwarza symbioze z hostem dając odpornosci nie przejmując kontroli.</entitydescription.calyxinjectorsymbiotic>
+  <entityname.calyxinjectorbooster>Strzykawka wzmocnienia skorupnika</entityname.calyxinjectorbooster>
+  <entitydescription.calyxinjectorbooster>Strzykawka symbiozy ze skorpunikiem dające pozytywne efekty.</entitydescription.calyxinjectorbooster>
+  <!-- Afflictions -->
+  <afflictionname.huskmutation>Mutacja skorupnika</afflictionname.huskmutation>
+  <afflictiondescription.huskmutation>Skóra jest ciemna i lekpa... coś dziwnego sie dzieje.</afflictiondescription.huskmutation>
+  <afflictionname.symbiotichusk>Symbioza skorupnika</afflictionname.symbiotichusk>
+  <afflictiondescription.symbiotichusk>Obca forma życia działająca pozytywnie i podtrzymuje na życiu.</afflictiondescription.symbiotichusk>
+  <afflictionname.huskinfectionhealing>Regeneracja skorupnika</afflictionname.huskinfectionhealing>
+  <afflictiondescription.huskinfectionhealing>Symbioza skorupnika utrzymuje cie natlenionego i odpornego na cisinienie, regeneruje ciało z krytycznego stanu.</afflictiondescription.huskinfectionhealing>
+  <afflictionname.huskinfectionaffinity>Odpornosc skorupnika</afflictionname.huskinfectionaffinity>
+  <afflictiondescription.huskinfectionaffinity>Symbioza w pełni z skorupnikiem, odpornosc na cisnienie i zarazenie skorupnikiem do stanu utraty kontroli.</afflictiondescription.huskinfectionaffinity>
+  <afflictionname.huskheadhijacking1>Wyrostek głowy</afflictionname.huskheadhijacking1>
+  <afflictiondescription.huskheadhijacking1>Widac kawałek wyrastającej głwy z czaszki, co powoduje problemy, musisz poprosic kogos by ją odstrzelić!</afflictiondescription.huskheadhijacking1>
+  <afflictionname.blacktoxin>Czarna toksyna</afflictionname.blacktoxin>
+  <afflictiondescription.blacktoxin>Powoduje Czarną lepką skóre i żyły, pacjent nie przeżuje długo.</afflictiondescription.blacktoxin>
+  <afflictionname.boosterhusk>wzmocnienie skorupnika</afflictionname.boosterhusk>
+  <afflictiondescription.boosterhusk>Regeneracja skorupnika, daje ekstremalną regeneracje, moze zainfekowac ciało.</afflictiondescription.boosterhusk>
+  <afflictionname.growth>Przyrost</afflictionname.growth>
+</infotexts>

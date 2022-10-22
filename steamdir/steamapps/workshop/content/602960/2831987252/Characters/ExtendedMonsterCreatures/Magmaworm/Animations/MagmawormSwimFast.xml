@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MagmawormSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" mirror="False" waveamplitude="3.9590292" wavelength="79.85576" rotatetowardsmovement="True" torsotorque="2.5" headtorque="5" tailtorque="1" tailtorquemultiplier="1" foottorque="10" footangles="" tailangle="90" steertorque="2.5" movementspeed="4.9944453" cyclespeed="1" headangle="90" torsoangle="90" flipcooldown="0.2" flipdelay="0.1" mirrorlerp="True" type="Magmaworm" legtorque="25" armikstrength="1" handikstrength="1" />

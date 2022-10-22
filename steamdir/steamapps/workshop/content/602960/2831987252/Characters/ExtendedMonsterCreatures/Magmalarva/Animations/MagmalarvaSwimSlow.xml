@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MagmalarvaSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.5" mirror="False" mirrorlerp="False" waveamplitude="7.4925747" wavelength="16.646881" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="25" movementspeed="3.324947" cyclespeed="1" headangle="NaN" torsoangle="NaN" legtorque="25" armikstrength="1" handikstrength="1" />

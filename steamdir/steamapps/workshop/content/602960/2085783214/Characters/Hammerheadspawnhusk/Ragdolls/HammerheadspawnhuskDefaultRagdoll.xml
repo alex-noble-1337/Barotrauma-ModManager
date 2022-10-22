@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ragdoll type="Hammerheadspawn" canentersubmarine="True" spritesheetorientation="90" limbscale="0.1969" jointscale="0.1969" texturescale="1" colliderheightfromfloor="45" impacttolerance="20" canwalk="False" draggable="True" mainlimb="Torso" texture="%ModDir:Improved Husks%/Characters/Hammerheadmatriarchhusk/Hammerheadmatriarchhusk.png" color="255,255,255,255">
+  <collider radius="0" width="75" name="Main Collider" height="200" />
+  <limb id="1" name="Head" type="Head" height="70" width="90" notes="" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="5" radius="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" healthindex="0" friction="0.3" restitution="0.05" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" inheritlimbdepth="None" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" onlyblinkinwater="False" blinktransitionin="Linear" blinktransitionout="Linear">
+    <deformablesprite texture="" sourcerect="1514,1433,98,115" origin="0.4460883,0.4520822" depth="0" subdivisions="3,3" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="3,3" multiplier="1.0" sync="-1" typename="bendjoint" blendmode="Add" usemovementsine="False" stopwhenhostisdead="False" sineoffset="0" maxrotation="30" strength="1" onlyinwater="False" />
+    </deformablesprite>
+    <conditionalsprite exclusive="True">
+      <conditional isDead="True" />
+      <deformablesprite texture="" sourcerect="1514,1318,98,115" origin="0.4460883,0.4520822" depth="0" subdivisions="3,3" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+        <spritedeformation type="bendjoint" resolution="3,3" multiplier="1.0" sync="-1" typename="bendjoint" blendmode="Add" usemovementsine="False" stopwhenhostisdead="False" sineoffset="0" maxrotation="30" strength="1" onlyinwater="False" />
+      </deformablesprite>
+    </conditionalsprite>
+    <lightsource color="255,255,0,30" range="25" castshadows="false" scale="1" offset="0,0" rotation="0" flicker="0" flickerspeed="1" pulsefrequency="0" pulseamount="1" blinkfrequency="0">
+      <lighttexture texture="Content/Lights/pointlight_falloff.png" origin="0.4,0.5" size="1,1" />
+    </lightsource>
+    <damagemodifier damagesound="Gore" damagemultiplier="1.2" armorsector="0,360" deflectprojectiles="False" afflictionidentifiers="" probabilitymultiplier="1" afflictiontypes="damage" damageparticle="huskmutantacidsplash" />
+    <attack structuresoundtype="StructureBlunt" context="Any" targettype="Character" targetlimbtype="None" hitdetectiontype="Distance" afterattack="FallBack" reverse="False" range="25" damagerange="25" duration="0.5" cooldown="3" secondarycooldown="0" cooldownrandomfactor="0" structuredamage="0" itemdamage="0" stun="0" onlyhumans="False" applyforceonlimbs="" force="1" torque="2" applyforcesonlyonce="False" targetimpulse="0" targetimpulseworld="0,0" targetforce="5" targetforceworld="0,0" severlimbsprobability="0" priority="0" afterattackdelay="0" retreat="False" rootforceworldstart="0,0" rootforceworldmiddle="0,0" rootforceworldend="0,0" roottransitioneasing="Linear" fullspeedafterattack="False" penetration="0" levelwalldamage="0" ranged="False" avoidfriendlyfire="False" requiredangle="20" submarineimpactmultiplier="1" blink="False">
+      <Affliction identifier="burn" strength="5" probability="1" />
+      <Affliction identifier="stun" strength="1" probability="0.5" />
+      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
+        <Affliction identifier="internaldamage" strength="1000" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="NearbyCharacters" range="500">
+        <Affliction identifier="huskinfectioncontagion" strength="25" probability="0.5" />
+      </StatusEffect>
+    </attack>
+  </limb>
+  <limb id="0" name="Torso" type="Torso" height="80" width="100" notes="" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" radius="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" healthindex="0" friction="0.3" restitution="0.05" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" inheritlimbdepth="None" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" onlyblinkinwater="False" blinktransitionin="Linear" blinktransitionout="Linear">
+    <deformablesprite texture="" sourcerect="1401,1433,116,115" origin="0.534501,0.4520822" depth="0" subdivisions="3,3" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="3,3" multiplier="1.0" sync="-1" typename="bendjoint" blendmode="Add" usemovementsine="False" stopwhenhostisdead="False" sineoffset="0" maxrotation="30" strength="1" onlyinwater="False" />
+    </deformablesprite>
+  </limb>
+  <limb id="2" name="Tail" type="Tail" width="160" height="50" spriteorientation="NaN" flip="True" mirrorvertically="False" mirrorhorizontally="False" hide="False" attackpriority="1" steerforce="0" radius="0" density="10" ignorecollisions="False" angulardamping="7" pullpos="0,0" stepoffset="0,0" refjoint="-1" mouthpos="0,0" notes="" healthindex="0" friction="0.3" restitution="0.05" constanttorque="0" constantangle="0" scale="1" attackforcemultiplier="1" minseverancedamage="1" inheritlimbdepth="None" severedfadeouttime="10" applytailangle="False" sinefrequencymultiplier="1" sineamplitudemultiplier="1" blinkfrequency="0" blinkdurationin="0.2" blinkdurationout="0.5" blinkholdtime="0" blinkrotationin="0" blinkrotationout="45" blinkforce="50" onlyblinkinwater="False" blinktransitionin="Linear" blinktransitionout="Linear">
+    <deformablesprite texture="" sourcerect="1230,1432,177,115" origin="0.6045581,0.4690734" depth="0" subdivisions="3,3" color="255,255,255,255" deadcolor="255,255,255,255" deadcolortime="0" ignoretint="False">
+      <spritedeformation type="bendjoint" resolution="3,3" multiplier="1.0" sync="-1" typename="bendjoint" blendmode="Add" usemovementsine="False" stopwhenhostisdead="False" sineoffset="0" maxrotation="30" strength="1" onlyinwater="False" />
+    </deformablesprite>
+  </limb>
+  <joint limb1="1" limb2="0" limb1anchor="-43.16693,-0.8315565" limb2anchor="51.36745,-0.6573032" name="Joint 1 - 0" canbesevered="False" limitenabled="True" upperlimit="30" lowerlimit="-30" stiffness="0.25" severanceprobabilitymodifier="1" scale="1" breaksound="gore" weldjoint="False" clockwiserotation="False" />
+  <joint limb1="0" limb2="2" limb1anchor="-61.19426,-2.871144" limb2anchor="65.26091,-1.740783" name="Joint 0 - 2" canbesevered="False" limitenabled="True" upperlimit="30" lowerlimit="-30" stiffness="0.25" severanceprobabilitymodifier="1" scale="1" breaksound="gore" weldjoint="False" clockwiserotation="False" />
+</Ragdoll>

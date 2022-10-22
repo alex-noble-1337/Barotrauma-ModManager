@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<OrangeboySwimFast movementspeed="3" steertorque="2" waveamplitude="2.0256746" wavelength="29.829473" flip="True" headangle="50" torsoangle="90" mirror="True" rotatetowardsmovement="True" torsotorque="5" headtorque="5" foottorque="10" tailtorque="1" cyclespeed="5" animationtype="SwimFast" footangles="10: 1.580441,15: 0,11: 0" usesinemovement="False" tailangle="90" tailtorquemultiplier="1" flipcooldown="0.5" flipdelay="0" mirrorlerp="False" type="Orangeboy" legtorque="25" armikstrength="1" handikstrength="1" />

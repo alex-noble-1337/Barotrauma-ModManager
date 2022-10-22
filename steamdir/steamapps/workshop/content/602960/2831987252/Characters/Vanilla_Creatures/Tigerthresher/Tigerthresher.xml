@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Character speciesname="Tigerthresher" humanoid="False" husk="False" needsair="False" needswater="True" canspeak="False" noise="500" visibility="1000" blooddecal="blood" group="thresher" eatingspeed="10" displayname="" hasinfo="False" usehuskappendage="False" bleedparticleair="blooddrop" bleedparticlewater="waterblood" pathfinderpriority="1" hideinsonar="False" speciestranslationoverride="" sonardisruption="0">
+    <ragdolls folder="default" />
+    <animations folder="default" />
+    <health vitality="150" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="1" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="3" />
+    <ai combatstrength="300" sight="0" hearing="1" aggressionhurt="200" aggressiongreed="10" fleehealththreshold="0" attackwhenprovoked="True" aggressiveboarding="True" targetouterwalls="True" targetinnerwalls="True" avoidgunfire="True" enforceaggressivebehaviorformissions="True" randomattack="False" avoidtime="3" minfleetime="20">
+      <target tag="decoy" state="Attack" priority="500" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreifnotinsamesub="True" />
+      <target tag="provocative" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreifnotinsamesub="True" />
+      <target tag="weapon" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreifnotinsamesub="True" />
+      <target tag="tool" state="Aggressive" priority="50" reactdistance="1000" attackdistance="0" timer="0" ignorecontained="False" ignoreifnotinsamesub="True" />
+      <target tag="human" state="Attack" priority="60" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreifnotinsamesub="True" />
+      <target tag="weaker" state="Attack" priority="50" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="equal" state="Attack" priority="50" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="stronger" state="PassiveAggressive" priority="50" reactdistance="2000" attackdistance="0" timer="0" ignorecontained="False" ignoreincapacitated="true" />
+      <target tag="leucocyte" state="Avoid" priority="50" reactdistance="1000" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="engine" state="Avoid" priority="40" reactdistance="500" ignoreinside="True" />
+      <target tag="dead" state="Eat" priority="20" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="door" state="Attack" priority="15" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="room" state="Attack" priority="10" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="wall" state="Attack" priority="10" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="sonar" state="Attack" priority="10" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="bonethresher" state="Protect" priority="2" reactdistance="1000" attackdistance="0" timer="0" ignorecontained="False" />
+      <target tag="turret" state="Attack" priority="1" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="true" />
+      <target tag="watcher" state="Protect" priority="1" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="true" />
+      <target tag="monsterfood" state="Eat" priority="1" />
+      <target tag="terminalcell" state="Idle" priority="0" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" />
+      <SwarmBehavior mindistfromclosest="400" maxdistfromcenter="10000" cohesion="0.25" />
+    </ai>
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_idle1.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_idle2.ogg" state="Idle" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_damage1.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_damage2.ogg" state="Damage" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_attack1.ogg" state="Attack" range="4000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_attack2.ogg" state="Attack" range="4000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_death1.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <sound file="Content/Characters/Tigerthresher/TIGERTRESHER_death2.ogg" state="Die" range="3000" volume="1" gender="None" />
+    <Inventory slots="Any, Any, Any" accessiblewhenalive="False">
+      <Item identifier="alienblood" />
+      <Item identifier="hydroxyapatite" />
+    </Inventory>
+    <damageemitter particle="gib" drawontop="True" particleamount="10" velocitymin="50" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+    <bloodemitter particle="blood" anglemin="1" anglemax="2" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" particleamount="10" highqualitycollisiondetection="False" copyentityangle="False" />
+    <bloodemitter particle="waterblood" anglemin="1" anglemax="2" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" particleamount="1" highqualitycollisiondetection="False" copyentityangle="False" />
+    <gibemitter particle="gib" anglemin="0" anglemax="360" scalemin="1" scalemax="2" velocitymin="200" velocitymax="1500" emitinterval="0" particlespersecond="0" particleamount="30" highqualitycollisiondetection="False" copyentityangle="False" />
+    <gibemitter particle="heavygib" anglemin="0" anglemax="360" scalemin="0.8" scalemax="1.0" velocitymin="50" velocitymax="500" emitinterval="0" particlespersecond="0" particleamount="5" highqualitycollisiondetection="False" copyentityangle="False" />
+    <StatusEffect type="OnEating" target="Character" stackable="false">
+      <Affliction identifier="growthvanilla" amount="0.5" />
+    </StatusEffect>
+  </Character>
+</Override>

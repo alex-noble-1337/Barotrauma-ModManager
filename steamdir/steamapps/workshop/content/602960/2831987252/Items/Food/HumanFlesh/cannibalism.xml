@@ -1,0 +1,212 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Meat Cleaver" identifier="meatcleaver" category="Equipment" Tags="smallitem,weapon" cargocontaineridentifier="metalcrate" scale="0.3" impactsoundtag="impact_metal_light">
+    <!--<Price locationtype="City" buyprice="10" />
+      <Price locationtype="Research" buyprice="10" />
+      <Price locationtype="Military" buyprice="10" />
+      <Price locationtype="Outpost" buyprice="20" />-->
+    <Deconstruct time="10">
+      <Item identifier="iron" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="10">
+      <RequiredSkill identifier="weapons" level="30" />
+      <RequiredItem identifier="iron" />
+      <RequiredItem identifier="plastic" />
+    </Fabricate>
+    <InventoryIcon texture="%ModDir%/Items/Tools/halloweenInventoryAtlas.png" sourcerect="128,0,64,64" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Items/Tools/halloweenItems.png" sourcerect="0,188,151,52" depth="0.55" origin="0.5,0.5" />
+    <Body width="110" height="25" density="50" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-15,0" holdangle="45" reload="0.75" range="50" combatPriority="40" msg="ItemMsgPickUpSelect">
+      <Attack stun="0.2" targetimpulse="10" severlimbsprobability="0.5">
+        <Affliction identifier="internaldamage" strength="1" />
+        <Affliction identifier="lacerations" strength="5" />
+        <Affliction identifier="bleeding" strength="10" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+      </Attack>
+      <StatusEffect type="OnUse" target="Character" comparison="and">
+        <Conditional IsDead="true" />
+        <Conditional ishuman="true" />
+        <Affliction identifier="thal_gutted" strength="10" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Character" comparison="and" stackable="false" checkconditionalalways="true">
+        <Affliction identifier="thal_unguttable" strength="100" />
+        <Conditional thal_gutted="lt 1" />
+        <Conditional thal_unguttable="gt 80" />
+        <Conditional ishuman="true" />
+        <ParticleEmitter particle="organeruption" particleamount="50" scalemin="0.5" scalemax="1" velocitymin="100" velocitymax="500" anglemin="0" anglemax="360" colormultiplier="255,0,0,255" />
+        <ParticleEmitter particle="heavygib" drawontop="true" particleamount="1" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" anglemin="0" anglemax="360" />
+        <Sound file="%ModDir%/Items/Food/gib1.ogg" selectionmode="random" range="500" />
+        <Sound file="%ModDir%/Items/Food/gib2.ogg" selectionmode="random" range="500" />
+        <Sound file="%ModDir%/Items/Food/gib3.ogg" selectionmode="random" range="500" />
+        <Sound file="%ModDir%/Items/Food/gib4.ogg" selectionmode="random" range="500" />
+        <Explosion range="0.0" structuredamage="0" itemdamage="0" force="0.0" severlimbsprobability="0.0" decal="blood" decalsize="3.25"></Explosion>
+        <SpawnItem identifier="humanbrain" spawnposition="This" />
+        <SpawnItem identifier="intestinepieces" spawnposition="This" spread="20" />
+        <SpawnItem identifier="intestinepieces" spawnposition="This" spread="20" />
+        <SpawnItem identifier="intestinepieces" spawnposition="This" spread="20" />
+        <SpawnItem identifier="humanbreast" spawnposition="This" />
+        <SpawnItem identifier="humanthigh" spawnposition="This" />
+        <SpawnItem identifier="humantibia" spawnposition="This" />
+        <SpawnItem identifier="humanliver" spawnposition="This" />
+      </StatusEffect>
+    </MeleeWeapon>
+  </Item>
+  <!--<Item name="Human Brain" identifier="humanbrain" category="Equipment" tags="humanpart,smallitem,decoy" cargocontaineridentifier="metalcrate" damagedbymonsters="true" description="" scale="0.25" impactsoundtag="impact_wetsplat" >
+      <Deconstruct time="10">
+        <Item identifier="carbon" />
+		<Item identifier="calcium" />
+		<Item identifier="calcium" />
+      </Deconstruct>
+    <Sprite name="medbrain" texture="Mods/Survivor Other Creature fixes/Items/Food/organs.png" sourcerect="3,98,128,94" depth="0.55" origin="0.5,0.5" />
+    <Body width="128" height="60" density="15" />
+    <AiTarget sightrange="1000" static="true" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" aimpos="35,23" handle1="15,0" swingamount="20,20" swingspeed="2" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+			<StatusEffect type="OnUse" target="This,Character" condition="-10" swingwhenusing="true" swingspeed="2" aimpos="35,23" >
+				<Conditional yummyeating="lt 99" />
+				<Affliction identifier="bodynutrition" amount="0.6"/>
+				<Affliction identifier="cannibal_full" amount="2.5"/>
+				<Affliction identifier="foodpoison" amount="0.5" />
+				<Affliction identifier="brainprion" amount="0.1" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/eatingflesh.ogg" type="OnUse" range="600" loop="true" />
+			</StatusEffect>
+			<StatusEffect type="OnUse" target="This,Character" swingwhenusing="false" swingspeed="0" aimpos="40,10" >
+				<Conditional yummyeating="gt 98" />
+				<Affliction identifier="yummyeating" amount="10"/>
+			</StatusEffect>
+			<StatusEffect type="OnBroken" target="This">
+				<Conditional condition="eq 0" />
+				<sound type="OnUse" file="Mods/Survivor Other Creature fixes/Items/Food/gulp.ogg" range="600" />
+				<Remove />
+			</StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Intestine Pieces" identifier="intestinepieces" category="Equipment" tags="humanpart,smallitem,decoy" cargocontaineridentifier="metalcrate" damagedbymonsters="true" description="" scale="0.1" impactsoundtag="impact_wetsplat" >
+      <Deconstruct time="6">
+        <Item identifier="carbon" />
+		<Item identifier="calcium" />
+      </Deconstruct>
+    <Sprite name="smolbrain" texture="Mods/Survivor Other Creature fixes/Items/Food/organs.png" sourcerect="151,112,156,89" depth="0.55" origin="0.5,0.5" />
+    <Body width="156" height="60" density="15" />
+    <AiTarget sightrange="1000" static="true" />
+    <Holdable slots="Any,RightHand,LeftHand" aimpos="100,0" handle1="-5,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  
+  <Item name="Human Breast" identifier="humanbreast" category="Equipment" tags="humanpart,smallitem,decoy" cargocontaineridentifier="metalcrate" damagedbymonsters="true" description="" scale="0.3" impactsoundtag="impact_wetsplat" >
+      <Deconstruct time="10">
+        <Item identifier="carbon" count="2" />
+		<Item identifier="calcium" />
+		<Item identifier="phosphorus" />
+		<Item identifier="potassium" />
+      </Deconstruct>
+    <Sprite name="medbreast" texture="Mods/Survivor Other Creature fixes/Items/Food/organs.png" sourcerect="591,5,137,84" depth="0.55" origin="0.5,0.5" />
+    <Body width="137" height="60" density="15" />
+    <AiTarget sightrange="1000" static="true" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" aimpos="35,23" handle1="15,0" swingamount="20,20" swingspeed="2" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+			<StatusEffect type="OnUse" target="This,Character" condition="-8" swingwhenusing="true" swingspeed="2" aimpos="35,23" >
+				<Conditional yummyeating="lt 99" />
+				<Affliction identifier="bodynutrition" amount="1"/>
+				<Affliction identifier="yummyeating" amount="2.5"/>
+				<Affliction identifier="foodpoison" amount="0.5" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/eatingflesh.ogg" type="OnUse" range="600" loop="true" />
+			</StatusEffect>
+			<StatusEffect type="OnUse" target="This,Character" swingwhenusing="false" swingspeed="0" aimpos="40,10" >
+				<Conditional yummyeating="gt 98" />
+				<Affliction identifier="yummyeating" amount="10"/>
+			</StatusEffect>
+			<StatusEffect type="OnBroken" target="This">
+				<Conditional condition="eq 0" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/gulp.ogg" range="600" />
+				<Remove />
+			</StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Human Liver" identifier="humanliver" category="Equipment" tags="humanpart,smallitem,decoy" cargocontaineridentifier="metalcrate" damagedbymonsters="true" description="" scale="0.2" impactsoundtag="impact_wetsplat" >
+      <Deconstruct time="10">
+        <Item identifier="adrenaline" count="2" />
+		<Item identifier="carbon" />
+		<Item identifier="potassium" />
+      </Deconstruct>
+    <Sprite name="smallbreast" texture="Mods/Survivor Other Creature fixes/Items/Food/organs.png" sourcerect="445,16,140,75" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="15" />
+    <AiTarget sightrange="1000" static="true" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" aimpos="35,23" handle1="15,0" swingamount="20,20" swingspeed="2" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+			<StatusEffect type="OnUse" target="This,Character" condition="-15" swingwhenusing="true" swingspeed="2" aimpos="35,23" >
+				<Conditional yummyeating="lt 99" />
+				<Affliction identifier="bodynutrition" amount="1"/>
+				<Affliction identifier="yummyeating" amount="2.5"/>
+				<Affliction identifier="foodpoison" amount="0.5" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/eatingflesh.ogg" type="OnUse" range="600" loop="true" />
+			</StatusEffect>
+			<StatusEffect type="OnUse" target="This,Character" swingwhenusing="false" swingspeed="0" aimpos="40,10" >
+				<Conditional yummyeating="gt 98" />
+				<Affliction identifier="yummyeating" amount="10"/>
+			</StatusEffect>
+			<StatusEffect type="OnBroken" target="This">
+				<Conditional condition="eq 0" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/gulp.ogg" range="600" />
+				<Remove />
+			</StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Human Tibia" identifier="humantibia" category="Equipment" tags="humanpart,smallitem,decoy" cargocontaineridentifier="metalcrate" damagedbymonsters="true" description="" scale="0.28" impactsoundtag="impact_wetsplat" >
+      <Deconstruct time="10">
+        <Item identifier="carbon" count="2" />
+		<Item identifier="calcium" />
+      </Deconstruct>
+    <Sprite texture="Mods/Survivor Other Creature fixes/Items/Food/organs.png" sourcerect="315,19,107,70" depth="0.55" origin="0.5,0.5" />
+    <Body width="107" height="55" density="15" />
+    <AiTarget sightrange="1000" static="true" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" aimpos="35,23" handle1="15,0" swingamount="20,20" swingspeed="2" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+			<StatusEffect type="OnUse" target="This,Character" condition="-13" swingwhenusing="true" swingspeed="2" aimpos="35,23" >
+				<Conditional yummyeating="lt 99" />
+				<Affliction identifier="bodynutrition" amount="1"/>
+				<Affliction identifier="yummyeating" amount="2.5"/>
+				<Affliction identifier="foodpoison" amount="0.5" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/eatingflesh.ogg" type="OnUse" range="600" loop="true" />
+			</StatusEffect>
+			<StatusEffect type="OnUse" target="This,Character" swingwhenusing="false" swingspeed="0" aimpos="40,10" >
+				<Conditional yummyeating="gt 98" />
+				<Affliction identifier="yummyeating" amount="10"/>
+			</StatusEffect>
+			<StatusEffect type="OnBroken" target="This">
+				<Conditional condition="eq 0" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/gulp.ogg" range="600" />
+				<Remove />
+			</StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Human Thigh" identifier="humanthigh" category="Equipment" tags="humanpart,smallitem,decoy" cargocontaineridentifier="metalcrate" damagedbymonsters="true" description="" scale="0.35" impactsoundtag="impact_wetsplat" >
+      <Deconstruct time="10">
+        <Item identifier="carbon" count="2" />
+		<Item identifier="calcium" />
+		<Item identifier="phosphorus" />
+		<Item identifier="potassium" />
+      </Deconstruct>
+    <Sprite texture="Mods/Survivor Other Creature fixes/Items/Food/organs.png" sourcerect="152,7,149,94" depth="0.55" origin="0.5,0.5" />
+    <Body width="149" height="55" density="15" />
+    <AiTarget sightrange="1000" static="true" />
+    <Holdable slots="Any,RightHand,LeftHand" aimable="false" aimpos="35,23" handle1="15,0" swingamount="20,20" swingspeed="2" swingwhenusing="true" msg="ItemMsgPickUpSelect">
+			<StatusEffect type="OnUse" target="This,Character" condition="-11" swingwhenusing="true" swingspeed="2" aimpos="35,23" >
+				<Conditional yummyeating="lt 99" />
+				<Affliction identifier="bodynutrition" amount="1"/>
+				<Affliction identifier="yummyeating" amount="2.5"/>
+				<Affliction identifier="foodpoison" amount="0.5" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/eatingflesh.ogg" type="OnUse" range="600" loop="true" />
+			</StatusEffect>
+			<StatusEffect type="OnUse" target="This,Character" swingwhenusing="false" swingspeed="0" aimpos="40,10" >
+				<Conditional yummyeating="gt 98" />
+				<Affliction identifier="yummyeating" amount="10"/>
+			</StatusEffect>
+			<StatusEffect type="OnBroken" target="This">
+				<Conditional condition="eq 0" />
+				<sound file="Mods/Survivor Other Creature fixes/Items/Food/gulp.ogg" range="600" />
+				<Remove />
+			</StatusEffect>
+    </Holdable>
+  </Item>-->
+</Items>

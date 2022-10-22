@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Storage Container [FPGA Circuit]" identifier="toolboxfpgacircuitb" category="Equipment" tags="resourcecontainer,toolbox,smallitem,mobilecontainer,tool" cargocontaineridentifier="metalcrate" showcontentsintooltip="true" Scale="0.5" fireproof="true" description="A storage container for FPGA Circuit." impactsoundtag="impact_metal_heavy" RequireAimToUse="True">
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricatorm" requiredtime="20">
+      <RequiredSkill identifier="mechanical" level="20" />
+      <Item identifier="steel" />
+    </Fabricate>
+    <InventoryIcon texture="FPGA Circuit Container.png" sourcerect="0,0,84,67" origin="0.5,0.6" />
+    <Sprite texture="FPGA Circuit Container.png" sourcerect="0,0,84,67" origin="0.5,0.5" depth="0.6" />
+    <Body width="90" height="60" density="20" />
+    <MeleeWeapon slots="RightHand,LeftHand" controlpose="true" aimpos="45,10" handle1="0,18" holdangle="90" reload="1" range="50" combatpriority="6" msg="ItemMsgPickUpSelect">
+      <Attack structuredamage="10" itemdamage="5" targetimpulse="2">
+        <Affliction identifier="blunttrauma" strength="2" />
+        <Affliction identifier="stun" strength="0.6" />
+        <Sound file="Content/Items/Weapons/Smack2.ogg" range="800" />
+      </Attack>
+    </MeleeWeapon>
+    <ItemContainer capacity="20" keepopenwhenequipped="true" movableframe="true">
+      <Containable items="fpgacircuit" />
+    </ItemContainer>
+  </Item>
+</Items>

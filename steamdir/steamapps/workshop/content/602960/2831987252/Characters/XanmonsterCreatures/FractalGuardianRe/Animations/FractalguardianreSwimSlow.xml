@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FractalguardianreSwimSlow movementspeed="3" waveamplitude="0.1" wavelength="50" flip="False" mirror="False" rotatetowardsmovement="True" torsotorque="0" headtorque="10" foottorque="25" tailtorque="0" footangles="" steertorque="25" cyclespeed="1" headangle="0" torsoangle="NaN" animationtype="SwimSlow" usesinemovement="False" tailtorquemultiplier="1" tailangle="NaN" type="Fractalguardianre" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

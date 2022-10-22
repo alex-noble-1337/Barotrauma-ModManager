@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Molochhusk" speciesname="Moloch_mhusk" speciestranslationoverride="Moloch">
+  <health vitality="1850" />
+  <ragdoll scalemultiplier="1.15" />
+  <attack damagemultiplier="1.15" />
+</Charactervariant>

@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HammerheadspawnhuskSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" mirror="False" waveamplitude="2.986903" wavelength="28.03192" rotatetowardsmovement="True" torsotorque="2.5" headtorque="5" tailtorque="1" tailtorquemultiplier="1" foottorque="10" footangles="" tailangle="90" steertorque="2" movementspeed="1.9507967" cyclespeed="1" headangle="90" torsoangle="90" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

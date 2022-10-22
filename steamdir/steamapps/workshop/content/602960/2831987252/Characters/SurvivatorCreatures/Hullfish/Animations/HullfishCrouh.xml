@@ -1,0 +1,191 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Error Component" identifier="errorcomponents" category="Hidden" tags="smallitem" cargocontaineridentifier="metalcrate" description="" hideinmenus="true" scale="0.4">
+    <Deconstruct time="1" />
+    <Fabricate suitablefabricators="fabricator" requiredtime="1">
+      <RequiredSkill identifier="mechanical" level="1" />
+      <RequiredItem identifier="tin" />
+      <RequiredItem identifier="tin" />
+      <RequiredItem identifier="fpgacircuit" />
+      <RequiredItem identifier="tin" />
+    </Fabricate>
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="641,837,64,54" origin="0.5,0.5" />
+    <Sprite name="Sin Component" texture="Content/Items/Electricity/signalcomp.png" depth="0.6" sourcerect="32,96,31,25" origin="0.5,0.5" />
+    <Body width="75" height="50" density="30" />
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="false" aimable="false">
+      <RequiredItem identifier="wrench" type="Equipped" />
+    </Holdable>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="600,520" anchor="Center" absoluteoffset="0,-30" style="ItemUI" />
+      <Button text="Mag">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="smgmagazinedepletedfuel" />
+        </StatusEffect>
+      </Button>
+      <Button text="SShell">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="shotgunslugexplosive" count="8" />
+        </StatusEffect>
+      </Button>
+      <Button text="HRev">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="revolverh" />
+          <SpawnItem spawnposition="ThisInventory" identifier="revolverroundh" count="8" />
+        </StatusEffect>
+      </Button>
+      <Button text="EndNow">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="GF" />
+        </StatusEffect>
+      </Button>
+      <Button text="HS">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="calyxinjectorsymbiotic" />
+        </StatusEffect>
+      </Button>
+      <Button text="Emp">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <Explosion range="200000" structuredamage="0" empstrength="10" camerashake="0" stun="0" force="0" flames="false" smoke="false" shockwave="false" sparks="false" underwaterbubble="false"></Explosion>
+        </StatusEffect>
+      </Button>
+      <Button text="naso">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="naso" />
+        </StatusEffect>
+      </Button>
+      <Button text="DB">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="dirtybombafteremitter" />
+        </StatusEffect>
+      </Button>
+      <Button text="Scr">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="watcherscreechemitter" />
+        </StatusEffect>
+      </Button>
+      <Button text="Geo">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="geosphere" count="1" spread="3000" />
+        </StatusEffect>
+      </Button>
+      <Button text="EndLater">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="SF" />
+        </StatusEffect>
+      </Button>
+      <Button text="Blaze">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <Fire size="4" />
+        </StatusEffect>
+      </Button>
+      <Button text="BotRemover">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="botremover" />
+        </StatusEffect>
+      </Button>
+      <Button text="BotHusker">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="husked" />
+        </StatusEffect>
+      </Button>
+      <Button text="Book">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="skillbookhandyseaman" />
+        </StatusEffect>
+      </Button>
+      <Button text="Spawner">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnItem spawnposition="ThisInventory" identifier="waterdetect2" />
+        </StatusEffect>
+      </Button>
+    </CustomInterface>
+    <ItemContainer capacity="3" canbeselected="false" hideitems="true" slotsperrow="5" drawinventory="true" ShowContainedStateIndicator="false" />
+  </Item>
+  <Item name="Water Detector" identifier="waterdetect2" category="Equipment" tags="smallitem" cargocontaineridentifier="metalcrate" description="" hideinmenus="true" scale="0.4">
+    <Deconstruct time="1" />
+    <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="896,256,64,64" origin="0.5,0.5" />
+    <Sprite name="Sin Component" texture="Content/Items/Electricity/signalcomp.png" depth="0.8" sourcerect="0,240,48,32" origin="0.5,0.5" />
+    <Body width="75" height="50" density="30" />
+    <Holdable selectkey="Select" pickkey="Use" slots="Any,RightHand,LeftHand" PickingTime="5.0" aimpos="65,-10" handle1="0,0" attachable="false" aimable="false">
+      <RequiredItem identifier="wrench" type="Equipped" />
+    </Holdable>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true">
+      <GuiFrame relativesize="0.2,0.32" minsize="400,350" maxsize="600,520" anchor="Center" absoluteoffset="0,-30" style="ItemUI" />
+      <Button text="Crawler Swarm">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="crawler" count="30" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Baby Mudraptor">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="mudraptor_hatchling" count="5" spread="2000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Abyssal Crawlers">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="abyssalcrawler" count="2" spread="8000" />
+          <SpawnCharacter speciesname="swarmcrawler" count="5" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Voidstalker">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="voidstalker" count="1" spread="7000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Fractal Attack">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="fractalwalker" count="4" spread="3000" />
+          <SpawnCharacter speciesname="undying" count="4" spread="3000" />
+          <SpawnCharacter speciesname="fractalguardian" count="2" spread="3000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Mudbouncers">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="mudbouncer" count="2" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <Button text="The Big Eyeball">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="watcherwanderer" count="1" spread="8000" />
+          <SpawnCharacter speciesname="mudraptor" count="5" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Conjoined">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="conjoined" count="1" spread="100" />
+        </StatusEffect>
+      </Button>
+      <Button text="Insta kill Boss">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="Epicentrum" count="1" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Ghost">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="teleglitch" count="1" spread="200" />
+        </StatusEffect>
+      </Button>
+      <Button text="Immortal">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="humanimmortal" count="1" spread="3000" />
+        </StatusEffect>
+      </Button>
+      <Button text="Fractal Destroyer">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="fractaldestroyer" count="1" spread="6000" />
+        </StatusEffect>
+      </Button>
+      <Button text="11">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="carrierleviathan" count="1" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <Button text="12">
+        <StatusEffect type="OnUse" targettype="This" delay="2" IsOn="false" drawhudwhenequipped="true">
+          <SpawnCharacter speciesname="Deadnought" count="1" spread="8000" />
+        </StatusEffect>
+      </Button>
+      <ItemContainer capacity="3" canbeselected="false" hideitems="true" slotsperrow="5" drawinventory="true" ShowContainedStateIndicator="false" />
+    </CustomInterface>
+  </Item>
+</Items>

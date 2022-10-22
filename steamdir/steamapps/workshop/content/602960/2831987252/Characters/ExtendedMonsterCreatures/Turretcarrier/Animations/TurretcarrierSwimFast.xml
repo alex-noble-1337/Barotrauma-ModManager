@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<TurretcarrierSwimFast animationtype="SwimFast" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.5" mirror="False" mirrorlerp="False" waveamplitude="1.157565" wavelength="24.432278" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="25" movementspeed="1.962126" cyclespeed="1" headangle="NaN" torsoangle="NaN" legtorque="25" armikstrength="1" handikstrength="1" />

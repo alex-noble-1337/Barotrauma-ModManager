@@ -1,0 +1,275 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="" identifier="smallcrawleregg" nameidentifier="crawleregg" Tags="smallitem,monsterfood,crawleregg" health="10" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Alien" scale="1" impactsoundtag="impact_soft" impacttolerance="0.05" hideinmenus="true">
+      <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="323,203,45,53" origin="0.5,0.5" />
+      <Body radius="20" mindensity="9" maxdensity="11" />
+      <Deconstruct time="10">
+        <Item identifier="sulphuricacid" />
+      </Deconstruct>
+      <Holdable slots="RightHand,LeftHand,Any" holdpos="0,-70" handle1="0,10" handle2="0,-10">
+        <StatusEffect type="OnBroken" target="This">
+          <particleemitter particle="mudrapeggbrownchunks" particleamount="30" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+          <particleemitter particle="acidmistsmall" particleamount="1" />
+          <particleemitter particle="eggsplashwater" particleamount="5" scalemin="0.7" scalemax="0.8" anglemin="0" anglemax="360" />
+          <Sound file="Content/Characters/Crawlerbroodmother/CRAWLERBR_eggHit1.ogg" range="2000" selectionmode="Random" />
+          <Sound file="Content/Characters/Crawlerbroodmother/CRAWLERBR_eggHit2.ogg" range="2000" selectionmode="Random" />
+          <Sound file="Content/Characters/Crawlerbroodmother/CRAWLERBR_eggHit3.ogg" range="2000" selectionmode="Random" />
+          <Sound file="Content/Characters/Crawlerbroodmother/CRAWLERBR_eggHit4.ogg" range="2000" selectionmode="Random" />
+          <Sound file="Content/Characters/Crawlerbroodmother/CRAWLERBR_eggHit5.ogg" range="2000" selectionmode="Random" />
+          <Remove />
+        </StatusEffect>
+        <StatusEffect type="OnDamaged" target="This">
+          <particleemitter particle="mudrapeggbrownchunks" particleamount="1" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.3" />
+        </StatusEffect>
+        <StatusEffect type="OnImpact" target="This" Condition="-100" setvalue="true">
+          <Explosion range="100" structuredamage="150" itemdamage="75" smoke="false" flames="false" force="0" sparks="false" shockwave="true" underwaterbubble="false" camerashake="0" flash="false" playtinnitus="false">
+            <Affliction identifier="stun" strength="0.5" probability="1" />
+            <Affliction identifier="acidburn" strength="20" probability="1" />
+          </Explosion>
+        </StatusEffect>
+        <!-- spawn a crawler and remove the item if scale is above 0.75 -->
+        <StatusEffect type="Always" target="This" Condition="0" setvalue="true">
+          <Conditional Scale="gte 2" />
+          <SpawnCharacter speciesname="Crawler_hatchling" />
+          <Remove />
+        </StatusEffect>
+        <!-- increase scale -->
+        <StatusEffect type="Always" target="This" Scale="0.005" />
+      </Holdable>
+      <LightComponent range="20" lightcolor="127,196,196,61" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false">
+        <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="327,165,35,38" origin="0.5,0.5" alpha="1.0" />
+      </LightComponent>
+      <aitarget sightrange="1000" static="true" />
+    </Item>
+  </Override>
+  <Item name="Fertile Crawler Egg" identifier="fertilemediumcrawleregg" nameidentifier="crawleregg" hideinmenus="true" tags="crawleregg,smallitem" health="40" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="200,205,152,255" scale="0.3" impactsoundtag="impact_soft">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Price baseprice="1500" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="0.85" sold="false" />
+      <Price locationtype="city" multiplier="0.9" sold="false" minavailable="1" />
+      <Price locationtype="research" multiplier="1.2" sold="false" minavailable="1" />
+      <Price locationtype="military" multiplier="1.1" sold="false" />
+      <Price locationtype="mine" multiplier="0.85" sold="false" />
+    </Price>
+    <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="8,280,118,145" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="alienblood" />
+      <Item identifier="adrenalinegland" />
+    </Deconstruct>
+    <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,-70" handle1="0,10" handle2="0,-10">
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+        <Sound file="Content/Sounds/Damage/Gore6.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+      <!-- increase scale -->
+      <StatusEffect type="Always" target="This" Scale="0.006" />
+      <StatusEffect type="Always" target="Contained" Condition="-1" />
+      <!-- remove and spawn a large egg when scale is greater than or equal to 0.5 -->
+      <StatusEffect type="Always" target="This">
+        <Sound file="Content/Sounds/Damage/Gore6.ogg" range="500" />
+        <particleemitter particle="brownchunks" particleamount="10" emitinterval="1000" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.3" />
+        <Conditional Scale="gte 0.5" />
+        <SpawnItem identifier="fertilecrawleregg" spawnposition="This" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Fertile Crawler Egg" identifier="fertilecrawleregg" hideinmenus="true" health="50" tags="crawleregg" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="199,253,172,255" scale="0.5" impactsoundtag="impact_soft">
+    <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="8,280,118,145" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="adrenalinegland" />
+    </Deconstruct>
+    <!-- rectangular body to prevent the egg from rolling -->
+    <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" />
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" canbeselected="true">
+      <GuiFrame relativesize="0.15,0.2" anchor="Center" style="ItemUI" />
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" />
+        <Sound file="Content/Sounds/Damage/Gore5.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+      <!-- spawn a crawler and remove the item if scale is above 0.75 -->
+      <StatusEffect type="Always" target="This" Condition="0" setvalue="true">
+        <Conditional Scale="gte 0.75" />
+        <SpawnCharacter speciesname="Crawler_hatchling" />
+        <Remove />
+      </StatusEffect>
+      <!-- increase scale -->
+      <StatusEffect type="Always" target="This" Scale="0.005" />
+      <StatusEffect type="Always" target="Contained" Condition="-1" />
+    </ItemContainer>
+    <LightComponent range="5" lightcolor="255,0,0,61" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false" pulsefrequency="1" pulseamount="0.30">
+      <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="300,291,98,113" origin="0.5,0.6" alpha="1.0" />
+    </LightComponent>
+    <LightComponent range="40" lightcolor="255,199,0,58" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false">
+      <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="410,301,88,95" origin="0.5,0.6" alpha="1.0" />
+    </LightComponent>
+  </Item>
+  <Item name="Fertile Thresher Egg" identifier="fertiletigerthresheregg" nameidentifier="tigerthresheregg" hideinmenus="true" tags="tigerthresheregg,smallitem" health="60" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="200,205,152,255" scale="0.3" impactsoundtag="impact_soft">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Price baseprice="1500" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="0.85" sold="false" />
+      <Price locationtype="city" multiplier="0.9" sold="false" minavailable="1" />
+      <Price locationtype="research" multiplier="1.2" sold="false" minavailable="1" />
+      <Price locationtype="military" multiplier="1.1" sold="false" />
+      <Price locationtype="mine" multiplier="0.85" sold="false" />
+    </Price>
+    <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="165,280,114,145" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="alienblood" />
+      <Item identifier="adrenalinegland" />
+    </Deconstruct>
+    <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,-70" handle1="0,10" handle2="0,-10">
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+        <Sound file="Content/Sounds/Damage/Gore6.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+      <!-- increase scale -->
+      <StatusEffect type="Always" target="This" Scale="0.006" />
+      <StatusEffect type="Always" target="Contained" Condition="-1" />
+      <!-- remove and spawn a large egg when scale is greater than or equal to 0.5 -->
+      <StatusEffect type="Always" target="This">
+        <Sound file="Content/Sounds/Damage/Gore6.ogg" range="500" />
+        <particleemitter particle="brownchunks" particleamount="10" emitinterval="1000" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.3" />
+        <Conditional Scale="gte 0.5" />
+        <SpawnItem identifier="fertilethresheregg" spawnposition="This" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Fertile Thresher Egg" identifier="fertilethresheregg" hideinmenus="true" tags="tigerthresheregg" health="70" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="199,253,172,255" scale="0.5" impactsoundtag="impact_soft">
+    <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="165,280,114,145" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="adrenalinegland" />
+    </Deconstruct>
+    <!-- rectangular body to prevent the egg from rolling -->
+    <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" />
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" canbeselected="true">
+      <GuiFrame relativesize="0.15,0.2" anchor="Center" style="ItemUI" />
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" />
+        <Sound file="Content/Sounds/Damage/Gore5.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+      <StatusEffect type="Always" target="This" Condition="0" setvalue="true">
+        <Conditional Scale="gte 0.75" />
+        <SpawnCharacter speciesname="Tigerthresher_hatchling" />
+        <Remove />
+      </StatusEffect>
+      <!-- increase scale -->
+      <StatusEffect type="Always" target="This" Scale="0.005" />
+      <StatusEffect type="Always" target="Contained" Condition="-1" />
+    </ItemContainer>
+    <LightComponent range="5" lightcolor="255,0,0,61" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false" pulsefrequency="1" pulseamount="0.30">
+      <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="300,291,98,113" origin="0.5,0.6" alpha="1.0" />
+    </LightComponent>
+    <LightComponent range="40" lightcolor="255,199,0,58" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false">
+      <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="410,301,88,95" origin="0.5,0.6" alpha="1.0" />
+    </LightComponent>
+  </Item>
+  <Item name="Fertile Mudraptor Egg" identifier="fertilemediummudraptoregg" nameidentifier="mudraptoregg" hideinmenus="true" tags="mudraptoregg,smallitem,ignorebyai" health="40" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="200,205,152,255" scale="0.3" impactsoundtag="impact_soft">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <Price baseprice="1500" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="0.85" sold="false" />
+      <Price locationtype="city" multiplier="0.9" sold="false" minavailable="1" />
+      <Price locationtype="research" multiplier="1.2" sold="false" minavailable="1" />
+      <Price locationtype="military" multiplier="1.1" sold="false" />
+      <Price locationtype="mine" multiplier="0.85" sold="false" />
+    </Price>
+    <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="235,156,67,82" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="alienblood" />
+      <Item identifier="adrenalinegland" />
+    </Deconstruct>
+    <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,-70" handle1="0,10" handle2="0,-10">
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+        <Sound file="Content/Sounds/Damage/Gore6.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+      <!-- increase scale -->
+      <StatusEffect type="Always" target="This" Scale="0.006" />
+      <StatusEffect type="Always" target="Contained" Condition="-1" />
+      <!-- remove and spawn a large egg when scale is greater than or equal to 0.5 -->
+      <StatusEffect type="Always" target="This">
+        <Sound file="Content/Sounds/Damage/Gore6.ogg" range="500" />
+        <particleemitter particle="brownchunks" particleamount="10" emitinterval="1000" velocitymin="0" velocitymax="100" anglemin="0" anglemax="360" scalemin="0.1" scalemax="0.3" />
+        <Conditional Scale="gte 0.5" />
+        <SpawnItem identifier="fertilemudraptoregg" spawnposition="This" />
+        <Remove />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+  <Item name="Fertile Mudraptor Egg" identifier="fertilemudraptoregg" hideinmenus="true" tags="mudraptoregg" health="70" damagedbyexplosions="true" damagedbyprojectiles="true" damagedbymeleeweapons="true" damagedbyrepairtools="true" category="Misc" spritecolor="199,253,172,255" scale="0.5" impactsoundtag="impact_soft">
+    <Sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.18" sourcerect="80,105,124,147" origin="0.5,0.5" />
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="adrenalinegland" />
+    </Deconstruct>
+    <!-- rectangular body to prevent the egg from rolling -->
+    <Body width="110" height="120" friction="1.0" restitution="0.01" angulardamping="1.0" />
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" showcontainedstateindicator="false" canbeselected="true">
+      <GuiFrame relativesize="0.15,0.2" anchor="Center" style="ItemUI" />
+      <StatusEffect type="OnBroken" target="This">
+        <particleemitter particle="whitegoosplash" particleamount="20" velocitymin="0" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.5" scalemax="1.0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="100" velocitymin="100" velocitymax="2000" anglemin="0" anglemax="360" scalemin="0.4" scalemax="0.6" />
+        <Sound file="Content/Sounds/Damage/Gore5.ogg" range="800" />
+        <Remove />
+      </StatusEffect>
+      <StatusEffect type="OnDamaged" target="This">
+        <particleemitter particle="mudrapeggbrownchunks" particleamount="8" velocitymin="100" velocitymax="1000" anglemin="0" anglemax="360" scalemin="0.2" scalemax="0.5" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-5.0" />
+      <StatusEffect type="Always" target="This" Condition="0" setvalue="true">
+        <Conditional Scale="gte 0.75" />
+        <SpawnCharacter speciesname="Mudraptor_hatchling" />
+        <Remove />
+      </StatusEffect>
+      <!-- increase scale -->
+      <StatusEffect type="Always" target="This" Scale="0.005" />
+      <StatusEffect type="Always" target="Contained" Condition="-1" />
+    </ItemContainer>
+    <LightComponent range="5" lightcolor="255,0,0,61" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false" pulsefrequency="1" pulseamount="0.30">
+      <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="300,291,98,113" origin="0.5,0.6" alpha="1.0" />
+    </LightComponent>
+    <LightComponent range="40" lightcolor="255,199,0,58" powerconsumption="0" IsOn="true" castshadows="false" allowingameediting="false">
+      <sprite texture="Content/Items/CreatureLoot/CreatureLoot.png" depth="0.025" sourcerect="410,301,88,95" origin="0.5,0.6" alpha="1.0" />
+    </LightComponent>
+  </Item>
+</Items>

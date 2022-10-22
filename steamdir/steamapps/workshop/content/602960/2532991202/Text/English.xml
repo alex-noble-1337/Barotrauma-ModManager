@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotext language="English" nowhitespace="false" translatedname="English">
+  <locationchange.outpost.changeto.abandoned>We have lost contact with [previousname] unexpectedly. We advise you to investigate with caution.</locationchange.outpost.changeto.abandoned>
+  <locationchange.outpost.changeto.abandoned>The beacon station nearby [previousname] recieved an automated SOS broadcast from the station, but no further communication has been recieved.</locationchange.outpost.changeto.abandoned>
+  <locationchange.outpost.changeto.abandoned>Reports at [previousname] indicate hostiles have overrun the outpost. No survivors have been found.</locationchange.outpost.changeto.abandoned>
+  <locationchange.outpost.changeto.abandoned>Reports at [previousname] indicate hostiles have overrun the outpost. Survivors are being extracted via shuttle.</locationchange.outpost.changeto.abandoned>
+  <locationchange.none.changeto.waypoint>[previousname] has been marked for colonization.</locationchange.none.changeto.waypoint>
+  <locationchange.none.changeto.waypoint>[previousname] has a good chunk of space to set up an outpost.</locationchange.none.changeto.waypoint>
+  <locationchange.none.changeto.waypoint>[previousname] is ready for colonization.</locationchange.none.changeto.waypoint>
+  <locationchange.none.changeto.waypoint>The Coalition has marked [previousname] as a good location to colonize.</locationchange.none.changeto.waypoint>
+  <locationchange.none.changeto.lair>[previousname] has been infested with monsters.</locationchange.none.changeto.lair>
+  <locationchange.lair.changeto.none>[previousname] has been cleared out by the surrounding coalition military forces.</locationchange.lair.changeto.none>
+  <locationchange.none.changeto.UnderAttack>[previousname] is under attack by monsters.</locationchange.none.changeto.UnderAttack>
+  <locationchange.UnderAttack.changeto.none>[previousname] has been saved from infestation.</locationchange.UnderAttack.changeto.none>
+  <locationchange.UnderAttack.changeto.blockade>The Coalition is setting up a blockade at [previousname].</locationchange.UnderAttack.changeto.blockade>
+  <locationchange.UnderAttack.changeto.blockade>The Coalition is moving troops to [previousname].</locationchange.UnderAttack.changeto.blockade>
+  <locationchange.UnderAttack.changeto.blockade>The Coalition is garrisoning troops at [previousname].</locationchange.UnderAttack.changeto.blockade>
+  <locationname.blockade>Military Blockade</locationname.blockade>
+  <locationnameformat.blockade>[name] Blockade</locationnameformat.blockade>
+  <locationnameformat.blockade>[name] Emplacement</locationnameformat.blockade>
+  <locationnameformat.blockade>[name] Checkpoint</locationnameformat.blockade>
+  <locationnameformat.blockade>[name] Fortification</locationnameformat.blockade>
+  <locationnameformat.UnderAttack>[name]</locationnameformat.UnderAttack>
+  <locationname.UnderAttack>Under Attack</locationname.UnderAttack>
+  <locationname.Waypoint>Waypoint</locationname.Waypoint>
+  <locationname.HuskgroundsDE>Husked Grounds</locationname.HuskgroundsDE>
+  <locationnameformat.Waypoint>[name] Waypoint</locationnameformat.Waypoint>
+  <locationnameformat.Waypoint>[name] Beacon</locationnameformat.Waypoint>
+  <locationnameformat.HuskGroundsDE>Husked Grounds of [name]</locationnameformat.HuskGroundsDE>
+  <locationname.WasteyardDE>Wasteyard</locationname.WasteyardDE>
+  <locationnameformat.WasteyardDE>Wasteyard of [name]</locationnameformat.WasteyardDE>
+  <EventText.DEgotoblockade.c1>"COALITION BOUNTY ISSUED", the discolored and damaged posters list off sites of destruction and infestation, seems like the coalition is in over their heads. You can only make out one set of coordinates.</EventText.DEgotoblockade.c1>
+  <EventText.DEgotoblockade.o1>A tax free paycheck couldn't hurt...</EventText.DEgotoblockade.o1>
+  <eventtext.missionevent_lair.c1>“There is a massive lair nearby bubbling over with more and more creatures by the minute, if you can take it out there is a reward in it for you!”</eventtext.missionevent_lair.c1>
+</infotext>

@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ShellwhaleSwimSlow UseSineMovement="False" Flip="True" FlipCooldown="0" FlipDelay="4" Mirror="True" MirrorLerp="False" WaveAmplitude="25.027504" WaveLength="200" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="76.00037" SteerTorque="500" LegTorque="25" MovementSpeed="3.4107015" CycleSpeed="1" HeadAngle="69.99989" TorsoAngle="90.00011" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

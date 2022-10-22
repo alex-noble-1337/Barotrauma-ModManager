@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FractalguardianSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.1" mirror="False" mirrorlerp="False" waveamplitude="-6.9074135" wavelength="38.42837" rotatetowardsmovement="True" tailtorque="100" tailtorquemultiplier="5" footangles="" tailangle="0" steertorque="5" legtorque="25" movementspeed="2" cyclespeed="1" headangle="0" torsoangle="0" headtorque="1" torsotorque="15" foottorque="0" armikstrength="1" handikstrength="2" />

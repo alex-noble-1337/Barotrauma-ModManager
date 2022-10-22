@@ -1,0 +1,110 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="humanhuskold" group="husk" humanoid="True" needsair="False" blooddecal="blackblood" visibility="300" noise="300" speciestranslationoverride="husk" displayname="" hasinfo="False" husk="False" usehuskappendage="False" needswater="False" canspeak="True" bleedparticleair="blackblood" bleedparticlewater="blackwaterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0" usebosshealthbar="False" bleedparticlemultiplier="1" distantsonarrange="0" disabledistance="25000" caninteract="True" caneat="False" usepathfinding="True" hideinthermalgoggles="False" soundinterval="10">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <bloodemitter particle="blackblood" particleamount="5" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="10" velocitymin="50" velocitymax="500" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health usehealthwindow="False" vitality="100" crushdepth="-Infinity" doesbleed="True" bleedingreduction="20" burnreduction="0" constanthealthregeneration="0.5" healthregenerationwheneating="0" stunimmunity="False">
+    <MedUISilhouette texture="Content/UI/Health/MedUI_Silhouette.png" columns="8" rows="2" sourcerect="0,0,1008,748" />
+    <MedUIExtra texture="Content/UI/Health/MedUIExtra.png" columns="4" rows="4" sourcerect="0,0,1024,1024" />
+    <Limb name="Head">
+      <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,0,126,374" highlightarea="41,0,45,54" />
+      <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="1,515,126,374" />
+      <VitalityMultiplier type="damage" multiplier="2.0" />
+    </Limb>
+    <Limb name="Torso">
+      <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,0,126,374" highlightarea="29,56,70,134" />
+      <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="631,515,126,374" />
+    </Limb>
+    <Limb name="LeftArm">
+      <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,0,126,374" highlightarea="1,69,27,140" />
+      <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="379,515,126,374" />
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+    <Limb name="RightArm">
+      <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,0,126,374" highlightarea="100,69,27,140" />
+      <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="127,515,126,374" />
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+    <Limb name="LeftLeg">
+      <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,0,126,374" highlightarea="3,180,57,194" />
+      <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="505,515,126,374" />
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+    <Limb name="RightLeg">
+      <Sprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,0,126,374" highlightarea="68,180,57,194" />
+      <Highlightsprite texture="Content/UI/Health/MedUIAtlas.png" sourcerect="253,515,126,374" />
+      <VitalityMultiplier type="damage" multiplier="0.5" />
+    </Limb>
+  </health>
+  <ai combatstrength="120" sight="0.5" hearing="2" aggressiveboarding="True" attackwhenprovoked="True" aggressiongreed="5" aggressionhurt="150" canopendoors="True" targetouterwalls="False" fleehealththreshold="0" avoidgunfire="True" avoidtime="3" minfleetime="20" enforceaggressivebehaviorformissions="True" randomattack="False" avoidabyss="False" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" keepdoorsclosed="False" patrolflooded="False" patroldry="False" walltargetingmethod="Target">
+    <target tag="decoy" state="Attack" priority="500" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="provocative" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="weapon" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="human" state="Attack" priority="80" reactdistance="0" ignoreincapacitated="True" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="stronger" state="Attack" priority="80" reactdistance="0" ignoreincapacitated="True" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="weaker" state="Attack" priority="80" reactdistance="0" ignoreincapacitated="True" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="nasonov" state="Attack" priority="70" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="sonar" state="Attack" priority="30" reactdistance="0" ignoreinside="True" attackdistance="0" timer="0" ignorecontained="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="room" state="Attack" priority="10" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+  </ai>
+  <inventory slots="RightHand, LeftHand, Head, Any, Any, Any, Any, Any" accessiblewhenalive="True" accessiblebyowner="True" commonness="5">
+    <Item identifier="idcard" equip="true" />
+  </inventory>
+  <inventory slots="RightHand, LeftHand, Head, Any, Any, Any, Any, Any" accessiblewhenalive="True" accessiblebyowner="True" commonness="3">
+    <Item identifier="huskeggs" />
+    <Item identifier="idcard" equip="true" />
+  </inventory>
+  <inventory slots="RightHand, LeftHand, Head, Any, Any, Any, Any, Any" accessiblewhenalive="True" accessiblebyowner="True" commonness="1">
+    <Item identifier="huskeggs" />
+    <Item identifier="huskstinger" />
+    <Item identifier="idcard" equip="true" />
+  </inventory>
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/idle1.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/idle2.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/idle3.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/idle4.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/attack1.ogg" state="Attack" range="1500" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/attack2.ogg" state="Attack" range="1500" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/attack3.ogg" state="Attack" range="1500" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/damage1.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/damage2.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/damage3.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/death1.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/death2.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <StatusEffect type="Always" target="This" comparison="and">
+    <!-- Kickstart randomchance-->
+    <Conditional isdead="False" />
+    <Conditional huskrandomchance="eq 0" />
+    <Affliction identifier="huskrandomchance" amount="50" />
+  </StatusEffect>
+  <StatusEffect type="OnDamaged" target="This" onlyplayertriggered="true" requiredafflictions="damage" comparison="and" duration="10">
+    <!-- When damaged, if random chance is at a certain strength and the husk isn't already pretending to be dead, initiate fake death procedure.-->
+    <Conditional isdead="False" />
+    <Conditional huskfakedeath="eq 0" />
+    <Conditional huskdamaged="eq 0" />
+    <Conditional huskrandomchance="gte 65" />
+    <Conditional healthpercentage="lte 50" />
+    <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/death1.ogg" range="1000" volume="1" selectionmode="Random" dontmuffle="false" />
+    <sound file="%ModDir:Improved Husks%/Characters/Humanhuskold/death2.ogg" range="1000" volume="1" selectionmode="Random" dontmuffle="false" />
+    <Affliction identifier="huskdamaged" amount="500" />
+    <Affliction identifier="huskfakedeath" amount="5000" />
+    <ReduceAffliction identifier="burn" strength="500" />
+    <ReduceAffliction identifier="bitewounds" strength="500" />
+    <ReduceAffliction identifier="gunshotwound" strength="500" />
+    <ReduceAffliction identifier="blunttrauma" strength="500" />
+    <ReduceAffliction identifier="internaldamage" strength="500" />
+    <ReduceAffliction identifier="organdamage" strength="500" />
+    <ReduceAffliction identifier="bleeding" strength="500" />
+    <ReduceAffliction identifier="bloodloss" strength="500" />
+    <ReduceAffliction identifier="lacerations" strength="500" />
+  </StatusEffect>
+  <StatusEffect type="OnDamaged" target="This" onlyplayertriggered="true" requiredafflictions="damage" comparison="and">
+    <!-- When damaged while pretending to be dead, abort the mission, it's not working.-->
+    <Conditional isdead="False" />
+    <Conditional huskfakedeath="gt 50" />
+    <ReduceAffliction identifier="huskfakedeath" amount="10" />
+  </StatusEffect>
+</Character>

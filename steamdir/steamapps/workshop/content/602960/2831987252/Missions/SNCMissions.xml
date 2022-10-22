@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Missions>
+  <MonsterMission name="Investigate a mysterious signal" identifier="killhumanimmortal" tags="killmonster,killmonster_set3" type="Monster" description="A mysterious infrasonic signal has suddenly shown up around [location1]. Researchers want you to investigate the signal. Report back any findings." difficulty="2" commonness="80" reward="5000" maxsonarmarkerdistance="10000" sonarlabel="Unknown Signal" successmessage="Upon reaching the signal, you found out that the signal was being emitted by a human through unknown sources. [location2] agreed to pay you [reward] for your discovery.">
+    <monster character="humanimmortal" min="1" max="1" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="1" />
+    <Icon texture="Content/UI/MissionIcons.png" sourcerect="768,768,256,256" color="214,50,48" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="City" />
+    <LocationType to="HuskGroundsDE" from="Military" />
+    <LocationType to="HuskGroundsDE" from="Outpost" />
+    <LocationType to="HuskGroundsDE" from="Research" />
+    <LocationType to="HuskGroundsDE" from="None" />
+    <LocationType to="HuskGroundsDE" from="Lair" />
+    <message header="Target eliminated" text="The target has been eliminated. Navigate the submarine out of the cavern to claim the reward." />
+  </MonsterMission>
+  <MonsterMission successmessage="You've took care of those clowns. Hopefully they don't come back." sonarlabel="Clowns" reward="3000" difficulty="2" maxsonarmarkerdistance="18000" commonness="29" description="Some filthy clowns have been causing some disruption around [location1] and [location2]. The authorities don't want to waste their time and are offering you [reward] if you could stop their shenanigans." type="Monster" tags="killswarm_set1" identifier="killclowns" name="Crowd Control">
+    <monster character="Clownwanderer" min="4" max="5" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="1" />
+    <Reputation identifier="clowns" amount="-8" />
+    <Icon color="214,50,48" sourcerect="267,11,236,235" texture="Content/UI/MissionIcons.png" />
+    <message text="The Clowns have been taken care off, navigate the submarine towards the next area." header="Target terminated" />
+  </MonsterMission>
+  <MonsterMission successmessage="You've took care of those clowns. Hopefully they don't come back." sonarlabel="Clowns" reward="3000" difficulty="3" maxsonarmarkerdistance="18000" commonness="10" description="Some filthy clowns have been causing some disruption around [location1] and [location2]. The authorities don't want to waste their time and are offering you [reward] if you could stop their shenanigans." type="Monster" tags="killswarm_set2" identifier="killclowns2" name="Crowd Control">
+    <monster character="Clownwanderer" min="2" max="3" />
+    <Reputation identifier="location" amount="10" />
+    <Reputation identifier="coalition" amount="1" />
+    <Reputation identifier="clowns" amount="-8" />
+    <Icon color="214,50,48" sourcerect="267,11,236,235" texture="Content/UI/MissionIcons.png" />
+    <message text="The Clowns have been taken care off, navigate the submarine towards the next area." header="Target terminated" />
+  </MonsterMission>
+</Missions>

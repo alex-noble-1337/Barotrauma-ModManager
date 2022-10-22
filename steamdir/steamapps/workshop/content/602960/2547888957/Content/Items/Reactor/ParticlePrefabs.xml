@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<override>
+  <prefabs>
+    <override>
+      <ekflarelight1 lifetime="0.08" angularvelocitymin="0" angularvelocitymax="0" startrotationmin="-2" startrotationmax="2" rotatetodirection="False" drag="0" waterdrag="0" velocitychange="0,0" velocitychangewater="0,0" usecollision="False" deleteoncollision="False" friction="0.5" restitution="0.5" startsizemin="1,1" startsizemax="2,2" sizechangemin="0,0" sizechangemax="0,0" growtime="0" startcolor="255,100,100,150" endcolor="200,25,25,75" drawtarget="Both" blendstate="Additive" animduration="1" loopanim="False">
+        <sprite texture="%ModDir%/Content/Items/Reactor/ek_lightflare1.png" sourcerect="0,0,256,256" origin="0.5,0.5" premultiplyalpha="false" />
+      </ekflarelight1>
+    </override>
+    <override>
+      <ekthermiteflare1 lifetime="0.08" angularvelocitymin="0" angularvelocitymax="0" startrotationmin="-2" startrotationmax="2" rotatetodirection="False" drag="0" waterdrag="0" velocitychange="0,0" velocitychangewater="0,0" usecollision="False" deleteoncollision="False" friction="0.5" restitution="0.5" startsizemin="1.5,1.5" startsizemax="3,3" sizechangemin="0,0" sizechangemax="0,0" growtime="0" startcolor="255,200,150,150" endcolor="200,100,50,50" drawtarget="Both" blendstate="Additive" animduration="1" loopanim="False">
+        <sprite texture="%ModDir%/Content/Items/Reactor/ek_lightflare1.png" sourcerect="0,0,256,256" origin="0.5,0.5" premultiplyalpha="false" />
+      </ekthermiteflare1>
+    </override>
+  </prefabs>
+</override>

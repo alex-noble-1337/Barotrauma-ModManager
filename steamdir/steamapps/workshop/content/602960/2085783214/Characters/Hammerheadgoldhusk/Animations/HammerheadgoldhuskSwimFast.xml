@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HammerheadgoldhuskSwimFast animationtype="SwimFast" flip="False" mirror="False" waveamplitude="83.03234" wavelength="135" rotatetowardsmovement="True" torsotorque="170" headtorque="170" foottorque="50" tailtorque="190" steertorque="45" movementspeed="11.974903" cyclespeed="1" headangle="90" torsoangle="90" tailangle="90" usesinemovement="False" footangles="" tailtorquemultiplier="1" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<prefabs>
+  <bloodvomitsplash startsizemin="0.5,0.5" startsizemax="1,1" startrotationmin="0" startrotationmax="360" startcolor="136, 0, 0,255" endcolor="136, 0, 0,255" lifetime="1.5" growtime="0.8" velocitychange="0,-5" startdelaymin="0" startdelaymax="0.2" angularvelocitymin="0" angularvelocitymax="0" rotatetodirection="True" drag="0" waterdrag="0" velocitychangewater="0,-0.1" collisionradius="30" usecollision="True" deleteoncollision="True" friction="0.5" restitution="0.5" sizechangemin="1,1" sizechangemax="1,1" drawtarget="Air" blendstate="AlphaBlend" animduration="1.5" loopanim="True" drawontop="False" lifetimemin="0" middlecolor="255,255,255,255" usemiddlecolor="False">
+    <animatedsprite texture="%ModDir%/Content/Items/Medical/BloodSpatter1.png" sourcerect="0,0,1024,1024" columns="4" rows="8" origin="0.2,0.5" />
+    <animatedsprite texture="%ModDir%/Content/Items/Medical/BloodSpatter2.png" sourcerect="0,0,1024,1024" columns="4" rows="8" origin="0.5,0.5" />
+    <animatedsprite texture="%ModDir%/Content/Items/Medical/BloodSpatter3.png" sourcerect="0,0,1024,1024" columns="4" rows="8" origin="0.3,0.5" />
+  </bloodvomitsplash>
+</prefabs>

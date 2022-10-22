@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<prefabs>
+  <!--Posters-->
+  <OpDeco name="SFB Emblem" nameidentifier="SFB Emblem" identifier="SFB Emblem" width="322" height="452" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="1,1,322,452" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster A" nameidentifier="SFB Poster A" identifier="SFB Poster A" width="322" height="452" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="321,1,322,452" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SfB Poster B" nameidentifier="SFB Poster B" identifier="SFB Poster B" width="322" height="452" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="641,1,322,452" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="Picture A" nameidentifier="Picture A" identifier="Picture A" width="320" height="238" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="1,452,322,238" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="Picture B" nameidentifier="Picture B" identifier="Picture B" width="320" height="238" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="324,452,322,238" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="Picture C" nameidentifier="Picture C" identifier="Picture C" width="320" height="238" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="647,452,322,238" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster D" nameidentifier="SFB Poster D" identifier="SFB Poster D" width="322" height="452" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="970,1,322,452" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster F" nameidentifier="SfB Poster F" identifier="SFB Poster F" width="322" height="452" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="1292,1,322,452" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Emblem" nameidentifier="SFB SieceEmblem" identifier="SFB SieceEmblem" width="337" height="371" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Emblem.png" sourcerect="15,15,337,371" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Emblem" nameidentifier="SFB Emblem F" identifier="SFB Emblem F" width="623" height="462" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Emblem.png" sourcerect="440,5,623,462" depth="0.965" premultiplyalpha="false" origin="0.5015643,0.47530788" />
+  </OpDeco>
+  <OpDeco name="SFB Emblem" nameidentifier="SFB Emblem V" identifier="SFB Emblem V" width="483" height="502" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Emblem.png" sourcerect="1128,8,483,502" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster QW" nameidentifier="SFB Poster QW" identifier="SFB Poster QW" width="320" height="446" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="3,693,320,446" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster WE" nameidentifier="SFB Poster WE" identifier="SFB Poster WE" width="321" height="449" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="325,693,321,449" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster ER" nameidentifier="SFB Poster ER" identifier="SFB Poster ER" width="321" height="452" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="648,693,321,452" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster RT" nameidentifier="SFB Poster RT" identifier="SFB Poster RT" width="320" height="450" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="972,693,320,450" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster TY" nameidentifier="SFB Poster TY" identifier="SFB Poster TY" width="321" height="448" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="1296,694,321,448" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster YU" nameidentifier="SFB Poster YU" identifier="SFB Poster YU" width="318" height="236" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="968,452,318,236" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Poster UI" nameidentifier="SFB Poster UI" identifier="SFB Poster UI" width="320" height="236" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_2.png" sourcerect="1289,453,320,236" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Propaganda Q" nameidentifier="SFB Propaganda Q" identifier="SFB Propaganda Q" width="414" height="594" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Propaganda.png" sourcerect="1,1,414,594" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Propaganda W" nameidentifier="SFB Propaganda W" identifier="SFB Propaganda W" width="391" height="594" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Propaganda.png" sourcerect="415,1,391,594" depth="0.965" premultiplyalpha="false" origin="0,0.99999386" />
+  </OpDeco>
+  <OpDeco name="SFB Propaganda E" nameidentifier="Propaganda E" identifier="SFB Propaganda E" width="360" height="589" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Propaganda.png" sourcerect="808,4,360,589" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Propaganda R" nameidentifier="Propaganda R" identifier="SFB Propaganda R" width="411" height="382" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Propaganda.png" sourcerect="3,595,411,382" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Paintings Q" nameidentifier="Paintings Q" identifier="SFB Paintings Q" width="934" height="565" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Paintings.png" sourcerect="5,5,934,565" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Propaganda T" nameidentifier="Propaganda T" identifier="SFB Propaganda T" width="393" height="587" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Propaganda.png" sourcerect="1170,5,393,587" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+  <OpDeco name="SFB Propaganda Y" nameidentifier="Propaganda Y" identifier="SFB Propaganda Y" width="397" height="587" texturescale="1.0,1.0" scale="0.5" category="Decorative">
+    <sprite texture="%ModDir%/Map/SFB_Propaganda.png" sourcerect="1567,4,397,587" depth="0.965" premultiplyalpha="false" origin="0.5,0.5" />
+  </OpDeco>
+</prefabs>

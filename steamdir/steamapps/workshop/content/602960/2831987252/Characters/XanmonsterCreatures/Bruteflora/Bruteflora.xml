@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Bruteflora" humanoid="True" displayname="" group="thalamus" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="True" noise="100" visibility="100" blooddecal="" bleedparticleair="blooddrop" bleedparticlewater="blackwaterblood" eatingspeed="10" pathfinderpriority="0.6999999" hideinsonar="False" sonardisruption="0" speciestranslationoverride="" caninteract="True" usebosshealthbar="False" bleedparticlemultiplier="1" caneat="False" usepathfinding="True" hideinthermalgoggles="False" distantsonarrange="0" disabledistance="25000" soundinterval="10">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <health vitality="400" doesbleed="False" crushdepth="0" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" stunimmunity="False" applyafflictioncolors="False" />
+  <sound gender="None" volume="1" file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/brute.ogg" state="Idle" range="1000" />
+  <sound gender="None" volume="1" file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/blip.ogg" state="Damage" range="1000" />
+  <sound gender="None" volume="1" file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/brutedie.ogg" state="Die" range="1000" />
+  <ai CombatStrength="200" Sight="3" Hearing="3" AggressionHurt="100" AggressionGreed="10" FleeHealthThreshold="0" AttackWhenProvoked="True" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="True" EnforceAggressiveBehaviorForMissions="False" TargetOuterWalls="False" RandomAttack="False" CanOpenDoors="True" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="True" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+    <target Tag="human" State="Attack" Priority="90" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="door" State="Attack" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="stronger" State="Avoid" Priority="40" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="nasonov" State="Attack" Priority="70" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="leucocyte" State="Protect" Priority="80" ReactDistance="6000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="thalamus" State="Protect" Priority="80" ReactDistance="6000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This">
+    <ParticleEmitter particle="spark" particleamount="60" scalemin="2" scalemax="5" velocitymin="200" velocitymax="120" anglemin="0" anglemax="360" />
+    <ParticleEmitter particle="artifactspark" particleamount="10" scalemin="3" scalemax="5" velocitymin="110" velocitymax="120" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/brute2.ogg" state="Damage" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/brute2.ogg" state="Die" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/brute2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="%ModDir%/Characters/XanmonsterCreatures/Bruteflora/brute2.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <inventory slots="Any, Any" accessiblewhenalive="False" commonness="1">
+    <item identifier="fpgacircuit" />
+    <item identifier="fpgacircuit" />
+  </inventory>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="300">
+    <RemoveCharacter />
+  </StatusEffect>
+</Character>

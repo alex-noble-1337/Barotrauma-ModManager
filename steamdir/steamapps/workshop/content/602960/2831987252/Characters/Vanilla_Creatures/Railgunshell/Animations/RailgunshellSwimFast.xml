@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HomingshellSwimFast movementspeed="18" waveamplitude="0.5" wavelength="50" flip="False" mirror="False" rotatetowardsmovement="True" torsotorque="25" headtorque="50" foottorque="25" tailtorque="50" footangles="" steertorque="25" cyclespeed="1" headangle="0" torsoangle="NaN" animationtype="SwimFast" usesinemovement="False" tailangle="NaN" type="Homingshell" />

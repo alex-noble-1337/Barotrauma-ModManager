@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Crawlerhusk" speciesname="Swarmcrawlerhusk" speciestranslationoverride="Crawler">
+  <health vitality="120" />
+  <ragdoll scalemultiplier="1.15" />
+  <attack damagemultiplier="1.15" />
+</Charactervariant>

@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" hideinmenus="true" identifier="fractalpistol" nameidentifier="alienpistol" category="Equipment" cargocontaineridentifier="metalcrate" tags="mediumitem,weapon,gun,gunsmith" Scale="0.5" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="0,1875,104,58" origin="0.5,0.5" />
+    <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="0,1875,104,58" depth="0.55" origin="0.5,0.5" />
+    <Body width="180" height="45" density="1" />
+    <Holdable slots="RightHand" controlpose="true" holdpos="40,-10" aimpos="55,5" handle1="-25,-16" holdangle="-40" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="80,5" spread="1" unskilledspread="10" combatPriority="80" reload="4.5" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflashnucleargun" anglemin="0" anglemax="360" particleamount="10" velocitymin="0" scalemultiplier="0.5,0.5" colormultiplier="255,200,200,200" scalemin="0.0" scalemax="0.6" />
+      <sound file="Content/Items/Alien/AlienTurret1.ogg" type="OnUse" range="500.0" loop="false" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="2.5" shockwave="false" smoke="false" flash="true" sparks="false" flames="false" underwaterbubble="false" camerashake="6.0" />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="alienprojectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="alienprojectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This" delay="1" stackable="false">
+        <Remove />
+      </StatusEffect>
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" itempos="27,10" iteminterval="0,-4" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="alienprojectile" />
+    </ItemContainer>
+  </Item>
+  <Item name="Fractal Enforcer Flamer" identifier="enforcerflamer" category="Hidden" Tags="weapon" description="Fires out magical fire so hot that not even water or lack of oxygen can put it out." cargocontaineridentifier="metalcrate" Scale="0.5" nonplayerteaminteractable="True" impactsoundtag="impact_metal_light">
+    <Upgrade gameversion="0.10.0.0" scale="0.5" />
+    <InventoryIcon texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="0,0,1,1" />
+    <Sprite texture="Content/Items/Alien/AlienRuins_Items.png" sourcerect="0,0,1,1" depth="0.55" origin="0.5,0.5" />
+    <Body width="64" height="64" density="40" />
+    <!-- the character will hold the item 50 pixels in front of him, with his hands at the handle1 and handle2 positions -->
+    <Holdable slots="Any,RightHand,LeftHand" controlpose="true" aimpos="50,0" handle1="-11,-6" handle2="-11,-6" msg="ItemMsgPickUpSelect" />
+    <RepairTool firedamage="20.0" structurefixamount="0.0" range="500" barrelpos="0,0" fireprobability="0" repairmultiple="true" repairthroughwalls="false" repairthroughholes="true" combatpriority="90" spread="25" unskilledspread="25">
+      <ParticleEmitterHitCharacter particle="fleshsmoke" particlespersecond="3" anglemin="-5" anglemax="5" velocitymin="10" velocitymax="100" />
+      <ParticleEmitter particle="enforcerflame" particlespersecond="80" anglemin="0" anglemax="0" velocitymin="1000" velocitymax="1500" highqualitycollisiondetection="true" />
+      <ParticleEmitter particle="flamethrowersmoke" particlespersecond="80" anglemin="0" anglemax="0" velocitymin="500" velocitymax="1000" />
+      <sound file="Content/Items/Weapons/FlameThrowerLoop.ogg" type="OnUse" range="500.0" loop="true" />
+      <!-- bubbles when usage fails (e.g. in water) -->
+      <StatusEffect type="OnFailure" target="UseTarget">
+        <ParticleEmitter particle="bubbles" particlespersecond="20" anglemin="-10" anglemax="10" scalemin="0.3" scalemax="0.7" velocitymin="5" velocitymax="100" copyentityangle="true" />
+        <ParticleEmitter particle="fleshsmoke" particlespersecond="10" anglemin="-10" anglemax="10" scalemin="1" scalemax="1.5" velocitymin="5" velocitymax="200" copyentityangle="true" />
+      </StatusEffect>
+      <StatusEffect type="Always" stackable="false" delay="5" condition="1" disabledeltatime="true" target="This">
+        <Conditional condition="lte 0" />
+      </StatusEffect>
+      <StatusEffect type="Always" condition="8" target="This">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" condition="8" target="This" />
+      <!-- do burn damage to characters -->
+      <StatusEffect type="OnUse" target="UseTarget">
+        <Affliction identifier="burn" amount="1.25" />
+      </StatusEffect>
+      <LightComponent LightColor="255,255,255,255" Flicker="0.5" Range="500">
+        <sprite texture="Content/Items/Electricity/lightsprite.png" origin="0.5,0.5" />
+      </LightComponent>
+    </RepairTool>
+    <aitarget sightrange="5000" soundrange="500" fadeouttime="5" />
+  </Item>
+</Items>

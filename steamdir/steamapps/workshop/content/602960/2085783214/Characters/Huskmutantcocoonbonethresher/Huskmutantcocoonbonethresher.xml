@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Huskmutantcocoonbonethresher" humanoid="False" speciestranslationoverride="Huskmutantcocooncrawler" displayname="" group="husk" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="True" canspeak="true" usebosshealthbar="False" noise="100" visibility="100" blooddecal="blackblood" bleedparticleair="blackblood" bleedparticlewater="blackwaterblood" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="0" distantsonarrange="0" disabledistance="25000" bleedparticlemultiplier="1" caninteract="False" caneat="True" usepathfinding="True" hideinthermalgoggles="False" soundinterval="10">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <damageemitter particle="blackgib" drawontop="True" particleamount="10" velocitymin="50" velocitymax="300" anglemin="0" anglemax="360" scalemin="0.25" scalemax="0.5" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackblood" particleamount="10" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackwaterblood" particleamount="1" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <gibemitter particle="blackgib" particleamount="20" velocitymin="200" velocitymax="700" anglemin="0" anglemax="360" scalemin="1" scalemax="1" emitinterval="0" particlespersecond="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <health vitality="350" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="1" healthregenerationwheneating="15" stunimmunity="False" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/attack1.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/attack2.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/attack3.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/attack4.ogg" state="Attack" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/idle1.ogg" state="Idle" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/idle2.ogg" state="Idle" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/idle3.ogg" state="Idle" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/idle4.ogg" state="Idle" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/death1.ogg" state="Die" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/death2.ogg" state="Die" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/damage1.ogg" state="Damage" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/damage2.ogg" state="Damage" range="2000" volume="1" gender="None" />
+  <sound file="%ModDir:Improved Husks%/Characters/Huskmutantcocoonbonethresher/damage3.ogg" state="Damage" range="2000" volume="1" gender="None" />
+  <inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="4">
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+  </inventory>
+  <inventory slots="Any, Any, Any, Any, Any" accessiblewhenalive="False" commonness="3">
+    <Item identifier="huskeggs" />
+    <Item identifier="huskeggs" />
+    <Item identifier="huskmutantembryo" />
+  </inventory>
+  <ai combatstrength="550" sight="2" hearing="2" aggressiveboarding="True" attackwhenprovoked="True" aggressiongreed="5" aggressionhurt="150" fleehealththreshold="5" avoidgunfire="True" enforceaggressivebehaviorformissions="True" targetouterwalls="True" targetinnerwalls="True" randomattack="False" avoidtime="3" minfleetime="20" infiltrate="False" avoidabyss="False" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" canopendoors="False" keepdoorsclosed="False" patrolflooded="False" patroldry="False" walltargetingmethod="Target">
+    <target tag="decoy" state="Attack" priority="500" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="weapon" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="human" state="Attack" priority="500" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="weaker" state="Attack" priority="700" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="stronger" state="Escape" priority="300" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="dead" state="Eat" priority="200" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+    <target tag="sonar" state="Attack" priority="30" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" threshold="0" thresholdmin="-1" thresholdmax="-1" offset="0,0" />
+  </ai>
+  <StatusEffect type="OnDeath" target="This" targetlimb="Torso">
+    <SpawnItem identifier="huskmutantacidexplosionbig" spawnposition="This" count="1" spread="0" />
+  </StatusEffect>
+  <StatusEffect type="Always" target="This" delay="1" checkconditionalalways="true" stackable="false" comparison="and">
+    <Conditional isdead="False" />
+    <Affliction identifier="huskcocoondevelopment" strength="250" probability="1" />
+  </StatusEffect>
+  <StatusEffect type="Always" target="This" lifetime="5" targetlimb="Torso">
+    <Conditional isdead="True" />
+    <ParticleEmitter particle="huskmutantacidsplash" particlespersecond="50" scalemin="2.0" scalemax="2.5" velocitymin="0" velocitymax="40" anglemin="0" anglemax="360" />
+  </StatusEffect>
+</Character>

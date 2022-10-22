@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SpinelinghuskSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" mirror="False" waveamplitude="7.1678605" wavelength="74.03128" rotatetowardsmovement="True" torsotorque="25" headtorque="10" tailtorque="5" foottorque="20" footangles="" tailangle="90" steertorque="4" movementspeed="4.021898" cyclespeed="1" headangle="90" torsoangle="90" tailtorquemultiplier="50" flipcooldown="2" flipdelay="0.1" mirrorlerp="False" type="Spineling" legtorque="25" armikstrength="1" handikstrength="1" />

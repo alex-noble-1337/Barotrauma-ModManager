@@ -1,0 +1,942 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <!--Mosin Nagant 3 Line Rifle-->
+  <Item name="" identifier="scp_nagant" description="" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" category="Weapon" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0075" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.05" />
+    <Price baseprice="500" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="20">
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+    </Deconstruct>
+    <InventoryIcon name="nagantinv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="0,87,65,79" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="1,334,305,60" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="70,-5" aimpos="75,-1" handle1="-65,-12" handle2="40,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="1.3" barrelpos="64,9" spread="0.1" unskilledspread="8" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="0" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/nagant1.ogg" type="OnUse" range="5500" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/nagant2.ogg" type="OnUse" range="5500" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="6" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="8.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="nagantammo" />
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="nagantammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="scp_nagantmag" description="" tags="smallitem,nagantammo,ehaammo" category="Weapon" maxstacksize="6" impactsoundtag="impact_metal_light" scale="0.3">
+    <PreferredContainer primary="scp_nagant" minamount="0" maxamount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="6" spawnprobability="0.008" />
+    <Price baseprice="300" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" />
+      <Item identifier="lead" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Ammo/vintageammo.png" sourcerect="314,183,39,31" origin="0.5,0.5" />
+    <Sprite name="nagantclipmaginv" texture="%ModDir%/Ammo/vintageammo.png" depth="0.54" sourcerect="307,25,40,31" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_nagantprojectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_nagantprojectile" />
+      <StatusEffect type="OnUse" target="This" condition="-20" disabledeltatime="true">
+        <SpawnItem identifier="scp_nagantprojectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--7.62x54mmR Round-->
+  <Item name="" identifier="scp_nagantprojectile" description="" hideinmenus="true" cargocontaineridentifier="metalcrate" category="Weapon" tags="smallitem,weapon,gun,gunsmith,nagantammo" scale="0.2" maxstacksize="10" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/Ammo/vintageammo.png" sourcerect="360,65,7,13" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/vintageammo.png" sourcerect="360,65,7,13" depth="0.15" origin="0.5,0.5" />
+    <Body width="29" height="10" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,255,115,175" scalemultiplier="1,0.6" />
+      <Attack structuredamage="15" targetforce="10" itemdamage="20" severlimbsprobability="0.25" penetration="0.25">
+        <Affliction identifier="bleeding" strength="75" />
+        <Affliction identifier="gunshotwound" strength="80" />
+        <Affliction identifier="stun" strength="1" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--SR-3 Vihkr-->
+  <Item name="" identifier="scp_sr3" description="" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" category="Weapon" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.008" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.025" />
+    <Price baseprice="500" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon name="sr3inv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="65,87,70,79" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="0,534,214,76" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-10" aimpos="45,-10" handle1="-30,-10" handle2="28,7" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.065" barrelpos="64,9" spread="10" unskilledspread="20" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="0" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/sr31.ogg" type="OnUse" range="2900" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/sr32.ogg" type="OnUse" range="2900" />
+      <Sound file="%ModDir%/Sounds/sr33.ogg" type="OnUse" range="2900" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="9.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="valammo,9x39_magazine" />
+      <RequiredSkill identifier="weapons" level="60" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="valammo,9x39_magazine" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+      <QualityStat stattype="FiringRateMultiplier" value="0.03" />
+    </Quality>
+  </Item>
+  <!--AS Val 40 round mag-->
+  <Item name="" identifier="scp_valbigmag" description="" maxstacksize="2" tags="smallitem,valammo,ehaammo" Scale="0.7" category="Weapon" impactsoundtag="impact_metal_light" scale="0.5">
+    <PreferredContainer spawnprobability="0.025" maxamount="1" minamount="0" primary="scp_val" />
+    <PreferredContainer spawnprobability="0.25" maxamount="1" minamount="0" primary="scp_sr3" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="2" spawnprobability="0.0095" />
+    <Price baseprice="400" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="10">
+      <Item identifier="plastic" />
+      <Item identifier="lead" copycondition="true" />
+      <Item identifier="lead" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="valbigmaginv" texture="%ModDir%/Ammo/renegadeammo.png" sourcerect="68,241,62,74" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/renegadeammo.png" depth="0.54" sourcerect="61,165,36,61" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_9x39projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_valprojectile" />
+      <StatusEffect type="OnUse" target="This" condition="-2.5" disabledeltatime="true">
+        <SpawnItem identifier="scp_valprojectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--9x19 AP round-->
+  <Item name="" identifier="scp_9x19approjectile" tags="smallitem,9mmammo" Scale="0.3" category="Weapon" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,100,100,200" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="1" itemdamage="20" severlimbsprobability="0.05" penetration="0.125">
+        <Affliction identifier="bleeding" strength="10" />
+        <Affliction identifier="gunshotwound" strength="16" />
+        <Affliction identifier="stun" strength="0.1" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--ASP-1 Kir-->
+  <Item name="" identifier="scp_kir" description="" category="Weapon" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0075" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.05" />
+    <Price baseprice="600" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon name="kirinv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="269,1,65,77" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="0,150,284,59" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="60,-5" handle1="-50,-10" handle2="30,6" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.175" barrelpos="64,9" spread="13" unskilledspread="24" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="0" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/kir1.ogg" type="OnUse" range="2000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/kir2.ogg" type="OnUse" range="2000" />
+      <Sound file="%ModDir%/Sounds/kir3.ogg" type="OnUse" range="2000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="3" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="10.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="kirammo,ashammo" />
+      <RequiredSkill identifier="weapons" level="50" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="kirammo,ashammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <!--10 Round 12.7x55mm box mag-->
+  <Item name="" identifier="scp_kirmag" description="" tags="smallitem,kirammo,ehaammo" category="Weapon" maxstacksize="3" impactsoundtag="impact_metal_light" scale="0.3">
+    <PreferredContainer primary="scp_kir" minamount="0" maxamount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="3" maxamount="3" spawnprobability="0.0085" />
+    <Price baseprice="550" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="lead" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="kirmaginv" texture="%ModDir%/Ammo/vintageammo.png" sourcerect="206,137,63,78" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/vintageammo.png" depth="0.54" sourcerect="205,0,47,71" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_127kirprojectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_127kirprojectile" />
+      <StatusEffect type="OnUse" target="This" condition="-10" disabledeltatime="true">
+        <SpawnItem identifier="scp_127kirprojectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--12.7x55mm Kir round-->
+  <Item name="" identifier="scp_127kirprojectile" tags="smallitem,kirammo" Scale="0.3" category="Weapon" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,100,100,100" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="9" itemdamage="20" severlimbsprobability="0.05" penetration="0.3">
+        <Affliction identifier="bleeding" strength="50" />
+        <Affliction identifier="gunshotwound" strength="45" />
+        <Affliction identifier="stun" strength="0.125" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--FAL-->
+  <Item name="" identifier="scp_fal" description="" category="Weapon" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.008" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.025" />
+    <Price baseprice="650" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon name="falinv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="334,0,65,77" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="294,664,300,63" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="60,-7" handle1="-46,-15" handle2="26,7" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.099" barrelpos="77,14" spread="8" unskilledspread="17" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/fal1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/fal2.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="2.4" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="7.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="762ammo" />
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="762ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <!--AR-15 .300-->
+  <Item name="" identifier="scp_ar15762" description="" cargocontaineridentifier="metalcrate" category="Weapon" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.82" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.05" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.009" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.01" />
+    <Price baseprice="500" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="rubber" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="545,90,69,76" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="354,335,143,42" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="40" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="49,-10" aimpos="58,-5" handle1="-34,-11" handle2="28,7" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.097" barrelpos="70,14" spread="9" unskilledspread="16" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+      <Sound file="%ModDir%/Sounds/ar15.ogg" type="OnUse" range="3000" selectionmode="random" />
+      <Sound file="%ModDir%/Sounds/ar152.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.75" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="8.5" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" items="300ammo" />
+      <RequiredSkill identifier="weapons" level="50" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="300ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <LightComponent range="400.0" LightColor="0.5,0.5,0.5,1.0" powerconsumption="4" IsOn="true" Flicker="0.2">
+      <StatusEffect type="Always" target="This,Character" Voltage="1.0" setvalue="true">
+        <Conditional IsDead="false" />
+      </StatusEffect>
+      <LightTexture texture="Content/Lights/lightcone.png" origin="-0.022, 0.5" size="1.0,0.9" />
+    </LightComponent>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.09,0.07" anchor="BottomCenter" pivot="BottomRight" relativeoffset="-0.025,0.093" style="ItemUI" />
+      <TickBox text="Taclight">
+        <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <!--7.62x35 mag-->
+  <Item impactsoundtag="impact_metal_light" scale="0.9" cargocontaineridentifier="metalcrate" description="" category="Weapon" identifier="scp_300mag" name="" tags="smallitem,300ammo,ehaammo" maxstacksize="8" linkable="true" interactthroughwall="true">
+    <PreferredContainer spawnprobability="0.5" maxamount="1" minamount="0" primary="scp_ar15762" />
+    <PreferredContainer spawnprobability="0.01" maxamount="8" minamount="0" primary="wrecksecarmcab" />
+    <Price baseprice="150" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="10">
+      <Item identifier="steel" outcondition="0.5" />
+      <Item identifier="lead" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="300maginv" texture="%ModDir%/Ammo/vintageammo.png" sourcerect="119,224,56,55" scale="0.3" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/vintageammo.png" depth="0.54" sourcerect="692,63,14,25" origin="0.5,0.5" />
+    <Body width="30" height="25" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_300projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_300projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-4" disabledeltatime="true">
+        <SpawnItem identifier="scp_300projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--7.62x35 round-->
+  <Item name="" identifier="scp_300projectile" category="Weapon" interactthroughwalls="true" cargocontaineridentifier="metalcrate" tags="smallitem" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.5">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colourmultiplier="255,255,115,175" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="1.5" itemdamage="20" severlimbsprobability="0.05" penetration="0.1">
+        <Affliction identifier="bleeding" strength="25" />
+        <Affliction identifier="gunshotwound" strength="19" />
+        <Affliction identifier="stun" strength="0.09" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--GM6-->
+  <Item name="" identifier="scp_gm6" description="" tags="mediumitem,weapon,gun,gunsmith,specialgun,mountableweapon" Scale="0.39" category="Weapon" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0065" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.006" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.025" />
+    <Price baseprice="1200" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="40">
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon name="gm6inv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="609,2,69,77" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="1,821,361,108" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="60,-12" aimpos="75,-2" handle1="-70,-19" handle2="50,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="GM6 Worn" texture="%ModDir%/Weapons/vintageweapons.png" canbehiddenbyotherwearables="false" sourcerect="1,821,361,108" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.39" origin="0.5,0.9" />
+    </Wearable>
+    <RangedWeapon reload="1.1" barrelpos="73,9" spread="6" unskilledspread="12" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="16.0,16.0" colormultiplier="255,200,200,225" />
+      <Sound file="%ModDir%/Sounds/m107.ogg" type="OnUse" range="6000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="200.0" force="6" shockwave="true" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="30.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <StatusEffect type="OnActive" target="Character" SpeedMultiplier="0.75" disabledeltatime="true" />
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="gm6ammo" />
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="-105,-32" containedspritedepth="0.551" containedstateindicatorstyle="bullet">
+      <Containable items="gm6ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="1000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.12" />
+    </Quality>
+  </Item>
+  <!--GM6 mag-->
+  <Item name="" identifier="scp_gm6mag" description="" tags="smallitem,gm6ammo,ehaammo" maxstacksize="2" category="Weapon" cargocontaineridentifier="metalcrate" impactsoundtag="impact_metal_light" scale="0.41">
+    <PreferredContainer primary="scp_gm6" minamount="0" maxamount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="2" spawnprobability="0.008" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="2" spawnprobability="0.008" />
+    <Price baseprice="600" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+      <Item identifier="lead" copycondition="true" />
+      <Item identifier="lead" copycondition="true" />
+      <Item identifier="copper" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="gm6maginv" texture="%ModDir%/Ammo/vintageammo.png" sourcerect="598,169,66,59" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/vintageammo.png" depth="0.54" sourcerect="709,34,49,53" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_gm6round" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_gm6round" />
+      <StatusEffect type="OnUse" target="This" condition="-20" disabledeltatime="true">
+        <SpawnItem identifier="scp_gm6round" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--12.7x108 round-->
+  <Item name="" identifier="scp_gm6round" tags="smallitem,gm6ammo" Scale="0.3" category="Weapon" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colourmultiplier="255,255,115,175" scalemultiplier="0.8,0.8" />
+      <Attack structuredamage="6.0" targetforce="12" itemdamage="25" severlimbsprobability="0.15" penetration="0.35">
+        <Affliction identifier="bleeding" strength="65" />
+        <Affliction identifier="gunshotwound" strength="95" />
+        <Affliction identifier="stun" strength="0.25" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <Item name="" identifier="scp_dmr540" description="" category="Weapon" tags="mediumitem,gun,weapon,gunsmith" scale="0.45" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.009" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.009" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.1" />
+    <Price baseprice="650" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+      <Item identifier="plastic" />
+      <Item identifier="titaniumaluminiumalloy" />
+    </Deconstruct>
+    <InventoryIcon name="m35inv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="403,87,69,80" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="269,245,313,81" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="65,-6" handle1="-50,-15" handle2="38,3" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.45" barrelpos="125,9" spread="3" unskilledspread="10" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/dmr540.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="3" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="7.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="dmr540ammo" />
+      <RequiredSkill identifier="weapons" level="65" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="dmr540ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <!--Kel-Tec DMR-540 Mag-->
+  <Item name="" identifier="scp_dmr540mag" description="" tags="smallitem,dmr540ammo" category="Weapon" maxstacksize="2" impactsoundtag="impact_metal_light" scale="0.3">
+    <PreferredContainer primary="scp_dmr540" minamount="0" maxamount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="2" spawnprobability="0.009" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="4" spawnprobability="0.009" />
+    <Price baseprice="450" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="15">
+      <Item identifier="plastic" />
+      <Item identifier="lead" copycondition="true" />
+      <Item identifier="titanium" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="dmr540maginv" texture="%ModDir%/Ammo/vintageammo.png" sourcerect="517,139,75,91" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/vintageammo.png" depth="0.54" sourcerect="518,0,63,90" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_m35projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_dmr540projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-5" disabledeltatime="true">
+        <SpawnItem identifier="scp_dmr540projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--7.62x67mm round-->
+  <Item name="" identifier="scp_dmr540projectile" tags="smallitem,dmr540ammo" Scale="0.3" category="Equipment" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,100,100,100" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="3" itemdamage="20" severlimbsprobability="0.05" penetration="0.35">
+        <Affliction identifier="bleeding" strength="25" />
+        <Affliction identifier="gunshotwound" strength="45" />
+        <Affliction identifier="stun" strength="0.15" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--Kel-Tec M35A2-->
+  <Item name="" identifier="scp_m35a2" description="" category="Weapon" tags="mediumitem,gun,weapon,gunsmith" scale="0.48" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.009" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.009" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.1" />
+    <Price baseprice="400" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="plastic" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon name="m35inv" texture="%ModDir%/Weapons/vintageinv.png" sourcerect="400,0,69,80" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="293,123,218,85" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="45,-10" aimpos="45,-6" handle1="-28,-12" handle2="35,9" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.08" barrelpos="95,9" spread="6" unskilledspread="15" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/m351.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/m352.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="7.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="m35ammo" />
+      <RequiredSkill identifier="weapons" level="60" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="m35ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="scp_m35a2mag" description="" tags="smallitem,m35ammo" category="Weapon" maxstacksize="3" impactsoundtag="impact_metal_light" scale="0.3">
+    <PreferredContainer primary="scp_m35a2" minamount="0" maxamount="1" spawnprobability="0.5" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="3" spawnprobability="0.009" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="6" spawnprobability="0.009" />
+    <Price baseprice="350" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" amount="3" />
+      <Item identifier="lead" copycondition="true" />
+    </Deconstruct>
+    <InventoryIcon name="m35maginv" texture="%ModDir%/Ammo/vintageammo.png" sourcerect="457,142,59,82" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/vintageammo.png" depth="0.54" sourcerect="470,0,47,75" origin="0.5,0.5" />
+    <Body width="30" height="40" density="50" />
+    <ItemContainer hideitems="true" capacity="1" drawinventory="false" canbeselected="false" ShowConditionInContainedStateIndicator="true" SpawnWithId="scp_m35projectile" removecontaineditemsondeconstruct="true" containedstateindicatorstyle="bullet">
+      <Containable items="scp_m35projectile" />
+      <StatusEffect type="OnUse" target="This" condition="-2" disabledeltatime="true">
+        <SpawnItem identifier="scp_m35projectile" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </ItemContainer>
+    <Holdable canBeCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect" />
+  </Item>
+  <!--5.7x48mm round-->
+  <Item name="" identifier="scp_m35projectile" tags="smallitem,m35ammo" Scale="0.3" category="Equipment" impactsoundtag="impact_metal_light" hideinmenus="true" scale="0.4">
+    <InventoryIcon texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Ammo/scp_556round.png" sourcerect="896,960,64,54" origin="0.5,0.5" />
+    <Body width="40" height="15" density="40" />
+    <Pickable slots="Any" msg="ItemMsgPickUpSelect" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerfirearm" particleamount="1" velocitymin="0" velocitymax="0" colormultiplier="255,100,100,100" scalemultiplier="1,0.6" />
+      <Attack structuredamage="1.0" targetforce="3" itemdamage="20" severlimbsprobability="0.05" penetration="0.175">
+        <Affliction identifier="bleeding" strength="30" />
+        <Affliction identifier="gunshotwound" strength="25" />
+        <Affliction identifier="stun" strength="0.1" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+  <!--CMMG MXA1-->
+  <Item name="" identifier="scp_mxa1warsky" description="" cargocontaineridentifier="scp_weaponcrate" category="Weapon" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.45" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0095" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.0095" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.02" />
+    <Price baseprice="600" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="15">
+      <Item identifier="steel" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="616,90,73,76" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="287,386,257,82" depth="0.55" origin="0.5,0.5" />
+    <Body width="250" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="50,-10" aimpos="59,-5" handle1="-45,-15" handle2="32,7" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.092" barrelpos="85,4" spread="7" unskilledspread="17" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="muzzleflash" particleamount="1" velocitymin="0" velocitymax="0" />
+      <Sound file="%ModDir%/Sounds/65mx1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/65mx2.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/65mx3.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This" Condition="-150" />
+      <StatusEffect type="Always" target="This" Condition="7">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" Condition="10">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Sounds/arjam.ogg" type="OnUse" range="900.0" loop="false" volume="1.2" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" Condition="40" disabledeltatime="true" delay="3.6" stackable="false" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="12.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="65ammo" />
+      <RequiredSkill identifier="weapons" level="65" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="65ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <LightComponent range="400.0" LightColor="0.5,0.5,0.5,1.0" powerconsumption="4" IsOn="true" Flicker="0.2">
+      <StatusEffect type="Always" target="This,Character" Voltage="1.0" setvalue="true">
+        <Conditional IsDead="false" />
+      </StatusEffect>
+      <LightTexture texture="Content/Lights/lightcone.png" origin="-0.015, 0.5" size="1.0,0.9" />
+    </LightComponent>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.09,0.07" anchor="BottomCenter" pivot="BottomRight" relativeoffset="-0.025,0.093" style="ItemUI" />
+      <TickBox text="Taclight">
+        <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="scp_ash12unique" description="" category="Weapon" cargocontaineridentifier="scp_weaponcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.4" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0075" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.0085" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.01" />
+    <Price baseprice="1050" sold="false" canbespecial="false"></Price>
+    <Deconstruct time="12">
+      <Item identifier="steel" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="762,89,71,78" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="587,173,235,111" depth="0.55" origin="0.5,0.5" />
+    <Body width="227" height="90" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="40,-6" aimpos="42,-3" handle1="5,-10" handle2="30,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.15" barrelpos="100,15" spread="6" unskilledspread="20" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="5,5.2" colormultiplier="255,200,200,200" />
+      <Sound file="%ModDir%/Sounds/ash121.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/ash122.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/ash123.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This" Condition="-200" />
+      <StatusEffect type="Always" target="This" Condition="6">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" Condition="8">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Sounds/ash12jam.ogg" type="OnUse" range="900.0" loop="false" volume="1.35" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" Condition="50" disabledeltatime="true" delay="4.1" stackable="false" />
+      <StatusEffect type="OnUse">
+        <Explosion range="175.0" force="1.6" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="20.0" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="ashammo,kirammo" />
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="false" itempos="-30,-8" containedspritedepth="0.56" containedstateindicatorstyle="bullet">
+      <Containable items="ashammo,kirammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <LightComponent range="500.0" LightColor="0.5,0.5,0.5,1.0" powerconsumption="4" IsOn="true" Flicker="0.2">
+      <StatusEffect type="Always" target="This,Character" Voltage="1.0" setvalue="true">
+        <Conditional IsDead="false" />
+      </StatusEffect>
+      <LightTexture texture="Content/Lights/lightcone.png" origin="-0.015, 0.5" size="1.0,0.9" />
+    </LightComponent>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.09,0.07" anchor="BottomCenter" pivot="BottomRight" relativeoffset="-0.025,0.093" style="ItemUI" />
+      <TickBox text="Taclight">
+        <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.12" />
+      <QualityStat stattype="Condition" value="0.15" />
+    </Quality>
+  </Item>
+  <!--HK21-->
+  <Item name="" description="" identifier="scp_hk21" category="Weapon" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.55" cargocontaineridentifier="scp_weaponcrate" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0065" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.02" />
+    <Price baseprice="900" sold="false"></Price>
+    <Deconstruct time="35">
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+      <Item identifier="titaniumaluminiumalloy" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="819,2,70,77" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="587,287,270,63" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="68,-10" aimpos="72,-10" handle1="-45,-10" handle2="26,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <Wearable slots="Bag" msg="ItemMsgEquipSelect" canbeselected="false" canbepicked="true" pickkey="Select">
+      <sprite name="HK21 Worn" texture="%ModDir%/Weapons/vintageweapons.png" canbehiddenbyotherwearables="false" sourcerect="587,287,270,63" rotation="90" inheritlimbdepth="false" depth="0.6" limb="Torso" scale="0.5" origin="0.5,0.95" />
+    </Wearable>
+    <RangedWeapon reload="0.13" barrelpos="100,12" spread="0" unskilledspread="20" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="4.0,4.0" colormultiplier="255,200,200,200" />
+      <Sound file="%ModDir%/Sounds/hk211.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/hk212.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This" Condition="-100" />
+      <StatusEffect type="Always" target="This" Condition="5">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" Condition="8">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Sounds/machinegunjam.ogg" type="OnUse" range="900.0" loop="false" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" Condition="40" disabledeltatime="true" delay="4" stackable="false" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.75" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="20" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Character" SpeedMultiplier="0.8" setvalue="true" disabledeltatime="true" />
+      <StatusEffect type="OnSecondaryUse" target="Character" SpeedMultiplier="0.5" setvalue="true" />
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="gpmgammo" />
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="gpmgammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.12" />
+    </Quality>
+  </Item>
+  <!--G3KA4 (Polarfuchs moment)-->
+  <Item name="" description="" identifier="scp_g3ka4" category="Weapon" cargocontaineridentifier="scp_weaponcrate" tags="mediumitem,weapon,gun,gunsmith,mountableweapon" Scale="0.52" impactsoundtag="impact_metal_light">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.0085" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.0085" />
+    <PreferredContainer primary="abandonedarmcab" minamount="0" maxamount="1" spawnprobability="0.0085" />
+    <PreferredContainer primary="weaponholder" spawnprobability="0.02" />
+    <Price baseprice="800" sold="false"></Price>
+    <Deconstruct time="35">
+      <Item identifier="steel" amount="2" />
+      <Item identifier="plastic" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="835,89,66,78" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="589,351,218,58" depth="0.55" origin="0.5,0.5" />
+    <Body width="140" height="60" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" holdpos="55,-10" aimpos="65,-6" handle1="-35,-15" handle2="26,5" holdangle="-35" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.115" barrelpos="110,9" spread="7" unskilledspread="22" combatPriority="80" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="6.0,5.0" colormultiplier="255,200,200,200" />
+      <Sound file="%ModDir%/Sounds/scar1.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/scar2.ogg" type="OnUse" range="3000" />
+      <Sound file="%ModDir%/Sounds/scar3.ogg" type="OnUse" range="3000" />
+      <StatusEffect type="OnUse" target="This" Condition="-150" />
+      <StatusEffect type="Always" target="This" Condition="6">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="InWater" target="This" Condition="10">
+        <Conditional condition="gt 0" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This">
+        <sound file="%ModDir%/Sounds/battleriflejam.ogg" type="OnUse" range="900.0" loop="false" volume="1.2" />
+      </StatusEffect>
+      <StatusEffect type="OnBroken" target="This" Condition="40" disabledeltatime="true" delay="3.2" stackable="false" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="2.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="22" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="Contained">
+        <Use />
+      </StatusEffect>
+      <RequiredItems msg="ItemmsgAmmoRequired" type="Contained" tags="762ammo" />
+      <RequiredSkill identifier="weapons" level="75" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="762ammo" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="4000" fadeouttime="5" />
+    <LightComponent range="400.0" LightColor="0.5,0.5,0.5,1.0" powerconsumption="4" IsOn="true" Flicker="0.2">
+      <StatusEffect type="Always" target="This,Character" Voltage="1.0" setvalue="true">
+        <Conditional IsDead="false" />
+      </StatusEffect>
+      <LightTexture texture="Content/Lights/lightcone.png" origin="-0.015, 0.5" size="1.0,0.9" />
+    </LightComponent>
+    <CustomInterface canbeselected="false" drawhudwhenequipped="true" allowuioverlap="true">
+      <GuiFrame relativesize="0.09,0.07" anchor="BottomCenter" pivot="BottomRight" relativeoffset="-0.025,0.093" style="ItemUI" />
+      <TickBox text="Taclight">
+        <StatusEffect type="OnUse" targettype="This" IsOn="true" />
+        <StatusEffect type="OnSecondaryUse" targettype="This" IsOn="false" />
+      </TickBox>
+    </CustomInterface>
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.12" />
+      <QualityStat stattype="Condition" value="0.15" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="scp_m29" description="" cargocontaineridentifier="scp_weaponcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith" category="Weapon" impactsoundtag="impact_metal_light" scale="0.4">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="1" spawnprobability="0.04" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.04" />
+    <Price baseprice="900" displaynonempty="true" sold="false"></Price>
+    <Deconstruct time="20">
+      <Item identifier="plastic" />
+      <Item identifier="steel" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="2,172,60,75" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="884,2,121,65" depth="0.55" origin="0.5,0.5" />
+    <Body width="72" height="40" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-44,-6" handle2="-60,-15" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.925" barrelpos="30,11" spread="2" unskilledspread="12" combatPriority="70" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.175">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <Sound file="%ModDir%/Sounds/441.ogg" type="OnUse" range="3500" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/442.ogg" type="OnUse" range="3500" />
+      <ChargeSound file="%ModDir%/Sounds/doubleaction.ogg" range="1000" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="3.5,3.5" colormultiplier="255,200,200,200" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="5.4" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="10.0" />
+      </StatusEffect>
+      <RequiredItems items="44ammo,44_round" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="65" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="6" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="44ammo,44_round" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+  <Item name="" identifier="scp_r8" description="" cargocontaineridentifier="scp_weaponcrate" tags="smallitem,weapon,gun,pistolitem,gunsmith" category="Weapon" impactsoundtag="impact_metal_light" scale="0.34">
+    <PreferredContainer primary="secarmcab" />
+    <PreferredContainer primary="wrecksecarmcab" minamount="0" maxamount="2" spawnprobability="0.04" />
+    <PreferredContainer primary="abandonedsecarmcab" minamount="0" maxamount="1" spawnprobability="0.04" />
+    <Price baseprice="700" displaynonempty="true" sold="false"></Price>
+    <Deconstruct time="20">
+      <Item identifier="plastic" />
+      <Item identifier="steel" />
+      <Item identifier="steel" />
+    </Deconstruct>
+    <InventoryIcon texture="%ModDir%/Weapons/vintageinv.png" sourcerect="68,174,63,77" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Weapons/vintageweapons.png" sourcerect="883,68,117,67" depth="0.55" origin="0.5,0.5" />
+    <Body width="72" height="40" density="50" />
+    <Holdable slots="Any,RightHand+LeftHand" controlpose="true" aimpos="90,10" handle1="-42,-6" handle2="-60,-15" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon reload="0.875" barrelpos="30,11" spread="2" unskilledspread="12" combatPriority="70" drawhudwhenequipped="true" crosshairscale="0.2" maxchargetime="0.15">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <Sound file="%ModDir%/Sounds/357.ogg" type="OnUse" range="3000" selectionmode="Random" />
+      <Sound file="%ModDir%/Sounds/3572.ogg" type="OnUse" range="3000" />
+      <ChargeSound file="%ModDir%/Sounds/doubleaction.ogg" range="1000" />
+      <ParticleEmitter particle="impactfirearm" particleamount="1" velocitymin="0" velocitymax="0" scalemultiplier="3.0,3.0" colormultiplier="255,200,200,200" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="7.0" />
+      </StatusEffect>
+      <RequiredItems items="357ammo,revolverround,ek_ammotag_357,revolverround,ek_revolverammo,38_round,38_round_ap" type="Contained" msg="ItemMsgAmmoRequired" />
+      <RequiredSkill identifier="weapons" level="60" />
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="8" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="357ammo,revolverround,ek_revolverammo,38_round,38_round_ap" />
+    </ItemContainer>
+    <aitarget sightrange="2000" soundrange="5000" fadeouttime="5" />
+    <Quality>
+      <QualityStat stattype="FirepowerMultiplier" value="0.1" />
+    </Quality>
+  </Item>
+</Items>

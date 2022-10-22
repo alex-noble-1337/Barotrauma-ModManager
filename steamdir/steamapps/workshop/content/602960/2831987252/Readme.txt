@@ -1,0 +1,1 @@
+This modpack fits almost every Barotraumatic Creature Fixes except for Huskmod. Now you won't need seven extra mods to start off your campaign however if you want to run seperate packs such as not playing with Extended Monster creatures then don't use this creature pack. Use all the other separate creature mods that you'll play with for your campaign.

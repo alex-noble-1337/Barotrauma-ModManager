@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LevelGenerationParameters>
+  <Override>
+    <WastesBasic identifier="wastesbasic" type="LocationConnection" biomes="hydrothermalwastes" height="60000" initialdepthmin="400000" initialdepthmax="500000" levelobjectamount="2000" ambientlightcolor="32,8,0,255" backgroundtexturecolor="128,64,0,255" backgroundcolor="16,8,0,255" wallcolor="255,255,255,255" minwidth="250000" maxwidth="300000" voronoisiteinterval="1500,1500" voronoisitevariance="700,700" cellsubdivisionlength="1500" cellroundingamount="0.9" cellirregularity="0.1" mainpathnodeintervalrange="6000,10000" cavecount="5" itemcount="400" floatingicechunkcount="0" seafloordepth="-80000" seafloorvariance="2000" mountaincountmin="2" mountaincountmax="3" mountainheightmin="30000" mountainheightmax="35000" ruincount="1" minwreckcount="0" maxwreckcount="1" thalamusprobability="0.1" bottomholeprobability="0.8" waterparticlescale="2" startposition="0.1,0.1" endposition="0.9,0.1" createholenexttoend="True" mintunnelradius="6500" mincorpsecount="1" maxcorpsecount="5" wreckhullfloodingchance="0.5" wreckfloodinghullminwaterpercentage="0.1" wreckfloodinghullmaxwaterpercentage="1" sidetunnelcount="2,4" minsidetunnelradius="1000,3000" icespirecount="0" walltexturesize="512" walledgetexturewidth="768" walledgeexpandoutwardsamount="128" walledgeexpandinwardsamount="128" backgroundcreatureamount="80" sidetunnelvariance="0.5" mainpathvariance="0.5" resourceintervalrange="19200,38400" caveresourceintervalrange="9600,19200" resourceclustersizerange="5,10" resourcespawnchance="0.5" caveresourcespawnchance="0.9" islandcount="0">
+      <!--
+    <Background
+      texture="Content/Map/iceBackgroundFade.png" />
+    <BackgroundTop
+      texture="Content/Map/iceBackground.png"
+      premultiplyalpha="false" />
+      -->
+      <WaterParticles texture="Content/Map/Biomes/HydrothermalWastes/BackgroundParticles.png" />
+      <Wall texture="Content/Map/Biomes/HydrothermalWastes/LevelWall.png" premultiplyalpha="false" />
+      <WallEdge texture="Content/Map/Biomes/HydrothermalWastes/LevelWallEdge.png" />
+      <DestructibleWall texture="Content/Map/Biomes/DestructibleWall.png" />
+      <DestructibleWallEdge texture="Content/Map/Biomes/DestructibleWallEdge.png" />
+      <WallDestroyed texture="Content/Map/Biomes/DestroyedWall.png" premultiplyalpha="false" />
+    </WastesBasic>
+  </Override>
+</LevelGenerationParameters>

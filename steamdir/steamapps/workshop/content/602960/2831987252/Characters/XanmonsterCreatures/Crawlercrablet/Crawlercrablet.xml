@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Crawlercrablet" humanoid="False" displayname="" group="husk" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="False" noise="100" visibility="100" blooddecal="blood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" eatingspeed="10" pathfinderpriority="0.5999999" hideinsonar="False" sonardisruption="0" speciestranslationoverride="">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <health vitality="8" doesbleed="True" crushdepth="-Infinity" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0" healthregenerationwheneating="0" />
+  <sound range="1000" state="Attack" file="Content/Characters/Husk/HUSK_attack1.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Attack" file="Content/Characters/Husk/HUSK_attack2.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Attack" file="Content/Characters/Husk/HUSK_attack3.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Attack" file="Content/Characters/Husk/HUSK_attack4.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Idle" file="Content/Characters/Husk/HUSK_idle1.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Idle" file="Content/Characters/Husk/HUSK_idle2.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Idle" file="Content/Characters/Husk/HUSK_idle3.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Idle" file="Content/Characters/Husk/HUSK_idle4.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Damage" file="Content/Characters/Husk/HUSK_damage1.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Damage" file="Content/Characters/Husk/HUSK_damage2.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Damage" file="Content/Characters/Husk/HUSK_damage3.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Die" file="Content/Characters/Husk/HUSK_death1.ogg" volume="1" gender="None" />
+  <sound range="1000" state="Die" file="Content/Characters/Husk/HUSK_death2.ogg" volume="1" gender="None" />
+  <ai combatstrength="50" sight="1" hearing="1" aggressionhurt="100" aggressiongreed="0" fleehealththreshold="0" attackwhenprovoked="True" avoidgunfire="True" aggressiveboarding="True" enforceaggressivebehaviorformissions="True" targetinnerwalls="False" randomattack="True" targetouterwalls="True">
+    <target tag="decoy" state="Attack" priority="550" reactdistance="0" attackdistance="0" />
+    <target tag="leucocyte" state="Attack" priority="500" reactdistance="0" attackdistance="0" />
+    <target tag="tool" state="Attack" priority="150" reactdistance="0" attackdistance="0" />
+    <target tag="stronger" state="Escape" priority="240" reactdistance="2200" attackdistance="0" />
+    <target tag="weapon" state="Attack" priority="160" reactdistance="0" attackdistance="0" />
+    <target tag="terminalcell" state="Attack" priority="100" reactdistance="0" attackdistance="0" />
+    <target tag="human" state="Attack" priority="75" reactdistance="0" attackdistance="0" />
+    <target tag="crawler" state="Attack" priority="75" reactdistance="0" attackdistance="0" />
+    <target tag="room" state="Attack" priority="10" reactdistance="0" attackdistance="0" />
+    <target tag="door" state="Attack" priority="10" reactdistance="0" attackdistance="0" />
+    <target tag="wall" state="Attack" priority="20" reactdistance="0" attackdistance="0" />
+    <target tag="provocative" state="Attack" priority="160" reactdistance="1110" attackdistance="0" />
+    <target tag="paralysed" state="Escape" priority="250" reactdistance="0" attackdistance="0" />
+  </ai>
+  <SwarmBehavior cohesion="1" maxdistfromcenter="5000" mindistfromclosest="100" />
+  <gibemitter particle="smallgib" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="0" particleamount="0" highqualitycollisiondetection="False" copyentityangle="False" />
+  <bloodemitter particle="blackblood" anglemin="0" anglemax="0" scalemin="1" scalemax="1" velocitymin="0" velocitymax="0" emitinterval="0" particlespersecond="1" particleamount="2" highqualitycollisiondetection="False" copyentityangle="False" />
+  <inventory slots="Any, Any" accessiblewhenalive="False" commonness="1">
+    <item identifier="huskeggs" />
+    <item identifier="huskstinger" />
+  </inventory>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="100">
+    <RemoveCharacter />
+  </StatusEffect>
+  <sound file="Content/Characters/Husk/HUSK_attack3.ogg" state="Attack" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Husk/HUSK_attack4.ogg" state="Idle" range="1000" volume="1" gender="None" />
+  <sound file="Content/Characters/Legacyhusk/Husk2.ogg" state="Attack" range="1000" volume="1" gender="None" />
+</Character>

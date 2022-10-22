@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LionthresherSwimSlow animationtype="SwimSlow" usesinemovement="False" flip="True" mirror="False" waveamplitude="1.2548774" wavelength="91.0779" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="0" foottorque="20" footangles="" tailangle="3" steertorque="5" movementspeed="6" cyclespeed="1" headangle="-7" torsoangle="-3" tailtorquemultiplier="50" flipcooldown="2" flipdelay="0.1" mirrorlerp="True" type="Lionthresher" legtorque="25" armikstrength="1" handikstrength="1" />

@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <Missions>
+    <PirateMission name="Pirate Vessel" type="Pirate" identifier="pirate1" tags="piratehumpback" description="A pirate vessel has been sighted in this area. Check the locations that the submarine has reportedly been patrolling, and find the vessel and eliminate its crew." difficulty="4" sonarlabel="Pirate sighting" commonness="80" reward="3500" achievementidentifier="piratemission" successmessage="The pirate vessel's crew was successfully eliminated." addedmissiondifficultyperplayer="8">
+      <message header="Pirates detected" text="" />
+      <message header="Pirates eliminated" text="" />
+      <Reputation identifier="location" amount="30" />
+      <SubmarineTypes>
+        <Submarine path="%ModDir%/Content/Items/Pirate sub fix/DugongPirate.sub" preferreddifficulty="10" alternatereward="3200" />
+        <Submarine path="%ModDir%/Content/Items/Pirate sub fix/HumpbackPirate.sub" preferreddifficulty="40" alternatereward="4400" />
+        <Submarine path="%ModDir%/Content/Items/Pirate sub fix/Typhon2Pirate.sub" preferreddifficulty="70" alternatereward="5600" />
+      </SubmarineTypes>
+      <Characters>
+        <Character typeidentifier="piratecaptain" minamount="1" maxamount="1" />
+        <Character typeidentifier="piratesecurity" minamount="1" maxamount="5" />
+        <Character typeidentifier="piratemechanic" minamount="1" maxamount="1" />
+        <Character typeidentifier="pirateengineer" minamount="1" maxamount="1" />
+      </Characters>
+      <CharacterTypes>
+        <CharacterType typeidentifier="piratecaptain">
+          <Character identifier="piratecaptain" from="piratenpcs1" preferreddifficulty="50" iscommander="true" />
+          <Character identifier="piratecaptainlord" from="piratenpcs1" preferreddifficulty="90" iscommander="true" />
+        </CharacterType>
+        <CharacterType typeidentifier="piratesecurity">
+          <Character identifier="piratesecurityrecruit" from="piratenpcs1" preferreddifficulty="40" />
+          <Character identifier="piratesecuritygunner" from="piratenpcs1" preferreddifficulty="60" />
+          <Character identifier="piratesecuritybrute" from="piratenpcs1" preferreddifficulty="70" />
+          <Character identifier="piratesecurityelite" from="piratenpcs1" preferreddifficulty="100" />
+        </CharacterType>
+        <CharacterType typeidentifier="piratemechanic">
+          <Character identifier="piratemechanicrecruit" from="piratenpcs1" preferreddifficulty="40" />
+          <Character identifier="piratemechanicveteran" from="piratenpcs1" preferreddifficulty="70" />
+        </CharacterType>
+        <CharacterType typeidentifier="pirateengineer">
+          <Character identifier="pirateengineerrecruit" from="piratenpcs1" preferreddifficulty="40" />
+          <Character identifier="pirateengineerveteran" from="piratenpcs1" preferreddifficulty="70" />
+        </CharacterType>
+      </CharacterTypes>
+      <Icon texture="Content/UI/MissionIcons.png" sourcerect="0,768,256,256" color="243,146,55" />
+      <LocationType from="City" to="City" />
+      <LocationType from="City" to="Outpost" />
+      <LocationType from="City" to="Military" />
+      <LocationType from="City" to="Research" />
+      <LocationType from="City" to="Mine" />
+    </PirateMission>
+  </Missions>
+</Override>

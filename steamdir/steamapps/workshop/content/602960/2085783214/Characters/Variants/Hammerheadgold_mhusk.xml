@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Hammerheadgoldhusk" speciesname="Hammerheadgold_mhusk" speciestranslationoverride="Hammerheadgold">
+  <health vitality="550" />
+  <ragdoll scalemultiplier="1.15" />
+  <attack damagemultiplier="1.15" />
+</Charactervariant>

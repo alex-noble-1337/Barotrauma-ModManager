@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WastebonethresherSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" mirror="False" waveamplitude="30.99491" wavelength="57.33745" rotatetowardsmovement="True" torsotorque="50" headtorque="40" tailtorque="25" foottorque="25" footangles="" tailangle="90" steertorque="20" movementspeed="9.75" cyclespeed="1" headangle="90" torsoangle="90" type="Wastebonethresher" tailtorquemultiplier="5" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

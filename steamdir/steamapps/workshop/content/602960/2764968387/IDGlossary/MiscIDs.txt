@@ -1,0 +1,16 @@
+=======
+Ammo boxes
+
+scp_revolverammobox (Revolver Ammo Box)
+scp_amrammobox (Anti-Materiel Rifle Ammo Box)
+scp_shotgunammobox (Shotgun Ammo Box)
+scp_grenadeammobox (Grenade Ammo Box)
+scp_rifleammobox (Rifle Ammo Box)
+
+=======
+Weapon crates
+
+scp_weaponcrate (Weapons Crate)
+scp_alienweaponcrate (Alien Weapons Crate)
+
+=======

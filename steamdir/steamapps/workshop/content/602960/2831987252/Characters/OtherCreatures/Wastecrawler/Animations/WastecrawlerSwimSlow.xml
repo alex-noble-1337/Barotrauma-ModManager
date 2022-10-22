@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WastecrawlerSwimSlow movementspeed="2" steertorque="10" waveamplitude="5.694347" wavelength="40.9427" flip="True" headangle="141" torsoangle="67" mirror="False" rotatetowardsmovement="True" torsotorque="25" headtorque="10" foottorque="10" tailtorque="50" footangle="0" cyclespeed="5" animationtype="SwimSlow" footangles="10: 1.567869,15: 0,11: 0" usesinemovement="False" tailangle="NaN" tailtorquemultiplier="1" type="Wastecrawler" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

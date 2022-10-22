@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HuskmutantcocooncrawlerSwimFast animationtype="SwimFast" usesinemovement="False" flip="True" flipcooldown="1" flipdelay="0.5" mirror="True" mirrorlerp="True" waveamplitude="8.154243" wavelength="19.35009" rotatetowardsmovement="True" torsotorque="70" headtorque="75" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="5: -2.1118484,8: -1.8325957" tailangle="95" steertorque="25" movementspeed="4.4937153" cyclespeed="1" headangle="108" torsoangle="92" legtorque="25" armikstrength="1" handikstrength="1" />

@@ -1,0 +1,365 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<!--                           IMPROVED HUSKS RANDOM EVENTS                              -->
+<!--    I DON'T HAVE ANYTHING INTERESTING TO WRITE HERE. JUST THOUGHT IT LOOKED COOL.    -->
+<!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+<Randomevents>
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                               Difficulty level 1                          -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <EventSet identifier="Huskone" minleveldifficulty="1" maxleveldifficulty="30" chooserandom="false" allowatstart="true" additive="true" campaign="false">
+    <!-- populate the caves -->
+    <EventSet chooserandom="true" allowatstart="true" percave="true" triggereventcooldown="false">
+      <MonsterEvent characterfile="Crawlerhusk" minamount="0" maxamount="3" spawntype="cave" />
+      <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="0" maxamount="1" spawntype="cave" />
+      <MonsterEvent characterfile="Spinelinghusk" minamount="0" maxamount="2" spawntype="cave" />
+    </EventSet>
+    <!-- Populate the wrecks. -->
+    <EventSet identifier="wreck" chooserandom="true" allowatstart="true" perwreck="true" triggereventcooldown="false">
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Crawlerhusk" minamount="1" maxamount="1" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Humanhuskold" minamount="1" maxamount="3" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="1" maxamount="1" spawntype="wreck" probability="0.3" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="1" spawntype="wreck" probability="0.2" />
+      </EventSet>
+    </EventSet>
+    <!-- Timed events -->
+    <!-- Trigger at 300 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="300" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 1000 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="1000" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 1500 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="1500" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 2500 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="2500" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+  </EventSet>
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                               Difficulty level 2                          -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <EventSet identifier="Husktwo" minleveldifficulty="31" maxleveldifficulty="60" chooserandom="false" allowatstart="true" additive="true" campaign="false">
+    <!-- populate the caves -->
+    <EventSet chooserandom="true" allowatstart="true" percave="true" triggereventcooldown="false">
+      <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="cave" />
+      <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="3" spawntype="cave" />
+      <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="2" maxamount="4" spawntype="cave" />
+      <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="3" spawntype="cave" />
+      <MonsterEvent characterfile="Spinelinghusk" minamount="3" maxamount="4" spawntype="cave" />
+    </EventSet>
+    <!-- populate the ruins -->
+    <EventSet chooserandom="false" allowatstart="true" perruin="true" triggereventcooldown="false">
+      <MonsterEvent characterfile="Huskmutanthuman" minamount="1" maxamount="2" spawntype="ruin" probability="0.5" spawnpointtag="husk" />
+    </EventSet>
+    <!-- Populate the wrecks. -->
+    <EventSet identifier="wreck" chooserandom="true" allowatstart="true" perwreck="true" triggereventcooldown="false">
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Crawler_hatchlinghusk" minamount="2" maxamount="4" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="3" spawntype="wreck" probability="0.3" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="4" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Mudraptor_hatchlinghusk" minamount="2" maxamount="4" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Tigerthresher_hatchlinghusk" minamount="1" maxamount="3" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="3" spawntype="wreck" probability="0.3" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Humanhuskold" minamount="2" maxamount="3" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Huskmutanthuman" minamount="1" maxamount="2" spawntype="wreck" probability="0.3" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Huskmutantmudraptor" minamount="1" maxamount="2" spawntype="wreck" probability="0.2" />
+        <MonsterEvent characterfile="Huskmutanthuman" minamount="1" maxamount="3" spawntype="wreck" probability="0.2" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Huskmutantarmored" minamount="1" maxamount="1" spawntype="wreck" probability="0.2" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Huskmutanthunterranged" minamount="1" maxamount="1" spawntype="wreck" probability="0.2" />
+      </EventSet>
+    </EventSet>
+    <!-- populate the abyss -->
+    <EventSet chooserandom="true" allowatstart="true" triggereventcooldown="false" disableinhuntinggrounds="true">
+      <MonsterEvent characterfile="Endwormhusk" minamount="1" maxamount="1" maxamountperlevel="1" spawntype="abyss" />
+      <MonsterEvent characterfile="Charybdishusk" minamount="1" maxamount="1" maxamountperlevel="1" spawntype="abyss" />
+    </EventSet>
+    <!-- Timed events -->
+    <!-- Trigger at 300 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="300" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 1000 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="1000" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadmatriarchhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 1500 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="1500" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadmatriarchhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Molochhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Molochbabyhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 2500 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="2500" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="1" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Molochhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Molochbabyhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadmatriarchhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="10">
+        <MonsterEvent characterfile="Watcherhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptor_unarmoredhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+  </EventSet>
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <!--                               Difficulty level 3                          -->
+  <!-- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+  <EventSet identifier="Huskthree" minleveldifficulty="61" maxleveldifficulty="100" chooserandom="false" allowatstart="true" additive="true" campaign="false">
+    <!-- populate the caves -->
+    <EventSet chooserandom="true" allowatstart="true" percave="true" triggereventcooldown="false">
+      <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="cave" />
+      <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="cave" />
+      <MonsterEvent characterfile="Mudraptorhusk" minamount="3" maxamount="4" spawntype="cave" />
+      <MonsterEvent characterfile="Huskmutanthuman" minamount="2" maxamount="4" spawntype="cave" />
+    </EventSet>
+    <!-- populate the ruins -->
+    <EventSet chooserandom="false" allowatstart="true" perruin="true" triggereventcooldown="false">
+      <MonsterEvent characterfile="Huskmutanthuman" minamount="2" maxamount="2" spawntype="ruin" probability="0.5" spawnpointtag="husk" />
+      <MonsterEvent characterfile="Huskmutanthunterranged" minamount="2" maxamount="2" spawntype="ruin" probability="0.5" spawnpointtag="husk" />
+      <MonsterEvent characterfile="Huskmutantarmored" minamount="1" maxamount="2" spawntype="ruin" probability="0.5" spawnpointtag="husk" />
+    </EventSet>
+    <!-- Populate the wrecks. -->
+    <EventSet identifier="wreck" chooserandom="true" allowatstart="true" perwreck="true" triggereventcooldown="false">
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Huskmutantcrawler" minamount="2" maxamount="4" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Crawler_hatchlinghusk" minamount="2" maxamount="4" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="2" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Humanhuskold" minamount="2" maxamount="2" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="2" spawntype="wreck" probability="0.3" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Humanhuskold" minamount="2" maxamount="3" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Huskmutanthuman" minamount="1" maxamount="2" spawntype="wreck" probability="0.3" />
+        <MonsterEvent characterfile="Huskmutanthunterranged" minamount="1" maxamount="2" spawntype="wreck" probability="0.3" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Huskmutantarmored" minamount="1" maxamount="2" spawntype="wreck" probability="0.2" />
+        <MonsterEvent characterfile="Huskmutanthuman" minamount="2" maxamount="3" spawntype="wreck" probability="0.2" />
+        <MonsterEvent characterfile="Humanhuskold" minamount="3" maxamount="4" spawntype="wreck" probability="0.2" />
+      </EventSet>
+      <EventSet identifier="wreck" chooserandom="false" allowatstart="true" perwreck="true" triggereventcooldown="false">
+        <MonsterEvent characterfile="Huskmutantarmoredpucs" minamount="1" maxamount="1" spawntype="wreck" probability="0.2" />
+        <MonsterEvent characterfile="Humanhuskold" minamount="3" maxamount="5" spawntype="wreck" probability="0.2" />
+      </EventSet>
+    </EventSet>
+    <!-- populate the abyss -->
+    <EventSet chooserandom="true" allowatstart="true" triggereventcooldown="false" disableinhuntinggrounds="true">
+      <MonsterEvent characterfile="Endwormhusk" minamount="1" maxamount="1" maxamountperlevel="1" spawntype="abyss" />
+      <MonsterEvent characterfile="Charybdishusk" minamount="1" maxamount="1" maxamountperlevel="1" spawntype="abyss" />
+    </EventSet>
+    <!-- Timed events -->
+    <!-- Trigger at 300 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="300" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="3" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 1000 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="1000" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutanttigerthresher" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Huskmutantmudraptor" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutantcrawler" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadmatriarchhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 1500 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="1500" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutanttigerthresher" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Huskmutantmudraptor" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutantcrawler" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadmatriarchhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Molochblackhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Molochbabyhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+    <!-- Trigger at 2500 seconds -->
+    <EventSet chooserandom="true" mindistancetraveled="1.0" minmissiontime="2500" minintensity="0.0" maxintensity="1.0" allowatstart="false">
+      <EventSet chooserandom="true" commonness="60">
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="3" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Spinelinghusk" minamount="2" maxamount="5" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutantbonethresher" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutanttigerthresher" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="40">
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutanttigerthresher" minamount="1" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Huskmutantbonethresher" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="20">
+        <MonsterEvent characterfile="Molochblackhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Molochbabyhusk" minamount="2" maxamount="3" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Swarmcrawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="30">
+        <MonsterEvent characterfile="Hammerheadmatriarchhusk" minamount="1" maxamount="1" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Hammerheadhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="1" maxamount="3" spawntype="mainpath,sidepath" />
+      </EventSet>
+      <EventSet chooserandom="false" commonness="10">
+        <MonsterEvent characterfile="Watcherhusk" minamount="1" maxamount="2" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Tigerthresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Bonethresherhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Crawlerhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+        <MonsterEvent characterfile="Mudraptorhusk" minamount="2" maxamount="4" spawntype="mainpath,sidepath" />
+      </EventSet>
+    </EventSet>
+  </EventSet>
+</Randomevents>

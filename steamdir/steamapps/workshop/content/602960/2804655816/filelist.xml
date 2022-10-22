@@ -1,0 +1,18 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="NT Pharmacy" modversion="A1.0.3" corepackage="False" steamworkshopid="2804655816" gameversion="0.18.15.0" expectedhash="E99DA7042844F1247E4FDC19CFCF97DC">
+  <Other file="%ModDir%/Images/InventoryItemIconAtlas.png" />
+  <Afflictions file="%ModDir%/Xml/Afflictions.xml" />
+  <Item file="%ModDir%/Xml/items.xml" />
+  <Text file="%ModDir%/Localization/English/English.xml" />
+  <Text file="%ModDir%/Localization/Russian/Russian.xml" />
+  <Text file="%ModDir%/Localization/Polish/Polish.xml" />
+  <Text file="%ModDir%/Localization/French/French.xml" />
+  <Text file="%ModDir%/Localization/Korean/Korean.xml" />
+  <Text file="%ModDir%/Localization/Portuguese/Portuguese.xml" />
+  <Text file="%ModDir%/Localization/Spanish/Spanish.xml" />
+  <Text file="%ModDir%/Localization/Turkish/Turkish.xml" />
+  <Other file="%ModDir%/Lua/Autorun/init.lua" />
+  <Other file="%ModDir%/Lua/Scripts/humanupdate.lua" />
+  <Other file="%ModDir%/Lua/Scripts/items.lua" />
+  <Other file="%ModDir%/Lua/Scripts/testing.lua" />
+</contentpackage>

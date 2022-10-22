@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WhispererSwimSlow UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="True" WaveAmplitude="100" WaveLength="200" RotateTowardsMovement="True" TailTorque="500" TailTorqueMultiplier="2" FootAngles="" TailAngle="180" SteerTorque="100" LegTorque="25" MovementSpeed="5" CycleSpeed="1" HeadAngle="100" TorsoAngle="100" HeadTorque="350" TorsoTorque="500" FootTorque="25" AnimationType="SwimSlow" ArmIKStrength="1" HandIKStrength="1" />

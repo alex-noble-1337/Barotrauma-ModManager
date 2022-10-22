@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CoelanthhuskSwimSlow waveamplitude="10.999998" wavelength="48.999996" steertorque="300" movementspeed="3.4521694" flip="True" mirror="False" rotatetowardsmovement="True" torsotorque="80" headtorque="25" foottorque="25" tailtorque="50" footangles="" cyclespeed="1" headangle="39" torsoangle="0" animationtype="SwimSlow" usesinemovement="False" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" tailtorquemultiplier="1" tailangle="NaN" type="Coelanthhusk" legtorque="25" armikstrength="1" handikstrength="1" />

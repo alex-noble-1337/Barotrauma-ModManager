@@ -1,0 +1,47 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="geigercounter" description="" category="Equipment" Tags="smallitem" cargocontaineridentifier="metalcrate" Scale="0.3" impactsoundtag="impact_metal_light">
+    <InventoryIcon texture="%ModDir%/Content/Items/Weapons/geiger_counter.png" sourcerect="0,0,52,132" depth="0.55" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Weapons/geiger_counter.png" sourcerect="0,0,52,132" depth="0.55" origin="0.5,0.5" />
+    <Body width="27" height="60" density="12" />
+    <PreferredContainer primary="reactorcab" minamount="2" maxamount="2" spawnprobability="1" />
+    <Deconstruct time="20">
+      <Item identifier="fpgacircuit" />
+    </Deconstruct>
+    <Fabricate suitablefabricators="fabricator" requiredtime="30">
+      <RequiredSkill identifier="electrical" level="20" />
+      <RequiredItem identifier="plastic" />
+      <RequiredItem identifier="fpgacircuit" />
+    </Fabricate>
+    <Holdable slots="Any,RightHand,LeftHand" holdangle="30" handle1="0,-15" msg="ItemMsgPickUpSelect">
+      <!-- LUA Geiger Counter-->
+      <StatusEffect type="Always" target="Character" interval="1">
+        <LuaHook name="geigercount" />
+      </StatusEffect>
+      <!-- Condition Based Sounds-->
+      <!-- Low Rad 1-20 -->
+      <StatusEffect type="Always" target="This" comparison="And">
+        <Conditional Condition="neq 100" />
+        <Conditional Condition="gte 80" />
+        <sound file="%ModDir%/Content/Items/Reactor/lowradiation.ogg" range="500.0" loop="true" volume="0.5" dontmuffle="true" />
+      </StatusEffect>
+      <!-- Med Rad 21-50 -->
+      <StatusEffect type="Always" target="This" comparison="And">
+        <Conditional Condition="lt 80" />
+        <Conditional Condition="gte 50" />
+        <sound file="%ModDir%/Content/Items/Reactor/mediumradiation.ogg" range="500.0" loop="true" volume="0.5" dontmuffle="true" />
+      </StatusEffect>
+      <!-- High Rad 51-80 -->
+      <StatusEffect type="Always" target="This" comparison="And">
+        <Conditional Condition="lt 50" />
+        <Conditional Condition="gte 20" />
+        <sound file="%ModDir%/Content/Items/Reactor/highradiation.ogg" range="500.0" loop="true" volume="0.5" dontmuffle="true" />
+      </StatusEffect>
+      <!-- Lethal Rad 80+ -->
+      <StatusEffect type="Always" target="This" comparison="And">
+        <Conditional Condition="lt 20" />
+        <sound file="%ModDir%/Content/Items/Reactor/extremeradiation.ogg" range="500.0" loop="true" volume="0.5" dontmuffle="true" />
+      </StatusEffect>
+    </Holdable>
+  </Item>
+</Items>

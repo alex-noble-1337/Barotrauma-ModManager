@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Russian" nowhitespace="false" translatedname="Русский">
+  <!-- Characters -->
+  <character.huskmutantcrawler>Ползун-мутант</character.huskmutantcrawler>
+  <character.huskmutantmudraptor>Грязевой раптор-мутант</character.huskmutantmudraptor>
+  <character.huskmutantarmored>Крепкая Оболочка-мутант</character.huskmutantarmored>
+  <character.huskmutanthuman>Оболочка-мутант</character.huskmutanthuman>
+  <character.huskmutantcocooncrawler>Заражённый Коконообразный</character.huskmutantcocooncrawler>
+  <character.huskmutanthunter>Оболочка-мутант Охотник</character.huskmutanthunter>
+  <character.huskmutanttigerthresher>Акулий тигр-мутант</character.huskmutanttigerthresher>
+  <character.huskmutantbonethresher>Костяной тигр-мутант</character.huskmutantbonethresher>
+  <character.snatcher>Схватка</character.snatcher>
+  <character.nibbler>Кусачий</character.nibbler>
+  <character.micoteron>Микотерон</character.micoteron>
+  <!-- Items -->
+  <entityname.unstablehuskeggs>Нестабильные яйца Велонацепса Каликса</entityname.unstablehuskeggs>
+  <entitydescription.unstablehuskeggs>Спящие яйца организма, более известного как «трупный паразит». Эти изобилуют деятельностью!</entitydescription.unstablehuskeggs>
+  <entityname.unstablehuskstinger>Нестабильное жало оболочки</entityname.unstablehuskstinger>
+  <entitydescription.unstablehuskstinger>Жесткое Черное Жало. Кажется, пульсирует время от времени.</entitydescription.unstablehuskstinger>
+  <entityname.endwormhuskprojectile>Извивающаяся масса</entityname.endwormhuskprojectile>
+  <entityname.huskmutantembryo>Эмбрион мутанта</entityname.huskmutantembryo>
+  <entitydescription.huskmutantembryo>Странное недоразвитое существо. В настоящее время оно неактивно.</entitydescription.huskmutantembryo>
+  <entityname.calyxinjector>Хранилище яиц паразита</entityname.calyxinjector>
+  <entitydescription.calyxinjector>Зловещая штуковина, похожая на инжектор. Используется для крафта.</entitydescription.calyxinjector>
+  <entityname.calyxinjectorsymbiotic>Хранилище симбиотических яиц паразита</entityname.calyxinjectorsymbiotic>
+  <entitydescription.calyxinjectorsymbiotic>Зловещая штуковина, похожая на инжектор. Внедряет модифицированную версию инфекции шелухи, которая принесет пользу (и недостатки) своего хозяина.</entitydescription.calyxinjectorsymbiotic>
+  <entityname.calyxinjectorbooster>Сверхбыстрая инъекция Каликсанида</entityname.calyxinjectorbooster>
+  <entitydescription.calyxinjectorbooster>Зловещая штуковина, похожая на инжектор. Вводит смесь, которая временно ускоряет некоторые внутренние жизненные процессы пациента, такие как лечение и рост. Может иметь непредвиденные побочные эффекты. </entitydescription.calyxinjectorbooster>
+  <!-- Afflictions -->
+  <afflictionname.huskmutation>Мутация паразита</afflictionname.huskmutation>
+  <afflictiondescription.huskmutation>Кожа деформируется, кости трескаются... происходит что-то неприятное.</afflictiondescription.huskmutation>
+  <afflictionname.symbiotichusk>Симбиотический Паразит</afflictionname.symbiotichusk>
+  <afflictiondescription.symbiotichusk>Что-то чуждое, но доброжелательное процветает внутри...</afflictiondescription.symbiotichusk>
+  <afflictionname.huskinfectionhealing>Исцеление паразитом</afflictionname.huskinfectionhealing>
+  <afflictiondescription.huskinfectionhealing>Симбиотическая оболочка насыщает ваше тело кислородом и производит другие полезные вещества, которые могут помочь вам выздороветь из критического состояния.</afflictiondescription.huskinfectionhealing>
+  <afflictionname.huskinfectionaffinity>Объеденение с оболочкой</afflictionname.huskinfectionaffinity>
+  <afflictiondescription.huskinfectionaffinity>Симбиотическая оболочка полностью утвердилась в вашем теле, обеспечивая сопротивление давлению и контроль на обычным паразитом, не давая ему полностью захватить Вас.</afflictiondescription.huskinfectionaffinity>
+  <afflictionname.huskheadhijacking1>Битва за голову</afflictionname.huskheadhijacking1>
+  <afflictiondescription.huskheadhijacking1>Отрубленная голова пытается вывихнуть Ваш череп! Пытаться оттолкнуть её самостоятельно, похоже, бесполезно... Вам нужно попросить кого-нибудь отстрелить её!</afflictiondescription.huskheadhijacking1>
+  <afflictionname.blacktoxin>Черный токсин</afflictionname.blacktoxin>
+  <afflictiondescription.blacktoxin>Пульсирующие черные вены распространяются по коже пациента всем с непонятной жидкостью внутри них.</afflictiondescription.blacktoxin>
+  <afflictionname.boosterhusk>Сверхбыстрая инъекция яиц хаска</afflictionname.boosterhusk>
+  <afflictiondescription.boosterhusk>Мощная, но опасная смесь стволоподобных клеток быстро интегрирующихся в ваше тело, обеспечиваю чрезвычайно быстрое лечение.</afflictiondescription.boosterhusk>
+  <afflictionname.growth>Рост</afflictionname.growth>
+</infotexts>

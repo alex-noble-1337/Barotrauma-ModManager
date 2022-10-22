@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<DeepseacellSwimSlow animationtype="SwimSlow" usesinemovement="True" flip="False" mirror="False" waveamplitude="5" wavelength="20" rotatetowardsmovement="False" torsotorque="0.5" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="0.5" movementspeed="0.5" cyclespeed="1" headangle="NaN" torsoangle="0" type="Deepseacell" />

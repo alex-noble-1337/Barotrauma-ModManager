@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Randomevents>
+  <EventPrefabs>
+    <ScriptedEvent identifier="missionevent_crawlerlair" commonness="1000">
+      <NPCWaitAction npctag="outpostmanager" wait="true" />
+      <ConversationAction text="EventText.missionevent_lair.c1" speakertag="outpostmanager" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="DEcrawlerlair" />
+      <NPCWaitAction npctag="outpostmanager" wait="false" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_mudraptorlair" commonness="700">
+      <NPCWaitAction npctag="outpostmanager" wait="true" />
+      <ConversationAction text="EventText.missionevent_lair.c1" speakertag="outpostmanager" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="DEmudraptorlair" />
+      <NPCWaitAction npctag="outpostmanager" wait="false" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_tigerthresherlair" commonness="500">
+      <NPCWaitAction npctag="outpostmanager" wait="true" />
+      <ConversationAction text="EventText.missionevent_lair.c1" speakertag="outpostmanager" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="DEthresherlair" />
+      <NPCWaitAction npctag="outpostmanager" wait="false" />
+    </ScriptedEvent>
+    <ScriptedEvent identifier="missionevent_huskcrawlerlair" commonness="500">
+      <NPCWaitAction npctag="outpostmanager" wait="true" />
+      <ConversationAction text="EventText.missionevent_lair.c1" speakertag="outpostmanager" endeventifinterrupted="false" dialogtype="Small" />
+      <MissionAction missiontag="DEthresherlair" />
+      <NPCWaitAction npctag="outpostmanager" wait="false" />
+    </ScriptedEvent>
+  </EventPrefabs>
+  <EventSet identifier="DEBlockadeevents" locationtype="Blockade" allowatstart="true" minleveldifficulty="0" maxleveldifficulty="100" chooserandom="False" onceperoutpost="true" ignorecooldown="true">
+    <ScriptedEvent identifier="missionevent_crawlerlair" commonness="800" />
+    <ScriptedEvent identifier="missionevent_mudraptorlair" commonness="700" />
+    <ScriptedEvent identifier="missionevent_tigerthresherlair" commonness="600" />
+    <ScriptedEvent identifier="missionevent_huskcrawlerlair" commonness="500" />
+  </EventSet>
+</Randomevents>

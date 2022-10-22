@@ -1,0 +1,261 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="" identifier="iodinecrystal" category="Material" description="" Tags="smallitem,ore" maxstacksize="8" canbepicked="true" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+    <PreferredContainer secondary="locker" />
+    <PreferredContainer primary="mineralcontainer" spawnprobability="0.1" />
+    <Price baseprice="25" soldeverywhere="false">
+      <Price locationtype="outpost" multiplier="1.1" sold="false" />
+      <Price locationtype="city" multiplier="1.25" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="1" sold="false" />
+      <Price locationtype="mine" multiplier="0.75" sold="false" />
+    </Price>
+    <Deconstruct time="5">
+      <Item identifier="iodine" />
+      <Item identifier="iodine" />
+      <Item identifier="iodine" />
+      <Item identifier="iodine" />
+    </Deconstruct>
+    <!-- TODO: sprite and inventory icon -->
+    <LightComponent lightcolor="160,175,187,225" range="100" powerconsumption="0" flicker="0.0" flickerspeed="0.5" pulsefrequency="0.4" pulseamount="0" ison="true" drawbehindsubs="true">
+      <LightTexture texture="Content/Lights/pointlight_rays.png" origin="0.5,0.5" />
+    </LightComponent>
+    <ContainedSprite texture="%ModDir%/Content/Items/Misc/IodineEnvironment.png" usewhenattached="true" decorativespritebehavior="HideWhenNotVisible" depth="0.55" sourcerect="86,0,83,99" origin="0.5,0.5" />
+    <Sprite texture="%ModDir%/Content/Items/Misc/IodineCrystal.png" depth="0.3" sourcerect="0,0,64,64" origin="0.5,0.5" />
+    <DecorativeSprite texture="%ModDir%/Content/Items/Misc/IodineEnvironment.png" depth="0.49" sourcerect="0,0,82,99" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+    <DecorativeSprite texture="%ModDir%/Content/Items/Misc/IodineEnvironment.png" depth="0.48" sourcerect="171,0,82,99" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+    <DecorativeSprite texture="%ModDir%/Content/Items/Misc/IodineEnvironment.png" depth="0.51" sourcerect="0,0,82,99" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+    <DecorativeSprite texture="%ModDir%/Content/Items/Misc/IodineEnvironment.png" depth="0.52" sourcerect="171,0,82,99" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+    <DecorativeSprite texture="%ModDir%/Content/Items/Misc/IodineCrystal.png" depth="0.4" sourcerect="0,0,64,64" offset="0,-40" randomrotation="-20,20" origin="0.5,0.5" />
+    <Body radius="40" width="20" density="50" />
+    <LevelResource deattachduration="8" randomoffsetfromwall="80">
+      <Commonness commonness="0.65" />
+      <Commonness commonness="0.50" leveltype="ridgebasic" />
+      <Commonness commonness="0.50" leveltype="plateaubasic" />
+      <Commonness commonness="0.40" leveltype="greatseabasic" />
+      <Commonness commonness="0.30" leveltype="wastesbasic" />
+      <RequiredItem items="cuttingequipment" type="Equipped" />
+    </LevelResource>
+    <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgUsePlasmaCutter" handle1="0,0" pickingtime="5.0" attachable="true" reattachable="false" />
+  </Item>
+  <Item identifier="deconcontaminationemitter" hideinmenus="true">
+    <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+    <Body radius="1" width="1" density="10" />
+    <ItemComponent>
+      <!-- Contamination on Deconstruction-->
+      <StatusEffect type="OnSpawn" target="This" delay="0.1" checkconditionalalways="true">
+        <Conditional InWater="false" />
+        <sound file="%ModDir%/Content/Items/Misc/rock.ogg" range="600" volume="0.8" />
+        <Explosion range="500" force="0.001" ignorecover="false" showeffects="false" smoke="true">
+          <Affliction identifier="contamination" strength="10" />
+          <Affliction identifier="radiationgeiger" strength="3" />
+        </Explosion>
+      </StatusEffect>
+      <!-- delete after explosion-->
+      <StatusEffect type="OnSpawn" target="This" delay="0.2">
+        <Remove />
+      </StatusEffect>
+    </ItemComponent>
+  </Item>
+  <Override>
+    <Item name="" identifier="uranium" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" minamount="1" maxamount="2" spawnprobability="0.05" />
+      <PreferredContainer primary="storagecab" />
+      <Price baseprice="50" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.1" />
+        <Price storeidentifier="merchantmine" sold="true" multiplier="0.8" minavailable="5" />
+      </Price>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="898,192,61,63" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Materials/CraftingElements1.png" sourcerect="4,130,49,41" depth="0.55" origin="0.5,0.5" />
+      <Body width="45" height="32" density="50" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <!-- TURNS ON THE RADIATION -->
+        <StatusEffect type="OnNotContained" target="This" IsOn="true" />
+        <StatusEffect type="OnContained" target="This" IsOn="true">
+          <Conditional hastag="neq hazardcontainement" targetcontainer="true" />
+        </StatusEffect>
+        <!-- TURNS OFF THE RADIATION -->
+        <StatusEffect type="OnContained" target="This" IsOn="false">
+          <Conditional hastag="eq hazardcontainement" targetcontainer="true" />
+        </StatusEffect>
+      </Holdable>
+      <!-- LETHAL LIGHT -->
+      <LightComponent lightcolor="0,0,0,0" range="0" ison="true" drawbehindsubs="true" castshadows="false">
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="180" interval="1" disabledeltatime="true">
+          <Conditional InWater="false" />
+          <Affliction identifier="radiationsickness" strength="0.05" />
+          <Affliction identifier="radiationgeiger" strength="0.05" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="350" interval="1" disabledeltatime="true">
+          <Conditional InWater="false" />
+          <Affliction identifier="radiationsickness" strength="0.002" />
+          <Affliction identifier="radiationgeiger" strength="0.002" />
+        </StatusEffect>
+      </LightComponent>
+    </Item>
+    <Item name="" identifier="thorium" category="Material" maxstacksize="8" Tags="smallitem" canbepicked="true" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="storagecab" />
+      <PreferredContainer secondary="wreckstoragecab,abandonedstoragecab" minamount="1" maxamount="2" spawnprobability="0.02" />
+      <Price baseprice="125" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" multiplier="1.1" />
+        <Price storeidentifier="merchantmilitary" multiplier="1.1" />
+        <Price storeidentifier="merchantmine" sold="true" multiplier="0.8" minavailable="5" />
+      </Price>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="960,192,64,64" />
+      <Sprite texture="Content/Items/Materials/CraftingElements1.png" sourcerect="54,131,46,39" depth="0.55" origin="0.5,0.5" />
+      <Body width="45" height="30" density="50" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <!-- Remove the item when fully used -->
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <!-- TURNS ON THE RADIATION -->
+        <StatusEffect type="OnNotContained" target="This" IsOn="true" />
+        <StatusEffect type="OnContained" target="This" IsOn="true">
+          <Conditional hastag="neq hazardcontainement" targetcontainer="true" />
+        </StatusEffect>
+        <!-- TURNS OFF THE RADIATION -->
+        <StatusEffect type="OnContained" target="This" IsOn="false">
+          <Conditional hastag="eq hazardcontainement" targetcontainer="true" />
+        </StatusEffect>
+      </Holdable>
+      <!-- LETHAL LIGHT -->
+      <LightComponent lightcolor="0,0,0,0" range="0" ison="true" drawbehindsubs="true" castshadows="false">
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="180" interval="1" disabledeltatime="true">
+          <Conditional InWater="false" />
+          <Affliction identifier="radiationsickness" strength="0.025" />
+          <Affliction identifier="radiationgeiger" strength="0.025" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="350" interval="1" disabledeltatime="true">
+          <Conditional InWater="false" />
+          <Affliction identifier="radiationsickness" strength="0.001" />
+          <Affliction identifier="radiationgeiger" strength="0.001" />
+        </StatusEffect>
+      </LightComponent>
+    </Item>
+    <Item name="" identifier="uraniumore" category="Material" Tags="smallitem,ore" maxstacksize="8" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="mineralcab" secondary="storagecab" />
+      <Price baseprice="200" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.1" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="0.75" />
+      </Price>
+      <Deconstruct time="5">
+        <Item identifier="uranium" />
+        <Item identifier="uranium" />
+        <Item identifier="uranium" />
+        <Item identifier="deconcontaminationemitter" />
+      </Deconstruct>
+      <!-- TODO: sprite and inventory icon -->
+      <LightComponent lightcolor="83,160,100,225" range="100" powerconsumption="0" flicker="0.0" flickerspeed="0.5" pulsefrequency="0.4" pulseamount="0" ison="true" drawbehindsubs="true">
+        <LightTexture texture="Content/Lights/pointlight_rays.png" origin="0.5,0.5" />
+      </LightComponent>
+      <ContainedSprite texture="Content/Items/Materials/MineralEnvironment.png" usewhenattached="true" decorativespritebehavior="HideWhenNotVisible" depth="0.55" sourcerect="768,731,86,147" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Materials/Minerals.png" depth="0.3" sourcerect="912,265,107,116" origin="0.5,0.5" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.49" sourcerect="853,731,86,147" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.48" sourcerect="938,731,86,147" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.51" sourcerect="853,731,86,147" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.52" sourcerect="938,731,86,147" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.491" sourcerect="853,731,86,147" offset="0,-30" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,10" origin="0.5,0.5" randomgroupid="3" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.53" sourcerect="938,731,86,147" offset="0,-30" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,10" origin="0.5,0.5" randomgroupid="3" />
+      <DecorativeSprite texture="Content/Items/Materials/Minerals.png" depth="0.4" sourcerect="810,893,173,131" offset="0,-40" randomrotation="-20,20" origin="0.5,0.5" />
+      <Body radius="40" width="20" density="50" />
+      <LevelResource deattachduration="4" randomoffsetfromwall="80">
+        <Commonness commonness="0.25" />
+        <Commonness commonness="0.35" leveltype="europanridge" />
+        <Commonness commonness="0.40" leveltype="theaphoticplateau" />
+        <Commonness commonness="0.75" leveltype="thegreatsea" />
+        <Commonness commonness="0.65" leveltype="hydrothermalwastes" />
+        <RequiredItem items="cuttingequipment" type="Equipped" />
+      </LevelResource>
+      <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgUsePlasmaCutter" handle1="0,0" pickingtime="5.0" attachable="true" reattachable="false" />
+    </Item>
+    <Item name="" identifier="brockite" category="Material" Tags="smallitem,ore" maxstacksize="8" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="mineralcab" secondary="storagecab" />
+      <Price baseprice="150" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.1" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="0.75" />
+      </Price>
+      <Deconstruct time="5">
+        <Item identifier="phosphorus" />
+        <Item identifier="thorium" />
+        <Item identifier="deconcontaminationemitter" />
+      </Deconstruct>
+      <!-- TODO: sprite and inventory icon -->
+      <LightComponent lightcolor="178,108,109,225" range="100" powerconsumption="0" flicker="0.0" flickerspeed="0.5" pulsefrequency="0.4" pulseamount="0" ison="true" drawbehindsubs="true">
+        <LightTexture texture="Content/Lights/pointlight_rays.png" origin="0.5,0.5" />
+      </LightComponent>
+      <ContainedSprite texture="Content/Items/Materials/MineralEnvironment.png" usewhenattached="true" decorativespritebehavior="HideWhenNotVisible" depth="0.55" sourcerect="0,731,86,147" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Materials/Minerals.png" depth="0.3" sourcerect="524,262,109,117" origin="0.5,0.5" />
+      <Body radius="40" width="20" density="50" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.49" sourcerect="85,731,85,147" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.48" sourcerect="172,731,84,147" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.51" sourcerect="85,731,85,147" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.52" sourcerect="172,731,84,147" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.491" sourcerect="85,731,85,147" offset="0,-30" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,10" origin="0.5,0.5" randomgroupid="3" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.53" sourcerect="172,731,84,147" offset="0,-30" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,10" origin="0.5,0.5" randomgroupid="3" />
+      <DecorativeSprite texture="Content/Items/Materials/Minerals.png" depth="0.4" sourcerect="810,893,173,131" offset="0,-40" randomrotation="-20,20" origin="0.5,0.5" />
+      <LevelResource deattachduration="4" randomoffsetfromwall="80">
+        <Commonness commonness="0" />
+        <Commonness commonness="0.20" leveltype="europanridge" />
+        <Commonness commonness="0.35" leveltype="theaphoticplateau" />
+        <Commonness commonness="0.60" leveltype="thegreatsea" />
+        <Commonness commonness="0.75" leveltype="hydrothermalwastes" />
+        <RequiredItem items="cuttingequipment" type="Equipped" />
+      </LevelResource>
+      <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgUsePlasmaCutter" handle1="0,0" pickingtime="5.0" attachable="true" reattachable="false" />
+    </Item>
+    <Item name="" identifier="thorianite" category="Material" Tags="smallitem,ore" maxstacksize="8" canbepicked="true" description="" cargocontaineridentifier="metalcrate" scale="0.5" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="mineralcab" secondary="storagecab" />
+      <Price baseprice="300" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.1" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="0.75" />
+      </Price>
+      <Deconstruct time="5">
+        <Item identifier="thorium" />
+        <Item identifier="thorium" />
+        <Item identifier="deconcontaminationemitter" />
+      </Deconstruct>
+      <!-- TODO: sprite and inventory icon -->
+      <LightComponent lightcolor="160,175,187,225" range="100" powerconsumption="0" flicker="0.0" flickerspeed="0.5" pulsefrequency="0.4" pulseamount="0" ison="true" drawbehindsubs="true">
+        <LightTexture texture="Content/Lights/pointlight_rays.png" origin="0.5,0.5" />
+      </LightComponent>
+      <ContainedSprite texture="Content/Items/Materials/MineralEnvironment.png" usewhenattached="true" decorativespritebehavior="HideWhenNotVisible" depth="0.55" sourcerect="85,877,88,147" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Materials/Minerals.png" depth="0.3" sourcerect="14,393,111,114" origin="0.5,0.5" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.49" sourcerect="0,877,86,147" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.48" sourcerect="172,877,84,147" offset="20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="1" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.51" sourcerect="0,877,86,147" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.52" sourcerect="172,877,84,147" offset="-20,0" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,30" origin="0.5,0.5" randomgroupid="2" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.491" sourcerect="0,877,86,147" offset="0,-30" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,10" origin="0.5,0.5" randomgroupid="3" />
+      <DecorativeSprite texture="Content/Items/Materials/MineralEnvironment.png" depth="0.53" sourcerect="172,877,84,147" offset="0,-30" randomrotation="-20,20" randomscale="0.8,1.5" randomoffset="30,10" origin="0.5,0.5" randomgroupid="3" />
+      <DecorativeSprite texture="Content/Items/Materials/Minerals.png" depth="0.4" sourcerect="810,893,173,131" offset="0,-40" randomrotation="-20,20" origin="0.5,0.5" />
+      <Body radius="40" width="20" density="50" />
+      <LevelResource deattachduration="4" randomoffsetfromwall="80">
+        <Commonness commonness="0" />
+        <Commonness commonness="0.30" leveltype="europanridge" />
+        <Commonness commonness="0.50" leveltype="theaphoticplateau" />
+        <Commonness commonness="0.75" leveltype="thegreatsea" />
+        <Commonness commonness="0.50" leveltype="hydrothermalwastes" />
+        <RequiredItem items="cuttingequipment" type="Equipped" />
+      </LevelResource>
+      <Holdable slots="Any,RightHand,LeftHand" msg="ItemMsgUsePlasmaCutter" handle1="0,0" pickingtime="5.0" attachable="true" reattachable="false" />
+    </Item>
+  </Override>
+</Items>

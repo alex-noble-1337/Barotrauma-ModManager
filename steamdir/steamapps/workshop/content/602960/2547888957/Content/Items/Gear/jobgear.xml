@@ -1,0 +1,233 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Override>
+    <Item name="dirtybombafteremitter" identifier="dirtybombafteremitter" Scale="0.5" tags="" sonarsize="20" hideinmenus="true">
+      <AiTarget sightrange="1000.0" soundrange="1000" sonardisruption="10" static="True" />
+      <Sprite texture="Content/Items/JobGear/TalentGear.png" sourcerect="0,0,2,2" depth="0.55" origin="0.5,0.5" />
+      <ItemComponent>
+        <StatusEffect type="Always" target="This" condition="-25" />
+        <StatusEffect type="Always" target="NearbyCharacters" range="1600">
+          <Affliction identifier="radiationsickness" strength="15" />
+          <Affliction identifier="radiationgeiger" strength="15" />
+          <Affliction identifier="contamination" strength="15" />
+          <Affliction identifier="lethalradiation" strength="6" />
+        </StatusEffect>
+        <StatusEffect type="Always" target="NearbyCharacters" range="1200">
+          <Affliction identifier="radiationsickness" strength="21" />
+          <Affliction identifier="radiationgeiger" strength="21" />
+          <Affliction identifier="contamination" strength="21" />
+          <Affliction identifier="lethalradiation" strength="12" />
+        </StatusEffect>
+        <StatusEffect type="Always" target="NearbyCharacters" range="800">
+          <Affliction identifier="radiationsickness" strength="24" />
+          <Affliction identifier="radiationgeiger" strength="24" />
+          <Affliction identifier="contamination" strength="24" />
+          <Affliction identifier="lethalradiation" strength="18" />
+        </StatusEffect>
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+      </ItemComponent>
+    </Item>
+    <Item name="" identifier="depletedfuel" category="Fuel" maxstacksize="8" Tags="smallitem" canbepicked="true" cargocontaineridentifier="metalcrate" inventoryiconcolor="110,120,110,255" spritecolor="110,120,110" scale="0.4" impactsoundtag="impact_metal_light">
+      <PreferredContainer primary="reactorcab" />
+      <Price baseprice="75" sold="false">
+        <Price storeidentifier="merchantoutpost" multiplier="1.3" />
+        <Price storeidentifier="merchantcity" multiplier="1.25" />
+        <Price storeidentifier="merchantresearch" />
+        <Price storeidentifier="merchantmilitary" multiplier="0.9" />
+        <Price storeidentifier="merchantmine" multiplier="0.9" />
+      </Price>
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="electrical" level="35" />
+        <RequiredItem identifier="fuelrod_active" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="25" requiresrecipe="true">
+        <RequiredSkill identifier="electrical" level="35" />
+        <RequiredItem identifier="thoriumfuelrod_active" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true" amount="2">
+        <RequiredSkill identifier="electrical" level="55" />
+        <RequiredItem identifier="fulguriumfuelrod" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true" amount="2">
+        <RequiredSkill identifier="electrical" level="55" />
+        <RequiredItem identifier="fulguriumfuelrodvolatile" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Fabricate suitablefabricators="fabricator" requiredtime="30" requiresrecipe="true" amount="2">
+        <RequiredSkill identifier="electrical" level="55" />
+        <RequiredItem identifier="ekutility_incendiumfuelrod" mincondition="0.0" maxcondition="0.1" usecondition="false" />
+        <RequiredItem identifier="steel" />
+      </Fabricate>
+      <Deconstruct time="30">
+        <Item identifier="steel" />
+      </Deconstruct>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas.png" sourcerect="384,64,64,64" origin="0.5,0.5" />
+      <Sprite texture="Content/Items/Tools/tools.png" depth="0.55" sourcerect="452,1,19,68" />
+      <Body width="50" height="25" density="50" />
+      <LightComponent lightcolor="160,175,187,225" range="0" powerconsumption="0" flicker="0.0" flickerspeed="0.5" pulsefrequency="0.4" pulseamount="0" ison="true" drawbehindsubs="true" />
+      <Holdable canBeCombined="true" removeOnCombined="true" slots="Any,RightHand,LeftHand" handle1="0,0" msg="ItemMsgPickUpSelect">
+        <StatusEffect type="OnBroken" target="This">
+          <Remove />
+        </StatusEffect>
+        <!-- TURNS ON THE RADIATION -->
+        <StatusEffect type="OnNotContained" target="This" IsOn="true" />
+        <StatusEffect type="OnContained" target="This" IsOn="true">
+          <Conditional hastag="neq hazardcontainement" targetcontainer="true" />
+        </StatusEffect>
+        <!-- TURNS OFF THE RADIATION -->
+        <StatusEffect type="OnContained" target="This" IsOn="false">
+          <Conditional hastag="eq hazardcontainement" targetcontainer="true" />
+        </StatusEffect>
+      </Holdable>
+      <!-- LETHAL LIGHT -->
+      <LightComponent lightcolor="0,0,0,0" range="0" ison="true" drawbehindsubs="true" castshadows="false">
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="180" interval="1" disabledeltatime="true">
+          <Conditional InWater="true" />
+          <Affliction identifier="radiationsickness" strength="0.05" />
+          <Affliction identifier="radiationgeiger" strength="0.05" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="180" interval="1" disabledeltatime="true">
+          <Conditional InWater="false" />
+          <Affliction identifier="radiationsickness" strength="0.1" />
+          <Affliction identifier="radiationgeiger" strength="0.1" />
+        </StatusEffect>
+        <StatusEffect type="OnActive" target="NearbyCharacters" range="350" interval="1" disabledeltatime="true">
+          <Conditional InWater="false" />
+          <Affliction identifier="radiationsickness" strength="0.002" />
+          <Affliction identifier="radiationgeiger" strength="0.002" />
+        </StatusEffect>
+      </LightComponent>
+    </Item>
+    <Item name="" identifier="pucs" category="Equipment,Diving" tags="diving,deepdiving,divinggear_wearableindoors,provocative" scale="0.5" fireproof="true" description="" allowdroppingonswapwith="diving" impactsoundtag="impact_metal_heavy">
+      <PreferredContainer primary="divingsuitcontainer" spawnprobability="0.0" />
+      <Price baseprice="670" sold="false">
+        <Price storeidentifier="merchantoutpost" />
+        <Price storeidentifier="merchantcity" />
+        <Price storeidentifier="merchantresearch" multiplier="1.2" />
+        <Price storeidentifier="merchantmilitary" />
+        <Price storeidentifier="merchantmine" multiplier="1.1" />
+      </Price>
+      <Deconstruct time="45">
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="titaniumaluminiumalloy" />
+        <Item identifier="rubber" />
+        <Item identifier="lead" />
+        <Item identifier="physicorium" />
+      </Deconstruct>
+      <Fabricate suitablefabricators="fabricator" requiredtime="80" requiresrecipe="true">
+        <RequiredSkill identifier="electrical" level="60" />
+        <RequiredItem identifier="combatdivingsuit" />
+        <RequiredItem identifier="lead" />
+        <RequiredItem identifier="physicorium" />
+      </Fabricate>
+      <InventoryIcon texture="Content/Items/InventoryIconAtlas2.png" sourcerect="768,0,128,128" origin="0.5,0.5" />
+      <Sprite name="PUCS Item" texture="Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,0,154,134" depth="0.55" origin="0.5,0.5" />
+      <ContainedSprite name="PUCS In Vertical Locker" allowedcontainertags="divingsuitcontainervertical" texture="Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="164,0,87,190" depth="0.55" origin="0.5,0.5" />
+      <ContainedSprite name="PUCS Behind Window" allowedcontainertags="divingsuitcontainerwindow" texture="Content/Items/Jobgear/Engineer/pucs.png" sourcerect="430,0,80,207" depth="0.55" origin="-0.12,-0.14" />
+      <ContainedSprite name="PUCS In Horizontal Locker" allowedcontainertags="divingsuitcontainerhorizontal" texture="Content/Items/Jobgear/Engineer/PUCS_Items.png" sourcerect="0,191,225,66" depth="0.55" origin="0.6,0.5" />
+      <Body radius="45" width="34" density="15" />
+      <Wearable slots="OuterClothes" msg="ItemMsgEquipSelect" displaycontainedstatus="true" canbeselected="false" canbepicked="true" pickkey="Select">
+        <sprite name="PUCS Helmet Wearable" texture="Content/Items/Jobgear/headgears.png" limb="Head" inheritlimbdepth="true" inheritscale="true" ignorelimbscale="true" scale="0.65" hidelimb="true" hideotherwearables="true" sourcerect="127,520,105,124" origin="0.5,0.35">
+          <LightComponent range="200.0" lightcolor="250,224,165,255" powerconsumption="10" IsOn="true" allowingameediting="false">
+            <StatusEffect type="OnWearing" target="This,Character" Voltage="1.0" setvalue="true">
+              <Conditional IsDead="false" />
+            </StatusEffect>
+            <LightTexture texture="Content/Lights/divinghelmetlight.png" origin="0.05, 0.5" size="1.0,1.0" />
+          </LightComponent>
+        </sprite>
+        <sprite name="pucs Torso" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="Torso" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Right Hand" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="RightHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Hand" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="LeftHand" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Right Lower Arm" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="RightArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Lower Arm" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="LeftArm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Right Upper Arm" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="RightForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Upper Arm" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="LeftForearm" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Waist" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="Waist" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Right Thigh" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="RightThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Thigh" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="LeftThigh" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Right Leg" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="RightLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Leg" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="LeftLeg" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Left Shoe" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="LeftFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <sprite name="pucs Right Shoe" texture="Content/Items/Jobgear/Engineer/pucs.png" limb="RightFoot" sound="footstep_armor_heavy" hidelimb="true" inherittexturescale="true" hideotherwearables="true" inheritorigin="true" inheritsourcerect="true" />
+        <StatusEffect type="OnWearing" target="Character" HideFace="true" UseHullOxygen="true" ObstructVision="true" PressureProtection="6000.0" SpeedMultiplier="0.9" PropulsionSpeedMultiplier="1.4" LowPassMultiplier="0.2" setvalue="true" disabledeltatime="true">
+          <Sound file="Content/Items/Diving/DivingSuitLoop1.ogg" range="500" loop="true" />
+          <Sound file="Content/Items/Diving/DivingSuitLoop2.ogg" range="500" loop="true" />
+        </StatusEffect>
+        <!-- Refill oxygen when the suit is contained. -->
+        <StatusEffect type="OnContained" target="Contained" Condition="1.0" targetslot="0" interval="1" disabledeltatime="true">
+          <Conditional Voltage="gt 0.01" targetcontainer="true" targetgrandparent="true" targetitemcomponent="Powered" />
+          <RequiredItem items="oxygentank" type="Contained" excludebroken="false" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+          <Conditional IsDead="false" />
+          <Conditional HullOxygenPercentage="lt 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="oxygentank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1000.0" Condition="-0.3" comparison="And" targetslot="0">
+          <Conditional InWater="true" />
+          <RequiredItem items="oxygentank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+          <Conditional IsDead="false" />
+          <RequiredItem items="weldingfueltank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" Oxygen="-10.0" Condition="-0.5" interval="1" disabledeltatime="true">
+          <Conditional IsDead="false" />
+          <RequiredItem items="incendiumfueltank" type="Contained" />
+          <Affliction identifier="burn" amount="0.05" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
+          <Conditional IsDead="false" />
+          <Conditional HullOxygenPercentage="lt 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" UseHullOxygen="false" OxygenAvailable="1500.0" Condition="-0.1" comparison="And" targetslot="0">
+          <Conditional InWater="true" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <StatusEffect type="OnWearing" target="Contained,Character" SpeedMultiplier="1.3" setvalue="true" comparison="And" targetslot="0">
+          <Conditional IsDead="false" />
+          <Conditional HullOxygenPercentage="lt 50" />
+          <Conditional InWater="false" />
+          <RequiredItem items="oxygenitetank" type="Contained" />
+        </StatusEffect>
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="blunttrauma,gunshotwound,bitewounds,lacerations,bleeding" damagemultiplier="0.7" damagesound="LimbArmor" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictiontypes="burn" damagemultiplier="0.1" damagesound="" deflectprojectiles="true" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="radiationsickness,contamination,lethalradiation" damagemultiplier="0.0" damagesound="LimbArmor" />
+        <damagemodifier armorsector="0.0,360.0" afflictionidentifiers="huskinfection" damagemultiplier="0.5" probabilitymultiplier="0.1" damagesound="LimbArmor" />
+        <ItemComponent>
+          <IsActive HullOxygenPercentage="lt 50" />
+          <StatusEffect type="OnActive" target="Contained,Character" comparison="And">
+            <RequiredItem items="oxygensource" type="Contained" />
+            <Conditional condition="lt 5.0" />
+            <Sound file="Content/Items/WarningBeepSlow.ogg" range="500" loop="true" />
+          </StatusEffect>
+          <StatusEffect type="OnActive" target="Contained" playsoundonrequireditemfailure="true">
+            <RequiredItem items="oxygensource" type="Contained" matchonempty="true" />
+            <Conditional condition="lte 0.0" />
+            <Sound file="Content/Items/WarningBeep.ogg" range="500" loop="true" />
+          </StatusEffect>
+        </ItemComponent>
+      </Wearable>
+      <Holdable slots="RightHand+LeftHand" controlpose="true" holdpos="0,-50" handle1="-10,-20" handle2="10,-20" holdangle="45" msg="ItemMsgPickUpUse" canbeselected="false" canbepicked="true" pickkey="Use" />
+      <ItemContainer capacity="0" maxstacksize="0" hideitems="true" containedstateindicatorstyle="tank" containedstateindicatorslot="0" autoinject="true">
+        <Containable items="none" />
+        <SlotIcon slotindex="0" texture="Content/UI/ContainerIndicators.png" sourcerect="1,93,120,29" origin="0.5,0.45" />
+        <SlotIcon slotindex="1" texture="Content/UI/ContainerIndicators.png" sourcerect="2,155,120,29" origin="0.5,0.5" />
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="oxygensource,weldingtoolfuel" />
+        </SubContainer>
+        <SubContainer capacity="1" maxstacksize="1">
+          <Containable items="chem,medical" />
+        </SubContainer>
+      </ItemContainer>
+    </Item>
+  </Override>
+</Items>

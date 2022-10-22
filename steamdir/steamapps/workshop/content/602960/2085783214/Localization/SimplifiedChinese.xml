@@ -1,0 +1,45 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Simplified Chinese" nowhitespace="true" translatedname="中文(简体)">
+  <!-- Characters -->
+  <character.huskmutantcrawler>变异藻鬃爬行者</character.huskmutantcrawler>
+  <character.huskmutantmudraptor>变异泥偶迅猛龙</character.huskmutantmudraptor>
+  <character.huskmutantarmored>武装画皮寄生变异体</character.huskmutantarmored>
+  <character.huskmutanthunter>画皮寄生变异体猎人</character.huskmutanthunter>
+  <character.huskmutanthuman>画皮寄生变异体</character.huskmutanthuman>
+  <character.huskmutantcocooncrawler>画皮胚胎茧寄生体</character.huskmutantcocooncrawler>
+  <character.huskmutanttigerthresher>变异虎尾鱼蛇</character.huskmutanttigerthresher>
+  <character.huskmutantbonethresher>变异碎骨鲨</character.huskmutantbonethresher>
+  <character.snatcher>抓手</character.snatcher>
+  <character.nibbler>咬人的</character.nibbler>
+  <character.micoteron>米科泰隆</character.micoteron>
+  <!-- Items -->
+  <entityname.unstablehuskeggs>不稳定的萼型体内转续拟寄生物卵</entityname.unstablehuskeggs>
+  <entitydescription.unstablehuskeggs>木卫二某种寄生虫的卵，一般人们称其为“画皮寄生虫”。这些卵似乎处于活跃觉醒的状态，因此也更需要谨慎携带和使用</entitydescription.unstablehuskeggs>
+  <entityname.unstablehuskstinger>不稳定的画皮寄生虫蛰针</entityname.unstablehuskstinger>
+  <entitydescription.unstablehuskstinger>一枚硬化的黑色刺针，握在手上会时不时微微颤动</entitydescription.unstablehuskstinger>
+  <entityname.endwormhuskprojectile>蠕动的质量</entityname.endwormhuskprojectile>
+  <entityname.huskmutantembryo>变异画皮共生体胚胎</entityname.huskmutantembryo>
+  <entitydescription.huskmutantembryo>一只未发育完全的奇特的生物胚胎，目前处于休眠状态</entitydescription.huskmutantembryo>
+  <entityname.calyxinjector>萼型有机体注射器</entityname.calyxinjector>
+  <entitydescription.calyxinjector>一个诡异的注射器型装置，可用于加工台合成</entitydescription.calyxinjector>
+  <entityname.calyxinjectorsymbiotic>画皮共生体注射器</entityname.calyxinjectorsymbiotic>
+  <entitydescription.calyxinjectorsymbiotic>一个诡异的注射器型装置，包含着经过基因修改的共生态画皮寄生虫，相较于普通的画皮感染，这种共生态的画皮带来的感染会为宿主带来更多的益处。</entitydescription.calyxinjectorsymbiotic>
+  <entityname.calyxinjectorbooster>活性强化注射器</entityname.calyxinjectorbooster>
+  <entitydescription.calyxinjectorbooster>一个诡异的注射器状器械，其中由活性画皮为主要成分的有机混合药物可暂时强化使用者的代谢速度，从而使其更迅速的恢复或成长。但其不稳定性仍旧可能产生副作用。</entitydescription.calyxinjectorbooster>
+  <!-- Afflictions -->
+  <afflictionname.huskmutation>画皮变异状态</afflictionname.huskmutation>
+  <afflictiondescription.huskmutation>伴随着皮肤的扭转褶皱和骨头嚓嚓的皲裂声... 即将发生些不好的事情</afflictiondescription.huskmutation>
+  <afflictionname.symbiotichusk>共生态画皮寄生虫感染</afflictionname.symbiotichusk>
+  <afflictiondescription.symbiotichusk>有什么陌生但感受不到异样和损害的东西在体内生长着...</afflictiondescription.symbiotichusk>
+  <afflictionname.huskinfectionhealing>画皮共生保护</afflictionname.huskinfectionhealing>
+  <afflictiondescription.huskinfectionhealing>共生态的画皮在为你的身体供给氧气并产生其他有益物质，可以让你在濒危时快速自我恢复</afflictiondescription.huskinfectionhealing>
+  <afflictionname.huskinfectionaffinity>画皮寄生亲和性</afflictionname.huskinfectionaffinity>
+  <afflictiondescription.huskinfectionaffinity>处于共生态的画皮已经与你的生理系统完全磨合，提供水压抗性和对普通画皮感染的控制，防止病毒的感染完全占领你。</afflictiondescription.huskinfectionaffinity>
+  <afflictionname.huskheadhijacking1>画皮头颅正在侵占你的头部</afflictionname.huskheadhijacking1>
+  <afflictiondescription.huskheadhijacking1>一个被割断的头正试图使你的头骨脱臼！试图自己把它推开似乎是徒劳的。。。你得叫别人把它射下来！</afflictiondescription.huskheadhijacking1>
+  <afflictionname.blacktoxin>污毒</afflictionname.blacktoxin>
+  <afflictiondescription.blacktoxin>黑色的毒素顺着你的静脉血管攀爬而上，正在以惊人的速度扩散至你的血脉系统</afflictiondescription.blacktoxin>
+  <afflictionname.boosterhusk>强化共生态画皮感染</afflictionname.boosterhusk>
+  <afflictiondescription.boosterhusk>一种强大但易挥发的干细胞样细胞混合物迅速融入了你的身体，从而使你的恢复变得极为快速。</afflictiondescription.boosterhusk>
+  <afflictionname.growth>成长</afflictionname.growth>
+</infotexts>

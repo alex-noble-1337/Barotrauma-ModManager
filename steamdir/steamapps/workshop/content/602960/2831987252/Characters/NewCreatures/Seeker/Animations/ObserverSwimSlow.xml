@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ObserverSwimSlow movementspeed="2.2789273" waveaplitude="0" mirror="False" rotatetowardsmovement="False" flip="True" waveamplitude="7.2240534" wavelength="82.76688" footangle="NaN" steertorque="25" headangle="6" torsoangle="NaN" animationtype="SwimSlow" usesinemovement="True" torsotorque="25" headtorque="0" tailtorque="0" tailtorquemultiplier="100" foottorque="25" footangles="" tailangle="NaN" cyclespeed="1" type="Observer" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" legtorque="25" armikstrength="1" handikstrength="1" />

@@ -1,0 +1,279 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Override>
+  <sounds>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Menu - Night Of The Creeps - WBA.ogg" identifier="music_Main Menu Music_menu" type="menu" />
+    </Override>
+    <music file="%ModDir%/Content/Sounds/Music/Menu - Awakening - WBA.ogg" type="menu" continuefromprevioustime="true" />
+    <music file="%ModDir%/Content/Sounds/Music/Menu - Crash Site - WBA.ogg" type="menu" continuefromprevioustime="true" />
+    <music file="%ModDir%/Content/Sounds/Music/Menu - Distant Planet - WBA.ogg" type="menu" continuefromprevioustime="true" />
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Editor - Agent Cooper - WBA.ogg" identifier="music_Subaquatic Symphony for Hammer And Metal_editor" type="editor" />
+    </Override>
+    <music file="%ModDir%/Content/Sounds/Music/Editor - Existence - WBA.ogg" type="editor" continuefromprevioustime="true" />
+    <music file="%ModDir%/Content/Sounds/Music/Editor - Feel The Heat - WBA.ogg" type="editor" continuefromprevioustime="true" />
+    <music file="%ModDir%/Content/Sounds/Music/Editor - The Call - WBA.ogg" type="editor" continuefromprevioustime="true" />
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Start - Into The Black - WBA.ogg" identifier="music_Layer 3 - Leaving Start Location_start" type="start" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/EndRound - New Beggining - WBA.ogg" identifier="music_Layer 4 - Arriving at Destination_endround" type="endround" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/CrewDead - Darkness Awaits - WBA.ogg" identifier="music_Road to Hell_crewdead" type="crewdead" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Interdimensionnal Horrors - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Is It Too Late - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Phobos Monolith - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Proletaria - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Running From Death - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Solitude - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Stranded On Europa - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - The Visitor - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Bloodlust - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Creeping Fog - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Tenebrae - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - The Shape - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Frozen In Fear - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Default - Radiation Storm - WBA.ogg" identifier="music_Road to Hell_default" type="default" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Empty Sound.ogg" identifier="music_Layer 0 - Basic_intensity" type="intensity" intensityrange="19,19" volume="3.0" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Empty Sound.ogg" identifier="music_Intensity Layer 1_intensity" type="intensity" intensityrange="19,19" volume="3.0" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Empty Sound.ogg" identifier="music_Intensity Layer 2_intensity" type="intensity" intensityrange="19,19" volume="3.0" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Intensity 20-90 - Follow You Home - WBA.ogg" identifier="music_Intensity Layer 3_intensity" type="intensity" intensityrange="20,90" volume="3.0" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Intensity 90-100 - Eternal Night - WBA.ogg" identifier="music_Intensity Layer 4_intensity" type="intensity" intensityrange="90,100" volume="3.0" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Monster - Slender Man [custom].ogg" identifier="music_Layer 1 - Monsters Nearby_monster" type="monster" volume="3.0" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Military - Sanity Unravel - WBA.ogg" identifier="music_Wartrauma_military" type="military" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Research - Empty City - WBA.ogg" identifier="music_The Eerie And The Unknown_research" type="research" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Ruins - Bad Omen - WBA.ogg" identifier="music_Layer 2 - In The Ruins_ruins" type="ruins" />
+    </Override>
+    <music file="%ModDir%/Content/Sounds/Music/Ruins - Death Has Come To Your Sleepy Town - WBA.ogg" type="ruins" />
+    <music file="%ModDir%/Content/Sounds/Music/Ruins - In Search Of Sanity - WBA.ogg" type="ruins" />
+    <music file="%ModDir%/Content/Sounds/Music/Ruins - Intruder - WBA.ogg" type="ruins" />
+    <music file="%ModDir%/Content/Sounds/Music/Ruins - Return To Crystal Lake - WBA.ogg" type="ruins" />
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Flooded - Alarm.ogg" identifier="music_Layer 5 - Submarine Flooded_flooded" type="flooded" duckvolume="true" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Deep - Evil Behind The Mask - WBA.ogg" identifier="music_Layer 11 - Crush Depth_deep" type="deep" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/LevelEnd - Hacker - WBA.ogg" identifier="music_Layer 12 - Objective Complete_levelend" type="levelend" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Wreck - Infection - WBA.ogg" identifier="music_Look Behind The Watery Shadows_wreck" type="wreck" />
+    </Override>
+    <music file="%ModDir%/Content/Sounds/Music/Wreck - Alien Crypt - WBA.ogg" type="wreck" />
+    <music file="%ModDir%/Content/Sounds/Music/Wreck - The Thing - WBA.ogg" type="wreck" />
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Ending - Two Steps From Hell - SUNCHIPP RADIO.ogg" identifier="music_All But Systematic Chaos_ending" type="ending" />
+    </Override>
+    <Override>
+      <music file="%ModDir%/Content/Sounds/Music/Wreck - Infection - WBA.ogg" identifier="music_Moribund In An Underwater Coffin_abandoned" type="abandoned" />
+    </Override>
+    <music file="%ModDir%/Content/Sounds/Music/Wreck - Alien Crypt - WBA.ogg" type="abandoned" />
+    <music file="%ModDir%/Content/Sounds/Music/Wreck - The Thing - WBA.ogg" type="abandoned" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassImpact1.ogg" damagerange="0.0,10.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassImpact2.ogg" damagerange="5.0,15.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassImpact3.ogg" damagerange="10.0,50.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassImpact4.ogg" damagerange="10.0,100.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassBreak1.ogg" damagerange="20.0,50.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassBreak2.ogg" damagerange="25.0,80.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/GlassBreak3.ogg" damagerange="50.0,100.0" damagesoundtype="StructureBlunt" requiredtag="glass" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch1.ogg" damagerange="0.0,40.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch2.ogg" damagerange="0.0,40.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch3.ogg" damagerange="0.0,40.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch4.ogg" damagerange="5.0,70.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch5.ogg" damagerange="5.0,70.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch6.ogg" damagerange="5.0,70.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch7.ogg" damagerange="25.0,100.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch8.ogg" damagerange="25.0,100.0" damagesoundtype="StructureSlash" />
+    <damagesound file="%ModDir%/Content/Sounds/Damage/StructureCrunch9.ogg" damagerange="25.0,100.0" damagesoundtype="StructureSlash" />
+    <tinnitus file="%ModDir%/Content/Sounds/Tinnitus1.ogg" />
+    <tinnitus file="%ModDir%/Content/Sounds/Tinnitus2.ogg" />
+    <implode file="%ModDir%/Content/Sounds/Damage/Implode.ogg" range="800" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash0.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash1.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash2.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash3.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash4.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash5.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash6.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash7.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash8.ogg" />
+    <splash file="%ModDir%/Content/Sounds/Water/Splash9.ogg" />
+    <flow file="%ModDir%/Content/Sounds/Water/FlowSmall.ogg" />
+    <flow file="%ModDir%/Content/Sounds/Water/FlowMedium.ogg" />
+    <flow file="%ModDir%/Content/Sounds/Water/FlowLarge.ogg" />
+    <fire file="%ModDir%/Content/Sounds/FireSmall.ogg" />
+    <firemedium file="%ModDir%/Content/Sounds/FireMedium.ogg" />
+    <firelarge file="%ModDir%/Content/Sounds/FireLarge.ogg" />
+    <waterambiencein file="%ModDir%/Content/Sounds/Water/Water Inside.ogg" />
+    <waterambienceout file="%ModDir%/Content/Sounds/Water/Water Moving.ogg" volume="0.6" />
+    <waterambiencemoving file="%ModDir%/Content/Sounds/Water/Water Outside.ogg" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal1.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal2.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal3.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal4.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal5.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal6.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal7.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal8.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal9.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal10.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal11.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal12.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal13.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal14.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal15.ogg" volume="0.5" range="500" />
+    <footstep_metal file="%ModDir%/Content/Sounds/Footsteps/Metal/FootstepMetal16.ogg" volume="0.5" range="500" />
+    <footstep_armor file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmor1.ogg" range="500" />
+    <footstep_armor file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmor2.ogg" range="500" />
+    <footstep_armor file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmor3.ogg" range="500" />
+    <footstep_armor file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmor4.ogg" range="500" />
+    <footstep_armor file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmor5.ogg" range="500" />
+    <footstep_armor_heavy file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmorHeavy1.ogg" range="800" />
+    <footstep_armor_heavy file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmorHeavy2.ogg" range="800" />
+    <footstep_armor_heavy file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmorHeavy3.ogg" range="800" />
+    <footstep_armor_heavy file="%ModDir%/Content/Sounds/Footsteps/Armor/FootstepArmorHeavy4.ogg" range="800" />
+    <footstep_clown file="Content/Sounds/Footsteps/Clown/FootstepClown1.ogg" range="500" />
+    <footstep_clown file="Content/Sounds/Footsteps/Clown/FootstepClown2.ogg" range="500" />
+    <footstep_clown file="Content/Sounds/Footsteps/Clown/FootstepClown3.ogg" range="500" />
+    <footstep_clown file="Content/Sounds/Footsteps/Clown/FootstepClown4.ogg" range="500" />
+    <footstep_crawler file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepCrawler1.ogg" range="500" />
+    <footstep_crawler file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepCrawler2.ogg" range="500" />
+    <footstep_crawler file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepCrawler3.ogg" range="500" />
+    <footstep_crawler file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepCrawler4.ogg" range="500" />
+    <footstep_crawler file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepCrawler5.ogg" range="500" />
+    <footstep_husk file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepHusk1.ogg" range="500" />
+    <footstep_husk file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepHusk2.ogg" range="500" />
+    <footstep_husk file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepHusk3.ogg" range="500" />
+    <footstep_husk file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepHusk4.ogg" range="500" />
+    <footstep_husk file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepHusk5.ogg" range="500" />
+    <footstep_mudraptor file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepMudraptor1.ogg" range="500" />
+    <footstep_mudraptor file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepMudraptor2.ogg" range="500" />
+    <footstep_mudraptor file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepMudraptor3.ogg" range="500" />
+    <footstep_mudraptor file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepMudraptor4.ogg" range="500" />
+    <footstep_mudraptor file="%ModDir%/Content/Sounds/Footsteps/Monsters/FootstepMudraptor5.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash0.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash1.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash2.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash3.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash4.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash5.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash6.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash7.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash8.ogg" range="500" />
+    <footstep_water file="%ModDir%/Content/Sounds/Water/Splash9.ogg" range="500" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant1.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant2.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant3.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant4.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant5.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant6.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant7.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant8.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant9.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant10.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant11.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant12.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant13.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant14.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant15.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant16.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant17.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant18.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant19.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant20.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant21.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant22.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant23.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant24.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant25.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant26.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant27.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant28.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant29.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant30.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant31.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant32.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant33.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant34.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant35.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant36.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant37.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant38.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant39.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant40.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant41.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant42.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant43.ogg" />
+    <ambient file="%ModDir%/Content/Sounds/Ambient/Ambiant44.ogg" />
+    <icebreak file="%ModDir%/Content/Sounds/Damage/IceCreak1.ogg" range="10000" />
+    <icebreak file="%ModDir%/Content/Sounds/Damage/IceCreak2.ogg" range="10000" />
+    <icebreak file="%ModDir%/Content/Sounds/Damage/IceCreak3.ogg" range="10000" />
+    <icebreak file="%ModDir%/Content/Sounds/Damage/IceCreak4.ogg" range="10000" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull1.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull2.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull3.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull4.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull5.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull6.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull7.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull8.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull9.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull10.ogg" />
+    <hull file="%ModDir%/Content/Sounds/Hull/Hull11.ogg" />
+  </sounds>
+</Override>
+<!--
+
+<Override>
+<guisound file="%ModDir%/Content/Sounds/UI/.ogg" identifier="guisound_._." type="" />
+</Override>
+
+-->

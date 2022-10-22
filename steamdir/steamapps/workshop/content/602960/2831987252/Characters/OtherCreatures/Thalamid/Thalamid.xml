@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character speciesname="Thalamid" humanoid="False" speciestranslationoverride="" displayname="" group="" hasinfo="False" husk="False" usehuskappendage="False" needsair="False" needswater="False" canspeak="False" usebosshealthbar="True" noise="100" visibility="100" blooddecal="blood" bleedparticleair="blooddrop" bleedparticlewater="waterblood" bleedparticlemultiplier="1" eatingspeed="10" pathfinderpriority="1" hideinsonar="False" sonardisruption="10" distantsonarrange="0" disabledistance="25000">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <health vitality="1000" doesbleed="True" crushdepth="-Infinity" targetinnerwalls="True" usehealthwindow="False" bleedingreduction="0" burnreduction="0" constanthealthregeneration="0.05" healthregenerationwheneating="0" />
+  <ai combatstrength="550" sight="5" hearing="5" aggressionhurt="0" aggressiongreed="0" fleehealththreshold="0" attackwhenprovoked="True" aggressiveboarding="False" avoidgunfire="False" avoidtime="3" minfleetime="20" enforceaggressivebehaviorformissions="True" targetouterwalls="True" randomattack="False" canopendoors="False" avoidabyss="True" stayinabyss="False" startaggression="0" maxaggression="100" aggressioncumulation="0" walltargetingmethod="Target">
+    <target tag="nasonov" state="Attack" priority="100" reactdistance="0" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+    <target tag="wall" state="Attack" priority="50" reactdistance="5500" attackdistance="0" timer="0" ignorecontained="False" ignoreinside="False" ignoreoutside="False" ignoreifnotinsamesub="False" ignoreincapacitated="False" damagethreshold="0" attackpattern="Straight" sweepdistance="0" sweepstrength="10" sweepspeed="1" circlestartdistance="5000" circlerotationspeed="1" circlestrikedistancemultiplier="5" circlemaxrandomoffset="0" />
+  </ai>
+  <Inventory slots="Any, Any, Any" accessiblewhenalive="False" commonness="1">
+    <Item identifier="adrenalinegland" />
+    <Item identifier="adrenalinegland" />
+    <Item identifier="adrenalinegland" />
+  </Inventory>
+</Character>

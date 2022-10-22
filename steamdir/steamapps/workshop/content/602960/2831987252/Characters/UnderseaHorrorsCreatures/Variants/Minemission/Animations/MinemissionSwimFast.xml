@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<MineSwimFast UseSineMovement="False" Flip="False" FlipCooldown="1" FlipDelay="0.5" Mirror="False" MirrorLerp="False" WaveAmplitude="5" WaveLength="10" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="" TailAngle="NaN" SteerTorque="25" LegTorque="25" MovementSpeed="1.25" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

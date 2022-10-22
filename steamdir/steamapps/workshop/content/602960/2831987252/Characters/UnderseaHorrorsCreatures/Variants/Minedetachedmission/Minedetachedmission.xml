@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Character SpeciesName="Minedetachedmission" SpeciesTranslationOverride="" DisplayName="Mine" Group="mine" Humanoid="False" HasInfo="False" CanInteract="False" Husk="False" UseHuskAppendage="False" NeedsAir="False" NeedsWater="False" CanSpeak="False" UseBossHealthBar="False" Noise="100" Visibility="100" BloodDecal="blood" BleedParticleAir="blooddrop" BleedParticleWater="waterblood" BleedParticleMultiplier="1" CanEat="False" EatingSpeed="10" UsePathFinding="True" PathFinderPriority="0" HideInSonar="False" HideInThermalGoggles="True" SonarDisruption="1" DistantSonarRange="0" DisableDistance="25000" SoundInterval="10" DrawLast="False">
+  <ragdolls folder="default" />
+  <animations folder="default" />
+  <health Vitality="5" DoesBleed="False" CrushDepth="-Infinity" UseHealthWindow="False" BleedingReduction="10" BurnReduction="0" ConstantHealthRegeneration="0.1" HealthRegenerationWhenEating="0" StunImmunity="True" PoisonImmunity="True" ApplyAfflictionColors="False" />
+  <ai CombatStrength="1" Sight="2" Hearing="1" AggressionHurt="100" AggressionGreed="10" FleeHealthThreshold="0" AttackWhenProvoked="False" AvoidGunfire="False" DamageThreshold="0" AvoidTime="3" MinFleeTime="20" AggressiveBoarding="False" EnforceAggressiveBehaviorForMissions="True" TargetOuterWalls="True" RandomAttack="False" CanOpenDoors="False" KeepDoorsClosed="False" AvoidAbyss="False" StayInAbyss="False" PatrolFlooded="False" PatrolDry="False" StartAggression="0" MaxAggression="100" AggressionCumulation="0" WallTargetingMethod="Target">
+    <target Tag="minesmallmission" State="Avoid" Priority="90" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="minedetachedmission" State="Avoid" Priority="90" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="minemission" State="Avoid" Priority="90" ReactDistance="1000" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="wall" State="Attack" Priority="90" ReactDistance="200" AttackDistance="200" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="sonar" State="Attack" Priority="10" ReactDistance="0" AttackDistance="0" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="True" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+    <target Tag="room" State="Attack" Priority="90" ReactDistance="200" AttackDistance="200" Timer="0" IgnoreContained="False" IgnoreInside="False" IgnoreOutside="False" IgnoreIfNotInSameSub="False" IgnoreIncapacitated="False" Threshold="0" ThresholdMin="-1" ThresholdMax="-1" Offset="0,0" AttackPattern="Straight" PrioritizeSubCenter="False" SweepDistance="0" SweepStrength="10" SweepSpeed="1" CircleStartDistance="5000" CircleRotationSpeed="1" CircleStrikeDistanceMultiplier="5" CircleMaxRandomOffset="0" />
+  </ai>
+  <sound gender="None" File="%ModDir%/Characters/UnderseaHorrorsCreatures/Mine/Creak1.ogg" State="Idle" Range="4000" Volume="1" Tags="" />
+  <sound gender="None" File="%ModDir%/Characters/UnderseaHorrorsCreatures/Mine/Creak2.ogg" State="Idle" Range="4000" Volume="1" Tags="" />
+  <latchonto attachtowalls="true" attachtosub="true" mindeattachspeed="3.0" maxdeattachspeed="10.0" damageondetach="0.0" detachstun="5.0" attachlimb="Jaw" localattachpos="10,32" attachlimbrotation="40" />
+  <StatusEffect type="OnDeath" delay="0.1" target="Character" targetlimb="Jaw" offset="0,100">
+    <Explosion range="1000" structuredamage="120" force="300" smoke="false" sparks="false" shockwave="true" underwaterbubble="true" severlimbsprobability="1.0" camerashake="160" camerashakerange="4000">
+      <Affliction identifier="burn" strength="20" />
+      <Affliction identifier="stun" strength="2" />
+      <Affliction identifier="explosiondamage" strength="10" />
+      <Affliction identifier="radiationsickness" strength="5" />
+    </Explosion>
+    <ParticleEmitter particle="bubbles" particleamount="60" scalemin="1" scalemax="2" velocitymin="50" velocitymax="100" anglemin="0" anglemax="360" />
+    <sound file="%ModDir%/Characters/UnderseaHorrorsCreatures/Mine/MassiveBreach.ogg" range="1800" volume="2" />
+    <ParticleEmitter particle="underwaterexplosion" drawontop="True" particleamount="1" scalemin="7" scalemax="7" velocitymin="0" velocitymax="20" anglemin="0" anglemax="360" />
+  </StatusEffect>
+  <StatusEffect type="Always" target="Character">
+    <ReduceAffliction identifier="Paralysis" amount="100" />
+    <ReduceAffliction identifier="Morbusinepoisoning" amount="100" />
+    <ReduceAffliction identifier="Sufforinpoisoning" amount="100" />
+    <ReduceAffliction identifier="Cyanidepoisoning" amount="100" />
+    <ReduceAffliction identifier="radiationsickness" amount="100" />
+  </StatusEffect>
+  <StatusEffect type="Always" target="Character">
+    <Affliction identifier="concealed" amount="1" />
+  </StatusEffect>
+  <StatusEffect type="OnDeath" target="This" disabledeltatime="true" stackable="false" delay="50">
+    <RemoveCharacter />
+  </StatusEffect>
+  <StatusEffect type="OnUse" target="Character" delay="0.2">
+    <RemoveCharacter />
+  </StatusEffect>
+</Character>

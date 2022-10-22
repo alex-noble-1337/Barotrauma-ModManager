@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<contentpackage name="CombinableCoilgunAmmoRevived" modversion="1.0.5" corepackage="False" steamworkshopid="2799051561" gameversion="0.18.15.1" expectedhash="1178D6D59A2686FBF229540C52BBE023">
+  <Item file="%ModDir%/chaingun.xml" />
+  <Item file="%ModDir%/coilgun.xml" />
+  <Item file="%ModDir%/engineer_talent_items.xml" />
+  <Item file="%ModDir%/pulselaser.xml" />
+  <Other file="%ModDir%/Lua/Autorun/ammoboxCombinable.lua" />
+</contentpackage>

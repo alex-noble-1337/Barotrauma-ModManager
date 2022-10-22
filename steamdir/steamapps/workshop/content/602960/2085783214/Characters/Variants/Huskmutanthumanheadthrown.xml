@@ -1,0 +1,5 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Charactervariant inherit="Huskmutanthumanhead" speciesname="Huskmutanthumanheadthrown" speciestranslationoverride="Huskmutanthuman">
+  <!-- This variant of the huskmutanthead exists solely to make husk mutant hunters not try to pick them up immediately after throwing them. -->
+  <!-- Check the normal version of this character to see the effects of this variant. -->
+</Charactervariant>

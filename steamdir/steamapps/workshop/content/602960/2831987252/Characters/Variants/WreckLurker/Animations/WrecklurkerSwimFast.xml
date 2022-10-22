@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<WrecklurkerSwimFast UseSineMovement="False" Flip="True" FlipCooldown="5" FlipDelay="0.5" Mirror="True" MirrorLerp="True" WaveAmplitude="19.939861" WaveLength="70.72332" RotateTowardsMovement="True" TailTorque="50" TailTorqueMultiplier="1" FootAngles="7: -1.1170107,9: -1.1868238" TailAngle="NaN" SteerTorque="25" LegTorque="25" MovementSpeed="4.168694" CycleSpeed="1" HeadAngle="NaN" TorsoAngle="NaN" HeadTorque="50" TorsoTorque="50" FootTorque="25" AnimationType="SwimFast" ArmIKStrength="1" HandIKStrength="1" />

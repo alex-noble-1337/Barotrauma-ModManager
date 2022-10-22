@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<HuskbroodemperorSwimFast movementspeed="9.01" waveamplitude="27.999908" wavelength="200" flip="True" mirror="False" rotatetowardsmovement="True" torsotorque="1" headtorque="1" foottorque="200" tailtorque="1" footangles="" steertorque="25" cyclespeed="6.799996" headangle="-14" torsoangle="0" animationtype="SwimFast" usesinemovement="False" tailtorquemultiplier="1" tailangle="1" type="Huskbroodemperor" flipcooldown="111" flipdelay="5" mirrorlerp="True" />

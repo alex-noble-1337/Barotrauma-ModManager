@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Brainmoss3SwimSlow animationtype="SwimSlow" usesinemovement="False" flip="False" flipcooldown="1" flipdelay="0.5" mirror="False" mirrorlerp="False" waveamplitude="1.6492941" wavelength="40.99447" rotatetowardsmovement="True" torsotorque="25" headtorque="25" tailtorque="50" tailtorquemultiplier="1" foottorque="25" footangles="" tailangle="NaN" steertorque="25" movementspeed="0.87229097" cyclespeed="1" headangle="NaN" torsoangle="NaN" type="Brainmoss3" legtorque="25" armikstrength="1" handikstrength="1" />

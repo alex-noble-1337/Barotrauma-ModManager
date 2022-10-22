@@ -1,0 +1,453 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Items>
+  <Item name="Coelanth fang" identifier="k_em_coelanthfang" category="Misc" tags="smallitem,k_em_item" scale="0.5" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="80">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" minavailable="0" />
+      <Price locationtype="military" multiplier="0.6" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="adrenaline" />
+      <Item identifier="calcium" />
+      <Item identifier="calcium" />
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="0,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="0,0,64,64" />
+    <Body width="29" height="42" density="13" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Thalamus thorn" identifier="k_em_thalamusthorn" category="Misc" tags="smallitem,k_em_item" scale="1" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="100">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.6" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="20">
+      <Item identifier="carbon" />
+      <Item identifier="silicon" />
+      <Item identifier="potassium" />
+      <Item identifier="potassium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="64,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="64,0,64,64" />
+    <Body width="49" height="44" density="13" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Thalamus stump" identifier="k_em_thalamusstump" category="Misc" tags="smallitem,k_em_item" scale="0.8" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="80">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.6" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="carbon" />
+      <Item identifier="carbon" />
+      <Item identifier="silicon" />
+      <Item identifier="potassium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="128,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="128,0,64,64" />
+    <Body width="20" height="44" density="13" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Magmaworm fin" identifier="k_em_magmawomfin" category="Misc" tags="smallitem,k_em_item" scale="0.5" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="100">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.6" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="5">
+      <Item identifier="carbon" />
+      <Item identifier="opium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="192,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="192,0,64,64" />
+    <Body width="20" height="44" density="19" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Heat tendril" identifier="k_em_magmalarvatendril" category="Misc" tags="mediumitem,k_em_item" scale="0.9" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="150">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.6" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="25">
+      <Item identifier="phosphorus" />
+      <Item identifier="phosphorus" />
+      <Item identifier="incendium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="256,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="256,0,64,64" />
+    <Body width="20" height="44" density="19" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Fractal sensor" identifier="k_em_fractalsensor" category="Misc" tags="mediumitem,k_em_item" scale="1" pickdistance="150" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="400">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.6" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="40">
+      <Item identifier="alienpowercell" />
+      <Item identifier="titanium" />
+      <Item identifier="titanium" />
+      <Item identifier="phosphorus" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="320,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="320,0,64,64" />
+    <Body width="27" height="32" density="20" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Fractal thorn" identifier="k_em_fractalthorn" category="Misc" tags="mediumitem,k_em_item" scale="1" pickdistance="150" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="200">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.8" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="15">
+      <Item identifier="titanium" />
+      <Item identifier="titanium" />
+      <Item identifier="iron" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="512,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="512,0,64,64" />
+    <Body width="16" height="61" density="17" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Charybdis fang" identifier="k_em_charybdisfang" category="Misc" tags="smallitem,k_em_item" scale="0.8" pickdistance="150" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="200">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.8" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="5">
+      <Item identifier="carbon" />
+      <Item identifier="calcium" />
+      <Item identifier="potassium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="384,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="384,128,64,64" />
+    <Body width="16" height="45" density="15" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-5,-5" holdangle="10" reload="0.5" range="50" combatPriority="25" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="2" severlimbsprobability="0.1" itemdamage="10">
+        <Affliction identifier="lacerations" strength="3" />
+        <Affliction identifier="bleeding" strength="5" />
+        <Affliction identifier="stun" strength="0.2" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash4.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash5.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash6.ogg" range="500" />
+      </Attack>
+    </MeleeWeapon>
+  </Item>
+  <Item name="Savage Charybdis fang" identifier="k_em_charybdissavagefang" category="Misc" tags="smallitem,k_em_item" scale="0.8" pickdistance="150" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="400">
+      <Price locationtype="outpost" multiplier="0.8" sold="false" />
+      <Price locationtype="city" multiplier="0.9" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="1" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="7">
+      <Item identifier="carbon" />
+      <Item identifier="calcium" />
+      <Item identifier="potassium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="448,0,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="448,128,64,64" />
+    <Body width="16" height="45" density="15" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="50,0" handle1="-5,-5" holdangle="10" reload="0.5" range="50" combatPriority="25" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="2" severlimbsprobability="0.2" itemdamage="10">
+        <Affliction identifier="lacerations" strength="10" />
+        <Affliction identifier="bleeding" strength="16" />
+        <Affliction identifier="stun" strength="0.2" />
+        <Affliction identifier="psychosis" amount="5" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+      </Attack>
+    </MeleeWeapon>
+  </Item>
+  <Item name="Endworm fang" identifier="k_em_endwormfang" category="Misc" tags="mediumitem,k_em_item" scale="0.8" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="400">
+      <Price locationtype="outpost" multiplier="0.8" sold="false" />
+      <Price locationtype="city" multiplier="0.9" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="1" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="7">
+      <Item identifier="carbon" />
+      <Item identifier="dementonite" />
+      <Item identifier="dementonite" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="384,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="384,64,64,64" />
+    <Body width="50" height="38" density="20" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="60,0" handle1="-5,-5" holdangle="10" reload="0.5" range="60" combatPriority="25" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="5" severlimbsprobability="0.5" itemdamage="10">
+        <Affliction identifier="lacerations" strength="15" />
+        <Affliction identifier="bleeding" strength="5" />
+        <Affliction identifier="stun" strength="0.3" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+      </Attack>
+    </MeleeWeapon>
+  </Item>
+  <Item name="Ice Crab claw" identifier="k_em_icecrabclaw" category="Misc" tags="mediumitem,k_em_item" scale="0.8" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="150">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.7" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.7" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="alienblood" />
+      <Item identifier="carbon" />
+      <Item identifier="sodium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="128,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="128,64,64,64" />
+    <Body width="63" height="32" density="20" />
+    <MeleeWeapon slots="Any,RightHand,LeftHand" aimpos="60,0" handle1="-5,-5" holdangle="10" reload="0.5" range="60" combatPriority="25" msg="ItemMsgPickUpSelect">
+      <Attack targetimpulse="4" severlimbsprobability="0.3" itemdamage="15">
+        <Affliction identifier="lacerations" strength="12" />
+        <Affliction identifier="bleeding" strength="1" />
+        <Affliction identifier="stun" strength="0.5" />
+        <Sound file="Content/Sounds/Damage/LimbSlash1.ogg" selectionmode="random" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash2.ogg" range="500" />
+        <Sound file="Content/Sounds/Damage/LimbSlash3.ogg" range="500" />
+      </Attack>
+    </MeleeWeapon>
+  </Item>
+  <Item name="Dry Ice" identifier="dryice" category="Material" tags="smallitem,chem,medicalm,k_em_item" scale="0.9" pickdistance="150" impactsoundtag="impact_metal_light" cargocontaineridentifier="metalcrate" description="" impacttolerance="6">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="150">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.7" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.4" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="25">
+      <Item identifier="potassium" />
+      <Item identifier="potassium" />
+      <Item identifier="sodium" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="256,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="256,64,64,64" />
+    <Body width="49" height="45" density="20" />
+    <Throwable characterusable="true" canbecombined="false" slots="Any,RightHand,LeftHand" throwforce="4.0" aimpos="35,-10" msg="ItemMsgPickUpSelect">
+      <StatusEffect type="NotInWater" target="This,Hull" oxygen="-20000.0">
+        <ParticleEmitter particle="swirlysmoke" particlespersecond="50" scalemin="1" scalemax="2" anglemin="0" anglemax="360" velocitymin="0" velocitymax="10" />
+      </StatusEffect>
+      <StatusEffect type="OnFire" target="This" Condition="-50.0" />
+      <StatusEffect type="OnBroken" target="This" Condition="-100.0">
+        <sound file="Content/Items/Weapons/ExplosionMedium2.ogg" selectionmode="All" range="8000" />
+        <sound file="Content/Items/Weapons/ExplosionDebris3.ogg" selectionmode="All" range="8000" />
+        <Explosion range="400.0" ballastfloradamage="20" structuredamage="0" itemdamage="0" force="3.0" severlimbsprobability="0.0">
+          <Affliction identifier="explosiondamage" strength="5" />
+          <Affliction identifier="stun" strength="5" />
+        </Explosion>
+        <Remove />
+      </StatusEffect>
+    </Throwable>
+  </Item>
+  <Item name="Shadow Whale oil" identifier="k_em_shadowoil" category="Misc" tags="mediumitem,k_em_item" scale="0.7" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="500">
+      <Price locationtype="outpost" multiplier="0.8" sold="false" />
+      <Price locationtype="city" multiplier="0.8" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.8" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="20">
+      <Item identifier="thorium" />
+      <Item identifier="thorium" />
+      <Item identifier="thorium" />
+      <Item identifier="carbon" />
+      <Item identifier="chlorine" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="64,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="64,64,64,64" />
+    <Body width="50" height="50" density="15" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Shadow thorn" identifier="k_em_shadowthorn" category="Misc" tags="mediumitem,k_em_item" scale="0.7" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="150">
+      <Price locationtype="outpost" multiplier="0.5" sold="false" />
+      <Price locationtype="city" multiplier="0.7" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.8" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="thorium" />
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="192,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="192,64,64,64" />
+    <Body width="47" height="41" density="10" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Wanderer Eye" identifier="k_em_wanderereye" category="Misc" tags="mediumitem,k_em_item" scale="0.7" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="100">
+      <Price locationtype="outpost" multiplier="0.3" sold="false" />
+      <Price locationtype="city" multiplier="0.4" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.3" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="lithium" />
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="320,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="320,64,64,64" />
+    <Body width="36" height="36" density="10" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Paralysis gland" identifier="k_em_paragland" category="Misc" tags="mediumitem,k_em_item" scale="0.7" pickdistance="150" impactsoundtag="impact_soft" cargocontaineridentifier="metalcrate" description="">
+    <!--<Price locationtype="Research" buyprice="450" />-->
+    <Price baseprice="100">
+      <Price locationtype="outpost" multiplier="0.3" sold="false" />
+      <Price locationtype="city" multiplier="0.4" sold="false" />
+      <Price locationtype="research" multiplier="1" sold="false" />
+      <Price locationtype="military" multiplier="0.3" sold="false" />
+      <Price locationtype="mine" multiplier="0.6" sold="false" />
+    </Price>
+    <Deconstruct time="10">
+      <Item identifier="paralyzant" />
+      <Item identifier="paralyzant" />
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <InventoryIcon texture="EMItems.png" sourcerect="448,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="448,64,64,64" />
+    <Body width="57" height="39" density="10" />
+    <Holdable slots="RightHand,LeftHand,Any" holdpos="0,0" handle1="0,0" handle2="0,0" />
+  </Item>
+  <Item name="Thermal Eel head" identifier="k_em_thereelmask" category="Equipment" tags="smallitem,clothing" scale="0.7" cargocontaineridentifier="metalcrate">
+    <Price baseprice="250">
+      <Price locationtype="outpost" sold="false" />
+      <Price locationtype="city" sold="false" />
+      <Price locationtype="research" sold="false" />
+      <Price locationtype="military" sold="false" />
+      <Price locationtype="mine" sold="false" />
+    </Price>
+    <Deconstruct time="20">
+      <Item identifier="deliriumine" />
+      <Item identifier="deliriumine" />
+      <Item identifier="carbon" />
+    </Deconstruct>
+    <PreferredContainer primary="locker" />
+    <InventoryIcon texture="EMItems.png" sourcerect="512,64,64,64" />
+    <Sprite texture="EMItems.png" depth="0.54" sourcerect="512,64,64,64" />
+    <Body radius="50" width="0" density="30" />
+    <Wearable limbtype="Head" slots="Any,Head" msg="ItemMsgPickUpSelect">
+      <sprite texture="EMItems.png" limb="Head" inheritlimbdepth="true" hidelimb="false" scale="0.7" hideotherwearables="false" sourcerect="0,128,128,109" origin="0.5,0.6" hidewearablesoftype="moustache,beard" />
+      <StatusEffect type="OnWearing" target="Character" HideFace="true" setvalue="true" disabledeltatime="true" />
+      <StatusEffect type="OnWearing" target="Character" delay="1" stackable="false" checkconditionalalways="true">
+        <conditional isDead="eq false" />
+        <Affliction identifier="psychosis" amount="1" />
+      </StatusEffect>
+      <StatusEffect type="OnWearing" target="Character" delay="20" stackable="false" checkconditionalalways="true">
+        <conditional isDead="eq false" />
+        <Sound file="%ModDir%/Characters/ExtendedMonsterCreatures/Thermaleel/eel1.ogg" state="Idle" range="300" volume="1" selectionmode="Random" />
+        <Sound file="%ModDir%/Characters/ExtendedMonsterCreatures/Thermaleel/eel2.ogg" state="Idle" range="300" volume="1" />
+        <Sound file="%ModDir%/Characters/ExtendedMonsterCreatures/Thermaleel/eel3.ogg" state="Idle" range="300" volume="1" />
+        <Sound file="%ModDir%/Characters/ExtendedMonsterCreatures/Thermaleel/eel4.ogg" state="Idle" range="300" volume="1" />
+      </StatusEffect>
+    </Wearable>
+  </Item>
+  <Item name=" " identifier="fractallaser" category="hidden" Scale="0.5" impactsoundtag="impact_metal_light" hideinmenus="true" tags="smallitem,weapon,gun,pistolitem,gunsmith" nonplayerteaminteractable="True">
+    <Sprite texture="Content/Characters/Fractalguardian/Fractalguardian.png" sourcerect="409,520,92,42" depth="0.55" origin="0.5,0.5" />
+    <Body width="80" height="25" density="50" />
+    <Holdable slots="RightHand" controlpose="false" aimpos="150,0" handle1="-50,-2" holdangle="0" usehandrotationforholdangle="true" msg="ItemMsgPickUpSelect" />
+    <RangedWeapon barrelpos="45,0" spread="0" drawhudwhenequipped="true" crosshairscale="0.2">
+      <Crosshair texture="Content/Items/Weapons/Crosshairs.png" sourcerect="0,256,256,256" />
+      <CrosshairPointer texture="Content/Items/Weapons/Crosshairs.png" sourcerect="256,256,256,256" />
+      <Sound file="Content/Items/Weapons/WEAPONS_laserGunShot1.ogg" type="OnUse" range="4000" selectionmode="Random" />
+      <Sound file="Content/Items/Weapons/WEAPONS_laserGunShot2.ogg" type="OnUse" range="4000" />
+      <Sound file="Content/Items/Weapons/WEAPONS_laserGunShot3.ogg" type="OnUse" range="4000" />
+      <ParticleEmitter particle="bubbles" anglemin="0" anglemax="360" particleamount="3" velocitymin="0" velocitymax="50" scalemin="1" scalemax="3" />
+      <StatusEffect type="OnUse">
+        <Explosion range="150.0" force="1.5" shockwave="false" smoke="false" flames="false" sparks="false" underwaterbubble="false" camerashake="6.0" />
+      </StatusEffect>
+      <StatusEffect type="OnSpawn" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="fractallaserbeam" spawnposition="ThisInventory" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" targetitemcomponent="ItemContainer">
+        <SpawnItem identifier="fractallaserbeam" spawnposition="ThisInventory" />
+      </StatusEffect>
+    </RangedWeapon>
+    <ItemContainer capacity="1" maxstacksize="1" hideitems="true" containedstateindicatorstyle="bullet">
+      <Containable items="fractallaserbeam" />
+    </ItemContainer>
+  </Item>
+  <Item name="  " identifier="fractallaserbeam" category="hidden" interactthroughwalls="true" Scale="1" impactsoundtag="">
+    <Sprite texture="Content/Items/Weapons/weapons_new.png" sourcerect="143,414,113,9" depth="0.55" />
+    <Body width="170" height="10" density="20" />
+    <Projectile characterusable="false" hitscan="true" removeonhit="true">
+      <ParticleEmitter particle="tracerpulselaser" particleamount="1" velocitymin="0" velocitymax="0" />
+      <ParticleEmitter particle="FlareBubbles" emitacrossrayinterval="50" />
+      <Attack structuredamage="50" targetforce="5" itemdamage="25" severlimbsprobability="0.5">
+        <Affliction identifier="burn" strength="80" />
+        <Affliction identifier="stun" strength="0.4" />
+      </Attack>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <ParticleEmitter particle="muzzleflashpulselaser" anglemin="0" anglemax="360" particleamount="10" velocitymin="0" scalemin="0.5" scalemax="0.8" />
+        <ParticleEmitter particle="weldspark" particleamount="5" anglemin="0" anglemax="360" velocitymin="300" velocitymax="350" scalemin="1.5" scalemax="1.9" drawontop="true" colormultiplier="255,200,225,180" />
+        <ParticleEmitter particle="FlareBubbles" particleamount="3" anglemin="0" anglemax="360" velocitymin="0" velocitymax="50" />
+      </StatusEffect>
+      <StatusEffect type="OnImpact" target="UseTarget">
+        <Conditional entitytype="eq Structure" />
+        <Conditional hastag="eq door" />
+        <ParticleEmitter particle="spark" copyentityangle="true" anglemin="-10" anglemax="10" particleamount="5" velocitymin="-10" velocitymax="-200" scalemin="0.5" scalemax="1" />
+      </StatusEffect>
+      <StatusEffect type="OnUse" target="This" disabledeltatime="true">
+        <Explosion range="150.0" structuredamage="50" itemdamage="25" force="100.0" flames="false" smoke="false" sparks="true" underwaterbubble="true" flashcolor="255,0,0,255">
+          <Affliction identifier="explosiondamage" strength="40" />
+          <Affliction identifier="burn" strength="20" />
+        </Explosion>
+      </StatusEffect>
+      <StatusEffect type="OnNotContained" target="This">
+        <Remove />
+      </StatusEffect>
+    </Projectile>
+  </Item>
+</Items>

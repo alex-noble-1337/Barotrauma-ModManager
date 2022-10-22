@@ -1,0 +1,6 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<prefabs>
+  <bloodvomitsplatter color="255,255,255,200" lifetime="6000" fadeouttime="30">
+    <sprite texture="%ModDir%/Content/Items/Medical/bloodvomitdecal.png" sourcerect="16,16,96,96" origin="0.5,0.5" />
+  </bloodvomitsplatter>
+</prefabs>

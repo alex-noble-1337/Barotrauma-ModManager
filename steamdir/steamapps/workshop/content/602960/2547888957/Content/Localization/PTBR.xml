@@ -1,0 +1,311 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<infotexts language="Brazilian Portuguese" nowhitespace="false" translatedname="Português brasileiro">
+  <!-- Afflictions -->
+  <afflictionname.dnadamage>Dano ao DNA</afflictionname.dnadamage>
+  <afflictiondescription.dnadamage>O DNA do paciente está ficando danificado demais para manter funções vitais do corpo.</afflictiondescription.dnadamage>
+  <afflictioncauseofdeath.dnadamage>DNA danificado além do limiar de viabilidade.</afflictioncauseofdeath.dnadamage>
+  <afflictioncauseofdeathself.dnadamage>Seu DNA não era mais capaz de sustentar a vida.</afflictioncauseofdeathself.dnadamage>
+  <afflictionname.radiationresistance>Proteção a Radiação</afflictionname.radiationresistance>
+  <afflictiondescription.radiationresistance>Previne contaminação e oferece boa proteção contra radiação.</afflictiondescription.radiationresistance>
+  <afflictionname.contamination>Contaminação de Material Radioativo</afflictionname.contamination>
+  <afflictiondescription.contamination>O paciente foi contaminado com materiais radioativos, causando envenenamento por radiação crônico e dano ao DNA.</afflictiondescription.contamination>
+  <afflictionname.lethalradiation>Síndrome de Radiação Aguda</afflictionname.lethalradiation>
+  <afflictiondescription.lethalradiation>O paciente foi fortemente irradiado por muito tempo ou recebeu uma dose fatal de radiação e morrerá em breve sem tratamento de emergência.</afflictiondescription.lethalradiation>
+  <afflictioncauseofdeath.lethalradiation>Irradiação letal.</afflictioncauseofdeath.lethalradiation>
+  <afflictioncauseofdeathself.lethalradiation>Você morreu de uma exposição letal à radiação.</afflictioncauseofdeathself.lethalradiation>
+  <!-- QoL Afflictions -->
+  <afflictionname.burningrod>Vareta Queimando</afflictionname.burningrod>
+  <afflictiondescription.burningrod>Você está segurando uma vareta com temperatura de 2800°C sem proteção!</afflictiondescription.burningrod>
+  <afflictioncauseofdeath.burningrod>Queimou até a morte segurando uma vareta de combustível superaquecida.</afflictioncauseofdeath.burningrod>
+  <afflictionname.hazardexposure>Exposição Perigosa à Vareta</afflictionname.hazardexposure>
+  <afflictiondescription.hazardexposure>Você está dentro do alcance do efeito nocivo de uma vareta de combustível, use proteção adequada.</afflictiondescription.hazardexposure>
+  <afflictionname.dnaregeneration>Regeneração de DNA</afflictionname.dnaregeneration>
+  <afflictiondescription.dnaregeneration>O DNA do paciente está lentamente se regenerando.</afflictiondescription.dnaregeneration>
+  <afflictionname.antiradeffect>Efeito de Remédio Anti-Radiação</afflictionname.antiradeffect>
+  <afflictiondescription.antiradeffect>O corpo do paciente está lentamente sendo limpado de contaminantes radioativos e radiação.</afflictiondescription.antiradeffect>
+  <!-- Medical items -->
+  <entityname.DTPA>DTPA</entityname.DTPA>
+  <entitydescription.DTPA>Uma alternativa mais acessível, mas de ação bem mais lenta, ao antirrad. Inútil contra a síndrome de radiação aguda.</entitydescription.DTPA>
+  <entityname.Potassiumiodide>Iodeto de Potássio</entityname.Potassiumiodide>
+  <entitydescription.Potassiumiodide>Protege contra radiação e contaminação radioativa. Deve ser tomado regularmente para manter todos os seus efeitos protetores. Não protege contra fontes de radiação letal.</entitydescription.Potassiumiodide>
+  <entityname.DNAstabiliser>Estabilizador de DNA</entityname.DNAstabiliser>
+  <entitydescription.DNAstabiliser>Composto raro e complexo capaz de restaurar lentamente o DNA danificado por um longo período de tempo. Perigoso se injetado por pessoal não treinado.</entitydescription.DNAstabiliser>
+  <entityname.antirad>Antirrad</entityname.antirad>
+  <entitydescription.antirad>Medicamento muito potente capaz de limpar em segundos o corpo de todos os elementos radioativos assim como a radiação. Melhor ser guardado para emergências médicas.</entitydescription.antirad>
+  <entityname.radiotoxin>Radiotoxina</entityname.radiotoxin>
+  <entitydescription.radiotoxin>Um elemento extremamente radioativo capaz de causar síndrome de radiação aguda.</entitydescription.radiotoxin>
+  <!-- Containers -->
+  <entityname.fuelcrate>Caixa de Materiais Radioativos</entityname.fuelcrate>
+  <entitydescription.fuelcrate>Uma caixa de armazenamento pesada e segura para transportar e armazenar materiais radioativos.</entitydescription.fuelcrate>
+  <entityname.fueltransportcylinder>Porta-Varetas Individual</entityname.fueltransportcylinder>
+  <entitydescription.fueltransportcylinder>Uma unidade de armazenamento de vareta individual, muito mais leve do que sua contraparte de caixa de combustível. É segura o suficiente para poder armazená-la na maioria dos armários ou caixas.</entitydescription.fueltransportcylinder>
+  <entityname.ekutility_handtruck_reactorfuel>Carrinho de Carga para Combustível</entityname.ekutility_handtruck_reactorfuel>
+  <entitydescription.ekutility_handtruck_reactorfuel>Um carrinho de mão com contêiner de proteção para transporte de combustível fora do reator.</entitydescription.ekutility_handtruck_reactorfuel>
+  <!-- Reactor items -->
+  <entityname.fuelrod>Vareta de Combustível de Urânio</entityname.fuelrod>
+  <entitydescription.fuelrod>Vareta de combustível nuclear padrão.</entitydescription.fuelrod>
+  <entityname.thoriumfuelrod>Vareta de Combustível de Tório</entityname.thoriumfuelrod>
+  <entitydescription.thoriumfuelrod>Varetas de combustível de tório podem durar até três vezes mais do que varetas de urânio.</entitydescription.thoriumfuelrod>
+  <entityname.fulguriumfuelrod>Vareta de Combustível de Fulgurium</entityname.fulguriumfuelrod>
+  <entitydescription.fulguriumfuelrod>Varetas de combustível de fulgurium podem não produzir tanto calor quanto outras varetas de combustível, mas têm longevidade maior.</entitydescription.fulguriumfuelrod>
+  <entityname.fulguriumfuelrodvolatile>Vareta de Combustível de Fulgurium Volátil</entityname.fulguriumfuelrodvolatile>
+  <entitydescription.fulguriumfuelrodvolatile>Uma vareta de amálgama de incendium e fulgurium, não tem a potência do incendium e a longevidade do fulgurium, mas tem aproximadamente metade de sua força respectiva, mas com quase todas as suas desvantagens.</entitydescription.fulguriumfuelrodvolatile>
+  <entityname.ekutility_incendiumfuelrod>Vareta de Combustível de Incendium</entityname.ekutility_incendiumfuelrod>
+  <entitydescription.ekutility_incendiumfuelrod>As varetas de combustível de incendium são extremamente potentes, mas também muito instáveis e inflamáveis. Sensível ao impacto mesmo quando armazenado corretamente.</entitydescription.ekutility_incendiumfuelrod>
+  <entityname.supercritical_incendium>Vareta de Incendium Supercrítica</entityname.supercritical_incendium>
+  <entitydescription.supercritical_incendium>Esta vareta de combustível atingiu um estado supercrítico durante o derretimento do reator e corre o risco de liberar toda a sua energia de uma só vez ao menor impacto, sua energia liberada é suficiente para danificar o casco ao seu redor, mas também parece drená-la rapidamente.</entitydescription.supercritical_incendium>
+  <entityname.supercritical_fulgurium>Vareta de Fulgurium Volátil Supercrítica</entityname.supercritical_fulgurium>
+  <entitydescription.supercritical_fulgurium>Esta vareta de combustível atingiu um estado supercrítico durante o derretimento do reator e corre o risco de liberar toda a sua energia de uma só vez ao menor impacto, sua energia liberada é suficiente para danificar o casco ao seu redor, mas também parece drená-la rapidamente, porém, a amálgama de fulgurium faz com que ela dure um pouco mais.</entitydescription.supercritical_fulgurium>
+  <entityname.molten_rods>Corium</entityname.molten_rods>
+  <entitydescription.molten_rods>Magma radioativo solidificado, emite quantidades absurdas de radiação.</entitydescription.molten_rods>
+  <!-- Explosive weapon items -->
+  <entityname.nukerod>Ogiva de Crise</entityname.nukerod>
+  <entitydescription.nukerod>Ogiva tática sensível ao impacto feita de materiais alienígenas supercríticos. Melhor efeito ao maximizar a área de superfície do alvo.</entitydescription.nukerod>
+  <entityname.nukerodenhanced>Ogiva de Crise Aprimorada</entityname.nukerodenhanced>
+  <entitydescription.nukerodenhanced>Ogiva de crise aprimorada com materiais de fissão. Melhor efeito ao maximizar a área de superfície do alvo.</entitydescription.nukerodenhanced>
+  <!-- Misc/material items -->
+  <entityname.geigercounter>Contador Geiger</entityname.geigercounter>
+  <entitydescription.geigercounter>Pequeno dispositivo que traduz níveis de radiação próxima como sinais sonoros e visuais. Também monitora o usuário de forma passiva para casos de irradiação.</entitydescription.geigercounter>
+  <entityname.iodine>Iodo</entityname.iodine>
+  <entityname.du_p_alloy>Liga de Combustível Empobrecido - Fisicorium</entityname.du_p_alloy>
+  <entitydescription.du_p_alloy>Liga extremamente rígida e pesada.</entitydescription.du_p_alloy>
+  <entityname.AI_microchip>Microchip de IA</entityname.AI_microchip>
+  <entitydescription.AI_microchip>Controlador de IA para emissores de estase.</entitydescription.AI_microchip>
+  <entityname.stasisemitter>Matriz de Emissor de Estase</entityname.stasisemitter>
+  <entitydescription.stasisemitter>Matriz de emissor de um gerador de campo de estase usado para contêiners de armazenamento de varetas reforçados.</entitydescription.stasisemitter>
+  <entityname.fueltrasnportcylinderreinforced>Porta-Varetas Individual Reforçado</entityname.fueltrasnportcylinderreinforced>
+  <entitydescription.fueltrasnportcylinderreinforced>Um armazenamento de varetas fortemente reforçado com sistema de estase embutido para contenção de riscos extremos. Só pode ser preenchido em um fabricador.</entitydescription.fueltrasnportcylinderreinforced>
+  <entityname.iodinecrystal>Cristal de Iodo</entityname.iodinecrystal>
+  <entitydescription.iodinecrystal>Cristais feitos exclusivamente de iodo.</entitydescription.iodinecrystal>
+  <entityname.manual>Manual de Operação de Reator</entityname.manual>
+  <entitydescription.manual>Contém todos os elementos importantes em torno de reatores nucleares e seus perigos relacionados.</entitydescription.manual>
+  <terminalwelcomemsg.manual>
+
+
+Manual de operação do reator submarino nuclear de Europa v2.6
+-------------------------------------------------------------
+
+Sumário
+-------
+
+ I.   Introdução
+ II.  Perigos de operação do reator
+ III. Controle de crise do reator
+ IV.  Perigos de varetas de combustível
+ V.   Proibição de certos materiais alienígenas pela Coalizão Europa
+ VI.  Radiação, contaminação e cuidados médicos
+
+
+I. Introdução
+-------------
+
+Em primeiro lugar, parabéns por possuir ou operar um submarino nuclear no oceano de Europa.
+
+Enquanto o oceano de Europa é tão traiçoeiro quanto extremamente perigoso, alguns dos maiores perigos estão dentro das paredes seguras do seu próprio submarino.
+
+A energia nuclear pode ser o coração do seu submarino, mas também é uma das maiores ameaças, se não for mantida regularmente.
+
+Este manual padrão está aqui para informar você e sua equipe sobre todos os perigos e como enfrentá-los.
+
+Nota importante :
+
+-TUPEs provaram oferecer proteção total contra radiação, o traje de mergulho do abismo com sua proteção ambiental aprimorada concede 90% de resistência e qualquer outra proteção de trajes é avaliada em 75%.
+-Todos os trajes de mergulho são aparelhos respiratórios fechados e, portanto, protegem totalmente contra a contaminação de materiais radioativos.
+
+
+II. Perigos de operação do reator
+---------------------------------
+
+Devido à vida útil geralmente curta de uma tripulação de submarino padrão, pouco incentivo foi feito para tornar seguro o uso de reatores nucleares disponíveis.
+
+O reator nuclear é equipado com um contador geiger, o qual os sons da taxa de tiques informam a tripulação sobre os níveis atuais de radiação da sala do reator. Ouvir isso significa que a sala não é segura para exposição longa.
+
+Por esta razão, o pessoal que tem que ficar por longos períodos na sala do reator precisa pelo menos estar vestindo um macacão de engenheiro antirradiação.
+
+À medida que o reator fica cada vez mais danificado, o vazamento de radiação aumentará, portanto, equipamentos de segurança e medicamentos apropriados são altamente recomendados.
+
+Desligar o reator interromperá as radiações ambientais, desde que não esteja muito danificado.
+
+O reator também não emitirá radiações desde que esteja em boas condições.
+
+Procedimento padrão de segurança de reparo do reator
+
+O reator nuclear é difícil de manter e vários acidentes com consequências letais já foram relatados em toda a Europa.
+
+Portanto, continue seguindo os seguintes procedimentos para repará-lo:
+
+-Passo 1 : Use um traje de proteção o tempo todo, idealmente um TUPE devido à sua proteção completa contra radiação, alternativamente um traje de mergulho do abismo combinado com iodeto de potássio também oferece alta proteção contra radiação.
+-Passo 2: Desligue o reator completamente (temperatura em 0 e as luzes apagadas)
+-Passo 3: Repare o reator.
+
+
+ADVERTÊNCIA Reparar um reator em funcionamento tem grande chance de causar uma explosão de gás de vapor contaminado, danificando ainda mais o reator e irradiando todo o pessoal próximo.
+ADVERTÊNCIA A religação não treinada do reator pode levar a um acidente fatal de eletrochoque.
+  
+  
+III. Controle de crise do reator
+--------------------------------
+
+A crise do reator deve ser tratada como emergência primária e resolvida o mais rápido possível.
+Para alertar a tripulação de uma crise iminente, os reatores foram equipados com um sistema de alarme de 3 estágios, 2 dos quais são classificados como alarmes de crise.
+
+Notas importantes sobre alarmes de crise:
+Esses alarmes também são um aviso sobre o reator estar vazando níveis perigosos de calor por meio de vapor superaquecido de uma ruptura do sistema de refrigeração, que inclui contaminantes radioativos. O desligamento do reator não interromperá o derretimento do núcleo neste ponto.
+
+Os alarmes de crise dão à tripulação menos de um minuto antes da detonação do reator.
+
+Descrição do som dos alarmes e ações recomendadas:
+
+Alarme 1: Zumbido profundo, alarme de superaquecimento.
+Menor taxa de fissão; Aguarde a auto-estabilização; Remova as varetas em excesso.
+
+Alarme 2 : Alarme de superaquecimento antigo, alarme de estágio 1 de crise.
+Coloque o equipamento de proteção e remova TODAS as varetas de combustível contidas.
+
+Alarme 3 : Alarme Baixo/Alto, alarme de estágio de crise 2.
+Toda a tripulação que não estiver ajudando com o reator é obrigada a entrar em um traje de mergulho e manter a distância máxima do reator.
+Coloque imediatamente qualquer equipamento de proteção que você encontrar, em seguida, remova TODAS as varetas de combustível contidas o mais rápido possível, cuidado com o risco de incêndio.
+
+Se a sala do reator estiver equipada com um sistema de inundação de emergência: inunde completamente a sala do reator: a água evitará que ele exploda quando o núcleo for exposto. Embora ainda seja destruído e o combustível perdido.
+
+Nota: O cenário de derretimento de um reator depende se o combustível estava contido ou não e quais varetas estavam presentes quando o reator é destruído quando não inundado.
+
+Cuidado com as varetas de incendium e suas variantes, elas são sensíveis ao impacto e explodirão quando manuseadas de forma bruta.
+
+Ao reparar o reator após um derretimento, consulte o procedimento de segurança do reparo, o reator deve ser considerado um risco extremo de radiação neste momento.
+  
+
+IV. Perigos de varetas de combustível
+-------------------------------------
+
+*Informações importantes antes de lidar com esta seção,* os materiais cindíveis utilizados na fabricação de varetas de combustível devem ser armazenados em uma caixa segura ou em uma sala isolada da tripulação.
+Embora suas emissões sejam baixas, armazenar grandes quantidades desses materiais em um só lugar pode ser tão perigoso quanto um vazamento de radiação de um reator.
+
+As varetas de combustível têm várias camadas de perigos letais ligadas a elas e pessoal não treinado causará muito mais danos do que benefícios ao manipulá-las. Uma vareta é considerada perigosa uma vez que esteja parcial ou completamente esgotada, ela estará brilhando neste ponto.
+A menos que sejam colocadas dentro de um reator em funcionamento, as varetas são *quase* totalmente seguras de manusear.
+Uma vez perigosas, as varetas devem ser tratadas com extremo cuidado e armazenadas nos seguintes recipientes apropriados:
+
+-Caixa de Materiais Radioativos
+-Carrinho de Carga de Combustível
+-Porta-Varetas Individual
+-O próprio reator
+
+Existem 2 tipos de perigos de vareta de combustível diferentes para cada vareta de combustível:
+
+-Perigos de vareta ativa
+-Perigos de derretimento do núcleo
+
+Perigos de vareta
+
+Quaisquer varetas que estiverem ativas queimarão severamente qualquer pessoa que a segure com as mãos nuas, devido ao simples fato de que a varetas ainda está a mais de 2800°C. Também, sem surpresa, elas tendem a iniciar incêndios.
+
+Varetas de Urânio/Tório
+
+Perigo ativo : Radiação, metade do valor para a vareta de tório.
+
+Perigo de derretimento : Radiação maciça e contaminação em uma área muito grande.
+
+
+Varetas de Incendium
+
+AVISO Sensível ao impacto mesmo quando armazenadas adequadamente, coloque as varetas em uma caixa de transporte e armazene-as em uma estante de caixas para prendê-las de verdade.
+
+Perigo ativo : Geração extrema de calor queimando o pessoal ao redor, mesmo quando no reator, que também é danificado durante a operação com um, derrete rapidamente qualquer casco com o qual esteja em contato.
+
+Perigo de derretimento : Consulte o relatório de observação de combate.
+
+Aviso de uso: O potencial de energia da vareta é tão alto que os reatores não devem usá-los sem supervisão permanente, o calor gerado faz com que o reator se degrade muito mais rápido do que o normal e até causará queimaduras no pessoal próximo além de seu escudo térmico.
+
+
+Varetas de Fulgurium
+
+Perigo ativo : Anomalia elétrica que danifica rapidamente as caixas de junção, este efeito está sempre ativo. Não transporte a vareta fora de recipientes seguros.
+
+Perigo de derretimento : EMP maciço destruindo todos os eletrônicos.
+
+Relatos de tripulações de submarinos próximos também sofreram com o EMP apesar de estarem longe, implicando que o alcance do pulso é extremamente grande e semelhante a uma ogiva EMP real.
+
+
+Varetas de Fulgurium Voláteis
+
+AVISO Sensível ao impacto mesmo quando armazenadas adequadamente, coloque as varetas em uma caixa de transporte e armazene-as em uma estante de caixas para prendê-las de verdade.
+
+Perigo ativo : Anomalia elétrica que danifica rapidamente as caixas de junção, este efeito está sempre ativo. Não transporte a vareta fora de recipientes seguros. Perigo térmico capaz de derreter cascos.
+
+Perigo de derretimento : EMP maciço, consulte o relatório de observação de combate.
+
+
+Relatório de observação: O corpo de fuzileiros navais da Coalizão Europa durante conflitos com submarinos dos Separatistas Jovianos às vezes testemunhou tiros no reator causando uma explosão fora de escala, seguida por um clarão brilhante como luz aparentemente derretendo o que restava dos destroços do submarino antes de desaparecer durante uma explosão secundária maciça quando impactando o solo.
+
+Os cientistas especulam que os materiais das varetas de combustível podem reagir a um derretimento, coletá-los exigiria um recipiente especialmente projetado, proteção pesada e muito planejamento.
+  
+  
+V. Proibição de certos materiais alienígenas pela Coalizão Europa
+-----------------------------------------------------------------
+
+No rescaldo da perda total da guarnição da Coalizão Europa Debral 3 para um ataque terrorista dos separatistas jovianos usando um explosivo desconhecido que continha vestígios de certos materiais alienígenas.
+
+A Coalizão Europa emitiu a seguinte ordem:
+
+Os postos avançados militares e de pesquisa controlados pela Coalizão Europa são os ÚNICOS postos avançados autorizados a possuir, armazenar, vender ou comprar incendium e fulgurium junto com qualquer item que faça uso deles.
+O descumprimento será tomado como apoio aos separatistas jovianos, a Coalizão fará uso de força letal se necessário para recuperar o contrabando.
+ 
+ 
+VI. Radiação, contaminação e cuidados médicos
+---------------------------------------------
+
+A radiação, também apelidada de morte invisível, não deve ser levada na brincadeira.
+
+Embora o corpo possa se purificar lentamente ao longo do tempo, recomenda-se o uso de medicação anti-radiação assim que os primeiros sintomas aparecerem:
+
+-Queimaduras crônicas
+-Náusea
+-Problemas de visão
+
+A contaminação radioativa é caracterizada por irradiação crônica.
+
+Embora o antirrad cure rapidamente ambos, sua disponibilidade e preço o tornam um medicamento de emergência.
+
+O DTPA é mais barato e mais fácil de obter, embora seja muito mais lento em seu efeito ativo.
+
+O radioprotetor, ou iodeto de potássio, ajuda a prevenir a irradiação e a contaminação radioativa, mas não tem efeitos de cura, além de não proteger contra fontes letais de radiação.
+
+A fim de limitar a morte induzida por radiação, todos os submarinos estão equipados com um contador Geiger na área do reator, carregá-lo automaticamente detectará irradiações e demonstrará sua intesidade através de sinais sonoros e visuais.
+
+Também é a única forma de detectar se um tripulante está irradiado sem demonstrar algum sintoma.
+
+Note que a desconstrução de materiais radioativos requer proteção adequada uma vez que irá expor pessoal próximo a partículas radioativas, potencialmente os contaminando.
+
+A exposição prolongada a altas radiações ou mesmo a curta exposição a materiais extremamente radioativos pode levar à síndrome de radiação aguda (SRA), isso deve ser considerado uma emergência médica, pois sem tratamento a vítima morrerá em poucos minutos.
+
+Os sintomas são:
+
+-Queimaduras e danos internos em todo o corpo;
+-Extrema fraqueza e dificuldade para ficar em pé;
+-Vômito frequente de sangue;
+-Problemas de visão;
+-Inconsciência.
+
+Apenas drogas antirrad ou grandes doses de estabilosina podem salvar um neste momento.
+
+A irradiação e a contaminação radioativa são as principais causas da degradação letal do DNA, aqui referida como dano ao DNA, em Europa.
+
+Dano ao DNA
+
+A degradação do DNA ocorre quando irradiado, contaminado ou ambos e é extremamente letal.
+
+Os sintomas incluem:
+
+-Fraqueza
+-Vômito de sangue
+
+Se não for tratado, o dano ao DNA causará perda de sangue, dano interno e, no pior dos casos, falência total de órgãos.
+
+O estabilizador de DNA, embora destinado a aumentar a expectativa de vida de alguns moradores de Europa, provou ser eficaz contra a degradação celular induzida pela radiação.
+
+No entanto, o medicamento é caro e tão perigoso quanto se não for injetado por um médico qualificado.
+
+Relatos de injeções malfeitas têm dito que não apenas têm poucos efeitos positivos, mas também causam grave dano interno no processo.
+ 
+ </terminalwelcomemsg.manual>
+</infotexts>

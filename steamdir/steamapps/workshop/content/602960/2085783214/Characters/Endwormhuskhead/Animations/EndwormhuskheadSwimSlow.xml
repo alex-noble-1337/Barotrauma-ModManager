@@ -1,0 +1,2 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<EndwormhuskheadSwimSlow movementspeed="10" waveamplitude="51.459705" wavelength="122.9565" flip="False" mirror="False" rotatetowardsmovement="True" torsotorque="0" headtorque="150" foottorque="0" tailtorque="0" footangles="" steertorque="50" cyclespeed="1" headangle="0" torsoangle="0" animationtype="SwimSlow" usesinemovement="False" flipcooldown="1" flipdelay="0.5" mirrorlerp="True" tailtorquemultiplier="1" tailangle="NaN" type="Endwormhuskhead" legtorque="25" armikstrength="1" handikstrength="1" />
