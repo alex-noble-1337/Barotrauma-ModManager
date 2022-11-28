@@ -1,6 +1,7 @@
 :: ~/closeserver.sh
 set yourserver=%1
 cd %yourserver%
+cd ~/Steam/steamapps/common/Barotrauma\ Dedicated\ Server/
 mkdir temp
 cd temp
 wget https://github.com/evilfactory/LuaCsForBarotrauma/releases/download/latest/luacsforbarotrauma_patch_windows_server.zip
@@ -13,3 +14,4 @@ del config_player.xml
 cd ..
 :: cp -r temp yourserver robocopy job
 robocopy temp . /S /MOVE /PURGE
+rmdir /s temp
