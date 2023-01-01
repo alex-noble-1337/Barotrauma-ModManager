@@ -28,3 +28,8 @@ crashhandler.dll.old
 crashhandler.dll
 .ntfs_transaction_failed
 .crash
+modlist.csv
+BarotraumaticList.xml
+.vscode/launch.json
+BarotraumaticList.csv
+.~lock.BarotraumaticList.csv\#
