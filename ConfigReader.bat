@@ -15,3 +15,6 @@ echo "All queued Mods have been updated"
 ::rmdir /s "Trusted Seas Server Tools/steamdir"
 :: ./restoreConfigsFromBackup.sh :: todo
 echo "Done updating mods!"
+robocopy "Trusted Seas Server Tools\steamdir\steamapps\workshop\content\602960" "Masons Server\LocalMods" /S /MOVE /PURGE
+rmdir /s /q "Trusted Seas Server Tools\steamdir"
+echo Verifyed Mods
