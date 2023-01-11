@@ -6,9 +6,27 @@ import sys
 import os
 import re
 import shutil
+import requests
 
-option = str(sys.argv[1])
-fileposition = str(sys.argv[2])
+def get_htm_of_collection_site(link):
+    response = requests.get(link, timeout=200)
+    if response.status_code == 200:
+        return response.text
+    else:
+        # coundt be bothered to do it other way
+        return "ERROR"
+
+def get_listOfMods(url_of_steam_collection, collection_site):
+    if collection_site != "ERROR":
+        pattern = "(?<=<a href=\"https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=).*?(?=\"><div class=\"workshopItemTitle\">)"
+        arrx = re.findall(pattern, collection_site)
+    return arrx
+
+if len(sys.argv) >= 3:
+    option = str(sys.argv[1])
+    fileposition = str(sys.argv[2])
+else:
+    option = "-c"
 
 if option == "-t" or option == "--textfile":
     output_file = ""
@@ -58,7 +76,41 @@ if option == "-t" or option == "--textfile":
     with open(name_of_the_file + ".csv", "w+") as textfile:
         textfile.write(output_file)
 
+elif option == "-c" or option == "--collection":
+    print("Running in collection mode")
+    url_of_steam_collection = "https://steamcommunity.com/sharedfiles/filedetails/?id=2800347733"
+    collection_site = get_htm_of_collection_site(url_of_steam_collection)
+    # get list of all mod's id's in the collection in an array
+    modsids = get_listOfMods(url_of_steam_collection, collection_site)
+    # iterate array to get names of mods
+    mods = []
+    for i in range(len(modsids)):
+        # order names in the same array positions
+        pattern = "(?<=id=" + str(modsids[i]) + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
+        name = str(re.findall(pattern, collection_site)[0])
+        WorkshopItem = {'Name': name, 'ID': modsids[i]}
+        mods.append(WorkshopItem)
 
-elif option == "-m" or option == "--modlist":
-    with open(fileposition, "r") as modlist:
-        print("m")
+
+
+    # Lua and cs
+    runluaupdater = False
+    for i in range(len(mods)):
+        # remove Lua and cs from the list
+        if mods[i]["ID"] == 2559634234 or mods[i]["ID"] == 2795927223:
+            mods.pop(i)
+            runluaupdater = True
+        # check for lua dependendecies and populate time of update of workshop item
+        else:
+            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]["ID"])
+            modsite = get_htm_of_collection_site(modurl)
+<a href="https://steamcommunity.com/workshop/filedetails/?id=2559634234" target="_blank">.*?<div class="requiredItem">.*?Lua For Barotrauma
+
+
+
+    # add all known "mods made for server" server mods eg Perf fix, midround respawner
+    # add custom submarine mods
+    # remove outdated mods, print to face and in file that mods
+    # sort?
+    print(mods)
+    
