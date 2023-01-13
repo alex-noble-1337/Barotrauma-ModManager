@@ -7,7 +7,9 @@ import os
 import re
 import shutil
 import requests
+import time
 
+time_of_last_usage = 
 def get_htm_of_collection_site(link):
     response = requests.get(link, timeout=200)
     if response.status_code == 200:
@@ -87,27 +89,46 @@ elif option == "-c" or option == "--collection":
     for i in range(len(modsids)):
         # order names in the same array positions
         pattern = "(?<=id=" + str(modsids[i]) + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
-        name = str(re.findall(pattern, collection_site)[0])
-        WorkshopItem = {'Name': name, 'ID': modsids[i]}
+        name = re.findall(pattern, collection_site)
+        name = str(name[0])
+        modid = str(modsids[i])
+        WorkshopItem = {'Name': name, 'ID': modid}
         mods.append(WorkshopItem)
 
 
 
     # Lua and cs
     runluaupdater = False
-    for i in range(len(mods)):
+    lenmods = len(mods)
+    todel = []
+    for i in range(lenmods):
         # remove Lua and cs from the list
-        if mods[i]["ID"] == 2559634234 or mods[i]["ID"] == 2795927223:
-            mods.pop(i)
+        if mods[i]['ID'] == "2559634234":
+            todel.append(i)
             runluaupdater = True
-        # check for lua dependendecies and populate time of update of workshop item
+            continue
+        if mods[i]['ID'] == "2795927223":
+            todel.append(i)
+            runluaupdater = True
+            continue
         else:
-            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]["ID"])
+            # check for lua dependendecies and populate time of update of workshop item
+            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
             modsite = get_htm_of_collection_site(modurl)
-<a href="https://steamcommunity.com/workshop/filedetails/?id=2559634234" target="_blank">.*?<div class="requiredItem">.*?Lua For Barotrauma
+            pattern = "<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2559634234\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Lua For Barotrauma.*?</a>"
+            arrx = re.findall(pattern, modsite)
+            arrx = len(arrx)
+            pattern = "<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2795927223\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Cs For Barotrauma.*?</a>"
+            arry = re.findall(pattern, modsite)
+            num = arrx + len(arry)
+            if num > 0:
+                runluaupdater = True
+                continue
 
+    for i in todel:
+        mods.pop(i)
 
-
+    # delay between usage of function based on system clock + internal function delay
     # add all known "mods made for server" server mods eg Perf fix, midround respawner
     # add custom submarine mods
     # remove outdated mods, print to face and in file that mods
