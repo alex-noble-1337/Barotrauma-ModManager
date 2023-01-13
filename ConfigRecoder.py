@@ -104,7 +104,7 @@ elif option == "-c" or option == "--collection":
         else:
             modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]["ID"])
             modsite = get_htm_of_collection_site(modurl)
-<a href="https://steamcommunity.com/workshop/filedetails/?id=2559634234" target="_blank">.*?<div class="requiredItem">.*?Lua For Barotrauma
+# <a href="https://steamcommunity.com/workshop/filedetails/?id=2559634234" target="_blank">.*?<div class="requiredItem">.*?Lua For Barotrauma
 
 
 
