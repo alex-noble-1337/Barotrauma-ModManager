@@ -1,0 +1,318 @@
+    <regularpackages>
+      <!--Performance Fix-->
+      <!--Last Updated 30 Dec, 2021 @ 01:28PM-->
+      <package
+        path="LocalMods/2701251094/filelist.xml" />
+      <!--Dont Open Debug Console On Errors-->
+      <!--Last Updated 13 May, 2022 @ 09:37AM-->
+      <package
+        path="LocalMods/2807566753/filelist.xml" />
+      <!--Complete Global Darkness-->
+      <!--Last Updated 12 Oct, 2022 @ 04:29PM-->
+      <package
+        path="LocalMods/2874526487/filelist.xml" />
+      <!--Disconnect Kill And Stun Remover-->
+      <!--Last Updated 19 Nov, 2021 @ 12:02PM-->
+      <package
+        path="LocalMods/2658872348/filelist.xml" />
+      <!--Fix Garbled Message Text-->
+      <!--Last Updated 30 Jun, 2022 @ 03:29AM-->
+      <package
+        path="LocalMods/2828218775/filelist.xml" />
+      <!--Local Voice Fix [Lua update]-->
+      <!--Last Updated 15 Jan, 2021 @ 08:21AM-->
+      <package
+        path="LocalMods/2362585294/filelist.xml" />
+      <!--Midround Latejoin Respawner-->
+      <!--Last Updated 26 Sep, 2022 @ 01:57AM-->
+      <package
+        path="LocalMods/2867936689/filelist.xml" />
+      <!--Let Them All In-->
+      <!--Last Updated 07 May, 2022 @ 11:51AM-->
+      <package
+        path="LocalMods/2805065898/filelist.xml" />
+      <!--More XP-->
+      <!--Last Updated 13 Mar, 2022 @ 12:08PM-->
+      <package
+        path="LocalMods/2778526865/filelist.xml" />
+      <!--Server Host Helper-->
+      <!--Last Updated 16 Aug, 2022 @ 07:41PM-->
+      <package
+        path="LocalMods/2850108374/filelist.xml" />
+      <!--GM Tools - Advanced moderation tools-->
+      <!--Last Updated 02 Jul, 2022 @ 01:03PM-->
+      <package
+        path="LocalMods/2829470717/filelist.xml" />
+      <!--Multiplayer crew manager-->
+      <!--Last Updated 08 Mar, 2022 @ 07:54AM-->
+      <package
+        path="LocalMods/2775613786/filelist.xml" />
+      <!--ADV Beacon Stations-->
+      <!--Last Updated 12 Jul, 2021 @ 03:00AM-->
+      <package
+        path="LocalMods/2544952900/filelist.xml" />
+      <!--SIN Beacon Stations-->
+      <!--Last Updated 18 Sep, 2021 @ 11:43AM-->
+      <package
+        path="LocalMods/2605405713/filelist.xml" />
+      <!--New Wrecks For Barotrauma (With sellable wrecks)-->
+      <!--Last Updated 01 Aug, 2020 @ 06:24AM-->
+      <package
+        path="LocalMods/2184257427/filelist.xml" />
+      <!--Shipwrecks Extended-->
+      <!--Last Updated 13 May, 2020 @ 09:27AM-->
+      <package
+        path="LocalMods/2095211492/filelist.xml" />
+      <!--Stations from beyond-->
+      <!--Last Updated 26 Aug, 2021 @ 09:38AM-->
+      <package
+        path="LocalMods/2585543390/filelist.xml" />
+      <!--Community Conversation Pack-->
+      <!--Last Updated 25 Mar, 2021 @ 01:13AM-->
+      <package
+        path="LocalMods/2435017882/filelist.xml" />
+      <!--Telecommunications Mod-->
+      <!--Last Updated 15 Aug, 2021 @ 11:16AM-->
+      <package
+        path="LocalMods/2575936966/filelist.xml" />
+      <!--Pirates Ahoy!-->
+      <!--Last Updated 06 Nov, 2022 @ 06:30AM-->
+      <package
+        path="LocalMods/2885238752/filelist.xml" />
+      <!--Jobs Extended Beta-->
+      <!--Last Updated 28 Dec, 2022 @ 10:14PM-->
+      <package
+        path="LocalMods/2908735458/filelist.xml" />
+      <!--BaroTraumatic-->
+      <!--Last Updated 16 Jun, 2021 @ 03:55PM-->
+      <package
+        path="LocalMods/2518816103/filelist.xml" />
+      <!--Improved Husks-->
+      <!--Last Updated 05 May, 2020 @ 07:24AM-->
+      <package
+        path="LocalMods/2085783214/filelist.xml" />
+      <!--Barotraumatic Creature Pack-->
+      <!--Last Updated 07 Jul, 2022 @ 02:15PM-->
+      <package
+        path="LocalMods/2831987252/filelist.xml" />
+      <!--SOFA'S CREATURES-->
+      <!--Last Updated 13 Jul, 2022 @ 02:58PM-->
+      <package
+        path="LocalMods/2834851130/filelist.xml" />
+      <!--DynamicEuropa-->
+      <!--Last Updated 30 Jun, 2021 @ 02:15PM-->
+      <package
+        path="LocalMods/2532991202/filelist.xml" />
+      <!--More Level Content-->
+      <!--Last Updated 29 May, 2022 @ 01:54PM-->
+      <package
+        path="LocalMods/2814493175/filelist.xml" />
+      <!--Neurotrauma-->
+      <!--Last Updated 09 Mar, 2022 @ 01:18PM-->
+      <package
+        path="LocalMods/2776270649/filelist.xml" />
+      <!--Neurotrauma Cybernetics-->
+      <!--Last Updated 02 Apr, 2022 @ 03:29PM-->
+      <package
+        path="LocalMods/2788543375/filelist.xml" />
+      <!--NT Pharmacy-->
+      <!--Last Updated 06 May, 2022 @ 03:26PM-->
+      <package
+        path="LocalMods/2804655816/filelist.xml" />
+      <!--NT: Immune System Extended-->
+      <!--Last Updated 28 May, 2022 @ 09:58PM-->
+      <package
+        path="LocalMods/2814139626/filelist.xml" />
+      <!--Consent Required-->
+      <!--Last Updated 22 Mar, 2022 @ 07:31PM-->
+      <package
+        path="LocalMods/2783280188/filelist.xml" />
+      <!--NeuroEyes Rectified-->
+      <!--Last Updated 01 Sep, 2022 @ 05:50PM-->
+      <package
+        path="LocalMods/2857419661/filelist.xml" />
+      <!--Crates for recycling-->
+      <!--Last Updated 22 May, 2022 @ 04:18PM-->
+      <package
+        path="LocalMods/2811526690/filelist.xml" />
+      <!--BaroPlus (Open)-->
+      <!--Last Updated 03 Nov, 2021 @ 09:41PM-->
+      <package
+        path="LocalMods/2645362256/filelist.xml" />
+      <!--Bone Man-->
+      <!--Last Updated 01 Dec, 2022 @ 06:56PM-->
+      <package
+        path="LocalMods/2896193900/filelist.xml" />
+      <!--Ammo extended 2 (RUS/ENG/汉语)-->
+      <!--Last Updated 29 Nov, 2021 @ 05:38AM-->
+      <package
+        path="LocalMods/2668119156/filelist.xml" />
+      <!--BaroDrama V4.0-->
+      <!--Last Updated 14 Jan, 2022 @ 06:27PM-->
+      <package
+        path="LocalMods/2719602039/filelist.xml" />
+      <!--Backpacks [UNMAINTAINED]-->
+      <!--Last Updated 28 Sep, 2021 @ 12:13PM-->
+      <package
+        path="LocalMods/2613901395/filelist.xml" />
+      <!--Squidd Backpacks-->
+      <!--Last Updated 08 Jan, 2022 @ 09:01PM-->
+      <package
+        path="LocalMods/2713371413/filelist.xml" />
+      <!--EK Utilities Rebalanced And Reworked-->
+      <!--Last Updated 01 Jul, 2022 @ 04:05PM-->
+      <package
+        path="LocalMods/2829003395/filelist.xml" />
+      <!--EK | Armory-->
+      <!--Last Updated 13 Jun, 2019 @ 07:40PM-->
+      <package
+        path="LocalMods/1769403760/filelist.xml" />
+      <!--EK | Dockyard-->
+      <!--Last Updated 09 Feb, 2021 @ 05:28PM-->
+      <package
+        path="LocalMods/2390137099/filelist.xml" />
+      <!--EK | Gunnery-->
+      <!--Last Updated 09 Feb, 2021 @ 05:10PM-->
+      <package
+        path="LocalMods/2390126010/filelist.xml" />
+      <!--EK | Utility-->
+      <!--Last Updated 25 Dec, 2019 @ 09:43AM-->
+      <package
+        path="LocalMods/1946765892/filelist.xml" />
+      <!--Lua Linker-->
+      <!--Last Updated 21 Aug, 2022 @ 03:01PM-->
+      <package
+        path="LocalMods/2852315967/filelist.xml" />
+      <!--Genes+ Revived and Expanded-->
+      <!--Last Updated 24 Apr, 2022 @ 03:31AM-->
+      <package
+        path="LocalMods/2799033770/filelist.xml" />
+      <!--Ssparky's Gunnery-->
+      <!--Last Updated 29 Nov, 2022 @ 04:05AM-->
+      <package
+        path="LocalMods/2895083880/filelist.xml" />
+      <!--Hazardous Reactors-->
+      <!--Last Updated 15 Jul, 2021 @ 09:39AM-->
+      <package
+        path="LocalMods/2547888957/filelist.xml" />
+      <!--Hazardous reactors + visual variety modpack patch-->
+      <!--Last Updated 03 Aug, 2021 @ 06:04AM-->
+      <package
+        path="LocalMods/2564921308/filelist.xml" />
+      <!--Playable Mudraptor Job 3 (Electric Boogaloo)-->
+      <!--Last Updated 05 Oct, 2022 @ 03:41PM-->
+      <package
+        path="LocalMods/2871761155/filelist.xml" />
+      <!--Warden job-->
+      <!--Last Updated 19 Dec, 2021 @ 06:55PM-->
+      <package
+        path="LocalMods/2687741461/filelist.xml" />
+      <!--T.I.T.A.N. power suit V2-->
+      <!--Last Updated 02 Jan, 2021 @ 05:08AM-->
+      <package
+        path="LocalMods/2346376423/filelist.xml" />
+      <!--Abyssal Warsuit-->
+      <!--Last Updated 07 May, 2021 @ 05:39PM-->
+      <package
+        path="LocalMods/2480342460/filelist.xml" />
+      <!--Abyssal armory - Reinforcements-->
+      <!--Last Updated 02 Dec, 2020 @ 05:46AM-->
+      <package
+        path="LocalMods/2306343465/filelist.xml" />
+      <!--Keytar-->
+      <!--Last Updated 28 Apr, 2021 @ 07:29AM-->
+      <package
+        path="LocalMods/2470431312/filelist.xml" />
+      <!--Melodica-->
+      <!--Last Updated 28 Apr, 2021 @ 04:54AM-->
+      <package
+        path="LocalMods/2470332783/filelist.xml" />
+      <!--[Music mod] RIMM Reworked-->
+      <!--Last Updated 22 Jan, 2022 @ 06:30PM-->
+      <package
+        path="LocalMods/2728646394/filelist.xml" />
+      <!--Laser Attachment/Pointer (HOLIDY UPDATE)-->
+      <!--Last Updated 10 Dec, 2022 @ 05:30AM-->
+      <package
+        path="LocalMods/2899922407/filelist.xml" />
+      <!--Obtainable Seefs-->
+      <!--Last Updated 19 Apr, 2022 @ 12:36AM-->
+      <package
+        path="LocalMods/2796681123/filelist.xml" />
+      <!--Material IO-->
+      <!--Last Updated 16 Aug, 2022 @ 10:56PM-->
+      <package
+        path="LocalMods/2850153096/filelist.xml" />
+      <!--Squidd's Expansion🐙-->
+      <!--Last Updated 28 Nov, 2021 @ 06:12PM-->
+      <package
+        path="LocalMods/2667756090/filelist.xml" />
+      <!--Old Crew Outfits-->
+      <!--Last Updated 12 Sep, 2022 @ 04:37PM-->
+      <package
+        path="LocalMods/2862322876/filelist.xml" />
+      <!--More Artifacts (AOCS)-->
+      <!--Last Updated 09 Mar, 2022 @ 03:39AM-->
+      <package
+        path="LocalMods/2776026770/filelist.xml" />
+      <!--Meaningful Upgrades-->
+      <!--Last Updated 31 Jul, 2020 @ 11:55AM-->
+      <package
+        path="LocalMods/2183524355/filelist.xml" />
+      <!--Ruins Enhanced-->
+      <!--Last Updated 24 Jun, 2022 @ 03:26PM-->
+      <package
+        path="LocalMods/2825448171/filelist.xml" />
+      <!--Enhanced Armaments-->
+      <!--Last Updated 25 Feb, 2022 @ 12:44PM-->
+      <package
+        path="LocalMods/2764968387/filelist.xml" />
+      <!--Banking: Mark Currency++ (LUA)-->
+      <!--Last Updated 13 Jun, 2022 @ 06:59AM-->
+      <package
+        path="LocalMods/2820588157/filelist.xml" />
+      <!--Decorations-->
+      <!--Last Updated 25 Jun, 2022 @ 06:13AM-->
+      <package
+        path="LocalMods/2825721240/filelist.xml" />
+      <!--MannaBuildables-->
+      <!--Last Updated 16 May, 2022 @ 04:35PM-->
+      <package
+        path="LocalMods/2809102161/filelist.xml" />
+      <!--Visual Variety Pack-->
+      <!--Last Updated 10 Jul, 2020 @ 11:58AM-->
+      <package
+        path="LocalMods/2161488150/filelist.xml" />
+      <!--More Alarm Sounds-->
+      <!--Last Updated 26 Sep, 2020 @ 02:05PM-->
+      <package
+        path="LocalMods/2240258217/filelist.xml" />
+      <!--Alarms Extended-->
+      <!--Last Updated 27 Oct, 2021 @ 09:29AM-->
+      <package
+        path="LocalMods/2638494991/filelist.xml" />
+      <!--OxyGear - Content Pack-->
+      <!--Last Updated 17 Oct, 2020 @ 03:00PM-->
+      <package
+        path="LocalMods/2260683656/filelist.xml" />
+      <!--BaroCraftables+-->
+      <!--Last Updated 24 Feb, 2022 @ 10:11PM-->
+      <package
+        path="LocalMods/2764140582/filelist.xml" />
+      <!--Movable and Sellable Wrecks-->
+      <!--Last Updated 04 Mar, 2022 @ 09:28AM-->
+      <package
+        path="LocalMods/2772926011/filelist.xml" />
+      <!--Sellable Pirates-->
+      <!--Last Updated 20 May, 2022 @ 11:19AM-->
+      <package
+        path="LocalMods/2810462005/filelist.xml" />
+      <!--Combinable Ammo Revived (NOW WORKS WITH ALL AMMO)-->
+      <!--Last Updated 24 Apr, 2022 @ 04:18AM-->
+      <package
+        path="LocalMods/2799051561/filelist.xml" />
+      <!--SFB with DE-->
+      <!--Last Updated 26 Dec, 2022 @ 05:55PM-->
+      <package
+        path="LocalMods/2907491279/filelist.xml" />
+    </regularpackages>
