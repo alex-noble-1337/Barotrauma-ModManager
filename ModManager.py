@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 # CONFIGURATION if you dont wanna use arguments:
 default_barotrauma_path = ""
 default_tool_path = ""
@@ -54,12 +56,12 @@ def get_listOfModsfromConfig(filelist_str):
     return modlist
 
 # function that uses steamcmd
-def moddownloader(number_of_mod, tool_path):
+def moddownloader(number_of_mod, tool_path, steamdir_path):
     if sys.platform == "win32":
         command = os.path.join(tool_path, "steamcmd.exe")
     else:
         command = "steamcmd"
-    arguments = [command ,"+force_install_dir \"steamdir\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
+    arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
     subprocess.call(arguments)
     time.sleep(1)
 
@@ -123,7 +125,7 @@ def main():
                             break
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
-            moddownloader(mod,tool_path)
+            moddownloader(mod,tool_path, steamdir_path)
             numberofupdatedmods += 1
             if lastupdated_functionality:
                 # update localupdatedates
