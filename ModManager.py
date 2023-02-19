@@ -3,7 +3,8 @@
 # CONFIGURATION if you dont wanna use arguments:
 default_barotrauma_path = ""
 default_tool_path = ""
-# TODO Still testing and working
+default_steamcmd_path = "steamcmdwin"
+# TODO Still testing and working on it
 default_lastupdated_functionality = False
 
 
@@ -56,12 +57,15 @@ def get_listOfModsfromConfig(filelist_str):
     return modlist
 
 # function that uses steamcmd
-def moddownloader(number_of_mod, tool_path, steamdir_path):
+def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
     if sys.platform == "win32":
-        command = os.path.join(tool_path, "steamcmd.exe")
+        command = os.path.join(tool_path, steamcmd_path, "steamcmd.exe")
     else:
-        command = "steamcmd"
+        command = os.path.join(steamcmd_path, "steamcmd")
+        if (not os.path.exists(command)) and (not steamcmd_path == ""):
+            command = os.path.join(steamcmd_path, "steamcmd.sh")
     arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
+    # TODO make its outpot less shit
     subprocess.call(arguments)
     time.sleep(1)
 
@@ -75,6 +79,8 @@ def main():
         barotrauma_path = default_barotrauma_path
         tool_path = default_tool_path
         lastupdated_functionality = default_lastupdated_functionality
+        steamcmd_path = default_steamcmd_path
+
 
     steamdir_path = os.path.join(tool_path, "steamdir")
     if os.path.exists(steamdir_path):
@@ -84,11 +90,24 @@ def main():
     filelist_str = get_filelist_str(barotrauma_path)
     modlist = get_listOfModsfromConfig(filelist_str)
     localcopy_path = get_localcopy_path(filelist_str)
+    # os.path.dirname(__file__)
+
+    if not os.path.isabs(barotrauma_path):
+        barotrauma_path = os.path.join(os.path.dirname(__file__), barotrauma_path)
+    if not os.path.isabs(tool_path):
+        tool_path = os.path.join(os.path.dirname(__file__), tool_path)
+    if not os.path.isabs(steamcmd_path):
+        steamcmd_path = os.path.join(os.path.dirname(__file__), steamcmd_path)
+    if not os.path.isabs(steamdir_path):
+        steamdir_path = os.path.join(os.path.dirname(__file__), steamdir_path)
+        
 
     if os.path.isabs(localcopy_path):
         localmods_path = os.path.abspath(localcopy_path)
     else:
         localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
+
+
 
     print("List of mods:")
     for mod in modlist:
@@ -125,7 +144,7 @@ def main():
                             break
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
-            moddownloader(mod,tool_path, steamdir_path)
+            moddownloader(mod,tool_path, steamdir_path, steamcmd_path)
             numberofupdatedmods += 1
             if lastupdated_functionality:
                 # update localupdatedates
@@ -138,7 +157,7 @@ def main():
             f.write()
             f.close()
 
-    print("All "+ str(numberofupdatedmods) +" Mods have been updated")
+    print("\nAll "+ str(numberofupdatedmods) +" Mods have been updated")
     print("Done updating mods!")
 
     inputdir = os.path.join(barotrauma_path, "steamdir", "steamapps", "workshop", "content", "602960")
@@ -150,7 +169,8 @@ def main():
     os.mkdir(localmods_path)
     robocopysubsttute(inputdir, localmods_path)
     shutil.rmtree(steamdir_path)
-    print("Verifyed Mods")
+    print("Verifyed Mods!\n")
 
 if __name__ == '__main__':
+    # print()
     main()
