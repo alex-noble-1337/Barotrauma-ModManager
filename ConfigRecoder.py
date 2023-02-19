@@ -10,19 +10,23 @@ import requests
 import time
 import datetime # for current time
 
+headers = {'User-Agent': 'Mozilla/5.0'}
 # delay between usage of function based on system clock + internal function delay
 time_of_last_usage = 0
 def get_htm_of_collection_site(link):
     global time_of_last_usage
-    if time_of_last_usage != 0 and int(round(time.time())) - time_of_last_usage < 15:
-        time.sleep(int(round(time.time())) - time_of_last_usage)
-    time_of_last_usage = int(round(time.time()))
-    response = requests.get(link, timeout=200)
-    if response.status_code == 200:
-        output = response.text
-    else:
-        # coundt be bothered to do it other way
-        output = "ERROR"
+    while True:
+        if time_of_last_usage != 0 and int(round(time.time())) - time_of_last_usage < 15:
+            time.sleep(int(round(time.time())) - time_of_last_usage)
+        time_of_last_usage = int(round(time.time()))
+        response = requests.get(link, timeout=200, headers=headers)
+        if response.status_code == 200:
+            output = response.text
+            break
+        else:
+            # coundt be bothered to do it other way
+            output = "ERROR"
+            time.sleep(20)
     return output
 
 def get_listOfMods(collection_site):
@@ -31,7 +35,7 @@ def get_listOfMods(collection_site):
         arrx = re.findall(pattern, collection_site)
     return arrx
 
-def compilelistmods(collection_site):
+def get_modsname(collection_site):
     # get list of all mod's id's in the collection in an array
     modsids = get_listOfMods(collection_site)
     # iterate array to get names of mods
@@ -95,7 +99,13 @@ def collectionf(url_of_steam_collection):
     print("Running in collection mode")
     # here
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
-    mods = compilelistmods(collection_site)
+    return collection_site
+
+def get_modsnamelastupdated(mods):
+    for i in range(len(mods)):
+        if not isinstance(mods[i], dict):
+            WorkshopItem = {'ID': mods[i]}
+            mods[i] = WorkshopItem
 
     # Lua and cs
     runluaupdater = False
@@ -117,15 +127,15 @@ def collectionf(url_of_steam_collection):
             modsite = get_htm_of_collection_site(modurl)
             pattern = "<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2559634234\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Lua For Barotrauma.*?</a>"
             arrx = re.findall(pattern, modsite)
-            arrx = len(arrx)
             pattern = "<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2795927223\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Cs For Barotrauma.*?</a>"
             arry = re.findall(pattern, modsite)
-            num = arrx + len(arry)
+            num = len(arrx) + len(arry)
             if num > 0:
                 runluaupdater = True
+
+            # lastupdated
             pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
-            lastupdated = re.findall(pattern, modsite)
-            lastupdated = lastupdated[1]
+            lastupdated = re.findall(pattern, modsite)[1]
             # Eg. 1 Oct, 2022 @ 3:51am
             if lastupdated[2] != " ":
                 lastupdated = "0" + lastupdated
@@ -134,12 +144,17 @@ def collectionf(url_of_steam_collection):
                 currentDateTime = datetime.datetime.now()
                 date = currentDateTime.date()
                 year = str(date.strftime("%Y"))
-                lastupdated = lastupdated[0:7] + year + " " + lastupdated[7:0]
-            # Eg. 30 Dec, 2021 @ 1:28pm
-            if lastupdated[17] != ":":
+                lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
+            # Eg. 28 May, 2022 @ 9:58pm
+            # Eg. 18 Jan 2023 @ 7:10pm
+            if lastupdated[16] == ":":
                 lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
             lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
-            WorkshopItem = {'Name': mods[i]['Name'], 'ID': mods[i]['ID'], 'LastUpdated': lastupdated}
+
+            pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
+            name = re.findall(pattern, modsite)[0]
+
+            WorkshopItem = {'Name': name, 'ID': mods[i]['ID'], 'LastUpdated': lastupdated}
             mods[i] = WorkshopItem
 
     # deleting because for cannot be in variable range or smth
@@ -152,39 +167,56 @@ def collectionf(url_of_steam_collection):
     # add custom submarine mods
     # remove outdated mods, print to face and in file that mods
     # sort?
+    return mods
 
+def main():
+    moddirectory = "C:/Users/milord/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
+    output_file = ""
+
+    if len(sys.argv) >= 3:
+        option = str(sys.argv[1])
+        fileposition = str(sys.argv[2])
+        url_of_steam_collection = str(sys.argv[2])
+    else:
+        option = "-c"
+        url_of_steam_collection = "https://steamcommunity.com/sharedfiles/filedetails/?id=2800347733"
+
+    if option == "-t" or option == "--textfile":
+        # i dont remeber why i made this...
+        # output_file = textfilef(fileposition, output_file)
+        print("err")
+    elif option == "-c" or option == "--collection":
+        collection_site = collectionf(url_of_steam_collection)
+        mods = get_listOfMods(collection_site)
+        # getting names here because its more efficient than request
+        # not really needed i think
+        # mods = get_modsname(collection_site)
+
+    # TODO find a way to only request lastupdated not whole cuz its to slow    
+    mods = get_modsnamelastupdated(mods)
+
+    print("Detected date, name of: " + str(len(mods)))
+    lastupdated_f = ""
     regularpackages = "    <regularpackages>\n"
     # print new
     for mod in mods:
         regularpackages += "      <!--" + mod['Name'] + "-->\n"
-        regularpackages += "      <!--Last Updated " + time.strftime('%d %b, %Y @ %I:%M%p', mod['LastUpdated']) + "-->\n"
+        lastupdated_f += mod['ID'] + ";" + str(time.strftime('%d %b, %Y @ %I:%M%p', mod['LastUpdated'])) + "\n"
         regularpackages += "      <package\n"
         regularpackages += "        path=\"" + moddirectory + "/" +  mod['ID'] + "/filelist.xml\" />\n"
     regularpackages += "    </regularpackages>\n"
 
+    filex = open("lastupdated.txt", "w", encoding='utf8')
+    filex.write(lastupdated_f)
+    filex.close()
     print(regularpackages)
     output_file = regularpackages
-    return output_file
+    # return output_file
 
 
-moddirectory = "LocalMods"
-output_file = ""
+    file1 = open("regularpackages.xml", "w", encoding='utf8')
+    file1.write(output_file)
+    file1.close()
 
-if len(sys.argv) >= 3:
-    option = str(sys.argv[1])
-    fileposition = str(sys.argv[2])
-    url_of_steam_collection = str(sys.argv[2])
-else:
-    option = "-c"
-    url_of_steam_collection = "https://steamcommunity.com/sharedfiles/filedetails/?id=2800347733"
-
-if option == "-t" or option == "--textfile":
-    output_file = textfilef(fileposition, output_file)
-elif option == "-c" or option == "--collection":
-    output_file = collectionf(url_of_steam_collection)
-
-
-file1 = open("regularpackages.xml", "w", encoding='utf8')
-file1.write(output_file)
-file1.close()
-
+if __name__ == '__main__':
+    main()

@@ -34,4 +34,5 @@ BarotraumaticList.xml
 BarotraumaticList.csv
 .~lock.BarotraumaticList.csv\#
 ConfigBackup/**
-**sync-conflict**
+grep/**
+regularpackages.xml
