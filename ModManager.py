@@ -61,7 +61,7 @@ def moddownloader(number_of_mod, tool_path, steamdir_path):
         command = os.path.join(tool_path, "steamcmd.exe")
     else:
         command = "steamcmd"
-    arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
+    arguments = [command ,"+force_install_dir", steamdir_path, "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
     subprocess.call(arguments)
     time.sleep(1)
 
@@ -80,6 +80,7 @@ def main():
     if os.path.exists(steamdir_path):
         shutil.rmtree(steamdir_path)
     os.mkdir(steamdir_path)
+    steamdir_path = os.path.abspath(steamdir_path)
 
     filelist_str = get_filelist_str(barotrauma_path)
     modlist = get_listOfModsfromConfig(filelist_str)
