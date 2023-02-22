@@ -17,9 +17,8 @@ import datetime # for current time
 import subprocess # TODO change this to import only individual commands
 import sys # TODO change this to import only individual commands
 
-# configs for nerds
-
 from ConfigRecoder import get_modsnamelastupdated 
+from configbackup import backup_option
 
 # yoinked from stackoverflow, works
 def robocopysubsttute(root_src_dir, root_dst_dir):
@@ -43,7 +42,9 @@ def get_filelist_str(barotrauma_path):
     f = open(filelist_path, "r", encoding='utf8')
     filelist_str = f.read()
     f.close()
-    return filelist_str
+    pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
+    regularpackages = re.findall(pattern, filelist_str)[0]
+    return regularpackages
 
 def get_localcopy_path(filelist_str):
     pattern = "(?<=path=\")(.*?)(?=.\d*?\/filelist\.xml)"
@@ -51,9 +52,18 @@ def get_localcopy_path(filelist_str):
     return path
 
 # find mods to update from config_player.xml
-def get_listOfModsfromConfig(filelist_str):
-    pattern = "(?<=LocalMods\/)(.*?)(?=\/filelist\.xml)"
-    modlist = re.findall(pattern, filelist_str)
+def get_listOfModsfromConfig(filelist_str,localcopy_path):
+    pattern = "(?<=<!--)[\s\S]*?(?=\/filelist\.xml)"
+    modlist_str = re.findall(pattern, filelist_str)
+    
+    modlist = []
+    for mod in modlist_str:
+        pattern = "(?<=^)(.*?)(?=-->)"
+        mod_name = re.findall(pattern, mod)[0]
+        pattern = "(?<=" + localcopy_path + "\/)(.*?)(?=$)"
+        mod_id = re.findall(pattern, mod)[0]
+        WorkshopItem = {'Name': mod_name, 'ID': mod_id}
+        modlist.append(WorkshopItem)
     return modlist
 
 # function that uses steamcmd
@@ -87,10 +97,10 @@ def main():
         shutil.rmtree(steamdir_path)
     os.mkdir(steamdir_path)
 
-    filelist_str = get_filelist_str(barotrauma_path)
-    modlist = get_listOfModsfromConfig(filelist_str)
-    localcopy_path = get_localcopy_path(filelist_str)
-    # os.path.dirname(__file__)
+    regularpackages = get_filelist_str(barotrauma_path)
+    localcopy_path = get_localcopy_path(regularpackages)
+
+    modlist = get_listOfModsfromConfig(regularpackages,localcopy_path)
 
     if not os.path.isabs(barotrauma_path):
         barotrauma_path = os.path.join(os.path.dirname(__file__), barotrauma_path)
@@ -108,10 +118,34 @@ def main():
         localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
 
 
-
+    has_performancefix = False
     print("List of mods:")
     for mod in modlist:
-        print(mod)
+        if str(mod["ID"]) == "2701251094":
+            has_performancefix = True
+        print(str(mod["ID"]) + ": " + mod["Name"])
+    print("\n")
+
+    if not has_performancefix:
+        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
+        modlist.insert(0, WorkshopItem)
+
+    regularpackages_new = "\n"
+    # print new
+    for mod in modlist:
+        regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
+        regularpackages_new += "\t\t\t<package\n"
+        regularpackages_new += "\t\t\t\tpath=\"" + localcopy_path + "/" +  mod['ID'] + "/filelist.xml\" />\n"
+
+    filelist_path = os.path.join(barotrauma_path, "config_player.xml")
+    # TODO make it in bracket with using f.open or smth, and error handling
+    f = open(filelist_path, "r", encoding='utf8')
+    filelist_str = f.read()
+    f.close()
+    filelist_str = filelist_str.replace(regularpackages, regularpackages_new)
+    f = open(filelist_path, "w", encoding='utf8')
+    f.write(filelist_str)
+    f.close()
 
     if lastupdated_functionality:
         # TODO fix this being so fucking slow
@@ -144,7 +178,9 @@ def main():
                             break
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
-            moddownloader(mod,tool_path, steamdir_path, steamcmd_path)
+            print("Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
+            moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
+            print("\n")
             numberofupdatedmods += 1
             if lastupdated_functionality:
                 # update localupdatedates
@@ -164,7 +200,11 @@ def main():
     # overwrite local copy with new copy downloaded above
     # removing for cleanup
 
+    
+
     if os.path.exists(localmods_path):
+        # config_bringback
+        backup_option(localmods_path,inputdir)
         shutil.rmtree(localmods_path)
     os.mkdir(localmods_path)
     robocopysubsttute(inputdir, localmods_path)

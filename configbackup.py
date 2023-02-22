@@ -54,11 +54,11 @@ def find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation):
     # output: config files path from mods location: configfilespathfrommodslocation
 
 # create backup folders and copy files
-def create_backup_folders_and_copy_files(configfilespathfrommodslocation):
+def create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslocation, backupfolder):
     # input: configfilespathfrommodslocation
     backupconfigpaths = []
     for configfile in configfilespathfrommodslocation:
-        backupconfigpaths.append(os.path.join(backupfolder, current_time, configfile))
+        backupconfigpaths.append(os.path.join(backupfolder, configfile))
     for i in range(len(configfilespathfrommodslocation)):
         minput = os.path.join(modslocation, configfilespathfrommodslocation[i])
         moutput = backupconfigpaths[i]
@@ -68,22 +68,25 @@ def create_backup_folders_and_copy_files(configfilespathfrommodslocation):
         copyfile(minput, moutput)
     # output: nothing/error
 
+def backup_option(modslocation, backupfolder):
+    # print what you do
+    print("Moving configs from " + modslocation + " to " + backupfolder)
+    configfilespathfrommodslocation = find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation)
+    create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslocation,backupfolder)
+    # print done
+    print("Done backing up config files")
+
 def main():
     # backup folder location
     global backupfolder
     backupfolder = "ConfigBackup"
     # mods location
     global modslocation
-    modslocation = "C:\\Users\\milord\\AppData\Local\\Daedalic Entertainment GmbH\\Barotrauma\\WorkshopMods\\Installed"
+    modslocation = "LocalMods"
 
-    option = "bringback"
+    option = "backup"
     if option == "backup":
-        # print what you do
-        print("Moving configs from " + modslocation + " to " + backupfolder)
-        configfilespathfrommodslocation = find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation)
-        create_backup_folders_and_copy_files(configfilespathfrommodslocation)
-        # print done
-        print("Done backing up config files")
+        backup_option(modslocation, backupfolder)
     elif option == "bringback":
         # Newest
         dir_list = os.listdir(backupfolder)
