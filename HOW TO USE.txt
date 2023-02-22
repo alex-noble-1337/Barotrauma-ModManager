@@ -3,3 +3,4 @@ same with default_barotrauma_path probbably
 relative paths should work, but extreme caution is advised
 
 configure progam by editing first two variables at the top of the ModManager.py file
+HOTBOOT is in options

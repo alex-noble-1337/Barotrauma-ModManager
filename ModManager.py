@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 # CONFIGURATION if you dont wanna use arguments:
+hotboot = False # True/False
 default_barotrauma_path = ""
 default_tool_path = ""
 default_steamcmd_path = "steamcmdwin"
@@ -200,7 +201,9 @@ def main():
     # overwrite local copy with new copy downloaded above
     # removing for cleanup
 
-    
+    # base config
+    baseconfig_path = os.path.join(tool_path, "BestDefaultConfigsTM")
+    backup_option(baseconfig_path,inputdir)
 
     if os.path.exists(localmods_path):
         # config_bringback
@@ -212,5 +215,6 @@ def main():
     print("Verifyed Mods!\n")
 
 if __name__ == '__main__':
-    # print()
-    main()
+    if not hotboot:
+        # print()
+        main()
