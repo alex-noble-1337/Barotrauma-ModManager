@@ -1,13 +1,12 @@
 #!/usr/bin/env python3
 
 # CONFIGURATION if you dont wanna use arguments:
-hotboot = False # True/False
 default_barotrauma_path = ""
 default_tool_path = ""
-default_steamcmd_path = "steamcmdwin"
+default_steamcmd_path = "steamcmd"
+addperformacefix = False
 # TODO Still testing and working on it
 default_lastupdated_functionality = False
-
 
 # My "Quality" code
 import os # TODO change this to import only individual commands
@@ -127,7 +126,7 @@ def main():
         print(str(mod["ID"]) + ": " + mod["Name"])
     print("\n")
 
-    if not has_performancefix:
+    if not has_performancefix and addperformacefix == True:
         WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
         modlist.insert(0, WorkshopItem)
 
@@ -197,24 +196,31 @@ def main():
     print("\nAll "+ str(numberofupdatedmods) +" Mods have been updated")
     print("Done updating mods!")
 
-    inputdir = os.path.join(barotrauma_path, "steamdir", "steamapps", "workshop", "content", "602960")
+    newinputdir = os.path.join(barotrauma_path, "steamdir", "steamapps", "workshop", "content", "602960")
     # overwrite local copy with new copy downloaded above
     # removing for cleanup
 
     # base config
     baseconfig_path = os.path.join(tool_path, "BestDefaultConfigsTM")
-    backup_option(baseconfig_path,inputdir)
+    backup_option(baseconfig_path,newinputdir)
 
     if os.path.exists(localmods_path):
         # config_bringback
-        backup_option(localmods_path,inputdir)
+        backup_option(localmods_path,newinputdir)
         shutil.rmtree(localmods_path)
     os.mkdir(localmods_path)
-    robocopysubsttute(inputdir, localmods_path)
+    robocopysubsttute(newinputdir, localmods_path)
     shutil.rmtree(steamdir_path)
     print("Verifyed Mods!\n")
 
 if __name__ == '__main__':
-    if not hotboot:
-        # print()
-        main()
+    print("\n")
+    while(True):
+        print("[ModManager] Do you want to update mods? ((Y)es / (n)o): ")
+        newinput = input()
+        if newinput.lower() == "yes" or newinput.lower() == "y":
+            main()
+            break
+        elif newinput.lower() == "no" or newinput.lower() == "n":
+            break
+        print("Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
