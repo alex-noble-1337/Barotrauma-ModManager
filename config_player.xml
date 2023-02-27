@@ -60,22 +60,25 @@
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
     <regularpackages>
-      <!--Local Voice Fix [Lua update]-->
-      <package
-        path="LocalMods/2362585294/filelist.xml" />
-      <!--Midround Latejoin Respawner-->
-      <package
-        path="LocalMods/2867936689/filelist.xml" />
-      <!--Let Them All In-->
-      <package
-        path="LocalMods/2805065898/filelist.xml" />
-      <!--Server Host Helper-->
-      <package
-        path="LocalMods/2850108374/filelist.xml" />
-      <!--GM Tools - Advanced moderation tools-->
-      <package
-        path="LocalMods/2829470717/filelist.xml" />
-    </regularpackages>
+			<!--Local Voice Fix [Lua update]-->
+			<package
+				path="LocalMods/2362585294/filelist.xml" />
+			<!--Handheld Locker-->
+			<package
+				path="LocalMods/Handheld Locker/filelist.xml" />
+			<!--Midround Latejoin Respawner-->
+			<package
+				path="LocalMods/2867936689/filelist.xml" />
+			<!--Let Them All In-->
+			<package
+				path="LocalMods/2805065898/filelist.xml" />
+			<!--Server Host Helper-->
+			<package
+				path="LocalMods/2850108374/filelist.xml" />
+			<!--GM Tools - Advanced moderation tools-->
+			<package
+				path="LocalMods/2829470717/filelist.xml" />
+</regularpackages>
   </contentpackages>
   <serverfilters
     FilterSameVersion="True"
