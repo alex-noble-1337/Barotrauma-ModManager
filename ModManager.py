@@ -3,7 +3,7 @@
 # CONFIGURATION if you dont wanna use arguments:
 default_barotrauma_path = ""
 default_tool_path = ""
-default_steamcmd_path = "steamcmdwin" # steamcmd
+default_steamcmd_path = "steamcmd"
 addperformacefix = False
 # TODO Still testing and working on it
 default_lastupdated_functionality = False
@@ -60,11 +60,10 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path):
     for mod in modlist_str:
         pattern = "(?<=^)(.*?)(?=-->)"
         mod_name = re.findall(pattern, mod)[0]
-        pattern = "(?<=" + localcopy_path + "\/)(\d*?)(?=$)"
-        mod_id = re.findall(pattern, mod)
-        if len(mod_id) > 0: 
-            WorkshopItem = {'Name': mod_name, 'ID': mod_id[0]}
-            modlist.append(WorkshopItem)
+        pattern = "(?<=" + localcopy_path + "\/)(.*?)(?=$)"
+        mod_id = re.findall(pattern, mod)[0]
+        WorkshopItem = {'Name': mod_name, 'ID': mod_id}
+        modlist.append(WorkshopItem)
     return modlist
 
 # function that uses steamcmd
@@ -119,19 +118,13 @@ def main():
         localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
 
 
-    mods_b = []
     has_performancefix = False
     print("List of mods:")
     for mod in modlist:
-        pattern = "\d*?"
-        if re.match(pattern, mod["ID"]):
-            if str(mod["ID"]) == "2701251094":
-                has_performancefix = True
-            print(str(mod["ID"]) + ": " + mod["Name"])
-        mods_b.append(mod)
+        if str(mod["ID"]) == "2701251094":
+            has_performancefix = True
+        print(str(mod["ID"]) + ": " + mod["Name"])
     print("\n")
-    modlist = mods_b
-
 
     if not has_performancefix and addperformacefix == True:
         WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
