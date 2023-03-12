@@ -25,31 +25,32 @@ def find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation):
     dir_list = os.listdir(modslocation)
     configfilespathfrommodslocation = []
     for moddir in dir_list:
-        moddir_x = os.path.join(modslocation, moddir)
-        insidemoddir = os.listdir(moddir_x)
-        if "Lua" in insidemoddir or "CSharp" in insidemoddir:
-            # search in root
-            for item in insidemoddir:
-                if config_files_find(item):
-                    configfilespathfrommodslocation.append(os.path.join(moddir, item))
-        if "Lua" in insidemoddir:
-            # search in lua
-            moddir_x = os.path.join(moddir_x, "Lua")
-            insidemoddir_x = os.listdir(moddir_x)
-            for item in insidemoddir_x:
-                if config_files_find(item):
-                    configfilespathfrommodslocation.append(os.path.join(moddir, "Lua", item))
-        if "CSharp" in insidemoddir:
-            # search in CSharp
-            moddir_x = os.path.join(moddir_x, "CSharp")
-            insidemoddir_x = os.listdir(moddir_x)
-            for item in insidemoddir_x:
-                if config_files_find(item):
-                    configfilespathfrommodslocation.append(os.path.join(moddir, "CSharp", item))
-        if len(configfilespathfrommodslocation) <= 0:
-            for item in insidemoddir:
-                if config_files_find(item):
-                    configfilespathfrommodslocation.append(os.path.join(moddir, item))
+        if os.path.isdir(moddir):
+            moddir_x = os.path.join(modslocation, moddir)
+            insidemoddir = os.listdir(moddir_x)
+            if "Lua" in insidemoddir or "CSharp" in insidemoddir:
+                # search in root
+                for item in insidemoddir:
+                    if config_files_find(item):
+                        configfilespathfrommodslocation.append(os.path.join(moddir, item))
+            if "Lua" in insidemoddir:
+                # search in lua
+                moddir_x = os.path.join(moddir_x, "Lua")
+                insidemoddir_x = os.listdir(moddir_x)
+                for item in insidemoddir_x:
+                    if config_files_find(item):
+                        configfilespathfrommodslocation.append(os.path.join(moddir, "Lua", item))
+            if "CSharp" in insidemoddir:
+                # search in CSharp
+                moddir_x = os.path.join(moddir_x, "CSharp")
+                insidemoddir_x = os.listdir(moddir_x)
+                for item in insidemoddir_x:
+                    if config_files_find(item):
+                        configfilespathfrommodslocation.append(os.path.join(moddir, "CSharp", item))
+            if len(configfilespathfrommodslocation) <= 0:
+                for item in insidemoddir:
+                    if config_files_find(item):
+                        configfilespathfrommodslocation.append(os.path.join(moddir, item))
     return(configfilespathfrommodslocation)
     # output: config files path from mods location: configfilespathfrommodslocation
 
@@ -97,7 +98,7 @@ def main():
         dir_list = os.listdir(backupfolder)
 
 
-        backupconfigs = find_mods_that_have_Lua_folder_or_CSharp_folder(backupfolder)
+        backupconfigs = find_mods_that_have_Lua_folder_or_CSharp_folder(backupfolder, pattern)
         realconfigs = []
         for config in backupconfigs:
             realconfigs.append(os.path.join(modslocation, config))
