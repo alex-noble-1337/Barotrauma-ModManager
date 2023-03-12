@@ -2,7 +2,7 @@
 
 # CONFIGURATION if you dont wanna use arguments:
 default_barotrauma_path = ""
-default_tool_path = ""
+default_tool_path = "ModManager"
 default_steamcmd_path = "steamcmd"
 addperformacefix = False
 # TODO Still testing and working on it
@@ -124,7 +124,7 @@ def main():
                     barotrauma_path = options_arr[i+1]
                     changed_barotrauma_path = True
             
-            # --toolpath or -t - path where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
+            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
             if tempval > 1 :
                 if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
                     tool_path = options_arr[i+1]
