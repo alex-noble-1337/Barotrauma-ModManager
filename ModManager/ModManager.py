@@ -84,7 +84,8 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path):
         mod_name = re.findall(pattern, mod)[0]
         pattern = '(?<=path=")(.*?)(?=$)'
         mod_id = re.findall(pattern, mod)[0]
-        mod_id = mod_id.replace('/', '\\')
+        if sys.platform == "win32":
+            mod_id = mod_id.replace('/', '\\')
         mod_id = mod_id.replace(localcopy_path, "")
         WorkshopItem = {'Name': mod_name, 'ID': mod_id}
         modlist.append(WorkshopItem)
@@ -119,20 +120,41 @@ def main():
             tempval = len(options_arr[i:i+1]) + 1
 
             # --barotraumapath or -b - path to your barotrauma install. Must be a path to THE FOLDER, not the program itself. Does not accept ""
-            if tempval > 1 :
-                if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
-                    barotrauma_path = options_arr[i+1]
+            if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        barotrauma_path = os.getcwd()
+                        changed_barotrauma_path = True
+                    else:
+                        barotrauma_path = options_arr[i+1]
+                        changed_barotrauma_path = True
+                else:
+                    barotrauma_path = os.getcwd()
                     changed_barotrauma_path = True
             
             # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
-            if tempval > 1 :
-                if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
-                    tool_path = options_arr[i+1]
+            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        tool_path = os.getcwd()
+                        changed_tool_path = True
+                    else:
+                        tool_path = options_arr[i+1]
+                        changed_tool_path = True
+                else:
+                    tool_path = os.getcwd()
                     changed_tool_path = True
 
             # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
-            if tempval > 1 :
-                if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
+            if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        steamcmd_path = os.getcwd()
+                        changed_steamcmd_path = True
+                    else:
+                        steamcmd_path = options_arr[i+1]
+                        changed_steamcmd_path = True
+                else:
                     steamcmd_path = options_arr[i+1]
                     changed_steamcmd_path = True
 
@@ -193,7 +215,10 @@ def main():
     regularpackages_new = "\n"
     # print new
     for mod in modlist:
-        temp_localcopy_path = localcopy_path.replace("\\", "/")
+        if sys.platform == "win32":
+            temp_localcopy_path = localcopy_path.replace("\\", "/")
+        else:
+            temp_localcopy_path = localcopy_path
         regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
         regularpackages_new += "\t\t\t<package\n"
         regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path +  mod['ID'] + "/filelist.xml\" />\n"
@@ -280,6 +305,6 @@ if __name__ == '__main__':
         if newinput.lower() == "yes" or newinput.lower() == "y":
             main()
             break
-        elif newinput.lower() == "no" or newinput.lower() == "n":
+        elif newinput.lower() == "no" or newinput.lower() == "n" or newinput.lower() == "kill":
             break
         print("Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
