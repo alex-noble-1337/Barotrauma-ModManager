@@ -175,6 +175,7 @@ def main():
     if not os.path.isabs(barotrauma_path):
         barotrauma_path = os.path.join(os.getcwd(), barotrauma_path)
 
+
     regularpackages = get_filelist_str(barotrauma_path)
     localcopy_path = get_localcopy_path(regularpackages)
 
@@ -198,7 +199,7 @@ def main():
     #     localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
 
     if not os.path.isabs(localcopy_path):
-        localcopy_path = os.path.join(os.path.dirname(__file__), localcopy_path)
+        localcopy_path = os.path.join(os.getcwd(), localcopy_path)
 
     has_performancefix = False
     print("List of mods:")
@@ -215,10 +216,16 @@ def main():
     regularpackages_new = "\n"
     # print new
     for mod in modlist:
+        #  if barotrauma_path is inside of 
+        temp_localcopy_path = localcopy_path
+        if temp_localcopy_path.count(barotrauma_path) > 0:
+            temp_localcopy_path = temp_localcopy_path.replace(barotrauma_path, "")
+
         if sys.platform == "win32":
-            temp_localcopy_path = localcopy_path.replace("\\", "/")
+            temp_localcopy_path = temp_localcopy_path.replace("\\", "/")
         else:
-            temp_localcopy_path = localcopy_path
+            temp_localcopy_path = temp_localcopy_path
+
         regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
         regularpackages_new += "\t\t\t<package\n"
         regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path +  mod['ID'] + "/filelist.xml\" />\n"

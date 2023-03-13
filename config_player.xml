@@ -62,7 +62,7 @@
     <regularpackages>
 			<!--Performance Fix-->
 			<package
-				path="G:/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/LocalMods/2701251094/filelist.xml" />
+				path="LocalMods/2701251094/filelist.xml" />
 </regularpackages>
   </contentpackages>
 </config>
