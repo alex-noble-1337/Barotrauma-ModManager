@@ -177,7 +177,9 @@ def main():
 
 
     regularpackages = get_filelist_str(barotrauma_path)
-    localcopy_path = get_localcopy_path(regularpackages)
+    localcopy_path_og = get_localcopy_path(regularpackages)
+    localcopy_path = localcopy_path_og
+    print("Original path " + localcopy_path_og)
 
     modlist = get_listOfModsfromConfig(regularpackages,localcopy_path)
     # modless?
@@ -217,7 +219,7 @@ def main():
     # print new
     for mod in modlist:
         #  if barotrauma_path is inside of 
-        temp_localcopy_path = localcopy_path
+        temp_localcopy_path = localcopy_path_og
         if temp_localcopy_path.count(barotrauma_path) > 0:
             temp_localcopy_path = temp_localcopy_path.replace(barotrauma_path, "")
 
