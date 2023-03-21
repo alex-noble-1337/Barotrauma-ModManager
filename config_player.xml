@@ -1,0 +1,128 @@
+﻿<config
+  language="English"
+  verboselogging="false"
+  savedebugconsolelogs="false"
+  savepath=""
+  subeditorundobuffer="32"
+  maxautosaves="8"
+  autosaveintervalseconds="300"
+  subeditorbackground="#0D2545"
+  enablesplashscreen="true"
+  pauseonfocuslost="true"
+  aimassistamount="0.05"
+  enablemouselook="true"
+  showenemyhealthbars="ShowAll"
+  chatopen="true"
+  crewmenuopen="true"
+  showoffensiveserverprompt="true"
+  tutorialskipwarning="true"
+  corpsedespawndelay="600"
+  corpsespersubdespawnthreshold="5"
+  usedualmodesockets="true"
+  disableingamehints="false"
+  enablesubmarineautosave="true"
+  quickstartsub="">
+  <graphicssettings
+    width="0"
+    height="0"
+    vsync="true"
+    compresstextures="true"
+    framelimit="300"
+    displaymode="BorderlessWindowed"
+    particlelimit="1500"
+    specularity="true"
+    chromaticaberration="true"
+    losmode="Transparent"
+    hudscale="1"
+    inventoryscale="1"
+    lightmapscale="1"
+    visiblelightlimit="50"
+    textscale="1"
+    radialdistortion="true" />
+  <audio
+    musicvolume="0.3"
+    soundvolume="0.5"
+    uivolume="0.3"
+    voicechatvolume="0.5"
+    voicechatcutoffprevention="0"
+    microphonevolume="5"
+    muteonfocuslost="false"
+    dynamicrangecompressionenabled="true"
+    usedirectionalvoicechat="true"
+    voipattenuationenabled="true"
+    voicesetting="PushToTalk"
+    audiooutputdevice=""
+    voicecapturedevice=""
+    noisegatethreshold="0"
+    disablevoicechatfilters="false" />
+   <contentpackages>
+    <!--Vanilla-->
+    <corepackage
+      path="Content/ContentPackages/Vanilla.xml" />
+      <regularpackages>
+        <!--Performance Fix-->
+        <package
+          path="/home/container/ModManager/LocalMods/2701251094/filelist.xml" />
+        <!--BaroTraumatic-->
+        <package
+          path="/home/container/ModManager/LocalMods/2518816103/filelist.xml" />
+        <!--JobsExtended Combat Overhaul Redux COR Patch-->
+        <package
+          path="/home/container/ModManager/LocalMods/2939976611/filelist.xml" />
+        <!--JobsExtended-->
+        <package
+          path="/home/container/ModManager/LocalMods/2526236489/filelist.xml" />
+        <!--Neurotrauma-->
+        <package
+          path="/home/container/ModManager/LocalMods/2776270649/filelist.xml" />
+        <!--SFB with DE-->
+        <package
+          path="/home/container/ModManager/LocalMods/2907491279/filelist.xml" />
+        <!--DynamicEuropa-->
+        <package
+          path="/home/container/ModManager/LocalMods/2532991202/filelist.xml" />
+        <!--Combat Overhaul Redux(COR)-->
+        <package
+          path="/home/container/ModManager/LocalMods/2938755466/filelist.xml" />
+        <!--Hazardous Reactors-->
+        <package
+          path="/home/container/ModManager/LocalMods/2547888957/filelist.xml" />
+        <!--Improved Husks-->
+        <package
+          path="/home/container/ModManager/LocalMods/2085783214/filelist.xml" />
+        <!--NT Pharmacy-->
+        <package
+          path="/home/container/ModManager/LocalMods/2804655816/filelist.xml" />
+        <!--Neurotrauma Cybernetics-->
+        <package
+          path="/home/container/ModManager/LocalMods/2788543375/filelist.xml" />
+        <!--Stations from beyond-->
+        <package
+          path="/home/container/ModManager/LocalMods/2585543390/filelist.xml" />
+        <!--Lua Linker-->
+        <package
+          path="/home/container/ModManager/LocalMods/2852315967/filelist.xml" />
+        <!--BaroCraftables+-->
+        <package
+          path="/home/container/ModManager/LocalMods/2764140582/filelist.xml" />
+        <!--ADV Beacon Stations-->
+        <package
+          path="/home/container/ModManager/LocalMods/2544952900/filelist.xml" />
+        <!--Genes+ Revived and Expanded-->
+        <package
+          path="/home/container/ModManager/LocalMods/2799033770/filelist.xml" />
+        <!--More Artifacts (AOCS)-->
+        <package
+          path="/home/container/ModManager/LocalMods/2776026770/filelist.xml" />
+        <!--JESubmarinePack-->
+        <package
+          path="/home/container/ModManager/LocalMods/2940118624/filelist.xml" />
+        <!--Server Host Helper-->
+        <package
+          path="/home/container/ModManager/LocalMods/2850108374/filelist.xml" />
+        <!--GM Tools - Advanced moderation tools-->
+        <package
+          path="/home/container/ModManager/LocalMods/2829470717/filelist.xml" />
+  </regularpackages>
+  </contentpackages>
+</config>

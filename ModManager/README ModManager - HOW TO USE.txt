@@ -1,7 +1,3 @@
-# BarotraumaServerHelper
-This scripts help you manage, and (soon) set up, your barotrauma server.
-
-# README ModManager - HOW TO USE.txt
 Im not responsible for being an USER and breaking your computer ;)
 
 command line options:

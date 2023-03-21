@@ -2,11 +2,15 @@
 
 # CONFIGURATION if you dont wanna use arguments:
 default_barotrauma_path = ""
-default_tool_path = ""
+default_tool_path = "ModManager"
 default_steamcmd_path = "steamcmd"
 addperformacefix = False
 # TODO Still testing and working on it
 default_lastupdated_functionality = False
+
+# TODO
+# convert to linux path
+# why is there localmods_path and localcopy_path
 
 # My "Quality" code
 import os # TODO change this to import only individual commands
@@ -21,7 +25,14 @@ from ConfigRecoder import get_modsnamelastupdated
 from configbackup import backup_option
 
 # yoinked from stackoverflow, works
-def robocopysubsttute(root_src_dir, root_dst_dir):
+def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
+    if replace_option:
+        number_dirs = os.listdir(root_dst_dir)
+        for number_dir in number_dirs:
+            pattern = "^\d*?$"
+            if re.match(pattern, number_dir):
+                if os.path.exists(os.path.join(root_dst_dir, number_dir)):
+                    shutil.rmtree(os.path.join(root_dst_dir, number_dir))
     for src_dir, dirs, files in os.walk(root_src_dir):
         dst_dir = src_dir.replace(root_src_dir, root_dst_dir, 1)
         if not os.path.exists(dst_dir):
@@ -47,12 +58,23 @@ def get_filelist_str(barotrauma_path):
     return regularpackages
 
 def get_localcopy_path(filelist_str):
-    pattern = "(?<=path=\")(.*?)(?=.\d*?\/filelist\.xml)"
-    path = re.findall(pattern, filelist_str)[0]
-    return path
+    pattern = "(?<=path=\")(.*?)(?=\/filelist\.xml)"
+    path = re.findall(pattern, filelist_str)
+    if len(path) > 0:
+        path = path[0].split("/")
+        new_path = ""
+        for i in range(len(path)-1):
+            if sys.platform == "win32":
+                new_path += path[i] + "\\"
+            else:
+                new_path += path[i] + "/"
+        return new_path
+    else:
+        return ""
 
 # find mods to update from config_player.xml
 def get_listOfModsfromConfig(filelist_str,localcopy_path):
+    # filelist.xml" />
     pattern = "(?<=<!--)[\s\S]*?(?=\/filelist\.xml)"
     modlist_str = re.findall(pattern, filelist_str)
     
@@ -60,63 +82,126 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path):
     for mod in modlist_str:
         pattern = "(?<=^)(.*?)(?=-->)"
         mod_name = re.findall(pattern, mod)[0]
-        pattern = "(?<=" + localcopy_path + "\/)(.*?)(?=$)"
+        pattern = '(?<=path=")(.*?)(?=$)'
         mod_id = re.findall(pattern, mod)[0]
+        if sys.platform == "win32":
+            mod_id = mod_id.replace('/', '\\')
+        mod_id = mod_id.replace(localcopy_path, "")
         WorkshopItem = {'Name': mod_name, 'ID': mod_id}
         modlist.append(WorkshopItem)
     return modlist
 
 # function that uses steamcmd
 def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
-    if sys.platform == "win32":
-        command = os.path.join(tool_path, steamcmd_path, "steamcmd.exe")
-    else:
-        command = os.path.join(steamcmd_path, "steamcmd")
-        if (not os.path.exists(command)) and (not steamcmd_path == ""):
-            command = os.path.join(steamcmd_path, "steamcmd.sh")
-    arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
-    # TODO make its outpot less shit
-    subprocess.call(arguments)
-    time.sleep(1)
+    pattern = "^\d*?$"
+    if re.match(pattern, number_of_mod):
+        if sys.platform == "win32":
+            command = os.path.join(steamcmd_path, "steamcmd.exe")
+        else:
+            command = os.path.join(steamcmd_path, "steamcmd")
+            if (not os.path.exists(command)) and (not steamcmd_path == ""):
+                command = os.path.join(steamcmd_path, "steamcmd.sh")
+        arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
+        # TODO make its outpot less shit
+        subprocess.call(arguments)
+        time.sleep(1)
+        return 0
 
 def main():
     # path handling
-    if len(sys.argv) > 1:
-        barotrauma_path = sys.argv[1]
-        tool_path = sys.argv[2]
-    else:
-        # defaults EDIT THOSE
+
+    options_arr = sys.argv[1:]
+    changed_barotrauma_path = False
+    changed_tool_path = False
+    changed_steamcmd_path = False
+
+    if len(options_arr) > 1:
+        for i in range(0,len(options_arr)):
+            tempval = len(options_arr[i:i+1]) + 1
+
+            # --barotraumapath or -b - path to your barotrauma install. Must be a path to THE FOLDER, not the program itself. Does not accept ""
+            if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        barotrauma_path = os.getcwd()
+                        changed_barotrauma_path = True
+                    else:
+                        barotrauma_path = options_arr[i+1]
+                        changed_barotrauma_path = True
+                else:
+                    barotrauma_path = os.getcwd()
+                    changed_barotrauma_path = True
+            
+            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
+            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        tool_path = os.getcwd()
+                        changed_tool_path = True
+                    else:
+                        tool_path = options_arr[i+1]
+                        changed_tool_path = True
+                else:
+                    tool_path = os.getcwd()
+                    changed_tool_path = True
+
+            # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
+            if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        steamcmd_path = os.getcwd()
+                        changed_steamcmd_path = True
+                    else:
+                        steamcmd_path = options_arr[i+1]
+                        changed_steamcmd_path = True
+                else:
+                    steamcmd_path = options_arr[i+1]
+                    changed_steamcmd_path = True
+
+    if not changed_barotrauma_path:
         barotrauma_path = default_barotrauma_path
+    if not changed_tool_path:
         tool_path = default_tool_path
-        lastupdated_functionality = default_lastupdated_functionality
+    if not changed_steamcmd_path:
         steamcmd_path = default_steamcmd_path
 
+    lastupdated_functionality = default_lastupdated_functionality
 
     steamdir_path = os.path.join(tool_path, "steamdir")
     if os.path.exists(steamdir_path):
         shutil.rmtree(steamdir_path)
     os.mkdir(steamdir_path)
 
+    if not os.path.isabs(barotrauma_path):
+        barotrauma_path = os.path.join(os.getcwd(), barotrauma_path)
+
+
     regularpackages = get_filelist_str(barotrauma_path)
-    localcopy_path = get_localcopy_path(regularpackages)
+    localcopy_path_og = get_localcopy_path(regularpackages)
+    localcopy_path = localcopy_path_og
+    print("Original path " + localcopy_path_og)
 
     modlist = get_listOfModsfromConfig(regularpackages,localcopy_path)
+    # modless?
+    if len(modlist) == 0:
+        print("No mods detected")
+        return 
 
-    if not os.path.isabs(barotrauma_path):
-        barotrauma_path = os.path.join(os.path.dirname(__file__), barotrauma_path)
     if not os.path.isabs(tool_path):
-        tool_path = os.path.join(os.path.dirname(__file__), tool_path)
+        tool_path = os.path.join(os.getcwd(), tool_path)
     if not os.path.isabs(steamcmd_path):
-        steamcmd_path = os.path.join(os.path.dirname(__file__), steamcmd_path)
+        steamcmd_path = os.path.join(os.getcwd(), steamcmd_path)
     if not os.path.isabs(steamdir_path):
-        steamdir_path = os.path.join(os.path.dirname(__file__), steamdir_path)
+        steamdir_path = os.path.join(os.getcwd(), steamdir_path)
         
 
-    if os.path.isabs(localcopy_path):
-        localmods_path = os.path.abspath(localcopy_path)
-    else:
-        localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
+    # if os.path.isabs(localcopy_path):
+    #     localmods_path = os.path.abspath(localcopy_path)
+    # else:
+    #     localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
 
+    if not os.path.isabs(localcopy_path):
+        localcopy_path = os.path.join(os.getcwd(), localcopy_path)
 
     has_performancefix = False
     print("List of mods:")
@@ -133,9 +218,19 @@ def main():
     regularpackages_new = "\n"
     # print new
     for mod in modlist:
+        #  if barotrauma_path is inside of 
+        temp_localcopy_path = localcopy_path_og
+        if temp_localcopy_path.count(barotrauma_path) > 0:
+            temp_localcopy_path = temp_localcopy_path.replace(barotrauma_path, "")
+
+        if sys.platform == "win32":
+            temp_localcopy_path = temp_localcopy_path.replace("\\", "/")
+        else:
+            temp_localcopy_path = temp_localcopy_path
+
         regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
         regularpackages_new += "\t\t\t<package\n"
-        regularpackages_new += "\t\t\t\tpath=\"" + localcopy_path + "/" +  mod['ID'] + "/filelist.xml\" />\n"
+        regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path +  mod['ID'] + "/filelist.xml\" />\n"
 
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
     # TODO make it in bracket with using f.open or smth, and error handling
@@ -179,9 +274,10 @@ def main():
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
             print("Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
-            moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
+            output = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
             print("\n")
-            numberofupdatedmods += 1
+            if output == 0:
+                numberofupdatedmods += 1
             if lastupdated_functionality:
                 # update localupdatedates
                 localupdatedate = [mod, time.strptime(datetime.datetime.now(),'%d %b, %Y @ %I:%M%p')]
@@ -194,9 +290,9 @@ def main():
             f.close()
 
     print("\nAll "+ str(numberofupdatedmods) +" Mods have been updated")
-    print("Done updating mods!")
+    print("Downloading mods complete!")
 
-    newinputdir = os.path.join(barotrauma_path, "steamdir", "steamapps", "workshop", "content", "602960")
+    newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
     # overwrite local copy with new copy downloaded above
     # removing for cleanup
 
@@ -204,12 +300,9 @@ def main():
     baseconfig_path = os.path.join(tool_path, "BestDefaultConfigsTM")
     backup_option(baseconfig_path,newinputdir)
 
-    if os.path.exists(localmods_path):
-        # config_bringback
-        backup_option(localmods_path,newinputdir)
-        shutil.rmtree(localmods_path)
-    os.mkdir(localmods_path)
-    robocopysubsttute(newinputdir, localmods_path)
+
+    backup_option(localcopy_path,newinputdir)
+    robocopysubsttute(newinputdir, localcopy_path)
     shutil.rmtree(steamdir_path)
     print("Verifyed Mods!\n")
 
@@ -221,6 +314,6 @@ if __name__ == '__main__':
         if newinput.lower() == "yes" or newinput.lower() == "y":
             main()
             break
-        elif newinput.lower() == "no" or newinput.lower() == "n":
+        elif newinput.lower() == "no" or newinput.lower() == "n" or newinput.lower() == "kill":
             break
         print("Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
