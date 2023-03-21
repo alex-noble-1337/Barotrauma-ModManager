@@ -60,69 +60,51 @@
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
       <regularpackages>
-        <!--Performance Fix-->
-        <package
-          path="/home/container/ModManager/LocalMods/2701251094/filelist.xml" />
-        <!--BaroTraumatic-->
-        <package
-          path="/home/container/ModManager/LocalMods/2518816103/filelist.xml" />
-        <!--JobsExtended Combat Overhaul Redux COR Patch-->
-        <package
-          path="/home/container/ModManager/LocalMods/2939976611/filelist.xml" />
-        <!--JobsExtended-->
-        <package
-          path="/home/container/ModManager/LocalMods/2526236489/filelist.xml" />
-        <!--Neurotrauma-->
-        <package
-          path="/home/container/ModManager/LocalMods/2776270649/filelist.xml" />
-        <!--SFB with DE-->
-        <package
-          path="/home/container/ModManager/LocalMods/2907491279/filelist.xml" />
-        <!--DynamicEuropa-->
-        <package
-          path="/home/container/ModManager/LocalMods/2532991202/filelist.xml" />
-        <!--Combat Overhaul Redux(COR)-->
-        <package
-          path="/home/container/ModManager/LocalMods/2938755466/filelist.xml" />
-        <!--Hazardous Reactors-->
-        <package
-          path="/home/container/ModManager/LocalMods/2547888957/filelist.xml" />
-        <!--Improved Husks-->
-        <package
-          path="/home/container/ModManager/LocalMods/2085783214/filelist.xml" />
-        <!--NT Pharmacy-->
-        <package
-          path="/home/container/ModManager/LocalMods/2804655816/filelist.xml" />
-        <!--Neurotrauma Cybernetics-->
-        <package
-          path="/home/container/ModManager/LocalMods/2788543375/filelist.xml" />
-        <!--Stations from beyond-->
-        <package
-          path="/home/container/ModManager/LocalMods/2585543390/filelist.xml" />
-        <!--Lua Linker-->
-        <package
-          path="/home/container/ModManager/LocalMods/2852315967/filelist.xml" />
-        <!--BaroCraftables+-->
-        <package
-          path="/home/container/ModManager/LocalMods/2764140582/filelist.xml" />
-        <!--ADV Beacon Stations-->
-        <package
-          path="/home/container/ModManager/LocalMods/2544952900/filelist.xml" />
-        <!--Genes+ Revived and Expanded-->
-        <package
-          path="/home/container/ModManager/LocalMods/2799033770/filelist.xml" />
-        <!--More Artifacts (AOCS)-->
-        <package
-          path="/home/container/ModManager/LocalMods/2776026770/filelist.xml" />
-        <!--JESubmarinePack-->
-        <package
-          path="/home/container/ModManager/LocalMods/2940118624/filelist.xml" />
-        <!--Server Host Helper-->
-        <package
-          path="/home/container/ModManager/LocalMods/2850108374/filelist.xml" />
-        <!--GM Tools - Advanced moderation tools-->
-        <package
-          path="/home/container/ModManager/LocalMods/2829470717/filelist.xml" />
-  </regularpackages>
+			<!--Fix Garbled Message Text-->
+			<package
+				path="LocalMods2828218775/filelist.xml" />
+			<!--Performance Fix-->
+			<package
+				path="LocalMods2701251094/filelist.xml" />
+			<!--MoreMissionsMod-->
+			<package
+				path="LocalMods2797298457/filelist.xml" />
+			<!--Combinable Ammo Revived (NOW WORKS WITH ALL AMMO)-->
+			<package
+				path="LocalMods2799051561/filelist.xml" />
+			<!--Let Me Choose !-->
+			<package
+				path="LocalMods2122045285/filelist.xml" />
+			<!--Beacons Extended-->
+			<package
+				path="LocalMods2389600483/filelist.xml" />
+			<!--ADV Beacon Stations-->
+			<package
+				path="LocalMods2544952900/filelist.xml" />
+			<!--New Wrecks For Barotrauma (With sellable wrecks)-->
+			<package
+				path="LocalMods2184257427/filelist.xml" />
+			<!--DynamicEuropa-->
+			<package
+				path="LocalMods2532991202/filelist.xml" />
+			<!--Shipwrecks Extended-->
+			<package
+				path="LocalMods2095211492/filelist.xml" />
+			<!--Kastrull-R-->
+			<package
+				path="LocalMods2940190180/filelist.xml" />
+			<!--BetterHealthUI-->
+			<package
+				path="LocalMods2807158602/filelist.xml" />
+			<!--Sort Container UI-->
+			<package
+				path="LocalMods2891181800/filelist.xml" />
+			<!--Heavy Crate From Backpacks-->
+			<package
+				path="LocalMods2873510449/filelist.xml" />
+			<!--Tax Evasion inc.-->
+			<package
+				path="LocalMods2950196860/filelist.xml" />
+</regularpackages>
   </contentpackages>
 </config>

@@ -23,6 +23,7 @@ import sys # TODO change this to import only individual commands
 
 from ConfigRecoder import get_modsnamelastupdated 
 from configbackup import backup_option
+from ConfigRecoder import generatelistOfMods 
 
 # yoinked from stackoverflow, works
 def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
@@ -114,6 +115,8 @@ def main():
     changed_barotrauma_path = False
     changed_tool_path = False
     changed_steamcmd_path = False
+    collectionmode = False
+
 
     if len(options_arr) > 1:
         for i in range(0,len(options_arr)):
@@ -158,6 +161,15 @@ def main():
                     steamcmd_path = options_arr[i+1]
                     changed_steamcmd_path = True
 
+            # TODO add it to the documentaton
+            if options_arr[i] == '--collection' or options_arr[i] == '-c':
+                # TODO idk if it works test later
+                if tempval > 1:
+                    # TODO check if link is good
+                    url_of_steam_collection = options_arr[i+1]
+                    collectionmode = True
+                    localcopy_path_og = options_arr[i+2]
+
     if not changed_barotrauma_path:
         barotrauma_path = default_barotrauma_path
     if not changed_tool_path:
@@ -177,14 +189,19 @@ def main():
 
 
     regularpackages = get_filelist_str(barotrauma_path)
-    localcopy_path_og = get_localcopy_path(regularpackages)
-    localcopy_path = localcopy_path_og
-    print("Original path " + localcopy_path_og)
 
-    modlist = get_listOfModsfromConfig(regularpackages,localcopy_path)
+    if collectionmode == False:
+        localcopy_path_og = get_localcopy_path(regularpackages)
+        modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
+    else:
+        print("[ModManager] Running in collection mode (This might take a sec)")
+        modlist = generatelistOfMods(url_of_steam_collection)
+
+    localcopy_path = localcopy_path_og
+
     # modless?
     if len(modlist) == 0:
-        print("No mods detected")
+        print("[ModManager] No mods detected")
         return 
 
     if not os.path.isabs(tool_path):
@@ -204,7 +221,7 @@ def main():
         localcopy_path = os.path.join(os.getcwd(), localcopy_path)
 
     has_performancefix = False
-    print("List of mods:")
+    print("[ModManager] List of mods:")
     for mod in modlist:
         if str(mod["ID"]) == "2701251094":
             has_performancefix = True
@@ -266,14 +283,14 @@ def main():
                 for i in range(len(localupdatedates)):
                     if localupdatedates[i][0] == mod:
                         if time.strptime(localupdatedates[i][1],'%d %b, %Y @ %I:%M%p') < mod['LastUpdated']:
-                            print("use mod downloader on " + mod)
+                            print("[ModManager] useing mod downloader on " + mod)
                             # update localupdatedates
                             localupdatedates[i][1] = time.strptime(datetime.datetime.now(),'%d %b, %Y @ %I:%M%p')
                             found = True
                             break
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
-            print("Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
+            print("[ModManager] Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
             output = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
             print("\n")
             if output == 0:
@@ -289,8 +306,8 @@ def main():
             f.write()
             f.close()
 
-    print("\nAll "+ str(numberofupdatedmods) +" Mods have been updated")
-    print("Downloading mods complete!")
+    print("\n[ModManager] All "+ str(numberofupdatedmods) +" Mods have been updated")
+    print("[ModManager] Downloading mods complete!")
 
     newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
     # overwrite local copy with new copy downloaded above
@@ -304,7 +321,7 @@ def main():
     backup_option(localcopy_path,newinputdir)
     robocopysubsttute(newinputdir, localcopy_path)
     shutil.rmtree(steamdir_path)
-    print("Verifyed Mods!\n")
+    print("[ModManager] Verifyed Mods!\n")
 
 if __name__ == '__main__':
     print("\n")
@@ -316,4 +333,4 @@ if __name__ == '__main__':
             break
         elif newinput.lower() == "no" or newinput.lower() == "n" or newinput.lower() == "kill":
             break
-        print("Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
+        print("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")

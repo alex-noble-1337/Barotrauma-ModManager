@@ -96,7 +96,6 @@ def textfilef(fileposition):
     return output_file
 
 def collectionf(url_of_steam_collection):
-    print("Running in collection mode")
     # here
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
     return collection_site
@@ -133,28 +132,31 @@ def get_modsnamelastupdated(mods):
             if num > 0:
                 runluaupdater = True
 
-            # lastupdated
-            pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
-            lastupdated = re.findall(pattern, modsite)[1]
-            # Eg. 1 Oct, 2022 @ 3:51am
-            if lastupdated[2] != " ":
-                lastupdated = "0" + lastupdated
-            # Eg. 11 Jan @ 1:15am
-            if lastupdated[7] == "@":
-                currentDateTime = datetime.datetime.now()
-                date = currentDateTime.date()
-                year = str(date.strftime("%Y"))
-                lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
-            # Eg. 28 May, 2022 @ 9:58pm
-            # Eg. 18 Jan 2023 @ 7:10pm
-            if lastupdated[16] == ":":
-                lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
-            lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
 
             pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
             name = re.findall(pattern, modsite)[0]
+            WorkshopItem = {'Name': name, 'ID': mods[i]['ID']}
 
-            WorkshopItem = {'Name': name, 'ID': mods[i]['ID'], 'LastUpdated': lastupdated}
+            if False:
+                # lastupdated
+                pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
+                lastupdated = re.findall(pattern, modsite)[1]
+                # Eg. 1 Oct, 2022 @ 3:51am
+                if lastupdated[2] != " ":
+                    lastupdated = "0" + lastupdated
+                # Eg. 11 Jan @ 1:15am
+                if lastupdated[7] == "@":
+                    currentDateTime = datetime.datetime.now()
+                    date = currentDateTime.date()
+                    year = str(date.strftime("%Y"))
+                    lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
+                # Eg. 28 May, 2022 @ 9:58pm
+                # Eg. 18 Jan 2023 @ 7:10pm
+                if lastupdated[16] == ":":
+                    lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
+                lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
+
+                WorkshopItem = {'Name': name, 'ID': mods[i]['ID'], 'LastUpdated': lastupdated}
             mods[i] = WorkshopItem
 
     # deleting because for cannot be in variable range or smth
@@ -167,6 +169,12 @@ def get_modsnamelastupdated(mods):
     # add custom submarine mods
     # remove outdated mods, print to face and in file that mods
     # sort?
+    return mods
+
+def generatelistOfMods(url_of_steam_collection):
+    collection_site = collectionf(url_of_steam_collection)
+    mods = get_listOfMods(collection_site)
+    mods = get_modsnamelastupdated(mods)
     return mods
 
 def main():
@@ -191,6 +199,8 @@ def main():
         # getting names here because its more efficient than request
         # not really needed i think
         # mods = get_modsname(collection_site)
+
+    
 
     # TODO find a way to only request lastupdated not whole cuz its to slow    
     mods = get_modsnamelastupdated(mods)
