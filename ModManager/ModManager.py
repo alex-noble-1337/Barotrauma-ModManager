@@ -162,6 +162,7 @@ def main():
                     changed_steamcmd_path = True
 
             # TODO add it to the documentaton
+            # TODO make it so you can input those values from command line
             if options_arr[i] == '--collection' or options_arr[i] == '-c':
                 # TODO idk if it works test later
                 if tempval > 1:
@@ -190,6 +191,19 @@ def main():
 
     regularpackages = get_filelist_str(barotrauma_path)
 
+    # TODO remove all previous mods, that arent used, from directory
+    # we first need to get all managed mods
+    old_managed_mods = ""
+    managed_mods_path = os.path.join(tool_path, "managed_mods.txt")
+
+    if os.path.exists(managed_mods_path):
+        f = open(managed_mods_path, "r", encoding='utf8')
+        old_managed_mods = f.read()
+        f.close()
+
+    # this will be paths to managed mods
+    old_managed_mods = old_managed_mods.split('\n')
+
     if collectionmode == False:
         localcopy_path_og = get_localcopy_path(regularpackages)
         modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
@@ -198,6 +212,11 @@ def main():
         modlist = generatelistOfMods(url_of_steam_collection)
 
     localcopy_path = localcopy_path_og
+
+    managed_mods = {}
+    for mod in modlist:
+        managed_mods.append(os.path.join(localcopy_path, mod['ID']))
+
 
     # modless?
     if len(modlist) == 0:
@@ -291,6 +310,8 @@ def main():
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
             print("[ModManager] Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
+            # TODO make output of steamcmd less spammy/silent
+            # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
             output = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
             print("\n")
             if output == 0:
@@ -319,6 +340,7 @@ def main():
 
 
     backup_option(localcopy_path,newinputdir)
+
     robocopysubsttute(newinputdir, localcopy_path)
     shutil.rmtree(steamdir_path)
     print("[ModManager] Verifyed Mods!\n")
