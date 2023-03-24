@@ -7,6 +7,7 @@ default_steamcmd_path = "steamcmd"
 addperformacefix = False
 # TODO Still testing and working on it
 default_lastupdated_functionality = False
+flush_previous_col = False
 
 # TODO
 # convert to linux path
@@ -64,11 +65,12 @@ def get_localcopy_path(filelist_str):
     if len(path) > 0:
         path = path[0].split("/")
         new_path = ""
-        for i in range(len(path)-1):
+        for i in range(len(path)-2):
             if sys.platform == "win32":
-                new_path += path[i] + "\\"
+                new_path += path[i] + "/"
             else:
                 new_path += path[i] + "/"
+        new_path += path[len(path)-2]
         return new_path
     else:
         return ""
@@ -87,7 +89,7 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path):
         mod_id = re.findall(pattern, mod)[0]
         if sys.platform == "win32":
             mod_id = mod_id.replace('/', '\\')
-        mod_id = mod_id.replace(localcopy_path, "")
+        mod_id = mod_id.replace(localcopy_path + "/", "")
         WorkshopItem = {'Name': mod_name, 'ID': mod_id}
         modlist.append(WorkshopItem)
     return modlist
@@ -102,13 +104,15 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
             command = os.path.join(steamcmd_path, "steamcmd")
             if (not os.path.exists(command)) and (not steamcmd_path == ""):
                 command = os.path.join(steamcmd_path, "steamcmd.sh")
+
+            # command = "steamcmd"
         arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
         # TODO make its outpot less shit
         subprocess.call(arguments)
         time.sleep(1)
         return 0
 
-def main():
+def main(collection_link = "", localmods_path_colop = ""):
     # path handling
 
     options_arr = sys.argv[1:]
@@ -203,24 +207,48 @@ def main():
 
     # this will be paths to managed mods
     old_managed_mods = old_managed_mods.split('\n')
+    if '' in old_managed_mods:
+        old_managed_mods.remove('')
+
+    # collection save file
+    collection_file_path = os.path.join(tool_path, "collection_save.txt")
+
+    collection_file = ""
+    if flush_previous_col:
+        if os.path.exists(collection_file_path):
+            os.remove(collection_file_path)
+        collectionmode = False
+    else:
+        if os.path.exists(collection_file_path):
+            f = open(collection_file_path, "r", encoding='utf8')
+            collection_file = f.read()
+            f.close()
+            arr = collection_file.split(" ")
+            url_of_steam_collection = arr[0]
+            localcopy_path_og = arr[1]
+            collectionmode = True
+
+    if collection_link != "" and localmods_path_colop != "":
+        url_of_steam_collection = collection_link
+        localcopy_path_og = localmods_path_colop
+        collectionmode = True
 
     if collectionmode == False:
         localcopy_path_og = get_localcopy_path(regularpackages)
         modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
     else:
-        print("[ModManager] Running in collection mode (This might take a sec)")
+        print("[ModManager]Collection mode enabled, Downloading collection data (This might take a sec)")
         modlist = generatelistOfMods(url_of_steam_collection)
+        f = open(collection_file_path, "w", encoding='utf8')
+        f.write(url_of_steam_collection + " " + localcopy_path_og)
+        f.close()
 
     localcopy_path = localcopy_path_og
-
-    managed_mods = {}
-    for mod in modlist:
-        managed_mods.append(os.path.join(localcopy_path, mod['ID']))
 
 
     # modless?
     if len(modlist) == 0:
-        print("[ModManager] No mods detected")
+        print("[ModManager]No mods detected")
         return 
 
     if not os.path.isabs(tool_path):
@@ -239,8 +267,18 @@ def main():
     if not os.path.isabs(localcopy_path):
         localcopy_path = os.path.join(os.getcwd(), localcopy_path)
 
+    managed_mods = []
+    for mod in modlist:
+        managed_mods.append(os.path.join(localcopy_path_og, mod['ID']))
+
+    not_managedmods = old_managed_mods
+    # remove modwithdir
+    for modwithdir in managed_mods:
+        if modwithdir in not_managedmods:
+            not_managedmods.remove(modwithdir)
+
     has_performancefix = False
-    print("[ModManager] List of mods:")
+    print("[ModManager]List of mods:")
     for mod in modlist:
         if str(mod["ID"]) == "2701251094":
             has_performancefix = True
@@ -266,7 +304,7 @@ def main():
 
         regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
         regularpackages_new += "\t\t\t<package\n"
-        regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path +  mod['ID'] + "/filelist.xml\" />\n"
+        regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
 
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
     # TODO make it in bracket with using f.open or smth, and error handling
@@ -276,6 +314,13 @@ def main():
     filelist_str = filelist_str.replace(regularpackages, regularpackages_new)
     f = open(filelist_path, "w", encoding='utf8')
     f.write(filelist_str)
+    f.close()
+
+    managed_mods_str = ""
+    for managed_mod in managed_mods:
+        managed_mods_str += managed_mod + "\n"
+    f = open(managed_mods_path, "w", encoding='utf8')
+    f.write(managed_mods_str)
     f.close()
 
     if lastupdated_functionality:
@@ -302,14 +347,14 @@ def main():
                 for i in range(len(localupdatedates)):
                     if localupdatedates[i][0] == mod:
                         if time.strptime(localupdatedates[i][1],'%d %b, %Y @ %I:%M%p') < mod['LastUpdated']:
-                            print("[ModManager] useing mod downloader on " + mod)
+                            print("[ModManager]useing mod downloader on " + mod)
                             # update localupdatedates
                             localupdatedates[i][1] = time.strptime(datetime.datetime.now(),'%d %b, %Y @ %I:%M%p')
                             found = True
                             break
         # main part running moddlownloader
         if (not lastupdated_functionality) and (found == False):
-            print("[ModManager] Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
+            print("[ModManager]Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
             # TODO make output of steamcmd less spammy/silent
             # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
             output = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
@@ -327,8 +372,8 @@ def main():
             f.write()
             f.close()
 
-    print("\n[ModManager] All "+ str(numberofupdatedmods) +" Mods have been updated")
-    print("[ModManager] Downloading mods complete!")
+    print("\n[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
+    print("[ModManager]Downloading mods complete!")
 
     newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
     # overwrite local copy with new copy downloaded above
@@ -341,18 +386,39 @@ def main():
 
     backup_option(localcopy_path,newinputdir)
 
+    # remove not_managedmods
+    print("[ModManager]Removing " + str(len(not_managedmods)) + " not managed now mods!")
+    for not_managedmod in not_managedmods:
+        if os.path.exists(not_managedmod):
+            shutil.rmtree(not_managedmod)
+
     robocopysubsttute(newinputdir, localcopy_path)
     shutil.rmtree(steamdir_path)
-    print("[ModManager] Verifyed Mods!\n")
+    print("[ModManager]Verifyed Mods!\n")
 
 if __name__ == '__main__':
     print("\n")
     while(True):
-        print("[ModManager] Do you want to update mods? ((Y)es / (n)o): ")
+        print("[ModManager]If you want to set up, or disable collection mode type \'c\', then enter.\n[ModManager]Do you want to update mods? ((Y)es / (n)o): ")
         newinput = input()
         if newinput.lower() == "yes" or newinput.lower() == "y":
             main()
             break
-        elif newinput.lower() == "no" or newinput.lower() == "n" or newinput.lower() == "kill":
+        elif newinput.lower() == "no" or newinput.lower() == "n":
             break
-        print("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
+        elif newinput.lower() == "collection" or newinput.lower() == "c":
+            print("[ModManager]Provide an collection link then press enter, or if you want to disable previously enabled collection mode, type 'n' then enter: ")
+            op_collection_url = input()
+            if op_collection_url.lower() != "n":
+                print("[ModManager]Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: ")
+                op_localcopy_path = input()
+            else:
+                op_collection_url = ""
+                op_localcopy_path = ""
+                flush_previous_col = True
+            # TODO collection check, if link is valid
+            main(op_collection_url, op_localcopy_path)
+            break
+        elif newinput.lower() == "kill":
+            break
+        print("[ModManager]Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")

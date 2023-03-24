@@ -1,7 +1,7 @@
 ﻿<config
   language="English"
-  verboselogging="false"
-  savedebugconsolelogs="false"
+  verboselogging="true"
+  savedebugconsolelogs="true"
   savepath=""
   subeditorundobuffer="32"
   maxautosaves="8"
@@ -9,22 +9,23 @@
   subeditorbackground="#0D2545"
   enablesplashscreen="true"
   pauseonfocuslost="true"
-  aimassistamount="0.05"
+  aimassistamount="0.5"
   enablemouselook="true"
-  showenemyhealthbars="ShowAll"
-  chatopen="true"
-  crewmenuopen="true"
-  showoffensiveserverprompt="true"
-  tutorialskipwarning="true"
+  showenemyhealthbars="BossHealthBarsOnly"
+  chatopen="false"
+  crewmenuopen="false"
+  showoffensiveserverprompt="false"
+  tutorialskipwarning="false"
   corpsedespawndelay="600"
   corpsespersubdespawnthreshold="5"
   usedualmodesockets="true"
-  disableingamehints="false"
+  disableingamehints="true"
   enablesubmarineautosave="true"
-  quickstartsub="">
+  quickstartsub=""
+  savedcampaignsettings="&lt;campaignsettings PresetName=&quot;Normal&quot; TutorialEnabled=&quot;True&quot; RadiationEnabled=&quot;False&quot; MaxMissionCount=&quot;2&quot; StartingBalanceAmount=&quot;Medium&quot; Difficulty=&quot;Medium&quot; StartItemSet=&quot;normal&quot; /&gt;">
   <graphicssettings
-    width="0"
-    height="0"
+    width="1920"
+    height="1080"
     vsync="true"
     compresstextures="true"
     framelimit="300"
@@ -36,75 +37,172 @@
     hudscale="1"
     inventoryscale="1"
     lightmapscale="1"
-    visiblelightlimit="50"
+    visiblelightlimit="200"
     textscale="1"
     radialdistortion="true" />
   <audio
-    musicvolume="0.3"
+    musicvolume="0.099999994"
     soundvolume="0.5"
     uivolume="0.3"
-    voicechatvolume="0.5"
-    voicechatcutoffprevention="0"
-    microphonevolume="5"
-    muteonfocuslost="false"
+    voicechatvolume="1.01"
+    voicechatcutoffprevention="500"
+    microphonevolume="1.9"
+    muteonfocuslost="true"
     dynamicrangecompressionenabled="true"
     usedirectionalvoicechat="true"
     voipattenuationenabled="true"
     voicesetting="PushToTalk"
-    audiooutputdevice=""
-    voicecapturedevice=""
-    noisegatethreshold="0"
+    audiooutputdevice="OpenAL_x0020_Soft_x0020_on_x0020_Realtek_x0020_HD_x0020_Audio_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
+    voicecapturedevice="OpenAL_x0020_Soft_x0020_on_x0020_Mic_x0020_in_x0020_at_x0020_front_x0020_panel_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
+    noisegatethreshold="-16.933762"
     disablevoicechatfilters="false" />
-   <contentpackages>
+  <contentpackages>
     <!--Vanilla-->
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
       <regularpackages>
 			<!--Fix Garbled Message Text-->
 			<package
-				path="LocalMods2828218775/filelist.xml" />
+				path="LocalMods/2828218775/filelist.xml" />
 			<!--Performance Fix-->
 			<package
-				path="LocalMods2701251094/filelist.xml" />
+				path="LocalMods/2701251094/filelist.xml" />
 			<!--MoreMissionsMod-->
 			<package
-				path="LocalMods2797298457/filelist.xml" />
+				path="LocalMods/2797298457/filelist.xml" />
 			<!--Combinable Ammo Revived (NOW WORKS WITH ALL AMMO)-->
 			<package
-				path="LocalMods2799051561/filelist.xml" />
+				path="LocalMods/2799051561/filelist.xml" />
 			<!--Let Me Choose !-->
 			<package
-				path="LocalMods2122045285/filelist.xml" />
+				path="LocalMods/2122045285/filelist.xml" />
 			<!--Beacons Extended-->
 			<package
-				path="LocalMods2389600483/filelist.xml" />
+				path="LocalMods/2389600483/filelist.xml" />
 			<!--ADV Beacon Stations-->
 			<package
-				path="LocalMods2544952900/filelist.xml" />
+				path="LocalMods/2544952900/filelist.xml" />
 			<!--New Wrecks For Barotrauma (With sellable wrecks)-->
 			<package
-				path="LocalMods2184257427/filelist.xml" />
+				path="LocalMods/2184257427/filelist.xml" />
 			<!--DynamicEuropa-->
 			<package
-				path="LocalMods2532991202/filelist.xml" />
+				path="LocalMods/2532991202/filelist.xml" />
 			<!--Shipwrecks Extended-->
 			<package
-				path="LocalMods2095211492/filelist.xml" />
+				path="LocalMods/2095211492/filelist.xml" />
 			<!--Kastrull-R-->
 			<package
-				path="LocalMods2940190180/filelist.xml" />
+				path="LocalMods/2940190180/filelist.xml" />
 			<!--BetterHealthUI-->
 			<package
-				path="LocalMods2807158602/filelist.xml" />
+				path="LocalMods/2807158602/filelist.xml" />
 			<!--Sort Container UI-->
 			<package
-				path="LocalMods2891181800/filelist.xml" />
+				path="LocalMods/2891181800/filelist.xml" />
 			<!--Heavy Crate From Backpacks-->
 			<package
-				path="LocalMods2873510449/filelist.xml" />
+				path="LocalMods/2873510449/filelist.xml" />
 			<!--Tax Evasion inc.-->
 			<package
-				path="LocalMods2950196860/filelist.xml" />
+				path="LocalMods/2950196860/filelist.xml" />
 </regularpackages>
   </contentpackages>
+  <serverfilters
+    FilterSameVersion="True"
+    FilterPassword="True"
+    FilterFullServers="False"
+    FilterEmptyServers="False"
+    FilterOffensiveServers="False"
+    servertag.Serious="True"
+    servertag.Casual="True"
+    servertag.Roleplay="True"
+    servertag.Rampage="True"
+    servertag.SomethingDifferent="True"
+    sandbox="True"
+    mission="True"
+    pvp="True"
+    multiplayercampaign="True"
+    karma="Any"
+    traitors="Any"
+    friendlyfire="Any"
+    voip="Any"
+    modded="Any" />
+  <player
+    name="MasonMachineGuns"
+    tags="head14,male"
+    HairIndex="7"
+    BeardIndex="4"
+    MoustacheIndex="0"
+    FaceAttachmentIndex="0"
+    HairColor="#473637"
+    FacialHairColor="#D2A36F"
+    SkinColor="#F4BE98">
+    <job
+      identifier="captain"
+      variant="2" />
+  </player>
+  <ignoredhints
+    identifiers="" />
+  <debugconsolemapping />
+  <tutorials>
+    <Tutorial
+      name="tutorial.basic" />
+    <Tutorial
+      name="tutorial.roles" />
+  </tutorials>
+  <keymapping
+    Select="PrimaryMouse"
+    Use="E"
+    Aim="SecondaryMouse"
+    Up="W"
+    Down="S"
+    Left="A"
+    Right="D"
+    Attack="E"
+    Run="LeftShift"
+    Crouch="LeftControl"
+    InfoTab="Tab"
+    Chat="None"
+    RadioChat="None"
+    CrewOrders="C"
+    Ragdoll="Space"
+    Health="H"
+    Grab="G"
+    SelectNextCharacter="Z"
+    SelectPreviousCharacter="X"
+    Voice="Q"
+    RadioVoice="Q"
+    LocalVoice="V"
+    Deselect="SecondaryMouse"
+    Shoot="PrimaryMouse"
+    Command="MiddleMouse"
+    ToggleInventory="Delete"
+    TakeOneFromInventorySlot="LeftControl"
+    TakeHalfFromInventorySlot="LeftShift"
+    NextFireMode="MouseWheelUp"
+    PreviousFireMode="MouseWheelDown"
+    ActiveChat="T"
+    ToggleChatMode="R"
+    ChatBox="B" />
+  <inventorykeymapping
+    slot0="D1"
+    slot1="D2"
+    slot2="D3"
+    slot3="D4"
+    slot4="D5"
+    slot5="D6"
+    slot6="D7"
+    slot7="D8"
+    slot8="D9"
+    slot9="D0" />
+  <editorimages />
+  <campaignsettings
+    PresetName="Normal"
+    TutorialEnabled="True"
+    RadiationEnabled="False"
+    MaxMissionCount="2"
+    StartingBalanceAmount="Medium"
+    Difficulty="Medium"
+    StartItemSet="normal" />
 </config>
