@@ -1,7 +1,7 @@
 ﻿<config
   language="English"
-  verboselogging="true"
-  savedebugconsolelogs="true"
+  verboselogging="false"
+  savedebugconsolelogs="false"
   savepath=""
   subeditorundobuffer="32"
   maxautosaves="8"
@@ -11,9 +11,9 @@
   pauseonfocuslost="true"
   aimassistamount="0.5"
   enablemouselook="true"
-  showenemyhealthbars="BossHealthBarsOnly"
-  chatopen="false"
-  crewmenuopen="false"
+  showenemyhealthbars="ShowAll"
+  chatopen="true"
+  crewmenuopen="true"
   showoffensiveserverprompt="false"
   tutorialskipwarning="false"
   corpsedespawndelay="600"
@@ -34,83 +34,98 @@
     specularity="true"
     chromaticaberration="true"
     losmode="Transparent"
-    hudscale="1"
-    inventoryscale="1"
+    hudscale="0.75"
+    inventoryscale="0.85"
     lightmapscale="1"
-    visiblelightlimit="200"
+    visiblelightlimit="50"
     textscale="1"
     radialdistortion="true" />
   <audio
-    musicvolume="0.099999994"
-    soundvolume="0.5"
-    uivolume="0.3"
-    voicechatvolume="1.01"
-    voicechatcutoffprevention="500"
-    microphonevolume="1.9"
-    muteonfocuslost="true"
+    musicvolume="0"
+    soundvolume="0.099999994"
+    uivolume="0"
+    voicechatvolume="0.62"
+    voicechatcutoffprevention="0"
+    microphonevolume="1.1"
+    muteonfocuslost="false"
     dynamicrangecompressionenabled="true"
-    usedirectionalvoicechat="true"
+    usedirectionalvoicechat="false"
     voipattenuationenabled="true"
     voicesetting="PushToTalk"
-    audiooutputdevice="OpenAL_x0020_Soft_x0020_on_x0020_Realtek_x0020_HD_x0020_Audio_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
-    voicecapturedevice="OpenAL_x0020_Soft_x0020_on_x0020_Mic_x0020_in_x0020_at_x0020_front_x0020_panel_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
-    noisegatethreshold="-16.933762"
+    audiooutputdevice="OpenAL_x0020_Soft_x0020_on_x0020_Speakers_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
+    voicecapturedevice="OpenAL_x0020_Soft_x0020_on_x0020_Microphone_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
+    noisegatethreshold="-53.09584"
     disablevoicechatfilters="false" />
   <contentpackages>
     <!--Vanilla-->
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
       <regularpackages>
-			<!--Fix Garbled Message Text-->
-			<package
-				path="LocalMods/2828218775/filelist.xml" />
 			<!--Performance Fix-->
 			<package
 				path="LocalMods/2701251094/filelist.xml" />
-			<!--MoreMissionsMod-->
+			<!--BaroTraumatic-->
 			<package
-				path="LocalMods/2797298457/filelist.xml" />
-			<!--Combinable Ammo Revived (NOW WORKS WITH ALL AMMO)-->
+				path="LocalMods/2518816103/filelist.xml" />
+			<!--Barotraumatic Creature Pack-->
 			<package
-				path="LocalMods/2799051561/filelist.xml" />
-			<!--Let Me Choose !-->
+				path="LocalMods/2831987252/filelist.xml" />
+			<!--JobsExtended-->
 			<package
-				path="LocalMods/2122045285/filelist.xml" />
-			<!--Beacons Extended-->
+				path="LocalMods/2526236489/filelist.xml" />
+			<!--Neurotrauma-->
 			<package
-				path="LocalMods/2389600483/filelist.xml" />
-			<!--ADV Beacon Stations-->
-			<package
-				path="LocalMods/2544952900/filelist.xml" />
-			<!--New Wrecks For Barotrauma (With sellable wrecks)-->
-			<package
-				path="LocalMods/2184257427/filelist.xml" />
+				path="LocalMods/2776270649/filelist.xml" />
 			<!--DynamicEuropa-->
 			<package
 				path="LocalMods/2532991202/filelist.xml" />
-			<!--Shipwrecks Extended-->
+			<!--Hazardous Reactors-->
 			<package
-				path="LocalMods/2095211492/filelist.xml" />
-			<!--Kastrull-R-->
+				path="LocalMods/2547888957/filelist.xml" />
+			<!--Enhanced Armaments Neurotrauma Patch-->
 			<package
-				path="LocalMods/2940190180/filelist.xml" />
-			<!--BetterHealthUI-->
+				path="LocalMods/2807556435/filelist.xml" />
+			<!--Enhanced Armaments-->
 			<package
-				path="LocalMods/2807158602/filelist.xml" />
-			<!--Sort Container UI-->
+				path="LocalMods/2764968387/filelist.xml" />
+			<!--Improved Husks-->
 			<package
-				path="LocalMods/2891181800/filelist.xml" />
-			<!--Heavy Crate From Backpacks-->
+				path="LocalMods/2085783214/filelist.xml" />
+			<!--NT Pharmacy-->
 			<package
-				path="LocalMods/2873510449/filelist.xml" />
-			<!--Tax Evasion inc.-->
+				path="LocalMods/2804655816/filelist.xml" />
+			<!--Neurotrauma Cybernetics-->
 			<package
-				path="LocalMods/2950196860/filelist.xml" />
+				path="LocalMods/2788543375/filelist.xml" />
+			<!--Lua Linker-->
+			<package
+				path="LocalMods/2852315967/filelist.xml" />
+			<!--BaroCraftables+-->
+			<package
+				path="LocalMods/2764140582/filelist.xml" />
+			<!--ADV Beacon Stations-->
+			<package
+				path="LocalMods/2544952900/filelist.xml" />
+			<!--Genes+ Revived and Expanded-->
+			<package
+				path="LocalMods/2799033770/filelist.xml" />
+			<!--More Artifacts (AOCS)-->
+			<package
+				path="LocalMods/2776026770/filelist.xml" />
+			<!--JESubmarinePack-->
+			<package
+				path="LocalMods/2940118624/filelist.xml" />
+			<!--Krokodil-->
+			<package
+				path="LocalMods/2838076686/filelist.xml" />
+			<!--Server Host Helper-->
+			<package
+				path="LocalMods/2850108374/filelist.xml" />
 </regularpackages>
   </contentpackages>
   <serverfilters
     FilterSameVersion="True"
-    FilterPassword="True"
+    FilterPassword="False"
     FilterFullServers="False"
     FilterEmptyServers="False"
     FilterOffensiveServers="False"
@@ -129,28 +144,23 @@
     voip="Any"
     modded="Any" />
   <player
-    name="MasonMachineGuns"
-    tags="head14,male"
-    HairIndex="7"
-    BeardIndex="4"
+    name="Carrot"
+    tags="female,head3"
+    HairIndex="13"
+    BeardIndex="11"
     MoustacheIndex="0"
     FaceAttachmentIndex="0"
-    HairColor="#473637"
-    FacialHairColor="#D2A36F"
-    SkinColor="#F4BE98">
+    HairColor="#DED7CC"
+    FacialHairColor="#AC4934"
+    SkinColor="#774929">
     <job
       identifier="captain"
-      variant="2" />
+      variant="0" />
   </player>
   <ignoredhints
-    identifiers="" />
+    identifiers="reminder.toolbelt,onadjacenthull.highwaterpercentage" />
   <debugconsolemapping />
-  <tutorials>
-    <Tutorial
-      name="tutorial.basic" />
-    <Tutorial
-      name="tutorial.roles" />
-  </tutorials>
+  <tutorials />
   <keymapping
     Select="PrimaryMouse"
     Use="E"
@@ -159,7 +169,7 @@
     Down="S"
     Left="A"
     Right="D"
-    Attack="E"
+    Attack="F"
     Run="LeftShift"
     Crouch="LeftControl"
     InfoTab="Tab"
@@ -172,12 +182,12 @@
     SelectNextCharacter="Z"
     SelectPreviousCharacter="X"
     Voice="Q"
-    RadioVoice="Q"
-    LocalVoice="V"
+    RadioVoice="None"
+    LocalVoice="None"
     Deselect="SecondaryMouse"
     Shoot="PrimaryMouse"
     Command="MiddleMouse"
-    ToggleInventory="Delete"
+    ToggleInventory="Q"
     TakeOneFromInventorySlot="LeftControl"
     TakeHalfFromInventorySlot="LeftShift"
     NextFireMode="MouseWheelUp"

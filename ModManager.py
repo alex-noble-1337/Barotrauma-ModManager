@@ -2,16 +2,13 @@
 
 # CONFIGURATION if you dont wanna use arguments:
 default_barotrauma_path = ""
-default_tool_path = "ModManager"
+default_tool_path = ""
 default_steamcmd_path = "steamcmd"
 addperformacefix = False
 # TODO Still testing and working on it
 default_lastupdated_functionality = False
 flush_previous_col = False
 
-# TODO
-# convert to linux path
-# why is there localmods_path and localcopy_path
 
 # My "Quality" code
 import os # TODO change this to import only individual commands
@@ -50,14 +47,29 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
             shutil.move(src_file, dst_dir)
 
 def get_filelist_str(barotrauma_path):
-    # TODO make it in bracket with using f.open or smth, and error handling
+    # TODO error handling
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
-    f = open(filelist_path, "r", encoding='utf8')
-    filelist_str = f.read()
-    f.close()
+    with open(filelist_path, "r", encoding='utf8') as f:
+        filelist_str = f.read()
+  
     pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
-    regularpackages = re.findall(pattern, filelist_str)[0]
-    return regularpackages
+    regularpackages = re.findall(pattern, filelist_str)
+    if len(regularpackages) > 0:
+        return regularpackages[0]
+    else:
+        # patch for </regularpackages>, just in case
+        # TODO a bit stupid, so rework it
+        with open(filelist_path, "r", encoding='utf8') as f:
+            filelist_str = f.read()
+        print("<regularpackages/>")
+        print("<regularpackages>\n\t\t</regularpackages>")
+        filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
+        with open(filelist_path, "w", encoding='utf8') as f:
+            f.write(filelist_str)
+
+        pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
+        regularpackages = re.findall(pattern, filelist_str)[0]
+        return regularpackages
 
 def get_localcopy_path(filelist_str):
     pattern = "(?<=path=\")(.*?)(?=\/filelist\.xml)"
@@ -101,16 +113,30 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
         if sys.platform == "win32":
             command = os.path.join(steamcmd_path, "steamcmd.exe")
         else:
-            command = os.path.join(steamcmd_path, "steamcmd")
-            if (not os.path.exists(command)) and (not steamcmd_path == ""):
-                command = os.path.join(steamcmd_path, "steamcmd.sh")
+            # command = os.path.join(steamcmd_path, "steamcmd")
+            # if (not os.path.exists(command)) and (not steamcmd_path == ""):
+            #     command = os.path.join(steamcmd_path, "steamcmd.sh")
 
-            # command = "steamcmd"
+            command = "steamcmd"
         arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
         # TODO make its outpot less shit
         subprocess.call(arguments)
         time.sleep(1)
         return 0
+
+def remove_duplicates(modlist):
+    toremove = []
+    modlist_copy = modlist
+    modlist_copy = sorted(modlist_copy, key=lambda mod: mod["ID"])
+    for i in range(1, len(modlist_copy)):
+        if modlist_copy[i]["ID"] == modlist_copy[i-1]["ID"]:
+            toremove.append(modlist_copy[i])    
+    modlist.reverse()
+    for remove in toremove:
+        if remove in modlist:
+            modlist.remove(remove)
+    modlist.reverse()
+    return modlist
 
 def main(collection_link = "", localmods_path_colop = ""):
     # path handling
@@ -121,7 +147,7 @@ def main(collection_link = "", localmods_path_colop = ""):
     changed_steamcmd_path = False
     collectionmode = False
 
-
+    # TODO go over this again, handing of command line arguments
     if len(options_arr) > 1:
         for i in range(0,len(options_arr)):
             tempval = len(options_arr[i:i+1]) + 1
@@ -201,9 +227,8 @@ def main(collection_link = "", localmods_path_colop = ""):
     managed_mods_path = os.path.join(tool_path, "managed_mods.txt")
 
     if os.path.exists(managed_mods_path):
-        f = open(managed_mods_path, "r", encoding='utf8')
-        old_managed_mods = f.read()
-        f.close()
+        with open(managed_mods_path, "r", encoding='utf8') as f:
+            old_managed_mods = f.read()
 
     # this will be paths to managed mods
     old_managed_mods = old_managed_mods.split('\n')
@@ -220,9 +245,8 @@ def main(collection_link = "", localmods_path_colop = ""):
         collectionmode = False
     else:
         if os.path.exists(collection_file_path):
-            f = open(collection_file_path, "r", encoding='utf8')
-            collection_file = f.read()
-            f.close()
+            with open(collection_file_path, "r", encoding='utf8') as f:
+                collection_file = f.read()
             arr = collection_file.split(" ")
             url_of_steam_collection = arr[0]
             localcopy_path_og = arr[1]
@@ -239,9 +263,8 @@ def main(collection_link = "", localmods_path_colop = ""):
     else:
         print("[ModManager]Collection mode enabled, Downloading collection data (This might take a sec)")
         modlist = generatelistOfMods(url_of_steam_collection)
-        f = open(collection_file_path, "w", encoding='utf8')
-        f.write(url_of_steam_collection + " " + localcopy_path_og)
-        f.close()
+        with open(collection_file_path, "w", encoding='utf8') as f:
+            f.write(url_of_steam_collection + " " + localcopy_path_og)
 
     localcopy_path = localcopy_path_og
 
@@ -277,6 +300,9 @@ def main(collection_link = "", localmods_path_colop = ""):
         if modwithdir in not_managedmods:
             not_managedmods.remove(modwithdir)
 
+    modlist = remove_duplicates(modlist)
+
+
     has_performancefix = False
     print("[ModManager]List of mods:")
     for mod in modlist:
@@ -308,20 +334,17 @@ def main(collection_link = "", localmods_path_colop = ""):
 
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
     # TODO make it in bracket with using f.open or smth, and error handling
-    f = open(filelist_path, "r", encoding='utf8')
-    filelist_str = f.read()
-    f.close()
+    with open(filelist_path, "r", encoding='utf8') as f:
+        filelist_str = f.read()
     filelist_str = filelist_str.replace(regularpackages, regularpackages_new)
-    f = open(filelist_path, "w", encoding='utf8')
-    f.write(filelist_str)
-    f.close()
+    with open(filelist_path, "w", encoding='utf8') as f:
+        f.write(filelist_str)
 
     managed_mods_str = ""
     for managed_mod in managed_mods:
         managed_mods_str += managed_mod + "\n"
-    f = open(managed_mods_path, "w", encoding='utf8')
-    f.write(managed_mods_str)
-    f.close()
+    with open(managed_mods_path, "w", encoding='utf8') as f:
+        f.write(managed_mods_str)
 
     if lastupdated_functionality:
         # TODO fix this being so fucking slow
@@ -330,9 +353,8 @@ def main(collection_link = "", localmods_path_colop = ""):
         localupdatedates = []
         localupdatedates_path = os.path.join(barotrauma_path, "localupdatedates.txt")
         if os.path.exists(localupdatedates_path):
-            f = open(localupdatedates_path, "r", encoding='utf8')
-            localupdatedates = f.readlines()
-            f.close()
+            with open(localupdatedates_path, "r", encoding='utf8') as f:
+                localupdatedates = f.readlines()
             # split to dict
             for i in range(len(localupdatedates)):
                 localupdatedates[i] = localupdatedates[i].split(";")
@@ -368,9 +390,8 @@ def main(collection_link = "", localmods_path_colop = ""):
 
         # TODO lastupdated_functionality
         if lastupdated_functionality:
-            f = open(localupdatedates_path, "w", encoding='utf8')
-            f.write()
-            f.close()
+            with open(localupdatedates_path, "w", encoding='utf8') as f:
+                f.write()
 
     print("\n[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
     print("[ModManager]Downloading mods complete!")
