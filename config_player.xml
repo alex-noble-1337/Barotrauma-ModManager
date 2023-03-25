@@ -1,0 +1,218 @@
+﻿<config
+  language="English"
+  verboselogging="false"
+  savedebugconsolelogs="false"
+  savepath=""
+  subeditorundobuffer="32"
+  maxautosaves="8"
+  autosaveintervalseconds="300"
+  subeditorbackground="#0D2545"
+  enablesplashscreen="true"
+  pauseonfocuslost="true"
+  aimassistamount="0.5"
+  enablemouselook="true"
+  showenemyhealthbars="ShowAll"
+  chatopen="true"
+  crewmenuopen="true"
+  showoffensiveserverprompt="false"
+  tutorialskipwarning="false"
+  corpsedespawndelay="600"
+  corpsespersubdespawnthreshold="5"
+  usedualmodesockets="true"
+  disableingamehints="true"
+  enablesubmarineautosave="true"
+  quickstartsub=""
+  savedcampaignsettings="&lt;campaignsettings PresetName=&quot;Normal&quot; TutorialEnabled=&quot;True&quot; RadiationEnabled=&quot;False&quot; MaxMissionCount=&quot;2&quot; StartingBalanceAmount=&quot;Medium&quot; Difficulty=&quot;Medium&quot; StartItemSet=&quot;normal&quot; /&gt;">
+  <graphicssettings
+    width="1920"
+    height="1080"
+    vsync="true"
+    compresstextures="true"
+    framelimit="300"
+    displaymode="BorderlessWindowed"
+    particlelimit="1500"
+    specularity="true"
+    chromaticaberration="true"
+    losmode="Transparent"
+    hudscale="0.75"
+    inventoryscale="0.85"
+    lightmapscale="1"
+    visiblelightlimit="50"
+    textscale="1"
+    radialdistortion="true" />
+  <audio
+    musicvolume="0"
+    soundvolume="0.099999994"
+    uivolume="0"
+    voicechatvolume="0.62"
+    voicechatcutoffprevention="0"
+    microphonevolume="1.1"
+    muteonfocuslost="false"
+    dynamicrangecompressionenabled="true"
+    usedirectionalvoicechat="false"
+    voipattenuationenabled="true"
+    voicesetting="PushToTalk"
+    audiooutputdevice="OpenAL_x0020_Soft_x0020_on_x0020_Speakers_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
+    voicecapturedevice="OpenAL_x0020_Soft_x0020_on_x0020_Microphone_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0029_"
+    noisegatethreshold="-53.09584"
+    disablevoicechatfilters="false" />
+  <contentpackages>
+    <!--Vanilla-->
+    <corepackage
+      path="Content/ContentPackages/Vanilla.xml" />
+      <regularpackages>
+			<!--Performance Fix-->
+			<package
+				path="LocalMods/2701251094/filelist.xml" />
+			<!--BaroTraumatic-->
+			<package
+				path="LocalMods/2518816103/filelist.xml" />
+			<!--Barotraumatic Creature Pack-->
+			<package
+				path="LocalMods/2831987252/filelist.xml" />
+			<!--JobsExtended-->
+			<package
+				path="LocalMods/2526236489/filelist.xml" />
+			<!--Neurotrauma-->
+			<package
+				path="LocalMods/2776270649/filelist.xml" />
+			<!--DynamicEuropa-->
+			<package
+				path="LocalMods/2532991202/filelist.xml" />
+			<!--Hazardous Reactors-->
+			<package
+				path="LocalMods/2547888957/filelist.xml" />
+			<!--Enhanced Armaments Neurotrauma Patch-->
+			<package
+				path="LocalMods/2807556435/filelist.xml" />
+			<!--Enhanced Armaments-->
+			<package
+				path="LocalMods/2764968387/filelist.xml" />
+			<!--Improved Husks-->
+			<package
+				path="LocalMods/2085783214/filelist.xml" />
+			<!--NT Pharmacy-->
+			<package
+				path="LocalMods/2804655816/filelist.xml" />
+			<!--Neurotrauma Cybernetics-->
+			<package
+				path="LocalMods/2788543375/filelist.xml" />
+			<!--Lua Linker-->
+			<package
+				path="LocalMods/2852315967/filelist.xml" />
+			<!--BaroCraftables+-->
+			<package
+				path="LocalMods/2764140582/filelist.xml" />
+			<!--ADV Beacon Stations-->
+			<package
+				path="LocalMods/2544952900/filelist.xml" />
+			<!--Genes+ Revived and Expanded-->
+			<package
+				path="LocalMods/2799033770/filelist.xml" />
+			<!--More Artifacts (AOCS)-->
+			<package
+				path="LocalMods/2776026770/filelist.xml" />
+			<!--JESubmarinePack-->
+			<package
+				path="LocalMods/2940118624/filelist.xml" />
+			<!--Krokodil-->
+			<package
+				path="LocalMods/2838076686/filelist.xml" />
+			<!--Server Host Helper-->
+			<package
+				path="LocalMods/2850108374/filelist.xml" />
+</regularpackages>
+  </contentpackages>
+  <serverfilters
+    FilterSameVersion="True"
+    FilterPassword="False"
+    FilterFullServers="False"
+    FilterEmptyServers="False"
+    FilterOffensiveServers="False"
+    servertag.Serious="True"
+    servertag.Casual="True"
+    servertag.Roleplay="True"
+    servertag.Rampage="True"
+    servertag.SomethingDifferent="True"
+    sandbox="True"
+    mission="True"
+    pvp="True"
+    multiplayercampaign="True"
+    karma="Any"
+    traitors="Any"
+    friendlyfire="Any"
+    voip="Any"
+    modded="Any" />
+  <player
+    name="Carrot"
+    tags="female,head3"
+    HairIndex="13"
+    BeardIndex="11"
+    MoustacheIndex="0"
+    FaceAttachmentIndex="0"
+    HairColor="#DED7CC"
+    FacialHairColor="#AC4934"
+    SkinColor="#774929">
+    <job
+      identifier="captain"
+      variant="0" />
+  </player>
+  <ignoredhints
+    identifiers="reminder.toolbelt,onadjacenthull.highwaterpercentage" />
+  <debugconsolemapping />
+  <tutorials />
+  <keymapping
+    Select="PrimaryMouse"
+    Use="E"
+    Aim="SecondaryMouse"
+    Up="W"
+    Down="S"
+    Left="A"
+    Right="D"
+    Attack="F"
+    Run="LeftShift"
+    Crouch="LeftControl"
+    InfoTab="Tab"
+    Chat="None"
+    RadioChat="None"
+    CrewOrders="C"
+    Ragdoll="Space"
+    Health="H"
+    Grab="G"
+    SelectNextCharacter="Z"
+    SelectPreviousCharacter="X"
+    Voice="Q"
+    RadioVoice="None"
+    LocalVoice="None"
+    Deselect="SecondaryMouse"
+    Shoot="PrimaryMouse"
+    Command="MiddleMouse"
+    ToggleInventory="Q"
+    TakeOneFromInventorySlot="LeftControl"
+    TakeHalfFromInventorySlot="LeftShift"
+    NextFireMode="MouseWheelUp"
+    PreviousFireMode="MouseWheelDown"
+    ActiveChat="T"
+    ToggleChatMode="R"
+    ChatBox="B" />
+  <inventorykeymapping
+    slot0="D1"
+    slot1="D2"
+    slot2="D3"
+    slot3="D4"
+    slot4="D5"
+    slot5="D6"
+    slot6="D7"
+    slot7="D8"
+    slot8="D9"
+    slot9="D0" />
+  <editorimages />
+  <campaignsettings
+    PresetName="Normal"
+    TutorialEnabled="True"
+    RadiationEnabled="False"
+    MaxMissionCount="2"
+    StartingBalanceAmount="Medium"
+    Difficulty="Medium"
+    StartItemSet="normal" />
+</config>
