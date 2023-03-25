@@ -1,0 +1,9 @@
+- set up automatic build and release package making script
+
+- go over all todo's from comments post them here
+- move most things into seprate functions, and get on that class-block programming
+- set up a way to save mod conflicts
+- set up a functionality for mod manager to warn and remove mod conflicts
+- set up a way to save mod load order between mods
+- set up a functionality for mod manager to automatically sort your modlist
+- set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
