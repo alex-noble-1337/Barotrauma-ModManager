@@ -47,7 +47,91 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
                 os.remove(dst_file)
             shutil.move(src_file, dst_dir)
 
-def get_filelist_str(barotrauma_path):
+def set_required_values(input_options = {'collection_link': "", 'localcopy_path_override': ""}):
+    options_arr = sys.argv[1:]
+
+    changed_barotrauma_path = False
+    changed_tool_path = False
+    changed_steamcmd_path = False
+    collectionmode = False
+    collection_link = input_options['collection_link']
+    localcopy_path_override = input_options['localcopy_path_override']
+
+    # TODO go over this again, handing of command line arguments
+    if len(options_arr) > 1:
+        for i in range(0,len(options_arr)):
+            tempval = len(options_arr[i:i+1]) + 1
+
+            # --barotraumapath or -b - path to your barotrauma install. Must be a path to THE FOLDER, not the program itself. Does not accept ""
+            if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        barotrauma_path = os.getcwd()
+                        changed_barotrauma_path = True
+                    else:
+                        barotrauma_path = options_arr[i+1]
+                        changed_barotrauma_path = True
+                else:
+                    barotrauma_path = os.getcwd()
+                    changed_barotrauma_path = True
+            
+            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
+            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        tool_path = os.getcwd()
+                        changed_tool_path = True
+                    else:
+                        tool_path = options_arr[i+1]
+                        changed_tool_path = True
+                else:
+                    tool_path = os.getcwd()
+                    changed_tool_path = True
+
+            # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
+            if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
+                if tempval > 1:
+                    if options_arr[i+1] == "pwd":
+                        if sys.platform == 'win32':
+                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.exe")
+                        else:
+                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.sh")
+                        changed_steamcmd_path = True
+                    else:
+                        steamcmd_path = options_arr[i+1]
+                        changed_steamcmd_path = True
+                else:
+                    steamcmd_path = options_arr[i+1]
+                    changed_steamcmd_path = True
+
+            # TODO add it to the documentaton
+            # TODO make it so you can input those values from command line
+            if options_arr[i] == '--collection' or options_arr[i] == '-c':
+                # TODO idk if it works test later
+                if tempval > 1:
+                    # TODO check if link is good
+                    collection_link = options_arr[i+1]
+                    collectionmode = True
+                    localcopy_path_override = options_arr[i+2]
+
+    # setting up default values and path handling
+    if not changed_barotrauma_path:
+        barotrauma_path = default_barotrauma_path
+    if not os.path.isabs(barotrauma_path):
+        barotrauma_path = os.path.join(os.getcwd(), barotrauma_path)
+    if not changed_tool_path:
+        tool_path = default_tool_path
+    if not changed_steamcmd_path:
+        steamcmd_path = default_steamcmd_path
+    if default_steamdir_path == "":
+        steamdir_path = os.path.join(tool_path, "steamdir")
+    else:
+        steamdir_path = default_steamdir_path
+    
+    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': steamcmd_path, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override}
+    return input_options
+
+def get_regularpackages(barotrauma_path):
     # TODO error handling
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
     with open(filelist_path, "r", encoding='utf8') as f:
@@ -125,6 +209,16 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
         time.sleep(1)
         return 0
 
+def print_modlist_checkforpffix(modlist):
+    has_performancefix = False
+    print("[ModManager]List of mods:")
+    for mod in modlist:
+        if str(mod["ID"]) == "2701251094":
+            has_performancefix = True
+        print("[ModManager]"+ str(mod["ID"]) + ": " + mod["Name"])
+    print("\n")
+    return has_performancefix
+
 def remove_duplicates(modlist):
     toremove = []
     modlist_copy = modlist
@@ -139,189 +233,7 @@ def remove_duplicates(modlist):
     modlist.reverse()
     return modlist
 
-def main(collection_link = "", localmods_path_colop = ""):
-    # path handling
-
-    options_arr = sys.argv[1:]
-    changed_barotrauma_path = False
-    changed_tool_path = False
-    changed_steamcmd_path = False
-    collectionmode = False
-
-    # TODO go over this again, handing of command line arguments
-    if len(options_arr) > 1:
-        for i in range(0,len(options_arr)):
-            tempval = len(options_arr[i:i+1]) + 1
-
-            # --barotraumapath or -b - path to your barotrauma install. Must be a path to THE FOLDER, not the program itself. Does not accept ""
-            if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
-                if tempval > 1:
-                    if options_arr[i+1] == "pwd":
-                        barotrauma_path = os.getcwd()
-                        changed_barotrauma_path = True
-                    else:
-                        barotrauma_path = options_arr[i+1]
-                        changed_barotrauma_path = True
-                else:
-                    barotrauma_path = os.getcwd()
-                    changed_barotrauma_path = True
-            
-            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
-            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
-                if tempval > 1:
-                    if options_arr[i+1] == "pwd":
-                        tool_path = os.getcwd()
-                        changed_tool_path = True
-                    else:
-                        tool_path = options_arr[i+1]
-                        changed_tool_path = True
-                else:
-                    tool_path = os.getcwd()
-                    changed_tool_path = True
-
-            # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
-            if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
-                if tempval > 1:
-                    if options_arr[i+1] == "pwd":
-                        if sys.platform == 'win32':
-                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.exe")
-                        else:
-                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.sh")
-                        changed_steamcmd_path = True
-                    else:
-                        steamcmd_path = options_arr[i+1]
-                        changed_steamcmd_path = True
-                else:
-                    steamcmd_path = options_arr[i+1]
-                    changed_steamcmd_path = True
-
-            # TODO add it to the documentaton
-            # TODO make it so you can input those values from command line
-            if options_arr[i] == '--collection' or options_arr[i] == '-c':
-                # TODO idk if it works test later
-                if tempval > 1:
-                    # TODO check if link is good
-                    url_of_steam_collection = options_arr[i+1]
-                    collectionmode = True
-                    localcopy_path_og = options_arr[i+2]
-
-    if not changed_barotrauma_path:
-        barotrauma_path = default_barotrauma_path
-    if not changed_tool_path:
-        tool_path = default_tool_path
-    if not changed_steamcmd_path:
-        steamcmd_path = default_steamcmd_path
-
-    lastupdated_functionality = debug_lastupdated_functionality
-
-    if default_steamdir_path == "":
-        steamdir_path = os.path.join(tool_path, "steamdir")
-    else:
-        steamdir_path = default_steamdir_path
-    if os.path.exists(steamdir_path):
-        shutil.rmtree(steamdir_path)
-    os.mkdir(steamdir_path)
-
-    if not os.path.isabs(barotrauma_path):
-        barotrauma_path = os.path.join(os.getcwd(), barotrauma_path)
-
-
-    regularpackages = get_filelist_str(barotrauma_path)
-
-    # TODO remove all previous mods, that arent used, from directory
-    # we first need to get all managed mods
-    old_managed_mods = ""
-    managed_mods_path = os.path.join(tool_path, "managed_mods.txt")
-
-    if os.path.exists(managed_mods_path):
-        with open(managed_mods_path, "r", encoding='utf8') as f:
-            old_managed_mods = f.read()
-
-    # this will be paths to managed mods
-    old_managed_mods = old_managed_mods.split('\n')
-    if '' in old_managed_mods:
-        old_managed_mods.remove('')
-
-    # collection save file
-    collection_file_path = os.path.join(tool_path, "collection_save.txt")
-
-    collection_file = ""
-    if flush_previous_col:
-        if os.path.exists(collection_file_path):
-            os.remove(collection_file_path)
-        collectionmode = False
-    else:
-        if os.path.exists(collection_file_path):
-            with open(collection_file_path, "r", encoding='utf8') as f:
-                collection_file = f.read()
-            arr = collection_file.split(" ")
-            url_of_steam_collection = arr[0]
-            localcopy_path_og = arr[1]
-            collectionmode = True
-
-    if collection_link != "" and localmods_path_colop != "":
-        url_of_steam_collection = collection_link
-        localcopy_path_og = localmods_path_colop
-        collectionmode = True
-
-    if collectionmode == False:
-        localcopy_path_og = get_localcopy_path(regularpackages)
-        modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
-    else:
-        print("[ModManager]Collection mode enabled, Downloading collection data (This might take a sec)")
-        modlist = generatelistOfMods(url_of_steam_collection)
-        with open(collection_file_path, "w", encoding='utf8') as f:
-            f.write(url_of_steam_collection + " " + localcopy_path_og)
-
-    localcopy_path = localcopy_path_og
-
-
-    # modless?
-    if len(modlist) == 0:
-        print("[ModManager]No mods detected")
-        return 
-
-    if not os.path.isabs(tool_path):
-        tool_path = os.path.join(os.getcwd(), tool_path)
-    # if not os.path.isabs(steamcmd_path):
-    #     steamcmd_path = os.path.join(os.getcwd(), steamcmd_path)
-    if not os.path.isabs(steamdir_path):
-        steamdir_path = os.path.join(os.getcwd(), steamdir_path)
-        
-
-    # if os.path.isabs(localcopy_path):
-    #     localmods_path = os.path.abspath(localcopy_path)
-    # else:
-    #     localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
-
-    if not os.path.isabs(localcopy_path):
-        localcopy_path = os.path.join(os.getcwd(), localcopy_path)
-
-    managed_mods = []
-    for mod in modlist:
-        managed_mods.append(os.path.join(localcopy_path_og, mod['ID']))
-
-    not_managedmods = old_managed_mods
-    # remove modwithdir
-    for modwithdir in managed_mods:
-        if modwithdir in not_managedmods:
-            not_managedmods.remove(modwithdir)
-
-    modlist = remove_duplicates(modlist)
-
-
-    has_performancefix = False
-    print("[ModManager]List of mods:")
-    for mod in modlist:
-        if str(mod["ID"]) == "2701251094":
-            has_performancefix = True
-        print(str(mod["ID"]) + ": " + mod["Name"])
-    print("\n")
-
-    if not has_performancefix and addperformacefix == True:
-        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
-        modlist.insert(0, WorkshopItem)
-
+def create_newfilelist(modlist, localcopy_path_og, barotrauma_path):
     regularpackages_new = "\n"
     # print new
     for mod in modlist:
@@ -338,6 +250,153 @@ def main(collection_link = "", localmods_path_colop = ""):
         regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
         regularpackages_new += "\t\t\t<package\n"
         regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
+    return regularpackages_new
+
+def save_managedmods(managed_mods, managed_mods_path):
+    managed_mods_str = ""
+    for managed_mod in managed_mods:
+        managed_mods_str += managed_mod + "\n"
+    with open(managed_mods_path, "w", encoding='utf8') as f:
+        f.write(managed_mods_str)
+
+def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
+    numberofupdatedmods = 0
+    for mod in modlist:
+        # main part running moddlownloader
+        print("[ModManager]Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
+        # TODO make output of steamcmd less spammy/silent
+        # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
+        output = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
+        print("\n")
+        if output == 0:
+            numberofupdatedmods += 1
+    return numberofupdatedmods
+
+def get_old_managed_mods(tool_path, managed_mods_path):
+    # TODO remove all previous mods, that arent used, from directory
+    # we first need to get all managed mods
+    old_managed_mods = ""
+
+    if os.path.exists(managed_mods_path):
+        with open(managed_mods_path, "r", encoding='utf8') as f:
+            old_managed_mods = f.read()
+
+    # this will be paths to managed mods
+    old_managed_mods = old_managed_mods.split('\n')
+    if '' in old_managed_mods:
+        old_managed_mods.remove('')
+    return old_managed_mods
+
+def get_managedmods(modlist, localcopy_path_og):
+    managed_mods = []
+    for mod in modlist:
+        managed_mods.append(os.path.join(localcopy_path_og, mod['ID']))
+    return managed_mods
+
+def set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mods):
+    not_managedmods = old_managed_mods
+    # removeing mods that exist in modlist
+    for modwithdir in managed_mods:
+        if modwithdir in not_managedmods:
+            not_managedmods.remove(modwithdir)
+    return not_managedmods
+
+def main(requiredpaths):
+    lastupdated_functionality = debug_lastupdated_functionality
+
+    barotrauma_path = requiredpaths['barotrauma']
+    tool_path = requiredpaths['tool']
+    steamcmd_path = requiredpaths['steamcmd']
+    steamdir_path = requiredpaths['steamdir']
+    # TODO move this so something else
+    collectionmode = requiredpaths['collectionmode']
+    localcopy_path_override = requiredpaths['localcopy_path_override']
+    collection_link = requiredpaths['collection_link']
+
+
+    regularpackages = get_regularpackages(barotrauma_path)
+    old_regularpackages = regularpackages
+    managed_mods_path = os.path.join(tool_path, "managed_mods.txt")
+    old_managed_mods = get_old_managed_mods(tool_path, managed_mods_path)
+
+    # collection save file
+    collection_file_path = os.path.join(tool_path, "collection_save.txt")
+
+    collection_file = ""
+    if flush_previous_col:
+        if os.path.exists(collection_file_path):
+            os.remove(collection_file_path)
+        collectionmode = False
+    else:
+        if os.path.exists(collection_file_path):
+            with open(collection_file_path, "r", encoding='utf8') as f:
+                collection_file = f.read()
+            arr = collection_file.split(" ")
+            collection_link = arr[0]
+            localcopy_path_og = arr[1]
+            collectionmode = True
+
+    if collection_link != "" and localcopy_path_override != "":
+        localcopy_path_og = localcopy_path_override
+        collectionmode = True
+
+    if collectionmode:
+        print("[ModManager]Collection mode ENABLED, Downloading collection data (This might take a sec)")
+        localcopy_path_og = localcopy_path_override
+        modlist = generatelistOfMods(collection_link)
+        with open(collection_file_path, "w", encoding='utf8') as f:
+            f.write(collection_link + " " + localcopy_path_og)
+    else:
+        print("[ModManager]Collection mode DISABLED, Downloading data from config_player.xml")
+        if localcopy_path_override == "":
+            localcopy_path_og = get_localcopy_path(regularpackages)
+        else:
+            localcopy_path_og = localcopy_path_override
+        modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
+
+    localcopy_path = localcopy_path_og
+
+
+    # modless?
+    if len(modlist) == 0:
+        print("[ModManager]No mods detected")
+        return 
+
+    if not os.path.isabs(tool_path):
+        tool_path = os.path.join(os.getcwd(), tool_path)
+    # if not os.path.isabs(steamcmd_path):
+    #     steamcmd_path = os.path.join(os.getcwd(), steamcmd_path)
+    if not os.path.isabs(steamdir_path):
+        steamdir_path = os.path.join(os.getcwd(), steamdir_path)
+    newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
+
+    if os.path.exists(steamdir_path):
+        shutil.rmtree(steamdir_path)
+    os.mkdir(steamdir_path)
+        
+
+    # if os.path.isabs(localcopy_path):
+    #     localmods_path = os.path.abspath(localcopy_path)
+    # else:
+    #     localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
+
+    if not os.path.isabs(localcopy_path):
+        localcopy_path = os.path.join(os.getcwd(), localcopy_path)
+
+    # get managed mods
+    managed_mods = get_managedmods(modlist, localcopy_path_og)
+
+    not_managedmods = set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mods)
+
+    modlist = remove_duplicates(modlist)
+
+    has_performancefix = print_modlist_checkforpffix(modlist)
+
+    if not has_performancefix and addperformacefix == True:
+        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
+        modlist.insert(0, WorkshopItem)
+
+    regularpackages_new = create_newfilelist(modlist, localcopy_path_og, barotrauma_path)
 
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
     # TODO make it in bracket with using f.open or smth, and error handling
@@ -347,71 +406,18 @@ def main(collection_link = "", localmods_path_colop = ""):
     with open(filelist_path, "w", encoding='utf8') as f:
         f.write(filelist_str)
 
-    managed_mods_str = ""
-    for managed_mod in managed_mods:
-        managed_mods_str += managed_mod + "\n"
-    with open(managed_mods_path, "w", encoding='utf8') as f:
-        f.write(managed_mods_str)
+    save_managedmods(managed_mods, managed_mods_path)
 
-    if lastupdated_functionality:
-        # TODO fix this being so fucking slow
-        modlist = get_modsnamelastupdated(modlist)
-
-        localupdatedates = []
-        localupdatedates_path = os.path.join(barotrauma_path, "localupdatedates.txt")
-        if os.path.exists(localupdatedates_path):
-            with open(localupdatedates_path, "r", encoding='utf8') as f:
-                localupdatedates = f.readlines()
-            # split to dict
-            for i in range(len(localupdatedates)):
-                localupdatedates[i] = localupdatedates[i].split(";")
-    
     # main part running moddlownloader
-    numberofupdatedmods = 0
-    for mod in modlist:
-        found = False
-        # TODO lastupdated_functionality
-        if lastupdated_functionality:
-            if len(localupdatedates) > 0:
-                for i in range(len(localupdatedates)):
-                    if localupdatedates[i][0] == mod:
-                        if time.strptime(localupdatedates[i][1],'%d %b, %Y @ %I:%M%p') < mod['LastUpdated']:
-                            print("[ModManager]useing mod downloader on " + mod)
-                            # update localupdatedates
-                            localupdatedates[i][1] = time.strptime(datetime.datetime.now(),'%d %b, %Y @ %I:%M%p')
-                            found = True
-                            break
-        # main part running moddlownloader
-        if (not lastupdated_functionality) and (found == False):
-            print("[ModManager]Starting steamcmd, Updating mod:" + str(mod["ID"]) + ": " + mod["Name"])
-            # TODO make output of steamcmd less spammy/silent
-            # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
-            output = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
-            print("\n")
-            if output == 0:
-                numberofupdatedmods += 1
-            if lastupdated_functionality:
-                # update localupdatedates
-                localupdatedate = [mod, time.strptime(datetime.datetime.now(),'%d %b, %Y @ %I:%M%p')]
-                localupdatedates.append(localupdatedate)   
+    numberofupdatedmods = download_modlist(modlist, tool_path, steamdir_path, steamcmd_path)
 
-        # TODO lastupdated_functionality
-        if lastupdated_functionality:
-            with open(localupdatedates_path, "w", encoding='utf8') as f:
-                f.write()
-
-    print("\n[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
+    print("\n")
+    print("[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
     print("[ModManager]Downloading mods complete!")
 
-    newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
-    # overwrite local copy with new copy downloaded above
-    # removing for cleanup
-
-    # base config
+    # config backup and conservation
     baseconfig_path = os.path.join(tool_path, "BestDefaultConfigsTM")
     backup_option(baseconfig_path,newinputdir)
-
-
     backup_option(localcopy_path,newinputdir)
 
     # remove not_managedmods
@@ -420,9 +426,12 @@ def main(collection_link = "", localmods_path_colop = ""):
         if os.path.exists(not_managedmod):
             shutil.rmtree(not_managedmod)
 
+    # actually moving mods to localcopy
     robocopysubsttute(newinputdir, localcopy_path)
+
+    # removing steamdir because steamcmd is piece of crap and it sometimes wond download mod if its in directory
     shutil.rmtree(steamdir_path)
-    print("[ModManager]Verifyed Mods!\n")
+    print("[ModManager]Mods Updated!\n")
 
 if __name__ == '__main__':
     print("\n")
@@ -430,7 +439,8 @@ if __name__ == '__main__':
         print("[ModManager]If you want to set up, or disable collection mode type \'c\', then enter.\n[ModManager]Do you want to update mods? ((Y)es / (n)o): ")
         newinput = input()
         if newinput.lower() == "yes" or newinput.lower() == "y":
-            main()
+            requiredpaths = set_required_values()
+            main(requiredpaths)
             break
         elif newinput.lower() == "no" or newinput.lower() == "n":
             break
@@ -445,8 +455,10 @@ if __name__ == '__main__':
                 op_localcopy_path = ""
                 flush_previous_col = True
             # TODO collection check, if link is valid
-            main(op_collection_url, op_localcopy_path)
+            requiredpaths = {'collection_link': op_collection_url, 'localcopy_path_override': op_localcopy_path}
+            requiredpaths = set_required_values(requiredpaths)
+            main(requiredpaths)
             break
-        elif newinput.lower() == "kill":
+        elif newinput.lower() == "kill" or newinput.lower() == "exit":
             break
         print("[ModManager]Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")

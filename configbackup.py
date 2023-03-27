@@ -71,11 +71,11 @@ def create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslo
 
 def backup_option(modslocation, backupfolder):
     # print what you do
-    print("Moving configs from " + modslocation + " to " + backupfolder)
+    print("[ConfigBackup]Moving configs from " + modslocation + " to " + backupfolder)
     configfilespathfrommodslocation = find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation)
     create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslocation,backupfolder)
     # print done
-    print("Done backing up config files")
+    print("[ConfigBackup]Done backing up config files")
 
 def main():
     # backup folder location
@@ -94,7 +94,7 @@ def main():
         dir_list.sort(reverse=True)
 
         backupfolder = os.path.join(backupfolder, dir_list[0])
-        print("Moving configs from " + backupfolder + " to " + modslocation)
+        print("[ConfigBackup]Moving configs from " + backupfolder + " to " + modslocation)
         dir_list = os.listdir(backupfolder)
 
 
