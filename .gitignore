@@ -4,3 +4,5 @@ __pycache__/**
 LocalMods**
 ModManager/__pycache__**
 steamcmd**
+managed_mods.txt
+config_player.xml

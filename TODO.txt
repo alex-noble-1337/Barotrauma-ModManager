@@ -1,5 +1,5 @@
 - set up automatic build and release package making script
-
+- set up save backuing up system
 - go over all todo's from comments post them here
 - move most things into seprate functions, and get on that class-block programming
 - set up a way to save mod conflicts
@@ -7,3 +7,6 @@
 - set up a way to save mod load order between mods
 - set up a functionality for mod manager to automatically sort your modlist
 - set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
+- optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
+- functionality to selectivly force-update a mod
+- functionality to show a progress bar instead of steamcmd download

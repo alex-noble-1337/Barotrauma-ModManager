@@ -4,9 +4,10 @@
 default_barotrauma_path = ""
 default_tool_path = ""
 default_steamcmd_path = "steamcmd"
+default_steamdir_path = "/home/milord/testdirectory/steamdir"
 addperformacefix = False
 # TODO Still testing and working on it
-default_lastupdated_functionality = False
+debug_lastupdated_functionality = False
 flush_previous_col = False
 
 
@@ -106,19 +107,19 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path):
         modlist.append(WorkshopItem)
     return modlist
 
+def sanitize_pathstr(path):
+    path = str(path)
+    path = path.replace(" ", "\\ ")
+    return path
+
 # function that uses steamcmd
 def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
     pattern = "^\d*?$"
     if re.match(pattern, number_of_mod):
-        if sys.platform == "win32":
-            command = os.path.join(steamcmd_path, "steamcmd.exe")
-        else:
-            # command = os.path.join(steamcmd_path, "steamcmd")
-            # if (not os.path.exists(command)) and (not steamcmd_path == ""):
-            #     command = os.path.join(steamcmd_path, "steamcmd.sh")
-
-            command = "steamcmd"
-        arguments = [command ,"+force_install_dir \"" + steamdir_path + "\"", "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
+        command = steamcmd_path
+        # san_steamdir_path = sanitize_pathstr(steamdir_path)
+        # san_steamdir_path = "\"" + steamdir_path + "\""
+        arguments = [command ,"+force_install_dir", steamdir_path, "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
         # TODO make its outpot less shit
         subprocess.call(arguments)
         time.sleep(1)
@@ -182,7 +183,10 @@ def main(collection_link = "", localmods_path_colop = ""):
             if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
                 if tempval > 1:
                     if options_arr[i+1] == "pwd":
-                        steamcmd_path = os.getcwd()
+                        if sys.platform == 'win32':
+                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.exe")
+                        else:
+                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.sh")
                         changed_steamcmd_path = True
                     else:
                         steamcmd_path = options_arr[i+1]
@@ -208,9 +212,12 @@ def main(collection_link = "", localmods_path_colop = ""):
     if not changed_steamcmd_path:
         steamcmd_path = default_steamcmd_path
 
-    lastupdated_functionality = default_lastupdated_functionality
+    lastupdated_functionality = debug_lastupdated_functionality
 
-    steamdir_path = os.path.join(tool_path, "steamdir")
+    if default_steamdir_path == "":
+        steamdir_path = os.path.join(tool_path, "steamdir")
+    else:
+        steamdir_path = default_steamdir_path
     if os.path.exists(steamdir_path):
         shutil.rmtree(steamdir_path)
     os.mkdir(steamdir_path)
@@ -276,8 +283,8 @@ def main(collection_link = "", localmods_path_colop = ""):
 
     if not os.path.isabs(tool_path):
         tool_path = os.path.join(os.getcwd(), tool_path)
-    if not os.path.isabs(steamcmd_path):
-        steamcmd_path = os.path.join(os.getcwd(), steamcmd_path)
+    # if not os.path.isabs(steamcmd_path):
+    #     steamcmd_path = os.path.join(os.getcwd(), steamcmd_path)
     if not os.path.isabs(steamdir_path):
         steamdir_path = os.path.join(os.getcwd(), steamdir_path)
         
