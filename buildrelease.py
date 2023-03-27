@@ -84,7 +84,7 @@ if __name__ == '__main__':
     copy_optimized("README.md", os.path.join(output_path, "README.md"))
     # copy all py files except releasebuild.py into ModManager dir
     files_arr = get_fileswithextension(os.getcwd(), ".py")
-    files_arr.remove("releasebuild.py")
+    files_arr.remove("buildrelease.py")
     for file1 in files_arr:
         copy_optimized(file1, os.path.join(output_path, file1))
     # set all default_ values to default ("")

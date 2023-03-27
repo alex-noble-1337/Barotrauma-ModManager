@@ -6,4 +6,4 @@ unzip -qo ModManager.zip
 echo -e "\n\n"
 echo "RUNNING MOD MANAGER"
 pip install requests
-python3 ModManager/ModManager.py -s "steamcmd" -t "ModManager"
+python3 ModManager/ModManager.py -s "steamcmd/steamcmd.sh" -t "ModManager"
