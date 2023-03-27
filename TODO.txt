@@ -1,12 +1,21 @@
-- set up automatic build and release package making script
+- rewrite documentation to include new functions
+- rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
+- create a link checker, probbably make it ping an collection link
+- error handling if barotrauma path's confi_player.xml is not found, or any other paths stuff
+- functionality to show a progress bar instead of steamcmd download output
+- optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
+    - lastupdated functionality for collection mode, check for directory modification time, then compare with steam updae time
+    - steamcmd downloading all mods at once
+    - go over all import, convert them to import only specific function
+
 - set up save backuing up system
-- go over all todo's from comments post them here
-(DONE) move most things into seprate functions, and get on that class-block programming
-- set up a way to save mod conflicts
+- set up a way to save mod conflicts to db
 - set up a functionality for mod manager to warn and remove mod conflicts
-- set up a way to save mod load order between mods
+- set up a way to save mod load order between mods to db
 - set up a functionality for mod manager to automatically sort your modlist
 - set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
-- optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
 - functionality to selectivly force-update a mod
-- functionality to show a progress bar instead of steamcmd download
+
+(PERIODIC) go over all todo's from comments post them here
+(DONE) move most things into seprate functions, and get on that class-block programming
+(DONE) set up automatic build and release package making script

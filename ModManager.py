@@ -105,9 +105,7 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
                     changed_steamcmd_path = True
 
             # TODO add it to the documentaton
-            # TODO make it so you can input those values from command line
             if options_arr[i] == '--collection' or options_arr[i] == '-c':
-                # TODO idk if it works test later
                 if tempval > 1:
                     # TODO check if link is good
                     collection_link = options_arr[i+1]
@@ -273,7 +271,6 @@ def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
     return numberofupdatedmods
 
 def get_old_managed_mods(tool_path, managed_mods_path):
-    # TODO remove all previous mods, that arent used, from directory
     # we first need to get all managed mods
     old_managed_mods = ""
 
@@ -308,7 +305,6 @@ def main(requiredpaths):
     tool_path = requiredpaths['tool']
     steamcmd_path = requiredpaths['steamcmd']
     steamdir_path = requiredpaths['steamdir']
-    # TODO move this so something else
     collectionmode = requiredpaths['collectionmode']
     localcopy_path_override = requiredpaths['localcopy_path_override']
     collection_link = requiredpaths['collection_link']
@@ -399,7 +395,7 @@ def main(requiredpaths):
     regularpackages_new = create_newfilelist(modlist, localcopy_path_og, barotrauma_path)
 
     filelist_path = os.path.join(barotrauma_path, "config_player.xml")
-    # TODO make it in bracket with using f.open or smth, and error handling
+    # TODO  error handling for open
     with open(filelist_path, "r", encoding='utf8') as f:
         filelist_str = f.read()
     filelist_str = filelist_str.replace(regularpackages, regularpackages_new)
