@@ -1,4 +1,3 @@
-- rewrite documentation to include new functions
 - rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
 - create a link checker, probbably make it ping an collection link
 - error handling if barotrauma path's confi_player.xml is not found, or any other paths stuff
@@ -17,5 +16,6 @@
 - functionality to selectivly force-update a mod
 
 (PERIODIC) go over all todo's from comments post them here
+(PERIODIC) rewrite documentation to include new functions
 (DONE) move most things into seprate functions, and get on that class-block programming
 (DONE) set up automatic build and release package making script
