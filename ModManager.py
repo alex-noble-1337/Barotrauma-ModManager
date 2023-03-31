@@ -23,6 +23,7 @@ import sys # TODO change this to import only individual commands
 from ConfigRecoder import get_modsnamelastupdated 
 from configbackup import backup_option
 from ConfigRecoder import generatelistOfMods 
+from ConfigRecoder import collectionf 
 
 # yoinked from stackoverflow, works
 def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
@@ -47,6 +48,7 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
                 os.remove(dst_file)
             shutil.move(src_file, dst_dir)
 
+# set up all default values and paths
 def set_required_values(input_options = {'collection_link': "", 'localcopy_path_override': ""}):
     options_arr = sys.argv[1:]
 
@@ -111,6 +113,10 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
                     collection_link = options_arr[i+1]
                     collectionmode = True
                     localcopy_path_override = options_arr[i+2]
+                
+             # TODO add it to the documentaton
+            if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
+                addperformacefix = True
 
     # setting up default values and path handling
     if not changed_barotrauma_path:
@@ -129,31 +135,37 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
     input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': steamcmd_path, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override}
     return input_options
 
+# get from config_player.xml, everything inside <regularpackages/> </regularpackages>
 def get_regularpackages(barotrauma_path):
-    # TODO error handling
-    filelist_path = os.path.join(barotrauma_path, "config_player.xml")
-    with open(filelist_path, "r", encoding='utf8') as f:
-        filelist_str = f.read()
-  
-    pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
-    regularpackages = re.findall(pattern, filelist_str)
-    if len(regularpackages) > 0:
-        return regularpackages[0]
-    else:
-        # patch for </regularpackages>, just in case
-        # TODO a bit stupid, so rework it
+    # trying to access filelist
+    try:
+        filelist_path = os.path.join(barotrauma_path, "config_player.xml")
         with open(filelist_path, "r", encoding='utf8') as f:
             filelist_str = f.read()
-        print("<regularpackages/>")
-        print("<regularpackages>\n\t\t</regularpackages>")
+    except Exception as e:
+        print("[ModManager]Could not find the config_player.xml! Check your barotrauma path!")
+        print(e)
+
+    pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
+    regularpackages = re.findall(pattern, filelist_str)
+    if len(regularpackages) <= 0:
+        # patch for </regularpackages>, just in case
+        # TODO a bit stupid, so rework it
+        # print("<regularpackages/>")
+        # print("<regularpackages>\n\t\t</regularpackages>")
         filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
         with open(filelist_path, "w", encoding='utf8') as f:
             f.write(filelist_str)
-
         pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
-        regularpackages = re.findall(pattern, filelist_str)[0]
-        return regularpackages
+        regularpackages = re.findall(pattern, filelist_str)
+        
+    if len(regularpackages) > 0:
+        return regularpackages[0]
+    else:
+        raise Exception("[ModManager]Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
 
+
+# get localcopy path from filelist
 def get_localcopy_path(filelist_str):
     pattern = "(?<=path=\")(.*?)(?=\/filelist\.xml)"
     path = re.findall(pattern, filelist_str)
@@ -257,6 +269,7 @@ def save_managedmods(managed_mods, managed_mods_path):
     with open(managed_mods_path, "w", encoding='utf8') as f:
         f.write(managed_mods_str)
 
+# usage of steamcmd on modlist
 def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
     numberofupdatedmods = 0
     for mod in modlist:
@@ -309,40 +322,44 @@ def main(requiredpaths):
     localcopy_path_override = requiredpaths['localcopy_path_override']
     collection_link = requiredpaths['collection_link']
 
-
     regularpackages = get_regularpackages(barotrauma_path)
     old_regularpackages = regularpackages
     managed_mods_path = os.path.join(tool_path, "managed_mods.txt")
     old_managed_mods = get_old_managed_mods(tool_path, managed_mods_path)
 
+
+
     # collection save file
     collection_file_path = os.path.join(tool_path, "collection_save.txt")
-
-    collection_file = ""
     if flush_previous_col:
         if os.path.exists(collection_file_path):
             os.remove(collection_file_path)
-        collectionmode = False
-    else:
-        if os.path.exists(collection_file_path):
-            with open(collection_file_path, "r", encoding='utf8') as f:
-                collection_file = f.read()
-            arr = collection_file.split(" ")
-            collection_link = arr[0]
-            localcopy_path_og = arr[1]
-            collectionmode = True
+    elif os.path.exists(collection_file_path):
+        collection_file = ""
+        with open(collection_file_path, "r", encoding='utf8') as f:
+            collection_file = f.read()
+        arr = collection_file.split(" ")
+        collection_link = arr[0]
+        localcopy_path_override = arr[1]
+        
+    # check collection link if it is valid
+    isvalid_collection_link = False
+    if collection_link != "":
+        if re.match("https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=", collection_link):
+            collection_site = collectionf(collection_link)
+            if collection_site != "ERROR":
+                isvalid_collection_link = True
 
-    if collection_link != "" and localcopy_path_override != "":
-        localcopy_path_og = localcopy_path_override
+
+    if isvalid_collection_link and localcopy_path_override != "":
         collectionmode = True
-
-    if collectionmode:
         print("[ModManager]Collection mode ENABLED, Downloading collection data (This might take a sec)")
         localcopy_path_og = localcopy_path_override
-        modlist = generatelistOfMods(collection_link)
+        modlist = generatelistOfMods(collection_site)
         with open(collection_file_path, "w", encoding='utf8') as f:
             f.write(collection_link + " " + localcopy_path_og)
     else:
+        collectionmode = False
         print("[ModManager]Collection mode DISABLED, Downloading data from config_player.xml")
         if localcopy_path_override == "":
             localcopy_path_og = get_localcopy_path(regularpackages)
@@ -352,11 +369,17 @@ def main(requiredpaths):
 
     localcopy_path = localcopy_path_og
 
+    if addperformacefix == True:
+        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
+        modlist.insert(0, WorkshopItem)
 
+    modlist = remove_duplicates(modlist)
     # modless?
     if len(modlist) == 0:
         print("[ModManager]No mods detected")
         return 
+    else:
+        has_performancefix = print_modlist_checkforpffix(modlist)
 
     if not os.path.isabs(tool_path):
         tool_path = os.path.join(os.getcwd(), tool_path)
@@ -384,13 +407,6 @@ def main(requiredpaths):
 
     not_managedmods = set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mods)
 
-    modlist = remove_duplicates(modlist)
-
-    has_performancefix = print_modlist_checkforpffix(modlist)
-
-    if not has_performancefix and addperformacefix == True:
-        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
-        modlist.insert(0, WorkshopItem)
 
     regularpackages_new = create_newfilelist(modlist, localcopy_path_og, barotrauma_path)
 
@@ -449,7 +465,7 @@ if __name__ == '__main__':
             else:
                 op_collection_url = ""
                 op_localcopy_path = ""
-                flush_previous_col = True
+            flush_previous_col = True
             # TODO collection check, if link is valid
             requiredpaths = {'collection_link': op_collection_url, 'localcopy_path_override': op_localcopy_path}
             requiredpaths = set_required_values(requiredpaths)

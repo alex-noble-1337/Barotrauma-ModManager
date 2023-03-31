@@ -24,9 +24,9 @@ def get_htm_of_collection_site(link):
             output = response.text
             break
         else:
-            # coundt be bothered to do it other way
             output = "ERROR"
             time.sleep(20)
+            break
     return output
 
 def get_listOfMods(collection_site):
@@ -171,8 +171,7 @@ def get_modsnamelastupdated(mods):
     # sort?
     return mods
 
-def generatelistOfMods(url_of_steam_collection):
-    collection_site = collectionf(url_of_steam_collection)
+def generatelistOfMods(collection_site):
     mods = get_listOfMods(collection_site)
     mods = get_modsnamelastupdated(mods)
     return mods
