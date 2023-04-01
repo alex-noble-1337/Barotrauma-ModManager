@@ -1,5 +1,6 @@
 (cant replicate on hold) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
 - create a link checker, probbably make it ping an collection link
+- removing of lua and cs from modlist should be in ModManager.py
 - error handling if barotrauma path's confi_player.xml is not found, or any other paths stuff
 - functionality to show a progress bar instead of steamcmd download output
 - optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O

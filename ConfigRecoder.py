@@ -95,6 +95,32 @@ def textfilef(fileposition):
     print(output_file)
     return output_file
 
+# populate time of update of workshop item
+def get_lastupdated(modsite):
+    pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
+    lastupdated = re.findall(pattern, modsite)[1]
+    # Eg. 1 Oct, 2022 @ 3:51am
+    if lastupdated[2] != " ":
+        lastupdated = "0" + lastupdated
+    # Eg. 11 Jan @ 1:15am
+    if lastupdated[7] == "@":
+        currentDateTime = datetime.datetime.now()
+        date = currentDateTime.date()
+        year = str(date.strftime("%Y"))
+        lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
+    # Eg. 28 May, 2022 @ 9:58pm
+    # Eg. 18 Jan 2023 @ 7:10pm
+    if lastupdated[16] == ":":
+        lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
+    lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
+
+    return lastupdated
+
+def get_modname(modsite):
+    pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
+    name = re.findall(pattern, modsite)[0]
+    return name
+
 def collectionf(url_of_steam_collection):
     # here
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
@@ -107,68 +133,26 @@ def get_modsnamelastupdated(mods):
             mods[i] = WorkshopItem
 
     # Lua and cs
-    runluaupdater = False
-    lenmods = len(mods)
-    todel = []
-    for i in range(lenmods):
-        # remove Lua and cs from the list
-        if mods[i]['ID'] == "2559634234":
-            todel.append(i)
-            runluaupdater = True
-            continue
-        if mods[i]['ID'] == "2795927223":
-            todel.append(i)
-            runluaupdater = True
-            continue
-        else:
-            # check for lua dependendecies and populate time of update of workshop item
-            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
-            modsite = get_htm_of_collection_site(modurl)
-            pattern = "<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2559634234\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Lua For Barotrauma.*?</a>"
-            arrx = re.findall(pattern, modsite)
-            pattern = "<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2795927223\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Cs For Barotrauma.*?</a>"
-            arry = re.findall(pattern, modsite)
-            num = len(arrx) + len(arry)
-            if num > 0:
-                runluaupdater = True
+    requreslua = False
+    requrescs = False
+    for i in range(len(mods)):
+        # download modsite html
+        modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
+        modsite = get_htm_of_collection_site(modurl)
 
+        # check for lua and cs dependendecies
+        if re.match("<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2559634234\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Lua For Barotrauma.*?</a>", modsite):
+            requreslua = True
+        if re.match("<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2795927223\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Cs For Barotrauma.*?</a>", modsite):
+            requrescs = True
 
-            pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
-            name = re.findall(pattern, modsite)[0]
-            WorkshopItem = {'Name': name, 'ID': mods[i]['ID']}
+        name = get_modname(modsite)
 
-            if False:
-                # lastupdated
-                pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
-                lastupdated = re.findall(pattern, modsite)[1]
-                # Eg. 1 Oct, 2022 @ 3:51am
-                if lastupdated[2] != " ":
-                    lastupdated = "0" + lastupdated
-                # Eg. 11 Jan @ 1:15am
-                if lastupdated[7] == "@":
-                    currentDateTime = datetime.datetime.now()
-                    date = currentDateTime.date()
-                    year = str(date.strftime("%Y"))
-                    lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
-                # Eg. 28 May, 2022 @ 9:58pm
-                # Eg. 18 Jan 2023 @ 7:10pm
-                if lastupdated[16] == ":":
-                    lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
-                lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
+        # TODO that funcionality
+        # lastupdated = get_lastupdated(modsite)
 
-                WorkshopItem = {'Name': name, 'ID': mods[i]['ID'], 'LastUpdated': lastupdated}
-            mods[i] = WorkshopItem
+        mods[i] = {'Name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
 
-    # deleting because for cannot be in variable range or smth
-    amout_of_deleted = 0
-    for i in todel:
-        mods.pop(i - amout_of_deleted)
-        amout_of_deleted += 1
-
-    # add all known "mods made for server" server mods eg Perf fix, midround respawner
-    # add custom submarine mods
-    # remove outdated mods, print to face and in file that mods
-    # sort?
     return mods
 
 def generatelistOfMods(collection_site):
