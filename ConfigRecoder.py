@@ -10,6 +10,7 @@ import requests
 import time
 import datetime # for current time
 
+# TODO this is main bottleneck, need to optimize it
 headers = {'User-Agent': 'Mozilla/5.0'}
 # delay between usage of function based on system clock + internal function delay
 time_of_last_usage = 0
@@ -25,7 +26,7 @@ def get_htm_of_collection_site(link):
             break
         else:
             output = "ERROR"
-            time.sleep(20)
+            # time.sleep(20)
             break
     return output
 
@@ -126,38 +127,62 @@ def collectionf(url_of_steam_collection):
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
     return collection_site
 
-def get_modsnamelastupdated(mods):
+def get_modsData(mods, addnames = True, addlastupdated = False, dependencies = True):
     for i in range(len(mods)):
         if not isinstance(mods[i], dict):
             WorkshopItem = {'ID': mods[i]}
             mods[i] = WorkshopItem
 
     # Lua and cs
-    requreslua = False
-    requrescs = False
+    # requreslua = False
+    # requrescs = False
     for i in range(len(mods)):
         # download modsite html
         modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
         modsite = get_htm_of_collection_site(modurl)
+        if modsite != "ERROR":
 
-        # check for lua and cs dependendecies
-        if re.match("<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2559634234\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Lua For Barotrauma.*?</a>", modsite):
-            requreslua = True
-        if re.match("<a href=\"https://steamcommunity.com/workshop/filedetails/?id=2795927223\" target=\"_blank\">.*?<div class=\"requiredItem\">.*?Cs For Barotrauma.*?</a>", modsite):
-            requrescs = True
+            if dependencies:
+                # TODO this is stupid
+                startpos = modsite.find("<div class=\"requiredItemsContainer\" id=\"RequiredItems\">")
+                requiredItems = ""
+                if startpos >= 0:
+                    startpos += 56
+                    divsinside = 0
+                    endpos = 0
+                    for j in range(startpos, len(modsite)):
+                        string = modsite[j] + modsite[j+1] + modsite[j+2] + modsite[j+3] + modsite[j+4]
+                        if string == "<div ":
+                            divsinside += 1
+                        if string == "</div":
+                            if divsinside != 0:
+                                divsinside -= 1
+                            else:
+                                endpos = j
+                                requiredItems = modsite[startpos:endpos]
+                                break
+                
 
-        name = get_modname(modsite)
+                pattern = "(?<=<a href=\"https:\\/\\/steamcommunity\\.com\\/workshop\\/filedetails\\/\\?id=).*?(?=\")"
+                requiredItems = re.findall(pattern, requiredItems)
+                mods[i]['dependencies'] = requiredItems
 
-        # TODO that funcionality
-        # lastupdated = get_lastupdated(modsite)
+            if addnames:
+                mods[i]['Name'] = get_modname(modsite)
 
-        mods[i] = {'Name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
+            if addlastupdated:
+                # TODO that funcionality
+                mods[i]['LastUpdated'] = get_lastupdated(modsite)
+
+            # mods[i] = {'Name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
+        else:
+            print("[ModManager]Mod with a link: " + modurl + " not found!")
 
     return mods
 
 def generatelistOfMods(collection_site):
     mods = get_listOfMods(collection_site)
-    mods = get_modsnamelastupdated(mods)
+    mods = get_modsData(mods)
     return mods
 
 def main():

@@ -19,8 +19,9 @@ import time # TODO change this to import only individual commands
 import datetime # for current time
 import subprocess # TODO change this to import only individual commands
 import sys # TODO change this to import only individual commands
+import io
 
-from ConfigRecoder import get_modsnamelastupdated 
+# from ConfigRecoder import get_modsnamelastupdated 
 from configbackup import backup_option
 from ConfigRecoder import generatelistOfMods 
 from ConfigRecoder import collectionf 
@@ -207,6 +208,7 @@ def sanitize_pathstr(path):
     return path
 
 # function that uses steamcmd
+time_of_last_usage = 0
 def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
     pattern = "^\d*?$"
     if re.match(pattern, number_of_mod):
@@ -215,8 +217,26 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
         # san_steamdir_path = "\"" + steamdir_path + "\""
         arguments = [command ,"+force_install_dir", steamdir_path, "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
         # TODO make its outpot less shit
-        subprocess.call(arguments)
-        time.sleep(1)
+        global time_of_last_usage
+        if time_of_last_usage != 0 and int(round(time.time())) - time_of_last_usage < 1:
+            time.sleep(int(round(time.time())) - time_of_last_usage)
+        time_of_last_usage = int(round(time.time()))
+        proc = subprocess.Popen(arguments, stdout=subprocess.PIPE)
+        for line in io.TextIOWrapper(proc.stdout, encoding="utf-8"):
+            line = line.rstrip()
+            # steam connection check
+            if re.match(".*?" + "Connecting anonymously to Steam Public...OK" + ".*?", line):
+                print("[ModManger]Connected to steam!")
+            # starting download
+            elif re.match(".*?Downloading item " + number_of_mod + ".*?", line):
+                print("[ModManager]" + line)
+                print("[ModManager]Starting mod download!")
+            # download complete
+            elif re.match(".*?Success. Downloaded item " + number_of_mod + ".*?", line):
+                print("[ModManager]" + line)
+                print("[ModManager]Downloaded mod!")
+            # else:
+                # print(line)
         return 0
 
 def print_modlist_checkforpffix(modlist):
@@ -312,6 +332,7 @@ def set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mo
     return not_managedmods
 
 def main(requiredpaths):
+    warning_LFBnotinstalled = False
     lastupdated_functionality = debug_lastupdated_functionality
 
     barotrauma_path = requiredpaths['barotrauma']
@@ -351,6 +372,8 @@ def main(requiredpaths):
                 isvalid_collection_link = True
 
 
+    requreslua = False
+    requrescs = False
     if isvalid_collection_link and localcopy_path_override != "":
         collectionmode = True
         print("[ModManager]Collection mode ENABLED, Downloading collection data (This might take a sec)")
@@ -358,6 +381,12 @@ def main(requiredpaths):
         modlist = generatelistOfMods(collection_site)
         with open(collection_file_path, "w", encoding='utf8') as f:
             f.write(collection_link + " " + localcopy_path_og)
+        for mod in modlist:
+            for dependency in mod['dependencies']:
+                if str(dependency) == "2559634234" and requreslua == False:
+                    requreslua = True
+                if str(dependency) == "2795927223" and requrescs == False:
+                    requrescs = True
     else:
         collectionmode = False
         print("[ModManager]Collection mode DISABLED, Downloading data from config_player.xml")
@@ -369,9 +398,16 @@ def main(requiredpaths):
 
     localcopy_path = localcopy_path_og
 
-    if addperformacefix == True:
-        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
-        modlist.insert(0, WorkshopItem)
+    if requreslua or requrescs:
+        if os.path.exists(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml")):
+            if requrescs:
+                with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "r", encoding='utf8') as LuaCsSetupConfigf:
+                    LuaCsSetupConfig = LuaCsSetupConfigf.read()
+                LuaCsSetupConfig = LuaCsSetupConfig.replace("ForceCsScripting Value=\"Boolean\">False", "ForceCsScripting Value=\"Boolean\">True")
+                with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "w", encoding='utf8') as LuaCsSetupConfigf:
+                    LuaCsSetupConfigf.write(LuaCsSetupConfig)
+        else:
+            warning_LFBnotinstalled = True
 
     modlist = remove_duplicates(modlist)
     # modless?
@@ -380,6 +416,10 @@ def main(requiredpaths):
         return 
     else:
         has_performancefix = print_modlist_checkforpffix(modlist)
+
+    if has_performancefix == False and addperformacefix == True:
+        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
+        modlist.insert(0, WorkshopItem)
 
     if not os.path.isabs(tool_path):
         tool_path = os.path.join(os.getcwd(), tool_path)
@@ -444,6 +484,10 @@ def main(requiredpaths):
     # removing steamdir because steamcmd is piece of crap and it sometimes wond download mod if its in directory
     shutil.rmtree(steamdir_path)
     print("[ModManager]Mods Updated!\n")
+
+    if warning_LFBnotinstalled:
+        print("[ModManager]WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
+        time.sleep(20)
 
 if __name__ == '__main__':
     print("\n")
