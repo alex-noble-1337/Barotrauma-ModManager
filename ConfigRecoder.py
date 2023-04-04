@@ -30,25 +30,50 @@ def get_htm_of_collection_site(link):
             break
     return output
 
-def get_listOfMods(collection_site):
-    if collection_site != "ERROR":
-        pattern = "(?<=<a href=\"https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=).*?(?=\"><div class=\"workshopItemTitle\">)"
-        arrx = re.findall(pattern, collection_site)
-    return arrx
+# def get_listOfMods(collection_site):
+#     if collection_site != "ERROR":
+        
+#     return arrx
 
-def get_modsname(collection_site):
-    # get list of all mod's id's in the collection in an array
-    modsids = get_listOfMods(collection_site)
-    # iterate array to get names of mods
-    mods = []
-    for i in range(len(modsids)):
-        # order names in the same array positions
-        pattern = "(?<=id=" + str(modsids[i]) + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
-        name = re.findall(pattern, collection_site)
-        name = str(name[0])
-        modid = str(modsids[i])
-        WorkshopItem = {'Name': name, 'ID': modid}
-        mods.append(WorkshopItem)
+def get_modsData_collection(collection_site, addnames = True):
+    if collection_site != "ERROR":
+        # get list of all mod's id's in the collection in an array
+        # modsids = get_listOfMods(collection_site)
+        pattern = "<div class=\"collectionItemDetails\">"
+        startposs = [m.start() for m in re.finditer(pattern, collection_site)]
+        collectionItemDetailss = []
+        if len(startposs) >= 0:
+            for startpos in startposs:
+                startpos += len(pattern)
+                divsinside = 0
+                endpos = 0
+                for j in range(startpos, len(collection_site)):
+                    string = collection_site[j] + collection_site[j+1] + collection_site[j+2] + collection_site[j+3] + collection_site[j+4]
+                    if string == "<div ":
+                        divsinside += 1
+                    if string == "</div":
+                        if divsinside != 0:
+                            divsinside -= 1
+                        else:
+                            endpos = j
+                            collectionItemDetailss.append(collection_site[startpos:endpos])
+                            break
+        else:
+            # throw exeption invalid collection
+            raise Exception("[ModManager]Could not find mods in the collection specified!")
+
+        mods = []
+        for collectionItemDetails in collectionItemDetailss:
+            mod = {}
+            pattern = "(?<=<a href=\"https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=).*?(?=\"><div class=\"workshopItemTitle\">)"
+            mod['ID'] = str(re.findall(pattern, collectionItemDetails)[0])
+            if addnames:
+                pattern = "(?<=id=" + mod['ID'] + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
+                mod['Name'] = re.findall(pattern, collectionItemDetails)[0]
+            mods.append(mod)
+    else:
+        # throw exeption invalid collection
+        raise Exception("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
     return mods
 
 def textfilef(fileposition):
@@ -127,7 +152,7 @@ def collectionf(url_of_steam_collection):
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
     return collection_site
 
-def get_modsData(mods, addnames = True, addlastupdated = False, dependencies = True):
+def get_modsData_individual(mods, addlastupdated = False, dependencies = True):
     for i in range(len(mods)):
         if not isinstance(mods[i], dict):
             WorkshopItem = {'ID': mods[i]}
@@ -167,8 +192,8 @@ def get_modsData(mods, addnames = True, addlastupdated = False, dependencies = T
                 requiredItems = re.findall(pattern, requiredItems)
                 mods[i]['dependencies'] = requiredItems
 
-            if addnames:
-                mods[i]['Name'] = get_modname(modsite)
+            # if addnames:
+            #     mods[i]['Name'] = get_modname(modsite)
 
             if addlastupdated:
                 # TODO that funcionality
@@ -180,9 +205,21 @@ def get_modsData(mods, addnames = True, addlastupdated = False, dependencies = T
 
     return mods
 
-def generatelistOfMods(collection_site):
-    mods = get_listOfMods(collection_site)
-    mods = get_modsData(mods)
+def generatelistOfMods(collection_site, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
+    if 'addnames' not in input_options.keys():
+        input_options['addnames'] = False
+    if 'addlastupdated' not in input_options.keys():
+        input_options['addlastupdated'] = False
+    if 'dependencies' not in input_options.keys():
+        input_options['dependencies'] = False
+    
+    addnames = input_options['addnames']
+    addlastupdated = input_options['addlastupdated']
+    dependencies = input_options['dependencies']
+
+    mods = get_modsData_collection(collection_site, addnames)
+    if addlastupdated or dependencies:
+        mods = get_modsData_individual(mods, addlastupdated, dependencies)
     return mods
 
 def main():
