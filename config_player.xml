@@ -61,12 +61,135 @@
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
     <regularpackages>
-			<!--Mechtrauma ALPHA-->
+			<!--Lua For Barotrauma-->
 			<package
-				path="LocalMods/2855458020/filelist.xml" />
-			<!--Kastrull (Mechtrauma)-->
+				path="LocalMods/2559634234/filelist.xml" />
+			<!--Cs For Barotrauma-->
 			<package
-				path="LocalMods/2881310475/filelist.xml" />
+				path="LocalMods/2795927223/filelist.xml" />
+			<!--Performance Fix-->
+			<package
+				path="LocalMods/2701251094/filelist.xml" />
+			<!--Mechtrauma UNSTABLE-->
+			<package
+				path="LocalMods/2890754956/filelist.xml" />
+			<!--Enhanced Armaments Neurotrauma Patch-->
+			<package
+				path="LocalMods/2807556435/filelist.xml" />
+			<!--Enhanced Armaments-->
+			<package
+				path="LocalMods/2764968387/filelist.xml" />
+			<!--Neurotrauma-->
+			<package
+				path="LocalMods/2776270649/filelist.xml" />
+			<!--Neurotrauma Cybernetics-->
+			<package
+				path="LocalMods/2788543375/filelist.xml" />
+			<!--NT Pharmacy-->
+			<package
+				path="LocalMods/2804655816/filelist.xml" />
+			<!--NT Surgery Plus-->
+			<package
+				path="LocalMods/2790455798/filelist.xml" />
+			<!--BaroTraumatic-->
+			<package
+				path="LocalMods/2518816103/filelist.xml" />
+			<!--Barotraumatic Creature Pack-->
+			<package
+				path="LocalMods/2831987252/filelist.xml" />
+			<!--Hungry Europans-->
+			<package
+				path="LocalMods/2954998725/filelist.xml" />
+			<!--DynamicEuropa-->
+			<package
+				path="LocalMods/2532991202/filelist.xml" />
+			<!--Improved Husks-->
+			<package
+				path="LocalMods/2085783214/filelist.xml" />
+			<!--MoreMissionsMod-->
+			<package
+				path="LocalMods/2797298457/filelist.xml" />
+			<!--Consent Required-->
+			<package
+				path="LocalMods/2783280188/filelist.xml" />
+			<!--New Wrecks For Barotrauma (With sellable wrecks)-->
+			<package
+				path="LocalMods/2184257427/filelist.xml" />
+			<!--ADV Beacon Stations-->
+			<package
+				path="LocalMods/2544952900/filelist.xml" />
+			<!--Ammo extended 2 (RUS/ENG/汉语)-->
+			<package
+				path="LocalMods/2668119156/filelist.xml" />
+			<!--Disconnect Kill And Stun Remover-->
+			<package
+				path="LocalMods/2658872348/filelist.xml" />
+			<!--Dont Open Debug Console On Errors-->
+			<package
+				path="LocalMods/2807566753/filelist.xml" />
+			<!--Heavy Crate From Backpacks-->
+			<package
+				path="LocalMods/2873510449/filelist.xml" />
+			<!--PocketsForAll (Draconis) Forked-->
+			<package
+				path="LocalMods/2900856197/filelist.xml" />
+			<!--Let Me Choose !-->
+			<package
+				path="LocalMods/2122045285/filelist.xml" />
+			<!--Beacons Extended-->
+			<package
+				path="LocalMods/2389600483/filelist.xml" />
+			<!--Shipwrecks Extended-->
+			<package
+				path="LocalMods/2095211492/filelist.xml" />
+			<!--Honk revolver-->
+			<package
+				path="LocalMods/2916462081/filelist.xml" />
+			<!--UwU — Crates return steel-->
+			<package
+				path="LocalMods/2903424986/filelist.xml" />
+			<!--Modding Toolkit-->
+			<package
+				path="LocalMods/2905375979/filelist.xml" />
+			<!--Fix Garbled Message Text-->
+			<package
+				path="LocalMods/2828218775/filelist.xml" />
+			<!--Support Shuttle-->
+			<package
+				path="LocalMods/2951389962/filelist.xml" />
+			<!--More Beacons for Europa-->
+			<package
+				path="LocalMods/2936649429/filelist.xml" />
+			<!--More Pirate Vessels for Europa-->
+			<package
+				path="LocalMods/2942521888/filelist.xml" />
+			<!--More Wrecks for Europa-->
+			<package
+				path="LocalMods/2936642208/filelist.xml" />
+			<!--Kastrull-BM3U-->
+			<package
+				path="LocalMods/2955410524/filelist.xml" />
+			<!--Rocinante-->
+			<package
+				path="LocalMods/2955157821/filelist.xml" />
+			<!--Europalines PDC-->
+			<package
+				path="LocalMods/2955156238/filelist.xml" />
+			<!--Material IO-->
+			<package
+				path="LocalMods/2850153096/filelist.xml" />
+			<!--Quality Ammo Boxes+ (LUA)-->
+			<package
+				path="LocalMods/2954460511/filelist.xml" />
+			<!--Freebird Buzzer-->
+			<package
+				path="LocalMods/2955950049/filelist.xml" />
+			<!--Combinable Ammo Revived (NOW WORKS WITH ALL AMMO)-->
+			<package
+				path="LocalMods/2799051561/filelist.xml" />
+			<!--Kastrull-BM4E-->
+			<package
+				path="LocalMods/2957171881/filelist.xml" />
 </regularpackages>
   </contentpackages>
   <serverfilters

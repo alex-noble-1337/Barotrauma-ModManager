@@ -6,7 +6,13 @@ import sys
 import os
 import re
 import shutil
+try:
+    import requests
+except ImportError:
+    print("Trying to Install required module: requests\n")
+    os.system('python3 -m pip install requests')
 import requests
+
 import time
 import datetime # for current time
 

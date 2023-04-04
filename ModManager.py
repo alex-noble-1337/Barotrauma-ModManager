@@ -7,11 +7,9 @@ default_steamcmd_path = "steamcmd"
 default_steamdir_path = "/home/milord/testdirectory/steamdir"
 addperformacefix = False
 # TODO Still testing and working on it
-debug_lastupdated_functionality = False
 flush_previous_col = False
-current_progress = 0
-max_progress = 0
-current_stage = 0
+debug_lastupdated_functionality = False
+progressbar_functionality = False
 
 # My "Quality" code
 import os # TODO change this to import only individual commands
@@ -24,7 +22,13 @@ import sys # TODO change this to import only individual commands
 import io
 
 # progress bar stuff
-import progressbar
+try:
+    from tqdm import tqdm
+except ImportError:
+    print("Trying to Install required module: tqdm\n")
+    os.system('python3 -m pip install tqdm')
+from tqdm import tqdm
+
 
 # from ConfigRecoder import get_modsnamelastupdated 
 from configbackup import backup_option
@@ -235,6 +239,7 @@ def print_modlist_checkforpffix(modlist):
             has_performancefix = True
         print("[ModManager]"+ str(mod["ID"]) + ": " + mod["Name"])
     print("\n")
+    print("\n")
     return has_performancefix
 
 def remove_duplicates(modlist):
@@ -277,24 +282,31 @@ def save_managedmods(managed_mods, managed_mods_path):
     with open(managed_mods_path, "w", encoding='utf8') as f:
         f.write(managed_mods_str)
 
-def update_progressbar(max_progress_inc, bar):
-    global max_value
-    global current_progress
-    max_value += max_progress_inc
-    bar.max_value = max_value
-    bar.update(current_progress_inc)
+def myprint(mssg, bar = 'bar'):
+    if progressbar_functionality:
+        bar.write(mssg)
+    else:
+        print(mssg)
 
 # usage of steamcmd on modlist
 def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
     numberofupdatedmods = 0
-    with progressbar.ProgressBar(max_value=len(modlist), redirect_stdout=True) as bar:
+    # '], where l_bar='{desc}: {percentage:3.0f}%|' and r_bar='| {n_fmt}/{total_fmt}{postfix} [{elapsed}<{remaining}, ' '{rate_fmt}]
+    total_time = 0
+    with tqdm(total=len(modlist), dynamic_ncols = True, ascii = True, unit="Mods", position=0, bar_format = "{desc}: {percentage:3.0f}%|{bar}| {n_fmt}/{total_fmt}Mods [E:{elapsed} R:{remaining}]", desc = "Update Progress: ", disable = not progressbar_functionality) as bar:
         iterator = 0
-        bar.update()
+        # bar.update()
         for mod in modlist:
             pattern = "^\d*?$"
             if re.match(pattern, mod["ID"]):
+                one_time = int(round(time.time()))
                 # main part running moddlownloader
-                print("[ModManager]Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["Name"])
+                mssg = "[ModManager]Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["Name"]
+                if progressbar_functionality == False:
+                    mssg += "     Update Progress: " + str(iterator+1) + "/" + str(len(modlist))
+                    number = int(abs((len(modlist) - iterator - 1)*(total_time / len(modlist))))
+                    mssg += " ETA:" + str(str(number//60) + ":" + str(number%60))
+                myprint(mssg, bar)
                 # TODO make output of steamcmd less spammy/silent
                 # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
                 proc = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
@@ -302,45 +314,48 @@ def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
                     line = line.rstrip()
                     # steam connection check
                     if re.match(".*?" + "Connecting anonymously to Steam Public...OK" + ".*?", line):
-                        # print("[Steamcmd]" + line)
-                        print("[ModManger]Connected to steam! Beginning mod download...")
+                        # myprint("[Steamcmd]" + line)
+                        myprint("[ModManger]Connected to steam! Beginning mod download...", bar)
                         # iterator += 1
                         # bar.update(iterator)
-                        bar.update()
+                        # bar.update()
                     # starting download
                     if re.match(".*?Downloading item " + mod["ID"] + ".*?", line):
-                        # print("[Steamcmd]" + line)
-                        print("[ModManager]Downloading mod: " + mod["Name"] + " (" + mod["ID"] + ")")
+                        # myprint("[Steamcmd]" + line)
+                        myprint("[ModManager]Downloading mod: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
                         # iterator += 1
                         # bar.update(iterator)
-                        bar.update()
+                        # bar.update()
                     # download complete
                     if re.match(".*?Success. Downloaded item " + mod["ID"] + ".*?", line):
                         # check if mod has been downloaded in correct path
                         if re.match(".*?\"" + steamdir_path + ".*?steamapps.*?workshop.*?content.*?602960.*?" + mod["ID"] + "\".*?", line):
-                            print("[ModManager]Downloaded mod!: " + mod["Name"] + " (" + mod["ID"] + ")")
+                            myprint("[ModManager]Downloaded mod!: " + mod["Name"] + " (" + mod["ID"] + ")\n", bar)
                             # iterator += 1
                             # bar.update(iterator)
-                            bar.update()
+                            # bar.update()
                         else:
                             raise Exception("[ModManager]Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]" + line)
                     # else:
-                        # print(line)
+                        # myprint(line)
                 proc.wait()
                 output = proc.returncode
-                print("\n")
+                myprint("\n", bar)
                 if output == 0:
                     numberofupdatedmods += 1
                     iterator += 1
-                    bar.update(iterator)
+                    bar.update(1)
+                    one_time -= int(round(time.time()))
+                    total_time += one_time
                 else:
-                    raise Exception("[ModManager]Steamcmd return code is not 0! That means steamcd had problems!\n" + proc.errors)
+                    raise Exception("[ModManager]Steamcmd return code is not 0! That means steamcd had problems!\n" + str(proc.errors))
             else:
                 iterator += 1
-                print("[ModManager]Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")")
-                bar.update(iterator)
+                myprint("[ModManager]Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")\n", bar)
+                bar.update(1)
             # iterator += 1
             # bar.update(iterator)
+    print("\n")
     return numberofupdatedmods
 
 def get_old_managed_mods(tool_path, managed_mods_path):
@@ -373,9 +388,7 @@ def set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mo
 
 def main(requiredpaths):
     global max_value
-    global current_progress
     max_value = 1
-    current_progress = 0
 
     warning_LFBnotinstalled = False
     lastupdated_functionality = debug_lastupdated_functionality
@@ -533,7 +546,7 @@ def main(requiredpaths):
         time.sleep(20)
 
 if __name__ == '__main__':
-    print("\n")
+    # print("\n")
     while(True):
         print("[ModManager]If you want to set up, or disable collection mode type \'c\', then enter.\n[ModManager]Do you want to update mods? ((Y)es / (n)o): ")
         newinput = input()
