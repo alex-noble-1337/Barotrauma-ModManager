@@ -1,4 +1,5 @@
 (cant replicate on hold) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
+- exception on not finign steamcmd
 - functionality to back up config_player, serversettings, and any other config to backup directory
 - optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
     - lastupdated functionality for collection mode, check for directory modification time, then compare with steam updae time
@@ -12,6 +13,7 @@
 - set up a functionality for mod manager to automatically sort your modlist
 - set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
 - functionality to selectivly force-update a mod
+- fix output not formatting correctly new line etc
 
 (PERIODIC) go over all todo's from comments post them here
 (PERIODIC) rewrite documentation to include new functions
