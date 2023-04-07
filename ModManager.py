@@ -330,32 +330,33 @@ def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
                     if re.match(".*?Success. Downloaded item " + mod["ID"] + ".*?", line):
                         # check if mod has been downloaded in correct path
                         if re.match(".*?\"" + steamdir_path + ".*?steamapps.*?workshop.*?content.*?602960.*?" + mod["ID"] + "\".*?", line):
-                            myprint("[ModManager]Downloaded mod!: " + mod["Name"] + " (" + mod["ID"] + ")\n", bar)
+                            myprint("[ModManager]Downloaded mod!: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
                             # iterator += 1
                             # bar.update(iterator)
                             # bar.update()
                         else:
-                            raise Exception("[ModManager]Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]" + line)
+                            raise Exception("[ModManager]Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]" + str(line))
                     # else:
                         # myprint(line)
                 proc.wait()
                 output = proc.returncode
-                myprint("\n", bar)
                 if output == 0:
                     numberofupdatedmods += 1
                     iterator += 1
                     bar.update(1)
                     one_time -= int(round(time.time()))
                     total_time += one_time
+                    myprint("", bar)
                 else:
-                    raise Exception("[ModManager]Steamcmd return code is not 0! That means steamcd had problems!\n" + str(proc.errors))
+                    raise Exception("[ModManager]Steamcmd return code is not 0! That means steamcd had problems!" + str(proc.errors))
             else:
                 iterator += 1
-                myprint("[ModManager]Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")\n", bar)
+                myprint("[ModManager]Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
                 bar.update(1)
+                myprint("", bar)
             # iterator += 1
             # bar.update(iterator)
-    print("\n")
+    print("")
     return numberofupdatedmods
 
 def get_old_managed_mods(tool_path, managed_mods_path):
