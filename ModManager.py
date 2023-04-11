@@ -6,10 +6,12 @@ default_tool_path = ""
 default_steamcmd_path = "steamcmd"
 default_steamdir_path = "/home/milord/testdirectory/steamdir"
 addperformacefix = False
+disablewarnings = False
 # TODO Still testing and working on it
 flush_previous_col = False
 debug_lastupdated_functionality = False
 progressbar_functionality = False
+debug_set_forced_cs = False
 
 # My "Quality" code
 import os # TODO change this to import only individual commands
@@ -34,29 +36,6 @@ from tqdm import tqdm
 from configbackup import backup_option
 from ConfigRecoder import generatelistOfMods 
 from ConfigRecoder import collectionf 
-
-# yoinked from stackoverflow, works
-def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
-    if replace_option:
-        number_dirs = os.listdir(root_dst_dir)
-        for number_dir in number_dirs:
-            pattern = "^\d*?$"
-            if re.match(pattern, number_dir):
-                if os.path.exists(os.path.join(root_dst_dir, number_dir)):
-                    shutil.rmtree(os.path.join(root_dst_dir, number_dir))
-    for src_dir, dirs, files in os.walk(root_src_dir):
-        dst_dir = src_dir.replace(root_src_dir, root_dst_dir, 1)
-        if not os.path.exists(dst_dir):
-            os.makedirs(dst_dir)
-        for file_ in files:
-            src_file = os.path.join(src_dir, file_)
-            dst_file = os.path.join(dst_dir, file_)
-            if os.path.exists(dst_file):
-                # in case of the src and dst are the same file
-                if os.path.samefile(src_file, dst_file):
-                    continue
-                os.remove(dst_file)
-            shutil.move(src_file, dst_dir)
 
 # set up all default values and paths
 def set_required_values(input_options = {'collection_link': "", 'localcopy_path_override': ""}):
@@ -105,15 +84,15 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
                 if tempval > 1:
                     if options_arr[i+1] == "pwd":
                         if sys.platform == 'win32':
-                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.exe")
+                            location_with_steamcmd = os.path.join(os.getcwd(), "steamcmd.exe")
                         else:
-                            steamcmd_path = os.path.join(os.getcwd(), "steamcmd.sh")
+                            location_with_steamcmd = os.path.join(os.getcwd(), "steamcmd.sh")
                         changed_steamcmd_path = True
                     else:
-                        steamcmd_path = options_arr[i+1]
+                        location_with_steamcmd = options_arr[i+1]
                         changed_steamcmd_path = True
                 else:
-                    steamcmd_path = options_arr[i+1]
+                    location_with_steamcmd = options_arr[i+1]
                     changed_steamcmd_path = True
 
             # TODO add it to the documentaton
@@ -136,14 +115,37 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
     if not changed_tool_path:
         tool_path = default_tool_path
     if not changed_steamcmd_path:
-        steamcmd_path = default_steamcmd_path
+        location_with_steamcmd = default_steamcmd_path
     if default_steamdir_path == "":
         steamdir_path = os.path.join(tool_path, "steamdir")
     else:
         steamdir_path = default_steamdir_path
     
-    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': steamcmd_path, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override}
+    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': location_with_steamcmd, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override}
     return input_options
+
+# yoinked from stackoverflow, works
+def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
+    if replace_option:
+        number_dirs = os.listdir(root_dst_dir)
+        for number_dir in number_dirs:
+            pattern = "^\d*?$"
+            if re.match(pattern, number_dir):
+                if os.path.exists(os.path.join(root_dst_dir, number_dir)):
+                    shutil.rmtree(os.path.join(root_dst_dir, number_dir))
+    for src_dir, dirs, files in os.walk(root_src_dir):
+        dst_dir = src_dir.replace(root_src_dir, root_dst_dir, 1)
+        if not os.path.exists(dst_dir):
+            os.makedirs(dst_dir)
+        for file_ in files:
+            src_file = os.path.join(src_dir, file_)
+            dst_file = os.path.join(dst_dir, file_)
+            if os.path.exists(dst_file):
+                # in case of the src and dst are the same file
+                if os.path.samefile(src_file, dst_file):
+                    continue
+                os.remove(dst_file)
+            shutil.move(src_file, dst_dir)
 
 # get from config_player.xml, everything inside <regularpackages/> </regularpackages>
 def get_regularpackages(barotrauma_path):
@@ -164,6 +166,7 @@ def get_regularpackages(barotrauma_path):
         # print("<regularpackages/>")
         # print("<regularpackages>\n\t\t</regularpackages>")
         filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
+        filelist_str = filelist_str.replace("<regularpackages />", "<regularpackages>\n\n\t</regularpackages>")
         with open(filelist_path, "w", encoding='utf8') as f:
             f.write(filelist_str)
         pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
@@ -218,8 +221,8 @@ def sanitize_pathstr(path):
 
 # function that uses steamcmd
 time_of_last_usage = 0
-def moddownloader(number_of_mod, tool_path, steamdir_path, steamcmd_path):
-        command = steamcmd_path
+def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcmd):
+        command = location_with_steamcmd
         # san_steamdir_path = sanitize_pathstr(steamdir_path)
         # san_steamdir_path = "\"" + steamdir_path + "\""
         arguments = [command ,"+force_install_dir", steamdir_path, "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
@@ -270,9 +273,10 @@ def create_newfilelist(modlist, localcopy_path_og, barotrauma_path):
         else:
             temp_localcopy_path = temp_localcopy_path
 
-        regularpackages_new += "\t\t\t<!--" + mod['Name'] + "-->\n"
-        regularpackages_new += "\t\t\t<package\n"
-        regularpackages_new += "\t\t\t\tpath=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
+        regularpackages_new += "      <!--" + mod['Name'] + "-->\n"
+        regularpackages_new += "      <package\n"
+        regularpackages_new += "        path=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
+    regularpackages_new += "    "
     return regularpackages_new
 
 def save_managedmods(managed_mods, managed_mods_path):
@@ -289,7 +293,7 @@ def myprint(mssg, bar = 'bar'):
         print(mssg)
 
 # usage of steamcmd on modlist
-def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
+def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
     numberofupdatedmods = 0
     # '], where l_bar='{desc}: {percentage:3.0f}%|' and r_bar='| {n_fmt}/{total_fmt}{postfix} [{elapsed}<{remaining}, ' '{rate_fmt}]
     total_time = 0
@@ -309,7 +313,7 @@ def download_modlist(modlist, tool_path, steamdir_path, steamcmd_path):
                 myprint(mssg, bar)
                 # TODO make output of steamcmd less spammy/silent
                 # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
-                proc = moddownloader(mod["ID"],tool_path, steamdir_path, steamcmd_path)
+                proc = moddownloader(mod["ID"],tool_path, steamdir_path, location_with_steamcmd)
                 for line in io.TextIOWrapper(proc.stdout, encoding="utf-8"):
                     line = line.rstrip()
                     # steam connection check
@@ -392,11 +396,13 @@ def main(requiredpaths):
     max_value = 1
 
     warning_LFBnotinstalled = False
+    warning_modlistislong = False
+    warning_modlistissuperlong = False
     lastupdated_functionality = debug_lastupdated_functionality
 
     barotrauma_path = requiredpaths['barotrauma']
     tool_path = requiredpaths['tool']
-    steamcmd_path = requiredpaths['steamcmd']
+    location_with_steamcmd = requiredpaths['steamcmd']
     steamdir_path = requiredpaths['steamdir']
     collectionmode = requiredpaths['collectionmode']
     localcopy_path_override = requiredpaths['localcopy_path_override']
@@ -456,10 +462,16 @@ def main(requiredpaths):
         modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
 
     localcopy_path = localcopy_path_og
+    if (not requreslua) or (not requrescs):
+        for mod in modlist:
+            if mod['ID'] == '2559634234':
+                requreslua = True
+            if mod['ID'] == '2795927223':
+                requrescs = True
 
     if requreslua or requrescs:
         if os.path.exists(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml")):
-            if requrescs:
+            if requrescs and debug_set_forced_cs:
                 with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "r", encoding='utf8') as LuaCsSetupConfigf:
                     LuaCsSetupConfig = LuaCsSetupConfigf.read()
                 LuaCsSetupConfig = LuaCsSetupConfig.replace("ForceCsScripting Value=\"Boolean\">False", "ForceCsScripting Value=\"Boolean\">True")
@@ -474,7 +486,28 @@ def main(requiredpaths):
         print("[ModManager]No mods detected")
         return 
     else:
+        numberofmodsminusserverside = len(modlist)
+        if requreslua:
+            numberofmodsminusserverside -= 1
+        if requrescs:
+            numberofmodsminusserverside -= 1
+        if numberofmodsminusserverside >= 30 and not disablewarnings:
+            warning_modlistissuperlong = True
+        elif numberofmodsminusserverside >= 20 and not disablewarnings:
+            warning_modlistislong = True
         has_performancefix = print_modlist_checkforpffix(modlist)
+        # more and equal to 20
+        if warning_modlistislong:
+            sys.stdout.write("\033[1;31m")
+            print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+            sys.stdout.write("\033[0;0m")
+            time.sleep(20/2)
+        # more and equal to 30
+        if warning_modlistissuperlong:
+            sys.stdout.write("\033[1;31m")
+            print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+            sys.stdout.write("\033[0;0m")
+            time.sleep(30/2)
 
     if has_performancefix == False and addperformacefix == True:
         WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
@@ -483,14 +516,15 @@ def main(requiredpaths):
     # 1. Path fixing
     if not os.path.isabs(tool_path):
         tool_path = os.path.join(os.getcwd(), tool_path)
-    # if not os.path.isabs(steamcmd_path):
-    #     steamcmd_path = os.path.join(os.getcwd(), steamcmd_path)
+    # if not os.path.isabs(location_with_steamcmd):
+    #     location_with_steamcmd = os.path.join(os.getcwd(), location_with_steamcmd)
     if not os.path.isabs(steamdir_path):
         steamdir_path = os.path.join(os.getcwd(), steamdir_path)
     newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
     if os.path.exists(steamdir_path):
         shutil.rmtree(steamdir_path)
     os.mkdir(steamdir_path)
+    steamdir_path = os.path.realpath(steamdir_path)
     # if os.path.isabs(localcopy_path):
     #     localmods_path = os.path.abspath(localcopy_path)
     # else:
@@ -518,7 +552,7 @@ def main(requiredpaths):
     # main part running moddlownloader
     if collectionmode and lastupdated_functionality:
         print()
-    numberofupdatedmods = download_modlist(modlist, tool_path, steamdir_path, steamcmd_path)
+    numberofupdatedmods = download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd)
     print("\n")
     print("[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
     print("[ModManager]Downloading mods complete!")
@@ -545,6 +579,19 @@ def main(requiredpaths):
     if warning_LFBnotinstalled:
         print("[ModManager]WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
         time.sleep(20)
+
+    # more and equal to 30
+    if warning_modlistislong:
+            sys.stdout.write("\033[1;31m")
+            print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+            sys.stdout.write("\033[0;0m")
+            time.sleep(20/2)
+    # more and equal to 30
+    if warning_modlistissuperlong:
+        sys.stdout.write("\033[1;31m")
+        print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+        sys.stdout.write("\033[0;0m")
+        time.sleep(30/2)
 
 if __name__ == '__main__':
     # print("\n")
