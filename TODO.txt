@@ -1,5 +1,6 @@
-(cant replicate on hold) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
+- improve ouption to warn hosts about long modlists (eg. minus addons)
 - exception on not finign steamcmd
+- add ability to enforce and specify by server admins by using command line arguemnts barotrauma path, location_with_steamcmd, and Toolpath
 - functionality to back up config_player, serversettings, and any other config to backup directory
 - optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
     - lastupdated functionality for collection mode, check for directory modification time, then compare with steam updae time
@@ -15,11 +16,10 @@
 - functionality to selectivly force-update a mod
 - fix output not formatting correctly new line etc
 
+- add collection mode manual to readme
+(PERIODIC test more) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
+- add translation of readme https://github.com/Zipliks/modmanager-guide/blob/master/README.md
+- add option to warn hosts about long modlists
+
 (PERIODIC) go over all todo's from comments post them here
 (PERIODIC) rewrite documentation to include new functions
-(DONE) move most things into seprate functions, and get on that class-block programming
-(DONE) set up automatic build and release package making script
-(DONE) error handling if barotrauma path's confi_player.xml is not found, or any other paths stuff
-(DONE) create a link checker, probbably make it ping an collection link
-(DONE) functionality to show a progress bar instead of steamcmd download output
-(DONE) removing of lua and cs from modlist should be in ModManager.py
