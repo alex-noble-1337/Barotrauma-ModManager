@@ -1,7 +1,7 @@
-- improve ouption to warn hosts about long modlists (eg. minus addons)
-- exception on not finign steamcmd
-- add ability to enforce and specify by server admins by using command line arguemnts barotrauma path, location_with_steamcmd, and Toolpath
+- check if names in config_player mode are still requred
+- improve ouption to warn hosts about long modlists (eg. minus serverside)
 - functionality to back up config_player, serversettings, and any other config to backup directory
+- add ability to enforce and specify by server admins by using command line arguemnts barotrauma path, location_with_steamcmd, and Toolpath
 - optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
     - lastupdated functionality for collection mode, check for directory modification time, then compare with steam updae time
     - steamcmd downloading all mods at once
@@ -15,6 +15,8 @@
 - set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
 - functionality to selectivly force-update a mod
 - fix output not formatting correctly new line etc
+
+(DONE) exception on not finign steamcmd
 
 (PERIODIC test more) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
 
