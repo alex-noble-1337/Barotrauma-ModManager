@@ -49,7 +49,7 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
     localcopy_path_override = input_options['localcopy_path_override']
 
     # TODO go over this again, handing of command line arguments
-    if len(options_arr) > 1:
+    if len(options_arr) >= 1:
         for i in range(0,len(options_arr)):
             tempval = len(options_arr[i:i+1]) + 1
 
@@ -222,17 +222,20 @@ def sanitize_pathstr(path):
 # function that uses steamcmd
 time_of_last_usage = 0
 def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcmd):
-        command = location_with_steamcmd
-        # san_steamdir_path = sanitize_pathstr(steamdir_path)
-        # san_steamdir_path = "\"" + steamdir_path + "\""
-        arguments = [command ,"+force_install_dir", steamdir_path, "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
-        # TODO make its outpot less shit
-        global time_of_last_usage
-        if time_of_last_usage != 0 and int(round(time.time())) - time_of_last_usage < 1:
-            time.sleep(int(round(time.time())) - time_of_last_usage)
-        time_of_last_usage = int(round(time.time()))
-        proc = subprocess.Popen(arguments, stdout=subprocess.PIPE)
-        return proc
+        if os.path.exists(location_with_steamcmd):
+            command = location_with_steamcmd
+            # san_steamdir_path = sanitize_pathstr(steamdir_path)
+            # san_steamdir_path = "\"" + steamdir_path + "\""
+            arguments = [command ,"+force_install_dir", steamdir_path, "+login anonymous", "+workshop_download_item 602960 " + str(number_of_mod), "validate", "+quit"]
+            # TODO make its outpot less shit
+            global time_of_last_usage
+            if time_of_last_usage != 0 and int(round(time.time())) - time_of_last_usage < 1:
+                time.sleep(int(round(time.time())) - time_of_last_usage)
+            time_of_last_usage = int(round(time.time()))
+            proc = subprocess.Popen(arguments, stdout=subprocess.PIPE)
+            return proc
+        else:
+            Exception("[ModManager]SteamCMD could not be found! check your paths!")
 
 def print_modlist_checkforpffix(modlist):
     has_performancefix = False
@@ -477,6 +480,7 @@ def main(requiredpaths):
                 LuaCsSetupConfig = LuaCsSetupConfig.replace("ForceCsScripting Value=\"Boolean\">False", "ForceCsScripting Value=\"Boolean\">True")
                 with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "w", encoding='utf8') as LuaCsSetupConfigf:
                     LuaCsSetupConfigf.write(LuaCsSetupConfig)
+                
         else:
             warning_LFBnotinstalled = True
 
@@ -486,28 +490,33 @@ def main(requiredpaths):
         print("[ModManager]No mods detected")
         return 
     else:
-        numberofmodsminusserverside = len(modlist)
-        if requreslua:
-            numberofmodsminusserverside -= 1
-        if requrescs:
-            numberofmodsminusserverside -= 1
+        numberofmodsminusserverside = len(modlist) - int(requreslua) - int(requrescs)
         if numberofmodsminusserverside >= 30 and not disablewarnings:
             warning_modlistissuperlong = True
         elif numberofmodsminusserverside >= 20 and not disablewarnings:
             warning_modlistislong = True
         has_performancefix = print_modlist_checkforpffix(modlist)
-        # more and equal to 20
-        if warning_modlistislong:
-            sys.stdout.write("\033[1;31m")
-            print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
-            sys.stdout.write("\033[0;0m")
-            time.sleep(20/2)
-        # more and equal to 30
-        if warning_modlistissuperlong:
-            sys.stdout.write("\033[1;31m")
-            print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
-            sys.stdout.write("\033[0;0m")
-            time.sleep(30/2)
+    
+    modlist_inlocalcopy = []
+    for modid in os.listdir(localcopy_path):
+        if re.match("^\d*?$", modid):
+            modlist_inlocalcopy.append(modid)
+            # if os.path.exists(os.path.join(localcopy_path, "filelist.xml")):
+                # check if mods update time is lower than modified time of file if so remove it from modlist
+            
+    
+    # # more and equal to 20
+    # if warning_modlistislong:
+    #     sys.stdout.write("\033[1;31m")
+    #     print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+    #     sys.stdout.write("\033[0;0m")
+    #     time.sleep(20/2)
+    # # more and equal to 30
+    # if warning_modlistissuperlong:
+    #     sys.stdout.write("\033[1;31m")
+    #     print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+    #     sys.stdout.write("\033[0;0m")
+    #     time.sleep(30/2)
 
     if has_performancefix == False and addperformacefix == True:
         WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
@@ -576,6 +585,14 @@ def main(requiredpaths):
     shutil.rmtree(steamdir_path)
     print("[ModManager]Mods Updated!\n")
 
+    numberofluamods = 0
+    if os.path.exists(os.path.join(localcopy_path, "filelist.xml")):
+        # checking if mod is pure server-side or client side
+        with open(os.path.join(localcopy_path, "filelist.xml"), "r", encoding='utf8') as f:
+            filelist_lines = f.readlines()
+        if len(filelist_lines) <= 3:
+            numberofluamods += 1
+
     if warning_LFBnotinstalled:
         print("[ModManager]WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
         time.sleep(20)
@@ -585,13 +602,13 @@ def main(requiredpaths):
             sys.stdout.write("\033[1;31m")
             print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
             sys.stdout.write("\033[0;0m")
-            time.sleep(20/2)
+            time.sleep(20)
     # more and equal to 30
     if warning_modlistissuperlong:
         sys.stdout.write("\033[1;31m")
         print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
         sys.stdout.write("\033[0;0m")
-        time.sleep(30/2)
+        time.sleep(30)
 
 if __name__ == '__main__':
     # print("\n")
