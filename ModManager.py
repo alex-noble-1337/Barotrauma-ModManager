@@ -105,6 +105,7 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
                 
              # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
+                global addperformacefix
                 addperformacefix = True
 
     # setting up default values and path handling
