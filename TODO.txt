@@ -14,12 +14,6 @@
 - functionality to selectivly force-update a mod
 - fix output not formatting correctly new line etc
 
-(DONE) fixed -p for performance fix not working
-(DONE) exception on not finign steamcmd
-(DONE) improve ouption to warn hosts about long modlists (eg. minus serverside)
-(DONE) check if names in config_player mode are still requred
-(DONE) fixed bug when name of the mod has `--` in the name and other name bugs
-
 (PERIODIC test more) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
 
 (PERIODIC) go over all todo's from comments post them here
