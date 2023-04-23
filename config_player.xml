@@ -61,66 +61,66 @@
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
     <regularpackages>
-      <!--Mechtrauma ALPHA-->
+      <!--EK Mods for 1.x.x.x-->
       <package
-        path="LocalMods/2855458020/filelist.xml" />
-      <!--Kastrull (Mechtrauma)-->
+        path="LocalMods/2954237072/filelist.xml" />
+      <!--SCP Pelagic Anomalies - - R&D Stage 3-->
       <package
-        path="LocalMods/2881310475/filelist.xml" />
-      <!--Multiplayer crew manager-->
+        path="LocalMods/2960227433/filelist.xml" />
+      <!--Local Voice Fix [Lua update]-->
       <package
-        path="LocalMods/2775613786/filelist.xml" />
-      <!--&quot;Died of Barotrauma&quot; Death Message-->
+        path="LocalMods/2362585294/filelist.xml" />
+      <!--More Alarm Sounds-->
       <package
-        path="LocalMods/2955596022/filelist.xml" />
-      <!--32x Stack-->
+        path="LocalMods/2240258217/filelist.xml" />
+      <!--MoreHeadgear-->
       <package
-        path="LocalMods/2683570256/filelist.xml" />
-      <!--Ammo extended 2 (RUS/ENG/汉语)-->
+        path="LocalMods/2291500113/filelist.xml" />
+      <!--SOFA'S DECO-->
       <package
-        path="LocalMods/2668119156/filelist.xml" />
-      <!--BetterFabricatorUI-->
+        path="LocalMods/2526456135/filelist.xml" />
+      <!--SCP-008-->
       <package
-        path="LocalMods/2811300302/filelist.xml" />
-      <!--Combinable Ammo Revived (NOW WORKS WITH ALL AMMO)-->
+        path="LocalMods/2794406667/filelist.xml" />
+      <!--SCP-682 "The Reptile"-->
       <package
-        path="LocalMods/2799051561/filelist.xml" />
-      <!--Crates for recycling-->
+        path="LocalMods/2139636213/filelist.xml" />
+      <!--Scp-049 Mod-->
       <package
-        path="LocalMods/2811526690/filelist.xml" />
-      <!--DynamicEuropa-->
+        path="LocalMods/2918111581/filelist.xml" />
+      <!--The Old Man-->
       <package
-        path="LocalMods/2532991202/filelist.xml" />
-      <!--Cs For Barotrauma-->
+        path="LocalMods/2280724542/filelist.xml" />
+      <!--Thalassophobia "No Longer Works"-->
       <package
-        path="LocalMods/2795927223/filelist.xml" />
-      <!--[Legacy] EK | Armory-->
+        path="LocalMods/2660379561/filelist.xml" />
+      <!--ZDoors-->
       <package
-        path="LocalMods/1769403760/filelist.xml" />
-      <!--ADV Beacon Stations-->
+        path="LocalMods/2902757031/filelist.xml" />
+      <!--Dont Open Debug Console On Errors-->
       <package
-        path="LocalMods/2544952900/filelist.xml" />
-      <!--AVP-Aliens-->
+        path="LocalMods/2807566753/filelist.xml" />
+      <!--JobAllowList-->
       <package
-        path="LocalMods/2510534927/filelist.xml" />
-      <!--BetterHealthUI-->
+        path="LocalMods/2963406947/filelist.xml" />
+      <!--SCPRP - Delta-K (Era 1)-->
       <package
-        path="LocalMods/2807158602/filelist.xml" />
-      <!--Dead Space Uniforms (IN PROGRESS)-->
+        path="LocalMods/2963000372/filelist.xml" />
+      <!--SCPRP - Kilo-4 (Era 1)-->
       <package
-        path="LocalMods/2926977751/filelist.xml" />
-      <!--Aurora [JE]-->
+        path="LocalMods/2963000263/filelist.xml" />
+      <!--SCPRP - Omega-6 (BREACH)-->
       <package
-        path="LocalMods/2814490651/filelist.xml" />
-      <!--ASL-01A Rocinante [JE]-->
+        path="LocalMods/2962999750/filelist.xml" />
+      <!--SCPRP - Omega-6 (Era 1)-->
       <package
-        path="LocalMods/2814490850/filelist.xml" />
-      <!--Acacia [JE]-->
+        path="LocalMods/2963000061/filelist.xml" />
+      <!--SCPRP - Omega-6 (Era 3)-->
       <package
-        path="LocalMods/2814490256/filelist.xml" />
-      <!--BalancedSubs-->
+        path="LocalMods/2962999854/filelist.xml" />
+      <!--SCPRP - Omega-6 (TESTING)-->
       <package
-        path="LocalMods/2820364087/filelist.xml" />
+        path="LocalMods/2963258207/filelist.xml" />
     </regularpackages>
   </contentpackages>
   <serverfilters

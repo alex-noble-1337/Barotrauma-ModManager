@@ -75,7 +75,12 @@ def get_modsData_collection(collection_site, addnames = True):
             mod['ID'] = str(re.findall(pattern, collectionItemDetails)[0])
             if addnames:
                 pattern = "(?<=id=" + mod['ID'] + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
-                mod['Name'] = re.findall(pattern, collectionItemDetails)[0]
+                name = re.findall(pattern, collectionItemDetails)[0]
+                # fixing of names special characters
+                name = name.replace("--", "- -")
+                name = name.replace("&amp;", "&")
+                name = name.replace("&quot;", "\"")
+                mod['Name'] = name
             mods.append(mod)
     else:
         # throw exeption invalid collection
