@@ -82,6 +82,7 @@ if __name__ == '__main__':
     copy_optimized("LICENSE", os.path.join(output_path, "LICENSE"))
     # copy README.md to ModManager
     copy_optimized("README.md", os.path.join(output_path, "README.md"))
+    copy_optimized("README.ru.md", os.path.join(output_path, "README.ru.md"))
     # copy all py files except releasebuild.py into ModManager dir
     files_arr = get_fileswithextension(os.getcwd(), ".py")
     files_arr.remove("buildrelease.py")
