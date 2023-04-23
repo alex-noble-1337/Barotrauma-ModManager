@@ -2,7 +2,7 @@ import os
 import datetime
 from shutil import copyfile
 import re
-
+import shutil
 
 # global vars
 current_time = datetime.datetime.now()
@@ -11,7 +11,8 @@ current_time = str(current_time)[0:-3]
 current_time = re.sub('[:]', '.', current_time)
 
 def config_files_find(fileitem):
-    return(fileitem.find("config") >= 0 and fileitem.find("default") == -1)
+    b_fileitem = fileitem.lower()
+    return(b_fileitem.find("config") >= 0 and b_fileitem.find("default") == -1 and (not b_fileitem == "RunConfig.xml".lower()) and (not b_fileitem == "configGui.lua".lower()))
 
 # configs
 # backup folder location
@@ -25,32 +26,32 @@ def find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation):
     dir_list = os.listdir(modslocation)
     configfilespathfrommodslocation = []
     for moddir in dir_list:
-        if os.path.isdir(moddir):
+        if os.path.isdir(os.path.join(modslocation, moddir)):
             moddir_x = os.path.join(modslocation, moddir)
             insidemoddir = os.listdir(moddir_x)
             if "Lua" in insidemoddir or "CSharp" in insidemoddir:
                 # search in root
                 for item in insidemoddir:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(moddir, item))
+                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, item))
             if "Lua" in insidemoddir:
                 # search in lua
                 moddir_x = os.path.join(moddir_x, "Lua")
                 insidemoddir_x = os.listdir(moddir_x)
                 for item in insidemoddir_x:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(moddir, "Lua", item))
+                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, "Lua", item))
             if "CSharp" in insidemoddir:
                 # search in CSharp
                 moddir_x = os.path.join(moddir_x, "CSharp")
                 insidemoddir_x = os.listdir(moddir_x)
                 for item in insidemoddir_x:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(moddir, "CSharp", item))
+                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, "CSharp", item))
             if len(configfilespathfrommodslocation) <= 0:
                 for item in insidemoddir:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(moddir, item))
+                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, item))
     return(configfilespathfrommodslocation)
     # output: config files path from mods location: configfilespathfrommodslocation
 
@@ -59,9 +60,10 @@ def create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslo
     # input: configfilespathfrommodslocation
     backupconfigpaths = []
     for configfile in configfilespathfrommodslocation:
-        backupconfigpaths.append(os.path.join(backupfolder, configfile))
+        temp = configfile.replace(modslocation, backupfolder)
+        backupconfigpaths.append(temp)
     for i in range(len(configfilespathfrommodslocation)):
-        minput = os.path.join(modslocation, configfilespathfrommodslocation[i])
+        minput = os.path.join(configfilespathfrommodslocation[i])
         moutput = backupconfigpaths[i]
         print(minput + " -> " + moutput)
         if os.path.exists(os.path.dirname(moutput)) == False:
@@ -76,6 +78,84 @@ def backup_option(modslocation, backupfolder):
     create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslocation,backupfolder)
     # print done
     print("[ConfigBackup]Done backing up config files")
+
+def get_configs_barotraumadir(barotraumadir):
+    path_arr = []
+    # barotraumadir/serversettings.xml
+    path = os.path.join(barotraumadir, "serversettings.xml")
+    if os.path.exists(path):
+        path_arr.append(path)
+    # barotraumadir/config_player.xml
+    path = os.path.join(barotraumadir, "config_player.xml")
+    if os.path.exists(path):
+        path_arr.append(path)
+    # barotraumadir/LuaCsSetupConfig.xml
+    path = os.path.join(barotraumadir, "LuaCsSetupConfig.xml")
+    if os.path.exists(path):
+        path_arr.append(path)
+    # barotraumadir/hintmanager.xml
+    path = os.path.join(barotraumadir, "hintmanager.xml")
+    if os.path.exists(path):
+        path_arr.append(path)
+    # barotraumadir/creature_metrics.xml
+    path = os.path.join(barotraumadir, "creature_metrics.xml")
+    if os.path.exists(path):
+        path_arr.append(path)
+    # barotraumadir/Config/*
+    path = os.path.join(barotraumadir, "Config")
+    for src_dir, dirs, files in os.walk(path):
+        for file_ in files:
+            src_file = os.path.join(src_dir, file_)
+            path_arr.append(src_file)
+    # barotraumadir/Data/*
+    path = os.path.join(barotraumadir, "Data")
+    for src_dir, dirs, files in os.walk(path):
+        for file_ in files:
+            src_file = os.path.join(src_dir, file_)
+            path_arr.append(src_file)
+
+    return path_arr
+def get_configs_localcopypath(modslocation):
+    configfilespathfrommodslocation = find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation)
+    return configfilespathfrommodslocation
+def get_saves(savedir):
+    path_arr = []
+    for src_dir, dirs, files in os.walk(savedir):
+        for file_ in files:
+            # get .save s
+            # get _CharacterData.xml s
+            if file_.find(".save") >= 0 or file_.find("_CharacterData.xml") >= 0:
+                src_file = os.path.join(src_dir, file_)
+                path_arr.append(src_file)
+    return path_arr
+
+def backupBarotraumaData(barotrauma_dir, mods_dir, save_dir, backup_dir):
+    # getting paths into reasonable length
+    # TODO readme about how to bring back that folder paths
+    files_path_arr = []
+    files_path_arr_out = []
+    files_path_arr_temp = get_configs_barotraumadir(barotrauma_dir)
+    files_path_arr.extend(files_path_arr_temp)
+    for i in range(len(files_path_arr_temp)):
+        files_path_arr_temp[i] = os.path.join(backup_dir, current_time, files_path_arr_temp[i].replace(barotrauma_dir, "barotrauma_dir"))
+    files_path_arr_out.extend(files_path_arr_temp)
+    files_path_arr_temp = get_configs_localcopypath(mods_dir)
+    files_path_arr.extend(files_path_arr_temp)
+    for i in range(len(files_path_arr_temp)):
+        files_path_arr_temp[i] = os.path.join(backup_dir, current_time, files_path_arr_temp[i].replace(mods_dir, "mods_dir"))
+    files_path_arr_out.extend(files_path_arr_temp)
+    files_path_arr_temp = get_saves(save_dir)
+    files_path_arr.extend(files_path_arr_temp)
+    for i in range(len(files_path_arr_temp)):
+        files_path_arr_temp[i] = os.path.join(backup_dir, current_time, files_path_arr_temp[i].replace(save_dir, "save_dir"))
+    files_path_arr_out.extend(files_path_arr_temp)
+
+    for i in range(len(files_path_arr)):
+        file_path_arr = files_path_arr[i]
+        file_path_arr_out = files_path_arr_out[i]
+        # copy from file_path_arr to file_path_arr_out
+        os.makedirs(os.path.dirname(file_path_arr_out),exist_ok=True)
+        shutil.copy2(file_path_arr, file_path_arr_out)
 
 def main():
     # backup folder location
@@ -127,4 +207,5 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    backupBarotraumaData("/mnt/Share/SteamLibrary/steamapps/common/Barotrauma", "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed", "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma", "Backup")
+    # main()

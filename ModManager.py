@@ -198,20 +198,59 @@ def get_localcopy_path(filelist_str):
 # find mods to update from config_player.xml
 def get_listOfModsfromConfig(filelist_str,localcopy_path):
     # filelist.xml" />
-    pattern = "(?<=<!--)[\s\S]*?(?=\/filelist\.xml)"
-    modlist_str = re.findall(pattern, filelist_str)
-    
     modlist = []
-    for mod in modlist_str:
-        pattern = "(?<=^)(.*?)(?=-->)"
-        mod_name = re.findall(pattern, mod)[0]
-        pattern = '(?<=path=")(.*?)(?=$)'
-        mod_id = re.findall(pattern, mod)[0]
-        if sys.platform == "win32":
-            mod_id = mod_id.replace('/', '\\')
-        mod_id = mod_id.replace(localcopy_path + "/", "")
-        WorkshopItem = {'Name': mod_name, 'ID': mod_id}
-        modlist.append(WorkshopItem)
+    filelist_str = filelist_str.splitlines()
+    for ix in range(len(filelist_str)):
+        if re.match(".*?<package.*?", filelist_str[ix]):
+            # get name into mod_name
+            if ix-1 >= 0:
+                name_filelist_str = filelist_str[ix-1]
+            else:
+                name_filelist_str = ""
+            pattern = "(?<=<!--)(.*?)(?=-->)"
+            mod_name = re.findall(pattern, name_filelist_str)
+            if len(mod_name) > 0:
+                mod_name = mod_name[0]
+            else:
+                mod_name = ""
+
+            # get id into mod_id
+            id_filelist_str = filelist_str[ix+1]
+            pattern = '(?<=path=")(.*?)(?=\/filelist\.xml)'
+            mod_id = re.findall(pattern, id_filelist_str)
+            if len(mod_id) > 0:
+                mod_id = mod_id[0]
+            else:
+                mod_id = ""
+            if sys.platform == "win32":
+                mod_id = mod_id.replace('/', '\\')
+            mod_id = mod_id.replace(localcopy_path + "/", "")
+
+
+            modlist.append({'Name': mod_name, 'ID': mod_id})
+
+    #         pattern = "(?<=<package)[\s\S]*?(?=\/filelist\.xml)"
+    # modlist_str = re.findall(pattern, filelist_str)
+    
+    
+    
+    # for mod in modlist_str:
+    #     pattern = "(?<=^)(.*?)(?=-->)"
+    #     mod_name = re.findall(pattern, mod)
+    #     if len(mod_name) > 0:
+    #         mod_name = mod_name[0]
+    #     else:
+    #         mod_name = ""
+    #     pattern = '(?<=path=")(.*?)(?=$)'
+    #     mod_id = re.findall(pattern, mod)
+    #     if len(mod_id) > 0:
+    #         mod_id = mod_id[0]
+    #     else:
+    #         mod_id = ""
+    #     if sys.platform == "win32":
+    #         mod_id = mod_id.replace('/', '\\')
+    #     mod_id = mod_id.replace(localcopy_path + "/", "")
+        
     return modlist
 
 def sanitize_pathstr(path):
@@ -491,10 +530,6 @@ def main(requiredpaths):
         return 
     else:
         numberofmodsminusserverside = len(modlist) - int(requreslua) - int(requrescs)
-        if numberofmodsminusserverside >= 30 and not disablewarnings:
-            warning_modlistissuperlong = True
-        elif numberofmodsminusserverside >= 20 and not disablewarnings:
-            warning_modlistislong = True
         has_performancefix = print_modlist_checkforpffix(modlist)
     
     modlist_inlocalcopy = []
@@ -580,33 +615,45 @@ def main(requiredpaths):
     # 3. + numberofupdatedmods actually moving mods to localcopy
     robocopysubsttute(newinputdir, localcopy_path)
 
+
     # 4. finishing anc cleaning up
     # removing steamdir because steamcmd is piece of crap and it sometimes wont download mod if its in directory
     shutil.rmtree(steamdir_path)
     print("[ModManager]Mods Updated!\n")
 
+    # checking if mod is pure server-side or client side
     numberofluamods = 0
-    if os.path.exists(os.path.join(localcopy_path, "filelist.xml")):
-        # checking if mod is pure server-side or client side
-        with open(os.path.join(localcopy_path, "filelist.xml"), "r", encoding='utf8') as f:
-            filelist_lines = f.readlines()
-        if len(filelist_lines) <= 3:
-            numberofluamods += 1
+    for mod in modlist:
+        if os.path.exists(os.path.join(localcopy_path, mod['ID'], "filelist.xml")):
+            with open(os.path.join(localcopy_path, mod['ID'], "filelist.xml"), "r", encoding='utf8') as f:
+                filelist = f.readlines()
+            xmlitems = 0
+            for ix in range(2, len(filelist)):
+                xmlitems += len(re.findall(".xml", filelist[ix]))
+            if xmlitems <= 0:
+                numberofluamods += 1
+    
+    if numberofmodsminusserverside - numberofluamods >= 30 and not disablewarnings:
+        warning_modlistissuperlong = True
+    elif numberofmodsminusserverside - numberofluamods >= 20 and not disablewarnings:
+        warning_modlistislong = True
 
     if warning_LFBnotinstalled:
+        sys.stdout.write("\033[1;31m")
         print("[ModManager]WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
+        sys.stdout.write("\033[0;0m")
         time.sleep(20)
 
     # more and equal to 30
     if warning_modlistislong:
             sys.stdout.write("\033[1;31m")
-            print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+            print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\n[ModManager]Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
             sys.stdout.write("\033[0;0m")
             time.sleep(20)
     # more and equal to 30
     if warning_modlistissuperlong:
         sys.stdout.write("\033[1;31m")
-        print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+        print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\n[ModManager]Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
         sys.stdout.write("\033[0;0m")
         time.sleep(30)
 
