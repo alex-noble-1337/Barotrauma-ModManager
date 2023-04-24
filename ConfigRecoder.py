@@ -16,12 +16,17 @@ import requests
 import time
 import datetime # for current time
 
+# TODO use a fucking API instead i think
+
 # TODO this is main bottleneck, need to optimize it
 headers = {'User-Agent': 'Mozilla/5.0'}
 # delay between usage of function based on system clock + internal function delay
 time_of_last_usage = 0
 def get_htm_of_collection_site(link):
+    # TODO add check if you have internet
+    # TODO add more exceptions
     global time_of_last_usage
+    retries = 0
     while True:
         if time_of_last_usage != 0 and int(round(time.time())) - time_of_last_usage < 15:
             time.sleep(int(round(time.time())) - time_of_last_usage)
@@ -32,8 +37,10 @@ def get_htm_of_collection_site(link):
             break
         else:
             output = "ERROR"
-            # time.sleep(20)
-            break
+            if retries >= 3:
+                break
+            else:
+                retries += 1
     return output
 
 # def get_listOfMods(collection_site):

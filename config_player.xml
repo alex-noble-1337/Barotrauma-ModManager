@@ -61,9 +61,6 @@
     <corepackage
       path="Content/ContentPackages/Vanilla.xml" />
     <regularpackages>
-      <!--Performance Fix-->
-      <package
-        path="LocalMods/2701251094/filelist.xml" />
       <!--Mechtrauma ALPHA-->
       <package
         path="LocalMods/2855458020/filelist.xml" />

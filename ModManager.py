@@ -9,7 +9,7 @@ addperformacefix = False
 disablewarnings = False
 # TODO Still testing and working on it
 flush_previous_col = False
-debug_lastupdated_functionality = False
+debug_lastupdated_functionality = True
 progressbar_functionality = False
 debug_set_forced_cs = False
 
@@ -107,6 +107,8 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
                 global addperformacefix
                 addperformacefix = True
+
+            # TODO add it to the documentaton
 
     # setting up default values and path handling
     if not changed_barotrauma_path:
@@ -594,11 +596,30 @@ def main(requiredpaths):
     # 4. saving managed mods
     save_managedmods(managed_mods, managed_mods_path)
 
-    # main part running moddlownloader
+    # lastupdated functionality
     if collectionmode and lastupdated_functionality:
-        print()
+        remove_arr = []
+        # TODO current slowing time is about 
+        # TODO lastupdated skip for windows and mac
+        for mod in modlist:
+            if os.path.exists(os.path.join(localcopy_path, mod['ID'])):
+                modificationtime = os.path.getmtime(os.path.join(localcopy_path, mod['ID']))
+                # conversion into time struct
+                modificationtime = time.gmtime(modificationtime)
+                # greater not equal because of possible steam errors
+                if  modificationtime > mod['LastUpdated'] and os.path.exists(os.path.join(localcopy_path, mod['ID'], "filelist.xml")):
+                    # TODO check if all xml files are matching what is in filelist
+                    # TODO thats a lazy way to do it
+                    remove_arr.append(mod)
+        for item_to_remove in remove_arr:
+            if item_to_remove in modlist:
+                modlist.remove(item_to_remove)
+
+    # main part running moddlownloader
     numberofupdatedmods = download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd)
     print("\n")
+    if collectionmode and lastupdated_functionality:
+        print("[ModManager]Skipping download of " + str(len(remove_arr)) + " Mods")
     print("[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
     print("[ModManager]Downloading mods complete!")
 
@@ -614,7 +635,8 @@ def main(requiredpaths):
             shutil.rmtree(not_managedmod)
 
     # 3. + numberofupdatedmods actually moving mods to localcopy
-    robocopysubsttute(newinputdir, localcopy_path)
+    for mod in modlist:
+        robocopysubsttute(os.path.join(newinputdir, mod['ID']), os.path.join(localcopy_path, mod['ID']))
 
 
     # 4. finishing anc cleaning up
