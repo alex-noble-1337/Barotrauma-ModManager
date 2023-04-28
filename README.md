@@ -45,7 +45,7 @@ Skiping mod download (HOTBOOT) is activated when typing `no` (or `n`) then press
 #### config_player.xml mode:
 * **IF YOU DONT KNOW WHAT `config_player.xml` IS OR YOU DONT KNOW ITS SYNTAX (or what xml even is), I RECOMEND USING COLLECTION MODE**
 * Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`.
-* Replace all `C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"` (your personal machine mod's path) where `$yourusername$` is your user name on windows machine to `LocalMods`
+* Replace all occurences `C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"` (your personal machine mod's path) where `$yourusername$` is your user name on windows machine, to `LocalMods`
 
 ## Command line options:
 **paths are set from your current working directory**
