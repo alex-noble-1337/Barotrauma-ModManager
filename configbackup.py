@@ -137,16 +137,22 @@ def backupBarotraumaData(barotrauma_dir, mods_dir, save_dir, backup_dir):
     files_path_arr_temp = get_configs_barotraumadir(barotrauma_dir)
     files_path_arr.extend(files_path_arr_temp)
     for i in range(len(files_path_arr_temp)):
+        if barotrauma_dir[len(barotrauma_dir)-1] == '/' or  barotrauma_dir[len(barotrauma_dir)-1] == '\\':
+            barotrauma_dir = barotrauma_dir[0:len(barotrauma_dir)-1]
         files_path_arr_temp[i] = os.path.join(backup_dir, current_time, files_path_arr_temp[i].replace(barotrauma_dir, "barotrauma_dir"))
     files_path_arr_out.extend(files_path_arr_temp)
     files_path_arr_temp = get_configs_localcopypath(mods_dir)
     files_path_arr.extend(files_path_arr_temp)
     for i in range(len(files_path_arr_temp)):
+        if mods_dir[len(mods_dir)-1] == '/' or  mods_dir[len(mods_dir)-1] == '\\':
+            mods_dir = mods_dir[0:len(mods_dir)-1]
         files_path_arr_temp[i] = os.path.join(backup_dir, current_time, files_path_arr_temp[i].replace(mods_dir, "mods_dir"))
     files_path_arr_out.extend(files_path_arr_temp)
     files_path_arr_temp = get_saves(save_dir)
     files_path_arr.extend(files_path_arr_temp)
     for i in range(len(files_path_arr_temp)):
+        if save_dir[len(save_dir)-1] == '/' or  save_dir[len(save_dir)-1] == '\\':
+            save_dir = save_dir[0:len(save_dir)-1]
         files_path_arr_temp[i] = os.path.join(backup_dir, current_time, files_path_arr_temp[i].replace(save_dir, "save_dir"))
     files_path_arr_out.extend(files_path_arr_temp)
 
@@ -206,6 +212,6 @@ def main():
         # print(modsconfigs)
 
 
-if __name__ == '__main__':
-    backupBarotraumaData("/mnt/Share/SteamLibrary/steamapps/common/Barotrauma", "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed", "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma", "Backup")
+# if __name__ == '__main__':
+    # backupBarotraumaData("/mnt/Share/SteamLibrary/steamapps/common/Barotrauma", "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed", "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma", "Backup")
     # main()

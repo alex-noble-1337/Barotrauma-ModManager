@@ -35,7 +35,9 @@ from tqdm import tqdm
 # from ConfigRecoder import get_modsnamelastupdated 
 from configbackup import backup_option
 from ConfigRecoder import generatelistOfMods 
-from ConfigRecoder import collectionf 
+from ConfigRecoder import collectionf
+from configbackup import backupBarotraumaData
+
 
 # set up all default values and paths
 def set_required_values(input_options = {'collection_link': "", 'localcopy_path_override': ""}):
@@ -47,6 +49,7 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
     collectionmode = False
     collection_link = input_options['collection_link']
     localcopy_path_override = input_options['localcopy_path_override']
+    save_dir = ""
 
     # TODO go over this again, handing of command line arguments
     if len(options_arr) >= 1:
@@ -109,6 +112,10 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
                 addperformacefix = True
 
             # TODO add it to the documentaton
+            if options_arr[i] == '--backup':
+                if tempval > 1:
+                    # TODO check if link is good
+                    save_dir = options_arr[i+1]
 
     # setting up default values and path handling
     if not changed_barotrauma_path:
@@ -124,7 +131,7 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
     else:
         steamdir_path = default_steamdir_path
     
-    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': location_with_steamcmd, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override}
+    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': location_with_steamcmd, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override, 'save_dir': save_dir}
     return input_options
 
 # yoinked from stackoverflow, works
@@ -452,6 +459,7 @@ def main(requiredpaths):
     collectionmode = requiredpaths['collectionmode']
     localcopy_path_override = requiredpaths['localcopy_path_override']
     collection_link = requiredpaths['collection_link']
+    save_dir = requiredpaths['save_dir']
 
     regularpackages = get_regularpackages(barotrauma_path)
     old_regularpackages = regularpackages
@@ -505,8 +513,11 @@ def main(requiredpaths):
         else:
             localcopy_path_og = localcopy_path_override
         modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
-
     localcopy_path = localcopy_path_og
+
+    if save_dir != "":
+        backupBarotraumaData(barotrauma_path, localcopy_path_og, save_dir, os.path.join(tool_path, "backup"))
+
     if (not requreslua) or (not requrescs):
         for mod in modlist:
             if mod['ID'] == '2559634234':
@@ -602,15 +613,16 @@ def main(requiredpaths):
         # TODO current slowing time is about 
         # TODO lastupdated skip for windows and mac
         for mod in modlist:
-            if os.path.exists(os.path.join(localcopy_path, mod['ID'])):
-                modificationtime = os.path.getmtime(os.path.join(localcopy_path, mod['ID']))
-                # conversion into time struct
-                modificationtime = time.gmtime(modificationtime)
-                # greater not equal because of possible steam errors
-                if  modificationtime > mod['LastUpdated'] and os.path.exists(os.path.join(localcopy_path, mod['ID'], "filelist.xml")):
-                    # TODO check if all xml files are matching what is in filelist
-                    # TODO thats a lazy way to do it
-                    remove_arr.append(mod)
+            if 'LastUpdated' in mod:
+                if os.path.exists(os.path.join(localcopy_path, mod['ID'])):
+                    modificationtime = os.path.getmtime(os.path.join(localcopy_path, mod['ID']))
+                    # conversion into time struct
+                    modificationtime = time.gmtime(modificationtime)
+                    # greater not equal because of possible steam errors
+                    if  modificationtime > mod['LastUpdated'] and os.path.exists(os.path.join(localcopy_path, mod['ID'], "filelist.xml")):
+                        # TODO check if all xml files are matching what is in filelist
+                        # TODO thats a lazy way to do it
+                        remove_arr.append(mod)
         for item_to_remove in remove_arr:
             if item_to_remove in modlist:
                 modlist.remove(item_to_remove)
