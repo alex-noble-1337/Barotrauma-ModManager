@@ -9,7 +9,6 @@ addperformacefix = False
 disablewarnings = False
 # TODO Still testing and working on it
 flush_previous_col = False
-debug_lastupdated_functionality = True
 progressbar_functionality = False
 debug_set_forced_cs = False
 
@@ -36,19 +35,18 @@ from tqdm import tqdm
 from configbackup import backup_option
 from ConfigRecoder import generatelistOfMods 
 from ConfigRecoder import collectionf
+from ConfigRecoder import get_modsData_individual
 from configbackup import backupBarotraumaData
 
 
 # set up all default values and paths
-def set_required_values(input_options = {'collection_link': "", 'localcopy_path_override': ""}):
+def set_required_values():
     options_arr = sys.argv[1:]
 
     changed_barotrauma_path = False
     changed_tool_path = False
     changed_steamcmd_path = False
     collectionmode = False
-    collection_link = input_options['collection_link']
-    localcopy_path_override = input_options['localcopy_path_override']
     save_dir = ""
 
     # TODO go over this again, handing of command line arguments
@@ -131,11 +129,11 @@ def set_required_values(input_options = {'collection_link': "", 'localcopy_path_
     else:
         steamdir_path = default_steamdir_path
     
-    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': location_with_steamcmd, 'steamdir': steamdir_path, 'collectionmode': collectionmode, 'collection_link': collection_link, 'localcopy_path_override': localcopy_path_override, 'save_dir': save_dir}
+    input_options = {'barotrauma': barotrauma_path, 'tool': tool_path, 'steamcmd': location_with_steamcmd, 'steamdir': steamdir_path, 'save_dir': save_dir}
     return input_options
 
 # yoinked from stackoverflow, works
-def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = True):
+def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
     if replace_option:
         number_dirs = os.listdir(root_dst_dir)
         for number_dir in number_dirs:
@@ -165,7 +163,7 @@ def get_regularpackages(barotrauma_path):
         with open(filelist_path, "r", encoding='utf8') as f:
             filelist_str = f.read()
     except Exception as e:
-        print("[ModManager]Could not find the config_player.xml! Check your barotrauma path!")
+        print("[ModManager] Could not find the config_player.xml! Check your barotrauma path!")
         print(e)
 
     pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
@@ -185,8 +183,18 @@ def get_regularpackages(barotrauma_path):
     if len(regularpackages) > 0:
         return regularpackages[0]
     else:
-        raise Exception("[ModManager]Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
+        raise Exception("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
 
+def get_recusive_modification_time_of_dir(origin_dir):
+    modificationtime = 0
+    for src_dir, dirs, files in os.walk(origin_dir):
+        for file_ in files:
+            # print(os.path.join(src_dir, file_))
+            new_modificationtime = os.path.getmtime(os.path.join(src_dir, file_))
+            if new_modificationtime > modificationtime:
+                modificationtime = new_modificationtime
+
+    return modificationtime
 
 # get localcopy path from filelist
 def get_localcopy_path(filelist_str):
@@ -269,6 +277,7 @@ def sanitize_pathstr(path):
     return path
 
 # function that uses steamcmd
+# TODO make it use steamcmd process that runs in the bg and just has commands fed into it
 time_of_last_usage = 0
 def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcmd):
         if os.path.exists(location_with_steamcmd):
@@ -284,18 +293,16 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcm
             proc = subprocess.Popen(arguments, stdout=subprocess.PIPE)
             return proc
         else:
-            Exception("[ModManager]SteamCMD could not be found! check your paths!")
+            Exception("[ModManager] SteamCMD could not be found! check your paths!")
 
-def print_modlist_checkforpffix(modlist):
-    has_performancefix = False
-    print("[ModManager]List of mods:")
+def print_modlist(modlist):
+    print("[ModManager] List of mods:")
     for mod in modlist:
         if str(mod["ID"]) == "2701251094":
             has_performancefix = True
-        print("[ModManager]"+ str(mod["ID"]) + ": " + mod["Name"])
+        print("[ModManager] "+ str(mod["ID"]) + ": " + mod["Name"])
     print("\n")
     print("\n")
-    return has_performancefix
 
 def remove_duplicates(modlist):
     toremove = []
@@ -357,7 +364,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
             if re.match(pattern, mod["ID"]):
                 one_time = int(round(time.time()))
                 # main part running moddlownloader
-                mssg = "[ModManager]Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["Name"]
+                mssg = "[ModManager] Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["Name"]
                 if progressbar_functionality == False:
                     mssg += "     Update Progress: " + str(iterator+1) + "/" + str(len(modlist))
                     number = int(abs((len(modlist) - iterator - 1)*(total_time / len(modlist))))
@@ -378,7 +385,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     # starting download
                     if re.match(".*?Downloading item " + mod["ID"] + ".*?", line):
                         # myprint("[Steamcmd]" + line)
-                        myprint("[ModManager]Downloading mod: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
+                        myprint("[ModManager] Downloading mod: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
                         # iterator += 1
                         # bar.update(iterator)
                         # bar.update()
@@ -386,12 +393,12 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     if re.match(".*?Success. Downloaded item " + mod["ID"] + ".*?", line):
                         # check if mod has been downloaded in correct path
                         if re.match(".*?\"" + steamdir_path + ".*?steamapps.*?workshop.*?content.*?602960.*?" + mod["ID"] + "\".*?", line):
-                            myprint("[ModManager]Downloaded mod!: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
+                            myprint("[ModManager] Downloaded mod!", bar)
                             # iterator += 1
                             # bar.update(iterator)
                             # bar.update()
                         else:
-                            raise Exception("[ModManager]Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]" + str(line))
+                            raise Exception("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]" + str(line))
                     # else:
                         # myprint(line)
                 proc.wait()
@@ -404,10 +411,10 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     total_time += one_time
                     myprint("", bar)
                 else:
-                    raise Exception("[ModManager]Steamcmd return code is not 0! That means steamcd had problems!" + str(proc.errors))
+                    raise Exception("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!" + str(proc.errors))
             else:
                 iterator += 1
-                myprint("[ModManager]Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
+                myprint("[ModManager] Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")", bar)
                 bar.update(1)
                 myprint("", bar)
             # iterator += 1
@@ -450,15 +457,19 @@ def main(requiredpaths):
     warning_LFBnotinstalled = False
     warning_modlistislong = False
     warning_modlistissuperlong = False
-    lastupdated_functionality = debug_lastupdated_functionality
 
     barotrauma_path = requiredpaths['barotrauma']
     tool_path = requiredpaths['tool']
     location_with_steamcmd = requiredpaths['steamcmd']
     steamdir_path = requiredpaths['steamdir']
-    collectionmode = requiredpaths['collectionmode']
-    localcopy_path_override = requiredpaths['localcopy_path_override']
-    collection_link = requiredpaths['collection_link']
+    if 'collection_link' in requiredpaths and 'localcopy_path_override' in requiredpaths:
+        collectionmode = True
+        localcopy_path_override = requiredpaths['localcopy_path_override']
+        collection_link = requiredpaths['collection_link']
+        lastupdated_functionality = True
+    else:
+        collectionmode = False
+        lastupdated_functionality = False
     save_dir = requiredpaths['save_dir']
 
     regularpackages = get_regularpackages(barotrauma_path)
@@ -488,31 +499,43 @@ def main(requiredpaths):
             if collection_site != "ERROR":
                 isvalid_collection_link = True
 
+    modlist = []
+    if addperformacefix == True:
+        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
+        modlist.insert(0, WorkshopItem)
 
     requreslua = False
     requrescs = False
+    hascs = False
     if isvalid_collection_link and localcopy_path_override != "":
         collectionmode = True
-        print("[ModManager]Collection mode ENABLED, Downloading collection data (This might take a sec)")
+        lastupdated_functionality = True
+        print("[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)")
         localcopy_path_og = localcopy_path_override
-        modlist = generatelistOfMods(collection_site, {'addnames': True, 'addlastupdated': lastupdated_functionality})
+        modlist = generatelistOfMods(collection_site, modlist, {'addnames': True, 'addlastupdated': lastupdated_functionality, 'dependencies': lastupdated_functionality})
         with open(collection_file_path, "w", encoding='utf8') as f:
             f.write(collection_link + " " + localcopy_path_og)
         for mod in modlist:
-            if 'dependencies' in modlist:
+            if 'dependencies' in mod:
                 for dependency in mod['dependencies']:
                     if str(dependency) == "2559634234" and requreslua == False:
                         requreslua = True
                     if str(dependency) == "2795927223" and requrescs == False:
                         requrescs = True
+            if mod['ID'] == '2795927223':
+                hascs = True
     else:
         collectionmode = False
-        print("[ModManager]Collection mode DISABLED, Downloading data from config_player.xml")
+        lastupdated_functionality = False
+        print("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml")
         if localcopy_path_override == "":
             localcopy_path_og = get_localcopy_path(regularpackages)
         else:
             localcopy_path_og = localcopy_path_override
-        modlist = get_listOfModsfromConfig(regularpackages,localcopy_path_og)
+        modlist.extend(get_listOfModsfromConfig(regularpackages,localcopy_path_og))
+        for mod in modlist:
+            if mod['ID'] == '2795927223':
+                hascs = True
     localcopy_path = localcopy_path_og
 
     if save_dir != "":
@@ -526,25 +549,32 @@ def main(requiredpaths):
                 requrescs = True
 
     if requreslua or requrescs:
-        if os.path.exists(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml")):
-            if requrescs and debug_set_forced_cs:
-                with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "r", encoding='utf8') as LuaCsSetupConfigf:
-                    LuaCsSetupConfig = LuaCsSetupConfigf.read()
-                LuaCsSetupConfig = LuaCsSetupConfig.replace("ForceCsScripting Value=\"Boolean\">False", "ForceCsScripting Value=\"Boolean\">True")
-                with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "w", encoding='utf8') as LuaCsSetupConfigf:
-                    LuaCsSetupConfigf.write(LuaCsSetupConfig)
-                
-        else:
+        if not os.path.exists(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml")):
             warning_LFBnotinstalled = True
+        else:
+            if requrescs:
+                if debug_set_forced_cs:
+                    with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "r", encoding='utf8') as LuaCsSetupConfigf:
+                        LuaCsSetupConfig = LuaCsSetupConfigf.read()
+                    LuaCsSetupConfig = LuaCsSetupConfig.replace("ForceCsScripting Value=\"Boolean\">False", "ForceCsScripting Value=\"Boolean\">True")
+                    with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "w", encoding='utf8') as LuaCsSetupConfigf:
+                        LuaCsSetupConfigf.write(LuaCsSetupConfig)
+
+    if requrescs:
+        if hascs == False:
+            # TODO kind hacky way to do this
+            temp_luacs = [{'Name': "Cs For Barotrauma", 'ID': "2795927223"}]
+            temp_luacs = get_modsData_individual(temp_luacs, lastupdated_functionality, lastupdated_functionality)
+            modlist.extend(temp_luacs)
 
     modlist = remove_duplicates(modlist)
     # modless?
     if len(modlist) == 0:
-        print("[ModManager]No mods detected")
+        print("[ModManager] No mods detected")
         return 
     else:
         numberofmodsminusserverside = len(modlist) - int(requreslua) - int(requrescs)
-        has_performancefix = print_modlist_checkforpffix(modlist)
+        print_modlist(modlist)
     
     modlist_inlocalcopy = []
     for modid in os.listdir(localcopy_path):
@@ -557,19 +587,15 @@ def main(requiredpaths):
     # # more and equal to 20
     # if warning_modlistislong:
     #     sys.stdout.write("\033[1;31m")
-    #     print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+    #     print("[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
     #     sys.stdout.write("\033[0;0m")
     #     time.sleep(20/2)
     # # more and equal to 30
     # if warning_modlistissuperlong:
     #     sys.stdout.write("\033[1;31m")
-    #     print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+    #     print("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
     #     sys.stdout.write("\033[0;0m")
     #     time.sleep(30/2)
-
-    if has_performancefix == False and addperformacefix == True:
-        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
-        modlist.insert(0, WorkshopItem)
 
     # 1. Path fixing
     if not os.path.isabs(tool_path):
@@ -615,7 +641,7 @@ def main(requiredpaths):
         for mod in modlist:
             if 'LastUpdated' in mod:
                 if os.path.exists(os.path.join(localcopy_path, mod['ID'])):
-                    modificationtime = os.path.getmtime(os.path.join(localcopy_path, mod['ID']))
+                    modificationtime = get_recusive_modification_time_of_dir(os.path.join(localcopy_path, mod['ID']))
                     # conversion into time struct
                     modificationtime = time.gmtime(modificationtime)
                     # greater not equal because of possible steam errors
@@ -631,9 +657,9 @@ def main(requiredpaths):
     numberofupdatedmods = download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd)
     print("\n")
     if collectionmode and lastupdated_functionality:
-        print("[ModManager]Skipping download of " + str(len(remove_arr)) + " Mods")
-    print("[ModManager]All "+ str(numberofupdatedmods) +" Mods have been updated")
-    print("[ModManager]Downloading mods complete!")
+        print("[ModManager] Skipping download of " + str(len(remove_arr)) + " Mods")
+    print("[ModManager] All "+ str(numberofupdatedmods) +" Mods have been updated")
+    print("[ModManager] Downloading mods complete!")
 
     # 1. config backup and conservation
     baseconfig_path = os.path.join(tool_path, "BestDefaultConfigsTM")
@@ -641,7 +667,7 @@ def main(requiredpaths):
     backup_option(localcopy_path,newinputdir)
 
     # 2. remove not_managedmods
-    print("[ModManager]Removing " + str(len(not_managedmods)) + " not managed now mods!")
+    print("[ModManager] Removing " + str(len(not_managedmods)) + " not managed now mods!")
     for not_managedmod in not_managedmods:
         if os.path.exists(not_managedmod):
             shutil.rmtree(not_managedmod)
@@ -654,7 +680,7 @@ def main(requiredpaths):
     # 4. finishing anc cleaning up
     # removing steamdir because steamcmd is piece of crap and it sometimes wont download mod if its in directory
     shutil.rmtree(steamdir_path)
-    print("[ModManager]Mods Updated!\n")
+    print("[ModManager] Mods Updated!\n")
 
     # checking if mod is pure server-side or client side
     numberofluamods = 0
@@ -675,49 +701,73 @@ def main(requiredpaths):
 
     if warning_LFBnotinstalled:
         sys.stdout.write("\033[1;31m")
-        print("[ModManager]WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
+        print("[ModManager] WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
         sys.stdout.write("\033[0;0m")
         time.sleep(20)
 
     # more and equal to 30
     if warning_modlistislong:
             sys.stdout.write("\033[1;31m")
-            print("[ModManager]I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\n[ModManager]Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+            print("[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\n[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
             sys.stdout.write("\033[0;0m")
             time.sleep(20)
     # more and equal to 30
     if warning_modlistissuperlong:
         sys.stdout.write("\033[1;31m")
-        print("[ModManager]I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\n[ModManager]Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
+        print("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\n[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
         sys.stdout.write("\033[0;0m")
         time.sleep(30)
 
 if __name__ == '__main__':
+    print("Wellcome to ModManager script!")
+    requiredpaths = set_required_values()
     # print("\n")
     while(True):
-        print("[ModManager]If you want to set up, or disable collection mode type \'c\', then enter.\n[ModManager]Do you want to update mods? ((Y)es / (n)o): ")
+        if os.path.exists(os.path.join(requiredpaths['tool'], "collection_save.txt")):
+            print("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands.")
+            print("[ModManager] Steam collection mode enabled!")
+            print("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): ")
+        else: 
+            print("[ModManager] Type \'h\' for help and information about commands.")
+            print("[ModManager] Steam collection mode disabled!")
+            print("[ModManager] Do you want to update mods? ((Y)es / (n)o): ")
         newinput = input()
         if newinput.lower() == "yes" or newinput.lower() == "y":
-            requiredpaths = set_required_values()
             main(requiredpaths)
             break
         elif newinput.lower() == "no" or newinput.lower() == "n":
             break
         elif newinput.lower() == "collection" or newinput.lower() == "c":
-            print("[ModManager]Provide an collection link then press enter, or if you want to disable previously enabled collection mode, type 'n' then enter: ")
+            print("[ModManager] Provide an collection link then press enter, or if you want to disable previously enabled collection mode, type 'n' then enter: ")
             op_collection_url = input()
             if op_collection_url.lower() != "n":
-                print("[ModManager]Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: ")
+                print("[ModManager] Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: ")
                 op_localcopy_path = input()
             else:
                 op_collection_url = ""
                 op_localcopy_path = ""
             flush_previous_col = True
             # TODO collection check, if link is valid
-            requiredpaths = {'collection_link': op_collection_url, 'localcopy_path_override': op_localcopy_path}
-            requiredpaths = set_required_values(requiredpaths)
+            requiredpaths['collection_link'] = op_collection_url
+            requiredpaths['localcopy_path_override'] = op_localcopy_path
+            requiredpaths['collectionmode'] = True
             main(requiredpaths)
             break
         elif newinput.lower() == "kill" or newinput.lower() == "exit":
             break
-        print("[ModManager]Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
+        elif newinput.lower() == "help" or newinput.lower() == "h":
+            print("[ModManager] Help menu:")
+            print("[ModManager] README: https://github.com/Milord-ThatOneModder/Barotrauma-ModManager/blob/main/README.md")
+            print("### Available modes ###")
+            print("Collection mode:")
+            print("\t- In collection mode your modlist as well as `config_player.xml` are fully managed by a ModManager")
+            print("\t- For configuring the collection mode type `c` or `collection` then press `enter` when prompted (on ModManager start), then paste your collection link then press `enter`, then type your localcopy path, according to what ModManager is outputing (writting on console).")
+            print("\t- To change collection link, type `c` or `collection` then press `enter`, then paste your new collection link then press enter, then type your path were you want to store your mods (`localcopy`), according to what ModManager is outputing.")
+            print("\t- If you wish to stop using collection mode, just type `c` or `collection` then enter, then type `n` then `enter`.")
+            print("config_player.xml mode:")
+            print("\t- **IF YOU DONT KNOW WHAT `config_player.xml` IS OR YOU DONT KNOW ITS SYNTAX (or what xml even is), I RECOMEND USING COLLECTION MODE**")
+            print("\t- Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`.")
+            print("\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"")
+            continue
+        print("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
+        

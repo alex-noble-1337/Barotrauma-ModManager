@@ -17,8 +17,9 @@ import time
 import datetime # for current time
 
 # TODO use a fucking API instead i think
-
 # TODO this is main bottleneck, need to optimize it
+# TODO cant optimaize it more, because steamapi does not give Required items
+# TODO maybe use wget?
 headers = {'User-Agent': 'Mozilla/5.0'}
 # delay between usage of function based on system clock + internal function delay
 time_of_last_usage = 0
@@ -48,7 +49,7 @@ def get_htm_of_collection_site(link):
         
 #     return arrx
 
-def get_modsData_collection(collection_site, addnames = True):
+def get_modsData_collection(collection_site, mods, addnames = True):
     if collection_site != "ERROR":
         # get list of all mod's id's in the collection in an array
         # modsids = get_listOfMods(collection_site)
@@ -75,7 +76,7 @@ def get_modsData_collection(collection_site, addnames = True):
             # throw exeption invalid collection
             raise Exception("[ModManager]Could not find mods in the collection specified!")
 
-        mods = []
+        # mods = []
         for collectionItemDetails in collectionItemDetailss:
             mod = {}
             pattern = "(?<=<a href=\"https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=).*?(?=\"><div class=\"workshopItemTitle\">)"
@@ -88,7 +89,8 @@ def get_modsData_collection(collection_site, addnames = True):
                 name = name.replace("&amp;", "&")
                 name = name.replace("&quot;", "\"")
                 mod['Name'] = name
-            mods.append(mod)
+            if mod not in mods:
+                mods.append(mod)
     else:
         # throw exeption invalid collection
         raise Exception("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
@@ -223,19 +225,19 @@ def get_modsData_individual(mods, addlastupdated = False, dependencies = True):
 
     return mods
 
-def generatelistOfMods(collection_site, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
-    if 'addnames' not in input_options.keys():
+def generatelistOfMods(collection_site, mods, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
+    if 'addnames' not in input_options:
         input_options['addnames'] = False
-    if 'addlastupdated' not in input_options.keys():
+    if 'addlastupdated' not in input_options:
         input_options['addlastupdated'] = False
-    if 'dependencies' not in input_options.keys():
+    if 'dependencies' not in input_options:
         input_options['dependencies'] = False
     
     addnames = input_options['addnames']
     addlastupdated = input_options['addlastupdated']
     dependencies = input_options['dependencies']
 
-    mods = get_modsData_collection(collection_site, addnames)
+    mods =  get_modsData_collection(collection_site, mods, addnames)
     if addlastupdated or dependencies:
         mods = get_modsData_individual(mods, addlastupdated, dependencies)
     return mods
