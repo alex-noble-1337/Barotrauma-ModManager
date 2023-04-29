@@ -728,7 +728,7 @@ if __name__ == '__main__':
             print("[ModManager] Steam collection mode enabled!")
             print("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): ")
         else: 
-            print("[ModManager] Type \'h\' for help and information about commands.")
+            print("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands.")
             print("[ModManager] Steam collection mode disabled!")
             print("[ModManager] Do you want to update mods? ((Y)es / (n)o): ")
         newinput = input()
