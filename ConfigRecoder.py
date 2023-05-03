@@ -6,13 +6,17 @@ import sys
 import os
 import re
 import shutil
-import json
 try:
     import requests
 except ImportError:
     print("Trying to Install required module: requests\n")
     os.system('python3 -m pip install requests')
-import requests
+try:
+    import json
+except ImportError:
+    print("Trying to Install required module: json\n")
+    os.system('python3 -m pip install json')
+import json
 
 import time
 import datetime # for current time
@@ -178,7 +182,12 @@ def get_lastupdated(modlist):
     for i in range(len(new_modlist)):
         for moddetails in publishedfiledetails:
             if moddetails['publishedfileid'] == new_modlist[i]['ID']:
-                timestamp = moddetails['time_updated']
+                if 'time_updated' in moddetails:
+                    timestamp = moddetails['time_updated']
+                elif 'time_created' in moddetails:
+                    timestamp = moddetails['time_created']
+                else:
+                    timestamp = 0
                 new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
                 
     return new_modlist

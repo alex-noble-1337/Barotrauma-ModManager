@@ -64,7 +64,7 @@ def set_required_values():
 
             # --barotraumapath or -b - path to your barotrauma install. Must be a path to THE FOLDER, not the program itself. Does not accept ""
             if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
-                if tempval > 2:
+                if tempval >= 2:
                     if options_arr[i+1] == "pwd":
                         barotrauma_path = os.getcwd()
                         changed_barotrauma_path = True
@@ -77,8 +77,8 @@ def set_required_values():
             
             # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
             if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
-                if tempval > 2:
-                    if options_arr[i+1] == "pwd":
+                if tempval >= 2:
+                    if options_arr[i+1] == ".":
                         tool_path = os.getcwd()
                         changed_tool_path = True
                     else:
@@ -90,7 +90,7 @@ def set_required_values():
 
             # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
             if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
-                if tempval > 2:
+                if tempval >= 2:
                     if options_arr[i+1] == "pwd":
                         if sys.platform == 'win32':
                             location_with_steamcmd = os.path.join(os.getcwd(), "steamcmd.exe")
@@ -106,7 +106,7 @@ def set_required_values():
 
             # TODO add it to the documentaton
             if options_arr[i] == '--collection' or options_arr[i] == '-c':
-                if tempval > 3:
+                if tempval >= 3:
                     # TODO check if link is good
                     collection_link = options_arr[i+1]
                     collectionmode = True
@@ -473,6 +473,7 @@ def main(requiredpaths):
     tool_path = requiredpaths['tool']
     location_with_steamcmd = requiredpaths['steamcmd']
     steamdir_path = requiredpaths['steamdir']
+    localcopy_path_override = ""
     if 'collection_link' in requiredpaths and 'localcopy_path_override' in requiredpaths:
         collectionmode = True
         localcopy_path_override = requiredpaths['localcopy_path_override']
@@ -502,14 +503,16 @@ def main(requiredpaths):
         arr = collection_file.split(" ")
         collection_link = arr[0]
         localcopy_path_override = arr[1]
+        collectionmode = True
         
     # check collection link if it is valid
     isvalid_collection_link = False
-    if collection_link != "":
-        if re.match("https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=", collection_link):
-            collection_site = collectionf(collection_link)
-            if collection_site != "ERROR":
-                isvalid_collection_link = True
+    if collectionmode:
+        if collection_link != "":
+            if re.match("https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=", collection_link):
+                collection_site = collectionf(collection_link)
+                if collection_site != "ERROR":
+                    isvalid_collection_link = True
 
     modlist = []
     if addperformacefix == True:
@@ -519,6 +522,7 @@ def main(requiredpaths):
     requreslua = False
     requrescs = False
     hascs = False
+    haslua = False
     if isvalid_collection_link and localcopy_path_override != "":
         collectionmode = True
         lastupdated_functionality = True
@@ -747,7 +751,7 @@ if __name__ == '__main__':
             print("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): ")
         else: 
             print("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands.")
-            print("[ModManager] Steam collection mode disabled! Disable by entering collection sub-menu.")
+            print("[ModManager] Steam collection mode disabled! Enable by entering collection sub-menu.")
             print("[ModManager] Do you want to update mods? ((Y)es / (n)o): ")
         newinput = input()
         if newinput.lower() == "yes" or newinput.lower() == "y":
@@ -785,7 +789,7 @@ if __name__ == '__main__':
             print("config_player.xml mode:")
             print("\t- **IF YOU DONT KNOW WHAT `config_player.xml` IS OR YOU DONT KNOW ITS SYNTAX (or what xml even is), I RECOMEND USING COLLECTION MODE**")
             print("\t- Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`.")
-            print("\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"")
+            print("\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"\n\n")
             continue
         print("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
         
