@@ -22,6 +22,7 @@ For advanced and detailed configuration read [How to use](#How-to-use)
 * removing duplicates from modlist
 * adding and configuration of [Performance Fix](https://steamcommunity.com/sharedfiles/filedetails/?id=2701251094)
 * automatic removal of not managed mods upon changing of modlist
+* skipping of mods that were updated before for collection mode
 
 # HOW TO USE
 ## IMPORTANT!
