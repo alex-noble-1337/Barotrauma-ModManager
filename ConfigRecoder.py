@@ -6,6 +6,7 @@ import sys
 import os
 import re
 import shutil
+import json
 try:
     import requests
 except ImportError:
@@ -15,6 +16,7 @@ import requests
 
 import time
 import datetime # for current time
+
 
 # TODO use a fucking API instead i think
 # TODO this is main bottleneck, need to optimize it
@@ -142,9 +144,10 @@ def textfilef(fileposition):
     return output_file
 
 # populate time of update of workshop item
-def get_lastupdated(modsite):
+def get_lastupdated_old(modsite):
     pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
-    lastupdated = re.findall(pattern, modsite)[1]
+    lastupdated = re.findall(pattern, modsite)
+    lastupdated = lastupdated[len(lastupdated) - 1]
     # Eg. 1 Oct, 2022 @ 3:51am
     if lastupdated[2] != " ":
         lastupdated = "0" + lastupdated
@@ -161,6 +164,24 @@ def get_lastupdated(modsite):
     lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
 
     return lastupdated
+
+def get_lastupdated(modlist):
+    new_modlist = modlist
+    adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
+    option_tuple = {'itemcount': len(modlist)}
+    for i in range(len(modlist)):
+        option_tuple['publishedfileids[' + str(i) + ']'] = modlist[i]['ID']
+    output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
+    if output.status_code == 200:
+        data = json.loads(output.text)
+    publishedfiledetails = data['response']['publishedfiledetails']
+    for i in range(len(new_modlist)):
+        for moddetails in publishedfiledetails:
+            if moddetails['publishedfileid'] == new_modlist[i]['ID']:
+                timestamp = moddetails['time_updated']
+                new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
+                
+    return new_modlist
 
 def get_modname(modsite):
     pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
@@ -181,47 +202,46 @@ def get_modsData_individual(mods, addlastupdated = False, dependencies = True):
     # Lua and cs
     # requreslua = False
     # requrescs = False
-    for i in range(len(mods)):
-        # download modsite html
-        modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
-        modsite = get_htm_of_collection_site(modurl)
-        if modsite != "ERROR":
+    arr_of_ids = []
+    if dependencies:
+        for i in range(len(mods)):
+            # download modsite html
+            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
+            modsite = get_htm_of_collection_site(modurl)
+            if modsite != "ERROR":
 
-            if dependencies:
-                # TODO this is stupid
-                startpos = modsite.find("<div class=\"requiredItemsContainer\" id=\"RequiredItems\">")
-                requiredItems = ""
-                if startpos >= 0:
-                    startpos += 56
-                    divsinside = 0
-                    endpos = 0
-                    for j in range(startpos, len(modsite)):
-                        string = modsite[j] + modsite[j+1] + modsite[j+2] + modsite[j+3] + modsite[j+4]
-                        if string == "<div ":
-                            divsinside += 1
-                        if string == "</div":
-                            if divsinside != 0:
-                                divsinside -= 1
-                            else:
-                                endpos = j
-                                requiredItems = modsite[startpos:endpos]
-                                break
-                
+                    # TODO this is stupid
+                    startpos = modsite.find("<div class=\"requiredItemsContainer\" id=\"RequiredItems\">")
+                    requiredItems = ""
+                    if startpos >= 0:
+                        startpos += 56
+                        divsinside = 0
+                        endpos = 0
+                        for j in range(startpos, len(modsite)):
+                            string = modsite[j] + modsite[j+1] + modsite[j+2] + modsite[j+3] + modsite[j+4]
+                            if string == "<div ":
+                                divsinside += 1
+                            if string == "</div":
+                                if divsinside != 0:
+                                    divsinside -= 1
+                                else:
+                                    endpos = j
+                                    requiredItems = modsite[startpos:endpos]
+                                    break
+                    
 
-                pattern = "(?<=<a href=\"https:\\/\\/steamcommunity\\.com\\/workshop\\/filedetails\\/\\?id=).*?(?=\")"
-                requiredItems = re.findall(pattern, requiredItems)
-                mods[i]['dependencies'] = requiredItems
+                    pattern = "(?<=<a href=\"https:\\/\\/steamcommunity\\.com\\/workshop\\/filedetails\\/\\?id=).*?(?=\")"
+                    requiredItems = re.findall(pattern, requiredItems)
+                    mods[i]['dependencies'] = requiredItems
 
             # if addnames:
             #     mods[i]['Name'] = get_modname(modsite)
 
-            if addlastupdated:
-                # TODO that funcionality
-                mods[i]['LastUpdated'] = get_lastupdated(modsite)
-
             # mods[i] = {'Name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
-        else:
-            print("[ModManager]Mod with a link: " + modurl + " not found!")
+            else:
+                print("[ModManager]Mod with a link: " + modurl + " not found!")
+
+    mods = get_lastupdated(mods)
 
     return mods
 

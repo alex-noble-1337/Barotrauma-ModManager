@@ -2,8 +2,10 @@
 __pycache__/**
 **sync-conflict**
 LocalMods**
+backup**
 ModManager/__pycache__**
 steamcmd**
 managed_mods.txt
 config_player.xml
 collection_save.txt
+LuaCSSetupConfig.xml

@@ -129,7 +129,14 @@ def get_saves(savedir):
                 path_arr.append(src_file)
     return path_arr
 
-def backupBarotraumaData(barotrauma_dir, mods_dir, save_dir, backup_dir):
+def backupBarotraumaData(barotrauma_dir, mods_dir, save_dir, backup_dir, max_saves):
+    if os.path.exists(backup_dir):
+        directory_contents = os.listdir(backup_dir)
+        if len(directory_contents) >= max_saves:
+            directory_contents.sort()
+            number_to_remove = len(directory_contents) - max_saves + 1
+            for i in range(number_to_remove):
+                shutil.rmtree(os.path.join(backup_dir, directory_contents[i]))
     # getting paths into reasonable length
     # TODO readme about how to bring back that folder paths
     files_path_arr = []
