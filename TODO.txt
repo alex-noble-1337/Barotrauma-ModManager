@@ -14,12 +14,6 @@
 - set up a functionality for mod manager to automatically sort your modlist
 - fix output not formatting correctly new line etc
 
-(DONE) diffrent detection of arguments
-(DONE) set up save backuing up system
-(DONE) check if collection mode is enabled and show if it is on startup
-(DONE) functionality to back up config_player, serversettings, and any other config to backup directory
-(DONE) lastupdated functionality for collection mode, check for directory modification time, then compare with steam updae time
-
 (PERIODIC test more) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
 (PERIODIC) go over all todo's from comments post them here
 (PERIODIC) rewrite documentation to include new functions
