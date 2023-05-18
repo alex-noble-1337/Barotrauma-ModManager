@@ -1,4 +1,5 @@
 - ADD exception on not finding steamcmd
+- fix problem where it is requred for user to manually update some mods
 - time to finish based on mod size got from api 
 - fix and remake functionality to check dependencies of a mod
     - use steamapi instead webapi
