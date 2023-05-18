@@ -1,3 +1,4 @@
+- ADD exception on not finding steamcmd
 - time to finish based on mod size got from api 
 - fix and remake functionality to check dependencies of a mod
     - use steamapi instead webapi
