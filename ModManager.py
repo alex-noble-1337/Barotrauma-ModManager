@@ -23,6 +23,8 @@ import subprocess # TODO change this to import only individual commands
 import sys # TODO change this to import only individual commands
 import io
 
+import xml.etree.ElementTree as ET
+
 # progress bar stuff
 try:
     from tqdm import tqdm
@@ -38,6 +40,67 @@ from ConfigRecoder import generatelistOfMods
 from ConfigRecoder import collectionf
 from ConfigRecoder import get_modsData_individual
 from configbackup import backupBarotraumaData
+
+# dirty hack but who knows what causes this issue now :barodev: <- probbabbly them
+# THIS BREAKS UPDATING WHEN NEEDED
+def HOTFIX_steamcmdCRLF(steamdir_path: str, modlist):
+    # find all xml files
+    WINDOWS_LINE_ENDING = b'\r\n'
+    UNIX_LINE_ENDING = b'\n'
+
+    # all_xml_files = []
+    for src_dir, dirs, files in os.walk(steamdir_path):
+        for file_ in files:
+            if file_[-4:] == ".xml":
+                # all_xml_files.append()
+                file_path = os.path.join(src_dir, file_)
+                with open(file_path, 'rb') as open_file:
+                    content = open_file.read()
+
+                if sys.platform == 'win32':
+                    # Unix ➡ Windows
+                    content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
+                else:
+                    # Windows ➡ Unix
+                    content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
+
+                with open(file_path, 'wb') as open_file:
+                    open_file.write(content)
+
+    for mod in modlist:
+        filelist_path = os.path.join(steamdir_path, mod['ID'], "filelist.xml")
+        with open(filelist_path, 'r') as open_file:
+            filelist_str = open_file.read()
+
+        element = ET.fromstring(filelist_str)
+        if element.tag.lower() == "contentpackage":
+            if element.attrib['name'] != mod['Name']:
+                oldname = element.attrib['name']
+                element.attrib['name'] = mod['Name']
+                if 'altnames' in element.attrib:
+                    # TODO for now leave it like that, if it cause has missmatches it might be because of that
+                    # TOO BAD!
+                    element.attrib['altnames'] = oldname
+                else:
+                    element.attrib['altnames'] = oldname
+
+                desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
+                # workaround for bottom one
+                for desired_order_element in desired_order_list:
+                    if desired_order_element not in element.attrib:
+                        if 'installtime' == desired_order_element:
+                            element.attrib['installtime'] = str(round(time.time()))
+                        else:
+                            element.attrib[desired_order_element] = ""
+                # i dont understand it, this is shit
+                # TOO BAD!
+                element.attrib = {k: element.attrib[k] for k in desired_order_list}
+
+                filelist_str = ET.tostring(element, encoding='utf8', method='xml')
+
+
+                with open(filelist_path, 'wb') as open_file:
+                    open_file.write(filelist_str)
 
 
 # set up all default values and paths
@@ -693,6 +756,9 @@ def main(requiredpaths):
     for not_managedmod in not_managedmods:
         if os.path.exists(not_managedmod):
             shutil.rmtree(not_managedmod)
+
+    # TODO HOTFIX
+    HOTFIX_steamcmdCRLF(newinputdir, modlist)
 
     # 3. + numberofupdatedmods actually moving mods to localcopy
     for mod in modlist:
