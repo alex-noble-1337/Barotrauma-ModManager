@@ -96,7 +96,7 @@ def HOTFIX_steamcmdCRLF(steamdir_path: str, modlist):
                 # TOO BAD!
                 element.attrib = {k: element.attrib[k] for k in desired_order_list}
 
-                filelist_str = ET.tostring(element, encoding='utf8', method='xml')
+                filelist_str = ET.tostring(element, encoding='utf-8', method='xml')
 
 
                 with open(filelist_path, 'wb') as open_file:
