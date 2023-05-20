@@ -1,5 +1,4 @@
-- ADD exception on not finding steamcmd
-- time to finish based on mod size got from api 
+- time to finish based on mod size got from api (not accurate enough)
 - fix and remake functionality to check dependencies of a mod
     - use steamapi instead webapi
 - mods that dont have id shoudnt be removed when you remove them from config_player or when you enable collection mode
@@ -15,8 +14,6 @@
 - set up a way to save mod load order between mods to db
 - set up a functionality for mod manager to automatically sort your modlist
 - fix output not formatting correctly new line etc
-
-- fix user forced to download some mods from the server
 
 (PERIODIC test more) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
 (PERIODIC) go over all todo's from comments post them here
