@@ -189,6 +189,8 @@ def get_lastupdated(modlist):
                 else:
                     timestamp = 0
                 new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
+                if 'file_size' in moddetails:
+                    new_modlist[i]['file_size'] = moddetails['file_size']
                 
     return new_modlist
 
