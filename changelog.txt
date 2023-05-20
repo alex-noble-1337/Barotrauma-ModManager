@@ -1,0 +1,5 @@
+This Changelog is for nightly build (stuff on the branch not on release)
+- disabled Lua for barotrauma check, as it wasnt working correctly
+- removed TQDM progress bar functionality, as it wasnt working properly
+    - hope that fixes -> exception on not finding steamcmd not working
+-
