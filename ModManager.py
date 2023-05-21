@@ -60,35 +60,36 @@ def HOTFIX_steamcmdCRLF(steamdir_path: str, modlist):
 
     for mod in modlist:
         filelist_path = os.path.join(steamdir_path, mod['ID'], "filelist.xml")
-        with open(filelist_path, 'r') as open_file:
-            filelist_str = open_file.read()
+        if os.path.exists(filelist_path):
+            with open(filelist_path, 'r') as open_file:
+                filelist_str = open_file.read()
 
-        element = ET.fromstring(filelist_str)
-        if element.tag.lower() == "contentpackage":
-            if element.attrib['name'] != mod['Name']:
-                oldname = element.attrib['name']
-                element.attrib['name'] = mod['Name']
-                # TODO make an escape invalid xml of old names
-                element.attrib['altnames'] = oldname
+            element = ET.fromstring(filelist_str)
+            if element.tag.lower() == "contentpackage":
+                if element.attrib['name'] != mod['Name']:
+                    oldname = element.attrib['name']
+                    element.attrib['name'] = mod['Name']
+                    # TODO make an escape invalid xml of old names
+                    element.attrib['altnames'] = oldname
 
-                # why?
-                desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
-                # workaround for bottom one
-                for desired_order_element in desired_order_list:
-                    if desired_order_element not in element.attrib:
-                        if 'installtime' == desired_order_element:
-                            element.attrib['installtime'] = str(round(time.time()))
-                        else:
-                            element.attrib[desired_order_element] = ""
-                # i dont understand it, this is shit
-                # TOO BAD!
-                element.attrib = {k: element.attrib[k] for k in desired_order_list}
+                    # why?
+                    desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
+                    # workaround for bottom one
+                    for desired_order_element in desired_order_list:
+                        if desired_order_element not in element.attrib:
+                            if 'installtime' == desired_order_element:
+                                element.attrib['installtime'] = str(round(time.time()))
+                            else:
+                                element.attrib[desired_order_element] = ""
+                    # i dont understand it, this is shit
+                    # TOO BAD!
+                    element.attrib = {k: element.attrib[k] for k in desired_order_list}
 
-                filelist_str = ET.tostring(element, encoding='utf-8', method='xml')
+                    filelist_str = ET.tostring(element, encoding='utf-8', method='xml')
 
 
-                with open(filelist_path, 'wb') as open_file:
-                    open_file.write(filelist_str)
+                    with open(filelist_path, 'wb') as open_file:
+                        open_file.write(filelist_str)
 
 
 # set up all default values and paths
@@ -425,7 +426,8 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
     # get total size of modlist
     modlist_file_size = 0
     for mod in modlist:
-        modlist_file_size += mod['file_size']
+        if 'file_size' in mod:
+            modlist_file_size += mod['file_size']
     completed_file_size = 0
 
     for mod in modlist:
@@ -438,8 +440,10 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                 mssg += "     Update Progress: " + str(iterator+1) + "/" + str(len(modlist))
                 if len(modlist) >= 3:
                     if iterator >= 3:
-                        number = int(abs((modlist_file_size - completed_file_size)*(total_time / completed_file_size)))
-                        mssg += " ETA:" + str(str(number//60) + ":" + str(number%60))
+                        # TODO dirty quickfix
+                        if completed_file_size > 0:
+                            number = int(abs((modlist_file_size - completed_file_size)*(total_time / completed_file_size)))
+                            mssg += " ETA:" + str(str(number//60) + ":" + str(number%60))
             print(mssg)
             # TODO make output of steamcmd less spammy/silent
             # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
@@ -475,7 +479,8 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                 numberofupdatedmods += 1
                 iterator += 1
                 # bar.update(1)
-                completed_file_size += mod['file_size']
+                if 'file_size' in mod:
+                    completed_file_size += mod['file_size']
                 one_time -= int(round(time.time()))
                 total_time += one_time
                 print("")
