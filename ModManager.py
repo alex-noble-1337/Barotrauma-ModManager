@@ -13,6 +13,8 @@ progressbar_functionality = False
 debug_set_forced_cs = False
 debug_dependencies_functionality = False
 
+#  localcopy -> means a path of your local, downloaded copy of the mods
+
 # My "Quality" code
 import os # TODO change this to import only individual commands
 import shutil # TODO change this to import only individual commands
@@ -66,9 +68,9 @@ def HOTFIX_steamcmdCRLF(steamdir_path: str, modlist):
 
             element = ET.fromstring(filelist_str)
             if element.tag.lower() == "contentpackage":
-                if element.attrib['name'] != mod['Name']:
+                if element.attrib['name'] != mod['name']:
                     oldname = element.attrib['name']
-                    element.attrib['name'] = mod['Name']
+                    element.attrib['name'] = mod['name']
                     # TODO make an escape invalid xml of old names
                     element.attrib['altnames'] = oldname
 
@@ -156,7 +158,7 @@ def set_required_values():
                     location_with_steamcmd = options_arr[i+1]
                     changed_steamcmd_path = True
 
-            # TODO add it to the documentaton
+            # TODO '--collection to the documentaton
             if options_arr[i] == '--collection' or options_arr[i] == '-c':
                 if tempval >= 3:
                     # TODO check if link is good
@@ -217,6 +219,65 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
                 os.remove(dst_file)
             shutil.move(src_file, dst_dir)
 
+# config player IO
+def get_mods_config_player(barotrauma_path):
+    # trying to access config_player
+    try:
+        config_player_path = os.path.join(barotrauma_path, "config_player.xml")
+        with open(config_player_path, "r", encoding='utf8') as f:
+            config_player_str = f.read()
+    except Exception as e:
+        print("[ModManager] Could not find the config_player.xml! Check your barotrauma path!")
+        print("[ModManager] Barotrauma path: " + config_player_path)
+        print(e)
+
+    root = ET.fromstring(config_player_str)
+    modpaths = []
+    for element in root:
+        subelements = list(element)
+        if len(subelements) > 0:
+            for subelement in subelements:
+                if subelement.tag == 'regularpackages':
+                    subsubelements = list(subelement)
+                    if len(subsubelements) > 0:
+                        for subsubelement in subsubelements:
+                            # just in case
+                            if subsubelement.tag == "package":
+                                modpaths.append(subsubelement.attrib['path'])
+    return modpaths
+
+def set_mods_config_player(modlist, localcopy_path):
+    try:
+        config_player_path = os.path.join(barotrauma_path, "config_player.xml")
+        with open(config_player_path, "r", encoding='utf8') as f:
+            config_player_str = f.read()
+    except Exception as e:
+        print("[ModManager] Could not find the config_player.xml! Check your barotrauma path!")
+        print("[ModManager] Barotrauma path: " + config_player_path)
+        print(e)
+    old_config_player_str = config_player_str
+
+    root = ET.fromstring(config_player_str)
+    modpaths = []
+    for element in root:
+        for subelement in element:
+            if subelement.tag == 'regularpackages':
+                # remove all mods (subelements)
+                for subsubelement in subelement:
+                    subelement.remove(subsubelement)
+                # add them according to the modlist
+                for mod in modlist:
+                    new_package = ET.SubElement(subelement, 'package')
+                    new_package.attrib['path'] = localcopy_path + "/" + mod['ID'] + "/filelist.xml"
+                    new_package.tail = '\n      \n      '
+                    new_package.text = None
+                    
+    config_player_str = ET.tostring(root, encoding='utf-8', method='xml')
+
+    if config_player_str != old_config_player_str:
+        with open(filelist_path, 'wb') as open_file:
+            open_file.write(config_player_str)
+
 # get from config_player.xml, everything inside <regularpackages/> </regularpackages>
 def get_regularpackages(barotrauma_path):
     # trying to access filelist
@@ -226,10 +287,12 @@ def get_regularpackages(barotrauma_path):
             filelist_str = f.read()
     except Exception as e:
         print("[ModManager] Could not find the config_player.xml! Check your barotrauma path!")
+        print("[ModManager] Barotrauma path: " + filelist_path)
         print(e)
 
-    pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
+    pattern = "<regularpackages>[\s\S]*?<\/regularpackages>"
     regularpackages = re.findall(pattern, filelist_str)
+
     if len(regularpackages) <= 0:
         # patch for </regularpackages>, just in case
         # TODO a bit stupid, so rework it
@@ -251,86 +314,51 @@ def get_recusive_modification_time_of_dir(origin_dir):
     modificationtime = 0
     for src_dir, dirs, files in os.walk(origin_dir):
         for file_ in files:
-            # print(os.path.join(src_dir, file_))
             new_modificationtime = os.path.getmtime(os.path.join(src_dir, file_))
             if new_modificationtime > modificationtime:
                 modificationtime = new_modificationtime
-
-    # modificationtime = 1673542320
     return modificationtime
 
-# get localcopy path from filelist
 def get_localcopy_path(filelist_str):
-    pattern = "(?<=path=\")(.*?)(?=\/filelist\.xml)"
-    path = re.findall(pattern, filelist_str)
-    if len(path) > 0:
-        path = path[0].split("/")
-        new_path = ""
-        for i in range(len(path)-2):
-            if sys.platform == "win32":
-                new_path += path[i] + "/"
-            else:
-                new_path += path[i] + "/"
-        new_path += path[len(path)-2]
-        return new_path
-    else:
-        return ""
+    localcopy_path = ""
+    root = ET.fromstring(filelist_str)
+    if root.tag == "regularpackages":
+        if root.text != None:
+            package = root[0]
+            # werid, BUT just in case...
+            if package.tag == 'package':
+                localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
+    return localcopy_path
 
-# find mods to update from config_player.xml
-def get_listOfModsfromConfig(filelist_str,localcopy_path):
-    # filelist.xml" />
+
+def get_listOfModsfromConfig(filelist_str,localcopy_path, barotrauma_path):
     modlist = []
-    filelist_str = filelist_str.splitlines()
-    for ix in range(len(filelist_str)):
-        if re.match(".*?<package.*?", filelist_str[ix]):
-            # get name into mod_name
-            if ix-1 >= 0:
-                name_filelist_str = filelist_str[ix-1]
-            else:
-                name_filelist_str = ""
-            pattern = "(?<=<!--)(.*?)(?=-->)"
-            mod_name = re.findall(pattern, name_filelist_str)
-            if len(mod_name) > 0:
-                mod_name = mod_name[0]
-            else:
-                mod_name = ""
 
-            # get id into mod_id
-            id_filelist_str = filelist_str[ix+1]
-            pattern = '(?<=path=")(.*?)(?=\/filelist\.xml)'
-            mod_id = re.findall(pattern, id_filelist_str)
-            if len(mod_id) > 0:
-                mod_id = mod_id[0]
-            else:
-                mod_id = ""
-            if sys.platform == "win32":
-                mod_id = mod_id.replace('/', '\\')
-            mod_id = mod_id.replace(localcopy_path + "/", "")
+    root = ET.fromstring(filelist_str)
+    if root.tag == "regularpackages":
+        if root.text != None:
+            for package in root:
+                # werid, BUT just in case...
+                if package.tag == 'package':
+                    mod = {'path': package.attrib['path']}
+                    # get directory name of a mod (mod id in most cases)
+                    mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
+                    modlist.append(mod)
 
-
-            modlist.append({'Name': mod_name, 'ID': mod_id})
-
-    #         pattern = "(?<=<package)[\s\S]*?(?=\/filelist\.xml)"
-    # modlist_str = re.findall(pattern, filelist_str)
-    
-    
-    
-    # for mod in modlist_str:
-    #     pattern = "(?<=^)(.*?)(?=-->)"
-    #     mod_name = re.findall(pattern, mod)
-    #     if len(mod_name) > 0:
-    #         mod_name = mod_name[0]
-    #     else:
-    #         mod_name = ""
-    #     pattern = '(?<=path=")(.*?)(?=$)'
-    #     mod_id = re.findall(pattern, mod)
-    #     if len(mod_id) > 0:
-    #         mod_id = mod_id[0]
-    #     else:
-    #         mod_id = ""
-    #     if sys.platform == "win32":
-    #         mod_id = mod_id.replace('/', '\\')
-    #     mod_id = mod_id.replace(localcopy_path + "/", "")
+    # reason i need to look in filelist is because of:
+    #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
+    #   - i can just get non-installed mods name's via api
+    for mod in modlist:
+        if os.path.isabs(mod['path']):
+            filelist_path = mod['path']
+        else:
+            filelist_path = os.path.join(barotrauma_path, mod['path'])
+        if os.path.exists(filelist_path):
+            with open(filelist_path, 'r') as open_file:
+                filelist_str = open_file.read()
+            filelist = ET.fromstring(filelist_str)
+            if filelist.tag.lower() == "contentpackage":
+                mod['name'] = filelist.attrib['name']
         
     return modlist
 
@@ -363,7 +391,7 @@ def print_modlist(modlist):
     for mod in modlist:
         if str(mod["ID"]) == "2701251094":
             has_performancefix = True
-        print("[ModManager] "+ str(mod["ID"]) + ": " + mod["Name"])
+        print("[ModManager] "+ str(mod["ID"]) + ": " + mod["name"])
     print("\n")
     print("\n")
 
@@ -382,7 +410,7 @@ def remove_duplicates(modlist):
     return modlist
 
 def create_newfilelist(modlist, localcopy_path_og, barotrauma_path):
-    regularpackages_new = "\n"
+    regularpackages_new = "<regularpackages>\n"
     # print new
     for mod in modlist:
         #  if barotrauma_path is inside of 
@@ -395,10 +423,10 @@ def create_newfilelist(modlist, localcopy_path_og, barotrauma_path):
         else:
             temp_localcopy_path = temp_localcopy_path
 
-        regularpackages_new += "      <!--" + mod['Name'] + "-->\n"
+        regularpackages_new += "      <!--" + mod['name'] + "-->\n"
         regularpackages_new += "      <package\n"
         regularpackages_new += "        path=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
-    regularpackages_new += "    "
+    regularpackages_new += "    </regularpackages>"
     return regularpackages_new
 
 def save_managedmods(managed_mods, managed_mods_path):
@@ -435,7 +463,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
         if re.match(pattern, mod["ID"]):
             one_time = int(round(time.time()))
             # main part running moddlownloader
-            mssg = "[ModManager] Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["Name"]
+            mssg = "[ModManager] Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["name"]
             if progressbar_functionality == False:
                 mssg += "     Update Progress: " + str(iterator+1) + "/" + str(len(modlist))
                 if len(modlist) >= 3:
@@ -458,7 +486,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     # bar.update()
                 # starting download
                 if re.match(".*?Downloading item " + mod["ID"] + ".*?", line):
-                    print("[ModManager] Downloading mod: " + mod["Name"] + " (" + mod["ID"] + ")")
+                    print("[ModManager] Downloading mod: " + mod["name"] + " (" + mod["ID"] + ")")
                     # iterator += 1
                     # bar.update(iterator)
                     # bar.update()
@@ -526,8 +554,8 @@ def set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mo
 
 def main(requiredpaths):
     warning_LFBnotinstalled = False
-    warning_modlistislong = False
-    warning_modlistissuperlong = False
+    warning_modlist20 = False
+    warning_modlist30 = False
 
     barotrauma_path = requiredpaths['barotrauma']
     tool_path = requiredpaths['tool']
@@ -613,7 +641,7 @@ def main(requiredpaths):
             localcopy_path_og = get_localcopy_path(regularpackages)
         else:
             localcopy_path_og = localcopy_path_override
-        modlist.extend(get_listOfModsfromConfig(regularpackages,localcopy_path_og))
+        modlist.extend(get_listOfModsfromConfig(regularpackages,localcopy_path_og, barotrauma_path))
     
     for mod in modlist:
         if mod['ID'] == '2795927223':
@@ -784,9 +812,9 @@ def main(requiredpaths):
                 numberofluamods += 1
     
     if numberofmodsminusserverside - numberofluamods >= 30 and not disablewarnings:
-        warning_modlistissuperlong = True
+        warning_modlist30 = True
     elif numberofmodsminusserverside - numberofluamods >= 20 and not disablewarnings:
-        warning_modlistislong = True
+        warning_modlist20 = True
 
     # TODO rework
     # this check is dumb because the BEST way to check if lua is installed is to have a script start a server, then run a lua mod
@@ -797,14 +825,12 @@ def main(requiredpaths):
     #     sys.stdout.write("\033[0;0m")
     #     time.sleep(20)
 
-    # more and equal to 30
-    if warning_modlistissuperlong:
+    if warning_modlist30:
         sys.stdout.write("\033[1;31m")
         print("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\n[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
         sys.stdout.write("\033[0;0m")
         time.sleep(30)
-    # more and equal to 30
-    elif warning_modlistislong:
+    elif warning_modlist20:
         sys.stdout.write("\033[1;31m")
         print("[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\n[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
         sys.stdout.write("\033[0;0m")
@@ -812,10 +838,10 @@ def main(requiredpaths):
 
 if __name__ == '__main__':
     print("Wellcome to ModManager script!")
-    requiredpaths = set_required_values()
-    # print("\n")
+    # gotta have it here even if it pains me
+    required_values = set_required_values()
     while(True):
-        if os.path.exists(os.path.join(requiredpaths['tool'], "collection_save.txt")):
+        if os.path.exists(os.path.join(required_values['tool'], "collection_save.txt")):
             print("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands.")
             print("[ModManager] Steam collection mode enabled! Disable by entering collection sub-menu.")
             print("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): ")
@@ -823,31 +849,30 @@ if __name__ == '__main__':
             print("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands.")
             print("[ModManager] Steam collection mode disabled! Enable by entering collection sub-menu.")
             print("[ModManager] Do you want to update mods? ((Y)es / (n)o): ")
-        newinput = input()
-        if newinput.lower() == "yes" or newinput.lower() == "y":
-            main(requiredpaths)
+        user_command = input().lower()
+        if user_command == "yes" or user_command == "y":
+            main(required_values)
             break
-        elif newinput.lower() == "no" or newinput.lower() == "n":
+        elif user_command == "no" or user_command == "n":
             break
-        elif newinput.lower() == "collection" or newinput.lower() == "c":
+        elif user_command == "collection" or user_command == "c":
             print("[ModManager] Provide an collection link then press enter, or if you want to disable previously enabled collection mode, type 'n' then enter: ")
-            op_collection_url = input()
-            if op_collection_url.lower() != "n":
+            collection_url = input()
+            if collection_url != "n":
                 print("[ModManager] Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: ")
-                op_localcopy_path = input()
+                localcopy_path = input()
             else:
-                op_collection_url = ""
-                op_localcopy_path = ""
+                collection_url = ""
+                localcopy_path = ""
             flush_previous_col = True
             # TODO collection check, if link is valid
-            requiredpaths['collection_link'] = op_collection_url
-            requiredpaths['localcopy_path_override'] = op_localcopy_path
-            requiredpaths['collectionmode'] = True
-            main(requiredpaths)
+            required_values['collection_link'] = collection_url
+            required_values['localcopy_path_override'] = localcopy_path
+            required_values['collectionmode'] = True
+            main(required_values)
             break
-        elif newinput.lower() == "kill" or newinput.lower() == "exit":
-            break
-        elif newinput.lower() == "help" or newinput.lower() == "h":
+        elif user_command == "help" or user_command == "h":
+            # TODO rework it to get Available modes from readme
             print("[ModManager] Help menu:")
             print("[ModManager] README: https://github.com/Milord-ThatOneModder/Barotrauma-ModManager/blob/main/README.md")
             print("### Available modes ###")
@@ -861,5 +886,6 @@ if __name__ == '__main__':
             print("\t- Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`.")
             print("\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"\n\n")
             continue
-        print("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
+        else:
+            print("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\"")
         

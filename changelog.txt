@@ -1,1 +1,3 @@
 This Changelog is for nightly build (stuff on the branch not on release)
+- cleaned up "start"  (if __name__ == '__main__')
+- started conversion to ET xml parser (still idk if i should exit fully as data of names is stored in regularpackages)
