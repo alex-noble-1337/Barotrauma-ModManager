@@ -13,8 +13,6 @@ progressbar_functionality = False
 debug_set_forced_cs = False
 debug_dependencies_functionality = False
 
-#  localcopy -> means a path of your local, downloaded copy of the mods
-
 # My "Quality" code
 import os # TODO change this to import only individual commands
 import shutil # TODO change this to import only individual commands
@@ -95,6 +93,7 @@ def HOTFIX_steamcmdCRLF(steamdir_path: str, modlist):
 
 
 # set up all default values and paths
+# TODO rework
 def set_required_values():
     options_arr = sys.argv[1:]
 
@@ -219,9 +218,7 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
                 os.remove(dst_file)
             shutil.move(src_file, dst_dir)
 
-# config player IO
-def get_mods_config_player(barotrauma_path):
-    # trying to access config_player
+def get_config_player_str(barotrauma_path):
     try:
         config_player_path = os.path.join(barotrauma_path, "config_player.xml")
         with open(config_player_path, "r", encoding='utf8') as f:
@@ -230,6 +227,11 @@ def get_mods_config_player(barotrauma_path):
         print("[ModManager] Could not find the config_player.xml! Check your barotrauma path!")
         print("[ModManager] Barotrauma path: " + config_player_path)
         print(e)
+    return config_player_str 
+
+# config player IO
+def get_mods_config_player(barotrauma_path):
+    config_player_str = get_config_player_str(barotrauma_path) 
 
     root = ET.fromstring(config_player_str)
     modpaths = []
@@ -243,19 +245,13 @@ def get_mods_config_player(barotrauma_path):
                         for subsubelement in subsubelements:
                             # just in case
                             if subsubelement.tag == "package":
-                                modpaths.append(subsubelement.attrib['path'])
+                                mod = {'path': subsubelement.attrib['path']}
+                                mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
+                                modpaths.append(mod)
     return modpaths
 
-def set_mods_config_player(modlist, localcopy_path):
-    try:
-        config_player_path = os.path.join(barotrauma_path, "config_player.xml")
-        with open(config_player_path, "r", encoding='utf8') as f:
-            config_player_str = f.read()
-    except Exception as e:
-        print("[ModManager] Could not find the config_player.xml! Check your barotrauma path!")
-        print("[ModManager] Barotrauma path: " + config_player_path)
-        print(e)
-    old_config_player_str = config_player_str
+def set_mods_config_player(modlist, localcopy_path, barotrauma_path):
+    config_player_str = get_config_player_str(barotrauma_path) 
 
     root = ET.fromstring(config_player_str)
     modpaths = []
@@ -274,9 +270,8 @@ def set_mods_config_player(modlist, localcopy_path):
                     
     config_player_str = ET.tostring(root, encoding='utf-8', method='xml')
 
-    if config_player_str != old_config_player_str:
-        with open(filelist_path, 'wb') as open_file:
-            open_file.write(config_player_str)
+    with open(os.path.join(barotrauma_path, "config_player.xml"), 'wb') as open_file:
+        open_file.write(config_player_str)
 
 # get from config_player.xml, everything inside <regularpackages/> </regularpackages>
 def get_regularpackages(barotrauma_path):
@@ -330,20 +325,8 @@ def get_localcopy_path(filelist_str):
                 localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
     return localcopy_path
 
-
 def get_listOfModsfromConfig(filelist_str,localcopy_path, barotrauma_path):
-    modlist = []
-
-    root = ET.fromstring(filelist_str)
-    if root.tag == "regularpackages":
-        if root.text != None:
-            for package in root:
-                # werid, BUT just in case...
-                if package.tag == 'package':
-                    mod = {'path': package.attrib['path']}
-                    # get directory name of a mod (mod id in most cases)
-                    mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
-                    modlist.append(mod)
+    modlist = get_mods_config_player(barotrauma_path) 
 
     # reason i need to look in filelist is because of:
     #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
@@ -355,10 +338,10 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path, barotrauma_path):
             filelist_path = os.path.join(barotrauma_path, mod['path'])
         if os.path.exists(filelist_path):
             with open(filelist_path, 'r') as open_file:
-                filelist_str = open_file.read()
-            filelist = ET.fromstring(filelist_str)
-            if filelist.tag.lower() == "contentpackage":
-                mod['name'] = filelist.attrib['name']
+                mod_filelist_str = open_file.read()
+            mod_filelist = ET.fromstring(mod_filelist_str)
+            if mod_filelist.tag.lower() == "contentpackage":
+                mod['name'] = mod_filelist.attrib['name']
         
     return modlist
 
@@ -561,7 +544,8 @@ def main(requiredpaths):
     tool_path = requiredpaths['tool']
     location_with_steamcmd = requiredpaths['steamcmd']
     steamdir_path = requiredpaths['steamdir']
-    localcopy_path_override = ""
+    save_dir = requiredpaths['save_dir']
+    max_saves = requiredpaths['max_saves']
     if 'collection_link' in requiredpaths and 'localcopy_path_override' in requiredpaths:
         collectionmode = True
         localcopy_path_override = requiredpaths['localcopy_path_override']
@@ -569,12 +553,9 @@ def main(requiredpaths):
         lastupdated_functionality = True
     else:
         collectionmode = False
+        localcopy_path_override = ""
         lastupdated_functionality = False
-    save_dir = requiredpaths['save_dir']
-    max_saves = requiredpaths['max_saves']
-
     regularpackages = get_regularpackages(barotrauma_path)
-    old_regularpackages = regularpackages
     managed_mods_path = os.path.join(tool_path, "managed_mods.txt")
     old_managed_mods = get_old_managed_mods(tool_path, managed_mods_path)
 
@@ -661,17 +642,11 @@ def main(requiredpaths):
             if mod['ID'] == '2795927223':
                 requrescs = True
 
-    if requreslua or requrescs:
-        if not os.path.exists(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml")):
-            warning_LFBnotinstalled = True
-        # else:
-        #     if requrescs:
-        #         if debug_set_forced_cs:
-        #             with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "r", encoding='utf8') as LuaCsSetupConfigf:
-        #                 LuaCsSetupConfig = LuaCsSetupConfigf.read()
-        #             LuaCsSetupConfig = LuaCsSetupConfig.replace("ForceCsScripting Value=\"Boolean\">False", "ForceCsScripting Value=\"Boolean\">True")
-        #             with open(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml"), "w", encoding='utf8') as LuaCsSetupConfigf:
-        #                 LuaCsSetupConfigf.write(LuaCsSetupConfig)
+
+    # if requreslua or requrescs:
+    #     if not os.path.exists(os.path.join(barotrauma_path, "LuaCsSetupConfig.xml")):
+    #         warning_LFBnotinstalled = True
+
 
     if requrescs:
         if hascs == False:
@@ -679,6 +654,7 @@ def main(requiredpaths):
             temp_luacs = [{'Name': "Cs For Barotrauma", 'ID': "2795927223"}]
             temp_luacs = get_modsData_individual(temp_luacs, lastupdated_functionality, lastupdated_functionality)
             modlist.extend(temp_luacs)
+
 
     modlist = remove_duplicates(modlist)
     # modless?
@@ -688,33 +664,17 @@ def main(requiredpaths):
     else:
         numberofmodsminusserverside = len(modlist) - int(haslua) - int(hascs)
         print_modlist(modlist)
-    
+
+
     modlist_inlocalcopy = []
     for modid in os.listdir(localcopy_path):
         if re.match("^\d*?$", modid):
             modlist_inlocalcopy.append(modid)
-            # if os.path.exists(os.path.join(localcopy_path, "filelist.xml")):
-                # check if mods update time is lower than modified time of file if so remove it from modlist
             
-    
-    # # more and equal to 20
-    # if warning_modlistislong:
-    #     sys.stdout.write("\033[1;31m")
-    #     print("[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
-    #     sys.stdout.write("\033[0;0m")
-    #     time.sleep(20/2)
-    # # more and equal to 30
-    # if warning_modlistissuperlong:
-    #     sys.stdout.write("\033[1;31m")
-    #     print("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\nPlease shorten your modlist by removing unnesesary mods, or use group of mods inside of one package.")
-    #     sys.stdout.write("\033[0;0m")
-    #     time.sleep(30/2)
-
+    # TODO idk why im doing this 
     # 1. Path fixing
     if not os.path.isabs(tool_path):
         tool_path = os.path.join(os.getcwd(), tool_path)
-    # if not os.path.isabs(location_with_steamcmd):
-    #     location_with_steamcmd = os.path.join(os.getcwd(), location_with_steamcmd)
     if not os.path.isabs(steamdir_path):
         steamdir_path = os.path.join(os.getcwd(), steamdir_path)
     newinputdir = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960")
@@ -722,16 +682,14 @@ def main(requiredpaths):
         shutil.rmtree(steamdir_path)
     os.mkdir(steamdir_path)
     steamdir_path = os.path.realpath(steamdir_path)
-    # if os.path.isabs(localcopy_path):
-    #     localmods_path = os.path.abspath(localcopy_path)
-    # else:
-    #     localmods_path = os.path.join(default_barotrauma_path, localcopy_path)
     if not os.path.isabs(localcopy_path):
         localcopy_path = os.path.join(os.getcwd(), localcopy_path)
+
 
     # 2. get managed mods and not managed mods
     managed_mods = get_managedmods(modlist, localcopy_path_og)
     not_managedmods = set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mods)
+
 
     # 3. re-create config_player
     regularpackages_new = create_newfilelist(modlist, localcopy_path_og, barotrauma_path)
@@ -741,10 +699,13 @@ def main(requiredpaths):
     filelist_str = filelist_str.replace(regularpackages, regularpackages_new)
     with open(filelist_path, "w", encoding='utf8') as f:
         f.write(filelist_str)
+    # TODO NEED to take a look how to post comments with ET, and how to format it accordingly
+    # set_mods_config_player(modlist, localcopy_path, barotrauma_path)
 
 
     # 4. saving managed mods
     save_managedmods(managed_mods, managed_mods_path)
+
 
     # lastupdated functionality
     if collectionmode and lastupdated_functionality:
@@ -767,6 +728,7 @@ def main(requiredpaths):
             if item_to_remove in modlist:
                 modlist.remove(item_to_remove)
 
+
     # main part running moddlownloader
     numberofupdatedmods = download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd)
     print("\n")
@@ -775,10 +737,12 @@ def main(requiredpaths):
     print("[ModManager] All "+ str(numberofupdatedmods) +" Mods have been updated")
     print("[ModManager] Downloading mods complete!")
 
+
     # 1. config backup and conservation
     baseconfig_path = os.path.join(tool_path, "BestDefaultConfigsTM")
     backup_option(baseconfig_path,newinputdir)
     backup_option(localcopy_path,newinputdir)
+
 
     # 2. remove not_managedmods
     print("[ModManager] Removing " + str(len(not_managedmods)) + " not managed now mods!")
@@ -786,8 +750,10 @@ def main(requiredpaths):
         if os.path.exists(not_managedmod):
             shutil.rmtree(not_managedmod)
 
+
     # TODO HOTFIX
     HOTFIX_steamcmdCRLF(newinputdir, modlist)
+
 
     # 3. + numberofupdatedmods actually moving mods to localcopy
     for mod in modlist:
@@ -798,6 +764,7 @@ def main(requiredpaths):
     # removing steamdir because steamcmd is piece of crap and it sometimes wont download mod if its in directory
     shutil.rmtree(steamdir_path)
     print("[ModManager] Mods Updated!\n")
+
 
     # checking if mod is pure server-side or client side
     numberofluamods = 0
@@ -810,11 +777,13 @@ def main(requiredpaths):
                 xmlitems += len(re.findall(".xml", filelist[ix]))
             if xmlitems <= 0:
                 numberofluamods += 1
-    
+
+
     if numberofmodsminusserverside - numberofluamods >= 30 and not disablewarnings:
         warning_modlist30 = True
     elif numberofmodsminusserverside - numberofluamods >= 20 and not disablewarnings:
         warning_modlist20 = True
+
 
     # TODO rework
     # this check is dumb because the BEST way to check if lua is installed is to have a script start a server, then run a lua mod
@@ -824,6 +793,7 @@ def main(requiredpaths):
     #     print("[ModManager] WARNING Lua for barotrauma NOT INSTALLED, and is needed!\nInstall Lua for barotrauma then re-run script!")
     #     sys.stdout.write("\033[0;0m")
     #     time.sleep(20)
+
 
     if warning_modlist30:
         sys.stdout.write("\033[1;31m")
