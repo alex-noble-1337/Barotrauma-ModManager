@@ -1,13 +1,13 @@
+Im not responsible for breaking your computer.
+(although its unlikely if you follow my instructions, but if you are unsure about something messege me, my contact info is below)
 # README Languages
 - [English](README.md)
 - [Русский](README.ru.md)
 
 # Barotrauma-ModManager 
-Mod manager for Barotrauma server. Allows to keep mods up to date.
+Mod manager for Barotrauma server. Allows for easier keeping mods up to date.
 
-
-
-Barotrauma game [github](https://github.com/Regalis11/Barotrauma): 
+Barotrauma game github: https://github.com/Regalis11/Barotrauma
 
 ## Setup
 ***Requres installation of steamcmd!*** 
@@ -26,13 +26,17 @@ For advanced and detailed configuration read [How to use](#How-to-use)
 
 # HOW TO USE
 ## IMPORTANT!
+### Recomended way of running on dedicated server:
+Best to run it right before barotrauma, like in `download_script_exmple.sh`.
+
+### Way to use it for auto-updating of mods before launching the game:
+TODO
+
+### Contact information
 Any other problems ask `Noble#3103` (Discord) or github or my [mail](m1l0rd30467@gmail.com)
-ASK BEFORE YOU DO IF YOU ARE UNSURE
-
-Im not responsible for breaking your computer.
-(although its unlikely if you follow my instructions, but if you are unsure about something messege me, my contact info is above)
-
 ## How-to-use:
+localcopy -> means a path to the directory where your local downloaded copy of the mods are stored
+
 **Read what ModManager is writting to you (things prefaced \[ModManager\]), it gives instructions about what to write to it, and when**
 
 Skiping mod download (HOTBOOT) is activated when typing `no` (or `n`) then press `enter` when prompted.
