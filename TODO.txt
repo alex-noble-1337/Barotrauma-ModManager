@@ -1,22 +1,21 @@
-- time to finish based on mod size got from api (not accurate enough)
-- fix and remake functionality to check dependencies of a mod
-    - use steamapi instead webapi
+Issues:
+- make an escape invalid xml of old names
+- go over this again, handing of command line arguments
+- rewrite documentation to include new functions, and make it much more comprehasable
+- rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
+Features:
+(PERIODIC) go over all todo's from comments post them here
 - mods that dont have id shoudnt be removed when you remove them from config_player or when you enable collection mode
-- autmatically download all dependencies and enable them (except movable wrecks) (make it opt in opt out by command line just in case)
-- functionality to selectivly force-update a mod
 - optimize to the max, or at a very least we are looking at someting that is at average less than lineral in O
     - steamcmd downloading all mods at once
     - go over all import, convert them to import only specific function
-- make an escape invalid xml of old names
-- go over this again, handing of command line arguments
-
+- fix and remake functionality to check dependencies of a mod
+    - use steamapi instead webapi
+- autmatically download all dependencies and enable them (except movable wrecks) (make it opt in opt out by command line just in case)
+- functionality to selectivly force-update a mod
 - set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
 - set up a way to save mod conflicts to db
 - set up a functionality for mod manager to warn and remove mod conflicts
 - set up a way to save mod load order between mods to db
 - set up a functionality for mod manager to automatically sort your modlist
 - fix output not formatting correctly new line etc
-
-(PERIODIC test more) rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
-(PERIODIC) go over all todo's from comments post them here
-(PERIODIC) rewrite documentation to include new functions
