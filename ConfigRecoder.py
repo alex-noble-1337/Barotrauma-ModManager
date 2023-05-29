@@ -94,7 +94,7 @@ def get_modsData_collection(collection_site, mods, addnames = True):
                 name = name.replace("--", "- -")
                 name = name.replace("&amp;", "&")
                 name = name.replace("&quot;", "\"")
-                mod['Name'] = name
+                mod['name'] = name
             if mod not in mods:
                 mods.append(mod)
     else:
@@ -169,7 +169,7 @@ def get_lastupdated_old(modsite):
 
     return lastupdated
 
-def get_lastupdated(modlist):
+def get_lastupdated(modlist, getnames = False):
     new_modlist = modlist
     adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
     option_tuple = {'itemcount': len(modlist)}
@@ -191,6 +191,8 @@ def get_lastupdated(modlist):
                 new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
                 if 'file_size' in moddetails:
                     new_modlist[i]['file_size'] = moddetails['file_size']
+                if 'title' in moddetails and getnames:
+                    new_modlist[i]['name'] = moddetails['title']
                 
     return new_modlist
 
@@ -204,7 +206,7 @@ def collectionf(url_of_steam_collection):
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
     return collection_site
 
-def get_modsData_individual(mods, addlastupdated = False, dependencies = True):
+def get_modsData_individual(mods, addlastupdated = False, dependencies = True, getnames = False):
     for i in range(len(mods)):
         if not isinstance(mods[i], dict):
             WorkshopItem = {'ID': mods[i]}
@@ -246,13 +248,13 @@ def get_modsData_individual(mods, addlastupdated = False, dependencies = True):
                     mods[i]['dependencies'] = requiredItems
 
             # if addnames:
-            #     mods[i]['Name'] = get_modname(modsite)
+            #     mods[i]['name'] = get_modname(modsite)
 
-            # mods[i] = {'Name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
+            # mods[i] = {'name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
             else:
                 print("[ModManager]Mod with a link: " + modurl + " not found!")
 
-    mods = get_lastupdated(mods)
+    mods = get_lastupdated(mods, getnames)
 
     return mods
 
@@ -306,7 +308,7 @@ def main():
     regularpackages = "    <regularpackages>\n"
     # print new
     for mod in mods:
-        regularpackages += "      <!--" + mod['Name'] + "-->\n"
+        regularpackages += "      <!--" + mod['name'] + "-->\n"
         lastupdated_f += mod['ID'] + ";" + str(time.strftime('%d %b, %Y @ %I:%M%p', mod['LastUpdated'])) + "\n"
         regularpackages += "      <package\n"
         regularpackages += "        path=\"" + moddirectory + "/" +  mod['ID'] + "/filelist.xml\" />\n"

@@ -376,7 +376,7 @@ def print_modlist(modlist):
     for mod in modlist:
         if str(mod["ID"]) == "2701251094":
             has_performancefix = True
-        print("[ModManager] "+ str(mod["ID"]) + ": " + mod["name"])
+        print("[ModManager] "+ str(mod["ID"]) + ": " + mod['name'])
     print("\n")
     print("\n")
 
@@ -448,7 +448,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
         if re.match(pattern, mod["ID"]):
             one_time = int(round(time.time()))
             # main part running moddlownloader
-            mssg = "[ModManager] Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod["name"]
+            mssg = "[ModManager] Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod['name']
             if progressbar_functionality == False:
                 mssg += "     Update Progress: " + str(iterator+1) + "/" + str(len(modlist))
                 if len(modlist) >= 3:
@@ -471,7 +471,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     # bar.update()
                 # starting download
                 if re.match(".*?Downloading item " + mod["ID"] + ".*?", line):
-                    print("[ModManager] Downloading mod: " + mod["name"] + " (" + mod["ID"] + ")")
+                    print("[ModManager] Downloading mod: " + mod['name'] + " (" + mod["ID"] + ")")
                     # iterator += 1
                     # bar.update(iterator)
                     # bar.update()
@@ -501,7 +501,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                 raise Exception("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!" + str(proc.errors))
         else:
             iterator += 1
-            print("[ModManager] Skipped mod!: " + mod["Name"] + " (" + mod["ID"] + ")")
+            print("[ModManager] Skipped mod!: " + mod['name'] + " (" + mod["ID"] + ")")
             # bar.update(1)
             print("")
             # iterator += 1
@@ -591,7 +591,7 @@ def main(requiredpaths):
 
     modlist = []
     if addperformacefix == True:
-        WorkshopItem = {'Name': "Performance Fix", 'ID': "2701251094"}
+        WorkshopItem = {'name': "Performance Fix", 'ID': "2701251094"}
         modlist.insert(0, WorkshopItem)
 
     requreslua = False
@@ -625,6 +625,9 @@ def main(requiredpaths):
         else:
             localcopy_path_og = localcopy_path_override
         modlist.extend(get_listOfModsfromConfig(regularpackages,localcopy_path_og, barotrauma_path))
+        # TODO terribile hack fix
+        modlist = get_modsData_individual(modlist, False, False, True)
+
     
     for mod in modlist:
         if mod['ID'] == '2795927223':
@@ -653,7 +656,7 @@ def main(requiredpaths):
     if requrescs:
         if hascs == False:
             # TODO kind hacky way to do this
-            temp_luacs = [{'Name': "Cs For Barotrauma", 'ID': "2795927223"}]
+            temp_luacs = [{'name': "Cs For Barotrauma", 'ID': "2795927223"}]
             temp_luacs = get_modsData_individual(temp_luacs, lastupdated_functionality, lastupdated_functionality)
             modlist.extend(temp_luacs)
 
