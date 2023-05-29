@@ -79,6 +79,8 @@ def HOTFIX_steamcmdCRLF(steamdir_path: str, modlist):
                         if desired_order_element not in element.attrib:
                             if 'installtime' == desired_order_element:
                                 element.attrib['installtime'] = str(round(time.time()))
+                            elif 'steamworkshopid' == desired_order_element:
+                                element.attrib['steamworkshopid'] = mod['ID']
                             else:
                                 element.attrib[desired_order_element] = ""
                     # i dont understand it, this is shit
