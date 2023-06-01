@@ -232,6 +232,7 @@ def get_config_player_str(barotrauma_path):
     return config_player_str 
 
 # config player IO
+# config player Input
 def get_mods_config_player(barotrauma_path):
     config_player_str = get_config_player_str(barotrauma_path) 
 
@@ -251,7 +252,7 @@ def get_mods_config_player(barotrauma_path):
                                 mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
                                 modpaths.append(mod)
     return modpaths
-
+# config_player.xml output TODO NOT USED
 def set_mods_config_player(modlist, localcopy_path, barotrauma_path):
     config_player_str = get_config_player_str(barotrauma_path) 
 
