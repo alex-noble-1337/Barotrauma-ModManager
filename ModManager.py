@@ -333,7 +333,7 @@ def get_listOfModsfromConfig(filelist_str,localcopy_path, barotrauma_path):
 
     # reason i need to look in filelist is because of:
     #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
-    #   - i can just get non-installed mods name's via api
+    #   - i can just get non-installed mods name's via api TODO, make it in config_player mode.
     for mod in modlist:
         if os.path.isabs(mod['path']):
             filelist_path = mod['path']
@@ -481,6 +481,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     # check if mod has been downloaded in correct path
                     if re.match(".*?\"" + steamdir_path + ".*?steamapps.*?workshop.*?content.*?602960.*?" + mod["ID"] + "\".*?", line):
                         print("[ModManager] Downloaded mod!")
+                        # TODO get that path into an array so steamdir path is not needed, and ypu just move mods from wherever the steamcmd puts tgem
                         # iterator += 1
                         # bar.update(iterator)
                         # bar.update()
