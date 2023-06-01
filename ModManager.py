@@ -537,10 +537,39 @@ def set_not_managedmods(old_managed_mods, modlist, localcopy_path_og, managed_mo
             not_managedmods.remove(modwithdir)
     return not_managedmods
 
+# return false on negative test resoult, on positive resoult return collection site string
+def collection_link_check(collection_link: str):
+    isvalid_collection_link = False
+    if re.match("https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=", collection_link) != None:
+        collection_site = collectionf(collection_link)
+        if collection_site != "ERROR":
+            isvalid_collection_link= True
+    if isvalid_collection_link:
+        return collection_site
+    else:
+        return isvalid_collection_link
+
+def is_pure_lua_mod(mod_path: str):
+    pure_lua_mod = False
+    if os.path.exists(os.path.join(mod_path, "filelist.xml")):
+        with open(os.path.join(mod_path, "filelist.xml"), "r", encoding='utf8') as f:
+            filelist = f.readlines()
+        xmlitems = 0
+        for ix in range(2, len(filelist)):
+            xmlitems += len(re.findall(".xml", filelist[ix]))
+        if xmlitems <= 0:
+            pure_lua_mod = True
+    return pure_lua_mod
+
 def main(requiredpaths):
     warning_LFBnotinstalled = False
     warning_modlist20 = False
     warning_modlist30 = False
+    requreslua = False
+    requrescs = False
+    hascs = False
+    haslua = False
+    number_of_pure_lua_mods = 0
 
     barotrauma_path = requiredpaths['barotrauma']
     tool_path = requiredpaths['tool']
@@ -579,28 +608,22 @@ def main(requiredpaths):
     # check collection link if it is valid
     isvalid_collection_link = False
     if collectionmode:
-        if collection_link != "":
-            if re.match("https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=", collection_link) != None:
-                collection_site = collectionf(collection_link)
-                if collection_site != "ERROR":
-                    isvalid_collection_link = True
-            else:
-                # on not finding collection sleep 5 sec then procceed with config_player.xml mode
-                print("[ModManager] Collection link is invalid!")
-                time.sleep(5)
+        collection_site = collection_link_check(collection_link)
+        if collection_site == False:
+            print("[ModManger] Collection link INVALID. Do you want to exit the script? ((Y)es / (n)o):")
+            user_command = input().lower()
+            if user_command == "no" or user_command == "n":
+                return 0
+        else:
+            isvalid_collection_link = True
+            
 
     modlist = []
     if addperformacefix == True:
         WorkshopItem = {'name': "Performance Fix", 'ID': "2701251094"}
         modlist.insert(0, WorkshopItem)
 
-    requreslua = False
-    requrescs = False
-    hascs = False
-    haslua = False
-    if isvalid_collection_link and localcopy_path_override != "":
-        collectionmode = True
-        lastupdated_functionality = True
+    if isvalid_collection_link and collectionmode:
         dependencies_functionality = debug_dependencies_functionality
         print("[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)")
         localcopy_path_og = localcopy_path_override
@@ -617,8 +640,6 @@ def main(requiredpaths):
             if mod['ID'] == '2795927223':
                 hascs = True
     else:
-        collectionmode = False
-        lastupdated_functionality = False
         print("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml")
         if localcopy_path_override == "":
             localcopy_path_og = get_localcopy_path(regularpackages)
@@ -632,20 +653,15 @@ def main(requiredpaths):
     for mod in modlist:
         if mod['ID'] == '2795927223':
             hascs = True
+            requrescs = True
         if mod['ID'] == '2559634234':
             haslua = True
+            requreslua = True
     localcopy_path = localcopy_path_og
 
     if save_dir != "" and max_saves != "":
         max_saves = int(max_saves)
         backupBarotraumaData(barotrauma_path, localcopy_path_og, save_dir, os.path.join(tool_path, "backup"), max_saves)
-
-    if (not requreslua) or (not requrescs):
-        for mod in modlist:
-            if mod['ID'] == '2559634234':
-                requreslua = True
-            if mod['ID'] == '2795927223':
-                requrescs = True
 
 
     # if requreslua or requrescs:
@@ -771,22 +787,16 @@ def main(requiredpaths):
     print("[ModManager] Mods Updated!\n")
 
 
-    # checking if mod is pure server-side or client side
-    numberofluamods = 0
+    # accessing filelists of mods
     for mod in modlist:
-        if os.path.exists(os.path.join(localcopy_path, mod['ID'], "filelist.xml")):
-            with open(os.path.join(localcopy_path, mod['ID'], "filelist.xml"), "r", encoding='utf8') as f:
-                filelist = f.readlines()
-            xmlitems = 0
-            for ix in range(2, len(filelist)):
-                xmlitems += len(re.findall(".xml", filelist[ix]))
-            if xmlitems <= 0:
-                numberofluamods += 1
+        # checking if mod is pure server-side or client side
+        if is_pure_lua_mod(os.path.join(localcopy_path, mod['ID'])):
+            number_of_pure_lua_mods += 1 
 
 
-    if numberofmodsminusserverside - numberofluamods >= 30 and not disablewarnings:
+    if numberofmodsminusserverside - number_of_pure_lua_mods >= 30 and not disablewarnings:
         warning_modlist30 = True
-    elif numberofmodsminusserverside - numberofluamods >= 20 and not disablewarnings:
+    elif numberofmodsminusserverside - number_of_pure_lua_mods >= 20 and not disablewarnings:
         warning_modlist20 = True
 
 
