@@ -1,3 +1,4 @@
 This Changelog is for nightly build (stuff on the branch not on release)
 - added collection link chceck function
-- moved some more code into sepearate functions
+- moved some more more code into sepearate functions
+- fixed some comments

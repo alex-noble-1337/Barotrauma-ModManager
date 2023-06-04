@@ -55,7 +55,7 @@ def get_htm_of_collection_site(link):
         
 #     return arrx
 
-def get_modsData_collection(collection_site, mods, addnames = True):
+def get_modlist_collection_site(collection_site):
     if collection_site != "ERROR":
         # get list of all mod's id's in the collection in an array
         # modsids = get_listOfMods(collection_site)
@@ -95,8 +95,6 @@ def get_modsData_collection(collection_site, mods, addnames = True):
                 name = name.replace("&amp;", "&")
                 name = name.replace("&quot;", "\"")
                 mod['name'] = name
-            if mod not in mods:
-                mods.append(mod)
     else:
         # throw exeption invalid collection
         raise Exception("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
@@ -169,7 +167,8 @@ def get_lastupdated_old(modsite):
 
     return lastupdated
 
-def get_lastupdated(modlist, getnames = False):
+# modlist must be an array of oject with at minimum of 'ID' filed with assigned steamid of the mod
+def get_modlist_data_webapi(modlist):
     new_modlist = modlist
     adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
     option_tuple = {'itemcount': len(modlist)}
@@ -191,8 +190,11 @@ def get_lastupdated(modlist, getnames = False):
                 new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
                 if 'file_size' in moddetails:
                     new_modlist[i]['file_size'] = moddetails['file_size']
-                if 'title' in moddetails and getnames:
-                    new_modlist[i]['name'] = moddetails['title']
+                if 'title' in moddetails:
+                    if not 'name' in new_modlist[i]:
+                        new_modlist[i]['name'] = moddetails['title']
+                    elif moddetails['title'] != new_modlist[i]['name']:
+                        new_modlist[i]['name'] = moddetails['title']
                 
     return new_modlist
 
@@ -206,16 +208,15 @@ def collectionf(url_of_steam_collection):
     collection_site = get_htm_of_collection_site(url_of_steam_collection)
     return collection_site
 
-def get_modsData_individual(mods, addlastupdated = False, dependencies = True, getnames = False):
+def get_modlist_data(mods, dependencies = False):
+    # just in caaaaaase, lts put it here, i dont trust myself
     for i in range(len(mods)):
         if not isinstance(mods[i], dict):
             WorkshopItem = {'ID': mods[i]}
             mods[i] = WorkshopItem
 
-    # Lua and cs
-    # requreslua = False
-    # requrescs = False
-    arr_of_ids = []
+    mods = get_modlist_data_webapi(mods)
+
     if dependencies:
         for i in range(len(mods)):
             # download modsite html
@@ -254,11 +255,9 @@ def get_modsData_individual(mods, addlastupdated = False, dependencies = True, g
             else:
                 print("[ModManager]Mod with a link: " + modurl + " not found!")
 
-    mods = get_lastupdated(mods, getnames)
-
     return mods
 
-def generatelistOfMods(collection_site, mods, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
+def get_modlist_collection_site_legacy(collection_site, mods, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
     if 'addnames' not in input_options:
         input_options['addnames'] = False
     if 'addlastupdated' not in input_options:
@@ -270,9 +269,9 @@ def generatelistOfMods(collection_site, mods, input_options = {'addnames': True,
     addlastupdated = input_options['addlastupdated']
     dependencies = input_options['dependencies']
 
-    mods =  get_modsData_collection(collection_site, mods, addnames)
+    mods = get_modsData_collection(collection_site, mods, addnames)
     if addlastupdated or dependencies:
-        mods = get_modsData_individual(mods, addlastupdated, dependencies)
+        mods = get_modlist_data(mods, addlastupdated, dependencies)
     return mods
 
 def main():
