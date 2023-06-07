@@ -1,5 +1,5 @@
-Im not responsible for breaking your computer.
-(although its unlikely if you follow my instructions, but if you are unsure about something messege me, my contact info is below)
+
+
 # README Languages
 - [English](README.md)
 - [Русский](README.ru.md)
