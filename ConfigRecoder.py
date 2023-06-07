@@ -56,6 +56,8 @@ def get_htm_of_collection_site(link):
 #     return arrx
 
 def get_modlist_collection_site(collection_site):
+    addnames = True
+    mods = []
     if collection_site != "ERROR":
         # get list of all mod's id's in the collection in an array
         # modsids = get_listOfMods(collection_site)
@@ -95,6 +97,7 @@ def get_modlist_collection_site(collection_site):
                 name = name.replace("&amp;", "&")
                 name = name.replace("&quot;", "\"")
                 mod['name'] = name
+            mods.append(mod)
     else:
         # throw exeption invalid collection
         raise Exception("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")

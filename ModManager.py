@@ -14,22 +14,22 @@ debug_set_forced_cs = False
 debug_dependencies_functionality = False
 
 # My "Quality" code
-import os # TODO change this to import only individual commands
-import shutil # TODO change this to import only individual commands
-import re # TODO change this to import only individual commands
-import time # TODO change this to import only individual commands
-import datetime # for current time
-import subprocess # TODO change this to import only individual commands
-import sys # TODO change this to import only individual commands
+# TODO change this to import only individual commands
+import os
+import shutil
+import re
+import time
+import datetime
+import subprocess
+import sys
 import io
+import xml.etree.ElementTree as ET
 
 import gettext
 _ = gettext.gettext
 
-import xml.etree.ElementTree as ET
 
-
-# from ConfigRecoder import get_modsnamelastupdated 
+# load submodules
 from configbackup import backup_option
 from ConfigRecoder import get_modlist_collection_site 
 from ConfigRecoder import collectionf
@@ -43,7 +43,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
     UNIX_LINE_ENDING = b'\n'
 
     # all_xml_files = []
-    for src_dir, dirs, files in os.walk(steamdir_path):
+    for src_dir, dirs, files in os.walk(downloaded_mod_path):
         for file_ in files:
             if file_[-4:] == ".xml":
                 # all_xml_files.append()
@@ -98,15 +98,14 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                 with open(filelist_path, 'wb') as open_file:
                     open_file.write(filelist_str)
 
-
 # set up all default values and paths
 # TODO rework
-def set_required_values():
+def set_user_perfs():
     options_arr = sys.argv[1:]
     changed_barotrauma_path = False
     changed_tool_path = False
     changed_steamcmd_path = False
-    input_options = {'collectionmode': False}
+    user_prefs = {'collectionmode': False}
 
     # TODO go over this again, handing of command line arguments
     if len(options_arr) >= 1:
@@ -123,26 +122,26 @@ def set_required_values():
             if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
                 if tempval >= 2:
                     if options_arr[i+1] == "pwd":
-                        input_options['barotrauma'] = os.getcwd()
+                        user_prefs['barotrauma'] = os.getcwd()
                         changed_barotrauma_path = True
                     else:
-                        input_options['barotrauma'] = options_arr[i+1]
+                        user_prefs['barotrauma'] = options_arr[i+1]
                         changed_barotrauma_path = True
                 else:
-                    input_options['barotrauma'] = os.getcwd()
+                    user_prefs['barotrauma'] = os.getcwd()
                     changed_barotrauma_path = True
             
             # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
             if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
                 if tempval >= 2:
                     if options_arr[i+1] == ".":
-                        input_options['tool'] = os.getcwd()
+                        user_prefs['tool'] = os.getcwd()
                         changed_tool_path = True
                     else:
-                        input_options['tool'] = options_arr[i+1]
+                        user_prefs['tool'] = options_arr[i+1]
                         changed_tool_path = True
                 else:
-                    input_options['tool'] = os.getcwd()
+                    user_prefs['tool'] = os.getcwd()
                     changed_tool_path = True
 
             # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
@@ -150,63 +149,77 @@ def set_required_values():
                 if tempval >= 2:
                     if options_arr[i+1] == "pwd":
                         if sys.platform == 'win32':
-                            input_options['steamcmd'] = os.path.join(os.getcwd(), "steamcmd.exe")
+                            user_prefs['steamcmd'] = os.path.join(os.getcwd(), "steamcmd.exe")
                         else:
-                            input_options['steamcmd'] = os.path.join(os.getcwd(), "steamcmd.sh")
+                            user_prefs['steamcmd'] = os.path.join(os.getcwd(), "steamcmd.sh")
                         changed_steamcmd_path = True
                     else:
-                        input_options['steamcmd'] = options_arr[i+1]
+                        user_prefs['steamcmd'] = options_arr[i+1]
                         changed_steamcmd_path = True
                 else:
-                    input_options['steamcmd'] = options_arr[i+1]
+                    user_prefs['steamcmd'] = options_arr[i+1]
                     changed_steamcmd_path = True
 
             # TODO '--collection to the documentaton
             if options_arr[i] == '--collection' or options_arr[i] == '-c':
                 if tempval >= 3:
                     # TODO check if link is good
-                    input_options['collection_link'] = options_arr[i+1]
-                    input_options['collectionmode'] = True
-                    input_options['localcopy_path_override'] = options_arr[i+2]
+                    user_prefs['collection_link'] = options_arr[i+1]
+                    user_prefs['collectionmode'] = True
+                    user_prefs['localcopy_path_override'] = options_arr[i+2]
                 
              # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
                 if tempval >= 1:
                     global addperformacefix
-                    input_options['addperformacefix'] = True
+                    user_prefs['addperformacefix'] = True
 
             # TODO add it to the documentaton
             if options_arr[i] == '--backup':
                 if tempval >= 3:
                     # TODO check if link is good
-                    input_options['max_saves'] = int(options_arr[i+1])
-                    input_options['save_dir'] = options_arr[i+2]
+                    user_prefs['max_saves'] = int(options_arr[i+1])
+                    user_prefs['save_dir'] = options_arr[i+2]
 
     # setting up default values and path handling
     if not changed_barotrauma_path:
-        input_options['barotrauma'] = default_barotrauma_path
-    if not os.path.isabs(input_options['barotrauma']):
-        input_options['barotrauma'] = os.path.join(os.getcwd(), input_options['barotrauma'])
+        user_prefs['barotrauma'] = default_barotrauma_path
+    if not os.path.isabs(user_prefs['barotrauma']):
+        user_prefs['barotrauma'] = os.path.join(os.getcwd(), user_prefs['barotrauma'])
     if not changed_tool_path:
-        input_options['tool'] = default_tool_path
+        user_prefs['tool'] = default_tool_path
     if not changed_steamcmd_path:
-        input_options['steamcmd'] = default_steamcmd_path
+        user_prefs['steamcmd'] = default_steamcmd_path
+    # TODO wtf is this
     if default_steamdir_path == "":
-        input_options['steamdir'] = os.path.join(input_options['tool'], "steamdir")
+        user_prefs['steamdir'] = os.path.join(user_prefs['tool'], "steamdir")
     else:
-        input_options['steamdir'] = default_steamdir_path
-    
-    # TODO
-    if 'collection_link' in input_options and 'localcopy_path_override' in input_options:
-        input_options['mode'] = "collection"
-    else:
-        input_options['mode'] = "config_player"
-        # removed below cuz this conflicts with if user wants to have localcopy in pwd
-        # input_options['localcopy_path_override'] = ""
+        user_prefs['steamdir'] = default_steamdir_path
 
-    input_options['backup_path'] = os.path.join(input_options['tool'], "backup")
-    input_options['get_dependencies'] = debug_dependencies_functionality
-    return input_options
+
+    if 'collection_link' in user_prefs and 'localcopy_path_override' in user_prefs:
+        user_prefs['mode'] = "collection"
+    else:
+        user_prefs['mode'] = "config_player"
+
+
+    user_prefs['backup_path'] = os.path.join(user_prefs['tool'], "backup")
+    user_prefs['get_dependencies'] = debug_dependencies_functionality
+    user_prefs['config_collectionmode_path'] = os.path.join(user_prefs['tool'], "collection_save.txt")
+    user_prefs['managedmods_path'] = os.path.join(user_prefs['tool'], "managed_mods.txt")
+    user_prefs['old_managedmods'] = get_old_managedmods(user_prefs['managedmods_path'])
+    if flush_previous_col:
+        if os.path.exists(user_prefs['config_collectionmode_path']):
+            os.remove(user_prefs['config_collectionmode_path'])
+    elif os.path.exists(user_prefs['config_collectionmode_path']):
+        collection_file = ""
+        with open(user_prefs['config_collectionmode_path'], "r", encoding='utf8') as f:
+            collection_file = f.read()
+        arr = collection_file.split(" ", 1)
+        user_prefs['collection_link'] = arr[0]
+        user_prefs['localcopy_path_override'] = arr[1]
+        user_prefs['mode'] = "collection"
+    return user_prefs
 
 # yoinked from stackoverflow, works
 def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
@@ -238,8 +251,8 @@ def get_config_player_str(barotrauma_path):
             config_player_str = f.read()
     except Exception as e:
         print(_("[ModManager] Could not find the config_player.xml! Check your barotrauma path!"))
-        print(_("[ModManager] Barotrauma path: " + config_player_path))
-        print(_(e))
+        print(_("[ModManager] Barotrauma path: {0}").format(config_player_path))
+        print(e)
     return config_player_str 
 
 # config player IO
@@ -296,8 +309,8 @@ def get_regularpackages(barotrauma_path):
             filelist_str = f.read()
     except Exception as e:
         print(_("[ModManager] Could not find the config_player.xml! Check your barotrauma path!"))
-        print(_("[ModManager] Barotrauma path: " + filelist_path))
-        print(_(e))
+        print(_("[ModManager] Barotrauma path:").format(filelist_path))
+        print(e)
 
     pattern = "<regularpackages>[\s\S]*?<\/regularpackages>"
     regularpackages = re.findall(pattern, filelist_str)
@@ -305,8 +318,6 @@ def get_regularpackages(barotrauma_path):
     if len(regularpackages) <= 0:
         # patch for </regularpackages>, just in case
         # TODO a bit stupid, so rework it
-        # print(_("<regularpackages/>")
-        # print(_("<regularpackages>\n\t\t</regularpackages>")
         filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
         filelist_str = filelist_str.replace("<regularpackages />", "<regularpackages>\n\n\t</regularpackages>")
         with open(filelist_path, "w", encoding='utf8') as f:
@@ -344,7 +355,7 @@ def get_modlist_regularpackages(filelist_str,localcopy_path, barotrauma_path):
 
     # reason i need to look in filelist is because of:
     #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
-    #   - i can just get non-installed mods name's via api TODO, make it in config_player mode.
+    #   - i can just get non-installed mods name's via api 
     for mod in modlist:
         if os.path.isabs(mod['path']):
             filelist_path = mod['path']
@@ -388,9 +399,9 @@ def print_modlist(modlist):
     for mod in modlist:
         if str(mod["ID"]) == "2701251094":
             has_performancefix = True
-        print(_("[ModManager] "+ str(mod["ID"]) + ": " + mod['name']))
-    print(_("\n"))
-    print(_("\n"))
+        print(_("[ModManager] {ID:d}: {name:d}").format(**mod))
+    print("\n")
+    print("\n")
 
 def remove_duplicates(modlist):
     toremove = []
@@ -482,16 +493,16 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
         if re.match(pattern, mod["ID"]):
             one_time = int(round(time.time()))
             # main part running moddlownloader
-            mssg = "[ModManager] Starting steamcmd, Updating mod:" + mod["ID"] + ": " + mod['name']
+            print(_("[ModManager] Starting steamcmd, Updating mod:{ID:d}: {name:d}").format(**mod), sep=None)
             if progressbar_functionality == False:
-                mssg += "     Update Progress: " + str(iterator+1) + "/" + str(len(modlist))
+                print("\t" + _("Update Progress: {0}/{1}").format(str(iterator+1), str(len(modlist))), sep=None)
                 if len(modlist) >= 3:
                     if iterator >= 3:
                         # TODO dirty quickfix
                         if completed_file_size > 0:
                             number = int(abs((modlist_file_size - completed_file_size)*(total_time / completed_file_size)))
-                            mssg += " ETA:" + str(str(number//60) + ":" + str(number%60))
-            print(_(mssg))
+                            print(" " + _("ETA:{0}:{1}").format(str(str(number//60), str(number%60))), sep=None)
+            print()
             # TODO make output of steamcmd less spammy/silent
             # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
             proc = moddownloader(mod["ID"],tool_path, steamdir_path, location_with_steamcmd)
@@ -505,7 +516,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     # bar.update()
                 # starting download
                 if re.match(".*?Downloading item " + mod["ID"] + ".*?", line):
-                    print(_("[ModManager] Downloading mod: " + mod['name'] + " (" + mod["ID"] + ")"))
+                    print(_("[ModManager] Downloading mod: {name:d} ({ID:d})").format(**mod))
                     # iterator += 1
                     # bar.update(iterator)
                     # bar.update()
@@ -531,17 +542,17 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
                     completed_file_size += mod['file_size']
                 one_time -= int(round(time.time()))
                 total_time += one_time
-                print(_(""))
+                print()
             else:
                 raise Exception("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!" + str(proc.errors))
         else:
             iterator += 1
-            print(_("[ModManager] Skipped mod!: " + mod['name'] + " (" + mod["ID"] + ")"))
+            print(_("[ModManager] Skipped mod!: {name:d} ( + {ID:d})").format(**mod))
             # bar.update(1)
-            print(_(""))
+            print()
             # iterator += 1
             # bar.update(iterator)
-    print(_(""))
+    print()
     return numberofupdatedmods
 
 # return false on negative test resoult, on positive resoult return collection site string
@@ -560,7 +571,7 @@ def check_collection_link(collection_site):
         print(_("[ModManger] Collection link INVALID. Do you want to exit the script? ((Y)es / (n)o):"))
         user_command = input().lower()
         if user_command == "no" or user_command == "n":
-            raise Exception("Collection link INVALID! Re-enable Collection mode.")
+            raise Exception(_("Collection link INVALID! Re-enable Collection mode."))
         isvalid_collection_link = False
     else:
         isvalid_collection_link = True
@@ -600,6 +611,7 @@ def get_up_to_date_mods(mods, localcopy_path):
 # TODO name
 # requres lastupdated value in mod object, return mods array that has only mods that requre update
 def remove_up_to_date_mods(mods, remove_arr):
+    new_mods = mods
     for item_to_remove in remove_arr:
         if item_to_remove in new_mods:
             new_mods.remove(item_to_remove)
@@ -609,7 +621,7 @@ def deleting_not_managedmods(not_managedmods):
     for not_managedmod in not_managedmods:
         if os.path.exists(not_managedmod):
             shutil.rmtree(not_managedmod)
-    print(_("[ModManager] Removed " + str(len(not_managedmods)) + " not managed now mods!"))
+    print(_("[ModManager] Removed {0} not managed now mods!").format(str(len(not_managedmods))))
 
 def main(user_prefs):
     # TODO fix this stupid shit, idk if that is my ocd but this amout of variables looks wrong
@@ -628,24 +640,6 @@ def main(user_prefs):
     recomended_configs = os.path.join(user_prefs['tool'], "BestDefaultConfigsTM")
     # "data":
     regularpackages = get_regularpackages(user_prefs['barotrauma'])
-    # get "persistent values" (config)
-    # TODO rework this, have only 1 config file
-    config_collectionmode_path = os.path.join(user_prefs['tool'], "collection_save.txt")
-    managedmods_path = os.path.join(user_prefs['tool'], "managed_mods.txt")
-    old_managedmods = get_old_managedmods(managedmods_path)
-    if flush_previous_col:
-        if os.path.exists(config_collectionmode_path):
-            os.remove(config_collectionmode_path)
-    elif os.path.exists(config_collectionmode_path):
-        collection_file = ""
-        with open(config_collectionmode_path, "r", encoding='utf8') as f:
-            collection_file = f.read()
-        arr = collection_file.split(" ")
-        user_prefs['collection_link'] = arr[0]
-        user_prefs['localcopy_path_override'] = arr[1]
-        user_prefs['mode'] = "collection"
-
-
     # clean up an creation of steamdir
     if os.path.exists(user_prefs['steamdir']):
         shutil.rmtree(user_prefs['steamdir'])
@@ -664,7 +658,7 @@ def main(user_prefs):
 
     if isvalid_collection_link and user_prefs['mode'] == "collection":
         print(_("[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)"))
-        modlist = get_modlist_collection_site(collection_site, modlist, {'addnames': True, 'addlastupdated': True, 'dependencies': user_perfs['get_dependencies']})
+        modlist.extend(get_modlist_collection_site(collection_site))
         for mod in modlist:
             if 'dependencies' in mod:
                 for dependency in mod['dependencies']:
@@ -692,7 +686,7 @@ def main(user_prefs):
             haslua = True
 
 
-    # TODO changed below condition cuz it disslallowed pwd
+    # TODO todo changed below condition cuz it disslallowed pwd
     if 'save_dir' in user_prefs and 'max_saves' in user_prefs:
         backupBarotraumaData(user_prefs['barotrauma'], user_prefs['localcopy_path_override'], user_prefs['save_dir'], user_prefs['backup_path'], user_prefs['max_saves'])
     if requrescs and not hascs:
@@ -731,7 +725,7 @@ def main(user_prefs):
 
 
     managed_mods = get_managedmods(modlist, user_prefs['localcopy_path_override'])
-    not_managedmods = get_not_managedmods(old_managedmods, managed_mods)
+    not_managedmods = get_not_managedmods(user_perfs['old_managedmods'], managed_mods)
 
 
     # re-create config_player
@@ -747,23 +741,21 @@ def main(user_prefs):
 
     # save configs
     if isvalid_collection_link and user_prefs['mode'] == "collection":
-        with open(config_collectionmode_path, "w", encoding='utf8') as f:
+        with open(user_perfs['config_collectionmode_path'], "w", encoding='utf8') as f:
             f.write(user_prefs['collection_link'] + " " + user_prefs['localcopy_path_override'])
-    save_managedmods(managed_mods, managedmods_path)
+    save_managedmods(managed_mods, user_perfs['managedmods_path'])
 
 
     # lastupdated functionality
     if user_prefs['mode'] == "collection":
-        up_to_date_mods = get_up_to_date_mods(mods, localcopy_path)
-        mods = remove_up_to_date_mods(mods, up_to_date_mods)
+        up_to_date_mods = get_up_to_date_mods(modlist, user_prefs['localcopy_path_override'])
+        modlist = remove_up_to_date_mods(modlist, up_to_date_mods)
 
 
     # main part, running moddlownloader
     nr_updated_mods = download_modlist(modlist, user_prefs['tool'], user_prefs['steamdir'], user_prefs['steamcmd'])
-    print(_("\n"))
-    if user_prefs['mode'] == "collection":
-        print(_("[ModManager] Skipping download of " + str(len(up_to_date_mods)) + " Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)"))
-    print(_("[ModManager] All "+ str(nr_updated_mods) +" Mods have been updated"))
+    print("\n")
+    print(_("[ModManager] Skipping download of {0} Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)").format(str(len(up_to_date_mods))))
 
 
     # config backup and conservation
@@ -784,8 +776,8 @@ def main(user_prefs):
     # finishing anc cleaning up
     # removing steamdir because steamcmd is piece of crap and it sometimes wont download mod if its in directory
     shutil.rmtree(user_prefs['steamdir'])
-    if len(up_to_date_mods) < nr_updated_mods:
-        print(_("[ModManager] Mods Updated!\n"))
+    if len(up_to_date_mods) <= nr_updated_mods:
+        print(_("[ModManager] All {0} Mods have been updated").format(str(nr_updated_mods)))
     else:
         print(_("[ModManager] All Mods were up to date!"))
 
@@ -811,21 +803,23 @@ def main(user_prefs):
     # warnings about long modlists
     if numberofmods_minuslua - number_of_pure_lua_mods >= 30 and not disablewarnings:
         sys.stdout.write("\033[1;31m")
-        print(_("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods.\n[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package."))
+        print(_("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods."))
+        print(_("[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package."))
         sys.stdout.write("\033[0;0m")
         time.sleep(30)
     elif numberofmods_minuslua - number_of_pure_lua_mods >= 20 and not disablewarnings:
         sys.stdout.write("\033[1;31m")
-        print(_("[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods.\n[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package."))
+        print(_("[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods."))
+        print(_("[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package."))
         sys.stdout.write("\033[0;0m")
         time.sleep(20)
 
 if __name__ == '__main__':
     print(_("Wellcome to ModManager script!"))
     # gotta have it here even if it pains me
-    required_values = set_required_values()
+    user_perfs = set_user_perfs()
     while(True):
-        if os.path.exists(os.path.join(required_values['tool'], "collection_save.txt")):
+        if os.path.exists(os.path.join(user_perfs['tool'], "collection_save.txt")):
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))
             print(_("[ModManager] Steam collection mode enabled! Disable by entering collection sub-menu."))
             print(_("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): "))
@@ -835,7 +829,7 @@ if __name__ == '__main__':
             print(_("[ModManager] Do you want to update mods? ((Y)es / (n)o): "))
         user_command = input().lower()
         if user_command == "yes" or user_command == "y":
-            main(required_values)
+            main(user_perfs)
             break
         elif user_command == "no" or user_command == "n":
             break
@@ -844,16 +838,16 @@ if __name__ == '__main__':
             collection_url = input()
             if collection_url != "n":
                 print(_("[ModManager] Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: "))
-                localcopy_path = input()
+                user_prefs['localcopy_path_override'] = input()
             else:
                 collection_url = ""
-                localcopy_path = ""
+                user_prefs['localcopy_path_override'] = ""
             flush_previous_col = True
             # TODO collection check, if link is valid
-            required_values['collection_link'] = collection_url
-            required_values['localcopy_path_override'] = localcopy_path
-            required_values['collectionmode'] = True
-            main(required_values)
+            user_perfs['collection_link'] = collection_url
+            user_perfs['localcopy_path_override'] = user_prefs['localcopy_path_override']
+            user_perfs['collectionmode'] = True
+            main(user_perfs)
             break
         elif user_command == "help" or user_command == "h":
             # TODO rework it to get Available modes from readme
