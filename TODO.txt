@@ -1,3 +1,4 @@
+- logging on runtime command
 (PERIODIC) go over all todo's from comments post them here
 - FIX problem with ET where it removes comments
 - make good readme and documentation (readme is for users, documentation is more in depth and for smarter users and programmers)
