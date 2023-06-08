@@ -100,7 +100,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
 
 # set up all default values and paths
 # TODO rework
-def set_user_perfs():
+def get_user_perfs():
     options_arr = sys.argv[1:]
     changed_barotrauma_path = False
     changed_tool_path = False
@@ -242,7 +242,7 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
                 if os.path.samefile(src_file, dst_file):
                     continue
                 os.remove(dst_file)
-            shutil.move(src_file, dst_dir)
+            shutil.copy(src_file, dst_dir)
 
 def get_config_player_str(barotrauma_path):
     try:
@@ -393,85 +393,6 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcm
         return proc
     else:
         Exception("[ModManager] SteamCMD could not be found! check your paths!\nPath to Steamcmd given: " + location_with_steamcmd)
-
-def print_modlist(modlist):
-    print(_("[ModManager] List of mods:"))
-    for mod in modlist:
-        if str(mod["ID"]) == "2701251094":
-            has_performancefix = True
-        print(_("[ModManager] {ID:d}: {name:d}").format(**mod))
-    print("\n")
-    print("\n")
-
-def remove_duplicates(modlist):
-    toremove = []
-    modlist_copy = modlist
-    modlist_copy = sorted(modlist_copy, key=lambda mod: mod["ID"])
-    for i in range(1, len(modlist_copy)):
-        if modlist_copy[i]["ID"] == modlist_copy[i-1]["ID"]:
-            toremove.append(modlist_copy[i])    
-    modlist.reverse()
-    for remove in toremove:
-        if remove in modlist:
-            modlist.remove(remove)
-    modlist.reverse()
-    return modlist
-
-def create_new_regularpackages(modlist, localcopy_path_og, barotrauma_path):
-    regularpackages_new = "<regularpackages>\n"
-    # print new
-    for mod in modlist:
-        #  if barotrauma_path is inside of 
-        temp_localcopy_path = localcopy_path_og
-        if temp_localcopy_path.count(barotrauma_path) > 0:
-            temp_localcopy_path = temp_localcopy_path.replace(barotrauma_path, "")
-
-        if sys.platform == "win32":
-            temp_localcopy_path = temp_localcopy_path.replace("\\", "/")
-        else:
-            temp_localcopy_path = temp_localcopy_path
-
-        regularpackages_new += "      <!--" + mod['name'] + "-->\n"
-        regularpackages_new += "      <package\n"
-        regularpackages_new += "        path=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
-    regularpackages_new += "    </regularpackages>"
-    return regularpackages_new
-
-def save_managedmods(managed_mods, managed_mods_path):
-    managed_mods_str = ""
-    for managed_mod in managed_mods:
-        managed_mods_str += managed_mod + "\n"
-    with open(managed_mods_path, "w", encoding='utf8') as f:
-        f.write(managed_mods_str)
-
-def get_old_managedmods(managed_mods_path):
-    # we first need to get all managed mods
-    old_managed_mods = ""
-
-    if os.path.exists(managed_mods_path):
-        with open(managed_mods_path, "r", encoding='utf8') as f:
-            old_managed_mods = f.read()
-
-    # this will be paths to managed mods
-    old_managed_mods = old_managed_mods.split('\n')
-    if '' in old_managed_mods:
-        old_managed_mods.remove('')
-    return old_managed_mods
-
-def get_managedmods(modlist, localcopy_path_og):
-    managed_mods = []
-    for mod in modlist:
-        managed_mods.append(os.path.join(localcopy_path_og, mod['ID']))
-    return managed_mods
-
-def get_not_managedmods(old_managed_mods, managed_mods):
-    not_managedmods = old_managed_mods
-    # removeing mods that exist in modlist
-    for modwithdir in managed_mods:
-        if modwithdir in not_managedmods:
-            not_managedmods.remove(modwithdir)
-    return not_managedmods
-
 # usage of steamcmd on modlist
 def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
     numberofupdatedmods = 0
@@ -554,6 +475,84 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
             # bar.update(iterator)
     print()
     return numberofupdatedmods
+
+def print_modlist(modlist):
+    print(_("[ModManager] List of mods:"))
+    for mod in modlist:
+        if str(mod["ID"]) == "2701251094":
+            has_performancefix = True
+        print(_("[ModManager] {ID:d}: {name:d}").format(**mod))
+    print("\n")
+    print("\n")
+
+def remove_duplicates(modlist):
+    toremove = []
+    modlist_copy = modlist
+    modlist_copy = sorted(modlist_copy, key=lambda mod: mod["ID"])
+    for i in range(1, len(modlist_copy)):
+        if modlist_copy[i]["ID"] == modlist_copy[i-1]["ID"]:
+            toremove.append(modlist_copy[i])    
+    modlist.reverse()
+    for remove in toremove:
+        if remove in modlist:
+            modlist.remove(remove)
+    modlist.reverse()
+    return modlist
+
+def create_new_regularpackages(modlist, localcopy_path_og, barotrauma_path):
+    regularpackages_new = "<regularpackages>\n"
+    # print new
+    for mod in modlist:
+        #  if barotrauma_path is inside of 
+        temp_localcopy_path = localcopy_path_og
+        if temp_localcopy_path.count(barotrauma_path) > 0:
+            temp_localcopy_path = temp_localcopy_path.replace(barotrauma_path, "")
+
+        if sys.platform == "win32":
+            temp_localcopy_path = temp_localcopy_path.replace("\\", "/")
+        else:
+            temp_localcopy_path = temp_localcopy_path
+
+        regularpackages_new += "      <!--" + mod['name'] + "-->\n"
+        regularpackages_new += "      <package\n"
+        regularpackages_new += "        path=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
+    regularpackages_new += "    </regularpackages>"
+    return regularpackages_new
+
+def save_managedmods(managed_mods, managed_mods_path):
+    managed_mods_str = ""
+    for managed_mod in managed_mods:
+        managed_mods_str += managed_mod + "\n"
+    with open(managed_mods_path, "w", encoding='utf8') as f:
+        f.write(managed_mods_str)
+
+def get_old_managedmods(managed_mods_path):
+    # we first need to get all managed mods
+    old_managed_mods = ""
+
+    if os.path.exists(managed_mods_path):
+        with open(managed_mods_path, "r", encoding='utf8') as f:
+            old_managed_mods = f.read()
+
+    # this will be paths to managed mods
+    old_managed_mods = old_managed_mods.split('\n')
+    if '' in old_managed_mods:
+        old_managed_mods.remove('')
+    return old_managed_mods
+
+def get_managedmods(modlist, localcopy_path_og):
+    managed_mods = []
+    for mod in modlist:
+        managed_mods.append(os.path.join(localcopy_path_og, mod['ID']))
+    return managed_mods
+
+def get_not_managedmods(old_managed_mods, managed_mods):
+    not_managedmods = old_managed_mods
+    # removeing mods that exist in modlist
+    for modwithdir in managed_mods:
+        if modwithdir in not_managedmods:
+            not_managedmods.remove(modwithdir)
+    return not_managedmods
 
 # return false on negative test resoult, on positive resoult return collection site string
 def get_collectionsite(collection_link: str):
@@ -659,15 +658,6 @@ def main(user_prefs):
     if isvalid_collection_link and user_prefs['mode'] == "collection":
         print(_("[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)"))
         modlist.extend(get_modlist_collection_site(collection_site))
-        for mod in modlist:
-            if 'dependencies' in mod:
-                for dependency in mod['dependencies']:
-                    if str(dependency) == "2559634234" and requreslua == False:
-                        requreslua = True
-                    if str(dependency) == "2795927223" and requrescs == False:
-                        requrescs = True
-            if mod['ID'] == '2795927223':
-                hascs = True
     else:
         print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
         if user_prefs['localcopy_path_override'] == "":
@@ -680,10 +670,16 @@ def main(user_prefs):
 
     
     for mod in modlist:
-        if mod['ID'] == '2795927223':
-            hascs = True
+        if 'dependencies' in mod:
+            for dependency in mod['dependencies']:
+                if str(dependency) == "2559634234" and requreslua == False:
+                    requreslua = True
+                if str(dependency) == "2795927223" and requrescs == False:
+                    requrescs = True
         if mod['ID'] == '2559634234':
             haslua = True
+        if mod['ID'] == '2795927223':
+            hascs = True
 
 
     # TODO todo changed below condition cuz it disslallowed pwd
@@ -817,7 +813,7 @@ def main(user_prefs):
 if __name__ == '__main__':
     print(_("Wellcome to ModManager script!"))
     # gotta have it here even if it pains me
-    user_perfs = set_user_perfs()
+    user_perfs = get_user_perfs()
     while(True):
         if os.path.exists(os.path.join(user_perfs['tool'], "collection_save.txt")):
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))
