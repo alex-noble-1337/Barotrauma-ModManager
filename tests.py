@@ -86,50 +86,96 @@ def test_FIX_barodev_moment():
                                 raise Exception(("Files {src_dir}, {dst_dir} not equal"))
     # if nothing excepted, test has been completed sucessully
 
-def test_get_user_perfs():
-    # get input file/commands
-    # compare to expected output
-    # kinda lame, but i dont see how elese i can do it
-    print()
+# def test_get_user_perfs():
+#     # get input file/commands
+#     # compare to expected output
+#     # kinda lame, but i dont see how elese i can do it
+#     print()
 
-def test_set_mods_config_player():
-    # set regularpackages inside config_player, set names, and formatting
-    # compare it to the expected output
-    print()
+# not used now
+# def test_set_mods_config_player():
+#     # set regularpackages inside config_player, set names, and formatting
+#     # check if its valid xml
+#     print()
 
 def test_get_localcopy_path():
+    correct_localcopy = "LocalMods"
+    with open("test_localcopy.xml", "r", encoding='utf8') as f:
+        regularpackages = f.read()
     # get localcopy from regularpackages
-    # compare it to the expected output
-    print()
+    localcopy = ModManager.get_localcopy_path(regularpackages)
+    # check it its valid xml
+    if correct_localcopy != localcopy:
+        raise Exception("Paths localcopy {correct_localcopy}(should be), {localcopy}(is now) not equal!")
 
 def test_get_modlist_regularpackages():
+    correct_modlist = []
+    with open("test_localcopy.xml", "r", encoding='utf8') as f:
+        regularpackages = f.read()
     # get modlist from regularpackages
+    modlist = ModManager.get_modlist_regularpackages(regularpackages)
     # compare it to the expected output
-    print()
+    if correct_modlist != modlist:
+        raise Exception("Modlists {correct_modlist}(should be), {modlist}(is now) not equal!")
 
 def test_remove_duplicates():
+    modlist = []
     # get a list, remove duplicates
-    # print time how long it took
+    modlist_new = ModManager.remove_duplicates(modlist)
+    # TODO print time how long it took
     # check if it removed duplcates
-    print()
+    for mod in modlist:
+        number = 0
+        for mod_new in modlist_new:
+            if mod == mod_new:
+                number += 1
+        if number <= 0:
+            raise Exception("Mod {mod} not found, must have been removed by function.")
+        if number >= 2:
+            raise Exception("Mod {mod} hadnt had all its duplicates removed.")
 
 def test_create_new_regularpackages():
+    modlist = []
+    localcopy_path = ""
+    barotrauma_path = ""
+    regularpackages = ModManager.set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path)
     # check if its a valid xml
-    print()
+    try:
+        tree = ET.parse('s.xml')
+        root = tree.getroot()
+    except ParseError:
+        raise Exception("XML is not good \n{regularpackages}")
 
 def test_download_modlist():
     # parse test modlist
+    modlist = []
     # check if mods align with the ones in my steam install download
-    print()
+    ModManager.download_modlist(modlist, "test_download_modlist", "steamcmd")
+    names = os.listdir("test_download_modlist")
+    for mod in modlist:
+        found = False
+        for name in names:
+            if mod['ID'] == name:
+                found = True
+        if found == False:
+            raise Exception("Mod {mod} not downloaded correctly!")
 
 def test_check_collection_link():
     # parse few collcetion links
+    collection_link_list = [{'link': "", 'expected': True}]
     # check wich ones are good, and wich ones are not
-    print()
+    for collection_link in collection_link_list:
+        collection_site = ModManager.get_collectionsite(collection_link['link'])
+        expected = ModManager.check_collection_link(collection_site)
+        if expected != collection_link['expected']:
+            raise Exception("Check not successufl! {collection_link}")
 
 def test_is_pure_lua_mod():
     # test that function with mods inside steam install workshop mods
-    print()
+    modlist = [{'ID': "29340125", 'expected': True},{'ID': "2096741024", 'expected': False}] # ...
+    for mod in modlist:
+        if mod['expected'] != ModManager.is_pure_lua_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['ID'])):
+            raise Exception("Check not successfull! {mod}")
 
 # full run
 def test_main():
