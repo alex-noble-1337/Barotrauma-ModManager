@@ -255,27 +255,6 @@ def get_config_player_str(barotrauma_path):
         print(e)
     return config_player_str 
 
-# config player IO
-# config player Input
-def get_mods_config_player(barotrauma_path):
-    config_player_str = get_config_player_str(barotrauma_path) 
-
-    root = ET.fromstring(config_player_str)
-    modpaths = []
-    for element in root:
-        subelements = list(element)
-        if len(subelements) > 0:
-            for subelement in subelements:
-                if subelement.tag == 'regularpackages':
-                    subsubelements = list(subelement)
-                    if len(subsubelements) > 0:
-                        for subsubelement in subsubelements:
-                            # just in case
-                            if subsubelement.tag == "package":
-                                mod = {'path': subsubelement.attrib['path']}
-                                mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
-                                modpaths.append(mod)
-    return modpaths
 # config_player.xml output TODO NOT USED
 def set_mods_config_player(modlist, localcopy_path, barotrauma_path):
     config_player_str = get_config_player_str(barotrauma_path) 
@@ -350,8 +329,22 @@ def get_localcopy_path(filelist_str):
                 localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
     return localcopy_path
 
-def get_modlist_regularpackages(filelist_str,localcopy_path, barotrauma_path):
-    modlist = get_mods_config_player(barotrauma_path) 
+def get_modlist_regularpackages(regularpackages):
+    root = ET.fromstring(regularpackages)
+    modlist = []
+    for element in root:
+        subelements = list(element)
+        if len(subelements) > 0:
+            for subelement in subelements:
+                if subelement.tag == 'regularpackages':
+                    subsubelements = list(subelement)
+                    if len(subsubelements) > 0:
+                        for subsubelement in subsubelements:
+                            # just in case
+                            if subsubelement.tag == "package":
+                                mod = {'path': subsubelement.attrib['path']}
+                                mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
+                                modlist.append(mod)
 
     # reason i need to look in filelist is because of:
     #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
@@ -378,7 +371,7 @@ def sanitize_pathstr(path):
 # function that uses steamcmd
 # TODO make it use steamcmd process that runs in the bg and just has commands fed into it
 time_of_last_usage = 0
-def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcmd):
+def moddownloader(number_of_mod, steamdir_path, location_with_steamcmd):
     if os.path.exists(location_with_steamcmd):
         command = location_with_steamcmd
         # san_steamdir_path = sanitize_pathstr(steamdir_path)
@@ -394,7 +387,7 @@ def moddownloader(number_of_mod, tool_path, steamdir_path, location_with_steamcm
     else:
         Exception("[ModManager] SteamCMD could not be found! check your paths!\nPath to Steamcmd given: " + location_with_steamcmd)
 # usage of steamcmd on modlist
-def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
+def download_modlist(modlist, steamdir_path, location_with_steamcmd):
     numberofupdatedmods = 0
     # '], where l_bar='{desc}: {percentage:3.0f}%|' and r_bar='| {n_fmt}/{total_fmt}{postfix} [{elapsed}<{remaining}, ' '{rate_fmt}]
     total_time = 0
@@ -426,7 +419,7 @@ def download_modlist(modlist, tool_path, steamdir_path, location_with_steamcmd):
             print()
             # TODO make output of steamcmd less spammy/silent
             # TODO instead of steamcmd downloading one mod at the time, make it download all of them in one start of steamcmd using steamcmd scripts or cmd line arguments
-            proc = moddownloader(mod["ID"],tool_path, steamdir_path, location_with_steamcmd)
+            proc = moddownloader(mod["ID"], steamdir_path, location_with_steamcmd)
             for line in io.TextIOWrapper(proc.stdout, encoding="utf-8"):
                 line = line.rstrip()
                 # steam connection check
@@ -499,7 +492,7 @@ def remove_duplicates(modlist):
     modlist.reverse()
     return modlist
 
-def create_new_regularpackages(modlist, localcopy_path_og, barotrauma_path):
+def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
     regularpackages_new = "<regularpackages>\n"
     # print new
     for mod in modlist:
@@ -662,7 +655,7 @@ def main(user_prefs):
         print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
         if user_prefs['localcopy_path_override'] == "":
             user_prefs['localcopy_path_override'] = get_localcopy_path(regularpackages)
-        modlist.extend(get_modlist_regularpackages(regularpackages,user_prefs['localcopy_path_override'], user_prefs['barotrauma']))
+        modlist.extend(get_modlist_regularpackages(regularpackages))
 
 
     # TODO remove duplicates once, try NOT to send duplicate requests for data to api
@@ -725,7 +718,7 @@ def main(user_prefs):
 
 
     # re-create config_player
-    new_regularpackages = create_new_regularpackages(modlist, user_prefs['localcopy_path_override'], user_prefs['barotrauma'])
+    new_regularpackages = set_modlist_regularpackages(modlist, user_prefs['localcopy_path_override'], user_prefs['barotrauma'])
     with open(config_player_path, "r", encoding='utf8') as f:
         filelist_str = f.read()
     filelist_str = filelist_str.replace(regularpackages, new_regularpackages)
@@ -749,7 +742,7 @@ def main(user_prefs):
 
 
     # main part, running moddlownloader
-    nr_updated_mods = download_modlist(modlist, user_prefs['tool'], user_prefs['steamdir'], user_prefs['steamcmd'])
+    nr_updated_mods = download_modlist(modlist, user_prefs['steamdir'], user_prefs['steamcmd'])
     print("\n")
     print(_("[ModManager] Skipping download of {0} Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)").format(str(len(up_to_date_mods))))
 
