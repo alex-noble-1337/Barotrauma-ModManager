@@ -10,3 +10,4 @@ config_player.xml
 collection_save.txt
 LuaCSSetupConfig.xml
 download_script_exmple_for_TS.sh
+test_fix_barodev_moment/**
