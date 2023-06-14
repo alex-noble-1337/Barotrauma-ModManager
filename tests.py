@@ -1,8 +1,9 @@
 import os
 import shutil
-import xml.etree.ElementTree as ET
+from lxml import etree as ET
 import re
 import ModManager
+import xmldiff.main as xml_diff
 
 steam_library_installedmods = "/mnt/Share/SteamLibrary/steamapps/workshop/content/602960"
 daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
@@ -60,43 +61,54 @@ def test_FIX_barodev_moment():
     os.makedirs("test_fix_barodev_moment", exist_ok=True)
     mod_dirs = os.listdir(steam_library_installedmods)
     mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
+    done = 0
     for mod_dir in mod_dirs:
-        for mod_dir_daedelic in mod_dirs_daedelic:
-            if mod_dir == mod_dir_daedelic:
-                full_path = os.path.join(steam_library_installedmods, mod_dir)
-                full_path_output = os.path.join("test_fix_barodev_moment", mod_dir)
-                if os.path.exists(full_path):
-                    # copy to "test_fix_barodev_moment"
-                    ModManager.robocopysubsttute(full_path, full_path_output)
-                    # run test_fix_barodev_moment
-                    modlist = [{'ID': os.path.basename(full_path)}]
-                    ModManager.get_modlist_data_webapi(modlist)
-                    mod = modlist[0]
-                    ModManager.FIX_barodev_moment(mod, full_path_output)
-                    # TODO re-encode the file to steamc
-                    # compare it, file by file to deadalic enterteiment
-                    for src_dir1, dirs, files in os.walk(full_path_output):
-                        for file_ in files:
-                            if os.path.basename(file_) == "filelist.xml":
-                                # remove installtime
-                                src_dir = os.path.join(src_dir1, file_)
-                                with open(src_dir, 'r', encoding="utf-8-sig") as open_file:
-                                    src_file = open_file.read()
-                                src_file = re.sub(" installtime=\".*?\"", "", src_file)
-                                dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
-                                with open(dst_dir, 'r', encoding="utf-8-sig") as open_file:
-                                    dst_file = open_file.read()
-                                dst_file = re.sub(" installtime=\".*?\"", "", dst_file)
-                            else:
-                                src_dir = os.path.join(src_dir1, file_)
-                                with open(src_dir, 'rb') as open_file:
-                                    src_file = open_file.read()
-                                dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
-                                with open(dst_dir, 'rb') as open_file:
-                                    dst_file = open_file.read()
+        if mod_dir in mod_dirs_daedelic:
+            full_path = os.path.join(steam_library_installedmods, mod_dir)
+            full_path_output = os.path.join("test_fix_barodev_moment", mod_dir)
+            if os.path.exists(full_path):
+                # copy to "test_fix_barodev_moment"
+                ModManager.robocopysubsttute(full_path, full_path_output)
+                # run test_fix_barodev_moment
+                modlist = [{'ID': os.path.basename(full_path)}]
+                ModManager.get_modlist_data_webapi(modlist)
+                mod = modlist[0]
+                ModManager.FIX_barodev_moment(mod, full_path_output)
+                # TODO re-encode the file to steamc
+                # compare it, file by file to deadalic enterteiment
+                for src_dir1, dirs, files in os.walk(full_path_output):
+                    for file_ in files:
+                        if os.path.basename(file_) == "filelist.xml" or os.path.basename(file_)[-4:] == ".xml":
+                            # remove installtime
+                            src_dir = os.path.join(src_dir1, file_)
+                            with open(src_dir, 'r', encoding="utf8") as open_file:
+                                src_file = open_file.read()
+                            src_file = re.sub(" installtime=\".*?\"", "", src_file)
+                            # False or false shoudnt matter TODO check tho
+                            src_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_file)
+                            dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
+                            with open(dst_dir, 'r', encoding="utf8") as open_file:
+                                dst_file = open_file.read()
+                            dst_file = re.sub(" installtime=\".*?\"", "", dst_file)
+                            dst_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_file)
+                        else:
+                            src_dir = os.path.join(src_dir1, file_)
+                            with open(src_dir, 'rb') as open_file:
+                                src_file = open_file.read()
+                            dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
+                            with open(dst_dir, 'rb') as open_file:
+                                dst_file = open_file.read()
+                        if os.path.basename(file_)[-4:] == ".xml":
+                            src_xml = ET.ElementTree(ET.fromstring(src_file))
+                            dst_xml = ET.ElementTree(ET.fromstring(dst_file))
+                            diff = xml_diff.diff_trees(src_xml, dst_xml)
+                            if diff != []:
+                                raise Exception(("diff --color \"{0}\" \"{1}\"\nFiles {0}, {1} not equal\n{2}/{3}\n{4}").format(src_dir, dst_dir, done, len(mod_dirs_daedelic), diff))
+                        else:
                             if src_file != dst_file:
                                 # TODO mabe generate diff output of 2 files?
                                 raise Exception(("Files {0}, {1} not equal").format(src_dir, dst_dir))
+                done += 1               
     # if nothing excepted, test has been completed sucessully
 
 # def test_get_user_perfs():

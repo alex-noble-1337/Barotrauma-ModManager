@@ -62,6 +62,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                     open_file.write(content)
 
     filelist_path = os.path.join(downloaded_mod_path, "filelist.xml")
+    desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
     if os.path.exists(filelist_path):
         with open(filelist_path, 'r', encoding="utf8") as open_file:
             filelist_str = open_file.read()
@@ -71,41 +72,46 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             if element.attrib['name'] != downloaded_mod['name']:
                 oldname = element.attrib['name']
                 element.attrib['name'] = downloaded_mod['name']
-                if 'corepackage' in element.attrib:
-                    if str(element.attrib['corepackage']) == 'False':
-                        element.attrib['corepackage'] = 'false'
+                # if 'corepackage' in element.attrib:
+                #     if str(element.attrib['corepackage']) == 'False':
+                #         element.attrib['corepackage'] = 'False'
                 # TODO make an escape invalid xml of old names
                 element.attrib['altnames'] = oldname
 
+                # fixing False or FALSE or whatever to false
+                # for attribute in element.attrib:
+                #     if type(element.attrib[attribute]) is str:
+                #         if element.attrib[attribute].lower() == "false":
+                #             element.attrib[attribute] = "False"
+
                 # preserve the order as it was previously
-                desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
                 # workaround for bottom one
-                for desired_order_element in desired_order_list:
-                    if desired_order_element not in element.attrib:
-                        # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
-                        if 'installtime' == desired_order_element:
-                            element.attrib['installtime'] = str(round(time.time()))
-                        elif 'steamworkshopid' == desired_order_element:
-                            element.attrib['steamworkshopid'] = downloaded_mod['ID']
-                        else:
-                            element.attrib[desired_order_element] = ""
+            for desired_order_element in desired_order_list:
+                if desired_order_element not in element.attrib:
+                    # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
+                    if 'installtime' == desired_order_element:
+                        element.attrib['installtime'] = str(round(time.time()))
+                    elif 'steamworkshopid' == desired_order_element:
+                        element.attrib['steamworkshopid'] = downloaded_mod['ID']
                 # i dont understand it, this is shit
                 # TOO BAD!
-                element.attrib = {k: element.attrib[k] for k in desired_order_list}
+            element.attrib = {k: element.attrib[k] for k in desired_order_list if k in element.attrib}
 
-                filelist_str = ET.tostring(element, encoding="utf-8", method="xml", xml_declaration=True)
+            # if 
+
+            filelist_str = ET.tostring(element, encoding="utf-8", method="xml", xml_declaration=True)
 
 
-                with open(filelist_path, 'wb') as open_file:
-                    open_file.write(filelist_str)
+            with open(filelist_path, 'wb') as open_file:
+                open_file.write(filelist_str)
 
-                with open(filelist_path, 'r') as open_file:
-                    filelist_str = open_file.read()
-                filelist_str = filelist_str.replace('version=\'1.0\'', 'version=\"1.0\"')
-                filelist_str = filelist_str.replace('encoding=\'utf-8\'', 'encoding=\"utf-8\"')
-                # TODO check if encoding into dom is needed
-                with open(filelist_path, 'w', encoding="utf-8-sig") as open_file:
-                    open_file.write(filelist_str)
+            with open(filelist_path, 'r') as open_file:
+                filelist_str = open_file.read()
+            filelist_str = filelist_str.replace('version=\'1.0\'', 'version=\"1.0\"')
+            filelist_str = filelist_str.replace('encoding=\'utf-8\'', 'encoding=\"utf-8\"')
+            # TODO check if encoding into dom is needed
+            with open(filelist_path, 'w', encoding="utf-8-sig") as open_file:
+                open_file.write(filelist_str)
 
 # set up all default values and paths
 # TODO rework
