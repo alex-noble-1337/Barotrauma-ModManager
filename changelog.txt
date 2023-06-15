@@ -2,3 +2,4 @@ This Changelog is for nightly build (stuff on the branch not on release)
 - added collection link chceck function
 - moved some more more code into sepearate functions
 - fixed some comments
+- (done) move all parts of code that have over 3 lines AND output one (1) variable

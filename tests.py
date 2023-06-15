@@ -74,8 +74,8 @@ def test_FIX_barodev_moment():
                 ModManager.get_modlist_data_webapi(modlist)
                 mod = modlist[0]
                 ModManager.FIX_barodev_moment(mod, full_path_output)
-                # TODO re-encode the file to steamc
                 # compare it, file by file to deadalic enterteiment
+                # we only want to compare xml files of xml's that are loaded by the game so first get the list of files from filelist
                 for src_dir1, dirs, files in os.walk(full_path_output):
                     for file_ in files:
                         if os.path.basename(file_) == "filelist.xml" or os.path.basename(file_)[-4:] == ".xml":
@@ -83,14 +83,15 @@ def test_FIX_barodev_moment():
                             src_dir = os.path.join(src_dir1, file_)
                             with open(src_dir, 'r', encoding="utf8") as open_file:
                                 src_file = open_file.read()
-                            src_file = re.sub(" installtime=\".*?\"", "", src_file)
-                            # False or false shoudnt matter TODO check tho
-                            src_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_file)
                             dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
                             with open(dst_dir, 'r', encoding="utf8") as open_file:
                                 dst_file = open_file.read()
-                            dst_file = re.sub(" installtime=\".*?\"", "", dst_file)
-                            dst_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_file)
+                            if os.path.basename(file_) == "filelist.xml":
+                                src_file = re.sub(" installtime=\".*?\"", "", src_file)
+                                dst_file = re.sub(" installtime=\".*?\"", "", dst_file)
+                                # False or false shoudnt matter TODO check tho
+                                dst_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_file)
+                                src_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_file)
                         else:
                             src_dir = os.path.join(src_dir1, file_)
                             with open(src_dir, 'rb') as open_file:
