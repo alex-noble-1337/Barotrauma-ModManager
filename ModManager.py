@@ -86,25 +86,35 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
 
                 # preserve the order as it was previously
                 # workaround for bottom one
-            for desired_order_element in desired_order_list:
-                if desired_order_element not in element.attrib:
-                    # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
-                    if 'installtime' == desired_order_element:
-                        element.attrib['installtime'] = str(round(time.time()))
-                    elif 'steamworkshopid' == desired_order_element:
-                        element.attrib['steamworkshopid'] = downloaded_mod['ID']
-                # i dont understand it, this is shit
-                # TOO BAD!
+                # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
+            if not 'name' in element.attrib:
+                element.attrib['name'] = downloaded_mod['name']
+            if not 'steamworkshopid' in element.attrib:
+                element.attrib['steamworkshopid'] = downloaded_mod['ID']
+            if not 'corepackage' in element.attrib:
+                element.attrib['corepackage'] = "false"
+            if not 'modversion' in element.attrib:
+                # TODO check what game assumes as default value
+                element.attrib['modversion'] = "1.0.0"
+            if not 'gameversion' in element.attrib:
+                # TODO check what game assumes as default value
+                element.attrib['gameversion'] = "1.0"
+            if not 'installtime' in element.attrib:
+                element.attrib['installtime'] = str(round(time.time()))
+            if not 'expectedhash' in element.attrib:
+                # we are srewed if this is missing
+                raise Exception(_("Please remove mod of id:{0} and name{1}").format(downloaded_mod['ID'], downloaded_mod['name']))
+            
+            # i dont understand it, this is shit
+            # TOO BAD!
             element.attrib = {k: element.attrib[k] for k in desired_order_list if k in element.attrib}
 
-            # if 
-
             filelist_str = ET.tostring(element, encoding="utf-8", method="xml", xml_declaration=True)
-
-
             with open(filelist_path, 'wb') as open_file:
                 open_file.write(filelist_str)
 
+
+            # re-encode and fix some incosistencies with using ET
             with open(filelist_path, 'r') as open_file:
                 filelist_str = open_file.read()
             filelist_str = filelist_str.replace('version=\'1.0\'', 'version=\"1.0\"')
