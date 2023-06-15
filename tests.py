@@ -76,36 +76,43 @@ def test_FIX_barodev_moment():
                 ModManager.FIX_barodev_moment(mod, full_path_output)
                 # compare it, file by file to deadalic enterteiment
                 # we only want to compare xml files of xml's that are loaded by the game so first get the list of files from filelist
+                with open(os.path.join(full_path_output, "filelist.xml"), 'r', encoding="utf8") as open_file:
+                    src_filelist_str = open_file.read()
+                    src_filelist_str = re.sub(" installtime=\".*?\"", "", src_filelist_str)
+                    src_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_filelist_str)
+                    filelist = ET.fromstring(src_filelist_str)
+                with open(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), 'r', encoding="utf8") as open_file:
+                    dst_filelist_str = open_file.read()
+                    dst_filelist_str = re.sub(" installtime=\".*?\"", "", dst_filelist_str)
+                    dst_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_filelist_str)
+                    dst_filelist = ET.ElementTree(ET.fromstring(dst_filelist_str))
+                diff = xml_diff.diff_trees(ET.ElementTree(filelist), dst_filelist)
+                if diff != []:
+                    raise Exception(("diff --color \"{0}\" \"{1}\"\nFiles {0}, {1} not equal\n{2}/{3}\n{4}").format(os.path.join(full_path_output, "filelist.xml"), os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), done, len(mod_dirs_daedelic), diff))
+                else:
+                    elements = filelist.getchildren()
+                    for element in elements:
+                        print(element)
+
+
                 for src_dir1, dirs, files in os.walk(full_path_output):
                     for file_ in files:
-                        if os.path.basename(file_) == "filelist.xml" or os.path.basename(file_)[-4:] == ".xml":
-                            # remove installtime
-                            src_dir = os.path.join(src_dir1, file_)
-                            with open(src_dir, 'r', encoding="utf8") as open_file:
-                                src_file = open_file.read()
-                            dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
-                            with open(dst_dir, 'r', encoding="utf8") as open_file:
-                                dst_file = open_file.read()
-                            if os.path.basename(file_) == "filelist.xml":
-                                src_file = re.sub(" installtime=\".*?\"", "", src_file)
-                                dst_file = re.sub(" installtime=\".*?\"", "", dst_file)
-                                # False or false shoudnt matter TODO check tho
-                                dst_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_file)
-                                src_file = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_file)
-                        else:
-                            src_dir = os.path.join(src_dir1, file_)
-                            with open(src_dir, 'rb') as open_file:
-                                src_file = open_file.read()
-                            dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
-                            with open(dst_dir, 'rb') as open_file:
-                                dst_file = open_file.read()
-                        if os.path.basename(file_)[-4:] == ".xml":
-                            src_xml = ET.ElementTree(ET.fromstring(src_file))
-                            dst_xml = ET.ElementTree(ET.fromstring(dst_file))
-                            diff = xml_diff.diff_trees(src_xml, dst_xml)
-                            if diff != []:
-                                raise Exception(("diff --color \"{0}\" \"{1}\"\nFiles {0}, {1} not equal\n{2}/{3}\n{4}").format(src_dir, dst_dir, done, len(mod_dirs_daedelic), diff))
-                        else:
+                        if os.path.basename(file_) != "filelist.xml":
+                            if os.path.basename(file_)[-4:] == ".xml":
+                                # remove installtime
+                                src_dir = os.path.join(src_dir1, file_)
+                                with open(src_dir, 'r', encoding="utf8") as open_file:
+                                    src_file = open_file.read()
+                                dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
+                                with open(dst_dir, 'r', encoding="utf8") as open_file:
+                                    dst_file = open_file.read()
+                            else:
+                                src_dir = os.path.join(src_dir1, file_)
+                                with open(src_dir, 'rb') as open_file:
+                                    src_file = open_file.read()
+                                dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
+                                with open(dst_dir, 'rb') as open_file:
+                                    dst_file = open_file.read()
                             if src_file != dst_file:
                                 # TODO mabe generate diff output of 2 files?
                                 raise Exception(("Files {0}, {1} not equal").format(src_dir, dst_dir))
