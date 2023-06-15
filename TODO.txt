@@ -1,14 +1,7 @@
-- logging on runtime command
-(PERIODIC) go over all todo's from comments post them here
-- FIX problem with ET where it removes comments
-- make good readme and documentation (readme is for users, documentation is more in depth and for smarter users and programmers)
-- fix output not formatting correctly new line etc https://github.com/pterodactyl/panel/issues/4782
+- set up unit tests
+- set up logging
+- set up locale change, but remember to force steamcmd language on statup
 - go over this again, handing of command line arguments
-- rewrite documentation to include new functions, and make it much more comprehasable
-- rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely
-- make an escape invalid xml of old names
-- use json or xml for saving configurations and managed mods data?
-- move all parts of code that have over 3 lines AND output one (1) variable
 - mods that dont have id shoudnt be removed when you remove them from config_player or when you enable collection mode
 - optimize to the max, or at a very least we are looking at someting that isat average less than lineral in O
     - steamcmd downloading all mods at once
@@ -17,6 +10,16 @@
     - use steamapi instead webapi
 - get dependency check and output dependencies you need, get that data from: steam, mod xml's
 - functionality to selectivly force-update a mod
+- move all parts of code that have over 3 lines AND output one (1) variable
+- make an escape invalid xml of old names
+- rewrite documentation to include new functions, and make it much more comprehasable
+(PERIODIC) go over all todo's from comments post them here
+
+Ptero Egg TODO
+- fix output not formatting correctly new line etc https://github.com/pterodactyl/panel/issues/4782
+- rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely (mabe use ET?)
+    - FIX problem with ET where it removes comments
+
 
 
 (hopes and dreams)
