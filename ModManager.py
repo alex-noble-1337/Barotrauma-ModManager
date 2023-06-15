@@ -69,26 +69,33 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
 
         element = ET.fromstring(filelist_str)
         if element.tag.lower() == "contentpackage":
-            if element.attrib['name'] != downloaded_mod['name']:
-                oldname = element.attrib['name']
-                element.attrib['name'] = downloaded_mod['name']
-                # if 'corepackage' in element.attrib:
-                #     if str(element.attrib['corepackage']) == 'False':
-                #         element.attrib['corepackage'] = 'False'
-                # TODO make an escape invalid xml of old names
-                element.attrib['altnames'] = oldname
-
-                # fixing False or FALSE or whatever to false
-                # for attribute in element.attrib:
-                #     if type(element.attrib[attribute]) is str:
-                #         if element.attrib[attribute].lower() == "false":
-                #             element.attrib[attribute] = "False"
-
-                # preserve the order as it was previously
-                # workaround for bottom one
-                # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
             if not 'name' in element.attrib:
                 element.attrib['name'] = downloaded_mod['name']
+            else:
+                if 'name' in downloaded_mod:
+                    if element.attrib['name'] != downloaded_mod['name']:
+                        oldname = element.attrib['name']
+                        element.attrib['name'] = downloaded_mod['name']
+                        # if 'corepackage' in element.attrib:
+                        #     if str(element.attrib['corepackage']) == 'False':
+                        #         element.attrib['corepackage'] = 'False'
+                        # TODO make an escape invalid xml of old names
+                        test1 = oldname
+                        test2 = downloaded_mod['name']
+                        if test1 != test2:
+                            element.attrib['altnames'] = oldname
+
+                        # fixing False or FALSE or whatever to false
+                        # for attribute in element.attrib:
+                        #     if type(element.attrib[attribute]) is str:
+                        #         if element.attrib[attribute].lower() == "false":
+                        #             element.attrib[attribute] = "False"
+
+                        # preserve the order as it was previously
+                        # workaround for bottom one
+                    else:
+                        if 'altnames' in element.attrib:
+                            element.attrib.pop('altnames')
             if not 'steamworkshopid' in element.attrib:
                 element.attrib['steamworkshopid'] = downloaded_mod['ID']
             if not 'corepackage' in element.attrib:
@@ -100,6 +107,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                 # TODO check what game assumes as default value
                 element.attrib['gameversion'] = "1.0"
             if not 'installtime' in element.attrib:
+                # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
                 element.attrib['installtime'] = str(round(time.time()))
             if not 'expectedhash' in element.attrib:
                 # we are srewed if this is missing
