@@ -90,22 +90,41 @@ def test_FIX_barodev_moment():
                 if diff != []:
                     raise Exception(("diff --color \"{0}\" \"{1}\"\nFiles {0}, {1} not equal\n{2}/{3}\n{4}").format(os.path.join(full_path_output, "filelist.xml"), os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), done, len(mod_dirs_daedelic), diff))
                 else:
+                    def_content = []
+                    content_types = ["item","character","mapcreature","text",
+                                     "uistyle","afflictions","structure",
+                                     "upgrademodules","ruinconfig",
+                                     "wreckaiconfig","backgroundcreatureprefabs",
+                                     "levelobjectprefabs","particles","decals",
+                                     "randomevents","eventmanagersettings",
+                                     "locationtypes","mapgenerationparameters",
+                                     "levelgenerationparameters",
+                                     "cavegenerationparameters","outpostconfig",
+                                     "npcsets","missions","traitormissions",
+                                     "npcpersonalitytraits","npcconversations",
+                                     "jobs","orders","corpses","sounds",
+                                     "skillsettings","factions","itemassembly",
+                                     "talents","talenttrees","startitems","tutorials"]
                     elements = filelist.getchildren()
                     for element in elements:
-                        print(element)
+                        if element.tag.lower() in content_types:
+                            if 'file' in element.attrib:
+                                content = element.attrib['file'].replace("%ModDir%", "")
+                                def_content.append(content)
 
 
                 for src_dir1, dirs, files in os.walk(full_path_output):
                     for file_ in files:
+                        xml_file = False
                         if os.path.basename(file_) != "filelist.xml":
-                            if os.path.basename(file_)[-4:] == ".xml":
-                                # remove installtime
+                            if os.path.basename(file_) in def_content:
                                 src_dir = os.path.join(src_dir1, file_)
                                 with open(src_dir, 'r', encoding="utf8") as open_file:
                                     src_file = open_file.read()
                                 dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
                                 with open(dst_dir, 'r', encoding="utf8") as open_file:
                                     dst_file = open_file.read()
+                                xml_file = True
                             else:
                                 src_dir = os.path.join(src_dir1, file_)
                                 with open(src_dir, 'rb') as open_file:
@@ -115,8 +134,11 @@ def test_FIX_barodev_moment():
                                     dst_file = open_file.read()
                             if src_file != dst_file:
                                 # TODO mabe generate diff output of 2 files?
-                                raise Exception(("Files {0}, {1} not equal").format(src_dir, dst_dir))
-                done += 1               
+                                if xml_file:
+                                    raise Exception(("Files {0},os.path.basename(file_) in def_content {1} not equal\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir))
+                                else:
+                                    raise Exception(("Files {0},os.path.basename(file_) in def_content {1} not equal").format(src_dir, dst_dir))        
+                    done += 1
     # if nothing excepted, test has been completed sucessully
 
 # def test_get_user_perfs():
@@ -277,3 +299,18 @@ if __name__ == '__main__':
     test_download_modlist()
     test_check_collection_link()
     test_is_pure_lua_mod()
+    # with open("Vanilla.xml", 'r', encoding="utf8") as open_file:
+    #     src_filelist_str = open_file.read()
+    #     src_filelist_str = re.sub(" installtime=\".*?\"", "", src_filelist_str)
+    #     src_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_filelist_str)
+    #     filelist = ET.fromstring(src_filelist_str)
+    # elements = filelist.getchildren()
+    # xml_tags = []
+    # for element in elements:
+    #     if not element.tag.lower() in xml_tags:
+    #         if 'file'in element.attrib:
+    #             if os.path.basename(element.attrib['file'])[-4:] == ".xml":
+    #                 xml_tags.append(element.tag.lower())
+    # for xml_tag in xml_tags:
+    #     print("\"{0}\",".format(xml_tag.lower()), end='')
+    print()
