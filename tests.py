@@ -109,7 +109,7 @@ def test_FIX_barodev_moment():
                     for element in elements:
                         if element.tag.lower() in content_types:
                             if 'file' in element.attrib:
-                                content = element.attrib['file'].replace("%ModDir%", "")
+                                content = element.attrib['file'].replace("%ModDir%/", "")
                                 def_content.append(content)
 
 
@@ -117,28 +117,31 @@ def test_FIX_barodev_moment():
                     for file_ in files:
                         xml_file = False
                         if os.path.basename(file_) != "filelist.xml":
-                            if os.path.basename(file_) in def_content:
-                                src_dir = os.path.join(src_dir1, file_)
+                            src_dir = os.path.join(src_dir1, file_)
+                            if src_dir.replace("test_fix_barodev_moment/" + mod_dir + "/", "") in def_content:
                                 with open(src_dir, 'r', encoding="utf8") as open_file:
                                     src_file = open_file.read()
                                 dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
                                 with open(dst_dir, 'r', encoding="utf8") as open_file:
                                     dst_file = open_file.read()
                                 xml_file = True
+                                src_xml = ET.ElementTree(ET.fromstring(src_file))
+                                dst_xml = ET.ElementTree(ET.fromstring(dst_file))
+                                diff = xml_diff.diff_trees(src_xml, dst_xml)
                             else:
-                                src_dir = os.path.join(src_dir1, file_)
                                 with open(src_dir, 'rb') as open_file:
                                     src_file = open_file.read()
                                 dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
                                 with open(dst_dir, 'rb') as open_file:
                                     dst_file = open_file.read()
-                            if src_file != dst_file:
+                            if xml_file:
                                 # TODO mabe generate diff output of 2 files?
-                                if xml_file:
-                                    raise Exception(("Files {0},os.path.basename(file_) in def_content {1} not equal\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir))
-                                else:
-                                    raise Exception(("Files {0},os.path.basename(file_) in def_content {1} not equal").format(src_dir, dst_dir))        
-                    done += 1
+                                if diff != []:
+                                    raise Exception(("Files {0}, {1} not equal\n{2}\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir, diff))
+                            else:
+                                if src_file != dst_file:
+                                    raise Exception(("Files {0}, {1} not equal\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir))
+            done += 1
     # if nothing excepted, test has been completed sucessully
 
 # def test_get_user_perfs():
