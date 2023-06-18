@@ -38,26 +38,20 @@ from configbackup import backupBarotraumaData
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them
 def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
-    # find all xml files
     WINDOWS_LINE_ENDING = b'\r\n'
     UNIX_LINE_ENDING = b'\n'
-
-    # all_xml_files = []
     for src_dir, dirs, files in os.walk(downloaded_mod_path):
         for file_ in files:
             if file_[-4:] == ".xml":
-                # all_xml_files.append()
                 file_path = os.path.join(src_dir, file_)
                 with open(file_path, 'rb') as open_file:
                     content = open_file.read()
-
                 if sys.platform == 'win32':
                     # Unix ➡ Windows
                     content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
                 else:
                     # Windows ➡ Unix
                     content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
-
                 with open(file_path, 'wb') as open_file:
                     open_file.write(content)
 
