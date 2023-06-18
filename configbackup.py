@@ -10,9 +10,18 @@ current_time = current_time.replace(second=0, microsecond=0)
 current_time = str(current_time)[0:-3]
 current_time = re.sub('[:]', '.', current_time)
 
-def config_files_find(fileitem):
-    b_fileitem = fileitem.lower()
-    return(b_fileitem.find("config") >= 0 and b_fileitem.find("default") == -1 and (not b_fileitem == "RunConfig.xml".lower()) and (not b_fileitem == "configGui.lua".lower()))
+def config_files_find(filename):
+    b_filename = filename.lower()
+    check = False
+    if b_filename.find("config") >= 0:
+        check = True
+    if b_filename.find("setting") >= 0:
+        check = True
+    if b_filename == "RunConfig.xml":
+        check = True
+    if b_filename == "configGui.lua":
+        check = True
+    return check
 
 # configs
 # backup folder location
@@ -21,7 +30,7 @@ backupfolder = "ConfigBackup"
 modslocation = "C:\\Users\\milord\\AppData\Local\\Daedalic Entertainment GmbH\\Barotrauma\\WorkshopMods\\Installed"
 
 # find mods that have 'Lua' folder or 'CSharp' folder
-def find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation):
+def find_LuaCs_mods(modslocation):
     # input: modslocation
     dir_list = os.listdir(modslocation)
     configfilespathfrommodslocation = []
@@ -74,7 +83,7 @@ def create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslo
 def backup_option(modslocation, backupfolder):
     # print what you do
     # print("[ConfigBackup]Moving configs from " + modslocation + " to " + backupfolder)
-    configfilespathfrommodslocation = find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation)
+    configfilespathfrommodslocation = find_LuaCs_mods(modslocation)
     create_backup_folders_and_copy_files(configfilespathfrommodslocation, modslocation,backupfolder)
     # print done
     # print("[ConfigBackup]Done backing up config files")
@@ -116,7 +125,7 @@ def get_configs_barotraumadir(barotraumadir):
 
     return path_arr
 def get_configs_localcopypath(modslocation):
-    configfilespathfrommodslocation = find_mods_that_have_Lua_folder_or_CSharp_folder(modslocation)
+    configfilespathfrommodslocation = find_LuaCs_mods(modslocation)
     return configfilespathfrommodslocation
 def get_saves(savedir):
     path_arr = []
@@ -128,7 +137,6 @@ def get_saves(savedir):
                 src_file = os.path.join(src_dir, file_)
                 path_arr.append(src_file)
     return path_arr
-
 def backupBarotraumaData(barotrauma_dir, mods_dir, save_dir, backup_dir, max_saves):
     if os.path.exists(backup_dir):
         directory_contents = os.listdir(backup_dir)
@@ -191,7 +199,7 @@ def main():
         dir_list = os.listdir(backupfolder)
 
 
-        backupconfigs = find_mods_that_have_Lua_folder_or_CSharp_folder(backupfolder, pattern)
+        backupconfigs = find_LuaCs_mods(backupfolder, pattern)
         realconfigs = []
         for config in backupconfigs:
             realconfigs.append(os.path.join(modslocation, config))
