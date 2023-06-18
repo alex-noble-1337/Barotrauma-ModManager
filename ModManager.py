@@ -12,6 +12,8 @@ flush_previous_col = False
 progressbar_functionality = False
 debug_set_forced_cs = False
 debug_dependencies_functionality = False
+warnings_as_errors = False
+
 
 # My "Quality" code
 # TODO change this to import only individual commands
@@ -105,8 +107,11 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                 element.attrib['installtime'] = str(round(time.time()))
             if not 'expectedhash' in element.attrib:
                 # we are srewed if this is missing
-                raise Exception(_("Please remove mod of id:{0} and name{1}").format(downloaded_mod['ID'], downloaded_mod['name']))
-            
+                if warnings_as_errors:
+                    raise Exception(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                else:
+                    print(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+
             # i dont understand it, this is shit
             # TOO BAD!
             element.attrib = {k: element.attrib[k] for k in desired_order_list if k in element.attrib}
