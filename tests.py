@@ -129,11 +129,19 @@ def test_FIX_barodev_moment():
                                 dst_xml = ET.ElementTree(ET.fromstring(dst_file))
                                 diff = xml_diff.diff_trees(src_xml, dst_xml)
                             else:
+                                WINDOWS_LINE_ENDING = b'\r\n'
+                                UNIX_LINE_ENDING = b'\n'
                                 with open(src_dir, 'rb') as open_file:
                                     src_file = open_file.read()
+                                    # TODO line endings shoudnt matter, take a look at code
+                                    src_file = src_file.replace(WINDOWS_LINE_ENDING, b'')
+                                    src_file = src_file.replace(UNIX_LINE_ENDING, b'')
                                 dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
                                 with open(dst_dir, 'rb') as open_file:
                                     dst_file = open_file.read()
+                                    # TODO line endings shoudnt matter, take a look at code
+                                    dst_file = dst_file.replace(WINDOWS_LINE_ENDING, b'')
+                                    dst_file = dst_file.replace(UNIX_LINE_ENDING, b'')
                             if xml_file:
                                 # TODO mabe generate diff output of 2 files?
                                 if diff != []:
