@@ -74,6 +74,14 @@ def test_FIX_barodev_moment():
                 modlist = [{'ID': os.path.basename(full_path)}]
                 ModManager.get_modlist_data_webapi(modlist)
                 mod = modlist[0]
+                with open(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), 'r', encoding="utf8") as open_file:
+                    dst_filelist_str = open_file.read()
+                    dst_filelist_str = re.sub(" installtime=\".*?\"", "", dst_filelist_str)
+                    dst_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_filelist_str)
+                    dst_filelist = ET.fromstring(dst_filelist_str, parser=ET.XMLParser(remove_comments=True))
+                if not 'name' in mod:
+                    mod['name'] = dst_filelist.attrib['name']
+                dst_filelist = ET.ElementTree(dst_filelist)
                 ModManager.FIX_barodev_moment(mod, full_path_output)
                 # compare it, file by file to deadalic enterteiment
                 # we only want to compare xml files of xml's that are loaded by the game so first get the list of files from filelist
@@ -81,12 +89,7 @@ def test_FIX_barodev_moment():
                     src_filelist_str = open_file.read()
                     src_filelist_str = re.sub(" installtime=\".*?\"", "", src_filelist_str)
                     src_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_filelist_str)
-                    filelist = ET.fromstring(src_filelist_str)
-                with open(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), 'r', encoding="utf8") as open_file:
-                    dst_filelist_str = open_file.read()
-                    dst_filelist_str = re.sub(" installtime=\".*?\"", "", dst_filelist_str)
-                    dst_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", dst_filelist_str)
-                    dst_filelist = ET.ElementTree(ET.fromstring(dst_filelist_str))
+                    filelist = ET.fromstring(src_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 diff = xml_diff.diff_trees(ET.ElementTree(filelist), dst_filelist)
                 if diff != []:
                     # TODO werid behaviour when no hash check it
@@ -121,19 +124,9 @@ def test_FIX_barodev_moment():
                         xml_file = False
                         if os.path.basename(file_) != "filelist.xml":
                             src_dir = os.path.join(src_dir1, file_)
+                            # TODO only define dcontent should matter, take a look
                             if src_dir.replace("test_fix_barodev_moment/" + mod_dir + "/", "") in def_content:
-                                with open(src_dir, 'r', encoding="utf8") as open_file:
-                                    src_file = open_file.read()
-                                dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
-                                with open(dst_dir, 'r', encoding="utf8") as open_file:
-                                    dst_file = open_file.read()
-                                xml_file = True
-                                src_xml = ET.ElementTree(ET.fromstring(src_file))
-                                dst_xml = ET.ElementTree(ET.fromstring(dst_file))
-                                diff = xml_diff.diff_trees(src_xml, dst_xml)
-                            else:
-                                test = config_files_find(os.path.basename(file_))
-                                if not test:
+                                if not config_files_find(os.path.basename(file_)):
                                     WINDOWS_LINE_ENDING = b'\r\n'
                                     UNIX_LINE_ENDING = b'\n'
                                     with open(src_dir, 'rb') as open_file:
@@ -147,16 +140,10 @@ def test_FIX_barodev_moment():
                                         # TODO line endings shoudnt matter, take a look at code
                                         dst_file = dst_file.replace(WINDOWS_LINE_ENDING, b'')
                                         dst_file = dst_file.replace(UNIX_LINE_ENDING, b'')
-                                else:
-                                    continue
-                            if xml_file:
-                                # TODO mabe generate diff output of 2 files?
-                                if diff != []:
-                                    raise Exception(("Files {0}, {1} not equal\n{2}\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir, diff))
-                            else:
-                                if src_file != dst_file:
-                                    raise Exception(("Files {0}, {1} not equal\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir))
+                                    if src_file != dst_file:
+                                        raise Exception(("Files {0}, {1} not equal\nUse: diff --color \"{0}\" \"{1}\" to figure out whats wrong").format(src_dir, dst_dir))
             done += 1
+            print("{0}/{1}".format(done, len(mod_dirs_daedelic)))
     # if nothing excepted, test has been completed sucessully
 
 # def test_get_user_perfs():
