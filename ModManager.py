@@ -20,6 +20,7 @@ warnings_as_errors = False
 import os
 import shutil
 import re
+from functools import reduce
 import time
 import datetime
 import subprocess
@@ -42,36 +43,118 @@ from configbackup import backupBarotraumaData
 def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
     WINDOWS_LINE_ENDING = b'\r\n'
     UNIX_LINE_ENDING = b'\n'
-    for src_dir, dirs, files in os.walk(downloaded_mod_path):
-        for file_ in files:
-            if file_[-4:] == ".xml":
-                file_path = os.path.join(src_dir, file_)
-                with open(file_path, 'rb') as open_file:
-                    content = open_file.read()
-                if sys.platform == 'win32':
-                    # Unix ➡ Windows
-                    content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
-                else:
-                    # Windows ➡ Unix
-                    content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
-                with open(file_path, 'wb') as open_file:
-                    open_file.write(content)
-
     filelist_path = os.path.join(downloaded_mod_path, "filelist.xml")
+
+    # get oldname or name for fixing Mods/oldname to %ModDir% 
+    with open(filelist_path, 'r', encoding="utf8") as open_file:
+        filelist_str = open_file.read()
+    filelist = ET.fromstring(filelist_str)
+    if filelist.tag.lower() == "contentpackage":
+        name = ""
+        oldname = ""
+        if 'name' in filelist.attrib:
+            name = filelist.attrib['name']
+        if 'altnames' in filelist.attrib:
+            oldname = filelist.attrib['altnames']
+        def_content = []
+        content_types = ["item","character","mapcreature","text",
+                         "uistyle","afflictions","structure",
+                         "upgrademodules","ruinconfig",
+                         "wreckaiconfig","backgroundcreatureprefabs",
+                         "levelobjectprefabs","particles","decals",
+                         "randomevents","eventmanagersettings",
+                         "locationtypes","mapgenerationparameters",
+                         "levelgenerationparameters",
+                         "cavegenerationparameters","outpostconfig",
+                         "npcsets","missions","traitormissions",
+                         "npcpersonalitytraits","npcconversations",
+                         "jobs","orders","corpses","sounds",
+                         "skillsettings","factions","itemassembly",
+                         "talents","talenttrees","startitems","tutorials"]
+        # definition_files = filelist.getchildren()
+        for def_file in filelist:
+            if def_file.tag.lower() in content_types:
+                if 'file' in def_file.attrib:
+                    def_file.attrib['file'] = def_file.attrib['file'].replace("Mods/" + name, "%ModDir%")
+                    if oldname != "":
+                        def_file.attrib['file'] = def_file.attrib['file'].replace("Mods/" + oldname, "%ModDir%")
+                    content = def_file.attrib['file'].replace("%ModDir%/", "")
+                    def_content.append(content)
+
+    old_paths = False
+    for file_path in def_content:
+        file_path = os.path.join(downloaded_mod_path, file_path)
+        # TODO paths arent case sensitive
+        if os.path.exists(file_path):
+            with open(file_path, 'rb') as open_file:
+                content = open_file.read()
+            if sys.platform == 'win32':
+                # Unix ➡ Windows
+                content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
+            else:
+                # Windows ➡ Unix
+                content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
+            with open(file_path, 'wb') as open_file:
+                open_file.write(content)
+
+            # fixing Mods/oldname to %ModDir% 
+            with open(file_path, 'r', encoding="utf8") as open_file:
+                content = open_file.read()
+            if oldname != "":
+                occurrences = re.finditer("Mods\/((" + name + ")|(" + oldname + "))", content)
+            else:
+                occurrences = re.finditer("Mods\/" + name, content)
+            points = reduce(lambda x, y: x + [y.start()], occurrences, [])
+            drift = 0
+            for point in points:
+                in_comment = False
+                for i in range(point):
+                    pointer = point - i
+                    if content[pointer:pointer + 3] == "-->":
+                        in_comment = False
+                        break
+                    if content[pointer:pointer + 4] == "<!--":
+                        in_comment = True
+                        break
+                if not in_comment:
+                    replace_to = "Mods/" + name
+                    test = content[point + drift:point + len(replace_to) + drift]
+                    if content[point + drift:point + len(replace_to) + drift] == replace_to:
+                        content = content[:point + drift] + "%ModDir%" + content[drift + point + len(replace_to):]
+                        drift += len("%ModDir%") - len(replace_to)
+                        old_paths = True
+                    if oldname != "":
+                        test = content[point:point + len(replace_to)]
+                        replace_to = "Mods/" + oldname
+                        if content[point:point + len(replace_to)] == replace_to:
+                            content = content[:point] + "%ModDir%" + content[point + len(replace_to):]
+                            drift += len("%ModDir%") - len(replace_to)
+                            old_paths = True
+            if oldname != "":
+                content = content.replace("Mods/" + oldname, "%ModDir%")
+            with open(file_path, 'w', encoding="utf8") as open_file:
+                open_file.write(content)
+    if old_paths:
+        if warnings_as_errors:
+            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!").format(downloaded_mod['ID'], downloaded_mod['name']))
+        else:
+            print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!").format(downloaded_mod['ID'], downloaded_mod['name']))
+
+
     desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
     if os.path.exists(filelist_path):
         with open(filelist_path, 'r', encoding="utf8") as open_file:
             filelist_str = open_file.read()
 
-        element = ET.fromstring(filelist_str)
-        if element.tag.lower() == "contentpackage":
-            if not 'name' in element.attrib:
-                element.attrib['name'] = downloaded_mod['name']
+        def_file = ET.fromstring(filelist_str)
+        if def_file.tag.lower() == "contentpackage":
+            if not 'name' in def_file.attrib:
+                def_file.attrib['name'] = downloaded_mod['name']
             else:
                 if 'name' in downloaded_mod:
-                    if element.attrib['name'] != downloaded_mod['name']:
-                        oldname = element.attrib['name']
-                        element.attrib['name'] = downloaded_mod['name']
+                    if def_file.attrib['name'] != downloaded_mod['name']:
+                        oldname = def_file.attrib['name']
+                        def_file.attrib['name'] = downloaded_mod['name']
                         # if 'corepackage' in element.attrib:
                         #     if str(element.attrib['corepackage']) == 'False':
                         #         element.attrib['corepackage'] = 'False'
@@ -79,7 +162,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                         test1 = oldname
                         test2 = downloaded_mod['name']
                         if test1 != test2:
-                            element.attrib['altnames'] = oldname
+                            def_file.attrib['altnames'] = oldname
 
                         # fixing False or FALSE or whatever to false
                         # for attribute in element.attrib:
@@ -90,36 +173,44 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                         # preserve the order as it was previously
                         # workaround for bottom one
                     else:
-                        if 'altnames' in element.attrib:
-                            element.attrib.pop('altnames')
-            if not 'steamworkshopid' in element.attrib:
-                element.attrib['steamworkshopid'] = downloaded_mod['ID']
-            if not 'corepackage' in element.attrib:
-                element.attrib['corepackage'] = "false"
-            if not 'modversion' in element.attrib:
+                        if 'altnames' in def_file.attrib:
+                            def_file.attrib.pop('altnames')
+            if not 'steamworkshopid' in def_file.attrib:
+                def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
+            else:
+                if def_file.attrib['steamworkshopid'] != downloaded_mod['ID']:
+                    if warnings_as_errors:
+                        raise Exception(_("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                    else:
+                        print(_("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                        # fix?
+                        def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
+            if not 'corepackage' in def_file.attrib:
+                def_file.attrib['corepackage'] = "false"
+            if not 'modversion' in def_file.attrib:
                 # TODO check what game assumes as default value
-                element.attrib['modversion'] = "1.0.0"
-            if not 'gameversion' in element.attrib:
+                def_file.attrib['modversion'] = "1.0.0"
+            if not 'gameversion' in def_file.attrib:
                 # TODO check what game assumes as default value
-                element.attrib['gameversion'] = "1.0"
-            if not 'installtime' in element.attrib:
+                def_file.attrib['gameversion'] = "1.0"
+            if not 'installtime' in def_file.attrib:
                 # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
-                element.attrib['installtime'] = str(round(time.time()))
-            if not 'expectedhash' in element.attrib:
+                def_file.attrib['installtime'] = str(round(time.time()))
+            if not 'expectedhash' in def_file.attrib:
                 # we are srewed if this is missing
-                if warnings_as_errors:
-                    raise Exception(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
-                else:
-                    print(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                if len(def_content) > 0:
+                    if warnings_as_errors:
+                        raise Exception(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                    else:
+                        print(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
 
-            # i dont understand it, this is shit
+            # i dont understand it, this is shit, too hacky
             # TOO BAD!
-            element.attrib = {k: element.attrib[k] for k in desired_order_list if k in element.attrib}
+            def_file.attrib = {k: def_file.attrib[k] for k in desired_order_list if k in def_file.attrib}
 
-            filelist_str = ET.tostring(element, encoding="utf-8", method="xml", xml_declaration=True)
+            filelist_str = ET.tostring(def_file, encoding="utf-8", method="xml", xml_declaration=True)
             with open(filelist_path, 'wb') as open_file:
                 open_file.write(filelist_str)
-
 
             # re-encode and fix some incosistencies with using ET
             with open(filelist_path, 'r') as open_file:
