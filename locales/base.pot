@@ -1,0 +1,211 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR ORGANIZATION
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2023-06-20 12:03+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: pygettext.py 1.5\n"
+
+
+#: ModManager.py:140 ModManager.py:142
+msgid "Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
+msgstr ""
+
+#: ModManager.py:184 ModManager.py:186
+msgid "Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible"
+msgstr ""
+
+#: ModManager.py:204 ModManager.py:206
+msgid "Mod of id:{0} and name: {1} does not have hash! Remove it if possible"
+msgstr ""
+
+#: ModManager.py:377 ModManager.py:414
+msgid "[ModManager] Could not find the config_player.xml! Check your barotrauma path!"
+msgstr ""
+
+#: ModManager.py:378
+msgid "[ModManager] Barotrauma path: {0}"
+msgstr ""
+
+#: ModManager.py:415
+msgid "[ModManager] Barotrauma path:"
+msgstr ""
+
+#: ModManager.py:534
+msgid "[ModManager] Starting steamcmd, Updating mod:{ID:s}: {name:s}"
+msgstr ""
+
+#: ModManager.py:536
+msgid "Update Progress: {0}/{1}"
+msgstr ""
+
+#: ModManager.py:542
+msgid "ETA:{0}:{1}"
+msgstr ""
+
+#: ModManager.py:551
+msgid "[ModManger] Connected to steam! Beginning mod download..."
+msgstr ""
+
+#: ModManager.py:557
+msgid "[ModManager] Downloading mod: {name:s} ({ID:s})"
+msgstr ""
+
+#: ModManager.py:565
+msgid "[ModManager] Downloaded mod!"
+msgstr ""
+
+#: ModManager.py:588
+msgid "[ModManager] Skipped mod!: {name:s} ( + {ID:s})"
+msgstr ""
+
+#: ModManager.py:597
+msgid "[ModManager] List of mods:"
+msgstr ""
+
+#: ModManager.py:601
+msgid "[ModManager] {ID:s}: {name:s}"
+msgstr ""
+
+#: ModManager.py:687
+msgid "[ModManger] Collection link INVALID. Do you want to exit the script? ((Y)es / (n)o):"
+msgstr ""
+
+#: ModManager.py:690
+msgid "Collection link INVALID! Re-enable Collection mode."
+msgstr ""
+
+#: ModManager.py:740
+msgid "[ModManager] Removed {0} not managed now mods!"
+msgstr ""
+
+#: ModManager.py:776
+msgid "[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)"
+msgstr ""
+
+#: ModManager.py:779
+msgid "[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"
+msgstr ""
+
+#: ModManager.py:817
+msgid "[ModManager] No mods detected"
+msgstr ""
+
+#: ModManager.py:871
+msgid "[ModManager] Skipping download of {0} Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)"
+msgstr ""
+
+#: ModManager.py:893
+msgid "[ModManager] All {0} Mods have been updated"
+msgstr ""
+
+#: ModManager.py:895
+msgid "[ModManager] All Mods were up to date!"
+msgstr ""
+
+#: ModManager.py:919
+msgid "[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods."
+msgstr ""
+
+#: ModManager.py:920 ModManager.py:926
+msgid "[ModManager] Please shorten your modlist by removing unnesesary mods, or use group of mods inside of one package."
+msgstr ""
+
+#: ModManager.py:925
+msgid "[ModManager] I advise to shorten your modlist! It is very rare for players to join public game that has a lot of mods."
+msgstr ""
+
+#: ModManager.py:931
+msgid "Wellcome to ModManager script!"
+msgstr ""
+
+#: ModManager.py:936 ModManager.py:940
+msgid "[ModManager] Type 'h' or 'help' then enter for help and information about commands."
+msgstr ""
+
+#: ModManager.py:937
+msgid "[ModManager] Steam collection mode enabled! Disable by entering collection sub-menu."
+msgstr ""
+
+#: ModManager.py:938
+msgid "[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): "
+msgstr ""
+
+#: ModManager.py:941
+msgid "[ModManager] Steam collection mode disabled! Enable by entering collection sub-menu."
+msgstr ""
+
+#: ModManager.py:942
+msgid "[ModManager] Do you want to update mods? ((Y)es / (n)o): "
+msgstr ""
+
+#: ModManager.py:950
+msgid "[ModManager] Provide an collection link then press enter, or if you want to disable previously enabled collection mode, type 'n' then enter: "
+msgstr ""
+
+#: ModManager.py:953
+msgid "[ModManager] Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: "
+msgstr ""
+
+#: ModManager.py:969
+msgid "[ModManager] Help menu:"
+msgstr ""
+
+#: ModManager.py:970
+msgid "[ModManager] README: https://github.com/Milord-ThatOneModder/Barotrauma-ModManager/blob/main/README.md"
+msgstr ""
+
+#: ModManager.py:971
+msgid "### Available modes ###"
+msgstr ""
+
+#: ModManager.py:972
+msgid "Collection mode:"
+msgstr ""
+
+#: ModManager.py:973
+msgid "\t- In collection mode your modlist as well as `config_player.xml` are fully managed by a ModManager"
+msgstr ""
+
+#: ModManager.py:974
+msgid "\t- For configuring the collection mode type `c` or `collection` then press `enter` when prompted (on ModManager start), then paste your collection link then press `enter`, then type your localcopy path, according to what ModManager is outputing (writting on console)."
+msgstr ""
+
+#: ModManager.py:975
+msgid "\t- To change collection link, type `c` or `collection` then press `enter`, then paste your new collection link then press enter, then type your path were you want to store your mods (`localcopy`), according to what ModManager is outputing."
+msgstr ""
+
+#: ModManager.py:976
+msgid "\t- If you wish to stop using collection mode, just type `c` or `collection` then enter, then type `n` then `enter`."
+msgstr ""
+
+#: ModManager.py:977
+msgid "config_player.xml mode:"
+msgstr ""
+
+#: ModManager.py:978
+msgid "\t- **IF YOU DONT KNOW WHAT `config_player.xml` IS OR YOU DONT KNOW ITS SYNTAX (or what xml even is), I RECOMEND USING COLLECTION MODE**"
+msgstr ""
+
+#: ModManager.py:979
+msgid "\t- Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`."
+msgstr ""
+
+#: ModManager.py:980
+msgid ""
+"\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"\n"
+"\n"
+msgstr ""
+
+#: ModManager.py:983
+msgid "[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\""
+msgstr ""
+
