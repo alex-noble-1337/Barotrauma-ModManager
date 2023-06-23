@@ -101,9 +101,9 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             with open(file_path, 'r', encoding="utf8") as open_file:
                 content = open_file.read()
             if oldname != "":
-                occurrences = re.finditer("Mods\/((" + name + ")|(" + oldname + "))", content)
+                occurrences = re.finditer("Mods\\/((" + name + ")|(" + oldname + "))", content)
             else:
-                occurrences = re.finditer("Mods\/" + name, content)
+                occurrences = re.finditer("Mods\\/" + name, content)
             points = reduce(lambda x, y: x + [y.start()], occurrences, [])
             drift = 0
             for point in points:
@@ -116,7 +116,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                     if content[pointer:pointer + 4] == "<!--":
                         in_comment = True
                         break
-                if not in_comment:
+                if in_comment != True:
                     replace_to = "Mods/" + name
                     test = content[point + drift:point + len(replace_to) + drift]
                     if content[point + drift:point + len(replace_to) + drift] == replace_to:
@@ -130,8 +130,8 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                             content = content[:point] + "%ModDir%" + content[point + len(replace_to):]
                             drift += len("%ModDir%") - len(replace_to)
                             old_paths = True
-            if oldname != "":
-                content = content.replace("Mods/" + oldname, "%ModDir%")
+            # if oldname != "":
+            #     content = content.replace("Mods/" + oldname, "%ModDir%")
             with open(file_path, 'w', encoding="utf8") as open_file:
                 open_file.write(content)
     if old_paths:
@@ -965,18 +965,18 @@ if __name__ == '__main__':
             break
         elif user_command == "help" or user_command == "h":
             # TODO rework it to get Available modes from readme
-            print(_("[ModManager] Help menu:"))
-            print(_("[ModManager] README: https://github.com/Milord-ThatOneModder/Barotrauma-ModManager/blob/main/README.md"))
-            print(_("### Available modes ###"))
-            print(_("Collection mode:"))
-            print(_("\t- In collection mode your modlist as well as `config_player.xml` are fully managed by a ModManager"))
-            print(_("\t- For configuring the collection mode type `c` or `collection` then press `enter` when prompted (on ModManager start), then paste your collection link then press `enter`, then type your localcopy path, according to what ModManager is outputing (writting on console)."))
-            print(_("\t- To change collection link, type `c` or `collection` then press `enter`, then paste your new collection link then press enter, then type your path were you want to store your mods (`localcopy`), according to what ModManager is outputing."))
-            print(_("\t- If you wish to stop using collection mode, just type `c` or `collection` then enter, then type `n` then `enter`."))
-            print(_("config_player.xml mode:"))
-            print(_("\t- **IF YOU DONT KNOW WHAT `config_player.xml` IS OR YOU DONT KNOW ITS SYNTAX (or what xml even is), I RECOMEND USING COLLECTION MODE**"))
-            print(_("\t- Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`."))
-            print(_("\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"\n\n"))
+            print("[ModManager] Help menu:")
+            print("[ModManager] README: https://github.com/Milord-ThatOneModder/Barotrauma-ModManager/blob/main/README.md")
+            print("### Available modes ###")
+            print("Collection mode:")
+            print("\t- In collection mode your modlist as well as `config_player.xml` are fully managed by a ModManager")
+            print("\t- For configuring the collection mode type `c` or `collection` then press `enter` when prompted (on ModManager start), then paste your collection link then press `enter`, then type your localcopy path, according to what ModManager is outputing (writting on console).")
+            print("\t- To change collection link, type `c` or `collection` then press `enter`, then paste your new collection link then press enter, then type your path were you want to store your mods (`localcopy`), according to what ModManager is outputing.")
+            print("\t- If you wish to stop using collection mode, just type `c` or `collection` then enter, then type `n` then `enter`.")
+            print("config_player.xml mode:")
+            print("\t- **IF YOU DONT KNOW WHAT `config_player.xml` IS OR YOU DONT KNOW ITS SYNTAX (or what xml even is), I RECOMEND USING COLLECTION MODE**")
+            print("\t- Replace content of your server's `config_player.xml` to content of your personal machine (client)'s `config_player.xml`.")
+            print("\t- Replace all occurences \"C:/Users/$yourusername$/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed\" (your personal machine mod's path) where \"$yourusername$\" is your user name on windows machine, to \"LocalMods\"\n\n")
             continue
         else:
             print(_("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\""))
