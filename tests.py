@@ -60,7 +60,9 @@ daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Dae
 def test_FIX_barodev_moment():
     # check fixing of mods by comparing files with copy in Installed in config of deadelic
     os.makedirs("test_fix_barodev_moment", exist_ok=True)
-    mod_dirs = os.listdir(steam_library_installedmods)
+    mod_dirs = {}
+    if mod_dirs == {}:
+        mod_dirs = os.listdir(steam_library_installedmods)
     mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
     done = 0
     for mod_dir in mod_dirs:
