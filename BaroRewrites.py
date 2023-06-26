@@ -1,6 +1,9 @@
+# This is file of all functions that are requred by mod manager to properly function
+# but are taken from barotrauma source code
+
 import sys
 import os
-
+import pathlib
 # this is:
 # directory ?? "" or
 # directory != null ? directory : ""
@@ -8,9 +11,39 @@ import os
 def directory_fixer(directory):
     # None is Null in python?
     if directory == None:
-        directory = ""
+        return ""
     else:
-        directory = directory
+        return directory
+
+def get_user_data_dir():
+    if sys.platform == "win32":
+        import winreg
+        key = winreg.OpenKey(
+            winreg.HKEY_CURRENT_USER,
+            r"Software\Microsoft\Windows\CurrentVersion\Explorer\Shell Folders"
+        )
+        dir_,_ = winreg.QueryValueEx(key, "Local AppData")
+        ans = Path(dir_).resolve(strict=False)
+    elif sys.platform == 'darwin':
+        ans = Path('~/Library/Application Support/').expanduser()
+    else:
+        ans=pathlib.Path(os.getenv('XDG_DATA_HOME', "~/.local/share")).expanduser()
+    return ans.joinpath()
+
+# split in c# accepts arrays, but in python it only accepts strings
+def separate(array,separator):
+    results = []
+    a = array[:]
+    i = 0
+    while i<=len(a)-len(separator):
+        if a[i:i+len(separator)]==separator:
+            results.append(a[:i])
+            a = a[i+len(separator):]
+            i = 0
+        else: i+=1
+    results.append(a)
+    return results
+
 # this is:
 # startPath = saveFolder.EndsWith('/') ? saveFolder : $"{saveFoler}/";
 def path_addslashend(saveFolder: str):
@@ -20,7 +53,7 @@ def path_addslashend(saveFolder: str):
     else:
         return saveFolder + '/'
 
-# https://github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L32
+# https:#github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L32
 # Toolbox.cs -> ToolBox/IsProperFilenameCase
 def isProperFilenameCase(filename: str):
     if sys.platform == 'win32':
@@ -30,22 +63,36 @@ def isProperFilenameCase(filename: str):
         CorrectFilenameCase(filename, corrected)
         return (not corrected)
 
-# https://github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L46
+
+# 
+class SaveUtil:
+    def DefaultSaveFolder():
+        if sys.platform == 'darwin':
+            #"/*user*/Library/Application Support/Daedalic Entertainment GmbH/" on Mac
+            return Path.Combine(os.path.expanduser("~"), "Library", "Application Support", "Daedalic Entertainment GmbH", "Barotrauma")
+        else:
+            #"C:/Users/*user*/AppData/Local/Daedalic Entertainment GmbH/" on Windows
+            #"/home/*user*/.local/share/Daedalic Entertainment GmbH/" on Linux
+            return os.path.join(get_user_data_dir(), "Daedalic Entertainment GmbH", "Barotrauma")
+
+
+# https:#github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L46
 # unfortunetly had to use chatgpt due to time and skill constraints
 # TODO please check and correct this
 def CorrectFilenameCase(filename, directory="", corrected=False):
     delimiters = ['/', '\\']
-    subDirs = filename.split(delimiters)
+    subDirs = separate(filename, delimiters)
     originalFilename = filename
     filename = ""
 
-    if not os.name == 'nt':
+    if not sys.platform == 'win32':
         if os.path.exists(originalFilename):
             return originalFilename
 
     startPath = directory_fixer(directory)
 
-    saveFolder = SaveUtil.DefaultSaveFolder.replace('\\', '/')
+    saveFolder = SaveUtil.DefaultSaveFolder()
+    saveFolder =  saveFolder.replace('\\', '/')
     if originalFilename.replace('\\', '/').startswith(saveFolder):
         startPath = saveFolder if saveFolder.endswith('/') else f"{saveFolder}/"
         filename = startPath
@@ -84,7 +131,7 @@ def CorrectFilenameCase(filename, directory="", corrected=False):
     return filename
 
 
-# https://github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L601
+# https:#github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L601
 #:barodev: <summary>
 #:barodev: Cleans up a path by replacing backslashes with forward slashes, and
 #:barodev: optionally corrects the casing of the path. Recommended when serializing
@@ -104,8 +151,8 @@ def CleanUpPathCrossPlatform(path, correct_filename_case=True, directory=""):
     if path.startswith("file:", 0, 5):
         path = path[5:]
 
-    while "//" in path:
-        path = path.replace("//", "/")
+    while "#" in path:
+        path = path.replace("#", "/")
 
     if correct_filename_case:
         corrected_path = CorrectFilenameCase(path, directory)
@@ -114,7 +161,7 @@ def CleanUpPathCrossPlatform(path, correct_filename_case=True, directory=""):
 
     return path
 
-# https://github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L633C30-L633C41
+# https:#github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L633C30-L633C41
 #:barodev: <summary>
 #:barodev: Cleans up a path by replacing backslashes with forward slashes, and
 #:barodev: corrects the casing of the path on non-Windows platforms. Recommended
@@ -124,4 +171,4 @@ def CleanUpPathCrossPlatform(path, correct_filename_case=True, directory=""):
 #:barodev: <param name="path">Path to clean up</param>
 #:barodev: <returns>Path with corrected slashes, and corrected case if required by the platform.</returns>
 def CleanUpPath(path):
-    return CleanUpPathCrossPlatform(path, correct_filename_case=not (os.name == 'nt'))
+    return CleanUpPathCrossPlatform(path, correct_filename_case=not (sys.platform == 'win32'))
