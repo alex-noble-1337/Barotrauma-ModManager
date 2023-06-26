@@ -5,6 +5,7 @@ import re
 import ModManager
 import xmldiff.main as xml_diff
 from configbackup import config_files_find
+import BaroRewrites
 
 steam_library_installedmods = "/mnt/Share/SteamLibrary/steamapps/workshop/content/602960"
 daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
@@ -60,7 +61,9 @@ daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Dae
 def test_FIX_barodev_moment():
     # check fixing of mods by comparing files with copy in Installed in config of deadelic
     os.makedirs("test_fix_barodev_moment", exist_ok=True)
-    mod_dirs = {}
+    mod_dirs = {"2251179004", "2776026770", "2984665813", "2948537269", 
+                "2962582697", "2900879567", "2957864852", "2926977751", 
+                "2967303974", "2791386906", "2963898037"}
     if mod_dirs == {}:
         mod_dirs = os.listdir(steam_library_installedmods)
     mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
@@ -118,6 +121,7 @@ def test_FIX_barodev_moment():
                         if element.tag.lower() in content_types:
                             if 'file' in element.attrib:
                                 content = element.attrib['file'].replace("%ModDir%/", "")
+                                content = BaroRewrites.CleanUpPath(content)
                                 def_content.append(content)
 
 
@@ -127,6 +131,8 @@ def test_FIX_barodev_moment():
                         if os.path.basename(file_) != "filelist.xml":
                             src_dir = os.path.join(src_dir1, file_)
                             # TODO only define dcontent should matter, take a look
+                            # apperently it does:
+                            # https://github.com/Regalis11/Barotrauma/blob/c67f6688fdf4dcffa224711a0d4f4181d9a1fad4/Barotrauma/BarotraumaShared/SharedSource/ContentManagement/ContentPackage/ContentPackage.cs#L189
                             if src_dir.replace("test_fix_barodev_moment/" + mod_dir + "/", "") in def_content:
                                 if not config_files_find(os.path.basename(file_)):
                                     WINDOWS_LINE_ENDING = b'\r\n'
@@ -296,8 +302,24 @@ def test_main():
                                 # TODO mabe generate diff output of 2 files?
                                 raise Exception(("Files {src_dir}, {dst_dir} not equal"))
 
+
+def get_all_content_types():
+    with open("Vanilla.xml", 'r', encoding="utf8") as open_file:
+        src_filelist_str = open_file.read()
+        src_filelist_str = re.sub(" installtime=\".*?\"", "", src_filelist_str)
+        src_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_filelist_str)
+        filelist = ET.fromstring(src_filelist_str)
+    elements = filelist.getchildren()
+    xml_tags = []
+    for element in elements:
+        if not element.tag.lower() in xml_tags:
+            if 'file'in element.attrib:
+                if os.path.basename(element.attrib['file'])[-4:] == ".xml":
+                    xml_tags.append(element.tag.lower())
+    for xml_tag in xml_tags:
+        print("\"{0}\",".format(xml_tag.lower()), end='')
+
 if __name__ == '__main__':
-    test_FIX_barodev_moment()
     test_get_localcopy_path()
     test_get_modlist_regularpackages()
     test_remove_duplicates()
@@ -306,18 +328,7 @@ if __name__ == '__main__':
     test_download_modlist()
     test_check_collection_link()
     test_is_pure_lua_mod()
-    # with open("Vanilla.xml", 'r', encoding="utf8") as open_file:
-    #     src_filelist_str = open_file.read()
-    #     src_filelist_str = re.sub(" installtime=\".*?\"", "", src_filelist_str)
-    #     src_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_filelist_str)
-    #     filelist = ET.fromstring(src_filelist_str)
-    # elements = filelist.getchildren()
-    # xml_tags = []
-    # for element in elements:
-    #     if not element.tag.lower() in xml_tags:
-    #         if 'file'in element.attrib:
-    #             if os.path.basename(element.attrib['file'])[-4:] == ".xml":
-    #                 xml_tags.append(element.tag.lower())
-    # for xml_tag in xml_tags:
-    #     print("\"{0}\",".format(xml_tag.lower()), end='')
-    print()
+    # somewhat works
+    test_FIX_barodev_moment()
+    # what? you expect me to run by hand? im lazy
+    test_main()
