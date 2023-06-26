@@ -59,11 +59,10 @@ daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Dae
 
 # 
 def test_FIX_barodev_moment():
+    namematters = False
     # check fixing of mods by comparing files with copy in Installed in config of deadelic
     os.makedirs("test_fix_barodev_moment", exist_ok=True)
-    mod_dirs = {"2251179004", "2776026770", "2984665813", "2948537269", 
-                "2962582697", "2900879567", "2957864852", "2926977751", 
-                "2967303974", "2791386906", "2963898037"}
+    mod_dirs = {}
     if mod_dirs == {}:
         mod_dirs = os.listdir(steam_library_installedmods)
     mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
@@ -86,6 +85,9 @@ def test_FIX_barodev_moment():
                     dst_filelist = ET.fromstring(dst_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 if not 'name' in mod:
                     mod['name'] = dst_filelist.attrib['name']
+                if not namematters:
+                    dst_filelist_str = re.sub("name=\".*?\"", "", dst_filelist_str)
+                    dst_filelist = ET.fromstring(dst_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 dst_filelist = ET.ElementTree(dst_filelist)
                 ModManager.FIX_barodev_moment(mod, full_path_output)
                 # compare it, file by file to deadalic enterteiment
@@ -94,6 +96,9 @@ def test_FIX_barodev_moment():
                     src_filelist_str = open_file.read()
                     src_filelist_str = re.sub(" installtime=\".*?\"", "", src_filelist_str)
                     src_filelist_str = re.sub("corepackage=\"[Ff][Aa][Ll][Ss][Ee]\"", "corepackage=\"false\"", src_filelist_str)
+                    filelist = ET.fromstring(src_filelist_str, parser=ET.XMLParser(remove_comments=True))
+                if not namematters:
+                    src_filelist_str = re.sub("name=\".*?\"", "", src_filelist_str)
                     filelist = ET.fromstring(src_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 diff = xml_diff.diff_trees(ET.ElementTree(filelist), dst_filelist)
                 if diff != []:
@@ -206,20 +211,19 @@ def test_create_new_regularpackages():
     modlist = []
     localcopy_path = ""
     barotrauma_path = ""
-    regularpackages = ModManager.set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path)
+    regularpackages = ModManager.set_modlist_regularpackages(modlist, localcopy_path, barotrauma_path)
     # check if its a valid xml
     try:
-        tree = ET.parse('s.xml')
-        root = tree.getroot()
-    except ParseError:
+        tree = ET.fromstring(regularpackages)
+    except ET.ParseError:
         raise Exception("XML is not good \n{regularpackages}")
 
 def test_download_modlist():
     # parse test modlist
     modlist = []
     # check if mods align with the ones in my steam install download
-    ModManager.download_modlist(modlist, "test_download_modlist", "steamcmd")
-    names = os.listdir("test_download_modlist")
+    ModManager.download_modlist(modlist, "LocalMods", "steamcmd")
+    names = os.listdir("LocalMods")
     for mod in modlist:
         found = False
         for name in names:
@@ -230,11 +234,11 @@ def test_download_modlist():
 
 def test_check_collection_link():
     # parse few collcetion links
-    collection_link_list = [{'link': "", 'expected': True}]
+    collection_link_list = [{'link': "2901361", 'expected': False}, {'link': "https://steamcommunity.com/sharedfiles/filedetails/?id=2952301361", 'expected': True}]
     # check wich ones are good, and wich ones are not
     for collection_link in collection_link_list:
         collection_site = ModManager.get_collectionsite(collection_link['link'])
-        expected = ModManager.check_collection_link(collection_site)
+        expected = ModManager.check_collection_link(collection_site, True)
         if expected != collection_link['expected']:
             raise Exception("Check not successufl! {collection_link}")
 
@@ -243,7 +247,7 @@ def test_is_pure_lua_mod():
     modlist = [{'ID': "2658872348", 'expected': True},{'ID': "2544952900", 'expected': False}] # ...
     for mod in modlist:
         if mod['expected'] != ModManager.is_pure_lua_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['ID'])):
-            raise Exception("Check not successfull! {mod}")
+            raise Exception("Check not successfull! {0}".format(mod['ID']))
 
 # full run
 def test_main():
@@ -324,7 +328,6 @@ if __name__ == '__main__':
     test_get_modlist_regularpackages()
     test_remove_duplicates()
     test_create_new_regularpackages()
-    test_download_modlist()
     test_download_modlist()
     test_check_collection_link()
     test_is_pure_lua_mod()
