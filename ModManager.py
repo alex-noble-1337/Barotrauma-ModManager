@@ -683,11 +683,13 @@ def get_collectionsite(collection_link: str):
         return collection_site
     else:
         return isvalid_collection_link
-def check_collection_link(collection_site):
+def check_collection_link(collection_site, no_input = False):
     if collection_site == False:
-        print(_("[ModManger] Collection link INVALID. Do you want to exit the script? ((Y)es / (n)o):"))
-        user_command = input().lower()
-        if user_command == "no" or user_command == "n":
+        user_command = "no"
+        if not no_input:
+            user_command = input().lower()
+            print(_("[ModManger] Collection link INVALID. Do you want to exit the script? ((Y)es / (n)o):"))
+        if user_command == "yes" or user_command == "y":
             raise Exception(_("Collection link INVALID! Re-enable Collection mode."))
         isvalid_collection_link = False
     else:
@@ -695,13 +697,30 @@ def check_collection_link(collection_site):
     return isvalid_collection_link
 
 def is_pure_lua_mod(mod_path: str):
+    content_types = ["item","character","mapcreature","text",
+                     "uistyle","afflictions","structure",
+                     "upgrademodules","ruinconfig",
+                     "wreckaiconfig","backgroundcreatureprefabs",
+                     "levelobjectprefabs","particles","decals",
+                     "randomevents","eventmanagersettings",
+                     "locationtypes","mapgenerationparameters",
+                     "levelgenerationparameters",
+                     "cavegenerationparameters","outpostconfig",
+                     "npcsets","missions","traitormissions",
+                     "npcpersonalitytraits","npcconversations",
+                     "jobs","orders","corpses","sounds",
+                     "skillsettings","factions","itemassembly",
+                     "talents","talenttrees","startitems","tutorials",
+                     "beaconstation"]
     pure_lua_mod = False
     if os.path.exists(os.path.join(mod_path, "filelist.xml")):
         with open(os.path.join(mod_path, "filelist.xml"), "r", encoding='utf8') as f:
-            filelist = f.readlines()
+            filelist_str = f.read()
+        filelist = ET.fromstring(filelist_str)
         xmlitems = 0
-        for ix in range(2, len(filelist)):
-            xmlitems += len(re.findall(".xml", filelist[ix]))
+        for mod in filelist:
+            if mod.tag.lower() in content_types:
+                xmlitems += 1
         if xmlitems <= 0:
             pure_lua_mod = True
     return pure_lua_mod
