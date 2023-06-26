@@ -38,6 +38,7 @@ from ConfigRecoder import get_modlist_collection_site
 from ConfigRecoder import collectionf
 from ConfigRecoder import get_modlist_data_webapi
 from configbackup import backupBarotraumaData
+import BaroRewrites
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them
 def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
@@ -79,6 +80,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                     if oldname != "":
                         def_file.attrib['file'] = def_file.attrib['file'].replace("Mods/" + oldname, "%ModDir%")
                     content = def_file.attrib['file'].replace("%ModDir%/", "")
+                    content = BaroRewrites.CleanUpPath(content)
                     def_content.append(content)
 
     old_paths = False
