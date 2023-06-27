@@ -2,8 +2,14 @@
 	- read code that creates packages, and screws around with paths so they are not case sensitive
 	- implement that in python
 - set up logging
+    - information after each notable "event"
+    - warning after werid values
+    - error after exceptions
 - set up locale change, but remember to force steamcmd language on statup
 - config file in xml instead of get_user_perfs
+
+
+
 After ptero egg
 - go over this again, handing of command line arguments
 - mods that dont have id shoudnt be removed when you remove them from config_player or when you enable collection mode
