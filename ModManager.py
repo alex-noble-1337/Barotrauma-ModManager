@@ -28,6 +28,10 @@ import sys
 import io
 import xml.etree.ElementTree as ET
 
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 import gettext
 _ = gettext.gettext
 
@@ -93,9 +97,11 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             if sys.platform == 'win32':
                 # Unix ➡ Windows
                 content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
+                logger.info("Changed from unix to windows line endings in {0}".format(file_path))
             else:
                 # Windows ➡ Unix
                 content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
+                logger.info("Changed from windows to unix line endings in {0}".format(file_path))
             with open(file_path, 'wb') as open_file:
                 open_file.write(content)
 
@@ -155,6 +161,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             else:
                 if 'name' in downloaded_mod:
                     if def_file.attrib['name'] != downloaded_mod['name']:
+                        logger.info("Name of {0} was changed via steam! Applying workaround...".format(def_file.attrib['steamworkshopid']))
                         oldname = def_file.attrib['name']
                         def_file.attrib['name'] = downloaded_mod['name']
                         # if 'corepackage' in element.attrib:
@@ -177,6 +184,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                     else:
                         if 'altnames' in def_file.attrib:
                             def_file.attrib.pop('altnames')
+                            logger.info("Removed altnames attrib!")
             if not 'steamworkshopid' in def_file.attrib:
                 def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
             else:
@@ -255,6 +263,7 @@ def get_user_perfs():
                 else:
                     user_perfs['barotrauma'] = os.getcwd()
                     changed_barotrauma_path = True
+                logger.info("Barotrauma path is set as {0}".format(user_perfs['barotrauma']))
             
             # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
             if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
@@ -268,6 +277,7 @@ def get_user_perfs():
                 else:
                     user_perfs['tool'] = os.getcwd()
                     changed_tool_path = True
+                logger.info("Tool path is set as {0}".format(user_perfs['tool']))
 
             # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
             if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
@@ -284,6 +294,7 @@ def get_user_perfs():
                 else:
                     user_perfs['steamcmd'] = options_arr[i+1]
                     changed_steamcmd_path = True
+                logger.info("Steamcmd path set as {0}".format(user_perfs['steamcmd']))
 
             # TODO '--collection to the documentaton
             if options_arr[i] == '--collection' or options_arr[i] == '-c':
@@ -292,12 +303,15 @@ def get_user_perfs():
                     user_perfs['collection_link'] = options_arr[i+1]
                     user_perfs['collectionmode'] = True
                     user_perfs['localcopy_path_override'] = options_arr[i+2]
+                logger.info("Collection link set from command line as {0}".format(user_perfs['collection_link']))
+                logger.info("localcopy path override set from command line as {0}".format(user_perfs['localcopy_path_override']))
                 
              # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
                 if tempval >= 1:
                     global addperformacefix
                     user_perfs['addperformacefix'] = True
+                logger.info("performance fix enabled from command line!")
 
             # TODO add it to the documentaton
             if options_arr[i] == '--backup':
@@ -305,27 +319,34 @@ def get_user_perfs():
                     # TODO check if link is good
                     user_perfs['max_saves'] = int(options_arr[i+1])
                     user_perfs['save_dir'] = options_arr[i+2]
+                logger.info("save dir for backups is set: {0} and max backup ammout is set to: {1}".format(user_perfs['save_dir'], user_perfs['max_saves']))
 
     # setting up default values and path handling
     if not changed_barotrauma_path:
         user_perfs['barotrauma'] = default_barotrauma_path
+        logger.info("barotrauma path set as default {0}".format(user_perfs['barotrauma']))
     if not os.path.isabs(user_perfs['barotrauma']):
         user_perfs['barotrauma'] = os.path.join(os.getcwd(), user_perfs['barotrauma'])
     if not changed_tool_path:
         user_perfs['tool'] = default_tool_path
+        logger.info("tool path set as default {0}".format(user_perfs['tool']))
     if not changed_steamcmd_path:
         user_perfs['steamcmd'] = default_steamcmd_path
+        logger.info("steamcmd path set as default {0}".format(user_perfs['steamcmd']))
     # TODO wtf is this
     if default_steamdir_path == "":
         user_perfs['steamdir'] = os.path.join(user_perfs['tool'], "steamdir")
     else:
         user_perfs['steamdir'] = default_steamdir_path
+        logger.info("steamdir path overriden {0}".format(user_perfs['steamdir']))
 
 
     if 'collection_link' in user_perfs and 'localcopy_path_override' in user_perfs:
         user_perfs['mode'] = "collection"
+        logger.info("Running in collection mode")
     else:
         user_perfs['mode'] = "config_player"
+        logger.info("Running in config_player mode")
 
 
     user_perfs['backup_path'] = os.path.join(user_perfs['tool'], "backup")
@@ -336,6 +357,7 @@ def get_user_perfs():
     if flush_previous_col:
         if os.path.exists(user_perfs['config_collectionmode_path']):
             os.remove(user_perfs['config_collectionmode_path'])
+        logger.info("Collection mode configuration flushed")
     elif os.path.exists(user_perfs['config_collectionmode_path']):
         collection_file = ""
         with open(user_perfs['config_collectionmode_path'], "r", encoding='utf8') as f:
@@ -344,6 +366,7 @@ def get_user_perfs():
         user_perfs['collection_link'] = arr[0]
         user_perfs['localcopy_path_override'] = arr[1]
         user_perfs['mode'] = "collection"
+        logger.info("Collection mode enabled from configuration")
     return user_perfs
 
 # yoinked from stackoverflow, works
@@ -353,8 +376,10 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
         for number_dir in number_dirs:
             pattern = "^\d*?$"
             if re.match(pattern, number_dir):
-                if os.path.exists(os.path.join(root_dst_dir, number_dir)):
-                    shutil.rmtree(os.path.join(root_dst_dir, number_dir))
+                root_dst_number_dir = os.path.join(root_dst_dir, number_dir)
+                if os.path.exists(dst_dir):
+                    shutil.rmtree(dst_dir)
+                    logger.info("Removed directory {0}".format(dst_dir))
     for src_dir, dirs, files in os.walk(root_src_dir):
         dst_dir = src_dir.replace(root_src_dir, root_dst_dir, 1)
         if not os.path.exists(dst_dir):
@@ -368,6 +393,7 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
                     continue
                 os.remove(dst_file)
             shutil.copy(src_file, dst_dir)
+        logger.info("Copied directory {0} to {1}".format(src_dir, dst_dir))
 
 def get_config_player_str(barotrauma_path):
     try:
@@ -420,6 +446,7 @@ def get_regularpackages(barotrauma_path):
     regularpackages = re.findall(pattern, filelist_str)
 
     if len(regularpackages) <= 0:
+        logger.info("Couldnt find regularpackages! This probbabbly means the tag is closed (<regularpackages/>)...")
         # patch for </regularpackages>, just in case
         # TODO a bit stupid, so rework it
         filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
@@ -428,12 +455,14 @@ def get_regularpackages(barotrauma_path):
             f.write(filelist_str)
         pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
         regularpackages = re.findall(pattern, filelist_str)
+        logger.info("Applied <regularpackages/> patch.")
         
     if len(regularpackages) > 0:
         return regularpackages[0]
     else:
         raise Exception("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
 
+# TODO rework it so its just getting installation time form filelist
 def get_recusive_modification_time_of_dir(origin_dir):
     modificationtime = 0
     for src_dir, dirs, files in os.walk(origin_dir):
@@ -441,6 +470,7 @@ def get_recusive_modification_time_of_dir(origin_dir):
             new_modificationtime = os.path.getmtime(os.path.join(src_dir, file_))
             if new_modificationtime > modificationtime:
                 modificationtime = new_modificationtime
+    logger.info("Timestamp for {0} is {1}".format(origin_dir, modificationtime))
     return modificationtime
 
 def get_localcopy_path(filelist_str):
@@ -514,11 +544,8 @@ def moddownloader(number_of_mod, steamdir_path, location_with_steamcmd):
 # usage of steamcmd on modlist
 def download_modlist(modlist, steamdir_path, location_with_steamcmd):
     numberofupdatedmods = 0
-    # '], where l_bar='{desc}: {percentage:3.0f}%|' and r_bar='| {n_fmt}/{total_fmt}{postfix} [{elapsed}<{remaining}, ' '{rate_fmt}]
     total_time = 0
-    # with tqdm(total=len(modlist), dynamic_ncols = True, ascii = True, unit="Mods", position=0, bar_format = "{desc}: {percentage:3.0f}%|{bar}| {n_fmt}/{total_fmt}Mods [E:{elapsed} R:{remaining}]", desc = "Update Progress: ", disable = not progressbar_functionality) as bar:
     iterator = 0
-    # bar.update()
 
     # get total size of modlist
     modlist_file_size = 0
@@ -547,6 +574,7 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
             proc = moddownloader(mod["ID"], steamdir_path, location_with_steamcmd)
             for line in io.TextIOWrapper(proc.stdout, encoding="utf-8"):
                 line = line.rstrip()
+                logger.info("Steamcmd output: {0}".format(line))
                 # steam connection check
                 if re.match(".*?" + "Connecting anonymously to Steam Public...OK" + ".*?", line):
                     print(_("[ModManger] Connected to steam! Beginning mod download..."))
@@ -741,6 +769,7 @@ def deleting_not_managedmods(not_managedmods):
     print(_("[ModManager] Removed {0} not managed now mods!").format(str(len(not_managedmods))))
 
 def main(user_perfs):
+    logger.info("User perfs: ".format(str(user_perfs)))
     # TODO fix this stupid shit, idk if that is my ocd but this amout of variables looks wrong
     warning_LFBnotinstalled = False
     requreslua = False
@@ -767,10 +796,12 @@ def main(user_perfs):
     if user_perfs['mode'] == "collection":
         collection_site = get_collectionsite(user_perfs['collection_link'])
         isvalid_collection_link = check_collection_link(collection_site)
+        logger.info("Collection link validity check is: {0}".format(isvalid_collection_link))
         
             
     if addperformacefix:
         modlist.insert(0, {'name': "Performance Fix", 'ID': "2701251094"})
+        logger.info("Perfromance fix has been added to modlist {0}".format(str(modlist)))
 
 
     if isvalid_collection_link and user_perfs['mode'] == "collection":
@@ -900,7 +931,7 @@ def main(user_perfs):
     for mod in modlist:
         # checking if mod is pure server-side or client side
         if is_pure_lua_mod(os.path.join(user_perfs['localcopy_path_override'], mod['ID'])):
-            number_of_pure_lua_mods += 1 
+            number_of_pure_lua_mods += 1
 
 
     # TODO rework
@@ -915,6 +946,7 @@ def main(user_perfs):
 
 
     # warnings about long modlists
+    logger.info("Number of mods: {0}".format(numberofmods_minuslua - number_of_pure_lua_mods))
     if numberofmods_minuslua - number_of_pure_lua_mods >= 30 and not disablewarnings:
         sys.stdout.write("\033[1;31m")
         print(_("[ModManager] I STRONGLY ADVISE TO SHORTEN YOUR MODLIST! It is very rare for players to join public game that has a lot of mods."))
@@ -932,6 +964,7 @@ if __name__ == '__main__':
     print(_("Wellcome to ModManager script!"))
     # gotta have it here even if it pains me
     user_perfs = get_user_perfs()
+    logger.info("Aqquired user perfs")
     while(True):
         if os.path.exists(os.path.join(user_perfs['tool'], "collection_save.txt")):
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))
