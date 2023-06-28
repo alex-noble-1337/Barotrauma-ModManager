@@ -97,11 +97,11 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             if sys.platform == 'win32':
                 # Unix ➡ Windows
                 content = content.replace(UNIX_LINE_ENDING, WINDOWS_LINE_ENDING)
-                logger.info("Changed from unix to windows line endings in {0}".format(file_path))
+                logger.debug("Changed from unix to windows line endings in {0}".format(file_path))
             else:
                 # Windows ➡ Unix
                 content = content.replace(WINDOWS_LINE_ENDING, UNIX_LINE_ENDING)
-                logger.info("Changed from windows to unix line endings in {0}".format(file_path))
+                logger.debug("Changed from windows to unix line endings in {0}".format(file_path))
             with open(file_path, 'wb') as open_file:
                 open_file.write(content)
 
@@ -143,10 +143,12 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             with open(file_path, 'w', encoding="utf8") as open_file:
                 open_file.write(content)
     if old_paths:
+        logger.warn("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['ID'], downloaded_mod['name']))
         if warnings_as_errors:
-            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!").format(downloaded_mod['ID'], downloaded_mod['name']))
+            print(_("Treating warnings as errors:"))
+            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['ID'], downloaded_mod['name'])))
         else:
-            print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!").format(downloaded_mod['ID'], downloaded_mod['name']))
+            print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['ID'], downloaded_mod['name'])))
 
 
     desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
@@ -161,7 +163,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             else:
                 if 'name' in downloaded_mod:
                     if def_file.attrib['name'] != downloaded_mod['name']:
-                        logger.info("Name of {0} was changed via steam! Applying workaround...".format(def_file.attrib['steamworkshopid']))
+                        logger.warning("Name of {0} was changed via steam! Applying workaround...".format(def_file.attrib['steamworkshopid']))
                         oldname = def_file.attrib['name']
                         def_file.attrib['name'] = downloaded_mod['name']
                         # if 'corepackage' in element.attrib:
@@ -184,15 +186,17 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                     else:
                         if 'altnames' in def_file.attrib:
                             def_file.attrib.pop('altnames')
-                            logger.info("Removed altnames attrib!")
+                            logger.warning("Removed altnames attrib!")
             if not 'steamworkshopid' in def_file.attrib:
                 def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
             else:
                 if def_file.attrib['steamworkshopid'] != downloaded_mod['ID']:
+                    logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
                     if warnings_as_errors:
-                        raise Exception(_("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                        raise Exception(_("Treating warnings as errors:") + "\n" + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
                     else:
-                        print(_("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                        print("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
+                        logger.info("Applying workaround for not matching steam id...")
                         # fix?
                         def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
             if not 'corepackage' in def_file.attrib:
@@ -209,8 +213,9 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             if not 'expectedhash' in def_file.attrib:
                 # we are srewed if this is missing
                 if len(def_content) > 0:
+                    logger.warn("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name'])
                     if warnings_as_errors:
-                        raise Exception(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                        raise Exception(_("Treating warnings as errors") + "\n" + _("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
                     else:
                         print(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
 
@@ -239,7 +244,40 @@ def get_user_perfs():
     changed_tool_path = False
     changed_steamcmd_path = False
     user_perfs = {'collectionmode': False}
+    if len(options_arr) >= 1:
+        for j in range(i + 1,len(options_arr)):
+            if options_arr[j] == '--toolpath' or options_arr[j] == '-t':
+                break
+            else:
+                tempval += 1
 
+            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
+            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
+                if tempval >= 2:
+                    if options_arr[i+1] == ".":
+                        user_perfs['tool'] = os.getcwd()
+                        changed_tool_path = True
+                    else:
+                        user_perfs['tool'] = options_arr[i+1]
+                        changed_tool_path = True
+                else:
+                    user_perfs['tool'] = os.getcwd()
+                    changed_tool_path = True
+                logger.info("Tool path is set as {0}".format(user_perfs['tool']))
+
+    if os.path.exists(os.path.join(user_perfs['tool'], "config.xml")):
+        with open(filelist_path, 'r', encoding="utf8") as open_file:
+            config_str = open_file.read()
+        config_xml = ET.fromstring(config_str)
+        configs = ['barotrauma', 'steamcmd', 'collection_link', 'collectionmode', 'localcopy_path_override',
+                   'addperformancefix', 'max_saves', 'save_dir']
+        for val in configs:
+            user_perfs[val] = config_xml.attrib[val]
+        # TODO get modlist(oldmanagedmods) in format same as ModLists(barotrauma generated)
+        
+
+    changed_barotrauma_path = False
+    changed_steamcmd_path = False
     # TODO go over this again, handing of command line arguments
     if len(options_arr) >= 1:
         for i in range(0,len(options_arr)):
@@ -264,20 +302,6 @@ def get_user_perfs():
                     user_perfs['barotrauma'] = os.getcwd()
                     changed_barotrauma_path = True
                 logger.info("Barotrauma path is set as {0}".format(user_perfs['barotrauma']))
-            
-            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
-            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
-                if tempval >= 2:
-                    if options_arr[i+1] == ".":
-                        user_perfs['tool'] = os.getcwd()
-                        changed_tool_path = True
-                    else:
-                        user_perfs['tool'] = options_arr[i+1]
-                        changed_tool_path = True
-                else:
-                    user_perfs['tool'] = os.getcwd()
-                    changed_tool_path = True
-                logger.info("Tool path is set as {0}".format(user_perfs['tool']))
 
             # --steamcmdpath or -s - path to your steamcmd or steamcmd.exe. Must be a path to THE FOLDER, not the program itself.  Does not accept ""
             if options_arr[i] == '--steamcmdpath' or options_arr[i] == '-s':
@@ -379,7 +403,7 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
                 root_dst_number_dir = os.path.join(root_dst_dir, number_dir)
                 if os.path.exists(dst_dir):
                     shutil.rmtree(dst_dir)
-                    logger.info("Removed directory {0}".format(dst_dir))
+                    logger.debug("Removed directory {0}".format(dst_dir))
     for src_dir, dirs, files in os.walk(root_src_dir):
         dst_dir = src_dir.replace(root_src_dir, root_dst_dir, 1)
         if not os.path.exists(dst_dir):
@@ -393,7 +417,7 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
                     continue
                 os.remove(dst_file)
             shutil.copy(src_file, dst_dir)
-        logger.info("Copied directory {0} to {1}".format(src_dir, dst_dir))
+        logger.debug("Copied directory {0} to {1}".format(src_dir, dst_dir))
 
 def get_config_player_str(barotrauma_path):
     try:
@@ -403,6 +427,7 @@ def get_config_player_str(barotrauma_path):
     except Exception as e:
         print(_("[ModManager] Could not find the config_player.xml! Check your barotrauma path!"))
         print(_("[ModManager] Barotrauma path: {0}").format(config_player_path))
+        logger.critical("Fatal Exception occured!\n" + e)
         print(e)
     return config_player_str 
 
@@ -440,13 +465,14 @@ def get_regularpackages(barotrauma_path):
     except Exception as e:
         print(_("[ModManager] Could not find the config_player.xml! Check your barotrauma path!"))
         print(_("[ModManager] Barotrauma path:").format(filelist_path))
+        logger.critical("Fatal Exception occured!\n" + e)
         print(e)
 
     pattern = "<regularpackages>[\s\S]*?<\/regularpackages>"
     regularpackages = re.findall(pattern, filelist_str)
 
     if len(regularpackages) <= 0:
-        logger.info("Couldnt find regularpackages! This probbabbly means the tag is closed (<regularpackages/>)...")
+        logger.warning("Couldnt find regularpackages! This probbabbly means the tag is closed (<regularpackages/>)...")
         # patch for </regularpackages>, just in case
         # TODO a bit stupid, so rework it
         filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
@@ -455,12 +481,13 @@ def get_regularpackages(barotrauma_path):
             f.write(filelist_str)
         pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
         regularpackages = re.findall(pattern, filelist_str)
-        logger.info("Applied <regularpackages/> patch.")
+        logger.warning("Applied <regularpackages/> patch.")
         
     if len(regularpackages) > 0:
         return regularpackages[0]
     else:
-        raise Exception("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
+        logger.critical("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
+        raise Exception(_("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
 
 # TODO rework it so its just getting installation time form filelist
 def get_recusive_modification_time_of_dir(origin_dir):
@@ -470,7 +497,7 @@ def get_recusive_modification_time_of_dir(origin_dir):
             new_modificationtime = os.path.getmtime(os.path.join(src_dir, file_))
             if new_modificationtime > modificationtime:
                 modificationtime = new_modificationtime
-    logger.info("Timestamp for {0} is {1}".format(origin_dir, modificationtime))
+    logger.debug("Timestamp for {0} is {1}".format(origin_dir, modificationtime))
     return modificationtime
 
 def get_localcopy_path(filelist_str):
@@ -574,7 +601,7 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
             proc = moddownloader(mod["ID"], steamdir_path, location_with_steamcmd)
             for line in io.TextIOWrapper(proc.stdout, encoding="utf-8"):
                 line = line.rstrip()
-                logger.info("Steamcmd output: {0}".format(line))
+                logger.debug("Steamcmd output: {0}".format(line))
                 # steam connection check
                 if re.match(".*?" + "Connecting anonymously to Steam Public...OK" + ".*?", line):
                     print(_("[ModManger] Connected to steam! Beginning mod download..."))
@@ -597,7 +624,8 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
                         # bar.update(iterator)
                         # bar.update()
                     else:
-                        raise Exception("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]" + str(line))
+                        logger.critical("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]{str:line}".format())
+                        raise Exception(_("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]{str:line}".format()))
                 # else:
             proc.wait()
             output = proc.returncode
@@ -611,7 +639,8 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
                 total_time += one_time
                 print()
             else:
-                raise Exception("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!" + str(proc.errors))
+                logger.critical("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!\n{0}".format(str(proc.errors)))
+                raise Exception(_("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!\n{0}".format(str(proc.errors))))
         else:
             iterator += 1
             print(_("[ModManager] Skipped mod!: {name:s} ( + {ID:s})").format(**mod))
@@ -718,6 +747,7 @@ def check_collection_link(collection_site, no_input = False):
             user_command = input().lower()
             print(_("[ModManger] Collection link INVALID. Do you want to exit the script? ((Y)es / (n)o):"))
         if user_command == "yes" or user_command == "y":
+            logger.critical("Collection link INVALID! Re-enable Collection mode.")
             raise Exception(_("Collection link INVALID! Re-enable Collection mode."))
         isvalid_collection_link = False
     else:
@@ -820,7 +850,7 @@ def main(user_perfs):
             
     if addperformacefix:
         modlist.insert(0, {'name': "Performance Fix", 'ID': "2701251094"})
-        logger.info("Perfromance fix has been added to modlist {0}".format(str(modlist)))
+        logger.debug("Perfromance fix has been added to modlist {0}".format(str(modlist)))
 
 
     if isvalid_collection_link and user_perfs['mode'] == "collection":
@@ -983,7 +1013,7 @@ if __name__ == '__main__':
     print(_("Wellcome to ModManager script!"))
     # gotta have it here even if it pains me
     user_perfs = get_user_perfs()
-    logger.info("Aqquired user perfs")
+    logger.info("Aqquired user perfs: {0}".format(str(user_perfs)))
     while(True):
         if os.path.exists(os.path.join(user_perfs['tool'], "collection_save.txt")):
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))

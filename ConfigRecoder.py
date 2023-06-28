@@ -82,7 +82,8 @@ def get_modlist_collection_site(collection_site):
                             break
         else:
             # throw exeption invalid collection
-            raise Exception("[ModManager]Could not find mods in the collection specified!")
+            logger.critical("[ModManager]Could not find mods in the collection specified!")
+            raise Exception(_("[ModManager]Could not find mods in the collection specified!"))
 
         # mods = []
         for collectionItemDetails in collectionItemDetailss:
@@ -100,7 +101,8 @@ def get_modlist_collection_site(collection_site):
             mods.append(mod)
     else:
         # throw exeption invalid collection
-        raise Exception("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
+        logger.critical("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
+        raise Exception(_("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!"))
     return mods
 
 def textfilef(fileposition):
@@ -180,26 +182,30 @@ def get_modlist_data_webapi(modlist):
     output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
     if output.status_code == 200:
         data = json.loads(output.text)
-    publishedfiledetails = data['response']['publishedfiledetails']
-    for i in range(len(new_modlist)):
-        for moddetails in publishedfiledetails:
-            if moddetails['publishedfileid'] == new_modlist[i]['ID']:
-                if 'time_updated' in moddetails:
-                    timestamp = moddetails['time_updated']
-                elif 'time_created' in moddetails:
-                    timestamp = moddetails['time_created']
-                else:
-                    timestamp = 0
-                new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
-                if 'file_size' in moddetails:
-                    new_modlist[i]['file_size'] = moddetails['file_size']
-                if 'title' in moddetails:
-                    if not 'name' in new_modlist[i]:
-                        new_modlist[i]['name'] = moddetails['title']
-                    elif moddetails['title'] != new_modlist[i]['name']:
-                        new_modlist[i]['name'] = moddetails['title']
+        publishedfiledetails = data['response']['publishedfiledetails']
+        for i in range(len(new_modlist)):
+            for moddetails in publishedfiledetails:
+                if moddetails['publishedfileid'] == new_modlist[i]['ID']:
+                    if 'time_updated' in moddetails:
+                        timestamp = moddetails['time_updated']
+                    elif 'time_created' in moddetails:
+                        timestamp = moddetails['time_created']
+                    else:
+                        logger.warning("No time of creation or update found! {0}".format(moddetails['publishedfileid']))
+                        timestamp = 0
+                    new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
+                    if 'file_size' in moddetails:
+                        new_modlist[i]['file_size'] = moddetails['file_size']
+                    if 'title' in moddetails:
+                        if not 'name' in new_modlist[i]:
+                            new_modlist[i]['name'] = moddetails['title']
+                        elif moddetails['title'] != new_modlist[i]['name']:
+                            new_modlist[i]['name'] = moddetails['title']
                 
-    return new_modlist
+        return new_modlist
+    else: 
+        logger.critical("Connection to steam WebAPI FAILED!")
+        raise Exception(_("Connection to steam WebAPI FAILED!"))
 
 def get_modname(modsite):
     pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
