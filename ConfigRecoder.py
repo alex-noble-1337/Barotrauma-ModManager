@@ -6,6 +6,7 @@ import sys
 import os
 import re
 import shutil
+import xml.etree.ElementTree as ET
 try:
     import requests
 except ImportError:
@@ -20,7 +21,6 @@ import json
 
 import time
 import datetime # for current time
-
 
 # TODO use a fucking API instead i think
 # TODO this is main bottleneck, need to optimize it
@@ -282,6 +282,16 @@ def get_modlist_collection_site_legacy(collection_site, mods, input_options = {'
     if addlastupdated or dependencies:
         mods = get_modlist_data(mods, addlastupdated, dependencies)
     return mods
+
+def modlist_to_ModListsXml(managed_mods, isVanilla = True):
+    modlist_xml = ET.Element('mods')
+    modlist_xml.attrib['name'] = "Managed Mods"
+
+    for managed_mod in managed_mods:
+        mod = ET.SubElement(modlist_xml, 'TODOWorkshopLocal')
+        mod.attrib['name'] = "TODO"
+        mod.attrib['id'] = str(managed_mod)
+    return modlist_xml
 
 def main():
     moddirectory = "C:/Users/milord/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"

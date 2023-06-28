@@ -28,6 +28,7 @@ import sys
 import io
 import xml.etree.ElementTree as ET
 
+
 import logging
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)
@@ -42,6 +43,7 @@ from ConfigRecoder import get_modlist_collection_site
 from ConfigRecoder import collectionf
 from ConfigRecoder import get_modlist_data_webapi
 from configbackup import backupBarotraumaData
+from ConfigRecoder import modlist_to_ModListsXml
 import BaroRewrites
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them
@@ -264,6 +266,9 @@ def get_user_perfs():
                     user_perfs['tool'] = os.getcwd()
                     changed_tool_path = True
                 logger.info("Tool path is set as {0}".format(user_perfs['tool']))
+    if not changed_tool_path:
+        user_perfs['tool'] = default_tool_path
+        logger.info("tool path set as default {0}".format(user_perfs['tool']))
 
     if os.path.exists(os.path.join(user_perfs['tool'], "config.xml")):
         with open(filelist_path, 'r', encoding="utf8") as open_file:
@@ -351,9 +356,6 @@ def get_user_perfs():
         logger.info("barotrauma path set as default {0}".format(user_perfs['barotrauma']))
     if not os.path.isabs(user_perfs['barotrauma']):
         user_perfs['barotrauma'] = os.path.join(os.getcwd(), user_perfs['barotrauma'])
-    if not changed_tool_path:
-        user_perfs['tool'] = default_tool_path
-        logger.info("tool path set as default {0}".format(user_perfs['tool']))
     if not changed_steamcmd_path:
         user_perfs['steamcmd'] = default_steamcmd_path
         logger.info("steamcmd path set as default {0}".format(user_perfs['steamcmd']))
@@ -694,12 +696,25 @@ def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
     regularpackages_new += "    </regularpackages>"
     return regularpackages_new
 
-def save_managedmods(managed_mods, managed_mods_path):
-    managed_mods_str = ""
-    for managed_mod in managed_mods:
-        managed_mods_str += managed_mod + "\n"
-    with open(managed_mods_path, "w", encoding='utf8') as f:
-        f.write(managed_mods_str)
+def save_managedmods(managed_mods, managed_mods_path, user_perfs):
+    # managed_mods_str = ""
+    # for managed_mod in managed_mods:
+    #     managed_mods_str += managed_mod + "\n"
+    # with open(managed_mods_path, "w", encoding='utf8') as f:
+    #     f.write(managed_mods_str)
+    config_xml = ET.Element("config")
+    configs = ['barotrauma', 'steamcmd', 'collection_link', 'collectionmode', 'localcopy_path_override',
+               'addperformancefix', 'max_saves', 'save_dir']
+    for val in configs:
+        if val in user_perfs:
+            config_xml.attrib[val] = str(user_perfs[val])
+        else:
+            config_xml.attrib[val] = ""
+    
+    config_xml.append(modlist_to_ModListsXml(managed_mods))
+
+    with open(os.path.join(user_perfs['tool'], "config.xml"), 'wb') as open_file:
+        open_file.write(ET.tostring(config_xml))
 
 def get_old_managedmods(managed_mods_path):
     # we first need to get all managed mods
@@ -817,7 +832,7 @@ def deleting_not_managedmods(not_managedmods):
             shutil.rmtree(not_managedmod)
     print(_("[ModManager] Removed {0} not managed now mods!").format(str(len(not_managedmods))))
 
-def main(user_perfs):
+def modmanager(user_perfs):
     logger.info("User perfs: ".format(str(user_perfs)))
     # TODO fix this stupid shit, idk if that is my ocd but this amout of variables looks wrong
     warning_LFBnotinstalled = False
@@ -937,7 +952,7 @@ def main(user_perfs):
     if isvalid_collection_link and user_perfs['mode'] == "collection":
         with open(user_perfs['config_collectionmode_path'], "w", encoding='utf8') as f:
             f.write(user_perfs['collection_link'] + " " + user_perfs['localcopy_path_override'])
-    save_managedmods(managed_mods, user_perfs['managedmods_path'])
+    save_managedmods(managed_mods, user_perfs['managedmods_path'], user_perfs)
 
 
     # lastupdated functionality
@@ -1009,7 +1024,7 @@ def main(user_perfs):
         sys.stdout.write("\033[0;0m")
         time.sleep(20)
 
-if __name__ == '__main__':
+def main():
     print(_("Wellcome to ModManager script!"))
     # gotta have it here even if it pains me
     user_perfs = get_user_perfs()
@@ -1025,7 +1040,7 @@ if __name__ == '__main__':
             print(_("[ModManager] Do you want to update mods? ((Y)es / (n)o): "))
         user_command = input().lower()
         if user_command == "yes" or user_command == "y":
-            main(user_perfs)
+            modmanager(user_perfs)
             break
         elif user_command == "no" or user_command == "n":
             break
@@ -1045,7 +1060,7 @@ if __name__ == '__main__':
                 if 'collectionmode' in user_perfs:
                     user_perfs.pop('collectionmode')
             flush_previous_col = True
-            main(user_perfs)
+            modmanager(user_perfs)
             break
         elif user_command == "help" or user_command == "h":
             # TODO rework it to get Available modes from readme
@@ -1064,3 +1079,10 @@ if __name__ == '__main__':
             continue
         else:
             print(_("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\""))
+
+if __name__ == '__main__':
+    # with open("config_player.xml", 'r', encoding="utf8") as f:
+    #     file_str = f.read()
+    #     config_player_xml = ET.fromstring(file_str)
+    # print(config_player_xml)
+    main()

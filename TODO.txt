@@ -8,6 +8,7 @@
     + error after exceptions
 - set up locale change, but remember to force steamcmd language on statup
 - config file in xml instead of get_user_perfs
+    - TODO shitty formatting fix it
 
 
 
