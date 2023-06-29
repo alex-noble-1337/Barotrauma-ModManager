@@ -182,14 +182,14 @@ def test_get_localcopy_path():
         raise Exception("Paths localcopy {correct_localcopy}(should be), {localcopy}(is now) not equal!")
 
 def test_get_modlist_regularpackages():
-    correct_modlist = []
+    correct_modlist = [{'path': 'LocalMods/2559634234/filelist.xml', 'ID': '2559634234'}, {'path': 'LocalMods/2532991202/filelist.xml', 'ID': '2532991202'}, {'path': 'LocalMods/2526236489/filelist.xml', 'ID': '2526236489'}, {'path': 'LocalMods/2907491279/filelist.xml', 'ID': '2907491279'}, {'path': 'LocalMods/2764968387/filelist.xml', 'ID': '2764968387'}, {'path': 'LocalMods/2911392334/filelist.xml', 'ID': '2911392334'}, {'path': 'LocalMods/2776270649/filelist.xml', 'ID': '2776270649'}, {'path': 'LocalMods/2807556435/filelist.xml', 'ID': '2807556435'}, {'path': 'LocalMods/2564921308/filelist.xml', 'ID': '2564921308'}, {'path': 'LocalMods/2547888957/filelist.xml', 'ID': '2547888957'}, {'path': 'LocalMods/2161488150/filelist.xml', 'ID': '2161488150'}, {'path': 'LocalMods/2538084355/filelist.xml', 'ID': '2538084355'}, {'path': 'LocalMods/2831987252/filelist.xml', 'ID': '2831987252'}, {'path': 'LocalMods/2834851130/filelist.xml', 'ID': '2834851130'}, {'path': 'LocalMods/2909716869/filelist.xml', 'ID': '2909716869'}, {'path': 'LocalMods/2961385886/filelist.xml', 'ID': '2961385886'}, {'path': 'LocalMods/2085783214/filelist.xml', 'ID': '2085783214'}, {'path': 'LocalMods/2389600483/filelist.xml', 'ID': '2389600483'}, {'path': 'LocalMods/2788543375/filelist.xml', 'ID': '2788543375'}, {'path': 'LocalMods/2764140582/filelist.xml', 'ID': '2764140582'}, {'path': 'LocalMods/2852315967/filelist.xml', 'ID': '2852315967'}, {'path': 'LocalMods/2955139345/filelist.xml', 'ID': '2955139345'}, {'path': 'LocalMods/2544952900/filelist.xml', 'ID': '2544952900'}, {'path': 'LocalMods/2804655816/filelist.xml', 'ID': '2804655816'}, {'path': 'LocalMods/2912049119/filelist.xml', 'ID': '2912049119'}, {'path': 'LocalMods/2655920928/filelist.xml', 'ID': '2655920928'}, {'path': 'LocalMods/2948537269/filelist.xml', 'ID': '2948537269'}, {'path': 'LocalMods/2260683656/filelist.xml', 'ID': '2260683656'}, {'path': 'LocalMods/2972196919/filelist.xml', 'ID': '2972196919'}, {'path': 'LocalMods/2390137099/filelist.xml', 'ID': '2390137099'}, {'path': 'LocalMods/2838076686/filelist.xml', 'ID': '2838076686'}, {'path': 'LocalMods/2940102835/filelist.xml', 'ID': '2940102835'}]
     with open("test_localcopy.xml", "r", encoding='utf8') as f:
         regularpackages = f.read()
     # get modlist from regularpackages
-    modlist = ModManager.get_modlist_regularpackages(regularpackages)
+    modlist = ModManager.get_modlist_regularpackages(regularpackages, "LocalMods")
     # compare it to the expected output
     if correct_modlist != modlist:
-        raise Exception("Modlists {correct_modlist}(should be), {modlist}(is now) not equal!")
+        raise Exception("Modlists {0}(should be), {1}(is now) not equal!".format(correct_modlist, modlist))
 
 def test_remove_duplicates():
     modlist = []
@@ -334,4 +334,10 @@ if __name__ == '__main__':
     # somewhat works
     test_FIX_barodev_moment()
     # what? you expect me to run by hand? im lazy
-    test_main()
+    # test_main()
+        # with open("config_player.xml", 'r', encoding="utf8") as f:
+    #     file_str = f.read()
+    #     config_player_xml = ET.fromstring(file_str)
+    # print(config_player_xml)
+        # user_perfs = get_user_perfs()
+    # save_managedmods(user_perfs['old_managedmods'], user_perfs)
