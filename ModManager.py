@@ -269,18 +269,32 @@ def get_user_perfs():
     if not changed_tool_path:
         user_perfs['tool'] = default_tool_path
         logger.info("tool path set as default {0}".format(user_perfs['tool']))
+    user_perfs['config_path'] = os.path.join(user_perfs['tool'], "config.xml")
 
     if os.path.exists(os.path.join(user_perfs['tool'], "config.xml")):
-        with open(filelist_path, 'r', encoding="utf8") as open_file:
-            config_str = open_file.read()
-        config_xml = ET.fromstring(config_str)
-        configs = ['barotrauma', 'steamcmd', 'collection_link', 'collectionmode', 'localcopy_path_override',
+        with open(user_perfs['config_path'] , 'r', encoding="utf8") as f:
+            config_xml = ET.fromstring(f.read())
+        configs = ['barotrauma', 'steamcmd', 'collection_link', 'collectionmode', 'localcopy_path',
                    'addperformancefix', 'max_saves', 'save_dir']
         for val in configs:
-            user_perfs[val] = config_xml.attrib[val]
+            if val in configs and val in config_xml.attrib:
+                if config_xml.attrib[val] != '':
+                    if config_xml.attrib[val] in ["False", "True"]:
+                        user_perfs[val] = bool(config_xml.attrib[val])
+                    else:
+                        user_perfs[val] = config_xml.attrib[val]
         # TODO get modlist(oldmanagedmods) in format same as ModLists(barotrauma generated)
-        
-
+        old_managedmods = []
+        if 'localcopy_path' in user_perfs or 'localcopy_path' in user_perfs:
+            for subconfig in config_xml:
+                if subconfig.tag.lower() == 'mods':
+                    for mod in subconfig:
+                        if mod.tag in ['Workshop', 'Local']:
+                            # TODO get type of its workshop from tag
+                            # TODO get name from name attrib
+                            # TODO get id rather than full path
+                            old_managedmods.append(os.path.join(user_perfs['localcopy_path'], mod.attrib['id']))
+    user_perfs['old_managedmods'] = old_managedmods
     changed_barotrauma_path = False
     changed_steamcmd_path = False
     # TODO go over this again, handing of command line arguments
@@ -331,9 +345,9 @@ def get_user_perfs():
                     # TODO check if link is good
                     user_perfs['collection_link'] = options_arr[i+1]
                     user_perfs['collectionmode'] = True
-                    user_perfs['localcopy_path_override'] = options_arr[i+2]
+                    user_perfs['localcopy_path'] = options_arr[i+2]
                 logger.info("Collection link set from command line as {0}".format(user_perfs['collection_link']))
-                logger.info("localcopy path override set from command line as {0}".format(user_perfs['localcopy_path_override']))
+                logger.info("localcopy path override set from command line as {0}".format(user_perfs['localcopy_path']))
                 
              # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
@@ -359,6 +373,8 @@ def get_user_perfs():
     if not changed_steamcmd_path:
         user_perfs['steamcmd'] = default_steamcmd_path
         logger.info("steamcmd path set as default {0}".format(user_perfs['steamcmd']))
+    if not 'addperformancefix' in user_perfs:
+        user_perfs['addperformancefix'] = False
     # TODO wtf is this
     if default_steamdir_path == "":
         user_perfs['steamdir'] = os.path.join(user_perfs['tool'], "steamdir")
@@ -367,7 +383,7 @@ def get_user_perfs():
         logger.info("steamdir path overriden {0}".format(user_perfs['steamdir']))
 
 
-    if 'collection_link' in user_perfs and 'localcopy_path_override' in user_perfs:
+    if 'collection_link' in user_perfs and 'localcopy_path' in user_perfs:
         user_perfs['mode'] = "collection"
         logger.info("Running in collection mode")
     else:
@@ -379,7 +395,6 @@ def get_user_perfs():
     user_perfs['get_dependencies'] = debug_dependencies_functionality
     user_perfs['config_collectionmode_path'] = os.path.join(user_perfs['tool'], "collection_save.txt")
     user_perfs['managedmods_path'] = os.path.join(user_perfs['tool'], "managed_mods.txt")
-    user_perfs['old_managedmods'] = get_old_managedmods(user_perfs['managedmods_path'])
     if flush_previous_col:
         if os.path.exists(user_perfs['config_collectionmode_path']):
             os.remove(user_perfs['config_collectionmode_path'])
@@ -390,7 +405,7 @@ def get_user_perfs():
             collection_file = f.read()
         arr = collection_file.split(" ", 1)
         user_perfs['collection_link'] = arr[0]
-        user_perfs['localcopy_path_override'] = arr[1]
+        user_perfs['localcopy_path'] = arr[1]
         user_perfs['mode'] = "collection"
         logger.info("Collection mode enabled from configuration")
     return user_perfs
@@ -696,14 +711,14 @@ def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
     regularpackages_new += "    </regularpackages>"
     return regularpackages_new
 
-def save_managedmods(managed_mods, managed_mods_path, user_perfs):
+def save_managedmods(managed_mods, user_perfs, corecontentpackage = "Vanilla"):
     # managed_mods_str = ""
     # for managed_mod in managed_mods:
     #     managed_mods_str += managed_mod + "\n"
     # with open(managed_mods_path, "w", encoding='utf8') as f:
     #     f.write(managed_mods_str)
     config_xml = ET.Element("config")
-    configs = ['barotrauma', 'steamcmd', 'collection_link', 'collectionmode', 'localcopy_path_override',
+    configs = ['barotrauma', 'steamcmd', 'collection_link', 'collectionmode', 'localcopy_path',
                'addperformancefix', 'max_saves', 'save_dir']
     for val in configs:
         if val in user_perfs:
@@ -711,12 +726,13 @@ def save_managedmods(managed_mods, managed_mods_path, user_perfs):
         else:
             config_xml.attrib[val] = ""
     
-    config_xml.append(modlist_to_ModListsXml(managed_mods))
+    config_xml.append(modlist_to_ModListsXml(managed_mods, corecontentpackage))
+    ET.indent(config_xml, space="\t", level=0)
 
     with open(os.path.join(user_perfs['tool'], "config.xml"), 'wb') as open_file:
         open_file.write(ET.tostring(config_xml))
 
-def get_old_managedmods(managed_mods_path):
+def get_old_managedmods(user_perfs):
     # we first need to get all managed mods
     old_managed_mods = ""
 
@@ -863,7 +879,7 @@ def modmanager(user_perfs):
         logger.info("Collection link validity check is: {0}".format(isvalid_collection_link))
         
             
-    if addperformacefix:
+    if user_perfs['addperformacefix']:
         modlist.insert(0, {'name': "Performance Fix", 'ID': "2701251094"})
         logger.debug("Perfromance fix has been added to modlist {0}".format(str(modlist)))
 
@@ -873,8 +889,8 @@ def modmanager(user_perfs):
         modlist.extend(get_modlist_collection_site(collection_site))
     else:
         print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
-        if user_perfs['localcopy_path_override'] == "":
-            user_perfs['localcopy_path_override'] = get_localcopy_path(regularpackages)
+        if user_perfs['localcopy_path'] == "":
+            user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
         modlist.extend(get_modlist_regularpackages(regularpackages))
 
 
@@ -897,7 +913,7 @@ def modmanager(user_perfs):
 
     # TODO todo changed below condition cuz it disslallowed pwd
     if 'save_dir' in user_perfs and 'max_saves' in user_perfs:
-        backupBarotraumaData(user_perfs['barotrauma'], user_perfs['localcopy_path_override'], user_perfs['save_dir'], user_perfs['backup_path'], user_perfs['max_saves'])
+        backupBarotraumaData(user_perfs['barotrauma'], user_perfs['localcopy_path'], user_perfs['save_dir'], user_perfs['backup_path'], user_perfs['max_saves'])
     if requrescs and not hascs:
         # TODO kind hacky way to do this
         temp_luacs = [{'name': "Cs For Barotrauma", 'ID': "2795927223"}]
@@ -917,7 +933,7 @@ def modmanager(user_perfs):
         print_modlist(modlist)
 
 
-    for modid in os.listdir(user_perfs['localcopy_path_override']):
+    for modid in os.listdir(user_perfs['localcopy_path']):
         if re.match("^\d*?$", modid):
             modlist_localcopy.append(modid)
 
@@ -928,17 +944,17 @@ def modmanager(user_perfs):
         user_perfs['tool'] = os.path.join(os.getcwd(), user_perfs['tool'])
     if not os.path.isabs(user_perfs['steamdir']):
         user_perfs['steamdir'] = os.path.join(os.getcwd(), user_perfs['steamdir'])
-    if not os.path.isabs(user_perfs['localcopy_path_override']):
-        user_perfs['localcopy_path_override'] = os.path.join(os.getcwd(), user_perfs['localcopy_path_override'])
+    if not os.path.isabs(user_perfs['localcopy_path']):
+        user_perfs['localcopy_path'] = os.path.join(os.getcwd(), user_perfs['localcopy_path'])
     user_perfs['steamdir'] = os.path.realpath(user_perfs['steamdir'])
 
 
-    managed_mods = get_managedmods(modlist, user_perfs['localcopy_path_override'])
+    managed_mods = get_managedmods(modlist, user_perfs['localcopy_path'])
     not_managedmods = get_not_managedmods(user_perfs['old_managedmods'], managed_mods)
 
 
     # re-create config_player
-    new_regularpackages = set_modlist_regularpackages(modlist, user_perfs['localcopy_path_override'], user_perfs['barotrauma'])
+    new_regularpackages = set_modlist_regularpackages(modlist, user_perfs['localcopy_path'], user_perfs['barotrauma'])
     with open(config_player_path, "r", encoding='utf8') as f:
         filelist_str = f.read()
     filelist_str = filelist_str.replace(regularpackages, new_regularpackages)
@@ -951,13 +967,13 @@ def modmanager(user_perfs):
     # save configs
     if isvalid_collection_link and user_perfs['mode'] == "collection":
         with open(user_perfs['config_collectionmode_path'], "w", encoding='utf8') as f:
-            f.write(user_perfs['collection_link'] + " " + user_perfs['localcopy_path_override'])
-    save_managedmods(managed_mods, user_perfs['managedmods_path'], user_perfs)
+            f.write(user_perfs['collection_link'] + " " + user_perfs['localcopy_path'])
+    save_managedmods(managed_mods, user_perfs)
 
 
     # lastupdated functionality
     if user_perfs['mode'] == "collection":
-        up_to_date_mods = get_up_to_date_mods(modlist, user_perfs['localcopy_path_override'])
+        up_to_date_mods = get_up_to_date_mods(modlist, user_perfs['localcopy_path'])
         modlist = remove_up_to_date_mods(modlist, up_to_date_mods)
 
 
@@ -969,7 +985,7 @@ def modmanager(user_perfs):
 
     # config backup and conservation
     backup_option(recomended_configs, steamcmd_downloads)
-    backup_option(user_perfs['localcopy_path_override'], steamcmd_downloads)
+    backup_option(user_perfs['localcopy_path'], steamcmd_downloads)
 
 
     deleting_not_managedmods(not_managedmods)
@@ -979,7 +995,7 @@ def modmanager(user_perfs):
     for mod in modlist:
         mod_path = os.path.join(steamcmd_downloads, mod['ID'])
         FIX_barodev_moment(mod, mod_path)
-        robocopysubsttute(mod_path, os.path.join(user_perfs['localcopy_path_override'], mod['ID']))
+        robocopysubsttute(mod_path, os.path.join(user_perfs['localcopy_path'], mod['ID']))
 
 
     # finishing anc cleaning up
@@ -994,7 +1010,7 @@ def modmanager(user_perfs):
     # accessing filelists of mods
     for mod in modlist:
         # checking if mod is pure server-side or client side
-        if is_pure_lua_mod(os.path.join(user_perfs['localcopy_path_override'], mod['ID'])):
+        if is_pure_lua_mod(os.path.join(user_perfs['localcopy_path'], mod['ID'])):
             number_of_pure_lua_mods += 1
 
 
@@ -1049,8 +1065,8 @@ def main():
             collection_url = input()
             if collection_url != "n":
                 print(_("[ModManager] Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: "))
-                if not 'localcopy_path_override' in user_perfs:
-                    user_perfs['localcopy_path_override'] = input()
+                if not 'localcopy_path' in user_perfs:
+                    user_perfs['localcopy_path'] = input()
                     # TODO collection check, if link is valid
                     user_perfs['collection_link'] = collection_url
                     user_perfs['collectionmode'] = True
@@ -1086,3 +1102,5 @@ if __name__ == '__main__':
     #     config_player_xml = ET.fromstring(file_str)
     # print(config_player_xml)
     main()
+    # user_perfs = get_user_perfs()
+    # save_managedmods(user_perfs['old_managedmods'], user_perfs)

@@ -283,14 +283,21 @@ def get_modlist_collection_site_legacy(collection_site, mods, input_options = {'
         mods = get_modlist_data(mods, addlastupdated, dependencies)
     return mods
 
-def modlist_to_ModListsXml(managed_mods, isVanilla = True):
+def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
     modlist_xml = ET.Element('mods')
     modlist_xml.attrib['name'] = "Managed Mods"
 
+    corecontentpackage_xml = ET.SubElement(modlist_xml, corecontentpackage)
+
     for managed_mod in managed_mods:
-        mod = ET.SubElement(modlist_xml, 'TODOWorkshopLocal')
-        mod.attrib['name'] = "TODO"
-        mod.attrib['id'] = str(managed_mod)
+        pattern = "^\d*?$"
+        if re.match(pattern, str(os.path.basename(managed_mod))):
+            mod = ET.SubElement(modlist_xml, 'Workshop')
+            mod.attrib['name'] = "TODO"
+            mod.attrib['id'] = str(os.path.basename(managed_mod))
+        else:
+            mod = ET.SubElement(modlist_xml, 'Local')
+            mod.attrib['name'] = str(os.path.basename(managed_mod))
     return modlist_xml
 
 def main():
