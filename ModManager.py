@@ -5,7 +5,7 @@ default_barotrauma_path = ""
 default_tool_path = ""
 default_steamcmd_path = "steamcmd"
 default_steamdir_path = "/home/milord/testdirectory/steamdir"
-addperformacefix = False
+addperformancefix = False
 disablewarnings = False
 # TODO Still testing and working on it
 flush_previous_col = False
@@ -28,10 +28,13 @@ import sys
 import io
 import xml.etree.ElementTree as ET
 
-
 import logging
-logging.basicConfig(level=logging.INFO)
+import logging.config
 logger = logging.getLogger(__name__)
+
+current_time = datetime.datetime.now()
+current_time = current_time.replace(second=0, microsecond=0)
+current_time = str(current_time)[0:-3]
 
 import gettext
 _ = gettext.gettext
@@ -160,6 +163,17 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
 
         def_file = ET.fromstring(filelist_str)
         if def_file.tag.lower() == "contentpackage":
+            if not 'steamworkshopid' in def_file.attrib:
+                def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
+            else:
+                if def_file.attrib['steamworkshopid'] != downloaded_mod['ID']:
+                    logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
+                    if warnings_as_errors:
+                        raise Exception(_("Treating warnings as errors:") + "\n" + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                    else:
+                        logger.info("Applying workaround for not matching steam id...")
+                        # fix?
+                        def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
             if not 'name' in def_file.attrib:
                 def_file.attrib['name'] = downloaded_mod['name']
             else:
@@ -189,18 +203,6 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                         if 'altnames' in def_file.attrib:
                             def_file.attrib.pop('altnames')
                             logger.warning("Removed altnames attrib!")
-            if not 'steamworkshopid' in def_file.attrib:
-                def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
-            else:
-                if def_file.attrib['steamworkshopid'] != downloaded_mod['ID']:
-                    logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
-                    if warnings_as_errors:
-                        raise Exception(_("Treating warnings as errors:") + "\n" + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
-                    else:
-                        print("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
-                        logger.info("Applying workaround for not matching steam id...")
-                        # fix?
-                        def_file.attrib['steamworkshopid'] = downloaded_mod['ID']
             if not 'corepackage' in def_file.attrib:
                 def_file.attrib['corepackage'] = "false"
             if not 'modversion' in def_file.attrib:
@@ -215,11 +217,9 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
             if not 'expectedhash' in def_file.attrib:
                 # we are srewed if this is missing
                 if len(def_content) > 0:
-                    logger.warn("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name'])
+                    logger.warn("Mod of id:{0} and name: {1} does not have hash! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
                     if warnings_as_errors:
                         raise Exception(_("Treating warnings as errors") + "\n" + _("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
-                    else:
-                        print(_("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
 
             # i dont understand it, this is shit, too hacky
             # TOO BAD!
@@ -246,13 +246,13 @@ def get_user_perfs():
     changed_tool_path = False
     changed_steamcmd_path = False
     user_perfs = {'collectionmode': False}
+    old_managedmods = []
     if len(options_arr) >= 1:
         for j in range(i + 1,len(options_arr)):
             if options_arr[j] == '--toolpath' or options_arr[j] == '-t':
                 break
             else:
                 tempval += 1
-
             # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
             if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
                 if tempval >= 2:
@@ -279,12 +279,15 @@ def get_user_perfs():
         for val in configs:
             if val in configs and val in config_xml.attrib:
                 if config_xml.attrib[val] != '':
-                    if config_xml.attrib[val] in ["False", "True"]:
-                        user_perfs[val] = bool(config_xml.attrib[val])
+                    if config_xml.attrib[val] == "True":
+                        user_perfs[val] = True
+                    elif config_xml.attrib[val] == "False":
+                        user_perfs[val] = False
                     else:
                         user_perfs[val] = config_xml.attrib[val]
         # TODO get modlist(oldmanagedmods) in format same as ModLists(barotrauma generated)
         old_managedmods = []
+        logging_config = {}
         if 'localcopy_path' in user_perfs or 'localcopy_path' in user_perfs:
             for subconfig in config_xml:
                 if subconfig.tag.lower() == 'mods':
@@ -294,6 +297,54 @@ def get_user_perfs():
                             # TODO get name from name attrib
                             # TODO get id rather than full path
                             old_managedmods.append(os.path.join(user_perfs['localcopy_path'], mod.attrib['id']))
+        if True:
+            # logging enabling and configuaration
+            level = 'DEBUG'
+            logfile_path = os.path.join(user_perfs['tool'], "ModManagerLogs", current_time  + ".log")
+            max_logs = 12
+            os.makedirs(os.path.dirname(logfile_path), exist_ok=True)
+            filenames = os.listdir(os.path.dirname(logfile_path))
+            logs = []
+            for file_ in filenames:
+                if file_[-4:] == ".log":
+                    logs.append(file_)
+            logs.sort()
+            if max_logs < len(logs):
+                logs_todel = logs[0:len(logs) - max_logs]
+                for log_todel in logs_todel:
+                    os.remove(os.path.join(os.path.dirname(logfile_path), log_todel))
+            logging_config = { 
+                'version': 1,
+                'disable_existing_loggers': False,
+                'formatters': { 
+                    'standard': { 
+                        'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
+                    },
+                },
+                'handlers': {
+                    'default': {
+                        'level': level,
+                        'formatter': 'standard',
+                        'class': 'logging.StreamHandler',
+                    },
+                    'file_handler': {
+                        'level': level,
+                        'filename': logfile_path,
+                        'class': 'logging.FileHandler',
+                        'formatter': 'standard'
+                    }
+                },
+                'loggers': {
+                    '': {
+                        'handlers': ['file_handler'],
+                        'level': level,
+                        'propagate': True
+                    },
+                }
+            }
+            logging.config.dictConfig(logging_config)
+            logging.disable(logging.NOTSET)
+
     user_perfs['old_managedmods'] = old_managedmods
     changed_barotrauma_path = False
     changed_steamcmd_path = False
@@ -352,8 +403,8 @@ def get_user_perfs():
              # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
                 if tempval >= 1:
-                    global addperformacefix
-                    user_perfs['addperformacefix'] = True
+                    global addperformancefix
+                    user_perfs['addperformancefix'] = True
                 logger.info("performance fix enabled from command line!")
 
             # TODO add it to the documentaton
@@ -528,22 +579,14 @@ def get_localcopy_path(filelist_str):
                 localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
     return localcopy_path
 
-def get_modlist_regularpackages(regularpackages):
+def get_modlist_regularpackages(regularpackages,localcopy_path):
     root = ET.fromstring(regularpackages)
     modlist = []
     for element in root:
-        subelements = list(element)
-        if len(subelements) > 0:
-            for subelement in subelements:
-                if subelement.tag == 'regularpackages':
-                    subsubelements = list(subelement)
-                    if len(subsubelements) > 0:
-                        for subsubelement in subsubelements:
-                            # just in case
-                            if subsubelement.tag == "package":
-                                mod = {'path': subsubelement.attrib['path']}
-                                mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
-                                modlist.append(mod)
+        if element.tag == "package":
+            mod = {'path': element.attrib['path']}
+            mod['ID'] = os.path.basename(os.path.dirname(mod['path']))
+            modlist.append(mod)
 
     # reason i need to look in filelist is because of:
     #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
@@ -552,7 +595,7 @@ def get_modlist_regularpackages(regularpackages):
         if os.path.isabs(mod['path']):
             filelist_path = mod['path']
         else:
-            filelist_path = os.path.join(barotrauma_path, mod['path'])
+            filelist_path = os.path.join(localcopy_path, mod['path'])
         if os.path.exists(filelist_path):
             with open(filelist_path, 'r') as open_file:
                 mod_filelist_str = open_file.read()
@@ -873,13 +916,14 @@ def modmanager(user_perfs):
 
 
     # check collection link if it is valid
+    isvalid_collection_link = False
     if user_perfs['mode'] == "collection":
         collection_site = get_collectionsite(user_perfs['collection_link'])
         isvalid_collection_link = check_collection_link(collection_site)
         logger.info("Collection link validity check is: {0}".format(isvalid_collection_link))
-        
+    
             
-    if user_perfs['addperformacefix']:
+    if user_perfs['addperformancefix']:
         modlist.insert(0, {'name': "Performance Fix", 'ID': "2701251094"})
         logger.debug("Perfromance fix has been added to modlist {0}".format(str(modlist)))
 
@@ -891,7 +935,7 @@ def modmanager(user_perfs):
         print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
         if user_perfs['localcopy_path'] == "":
             user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
-        modlist.extend(get_modlist_regularpackages(regularpackages))
+        modlist.extend(get_modlist_regularpackages(regularpackages, user_perfs['localcopy_path']))
 
 
     # TODO remove duplicates once, try NOT to send duplicate requests for data to api
@@ -1065,7 +1109,7 @@ def main():
             collection_url = input()
             if collection_url != "n":
                 print(_("[ModManager] Provide an localcopy path (if you dont know what to input, type 'LocalMods') then press enter: "))
-                if not 'localcopy_path' in user_perfs:
+                if not 'localcopy_path_override' in user_perfs:
                     user_perfs['localcopy_path'] = input()
                     # TODO collection check, if link is valid
                     user_perfs['collection_link'] = collection_url
@@ -1075,6 +1119,7 @@ def main():
                     user_perfs.pop('collection_link')
                 if 'collectionmode' in user_perfs:
                     user_perfs.pop('collectionmode')
+                user_perfs['mode'] = 'config_player'
             flush_previous_col = True
             modmanager(user_perfs)
             break
@@ -1097,10 +1142,5 @@ def main():
             print(_("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\""))
 
 if __name__ == '__main__':
-    # with open("config_player.xml", 'r', encoding="utf8") as f:
-    #     file_str = f.read()
-    #     config_player_xml = ET.fromstring(file_str)
-    # print(config_player_xml)
+    logging.disable(logging.CRITICAL)
     main()
-    # user_perfs = get_user_perfs()
-    # save_managedmods(user_perfs['old_managedmods'], user_perfs)

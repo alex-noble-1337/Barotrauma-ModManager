@@ -19,6 +19,12 @@ except ImportError:
     os.system('python3 -m pip install json')
 import json
 
+import gettext
+_ = gettext.gettext
+import logging
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
+
 import time
 import datetime # for current time
 
@@ -201,6 +207,7 @@ def get_modlist_data_webapi(modlist):
                             new_modlist[i]['name'] = moddetails['title']
                         elif moddetails['title'] != new_modlist[i]['name']:
                             new_modlist[i]['name'] = moddetails['title']
+                    new_modlist[i]['steamworkshopid'] = new_modlist[i]['ID']
                 
         return new_modlist
     else: 
