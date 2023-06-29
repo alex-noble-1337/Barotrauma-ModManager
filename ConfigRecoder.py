@@ -181,38 +181,42 @@ def get_lastupdated_old(modsite):
 # modlist must be an array of oject with at minimum of 'ID' filed with assigned steamid of the mod
 def get_modlist_data_webapi(modlist):
     new_modlist = modlist
-    adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
-    option_tuple = {'itemcount': len(modlist)}
-    for i in range(len(modlist)):
-        option_tuple['publishedfileids[' + str(i) + ']'] = modlist[i]['ID']
-    output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
-    if output.status_code == 200:
-        data = json.loads(output.text)
-        publishedfiledetails = data['response']['publishedfiledetails']
-        for i in range(len(new_modlist)):
-            for moddetails in publishedfiledetails:
-                if moddetails['publishedfileid'] == new_modlist[i]['ID']:
-                    if 'time_updated' in moddetails:
-                        timestamp = moddetails['time_updated']
-                    elif 'time_created' in moddetails:
-                        timestamp = moddetails['time_created']
-                    else:
-                        logger.warning("No time of creation or update found! {0}".format(moddetails['publishedfileid']))
-                        timestamp = 0
-                    new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
-                    if 'file_size' in moddetails:
-                        new_modlist[i]['file_size'] = moddetails['file_size']
-                    if 'title' in moddetails:
-                        if not 'name' in new_modlist[i]:
-                            new_modlist[i]['name'] = moddetails['title']
-                        elif moddetails['title'] != new_modlist[i]['name']:
-                            new_modlist[i]['name'] = moddetails['title']
-                    new_modlist[i]['steamworkshopid'] = new_modlist[i]['ID']
-                
-        return new_modlist
-    else: 
-        logger.critical("Connection to steam WebAPI FAILED!")
-        raise Exception(_("Connection to steam WebAPI FAILED!"))
+    if modlist != []:
+        adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
+        option_tuple = {'itemcount': len(modlist)}
+        for i in range(len(modlist)):
+            option_tuple['publishedfileids[' + str(i) + ']'] = modlist[i]['ID']
+        output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
+        if output.status_code == 200:
+            data = json.loads(output.text)
+            publishedfiledetails = data['response']['publishedfiledetails']
+            for i in range(len(new_modlist)):
+                for moddetails in publishedfiledetails:
+                    if moddetails['publishedfileid'] == new_modlist[i]['ID']:
+                        if 'time_updated' in moddetails:
+                            timestamp = moddetails['time_updated']
+                        elif 'time_created' in moddetails:
+                            timestamp = moddetails['time_created']
+                        else:
+                            logger.warning("No time of creation or update found! {0}".format(moddetails['publishedfileid']))
+                            timestamp = 0
+                        new_modlist[i]['LastUpdated'] = time.localtime(timestamp)
+                        if 'file_size' in moddetails:
+                            new_modlist[i]['file_size'] = moddetails['file_size']
+                        if 'title' in moddetails:
+                            if not 'name' in new_modlist[i]:
+                                new_modlist[i]['name'] = moddetails['title']
+                            elif moddetails['title'] != new_modlist[i]['name']:
+                                new_modlist[i]['name'] = moddetails['title']
+                        new_modlist[i]['steamworkshopid'] = new_modlist[i]['ID']
+        elif output.status_code == 400:
+            logger.error("BAD REQUEST! {0}".format(output.text))
+            print(_("BAD REQUEST! Consult logfile for more deatails!"))
+        else: 
+            logger.critical("Connection to steam WebAPI FAILED!")
+            raise Exception(_("Connection to steam WebAPI FAILED!"))
+
+    return new_modlist
 
 def get_modname(modsite):
     pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"

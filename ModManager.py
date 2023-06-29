@@ -248,24 +248,26 @@ def get_user_perfs():
     user_perfs = {'collectionmode': False}
     old_managedmods = []
     if len(options_arr) >= 1:
-        for j in range(i + 1,len(options_arr)):
-            if options_arr[j] == '--toolpath' or options_arr[j] == '-t':
-                break
-            else:
-                tempval += 1
-            # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
-            if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
-                if tempval >= 2:
-                    if options_arr[i+1] == ".":
+        for i in range(0,len(options_arr)):
+            tempval = 1
+            for j in range(i + 1,len(options_arr)):
+                if options_arr[j] == '--toolpath' or options_arr[j] == '-t':
+                    break
+                else:
+                    tempval += 1
+                # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
+                if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
+                    if tempval >= 2:
+                        if options_arr[i+1] == ".":
+                            user_perfs['tool'] = os.getcwd()
+                            changed_tool_path = True
+                        else:
+                            user_perfs['tool'] = options_arr[i+1]
+                            changed_tool_path = True
+                    else:
                         user_perfs['tool'] = os.getcwd()
                         changed_tool_path = True
-                    else:
-                        user_perfs['tool'] = options_arr[i+1]
-                        changed_tool_path = True
-                else:
-                    user_perfs['tool'] = os.getcwd()
-                    changed_tool_path = True
-                logger.info("Tool path is set as {0}".format(user_perfs['tool']))
+                    logger.info("Tool path is set as {0}".format(user_perfs['tool']))
     if not changed_tool_path:
         user_perfs['tool'] = default_tool_path
         logger.info("tool path set as default {0}".format(user_perfs['tool']))
@@ -297,53 +299,53 @@ def get_user_perfs():
                             # TODO get name from name attrib
                             # TODO get id rather than full path
                             old_managedmods.append(os.path.join(user_perfs['localcopy_path'], mod.attrib['id']))
-        if True:
-            # logging enabling and configuaration
-            level = 'DEBUG'
-            logfile_path = os.path.join(user_perfs['tool'], "ModManagerLogs", current_time  + ".log")
-            max_logs = 12
-            os.makedirs(os.path.dirname(logfile_path), exist_ok=True)
-            filenames = os.listdir(os.path.dirname(logfile_path))
-            logs = []
-            for file_ in filenames:
-                if file_[-4:] == ".log":
-                    logs.append(file_)
-            logs.sort()
-            if max_logs < len(logs):
-                logs_todel = logs[0:len(logs) - max_logs]
-                for log_todel in logs_todel:
-                    os.remove(os.path.join(os.path.dirname(logfile_path), log_todel))
-            logging_config = { 
-                'version': 1,
-                'disable_existing_loggers': False,
-                'formatters': { 
-                    'standard': { 
-                        'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
-                    },
+    if True:
+        # logging enabling and configuaration
+        level = 'DEBUG'
+        logfile_path = os.path.join(user_perfs['tool'], "ModManagerLogs", current_time  + ".log")
+        max_logs = 12
+        os.makedirs(os.path.dirname(logfile_path), exist_ok=True)
+        filenames = os.listdir(os.path.dirname(logfile_path))
+        logs = []
+        for file_ in filenames:
+            if file_[-4:] == ".log":
+                logs.append(file_)
+        logs.sort()
+        if max_logs < len(logs):
+            logs_todel = logs[0:len(logs) - max_logs]
+            for log_todel in logs_todel:
+                os.remove(os.path.join(os.path.dirname(logfile_path), log_todel))
+        logging_config = { 
+            'version': 1,
+            'disable_existing_loggers': False,
+            'formatters': { 
+                'standard': { 
+                    'format': '%(asctime)s [%(levelname)s] %(name)s: %(message)s'
                 },
-                'handlers': {
-                    'default': {
-                        'level': level,
-                        'formatter': 'standard',
-                        'class': 'logging.StreamHandler',
-                    },
-                    'file_handler': {
-                        'level': level,
-                        'filename': logfile_path,
-                        'class': 'logging.FileHandler',
-                        'formatter': 'standard'
-                    }
+            },
+            'handlers': {
+                'default': {
+                    'level': level,
+                    'formatter': 'standard',
+                    'class': 'logging.StreamHandler',
                 },
-                'loggers': {
-                    '': {
-                        'handlers': ['file_handler'],
-                        'level': level,
-                        'propagate': True
-                    },
+                'file_handler': {
+                    'level': level,
+                    'filename': logfile_path,
+                    'class': 'logging.FileHandler',
+                    'formatter': 'standard'
                 }
+            },
+            'loggers': {
+                '': {
+                    'handlers': ['file_handler'],
+                    'level': level,
+                    'propagate': True
+                },
             }
-            logging.config.dictConfig(logging_config)
-            logging.disable(logging.NOTSET)
+        }
+        logging.config.dictConfig(logging_config)
+        logging.disable(logging.NOTSET)
 
     user_perfs['old_managedmods'] = old_managedmods
     changed_barotrauma_path = False
@@ -573,10 +575,11 @@ def get_localcopy_path(filelist_str):
     root = ET.fromstring(filelist_str)
     if root.tag == "regularpackages":
         if root.text != None:
-            package = root[0]
-            # werid, BUT just in case...
-            if package.tag == 'package':
-                localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
+            for package in root:
+                # werid, BUT just in case...
+                if package.tag == 'package':
+                    localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
+                    break
     return localcopy_path
 
 def get_modlist_regularpackages(regularpackages,localcopy_path):
@@ -933,6 +936,8 @@ def modmanager(user_perfs):
         modlist.extend(get_modlist_collection_site(collection_site))
     else:
         print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
+        if not 'localcopy_path' in user_perfs:
+            user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
         if user_perfs['localcopy_path'] == "":
             user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
         modlist.extend(get_modlist_regularpackages(regularpackages, user_perfs['localcopy_path']))
