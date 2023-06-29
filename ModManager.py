@@ -751,7 +751,8 @@ def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
         else:
             temp_localcopy_path = temp_localcopy_path
 
-        regularpackages_new += "      <!--" + mod['name'] + "-->\n"
+        modname_formatted = mod['name'].replace("--", "- -")
+        regularpackages_new += "      <!--" + modname_formatted + "-->\n"
         regularpackages_new += "      <package\n"
         regularpackages_new += "        path=\"" + temp_localcopy_path + "/" + mod['ID'] + "/filelist.xml\" />\n"
     regularpackages_new += "    </regularpackages>"
