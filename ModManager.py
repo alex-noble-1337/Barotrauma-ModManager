@@ -39,11 +39,17 @@ current_time = str(current_time)[0:-3]
 import gettext
 _ = gettext.gettext
 
+try:
+    import requests
+    import json
+except ImportError:
+    print("Trying to Install required module: requests\n")
+    os.system('python3 -m pip install requests json')
 
 # load submodules
 from configbackup import backup_option
 from ConfigRecoder import get_modlist_collection_site 
-from ConfigRecoder import collectionf
+from ConfigRecoder import get_htm_of_collection_site
 from ConfigRecoder import get_modlist_data_webapi
 from configbackup import backupBarotraumaData
 from ConfigRecoder import modlist_to_ModListsXml
@@ -123,6 +129,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                 in_comment = False
                 for i in range(point):
                     pointer = point - i
+                    # aahhhhhhhhhhhhhhhh shitty comments in xmllll
                     if content[pointer:pointer + 3] == "-->":
                         in_comment = False
                         break
@@ -151,7 +158,8 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
         logger.warn("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['ID'], downloaded_mod['name']))
         if warnings_as_errors:
             print(_("Treating warnings as errors:"))
-            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['ID'], downloaded_mod['name'])))
+            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
+                              .format(downloaded_mod['ID'], downloaded_mod['name'])))
         else:
             print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['ID'], downloaded_mod['name'])))
 
@@ -169,7 +177,8 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                 if def_file.attrib['steamworkshopid'] != downloaded_mod['ID']:
                     logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
                     if warnings_as_errors:
-                        raise Exception(_("Treating warnings as errors:") + "\n" + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                        raise Exception(_("Treating warnings as errors:") + "\n" + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible")
+                                         .format(downloaded_mod['ID'], downloaded_mod['name']))
                     else:
                         logger.info("Applying workaround for not matching steam id...")
                         # fix?
@@ -212,14 +221,16 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path):
                 # TODO check what game assumes as default value
                 def_file.attrib['gameversion'] = "1.0"
             if not 'installtime' in def_file.attrib:
-                # install time means installation time of a mod https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
+                # install time means installation time of a mod 
+                # https://github.com/Regalis11/Barotrauma/blob/6acac1d143d647ef10250364fe1e71039142539c/Libraries/Facepunch.Steamworks/Structs/UgcItem.cs#L198
                 def_file.attrib['installtime'] = str(round(time.time()))
             if not 'expectedhash' in def_file.attrib:
                 # we are srewed if this is missing
                 if len(def_content) > 0:
                     logger.warn("Mod of id:{0} and name: {1} does not have hash! Remove it if possible".format(downloaded_mod['ID'], downloaded_mod['name']))
                     if warnings_as_errors:
-                        raise Exception(_("Treating warnings as errors") + "\n" + _("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['ID'], downloaded_mod['name']))
+                        raise Exception(_("Treating warnings as errors") + "\n" + _("Mod of id:{0} and name: {1} does not have hash! Remove it if possible")
+                                          .format(downloaded_mod['ID'], downloaded_mod['name']))
 
             # i dont understand it, this is shit, too hacky
             # TOO BAD!
@@ -245,7 +256,7 @@ def get_user_perfs():
     changed_barotrauma_path = False
     changed_tool_path = False
     changed_steamcmd_path = False
-    user_perfs = {'collectionmode': False}
+    user_perfs = {'collectionmode': False, 'locale': 'en'}
     old_managedmods = []
     if len(options_arr) >= 1:
         for i in range(0,len(options_arr)):
@@ -255,7 +266,8 @@ def get_user_perfs():
                     break
                 else:
                     tempval += 1
-                # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing. Must be a path to THE FOLDER.  Does not accept ""
+                # --toolpath or -t - path to the ModManager Direcotry where script can put all the "cashe" files. set it do default if you dont know where or what you are doing.
+                #  Must be a path to THE FOLDER.  Does not accept ""
                 if options_arr[i] == '--toolpath' or options_arr[i] == '-t':
                     if tempval >= 2:
                         if options_arr[i+1] == ".":
@@ -355,7 +367,9 @@ def get_user_perfs():
         for i in range(0,len(options_arr)):
             tempval = 1
             for j in range(i + 1,len(options_arr)):
-                if options_arr[j] == '--barotraumapath' or options_arr[j] == '-b' or options_arr[j] == '--toolpath' or options_arr[j] == '-t' or options_arr[j] == '--steamcmdpath' or options_arr[j] == '-s' or options_arr[j] == '--collection' or options_arr[j] == '-c' or options_arr[j] == '--performancefix' or options_arr[j] == '-p' or options_arr[j] == '--backup':
+                if (options_arr[j] == '--barotraumapath' or options_arr[j] == '-b' or options_arr[j] == '--toolpath' or options_arr[j] == '-t' or options_arr[j] == '--steamcmdpath' or
+                   options_arr[j] == '-s' or options_arr[j] == '--collection' or options_arr[j] == '-c' or options_arr[j] == '--performancefix' or options_arr[j] == '-p' or
+                   options_arr[j] == '--backup'):
                     break
                 else:
                     tempval += 1
@@ -446,21 +460,16 @@ def get_user_perfs():
 
     user_perfs['backup_path'] = os.path.join(user_perfs['tool'], "backup")
     user_perfs['get_dependencies'] = debug_dependencies_functionality
-    user_perfs['config_collectionmode_path'] = os.path.join(user_perfs['tool'], "collection_save.txt")
-    user_perfs['managedmods_path'] = os.path.join(user_perfs['tool'], "managed_mods.txt")
+    # user_perfs['config_collectionmode_path'] = os.path.join(user_perfs['tool'], "collection_save.txt")
+    # user_perfs['managedmods_path'] = os.path.join(user_perfs['tool'], "managed_mods.txt")
     if flush_previous_col:
-        if os.path.exists(user_perfs['config_collectionmode_path']):
-            os.remove(user_perfs['config_collectionmode_path'])
+        user_perfs.pop('collection_link')
+        user_perfs.pop('collectionmode')
+        user_perfs.pop('localcopy_path')
         logger.info("Collection mode configuration flushed")
-    elif os.path.exists(user_perfs['config_collectionmode_path']):
-        collection_file = ""
-        with open(user_perfs['config_collectionmode_path'], "r", encoding='utf8') as f:
-            collection_file = f.read()
-        arr = collection_file.split(" ", 1)
-        user_perfs['collection_link'] = arr[0]
-        user_perfs['localcopy_path'] = arr[1]
-        user_perfs['mode'] = "collection"
-        logger.info("Collection mode enabled from configuration")
+    elif 'collection_link' in user_perfs and 'collectionmode' in user_perfs and 'localcopy_path' in user_perfs:
+        logger.info("Collection mode enabled from perfs, collection_link:{0}, collectionmode:{1}, localcopy_path:{2}"
+            .format(user_perfs['collection_link'], user_perfs['collectionmode'], user_perfs['localcopy_path']))
     return user_perfs
 
 # yoinked from stackoverflow, works
@@ -544,20 +553,16 @@ def get_regularpackages(barotrauma_path):
     if len(regularpackages) <= 0:
         logger.warning("Couldnt find regularpackages! This probbabbly means the tag is closed (<regularpackages/>)...")
         # patch for </regularpackages>, just in case
-        # TODO a bit stupid, so rework it
-        filelist_str = filelist_str.replace("<regularpackages/>", "<regularpackages>\n\n\t</regularpackages>")
-        filelist_str = filelist_str.replace("<regularpackages />", "<regularpackages>\n\n\t</regularpackages>")
-        with open(filelist_path, "w", encoding='utf8') as f:
-            f.write(filelist_str)
-        pattern = "(?<=<regularpackages>)[\s\S]*?(?=<\/regularpackages>)"
+        pattern = "<regularpackages.*?/>"
         regularpackages = re.findall(pattern, filelist_str)
-        logger.warning("Applied <regularpackages/> patch.")
-        
+
     if len(regularpackages) > 0:
         return regularpackages[0]
     else:
-        logger.critical("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
-        raise Exception(_("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
+        logger.critical("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages. \
+                        \nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
+        raise Exception(_("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages. \
+                         \nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
 
 # TODO rework it so its just getting installation time form filelist
 def get_recusive_modification_time_of_dir(origin_dir):
@@ -687,8 +692,10 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
                         # bar.update(iterator)
                         # bar.update()
                     else:
-                        logger.critical("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]{str:line}".format())
-                        raise Exception(_("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README\n[Steamcmd]{str:line}".format()))
+                        logger.critical("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README \
+                                       \n[Steamcmd]{str:line}".format())
+                        raise Exception(_("[ModManager] Steamcmd has downloaded mod in wrong directory! Please make sure that steamdir path is up to specifications in README \
+                                         \n[Steamcmd]{str:line}".format()))
                 # else:
             proc.wait()
             output = proc.returncode
@@ -811,7 +818,7 @@ def get_not_managedmods(old_managed_mods, managed_mods):
 def get_collectionsite(collection_link: str):
     isvalid_collection_link = False
     if re.match("https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=", collection_link) != None:
-        collection_site = collectionf(collection_link)
+        collection_site = get_htm_of_collection_site(collection_link)
         if collection_site != "ERROR":
             isvalid_collection_link= True
     if isvalid_collection_link:
@@ -1001,6 +1008,12 @@ def modmanager(user_perfs):
 
     managed_mods = get_managedmods(modlist, user_perfs['localcopy_path'])
     not_managedmods = get_not_managedmods(user_perfs['old_managedmods'], managed_mods)
+    buffer = []
+    for managed_mod in managed_mods:
+        if os.path.exists(os.path.join(user_perfs['localcopy_path']), managed_mod):
+            if re.match("^\d*?$", managed_mod):
+                name = ""
+                
 
 
     # re-create config_player
@@ -1015,9 +1028,9 @@ def modmanager(user_perfs):
 
 
     # save configs
-    if isvalid_collection_link and user_perfs['mode'] == "collection":
-        with open(user_perfs['config_collectionmode_path'], "w", encoding='utf8') as f:
-            f.write(user_perfs['collection_link'] + " " + user_perfs['localcopy_path'])
+    # if isvalid_collection_link and user_perfs['mode'] == "collection":
+    #     with open(user_perfs['config_collectionmode_path'], "w", encoding='utf8') as f:
+    #         f.write(user_perfs['collection_link'] + " " + user_perfs['localcopy_path'])
     save_managedmods(managed_mods, user_perfs)
 
 
@@ -1030,7 +1043,8 @@ def modmanager(user_perfs):
     # main part, running moddlownloader
     nr_updated_mods = download_modlist(modlist, user_perfs['steamdir'], user_perfs['steamcmd'])
     print("\n")
-    print(_("[ModManager] Skipping download of {0} Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)").format(str(len(up_to_date_mods))))
+    print(_("[ModManager] Skipping download of {0} Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)")
+            .format(str(len(up_to_date_mods))))
 
 
     # config backup and conservation
@@ -1046,6 +1060,12 @@ def modmanager(user_perfs):
         mod_path = os.path.join(steamcmd_downloads, mod['ID'])
         FIX_barodev_moment(mod, mod_path)
         robocopysubsttute(mod_path, os.path.join(user_perfs['localcopy_path'], mod['ID']))
+    
+    # TODO installed_mods
+    for mod in managed_mods:
+        if os.path.exists(path):
+            mod_path = os.path.join(user_perfs['localcopy_path'], mod['ID'])
+            FIX_barodev_moment(mod, mod_path)
 
 
     # finishing anc cleaning up
@@ -1096,7 +1116,7 @@ def main():
     user_perfs = get_user_perfs()
     logger.info("Aqquired user perfs: {0}".format(str(user_perfs)))
     while(True):
-        if os.path.exists(os.path.join(user_perfs['tool'], "collection_save.txt")):
+        if 'collection_link' in user_perfs and 'localcopy_path' in user_perfs:
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))
             print(_("[ModManager] Steam collection mode enabled! Disable by entering collection sub-menu."))
             print(_("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): "))
@@ -1118,6 +1138,10 @@ def main():
                 if not 'localcopy_path_override' in user_perfs:
                     user_perfs['localcopy_path'] = input()
                     # TODO collection check, if link is valid
+                    user_perfs['collection_link'] = collection_url
+                    user_perfs['collectionmode'] = True
+                else:
+                    user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
                     user_perfs['collection_link'] = collection_url
                     user_perfs['collectionmode'] = True
             else:
