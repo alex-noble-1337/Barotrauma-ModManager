@@ -1,9 +1,14 @@
 # This is file of all functions that are requred by mod manager to properly function
 # but are taken from barotrauma source code
+# due to time constrains had to use chatgpt to translate from c# to python
+# i feel bad about it
+# so TODO fix it
 
 import sys
 import os
 import pathlib
+
+# Expressions from c# that dont translate to python:
 # this is:
 # directory ?? "" or
 # directory != null ? directory : ""
@@ -14,7 +19,6 @@ def directory_fixer(directory):
         return ""
     else:
         return directory
-
 def get_user_data_dir():
     if sys.platform == "win32":
         import winreg
@@ -29,7 +33,6 @@ def get_user_data_dir():
     else:
         ans=pathlib.Path(os.getenv('XDG_DATA_HOME', "~/.local/share")).expanduser()
     return ans.joinpath()
-
 # split in c# accepts arrays, but in python it only accepts strings
 def separate(array,separator):
     results = []
@@ -43,7 +46,6 @@ def separate(array,separator):
         else: i+=1
     results.append(a)
     return results
-
 # this is:
 # startPath = saveFolder.EndsWith('/') ? saveFolder : $"{saveFoler}/";
 def path_addslashend(saveFolder: str):
@@ -63,8 +65,6 @@ def isProperFilenameCase(filename: str):
         CorrectFilenameCase(filename, corrected)
         return (not corrected)
 
-
-# 
 class SaveUtil:
     def DefaultSaveFolder():
         if sys.platform == 'darwin':
@@ -74,7 +74,6 @@ class SaveUtil:
             #"C:/Users/*user*/AppData/Local/Daedalic Entertainment GmbH/" on Windows
             #"/home/*user*/.local/share/Daedalic Entertainment GmbH/" on Linux
             return os.path.join(get_user_data_dir(), "Daedalic Entertainment GmbH", "Barotrauma")
-
 
 # https:#github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L46
 # unfortunetly had to use chatgpt due to time and skill constraints
@@ -129,7 +128,6 @@ def CorrectFilenameCase(filename, directory="", corrected=False):
             filename += "/"
 
     return filename
-
 
 # https:#github.com/evilfactory/LuaCsForBarotrauma/blob/6b149e0498b9b634847c867ec6a211532f609c7b/Barotrauma/BarotraumaShared/SharedSource/Utils/ToolBox.cs#L601
 #:barodev: <summary>
