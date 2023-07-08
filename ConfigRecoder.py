@@ -7,23 +7,9 @@ import os
 import re
 import shutil
 import xml.etree.ElementTree as ET
-try:
-    import requests
-except ImportError:
-    print("Trying to Install required module: requests\n")
-    os.system('python3 -m pip install requests')
-try:
-    import json
-except ImportError:
-    print("Trying to Install required module: json\n")
-    os.system('python3 -m pip install json')
-import json
 
-import gettext
-_ = gettext.gettext
-import logging
-logging.basicConfig(level=logging.INFO)
-logger = logging.getLogger(__name__)
+import requests
+import json
 
 import time
 import datetime # for current time
@@ -55,12 +41,6 @@ def get_htm_of_collection_site(link):
             else:
                 retries += 1
     return output
-
-# def get_listOfMods(collection_site):
-#     if collection_site != "ERROR":
-        
-#     return arrx
-
 def get_modlist_collection_site(collection_site):
     addnames = True
     mods = []
@@ -110,74 +90,6 @@ def get_modlist_collection_site(collection_site):
         logger.critical("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
         raise Exception(_("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!"))
     return mods
-
-def textfilef(fileposition):
-    with open(fileposition, "r") as textfile:
-        name_of_the_file = ""
-        name_arr = []
-        id_arr = []
-        comment_arr = []
-        for line in textfile:
-            if len(name_of_the_file) <= 0:
-                pattern = "(?<=mods name=\").*?(?=\")"
-                if re.search(pattern, line):
-                    name_of_the_file = re.findall(pattern, line)
-                    name_of_the_file = name_of_the_file[0]
-                    continue
-            else:
-                pattern = "(?<=name=\").*?(?=\")"
-                if re.search(pattern, line):
-                    name_i = re.findall(pattern, line)
-                    name_i = name_i[0]
-                    name_arr.append(name_i)
-                pattern = "(?<=id=\").*?(?=\")"
-                if re.search(pattern, line):
-                    id_i = re.findall(pattern, line)
-                    id_i = id_i[0]
-                    id_arr.append(id_i)
-                pattern = "<Vanilla \\/>"
-                if re.search("<Vanilla \\/>", line):
-                    continue
-                else:
-                    pattern = "(?<=<!-- ).*?(?= -->)"
-                    if re.search(pattern, line):
-                        comment_i = re.findall(pattern, line)
-                        comment_i = comment_i[0]
-                        comment_arr.append(comment_i)
-                    else:
-                        comment_arr.append("")
-        for i in range(len(name_arr)):
-            output_file = output_file + str(name_arr[i] + "," + id_arr[i])
-            if(len(comment_arr[i]) > 0):
-                output_file = output_file + "," + comment_arr[i]
-            if(i+1 < len(name_arr)):
-                output_file += "\n"
-    print(name_of_the_file)
-    print(output_file)
-    return output_file
-
-# populate time of update of workshop item
-def get_lastupdated_old(modsite):
-    pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
-    lastupdated = re.findall(pattern, modsite)
-    lastupdated = lastupdated[len(lastupdated) - 1]
-    # Eg. 1 Oct, 2022 @ 3:51am
-    if lastupdated[2] != " ":
-        lastupdated = "0" + lastupdated
-    # Eg. 11 Jan @ 1:15am
-    if lastupdated[7] == "@":
-        currentDateTime = datetime.datetime.now()
-        date = currentDateTime.date()
-        year = str(date.strftime("%Y"))
-        lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
-    # Eg. 28 May, 2022 @ 9:58pm
-    # Eg. 18 Jan 2023 @ 7:10pm
-    if lastupdated[16] == ":":
-        lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
-    lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
-
-    return lastupdated
-
 # modlist must be an array of oject with at minimum of 'ID' filed with assigned steamid of the mod
 def get_modlist_data_webapi(modlist):
     new_modlist = modlist
@@ -217,17 +129,48 @@ def get_modlist_data_webapi(modlist):
             raise Exception(_("Connection to steam WebAPI FAILED!"))
 
     return new_modlist
+def get_modlist_collection_site_legacy(collection_site, mods, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
+    if 'addnames' not in input_options:
+        input_options['addnames'] = False
+    if 'addlastupdated' not in input_options:
+        input_options['addlastupdated'] = False
+    if 'dependencies' not in input_options:
+        input_options['dependencies'] = False
+    
+    addnames = input_options['addnames']
+    addlastupdated = input_options['addlastupdated']
+    dependencies = input_options['dependencies']
 
+    mods = get_modsData_collection(collection_site, mods, addnames)
+    if addlastupdated or dependencies:
+        mods = get_modlist_data(mods, addlastupdated, dependencies)
+    return mods
+
+# populate time of update of workshop item
+def get_lastupdated_old(modsite):
+    pattern = "(?<=<div class=\"detailsStatRight\">).*?(?=<\/div>)"
+    lastupdated = re.findall(pattern, modsite)
+    lastupdated = lastupdated[len(lastupdated) - 1]
+    # Eg. 1 Oct, 2022 @ 3:51am
+    if lastupdated[2] != " ":
+        lastupdated = "0" + lastupdated
+    # Eg. 11 Jan @ 1:15am
+    if lastupdated[7] == "@":
+        currentDateTime = datetime.datetime.now()
+        date = currentDateTime.date()
+        year = str(date.strftime("%Y"))
+        lastupdated = lastupdated[0:6] + ", " + year + " " + lastupdated[7:]
+    # Eg. 28 May, 2022 @ 9:58pm
+    # Eg. 18 Jan 2023 @ 7:10pm
+    if lastupdated[16] == ":":
+        lastupdated = lastupdated[0:14] + " 0" + lastupdated[15:]
+    lastupdated = time.strptime(lastupdated,'%d %b, %Y @ %I:%M%p')
+
+    return lastupdated
 def get_modname(modsite):
     pattern = "(?<=<h1><span>Subscribe to download<\/span><br>).*?(?=<\/h1>)"
     name = re.findall(pattern, modsite)[0]
     return name
-
-def collectionf(url_of_steam_collection):
-    # here
-    collection_site = get_htm_of_collection_site(url_of_steam_collection)
-    return collection_site
-
 def get_modlist_data(mods, dependencies = False):
     # just in caaaaaase, lts put it here, i dont trust myself
     for i in range(len(mods)):
@@ -277,23 +220,6 @@ def get_modlist_data(mods, dependencies = False):
 
     return mods
 
-def get_modlist_collection_site_legacy(collection_site, mods, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
-    if 'addnames' not in input_options:
-        input_options['addnames'] = False
-    if 'addlastupdated' not in input_options:
-        input_options['addlastupdated'] = False
-    if 'dependencies' not in input_options:
-        input_options['dependencies'] = False
-    
-    addnames = input_options['addnames']
-    addlastupdated = input_options['addlastupdated']
-    dependencies = input_options['dependencies']
-
-    mods = get_modsData_collection(collection_site, mods, addnames)
-    if addlastupdated or dependencies:
-        mods = get_modlist_data(mods, addlastupdated, dependencies)
-    return mods
-
 def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
     modlist_xml = ET.Element('mods')
     modlist_xml.attrib['name'] = "Managed Mods"
@@ -310,57 +236,48 @@ def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
             mod = ET.SubElement(modlist_xml, 'Local')
             mod.attrib['name'] = str(os.path.basename(managed_mod))
     return modlist_xml
-
-def main():
-    moddirectory = "C:/Users/milord/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
-    output_file = ""
-
-    if len(sys.argv) >= 3:
-        option = str(sys.argv[1])
-        fileposition = str(sys.argv[2])
-        url_of_steam_collection = str(sys.argv[2])
-    else:
-        option = "-c"
-        url_of_steam_collection = "https://steamcommunity.com/sharedfiles/filedetails/?id=2800347733"
-
-    if option == "-t" or option == "--textfile":
-        # i dont remeber why i made this...
-        # output_file = textfilef(fileposition, output_file)
-        print("err")
-    elif option == "-c" or option == "--collection":
-        collection_site = collectionf(url_of_steam_collection)
-        mods = get_listOfMods(collection_site)
-        # getting names here because its more efficient than request
-        # not really needed i think
-        # mods = get_modsname(collection_site)
-
-    
-
-    # TODO find a way to only request lastupdated not whole cuz its to slow    
-    mods = get_modsnamelastupdated(mods)
-
-    print("Detected date, name of: " + str(len(mods)))
-    lastupdated_f = ""
-    regularpackages = "    <regularpackages>\n"
-    # print new
-    for mod in mods:
-        regularpackages += "      <!--" + mod['name'] + "-->\n"
-        lastupdated_f += mod['ID'] + ";" + str(time.strftime('%d %b, %Y @ %I:%M%p', mod['LastUpdated'])) + "\n"
-        regularpackages += "      <package\n"
-        regularpackages += "        path=\"" + moddirectory + "/" +  mod['ID'] + "/filelist.xml\" />\n"
-    regularpackages += "    </regularpackages>\n"
-
-    filex = open("lastupdated.txt", "w", encoding='utf8')
-    filex.write(lastupdated_f)
-    filex.close()
-    print(regularpackages)
-    output_file = regularpackages
-    # return output_file
-
-
-    file1 = open("regularpackages.xml", "w", encoding='utf8')
-    file1.write(output_file)
-    file1.close()
-
-if __name__ == '__main__':
-    main()
+# This is probbably getting from ModListsXml created by barotrauma. TODO check
+def textfilef(fileposition):
+    with open(fileposition, "r") as textfile:
+        name_of_the_file = ""
+        name_arr = []
+        id_arr = []
+        comment_arr = []
+        for line in textfile:
+            if len(name_of_the_file) <= 0:
+                pattern = "(?<=mods name=\").*?(?=\")"
+                if re.search(pattern, line):
+                    name_of_the_file = re.findall(pattern, line)
+                    name_of_the_file = name_of_the_file[0]
+                    continue
+            else:
+                pattern = "(?<=name=\").*?(?=\")"
+                if re.search(pattern, line):
+                    name_i = re.findall(pattern, line)
+                    name_i = name_i[0]
+                    name_arr.append(name_i)
+                pattern = "(?<=id=\").*?(?=\")"
+                if re.search(pattern, line):
+                    id_i = re.findall(pattern, line)
+                    id_i = id_i[0]
+                    id_arr.append(id_i)
+                pattern = "<Vanilla \\/>"
+                if re.search("<Vanilla \\/>", line):
+                    continue
+                else:
+                    pattern = "(?<=<!-- ).*?(?= -->)"
+                    if re.search(pattern, line):
+                        comment_i = re.findall(pattern, line)
+                        comment_i = comment_i[0]
+                        comment_arr.append(comment_i)
+                    else:
+                        comment_arr.append("")
+        for i in range(len(name_arr)):
+            output_file = output_file + str(name_arr[i] + "," + id_arr[i])
+            if(len(comment_arr[i]) > 0):
+                output_file = output_file + "," + comment_arr[i]
+            if(i+1 < len(name_arr)):
+                output_file += "\n"
+    print(name_of_the_file)
+    print(output_file)
+    return output_file
