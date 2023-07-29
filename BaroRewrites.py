@@ -20,20 +20,12 @@ import logging
 import logging.config
 logger = logging.getLogger(__name__)
 
-content_types = ["item","character","mapcreature","text",
-                         "uistyle","afflictions","structure",
-                         "upgrademodules","ruinconfig",
-                         "wreckaiconfig","backgroundcreatureprefabs",
-                         "levelobjectprefabs","particles","decals",
-                         "randomevents","eventmanagersettings",
-                         "locationtypes","mapgenerationparameters",
-                         "levelgenerationparameters",
-                         "cavegenerationparameters","outpostconfig",
-                         "npcsets","missions","traitormissions",
-                         "npcpersonalitytraits","npcconversations",
-                         "jobs","orders","corpses","sounds",
-                         "skillsettings","factions","itemassembly",
-                         "talents","talenttrees","startitems","tutorials"]
+content_types = ["item","character","mapcreature","text", "uistyle","afflictions","structure", "upgrademodules",
+                 "ruinconfig", "wreckaiconfig","backgroundcreatureprefabs", "levelobjectprefabs","particles","decals",
+                 "randomevents","eventmanagersettings", "locationtypes","mapgenerationparameters", 
+                 "levelgenerationparameters", "cavegenerationparameters","outpostconfig", "npcsets","missions",
+                 "traitormissions", "npcpersonalitytraits","npcconversations", "jobs","orders","corpses","sounds",
+                 "skillsettings","factions","itemassembly", "talents","talenttrees","startitems","tutorials"]
 
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them
@@ -135,12 +127,15 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
             with open(file_path, 'w', encoding="utf8") as open_file:
                 open_file.write(content)
     if old_paths:
-        logger.warn("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['id'], downloaded_mod['name']))
+        logger.warn("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
+                    .format(downloaded_mod['id'], downloaded_mod['name']))
         if warnings_as_errors:
             print(_("Treating warnings as errors:"))
-            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['id'], downloaded_mod['name'])))
+            raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
+                              .format(downloaded_mod['id'], downloaded_mod['name'])))
         else:
-            print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['id'], downloaded_mod['name'])))
+            print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
+                    .format(downloaded_mod['id'], downloaded_mod['name'])))
 
 
     desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
@@ -154,9 +149,12 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                 def_file.attrib['steamworkshopid'] = downloaded_mod['id']
             else:
                 if def_file.attrib['steamworkshopid'] != downloaded_mod['id']:
-                    logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible".format(downloaded_mod['id'], downloaded_mod['name']))
+                    logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible"
+                                   .format(downloaded_mod['id'], downloaded_mod['name']))
                     if warnings_as_errors:
-                        raise Exception(_("Treating warnings as errors:") + "\n" + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible").format(downloaded_mod['id'], downloaded_mod['name']))
+                        raise Exception(_("Treating warnings as errors:") + "\n" 
+                                      + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible")
+                                          .format(downloaded_mod['id'], downloaded_mod['name']))
                     else:
                         logger.info("Applying workaround for not matching steam id...")
                         # fix?
