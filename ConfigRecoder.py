@@ -75,9 +75,9 @@ def get_modlist_collection_site(collection_site):
         for collectionItemDetails in collectionItemDetailss:
             mod = {}
             pattern = "(?<=<a href=\"https:\/\/steamcommunity\.com\/sharedfiles\/filedetails\/\?id=).*?(?=\"><div class=\"workshopItemTitle\">)"
-            mod['ID'] = str(re.findall(pattern, collectionItemDetails)[0])
+            mod['id'] = str(re.findall(pattern, collectionItemDetails)[0])
             if addnames:
-                pattern = "(?<=id=" + mod['ID'] + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
+                pattern = "(?<=id=" + mod['id'] + "\"><div class=\"workshopItemTitle\">).*?(?=<\/div>)"
                 name = re.findall(pattern, collectionItemDetails)[0]
                 # fixing of names special characters
                 name = name.replace("--", "- -")
@@ -90,21 +90,21 @@ def get_modlist_collection_site(collection_site):
         logger.critical("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!")
         raise Exception(_("[ModManager]There was en error downloading collection! Try re-launching ModManager again later!"))
     return mods
-# modlist must be an array of oject with at minimum of 'ID' filed with assigned steamid of the mod
+# modlist must be an array of oject with at minimum of 'id' filed with assigned steamid of the mod
 def get_modlist_data_webapi(modlist):
     new_modlist = modlist
     if modlist != []:
         adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
         option_tuple = {'itemcount': len(modlist)}
         for i in range(len(modlist)):
-            option_tuple['publishedfileids[' + str(i) + ']'] = modlist[i]['ID']
+            option_tuple['publishedfileids[' + str(i) + ']'] = modlist[i]['id']
         output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
         if output.status_code == 200:
             data = json.loads(output.text)
             publishedfiledetails = data['response']['publishedfiledetails']
             for i in range(len(new_modlist)):
                 for moddetails in publishedfiledetails:
-                    if moddetails['publishedfileid'] == new_modlist[i]['ID']:
+                    if moddetails['publishedfileid'] == new_modlist[i]['id']:
                         if 'time_updated' in moddetails:
                             timestamp = moddetails['time_updated']
                         elif 'time_created' in moddetails:
@@ -120,7 +120,7 @@ def get_modlist_data_webapi(modlist):
                                 new_modlist[i]['name'] = moddetails['title']
                             elif moddetails['title'] != new_modlist[i]['name']:
                                 new_modlist[i]['name'] = moddetails['title']
-                        new_modlist[i]['steamworkshopid'] = new_modlist[i]['ID']
+                        new_modlist[i]['steamworkshopid'] = new_modlist[i]['id']
         elif output.status_code == 400:
             logger.error("BAD REQUEST! {0}".format(output.text))
             print(_("BAD REQUEST! Consult logfile for more deatails!"))
@@ -175,7 +175,7 @@ def get_modlist_data(mods, dependencies = False):
     # just in caaaaaase, lts put it here, i dont trust myself
     for i in range(len(mods)):
         if not isinstance(mods[i], dict):
-            WorkshopItem = {'ID': mods[i]}
+            WorkshopItem = {'id': mods[i]}
             mods[i] = WorkshopItem
 
     mods = get_modlist_data_webapi(mods)
@@ -183,7 +183,7 @@ def get_modlist_data(mods, dependencies = False):
     if dependencies:
         for i in range(len(mods)):
             # download modsite html
-            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['ID'])
+            modurl = "https://steamcommunity.com/sharedfiles/filedetails/?id=" + str(mods[i]['id'])
             modsite = get_htm_of_collection_site(modurl)
             if modsite != "ERROR":
 
@@ -214,7 +214,7 @@ def get_modlist_data(mods, dependencies = False):
             # if addnames:
             #     mods[i]['name'] = get_modname(modsite)
 
-            # mods[i] = {'name': name, 'ID': mods[i]['ID']} #, 'LastUpdated': lastupdated} 
+            # mods[i] = {'name': name, 'id': mods[i]['id']} #, 'LastUpdated': lastupdated} 
             else:
                 print("[ModManager]Mod with a link: " + modurl + " not found!")
 
@@ -227,14 +227,19 @@ def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
     corecontentpackage_xml = ET.SubElement(modlist_xml, corecontentpackage)
 
     for managed_mod in managed_mods:
-        pattern = "^\d*?$"
-        if re.match(pattern, str(os.path.basename(managed_mod))):
+        if not 'type' in managed_mod:
+            pattern = "^\d*?$"
+            if re.match(pattern, str(os.path.basename(managed_mod['path']))):
+                managed_mod['type'] = "Workshop"
+            else:
+                managed_mod['type'] = "Local"
+        if managed_mod['type'] == "Workshop":
             mod = ET.SubElement(modlist_xml, 'Workshop')
-            mod.attrib['name'] = "TODO"
-            mod.attrib['id'] = str(os.path.basename(managed_mod))
+            mod.attrib['name'] = managed_mod['name']
+            mod.attrib['id'] = str(os.path.basename(managed_mod['path']))
         else:
             mod = ET.SubElement(modlist_xml, 'Local')
-            mod.attrib['name'] = str(os.path.basename(managed_mod))
+            mod.attrib['name'] = str(os.path.basename(managed_mod['path']))
     return modlist_xml
 # This is probbably getting from ModListsXml created by barotrauma. TODO check
 def textfilef(fileposition):

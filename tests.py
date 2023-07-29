@@ -2,11 +2,15 @@ import os
 import shutil
 from lxml import etree as ET
 import re
-import ModManager
 import xmldiff.main as xml_diff
 from configbackup import config_files_find
-import BaroRewrites
 import unittest
+
+import ModManager
+import BaroRewrites
+import BackupUtil
+import ConfigRecoder
+import SteamIOMM
 
 steam_library_installedmods = "/mnt/Share/SteamLibrary/steamapps/workshop/content/602960"
 daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
@@ -76,8 +80,8 @@ def test_FIX_barodev_moment():
                 # copy to "test_fix_barodev_moment"
                 ModManager.robocopysubsttute(full_path, full_path_output)
                 # run test_fix_barodev_moment
-                modlist = [{'ID': os.path.basename(full_path)}]
-                ModManager.get_modlist_data_webapi(modlist)
+                modlist = [{'id': os.path.basename(full_path)}]
+                SteamIOMM.get_modlist_data_webapi(modlist)
                 mod = modlist[0]
                 with open(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), 'r', encoding="utf8") as open_file:
                     dst_filelist_str = open_file.read()
@@ -90,7 +94,7 @@ def test_FIX_barodev_moment():
                     dst_filelist_str = re.sub("name=\".*?\"", "", dst_filelist_str)
                     dst_filelist = ET.fromstring(dst_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 dst_filelist = ET.ElementTree(dst_filelist)
-                ModManager.FIX_barodev_moment(mod, full_path_output)
+                BaroRewrites.FIX_barodev_moment(mod, full_path_output)
                 # compare it, file by file to deadalic enterteiment
                 # we only want to compare xml files of xml's that are loaded by the game so first get the list of files from filelist
                 with open(os.path.join(full_path_output, "filelist.xml"), 'r', encoding="utf8") as open_file:
@@ -184,7 +188,7 @@ class TestModManager(unittest.TestCase):
         self.assertEqual(correct_localcopy, localcopy, "Paths localcopy {0}(should be), {1}(is now) not equal!".format(correct_localcopy, localcopy))
 
     def test_get_modlist_regularpackages(self):
-        correct_modlist = [{'path': 'LocalMods/2559634234/filelist.xml', 'ID': '2559634234'}, {'path': 'LocalMods/2532991202/filelist.xml', 'ID': '2532991202'}, {'path': 'LocalMods/2526236489/filelist.xml', 'ID': '2526236489'}, {'path': 'LocalMods/2907491279/filelist.xml', 'ID': '2907491279'}, {'path': 'LocalMods/2764968387/filelist.xml', 'ID': '2764968387'}, {'path': 'LocalMods/2911392334/filelist.xml', 'ID': '2911392334'}, {'path': 'LocalMods/2776270649/filelist.xml', 'ID': '2776270649'}, {'path': 'LocalMods/2807556435/filelist.xml', 'ID': '2807556435'}, {'path': 'LocalMods/2564921308/filelist.xml', 'ID': '2564921308'}, {'path': 'LocalMods/2547888957/filelist.xml', 'ID': '2547888957'}, {'path': 'LocalMods/2161488150/filelist.xml', 'ID': '2161488150'}, {'path': 'LocalMods/2538084355/filelist.xml', 'ID': '2538084355'}, {'path': 'LocalMods/2831987252/filelist.xml', 'ID': '2831987252'}, {'path': 'LocalMods/2834851130/filelist.xml', 'ID': '2834851130'}, {'path': 'LocalMods/2909716869/filelist.xml', 'ID': '2909716869'}, {'path': 'LocalMods/2961385886/filelist.xml', 'ID': '2961385886'}, {'path': 'LocalMods/2085783214/filelist.xml', 'ID': '2085783214'}, {'path': 'LocalMods/2389600483/filelist.xml', 'ID': '2389600483'}, {'path': 'LocalMods/2788543375/filelist.xml', 'ID': '2788543375'}, {'path': 'LocalMods/2764140582/filelist.xml', 'ID': '2764140582'}, {'path': 'LocalMods/2852315967/filelist.xml', 'ID': '2852315967'}, {'path': 'LocalMods/2955139345/filelist.xml', 'ID': '2955139345'}, {'path': 'LocalMods/2544952900/filelist.xml', 'ID': '2544952900'}, {'path': 'LocalMods/2804655816/filelist.xml', 'ID': '2804655816'}, {'path': 'LocalMods/2912049119/filelist.xml', 'ID': '2912049119'}, {'path': 'LocalMods/2655920928/filelist.xml', 'ID': '2655920928'}, {'path': 'LocalMods/2948537269/filelist.xml', 'ID': '2948537269'}, {'path': 'LocalMods/2260683656/filelist.xml', 'ID': '2260683656'}, {'path': 'LocalMods/2972196919/filelist.xml', 'ID': '2972196919'}, {'path': 'LocalMods/2390137099/filelist.xml', 'ID': '2390137099'}, {'path': 'LocalMods/2838076686/filelist.xml', 'ID': '2838076686'}, {'path': 'LocalMods/2940102835/filelist.xml', 'ID': '2940102835'}]
+        correct_modlist = [{'path': 'LocalMods/2559634234/filelist.xml', 'id': '2559634234'}, {'path': 'LocalMods/2532991202/filelist.xml', 'id': '2532991202'}, {'path': 'LocalMods/2526236489/filelist.xml', 'id': '2526236489'}, {'path': 'LocalMods/2907491279/filelist.xml', 'id': '2907491279'}, {'path': 'LocalMods/2764968387/filelist.xml', 'id': '2764968387'}, {'path': 'LocalMods/2911392334/filelist.xml', 'id': '2911392334'}, {'path': 'LocalMods/2776270649/filelist.xml', 'id': '2776270649'}, {'path': 'LocalMods/2807556435/filelist.xml', 'id': '2807556435'}, {'path': 'LocalMods/2564921308/filelist.xml', 'id': '2564921308'}, {'path': 'LocalMods/2547888957/filelist.xml', 'id': '2547888957'}, {'path': 'LocalMods/2161488150/filelist.xml', 'id': '2161488150'}, {'path': 'LocalMods/2538084355/filelist.xml', 'id': '2538084355'}, {'path': 'LocalMods/2831987252/filelist.xml', 'id': '2831987252'}, {'path': 'LocalMods/2834851130/filelist.xml', 'id': '2834851130'}, {'path': 'LocalMods/2909716869/filelist.xml', 'id': '2909716869'}, {'path': 'LocalMods/2961385886/filelist.xml', 'id': '2961385886'}, {'path': 'LocalMods/2085783214/filelist.xml', 'id': '2085783214'}, {'path': 'LocalMods/2389600483/filelist.xml', 'id': '2389600483'}, {'path': 'LocalMods/2788543375/filelist.xml', 'id': '2788543375'}, {'path': 'LocalMods/2764140582/filelist.xml', 'id': '2764140582'}, {'path': 'LocalMods/2852315967/filelist.xml', 'id': '2852315967'}, {'path': 'LocalMods/2955139345/filelist.xml', 'id': '2955139345'}, {'path': 'LocalMods/2544952900/filelist.xml', 'id': '2544952900'}, {'path': 'LocalMods/2804655816/filelist.xml', 'id': '2804655816'}, {'path': 'LocalMods/2912049119/filelist.xml', 'id': '2912049119'}, {'path': 'LocalMods/2655920928/filelist.xml', 'id': '2655920928'}, {'path': 'LocalMods/2948537269/filelist.xml', 'id': '2948537269'}, {'path': 'LocalMods/2260683656/filelist.xml', 'id': '2260683656'}, {'path': 'LocalMods/2972196919/filelist.xml', 'id': '2972196919'}, {'path': 'LocalMods/2390137099/filelist.xml', 'id': '2390137099'}, {'path': 'LocalMods/2838076686/filelist.xml', 'id': '2838076686'}, {'path': 'LocalMods/2940102835/filelist.xml', 'id': '2940102835'}]
         with open("test_localcopy.xml", "r", encoding='utf8') as f:
             regularpackages = f.read()
         # get modlist from regularpackages
@@ -227,7 +231,7 @@ class TestModManager(unittest.TestCase):
         for mod in modlist:
             found = False
             for name in names:
-                if mod['ID'] == name:
+                if mod['id'] == name:
                     found = True
             self.assertTrue(found == False, "Mod {mod} not downloaded correctly!")
 
@@ -242,10 +246,10 @@ class TestModManager(unittest.TestCase):
 
     def test_is_pure_lua_mod(self):
         # test that function with mods inside steam install workshop mods
-        modlist = [{'ID': "2658872348", 'expected': True},{'ID': "2544952900", 'expected': False}] # ...
+        modlist = [{'id': "2658872348", 'expected': True},{'id': "2544952900", 'expected': False}] # ...
         for mod in modlist:
-            self.assertTrue(mod['expected'] != ModManager.is_pure_lua_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['ID'])),
-                            "Check not successfull! {0}".format(mod['ID']))
+            self.assertTrue(mod['expected'] != ModManager.is_pure_lua_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['id'])),
+                            "Check not successfull! {0}".format(mod['id']))
 
     # full run
     def test_main(self):
@@ -321,6 +325,8 @@ def get_all_content_types():
         print("\"{0}\",".format(xml_tag.lower()), end='')
 
 if __name__ == '__main__':
+    test_FIX_barodev_moment()
+
     TestModManager.test_get_localcopy_path()
     TestModManager.test_get_modlist_regularpackages()
     TestModManager.test_remove_duplicates()
@@ -329,7 +335,6 @@ if __name__ == '__main__':
     TestModManager.test_check_collection_link()
     TestModManager.test_is_pure_lua_mod()
     # somewhat works
-    test_FIX_barodev_moment()
     # what? you expect me to run by hand? im lazy
     # test_main()
         # with open("config_player.xml", 'r', encoding="utf8") as f:
@@ -428,9 +433,9 @@ if __name__ == '__main__':
 #     # print new
 #     for mod in mods:
 #         regularpackages += "      <!--" + mod['name'] + "-->\n"
-#         lastupdated_f += mod['ID'] + ";" + str(time.strftime('%d %b, %Y @ %I:%M%p', mod['LastUpdated'])) + "\n"
+#         lastupdated_f += mod['id'] + ";" + str(time.strftime('%d %b, %Y @ %I:%M%p', mod['LastUpdated'])) + "\n"
 #         regularpackages += "      <package\n"
-#         regularpackages += "        path=\"" + moddirectory + "/" +  mod['ID'] + "/filelist.xml\" />\n"
+#         regularpackages += "        path=\"" + moddirectory + "/" +  mod['id'] + "/filelist.xml\" />\n"
 #     regularpackages += "    </regularpackages>\n"
 
 #     filex = open("lastupdated.txt", "w", encoding='utf8')
