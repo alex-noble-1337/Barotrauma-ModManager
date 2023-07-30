@@ -12,6 +12,8 @@ import BackupUtil
 import ConfigRecoder
 import SteamIOMM
 
+from BaroRewrites import content_types
+
 steam_library_installedmods = "/mnt/Share/SteamLibrary/steamapps/workshop/content/602960"
 daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
 
@@ -112,20 +114,6 @@ def test_FIX_barodev_moment():
                         raise Exception(("diff --color \"{0}\" \"{1}\"\nFiles {0}, {1} not equal\n{2}/{3}\n{4}").format(os.path.join(full_path_output, "filelist.xml"), os.path.join(daedalic_entertainment_ghmbh_installedmods, mod_dir, "filelist.xml"), done, len(mod_dirs_daedelic), diff))
                 else:
                     def_content = []
-                    content_types = ["item","character","mapcreature","text",
-                                     "uistyle","afflictions","structure",
-                                     "upgrademodules","ruinconfig",
-                                     "wreckaiconfig","backgroundcreatureprefabs",
-                                     "levelobjectprefabs","particles","decals",
-                                     "randomevents","eventmanagersettings",
-                                     "locationtypes","mapgenerationparameters",
-                                     "levelgenerationparameters",
-                                     "cavegenerationparameters","outpostconfig",
-                                     "npcsets","missions","traitormissions",
-                                     "npcpersonalitytraits","npcconversations",
-                                     "jobs","orders","corpses","sounds",
-                                     "skillsettings","factions","itemassembly",
-                                     "talents","talenttrees","startitems","tutorials"]
                     elements = filelist.getchildren()
                     for element in elements:
                         if element.tag.lower() in content_types:
