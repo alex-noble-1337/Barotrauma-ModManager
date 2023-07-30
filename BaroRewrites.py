@@ -79,9 +79,9 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
             with open(file_path, 'r', encoding="utf8") as open_file:
                 content = open_file.read()
             if oldname != "":
-                occurrences = re.finditer("Mods\\/((" + name + ")|(" + oldname + "))", content)
+                occurrences = re.finditer("Mods\\/((" + re.escape(name) + ")|(" + re.escape(oldname) + "))", content)
             else:
-                occurrences = re.finditer("Mods\\/" + name, content)
+                occurrences = re.finditer("Mods\\/" + re.escape(name), content)
             points = reduce(lambda x, y: x + [y.start()], occurrences, [])
             drift = 0
             for point in points:

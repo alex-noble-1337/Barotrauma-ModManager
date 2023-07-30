@@ -331,15 +331,15 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
             print()
             # iterator += 1
             # bar.update(iterator)
-    # change timestamp
-    with open(os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml"),
-                'r', encoding="utf8") as f:
-        filelist_xml = ET.fromstring(f.read())
-    filelist_xml.attrib['installtime'] = str(int(time.time()))
-    filelist_str = ET.tostring(filelist_xml, encoding="utf-8", method="xml", xml_declaration=True)
-    with open(os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml"), 
-                'wb') as f:
-        f.write(filelist_str)
+        # change timestamp
+        with open(os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml"),
+                    'r', encoding="utf8") as f:
+            filelist_xml = ET.fromstring(f.read())
+        filelist_xml.attrib['installtime'] = str(int(time.time()))
+        filelist_str = ET.tostring(filelist_xml, encoding="utf-8", method="xml", xml_declaration=True)
+        with open(os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml"), 
+                    'wb') as f:
+            f.write(filelist_str)
     return numberofupdatedmods
 
 # return false on negative test resoult, on positive resoult return collection site string

@@ -94,6 +94,7 @@ def test_FIX_barodev_moment():
                     mod['name'] = dst_filelist.attrib['name']
                 if not namematters:
                     dst_filelist_str = re.sub("name=\".*?\"", "", dst_filelist_str)
+                    dst_filelist_str = re.sub("altnames=\".*?\"", "", dst_filelist_str)
                     dst_filelist = ET.fromstring(dst_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 dst_filelist = ET.ElementTree(dst_filelist)
                 BaroRewrites.FIX_barodev_moment(mod, full_path_output)
@@ -106,6 +107,7 @@ def test_FIX_barodev_moment():
                     filelist = ET.fromstring(src_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 if not namematters:
                     src_filelist_str = re.sub("name=\".*?\"", "", src_filelist_str)
+                    src_filelist_str = re.sub("altnames=\".*?\"", "", src_filelist_str)
                     filelist = ET.fromstring(src_filelist_str, parser=ET.XMLParser(remove_comments=True))
                 diff = xml_diff.diff_trees(ET.ElementTree(filelist), dst_filelist)
                 if diff != []:
@@ -239,61 +241,61 @@ class TestModManager(unittest.TestCase):
             self.assertTrue(mod['expected'] != ModManager.is_pure_lua_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['id'])),
                             "Check not successfull! {0}".format(mod['id']))
 
-    # full run
-    def test_main(self):
-        localcopy_dir = ""
-        # run collection mod
-        user_perfs = {}
-        ModManager.main(user_perfs)
-        # test if those are good
-        mod_dirs = os.listdir(steam_library_installedmods)
-        mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
-        for mod_dir in mod_dirs:
-            for mod_dir_daedelic in mod_dirs_daedelic:
-                if mod_dir == mod_dir_daedelic:
-                    full_path = os.path.join(steam_library_installedmods, mod_dir)
-                    full_path_output = os.path.join(localcopy_dir, mod_dir)
-                    if os.path.exists(full_path):
-                        # copy to "test_fix_barodev_moment"
-                        # run test_fix_barodev_moment
-                        # compare it, file by file to deadalic enterteiment
-                        for src_dir, dirs, files in os.walk(root_src_dir):
-                            for file_ in files:
-                                src_dir = os.path.join(full_path_output, file_)
-                                with open(src_dir, 'rb') as open_file:
-                                    src_file = open_file
-                                dst_dir = os.path.join(daedalic_entertainment_ghmbh_installedmods, file_)
-                                with open(dst_dir, 'rb') as open_file:
-                                    dst_file = open_file
-                                if src_file != dst_file:
-                                    # TODO mabe generate diff output of 2 files?
-                                    raise Exception(("Files {src_dir}, {dst_dir} not equal"))
-        # run config_player mode
-        user_perfs = {}
-        ModManager.main(user_perfs)
-        # test if those are good
-        mod_dirs = os.listdir(steam_library_installedmods)
-        mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
-        for mod_dir in mod_dirs:
-            for mod_dir_daedelic in mod_dirs_daedelic:
-                if mod_dir == mod_dir_daedelic:
-                    full_path = os.path.join(steam_library_installedmods, mod_dir)
-                    full_path_output = os.path.join(localcopy_dir, mod_dir)
-                    if os.path.exists(full_path):
-                        # copy to "test_fix_barodev_moment"
-                        # run test_fix_barodev_moment
-                        mod = {}
-                        # compare it, file by file to deadalic enterteiment
-                        for src_dir, dirs, files in os.walk(root_src_dir):
-                            for file_ in files:
-                                src_dir = os.path.join(full_path_output, file_)
-                                with open(src_dir, 'rb') as open_file:
-                                    src_file = open_file
-                                dst_dir = os.path.join(daedalic_entertainment_ghmbh_installedmods, file_)
-                                with open(dst_dir, 'rb') as open_file:
-                                    dst_file = open_file
+# full run
+def test_main():
+    localcopy_dir = ""
+    # run collection mod
+    user_perfs = {}
+    ModManager.main(user_perfs)
+    # test if those are good
+    mod_dirs = os.listdir(steam_library_installedmods)
+    mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
+    for mod_dir in mod_dirs:
+        for mod_dir_daedelic in mod_dirs_daedelic:
+            if mod_dir == mod_dir_daedelic:
+                full_path = os.path.join(steam_library_installedmods, mod_dir)
+                full_path_output = os.path.join(localcopy_dir, mod_dir)
+                if os.path.exists(full_path):
+                    # copy to "test_fix_barodev_moment"
+                    # run test_fix_barodev_moment
+                    # compare it, file by file to deadalic enterteiment
+                    for src_dir, dirs, files in os.walk(root_src_dir):
+                        for file_ in files:
+                            src_dir = os.path.join(full_path_output, file_)
+                            with open(src_dir, 'rb') as open_file:
+                                src_file = open_file
+                            dst_dir = os.path.join(daedalic_entertainment_ghmbh_installedmods, file_)
+                            with open(dst_dir, 'rb') as open_file:
+                                dst_file = open_file
+                            if src_file != dst_file:
                                 # TODO mabe generate diff output of 2 files?
-                                self.assertTrue(src_file != dst_file, "Files {src_dir}, {dst_dir} not equal")
+                                raise Exception(("Files {src_dir}, {dst_dir} not equal"))
+    # run config_player mode
+    user_perfs = {}
+    ModManager.main(user_perfs)
+    # test if those are good
+    mod_dirs = os.listdir(steam_library_installedmods)
+    mod_dirs_daedelic = os.listdir(daedalic_entertainment_ghmbh_installedmods)
+    for mod_dir in mod_dirs:
+        for mod_dir_daedelic in mod_dirs_daedelic:
+            if mod_dir == mod_dir_daedelic:
+                full_path = os.path.join(steam_library_installedmods, mod_dir)
+                full_path_output = os.path.join(localcopy_dir, mod_dir)
+                if os.path.exists(full_path):
+                    # copy to "test_fix_barodev_moment"
+                    # run test_fix_barodev_moment
+                    mod = {}
+                    # compare it, file by file to deadalic enterteiment
+                    for src_dir, dirs, files in os.walk(root_src_dir):
+                        for file_ in files:
+                            src_dir = os.path.join(full_path_output, file_)
+                            with open(src_dir, 'rb') as open_file:
+                                src_file = open_file
+                            dst_dir = os.path.join(daedalic_entertainment_ghmbh_installedmods, file_)
+                            with open(dst_dir, 'rb') as open_file:
+                                dst_file = open_file
+                            # TODO mabe generate diff output of 2 files?
+                            self.assertTrue(src_file != dst_file, "Files {src_dir}, {dst_dir} not equal")
 
 
 def get_all_content_types():
@@ -313,15 +315,16 @@ def get_all_content_types():
         print("\"{0}\",".format(xml_tag.lower()), end='')
 
 if __name__ == '__main__':
-    test_FIX_barodev_moment()
+    unittest.main()
+    # TestModManager.test_get_localcopy_path()
+    # TestModManager.test_get_modlist_regularpackages()
+    # TestModManager.test_remove_duplicates()
+    # TestModManager.test_create_new_regularpackages()
+    # TestModManager.test_download_modlist()
+    # TestModManager.test_check_collection_link()
+    # TestModManager.test_is_pure_lua_mod()
 
-    TestModManager.test_get_localcopy_path()
-    TestModManager.test_get_modlist_regularpackages()
-    TestModManager.test_remove_duplicates()
-    TestModManager.test_create_new_regularpackages()
-    TestModManager.test_download_modlist()
-    TestModManager.test_check_collection_link()
-    TestModManager.test_is_pure_lua_mod()
+    test_FIX_barodev_moment()
     # somewhat works
     # what? you expect me to run by hand? im lazy
     # test_main()

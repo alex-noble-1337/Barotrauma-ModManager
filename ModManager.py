@@ -721,7 +721,7 @@ def modmanager(user_perfs):
 
 
     # actually moving mods to localcopy
-    for mod in modlist:
+    for mod in modlist_to_update:
         mod_path = os.path.join(steamcmd_downloads, mod['id'])
         BaroRewrites.FIX_barodev_moment(mod, mod_path)
         robocopysubsttute(mod_path, os.path.join(user_perfs['localcopy_path'], mod['id']))
