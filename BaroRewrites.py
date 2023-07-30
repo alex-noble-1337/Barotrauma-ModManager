@@ -21,19 +21,19 @@ import logging.config
 logger = logging.getLogger(__name__)
 
 content_types = ["item","character","mapcreature","text",
-                         "uistyle","afflictions","structure",
-                         "upgrademodules","ruinconfig",
-                         "wreckaiconfig","backgroundcreatureprefabs",
-                         "levelobjectprefabs","particles","decals",
-                         "randomevents","eventmanagersettings",
-                         "locationtypes","mapgenerationparameters",
-                         "levelgenerationparameters",
-                         "cavegenerationparameters","outpostconfig",
-                         "npcsets","missions","traitormissions",
-                         "npcpersonalitytraits","npcconversations",
-                         "jobs","orders","corpses","sounds",
-                         "skillsettings","factions","itemassembly",
-                         "talents","talenttrees","startitems","tutorials"]
+                 "uistyle","afflictions","structure",
+                 "upgrademodules","ruinconfig",
+                 "wreckaiconfig","backgroundcreatureprefabs",
+                 "levelobjectprefabs","particles","decals",
+                 "randomevents","eventmanagersettings",
+                 "locationtypes","mapgenerationparameters",
+                 "levelgenerationparameters",
+                 "cavegenerationparameters","outpostconfig",
+                 "npcsets","missions","traitormissions",
+                 "npcpersonalitytraits","npcconversations",
+                 "jobs","orders","corpses","sounds",
+                 "skillsettings","factions","itemassembly",
+                 "talents","talenttrees","startitems","tutorials"]
 
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them
@@ -54,20 +54,6 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
         if 'altnames' in filelist.attrib:
             oldname = filelist.attrib['altnames']
         def_content = []
-        content_types = ["item","character","mapcreature","text",
-                         "uistyle","afflictions","structure",
-                         "upgrademodules","ruinconfig",
-                         "wreckaiconfig","backgroundcreatureprefabs",
-                         "levelobjectprefabs","particles","decals",
-                         "randomevents","eventmanagersettings",
-                         "locationtypes","mapgenerationparameters",
-                         "levelgenerationparameters",
-                         "cavegenerationparameters","outpostconfig",
-                         "npcsets","missions","traitormissions",
-                         "npcpersonalitytraits","npcconversations",
-                         "jobs","orders","corpses","sounds",
-                         "skillsettings","factions","itemassembly",
-                         "talents","talenttrees","startitems","tutorials"]
         # definition_files = filelist.getchildren()
         for def_file in filelist:
             if def_file.tag.lower() in content_types:
