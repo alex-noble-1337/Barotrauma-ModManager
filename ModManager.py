@@ -60,6 +60,7 @@ from BackupUtil import backupBarotraumaData
 from ConfigRecoder import modlist_to_ModListsXml
 import BaroRewrites
 
+
 # set up all default values and paths
 # TODO rework
 def get_user_perfs():
@@ -70,7 +71,8 @@ def get_user_perfs():
     # then load config files
     # defaults:
     user_perfs = {'locale': 'en', 'old_managedmods': [], 'tool': default_tool_path,
-                  'barotrauma': default_barotrauma_path, 'steamcmd': default_steamcmd_path, 'addperformancefix': default_addperformancefix}
+                  'barotrauma': default_barotrauma_path, 'steamcmd': default_steamcmd_path,
+                  'addperformancefix': default_addperformancefix}
     logging_config = {}
     logger.info("Default user_perfs are {0}".format(user_perfs))
     # toolpath or config path
@@ -103,7 +105,7 @@ def get_user_perfs():
                     else:
                         user_perfs[val] = config_xml.attrib[val]
         # TODO get modlist(oldmanagedmods) in format same as ModLists(barotrauma generated)
-        if 'localcopy_path' in user_perfs or 'localcopy_path' in user_perfs:
+        if 'localcopy_path' in user_perfs:
             for subconfig in config_xml:
                 if subconfig.tag.lower() == 'mods':
                     for mod_xml in subconfig:
@@ -178,6 +180,11 @@ def get_user_perfs():
                 else:
                     tempval += 1
 
+            # override installation dir
+            if options_arr[i] == '--installdir' or options_arr[i] == '-o':
+                if tempval >= 3:
+                    user_perfs['localcopy_path_override'] = options_arr[i+1]
+                    logger.info("Localcopy Path Override set {0}".format(user_perfs['localcopy_path_override']))
 
             # --barotraumapath or -b - path to your barotrauma install. Must be a path to THE FOLDER, not the program itself. Does not accept ""
             if options_arr[i] == '--barotraumapath' or options_arr[i] == '-b':
@@ -212,7 +219,7 @@ def get_user_perfs():
                     user_perfs['localcopy_path'] = options_arr[i+2]
                 logger.info("Collection link set from command line as {0}".format(user_perfs['collection_link']))
                 logger.info("localcopy path override set from command line as {0}".format(user_perfs['localcopy_path']))
-                
+
              # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
                 if tempval >= 1:
@@ -229,7 +236,7 @@ def get_user_perfs():
 
     # setting up default values and path handling
     if not os.path.isabs(user_perfs['barotrauma']):
-        user_perfs['barotrauma'] = os.path.join(os.getcwd(), user_perfs['barotrauma'])
+        user_perfs['barotrauma'] = os.path.abspath(user_perfs['barotrauma'])
     # TODO wtf is this
     if default_steamdir_path == "":
         user_perfs['steamdir'] = os.path.join(user_perfs['tool'], "steamdir")
@@ -261,6 +268,10 @@ def get_user_perfs():
     elif 'collection_link' in user_perfs and user_perfs['mode'] == "collection" and 'localcopy_path' in user_perfs:
         logger.info("Collection mode enabled from perfs, collection_link:{0}, mode:{1}, localcopy_path:{2}"
             .format(user_perfs['collection_link'], user_perfs['mode'], user_perfs['localcopy_path']))
+    if 'localcopy_path_override' in user_perfs:
+        user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
+        logger.info("localcopy path override set as {0}".format(user_perfs['localcopy_path']))
+        
     return user_perfs
 def save_user_perfs(managed_mods, user_perfs, corecontentpackage = "Vanilla"):
     # managed_mods_str = ""
@@ -277,7 +288,6 @@ def save_user_perfs(managed_mods, user_perfs, corecontentpackage = "Vanilla"):
     
     config_xml.append(modlist_to_ModListsXml(managed_mods, corecontentpackage))
     ET.indent(config_xml, space="\t", level=0)
-
     with open(user_perfs['config_path'], 'wb') as open_file:
         open_file.write(ET.tostring(config_xml))
 
@@ -297,8 +307,13 @@ def get_modlist_regularpackages(regularpackages,localcopy_path):
     modlist = []
     for element in root:
         if element.tag == "package":
-            mod = {'path': element.attrib['path']}
-            mod['id'] = os.path.basename(os.path.dirname(mod['path']))
+            mod = {'path': os.path.dirname(element.attrib['path'])}
+            id_test = re.findall("\d*?$", mod['path'])
+            if len(id_test) > 0:
+                mod['id'] = id_test[0]
+                mod['type'] = "Workshop"
+            else:
+                mod['type'] = "Local"
             modlist.append(mod)
 
     # reason i need to look in filelist is because of:
@@ -306,9 +321,9 @@ def get_modlist_regularpackages(regularpackages,localcopy_path):
     #   - i can just get non-installed mods name's via api 
     for mod in modlist:
         if os.path.isabs(mod['path']):
-            filelist_path = mod['path']
+            filelist_path = os.path.join(mod['path'], "filelist.xml")
         else:
-            filelist_path = os.path.join(localcopy_path, mod['path'])
+            filelist_path = os.path.join(os.path.abspath(mod['path']), "filelist.xml")
         if os.path.exists(filelist_path):
             with open(filelist_path, 'r') as open_file:
                 mod_filelist_str = open_file.read()
@@ -316,8 +331,8 @@ def get_modlist_regularpackages(regularpackages,localcopy_path):
             if mod_filelist.tag.lower() == "contentpackage":
                 mod['name'] = mod_filelist.attrib['name']
                 if 'installtime' in mod_filelist.attrib:
-                    mod['installtime'] = mod_filelist.attrib['installtime']
-                    mod['modificationtime'] = mod_filelist.attrib['installtime']
+                    mod['installtime'] = int(mod_filelist.attrib['installtime'])
+                    mod['modificationtime'] = int(mod_filelist.attrib['installtime'])
         
     return modlist
 # get from config_player.xml, everything inside <regularpackages/> </regularpackages>
@@ -345,10 +360,10 @@ def get_regularpackages(barotrauma_path):
     if len(regularpackages) > 0:
         return regularpackages[0]
     else:
-        logger.critical("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages. \
-                        \nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")
-        raise Exception(_("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages. \
-                         \nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
+        logger.critical(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
+                        "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
+        raise Exception(_(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
+                         "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")))
 def get_localcopy_path(filelist_str):
     localcopy_path = ""
     root = ET.fromstring(filelist_str)
@@ -388,19 +403,19 @@ def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
     # print new
     for mod in modlist:
         #  if barotrauma_path is inside of 
-        temp_localcopy_path = localcopy_path_og
-        if temp_localcopy_path.count(barotrauma_path) > 0:
-            temp_localcopy_path = temp_localcopy_path.replace(barotrauma_path, "")
+        temp_mod_path = mod['path']
+        if temp_mod_path.count(barotrauma_path) > 0:
+            temp_mod_path = temp_mod_path.replace(barotrauma_path + os.sep, "")
 
         if sys.platform == "win32":
-            temp_localcopy_path = temp_localcopy_path.replace("\\", "/")
+            temp_mod_path = temp_mod_path.replace("\\", "/")
         else:
-            temp_localcopy_path = temp_localcopy_path
+            temp_mod_path = temp_mod_path
 
         modname_formatted = mod['name'].replace("--", "- -")
         regularpackages_new += "      <!--" + modname_formatted + "-->\n"
         regularpackages_new += "      <package\n"
-        regularpackages_new += "        path=\"" + temp_localcopy_path + "/" + mod['id'] + "/filelist.xml\" />\n"
+        regularpackages_new += "        path=\"" + temp_mod_path + "/filelist.xml" + "\"/>\n"
     regularpackages_new += "    </regularpackages>"
     return regularpackages_new
 
@@ -448,7 +463,13 @@ def get_not_managed_modlist(old_managed_modlist, managed_modlist):
     # TODO sloooooow
     for modwithdir in managed_modlist:
         for old_modwithdir in old_managed_modlist:
-            if modwithdir['path'] == old_modwithdir['path']:
+            path_mod = modwithdir['path']
+            path_old_mod = old_modwithdir['path']
+            if not os.path.isabs(path_mod):
+                path_mod = os.path.abspath(path_mod)
+            if not os.path.isabs(path_old_mod):
+                path_old_mod = os.path.abspath(path_mod)
+            if path_mod == path_old_mod:
                 not_managed_modlist.remove(old_modwithdir)
     return not_managed_modlist
 def deleting_not_managed_modlist(not_managed_modlist):
@@ -460,21 +481,21 @@ def deleting_not_managed_modlist(not_managed_modlist):
     print(_("[ModManager] Removed {0} not managed now mods!").format(str(removed_count)))
 # check, both if they exist and if they are up to date
 # made it that way to...uhhhh idk
+# also appends modificationtime if not present
 def get_up_to_date_mods(mods, localcopy_path):
-    new_mods = mods
     remove_arr = []
     # TODO current slowing time is about 
     # TODO lastupdated skip for windows and mac
-    for mod in new_mods:
+    for mod in mods:
         if 'LastUpdated' in mod:
-            if os.path.exists(os.path.join(localcopy_path, mod['id'])):
+            if os.path.exists(mod['path']):
                 if not 'modificationtime' in mod:
                     mod['modificationtime'] = get_recusive_modification_time_of_dir(os.path.join(localcopy_path, mod['id']))
                 # conversion into time struct
                 mod['modificationtime'] = time.localtime(mod['modificationtime'])
                 test = time.strftime('%d %b, %Y @ %I:%M%p', mod['modificationtime'])
                 # greater not equal because of possible steam errors
-                if  mod['modificationtime'] > mod['LastUpdated'] and os.path.exists(os.path.join(localcopy_path, mod['id'], "filelist.xml")):
+                if  mod['modificationtime'] > mod['LastUpdated'] and os.path.exists(os.path.join(mod['path'], "filelist.xml")):
                     # TODO check if all xml files are matching what is in filelist
                     # TODO thats a lazy way to do it
                     remove_arr.append(mod)
@@ -563,7 +584,11 @@ def modmanager(user_perfs):
     if os.path.exists(user_perfs['steamdir']):
         shutil.rmtree(user_perfs['steamdir'])
     os.makedirs(user_perfs['steamdir'] ,exist_ok = True)
-
+    if 'localcopy_path' in user_perfs and 'localcopy_path_override' in user_perfs:
+        user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
+        logger.info("localcopy path override set as {0}".format(user_perfs['localcopy_path']))
+        if not os.path.isabs(user_perfs['localcopy_path']):
+            user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
 
     # check collection link if it is valid
     isvalid_collection_link = False
@@ -587,6 +612,10 @@ def modmanager(user_perfs):
             user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
         if user_perfs['localcopy_path'] == "":
             user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
+        if 'localcopy_path_override' in user_perfs:
+            user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
+        if os.path.isabs(user_perfs['localcopy_path']):
+            user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
         modlist.extend(get_modlist_regularpackages(regularpackages, user_perfs['localcopy_path']))
 
 
@@ -622,7 +651,6 @@ def modmanager(user_perfs):
 
     # modless?
     if len(modlist) == 0:
-        modlist = []
         not_managedmods = get_not_managed_modlist(user_perfs['old_managedmods'], modlist)
         deleting_not_managed_modlist(not_managedmods)
         save_user_perfs(modlist, user_perfs)
@@ -645,7 +673,7 @@ def modmanager(user_perfs):
     if not os.path.isabs(user_perfs['steamdir']):
         user_perfs['steamdir'] = os.path.join(os.getcwd(), user_perfs['steamdir'])
     if not os.path.isabs(user_perfs['localcopy_path']):
-        user_perfs['localcopy_path'] = os.path.join(os.getcwd(), user_perfs['localcopy_path'])
+        user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
     user_perfs['steamdir'] = os.path.realpath(user_perfs['steamdir'])
 
 
@@ -672,13 +700,13 @@ def modmanager(user_perfs):
 
 
     # lastupdated functionality
-    if user_perfs['mode'] == "collection":
-        up_to_date_mods = get_up_to_date_mods(modlist, user_perfs['localcopy_path'])
-        modlist = remove_all_occurences_from_arr(modlist, up_to_date_mods)
+    up_to_date_mods = []
+    up_to_date_mods = get_up_to_date_mods(modlist, user_perfs['localcopy_path'])
+    modlist_to_update = remove_all_occurences_from_arr(modlist, up_to_date_mods)
 
 
     # main part, running moddlownloader
-    nr_updated_mods = SteamIOMM.download_modlist(modlist, user_perfs['steamdir'], user_perfs['steamcmd'])
+    nr_updated_mods = SteamIOMM.download_modlist(modlist_to_update, user_perfs['steamdir'], user_perfs['steamcmd'])
     print("\n")
     print(_("[ModManager] Skipping download of {0} Already up to date Mods. (if any issues arrise please remove every mod from your localcopy directory)")
             .format(str(len(up_to_date_mods))))
@@ -746,12 +774,16 @@ def main():
     print(_("Wellcome to ModManager script!"))
     # gotta have it here even if it pains me
     user_perfs = get_user_perfs()
+    # TEST
+    user_perfs['localcopy_path_override'] = "LocalMods"
     logger.info("Aqquired user perfs: {0}".format(str(user_perfs)))
     while(True):
         if 'collection_link' in user_perfs and 'localcopy_path' in user_perfs:
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))
             print(_("[ModManager] Steam collection mode enabled! Disable by entering collection sub-menu."))
             print(_("[ModManager] Do you want to update that collection of mods? ((Y)es / (n)o): "))
+            if 'localcopy_path_override' in user_perfs:
+                user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
         else: 
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))
             print(_("[ModManager] Steam collection mode disabled! Enable by entering collection sub-menu."))

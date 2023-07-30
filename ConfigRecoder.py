@@ -228,8 +228,8 @@ def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
 
     for managed_mod in managed_mods:
         if not 'type' in managed_mod:
-            pattern = "^\d*?$"
-            if re.match(pattern, str(os.path.basename(managed_mod['path']))):
+            id_test = re.findall("\d*?$", managed_mod['path'])
+            if len(id_test) > 0:
                 managed_mod['type'] = "Workshop"
             else:
                 managed_mod['type'] = "Local"
