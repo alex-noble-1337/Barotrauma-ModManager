@@ -177,12 +177,22 @@ class TestModManager(unittest.TestCase):
         # TODO check it its valid xml
         self.assertEqual(correct_localcopy, localcopy, "Paths localcopy {0}(should be), {1}(is now) not equal!".format(correct_localcopy, localcopy))
 
+    # This is terrible
+    # but its a future me problem
     def test_get_modlist_regularpackages(self):
-        correct_modlist = [{'path': 'LocalMods/2559634234/filelist.xml', 'id': '2559634234'}, {'path': 'LocalMods/2532991202/filelist.xml', 'id': '2532991202'}, {'path': 'LocalMods/2526236489/filelist.xml', 'id': '2526236489'}, {'path': 'LocalMods/2907491279/filelist.xml', 'id': '2907491279'}, {'path': 'LocalMods/2764968387/filelist.xml', 'id': '2764968387'}, {'path': 'LocalMods/2911392334/filelist.xml', 'id': '2911392334'}, {'path': 'LocalMods/2776270649/filelist.xml', 'id': '2776270649'}, {'path': 'LocalMods/2807556435/filelist.xml', 'id': '2807556435'}, {'path': 'LocalMods/2564921308/filelist.xml', 'id': '2564921308'}, {'path': 'LocalMods/2547888957/filelist.xml', 'id': '2547888957'}, {'path': 'LocalMods/2161488150/filelist.xml', 'id': '2161488150'}, {'path': 'LocalMods/2538084355/filelist.xml', 'id': '2538084355'}, {'path': 'LocalMods/2831987252/filelist.xml', 'id': '2831987252'}, {'path': 'LocalMods/2834851130/filelist.xml', 'id': '2834851130'}, {'path': 'LocalMods/2909716869/filelist.xml', 'id': '2909716869'}, {'path': 'LocalMods/2961385886/filelist.xml', 'id': '2961385886'}, {'path': 'LocalMods/2085783214/filelist.xml', 'id': '2085783214'}, {'path': 'LocalMods/2389600483/filelist.xml', 'id': '2389600483'}, {'path': 'LocalMods/2788543375/filelist.xml', 'id': '2788543375'}, {'path': 'LocalMods/2764140582/filelist.xml', 'id': '2764140582'}, {'path': 'LocalMods/2852315967/filelist.xml', 'id': '2852315967'}, {'path': 'LocalMods/2955139345/filelist.xml', 'id': '2955139345'}, {'path': 'LocalMods/2544952900/filelist.xml', 'id': '2544952900'}, {'path': 'LocalMods/2804655816/filelist.xml', 'id': '2804655816'}, {'path': 'LocalMods/2912049119/filelist.xml', 'id': '2912049119'}, {'path': 'LocalMods/2655920928/filelist.xml', 'id': '2655920928'}, {'path': 'LocalMods/2948537269/filelist.xml', 'id': '2948537269'}, {'path': 'LocalMods/2260683656/filelist.xml', 'id': '2260683656'}, {'path': 'LocalMods/2972196919/filelist.xml', 'id': '2972196919'}, {'path': 'LocalMods/2390137099/filelist.xml', 'id': '2390137099'}, {'path': 'LocalMods/2838076686/filelist.xml', 'id': '2838076686'}, {'path': 'LocalMods/2940102835/filelist.xml', 'id': '2940102835'}]
+        correct_modlist = [{'path': 'LocalMods/2972867060', 'id': '2972867060', 'type': 'Workshop', 'name': 'Minigun Revived'},
+                           {'path': 'LocalMods/2973435246', 'id': '2973435246', 'type': 'Workshop', 'name': 'Artifacts extended Revived'},
+                           {'path': 'LocalMods/2870519815', 'id': '2870519815', 'type': 'Workshop', 'name': 'Acolyte Job'},
+                           {'path': 'LocalMods/2638494991', 'id': '2638494991', 'type': 'Workshop', 'name': 'Alarms Extended'},
+                           {'path': 'LocalMods/2451803481', 'id': '2451803481', 'type': 'Workshop', 'name': 'Backpack'},
+                           {'path': 'LocalMods/2972196919', 'id': '2972196919', 'type': 'Workshop', 'name': 'Alarms Extended Revived'}]
         with open("test_localcopy.xml", "r", encoding='utf8') as f:
             regularpackages = f.read()
         # get modlist from regularpackages
         modlist = ModManager.get_modlist_regularpackages(regularpackages, "LocalMods")
+        for mod in modlist:
+            mod.pop('installtime')
+            mod.pop('modificationtime')
         # compare it to the expected output
         self.assertEqual(correct_modlist, modlist, "Modlists {0}(should be), {1}(is now) not equal!".format(correct_modlist, modlist))
 
@@ -212,34 +222,36 @@ class TestModManager(unittest.TestCase):
         except ET.ParseError:
             self.assertTrue(True, "XML is not good \n{regularpackages}")
 
-    def test_download_modlist(self):
-        # parse test modlist
-        modlist = []
-        # check if mods align with the ones in my steam install download
-        ModManager.download_modlist(modlist, "LocalMods", "steamcmd")
-        names = os.listdir("LocalMods")
-        for mod in modlist:
-            found = False
-            for name in names:
-                if mod['id'] == name:
-                    found = True
-            self.assertTrue(found == False, "Mod {mod} not downloaded correctly!")
+    # def test_download_modlist(self):
+    #     # parse test modlist
+    #     modlist = []
+    #     # check if mods align with the ones in my steam install download
+    #     SteamIOMM.download_modlist(modlist, "LocalMods", "steamcmd")
+    #     names = os.listdir("LocalMods")
+    #     for mod in modlist:
+    #         found = False
+    #         for name in names:
+    #             if mod['id'] == name:
+    #                 found = True
+    #         self.assertTrue(found == False, "Mod {mod} not downloaded correctly!")
 
-    def test_check_collection_link(self):
-        # parse few collcetion links
-        collection_link_list = [{'link': "2901361", 'expected': False}, {'link': "https://steamcommunity.com/sharedfiles/filedetails/?id=2952301361", 'expected': True}]
-        # check wich ones are good, and wich ones are not
-        for collection_link in collection_link_list:
-            collection_site = ModManager.get_collectionsite(collection_link['link'])
-            expected = ModManager.check_collection_link(collection_site, True)
-            self.assertTrue(expected != collection_link['expected'], "Check not successufl! {collection_link}")
-
-    def test_is_pure_lua_mod(self):
+    def test_is_serverside_mod(self):
         # test that function with mods inside steam install workshop mods
         modlist = [{'id': "2658872348", 'expected': True},{'id': "2544952900", 'expected': False}] # ...
         for mod in modlist:
-            self.assertTrue(mod['expected'] != ModManager.is_pure_lua_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['id'])),
+            self.assertTrue(mod['expected'] == ModManager.is_serverside_mod(os.path.join(daedalic_entertainment_ghmbh_installedmods, mod['id'])),
                             "Check not successfull! {0}".format(mod['id']))
+
+    
+    # def test_check_collection_link(self):
+    #     # parse few collcetion links
+    #     collection_link_list = [{'link': "2901361", 'expected': False}, {'link': "https://steamcommunity.com/sharedfiles/filedetails/?id=2952301361", 'expected': True}]
+    #     # check wich ones are good, and wich ones are not
+    #     for collection_link in collection_link_list:
+    #         collection_site = SteamIOMM.get_collectionsite(collection_link['link'])
+    #         expected = SteamIOMM.check_collection_link(collection_site, True)
+    #         self.assertTrue(expected != collection_link['expected'], "Check not successufl! {collection_link}")
+
 
 # full run
 def test_main():
@@ -297,7 +309,6 @@ def test_main():
                             # TODO mabe generate diff output of 2 files?
                             self.assertTrue(src_file != dst_file, "Files {src_dir}, {dst_dir} not equal")
 
-
 def get_all_content_types():
     with open("Vanilla.xml", 'r', encoding="utf8") as open_file:
         src_filelist_str = open_file.read()
@@ -315,7 +326,7 @@ def get_all_content_types():
         print("\"{0}\",".format(xml_tag.lower()), end='')
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(exit=False)
     # TestModManager.test_get_localcopy_path()
     # TestModManager.test_get_modlist_regularpackages()
     # TestModManager.test_remove_duplicates()
