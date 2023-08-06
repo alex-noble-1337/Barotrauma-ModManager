@@ -64,6 +64,13 @@ import BaroRewrites
 # set up all default values and paths
 # TODO rework
 def get_user_perfs():
+    """returns user_perfs dict
+    gets it from:
+        - defaults
+        - tool/config path from command line args
+        - config file
+        - then from command line args
+    any value defined previously gets overrwritten by next option"""
     options_arr = sys.argv[1:]
     # stuff not in config: toolpath - configuration path (and path of cashe for now)
     # TODO defaults defined when user_perfs is created
@@ -274,6 +281,7 @@ def get_user_perfs():
         
     return user_perfs
 def save_user_perfs(managed_mods, user_perfs, corecontentpackage = "Vanilla"):
+    """saves mannaged_mods arr and user_perfs dict to the config.xml file in config_path defined in user_perfs"""
     # managed_mods_str = ""
     # for managed_mod in managed_mods:
     #     managed_mods_str += managed_mod + "\n"
@@ -292,17 +300,41 @@ def save_user_perfs(managed_mods, user_perfs, corecontentpackage = "Vanilla"):
         open_file.write(ET.tostring(config_xml))
 
 def get_config_player_str(barotrauma_path):
+    """returns string of config_player.xml from barotrauma directory.
+    Prints formatted exception on not finding it to log and command line"""
     try:
         config_player_path = os.path.join(barotrauma_path, "config_player.xml")
         with open(config_player_path, "r", encoding='utf8') as f:
             config_player_str = f.read()
     except Exception as e:
         print(_("[ModManager] Could not find the config_player.xml! Check your barotrauma path!"))
-        print(_("[ModManager] Barotrauma path: {0}").format(config_player_path))
-        print(e)
-        logger.critical("Fatal Exception occured!\n" + e)
+        print(_("[ModManager] Barotrauma path:{0}").format(config_player_path))
+        logger.critical("Fatal Exception occured!\n" + str(e))
+        raise Exception("Fatal Exception occured!\n" + str(e))
     return config_player_str 
-def get_modlist_regularpackages(regularpackages,localcopy_path):
+def get_regularpackages(barotrauma_path):
+    """everything inside <regularpackages/> </regularpackages> tags (with those tags) from config_player.xml in barotrauma directory
+    barotrauma_path is path to barotrauma directory"""
+    config_player_str = get_config_player_str(barotrauma_path)
+
+    regularpackages = re.findall("<regularpackages>[\s\S]*?<\/regularpackages>", config_player_str)
+    if len(regularpackages) <= 0:
+        logger.warning("Couldnt find regularpackages! This probbabbly means the tag is closed (<regularpackages/>)...")
+        # patch for </regularpackages>, just in case
+        regularpackages = re.findall("<regularpackages.*?/>", config_player_str)
+
+    if len(regularpackages) > 0:
+        return regularpackages[0]
+    else:
+        logger.critical(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
+                        "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
+        raise Exception(_(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
+                         "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")))
+def get_modlist_regularpackages(regularpackages: str,localcopy_path: str):
+    """
+    Uses xml parser to extract modlist from regularpackages
+    returns: array of dicts that contain mod information: {id, type, path}, if they exist in localcopy: {id, type, installtime, modificationtime}
+    """
     root = ET.fromstring(regularpackages)
     modlist = []
     for element in root:
@@ -317,7 +349,7 @@ def get_modlist_regularpackages(regularpackages,localcopy_path):
             modlist.append(mod)
 
     # reason i need to look in filelist is because of:
-    #   - shit barotrauma devs (look up whole problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
+    #   - shit barotrauma devs (look up whollocalcopy_pathe problem when you update modname on steam without updating the filelist.xml, this makes comments in filelist shit and not useful)
     #   - i can just get non-installed mods name's via api 
     for mod in modlist:
         if os.path.isabs(mod['path']):
@@ -335,38 +367,12 @@ def get_modlist_regularpackages(regularpackages,localcopy_path):
                     mod['modificationtime'] = int(mod_filelist.attrib['installtime'])
         
     return modlist
-# get from config_player.xml, everything inside <regularpackages/> </regularpackages>
-def get_regularpackages(barotrauma_path):
-    # trying to access filelist
-    try:
-        filelist_path = os.path.join(barotrauma_path, "config_player.xml")
-        with open(filelist_path, "r", encoding='utf8') as f:
-            filelist_str = f.read()
-    except Exception as e:
-        print(_("[ModManager] Could not find the config_player.xml! Check your barotrauma path!"))
-        print(_("[ModManager] Barotrauma path:{0}").format(filelist_path))
-        logger.critical("Fatal Exception occured!\n" + str(e))
-        raise Exception("Fatal Exception occured!\n" + str(e))
-
-    pattern = "<regularpackages>[\s\S]*?<\/regularpackages>"
-    regularpackages = re.findall(pattern, filelist_str)
-
-    if len(regularpackages) <= 0:
-        logger.warning("Couldnt find regularpackages! This probbabbly means the tag is closed (<regularpackages/>)...")
-        # patch for </regularpackages>, just in case
-        pattern = "<regularpackages.*?/>"
-        regularpackages = re.findall(pattern, filelist_str)
-
-    if len(regularpackages) > 0:
-        return regularpackages[0]
-    else:
-        logger.critical(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
-                        "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
-        raise Exception(_(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
-                         "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")))
-def get_localcopy_path(filelist_str):
+def get_localcopy_path(regularpackages: str):
+    """
+    returns localcopy path (path to where mods should be installed) from config_player.xml
+    """
     localcopy_path = ""
-    root = ET.fromstring(filelist_str)
+    root = ET.fromstring(regularpackages)
     if root.tag == "regularpackages":
         if root.text != None:
             for package in root:
@@ -374,6 +380,11 @@ def get_localcopy_path(filelist_str):
                 if package.tag == 'package':
                     localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
                     break
+    if localcopy_path == "":
+        logger.critical("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are",
+                        "correctly set, or use localcopy path override option!")
+        raise Exception(_("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are"),
+                        _("correctly set, or use localcopy path override option!"))
     return localcopy_path
 # config_player.xml output ET version TODO NEED to take a look how to post comments with ET, and how to format it accordingly
 def TODOset_mods_config_player(modlist, localcopy_path, barotrauma_path):
@@ -398,7 +409,11 @@ def TODOset_mods_config_player(modlist, localcopy_path, barotrauma_path):
 
     with open(os.path.join(barotrauma_path, "config_player.xml"), 'wb') as open_file:
         open_file.write(config_player_str)
-def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
+def set_modlist_regularpackages(modlist, localcopy_path_og: str, barotrauma_path: str):
+    """
+    Outputs new regularpackages string (part of config_player thats enclosed in <regularpackages> tags) from: modlist array, localcopy_path
+    and truncates path to the mod in that regularpackages string according to barotrauma_path
+    """
     regularpackages_new = "<regularpackages>\n"
     # print new
     for mod in modlist:
@@ -420,14 +435,23 @@ def set_modlist_regularpackages(modlist, localcopy_path_og, barotrauma_path):
     return regularpackages_new
 
 def print_modlist(modlist):
+    """
+    prints formatted modlist (array of dicts that have mod data) requires at least id tag in mod dict
+    """
     print(_("[ModManager] List of mods:"))
     for mod in modlist:
         if str(mod['id']) == "2701251094":
             has_performancefix = True
-        print(_("[ModManager] {id:s}: {name:s}").format(**mod))
+            mod_str = mod['id']
+            if 'name' in mod:
+                mod_str += ": " + mod['name']
+        print(_("[ModManager] {0}").format(mod_str))
     print("\n")
     print("\n")
 def remove_duplicates(modlist):
+    """
+    returns modlist (array of dicts that have mod data) with all duplicate entries removed
+    """
     toremove = []
     modlist_copy = modlist
     modlist_copy = sorted(modlist_copy, key=lambda mod: mod['id'])
@@ -441,6 +465,9 @@ def remove_duplicates(modlist):
     modlist.reverse()
     return modlist
 def get_managed_modlist(modlist, localcopy_path_og):
+    """
+    returns modlist (array of dicts that have mod data) with completed mod data (adds 'path', 'type')
+    """
     managed_mods = []
     for mod in modlist:
         mod_b = mod
@@ -458,6 +485,9 @@ def get_managed_modlist(modlist, localcopy_path_og):
         managed_mods.append(mod_b)
     return managed_mods
 def get_not_managed_modlist(old_managed_modlist, managed_modlist):
+    """
+    returns modlist containing mods that were removed from previous running of ModManager
+    """
     not_managed_modlist = old_managed_modlist
     # removeing mods that exist in modlist
     # TODO sloooooow
@@ -473,16 +503,23 @@ def get_not_managed_modlist(old_managed_modlist, managed_modlist):
                 not_managed_modlist.remove(old_modwithdir)
     return not_managed_modlist
 def deleting_not_managed_modlist(not_managed_modlist):
+    """
+    Deletes all mods found in not_managed_modlist array
+    """
     removed_count = 0
     for not_managedmod in not_managed_modlist:
         if os.path.exists(not_managedmod['path']):
             shutil.rmtree(not_managedmod['path'])
             removed_count += 1
     print(_("[ModManager] Removed {0} not managed now mods!").format(str(removed_count)))
-# check, both if they exist and if they are up to date
-# made it that way to...uhhhh idk
-# also appends modificationtime if not present
 def get_up_to_date_mods(mods, localcopy_path):
+    """
+    requires: LastUpdated time object in modlist's mod dict
+    check, both if they exist and if they are up to date
+    made it that way to...uhhhh idk
+    also appends modificationtime if not present
+    returns: modlist (array of dicts that have mod data) that are updated, and exist in localcopy_path
+    """
     remove_arr = []
     # TODO current slowing time is about 
     # TODO lastupdated skip for windows and mac
@@ -501,6 +538,10 @@ def get_up_to_date_mods(mods, localcopy_path):
                     remove_arr.append(mod)
     return remove_arr
 def is_serverside_mod(mod_path: str):
+    """
+    returns True if mod will not appear in server description on server browser
+    returns False if mod will appear in server description on server browser
+    """
     pure_lua_mod = False
     if os.path.exists(os.path.join(mod_path, "filelist.xml")):
         with open(os.path.join(mod_path, "filelist.xml"), "r", encoding='utf8') as f:
@@ -514,16 +555,19 @@ def is_serverside_mod(mod_path: str):
             pure_lua_mod = True
     return pure_lua_mod
 
-# TODO name
-# requres lastupdated value in mod object, return mods array that has only mods that requre update returns all items that arent in remove_arr
 def remove_all_occurences_from_arr(arr, remove_arr):
+    """
+    returns array with all occurences of elements in remove_arr, removed
+    """
     new_arr = arr
     for item_to_remove in remove_arr:
         if item_to_remove in new_arr:
             new_arr.remove(item_to_remove)
     return new_arr
-# TODO rework it so its just getting installation time form filelist used to get update time of a mod (directory)
 def get_recusive_modification_time_of_dir(origin_dir):
+    """
+    returns highest modification time timestamp of a directory files
+    """
     modificationtime = 0
     for src_dir, dirs, files in os.walk(origin_dir):
         for file_ in files:
@@ -536,8 +580,11 @@ def sanitize_pathstr(path):
     path = str(path)
     path = path.replace(" ", "\\ ")
     return path
-# yoinked from stackoverflow, works
 def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
+    """
+    yoinked from stackoverflow, works
+    recuively move directory to desination directory
+    """
     if replace_option:
         number_dirs = os.listdir(root_dst_dir)
         for number_dir in number_dirs:
