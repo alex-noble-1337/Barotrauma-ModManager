@@ -26,6 +26,8 @@ content_types = ["item","character","mapcreature","text", "uistyle","afflictions
                  "levelgenerationparameters", "cavegenerationparameters","outpostconfig", "npcsets","missions",
                  "traitormissions", "npcpersonalitytraits","npcconversations", "jobs","orders","corpses","sounds",
                  "skillsettings","factions","itemassembly", "talents","talenttrees","startitems","tutorials"]
+#  and the ones not found in barotrauma dir
+content_types_binary = ["beaconstation"]
 
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them

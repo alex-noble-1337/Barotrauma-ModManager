@@ -417,7 +417,7 @@ def get_all_content_types():
         print("\"{0}\",".format(xml_tag.lower()), end='')
 
 if __name__ == '__main__':
-    unittest.main()
+    unittest.main(exit=False)
     # TestModManager.test_get_localcopy_path()
     # TestModManager.test_get_modlist_regularpackages()
     # TestModManager.test_remove_duplicates()

@@ -23,6 +23,7 @@ warnings_as_errors = False
 # my IT teacher would kill me if she saw this...
 available_modes = ["config_player", "collection"]
 from BaroRewrites import content_types
+from BaroRewrites import content_types_binary
 configs = ['barotrauma', 'steamcmd', 'collection_link', 'mode',
            'localcopy_path', 'addperformancefix', 'max_saves', 'save_dir']
 
@@ -549,7 +550,7 @@ def is_serverside_mod(mod_path: str):
         filelist = ET.fromstring(filelist_str)
         xmlitems = 0
         for mod in filelist:
-            if mod.tag.lower() in content_types:
+            if mod.tag.lower() in content_types or mod.tag.lower() in content_types_binary:
                 xmlitems += 1
         if xmlitems <= 0:
             pure_lua_mod = True
@@ -822,7 +823,7 @@ def main():
     # gotta have it here even if it pains me
     user_perfs = get_user_perfs()
     # TEST
-    user_perfs['localcopy_path_override'] = "LocalMods"
+    # user_perfs['localcopy_path_override'] = "LocalMods"
     logger.info("Aqquired user perfs: {0}".format(str(user_perfs)))
     while(True):
         if 'collection_link' in user_perfs and 'localcopy_path' in user_perfs:
