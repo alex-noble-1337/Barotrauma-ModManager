@@ -327,10 +327,8 @@ def get_regularpackages(barotrauma_path):
     if len(regularpackages) > 0:
         return regularpackages[0]
     else:
-        logger.critical(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
-                        "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
-        raise Exception(_(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.",
-                         "\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")))
+        logger.critical(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>"))
+        raise Exception(_(("[ModManager] Error during getting modlist from config_player.xml: Could not find regularpackages.\nFix it by removing everything from <regularpackages> to </regularpackages> and with those two, and replacing it with a single <regularpackages/>")))
 def get_modlist_regularpackages(regularpackages: str,localcopy_path: str):
     """
     Uses xml parser to extract modlist from regularpackages
@@ -382,10 +380,8 @@ def get_localcopy_path(regularpackages: str):
                     localcopy_path = os.path.dirname(os.path.dirname(package.attrib['path']))
                     break
     if localcopy_path == "":
-        logger.critical("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are",
-                        "correctly set, or use localcopy path override option!")
-        raise Exception(_("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are"),
-                        _("correctly set, or use localcopy path override option!"))
+        logger.critical("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are correctly set, or use localcopy path override option!")
+        raise Exception(_("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are correctly set, or use localcopy path override option!"))
     return localcopy_path
 # config_player.xml output ET version TODO NEED to take a look how to post comments with ET, and how to format it accordingly
 def TODOset_mods_config_player(modlist, localcopy_path, barotrauma_path):
@@ -443,9 +439,9 @@ def print_modlist(modlist):
     for mod in modlist:
         if str(mod['id']) == "2701251094":
             has_performancefix = True
-            mod_str = mod['id']
-            if 'name' in mod:
-                mod_str += ": " + mod['name']
+        mod_str = mod['id']
+        if 'name' in mod:
+            mod_str += ": " + mod['name']
         print(_("[ModManager] {0}").format(mod_str))
     print("\n")
     print("\n")
@@ -655,16 +651,25 @@ def modmanager(user_perfs):
         print(_("[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)"))
         modlist.extend(SteamIOMM.get_modlist_collection_site(collection_site))
     else:
-        print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
-        if not 'localcopy_path' in user_perfs:
-            user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
-        if user_perfs['localcopy_path'] == "":
-            user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
-        if 'localcopy_path_override' in user_perfs:
-            user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
-        if os.path.isabs(user_perfs['localcopy_path']):
-            user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
-        modlist.extend(get_modlist_regularpackages(regularpackages, user_perfs['localcopy_path']))
+        if ((regularpackages.replace("</regularpackages>", "")).replace("<regularpackages>","")).strip() == "" or regularpackages == "<regularpackages/>":
+            logger.warning("regularpackages empty!")
+            modlist = []
+            not_managedmods = get_not_managed_modlist(user_perfs['old_managedmods'], modlist)
+            deleting_not_managed_modlist(not_managedmods)
+            save_user_perfs(modlist, user_perfs)
+            print(_("[ModManager] No mods detected"))
+            return 
+        else:
+            print(_("[ModManager] Collection mode DISABLED, Downloading data from config_player.xml"))
+            if not 'localcopy_path' in user_perfs:
+                user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
+            if user_perfs['localcopy_path'] == "":
+                user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
+            if 'localcopy_path_override' in user_perfs:
+                user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
+            if os.path.isabs(user_perfs['localcopy_path']):
+                user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
+            modlist.extend(get_modlist_regularpackages(regularpackages, user_perfs['localcopy_path']))
 
 
     # TODO remove duplicates once, try NOT to send duplicate requests for data to api

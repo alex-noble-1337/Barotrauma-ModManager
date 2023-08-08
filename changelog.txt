@@ -1,1 +1,4 @@
 This Changelog is for nightly build (stuff on the branch not on release)
+- made testing framework
+- ironed out most of the bugs
+- fixed bug that prevented turning on collection mode

@@ -1,0 +1,11 @@
+<config barotrauma="/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper" steamcmd="steamcmd" collection_link="" mode="config_player" localcopy_path="/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/LocalMods" addperformancefix="False" max_saves="" save_dir="">
+	<mods name="Managed Mods">
+		<Vanilla />
+		<Workshop name="Minigun Revived" id="2972867060" />
+		<Workshop name="Artifacts extended Revived" id="2973435246" />
+		<Workshop name="Acolyte Job" id="2870519815" />
+		<Workshop name="Alarms Extended" id="2638494991" />
+		<Workshop name="Backpack" id="2451803481" />
+		<Workshop name="Alarms Extended Revived" id="2972196919" />
+	</mods>
+</config>
