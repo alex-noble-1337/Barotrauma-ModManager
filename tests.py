@@ -170,7 +170,9 @@ class TestModManager(unittest.TestCase):
     # getting of configs, testing is optional
     def test_get_user_perfs(self):
         # Testing data
-        arr_testing_user_perfs = [{}]
+        arr_testing_user_perfs = [{'locale': 'en', 'old_managedmods': [], 'tool': ModManager.default_tool_path,
+                                   'barotrauma': ModManager.default_barotrauma_path, 'steamcmd':  ModManager.default_steamcmd_path,
+                                   'addperformancefix':  ModManager.default_addperformancefix}]
         for i in range(len(arr_testing_user_perfs)):
             testing_user_perfs = arr_testing_user_perfs[i]
         
@@ -178,9 +180,11 @@ class TestModManager(unittest.TestCase):
             self.assertEqual(user_perfs, testing_user_perfs, "User perfs not equal!(test case {2})\n{0}\n{1}".format(user_perfs, testing_user_perfs, i+1))
     def test_save_user_perfs(self):
         # Testing data
-        arr_test_user_perfs = [{}]
+        arr_test_user_perfs = [{'locale': 'en', 'old_managedmods': [], 'tool': ModManager.default_tool_path,
+                                'barotrauma': ModManager.default_barotrauma_path, 'steamcmd':  ModManager.default_steamcmd_path,
+                                'addperformancefix':  ModManager.default_addperformancefix}]
         arr_test_managed_mods = [{}]
-        arr_test_file = ["test_config.xml"]
+        arr_test_file = ["test_config-default.xml"]
         for i in range(len(arr_test_file)):
             test_user_perfs = arr_test_user_perfs[i]
             test_managed_mods = arr_test_managed_mods[i]
@@ -200,17 +204,20 @@ class TestModManager(unittest.TestCase):
     # config_player.xml operations, testing requred
     # def test_get_config_player_str(self):
     def test_get_regularpackages(self):
-        arr_barotrauma_path = []
-        arr_test_localcopy_path = []
+        arr_barotrauma_path = [""]
+        arr_test_localcopy_path = ["LocalMods"]
         for i in range(len(arr_barotrauma_path)):
             barotrauma_path = arr_barotrauma_path[i]
             test_localcopy_path = arr_test_localcopy_path[i]
             localcopy_path = ModManager.get_regularpackages(barotrauma_path)
             self.assertEqual(test_localcopy_path, localcopy_path, "localcopy_path not equal!\nTestData:{0}\nData:{1}".format(test_localcopy_path, localcopy_path))
     def test_get_modlist_regularpackages(self):
-        correct_modlist = [{'path': 'LocalMods/2559634234/filelist.xml', 'id': '2559634234'},
-                           {'path': 'LocalMods/2532991202/filelist.xml', 'id': '2532991202'},
-                           {'path': 'LocalMods/2526236489/filelist.xml', 'id': '2526236489'}, {'path': 'LocalMods/2907491279/filelist.xml', 'id': '2907491279'}, {'path': 'LocalMods/2764968387/filelist.xml', 'id': '2764968387'}, {'path': 'LocalMods/2911392334/filelist.xml', 'id': '2911392334'}, {'path': 'LocalMods/2776270649/filelist.xml', 'id': '2776270649'}, {'path': 'LocalMods/2807556435/filelist.xml', 'id': '2807556435'}, {'path': 'LocalMods/2564921308/filelist.xml', 'id': '2564921308'}, {'path': 'LocalMods/2547888957/filelist.xml', 'id': '2547888957'}, {'path': 'LocalMods/2161488150/filelist.xml', 'id': '2161488150'}, {'path': 'LocalMods/2538084355/filelist.xml', 'id': '2538084355'}, {'path': 'LocalMods/2831987252/filelist.xml', 'id': '2831987252'}, {'path': 'LocalMods/2834851130/filelist.xml', 'id': '2834851130'}, {'path': 'LocalMods/2909716869/filelist.xml', 'id': '2909716869'}, {'path': 'LocalMods/2961385886/filelist.xml', 'id': '2961385886'}, {'path': 'LocalMods/2085783214/filelist.xml', 'id': '2085783214'}, {'path': 'LocalMods/2389600483/filelist.xml', 'id': '2389600483'}, {'path': 'LocalMods/2788543375/filelist.xml', 'id': '2788543375'}, {'path': 'LocalMods/2764140582/filelist.xml', 'id': '2764140582'}, {'path': 'LocalMods/2852315967/filelist.xml', 'id': '2852315967'}, {'path': 'LocalMods/2955139345/filelist.xml', 'id': '2955139345'}, {'path': 'LocalMods/2544952900/filelist.xml', 'id': '2544952900'}, {'path': 'LocalMods/2804655816/filelist.xml', 'id': '2804655816'}, {'path': 'LocalMods/2912049119/filelist.xml', 'id': '2912049119'}, {'path': 'LocalMods/2655920928/filelist.xml', 'id': '2655920928'}, {'path': 'LocalMods/2948537269/filelist.xml', 'id': '2948537269'}, {'path': 'LocalMods/2260683656/filelist.xml', 'id': '2260683656'}, {'path': 'LocalMods/2972196919/filelist.xml', 'id': '2972196919'}, {'path': 'LocalMods/2390137099/filelist.xml', 'id': '2390137099'}, {'path': 'LocalMods/2838076686/filelist.xml', 'id': '2838076686'}, {'path': 'LocalMods/2940102835/filelist.xml', 'id': '2940102835'}]
+        arr_correct_modlist =   [[{'name': "Minigun Revived", 'id': "2972867060"},
+                                  {'name': "Artifacts extended Revived", 'id': "2973435246"},
+                                  {'name': "Acolyte Job", 'id':  "2870519815"},
+                                  {'name': "Alarms Extended", 'id':  "2638494991"},
+                                  {'name': "Backpack", 'id':  "2451803481"},
+                                  {'name': "Alarms Extended Revived", 'id':  "2972196919"}]]
         arr_test_regularpackages = ["test_localcopy.xml"]
         for i in range(len(arr_test_regularpackages)):
             correct_modlist = arr_correct_modlist[i]
@@ -221,8 +228,8 @@ class TestModManager(unittest.TestCase):
             # compare it to the expected output
             self.assertEqual(correct_modlist, modlist, "Modlists {0}(should be), {1}(is now) not equal!".format(correct_modlist, modlist))
     def test_get_localcopy_path(self):
-        arr_barotrauma_path = []
-        arr_test_localcopy_path = []
+        arr_barotrauma_path = [""]
+        arr_test_localcopy_path = ["LocalMods"]
         for i in range(len(arr_barotrauma_path)):
             barotrauma_path = arr_barotrauma_path[i]
             test_localcopy_path = arr_test_localcopy_path[i]
@@ -234,7 +241,7 @@ class TestModManager(unittest.TestCase):
         # Testing data
         arr_modlist = [[]
                          ]
-        arr_localcopy_path = [""
+        arr_localcopy_path = ["LocalMods"
                                 ]
         arr_barotrauma_path = [""
                                  ]
@@ -252,6 +259,7 @@ class TestModManager(unittest.TestCase):
     
     # modlist operations, testing is requred
     def test_remove_duplicates(self):
+        # TODO think of a good modlist
         arr_modlist = [[]]
         for i in range(len(arr_modlist)):
             modlist = arr_modlist[i]
@@ -267,6 +275,7 @@ class TestModManager(unittest.TestCase):
                 self.assertTrue(number <= 0, "Mod {0} not found, must have been removed by function.".format(mod))
                 self.assertTrue(number >= 2, "Mod {0} hadnt had all its duplicates removed.".format(mod))
     def test_get_managed_modlist(self):
+        # TODO think of a good modlist
         arr_test_modlist = [[]]
         arr_test_modlist_resoult = [[]]
         localcopy_path = ""
@@ -274,6 +283,7 @@ class TestModManager(unittest.TestCase):
             test_modlist = arr_test_modlist[i]
             self.assertEqual(test_modlist_resoult, ModManager.get_managed_modlist(arr_test_modlist_resoult[i], localcopy_path))
     def test_get_not_managed_modlist(self):
+        # TODO think of a good modlist, write a data
         arr_managed_modlist = [[]]
         arr_old_managed_modlist = [[]]
         arr_test_modlist = [[]]
@@ -283,6 +293,7 @@ class TestModManager(unittest.TestCase):
     # def test_deleting_not_managed_modlist(self):
     #     ModManager.deleting_not_managed_modlist(not_managed_modlist)
     def test_get_up_to_date_mods(self):
+        # TODO think of a good modlist, write a data
         arr_test_mods = [[]]
         arr_test_resoult = [[]]
         arr_test_localcopy_path = []
@@ -304,7 +315,7 @@ class TestModManager(unittest.TestCase):
             resoult = ModManager.remove_all_occurences_from_arr(arr_test_arr[i], arr_test_remove_arr[i])
             self.assertEqual(arr_test_resoult[i], resoult, "")
     def test_get_recusive_modification_time_of_dir(origin_dir):
-        
+        print()    
     def test_sanitize_pathstr(path):
         print()
     def test_robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
