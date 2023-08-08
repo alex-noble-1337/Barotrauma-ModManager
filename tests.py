@@ -172,10 +172,8 @@ class TestModManager(unittest.TestCase):
         # Testing data
         arr_testing_user_perfs = [{}]
         for i in range(len(arr_testing_user_perfs)):
-            testing_user_perfs = arr_testing_user_perfs[i]
-        
             user_perfs = ModManager.get_user_perfs()
-            self.assertEqual(user_perfs, testing_user_perfs, "User perfs not equal!(test case {2})\n{0}\n{1}".format(user_perfs, testing_user_perfs, i+1))
+            self.assertEqual(arr_testing_user_perfs[i], user_perfs, "User perfs not equal!(test case {2})\n{0}\n{1}".format(user_perfs, testing_user_perfs, i+1))
     def test_save_user_perfs(self):
         # Testing data
         arr_test_user_perfs = [{}]
@@ -303,18 +301,38 @@ class TestModManager(unittest.TestCase):
         for i in range(len(arr_test_arr)):
             resoult = ModManager.remove_all_occurences_from_arr(arr_test_arr[i], arr_test_remove_arr[i])
             self.assertEqual(arr_test_resoult[i], resoult, "")
-    def test_get_recusive_modification_time_of_dir(origin_dir):
-        
-    def test_sanitize_pathstr(path):
-        print()
-    def test_robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
-        print()
-    
-    # not unittestable, more like full run
-    def test_modmanager(user_perfs):
-        print()
-    def test_main():
-        print()
+    def test_get_recusive_modification_time_of_dir(self):
+        arr_origin_dir = [""]
+        arr_test_resoult = []
+        for i in range(len(arr_origin_dir)):
+            resoult = ModManager.get_recusive_modification_time_of_dir(arr_origin_dir[i])
+            self.assertEqual(arr_test_resoult[i], resoult)
+    # def test_sanitize_pathstr(path):
+        # not used
+    def test_robocopysubsttute(self):
+        arr_root_src_dir = [""]
+        arr_root_dst_dir = [""]
+        for i in range((len(arr_root_dst_dir))):
+            test_resoult = True
+            # creating a map of every file in a directory
+            files_map = []
+            dst_dir = src_dir.replace(arr_root_src_dir[i], arr_root_dst_dir[i], 1)
+            for src_dir, dirs, files in os.walk(arr_root_src_dir[i]):
+                for file_ in files:
+                    # ... but insead of src_dir use dest dir
+                    dst_file = os.path.join(dst_dir, file_)
+                    files_map.append(dst_file)
+            ModManager.robocopysubsttute(arr_root_src_dir[i], arr_root_dst_dir[i])
+            for file_ in files_map:
+                if not os.path.exists(file_):
+                    test_resoult = False
+            self.assertTrue(test_resoult)
+
+    # # not unittestable, more like full run
+    # def test_modmanager(user_perfs):
+    #     print()
+    # def test_main():
+    #     print()
 
     # # print function, not requred to test
     # def test_print_modlist(modlist):
