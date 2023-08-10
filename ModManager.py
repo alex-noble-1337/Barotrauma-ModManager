@@ -365,7 +365,7 @@ def get_modlist_regularpackages(regularpackages: str,localcopy_path: str):
                     mod['modificationtime'] = int(mod_filelist.attrib['installtime'])
         
     return modlist
-def get_localcopy_path(regularpackages: str, barotrauma_path: str):
+def get_localcopy_path(regularpackages: str):
     """
     returns localcopy path (path to where mods should be installed) from config_player.xml
     """

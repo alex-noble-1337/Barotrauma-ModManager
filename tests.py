@@ -243,6 +243,8 @@ class TestModManager(unittest.TestCase):
         for i in range(len(arr_barotrauma_path)):
             barotrauma_path = arr_barotrauma_path[i]
             test_localcopy_path = arr_test_localcopy_path[i]
+            if not os.path.isabs(test_localcopy_path):
+                test_localcopy_path = os.path.abspath(test_localcopy_path)
             localcopy_path = ModManager.get_regularpackages(barotrauma_path)
             localcopy_path = ModManager.get_localcopy_path(localcopy_path)
             self.assertEqual(test_localcopy_path, localcopy_path, "localcopy_path not equal!\nTestData:{0}\nData:{1}".format(test_localcopy_path, localcopy_path))
