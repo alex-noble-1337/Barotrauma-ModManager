@@ -382,6 +382,9 @@ def get_localcopy_path(regularpackages: str):
     if localcopy_path == "":
         logger.critical("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are correctly set, or use localcopy path override option!")
         raise Exception(_("Localcopy path not found in config_player.xml!\nTake a look at your mod's paths in config_player, and make sure they are correctly set, or use localcopy path override option!"))
+    
+    if not os.path.isabs(localcopy_path):
+        localcopy_path = os.path.abspath(localcopy_path)
     return localcopy_path
 # config_player.xml output ET version TODO NEED to take a look how to post comments with ET, and how to format it accordingly
 def TODOset_mods_config_player(modlist, localcopy_path, barotrauma_path):
@@ -417,7 +420,12 @@ def set_modlist_regularpackages(modlist, localcopy_path_og: str, barotrauma_path
         #  if barotrauma_path is inside of 
         temp_mod_path = mod['path']
         if temp_mod_path.count(barotrauma_path) > 0:
-            temp_mod_path = temp_mod_path.replace(barotrauma_path + os.sep, "")
+            if sys.platform == "win32":
+                sep = "\\"
+            else:
+                sep = "/"
+            temp_mod_path = temp_mod_path.replace(barotrauma_path + sep, "")
+            logger.debug("Path for mod ({0}) is {1}".format(mod['id'], temp_mod_path))
 
         if sys.platform == "win32":
             temp_mod_path = temp_mod_path.replace("\\", "/")
@@ -667,8 +675,8 @@ def modmanager(user_perfs):
                 user_perfs['localcopy_path'] = get_localcopy_path(regularpackages)
             if 'localcopy_path_override' in user_perfs:
                 user_perfs['localcopy_path'] = user_perfs['localcopy_path_override']
-            if os.path.isabs(user_perfs['localcopy_path']):
-                user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
+                if not os.path.isabs(user_perfs['localcopy_path']):
+                    user_perfs['localcopy_path'] = os.path.abspath(user_perfs['localcopy_path'])
             modlist.extend(get_modlist_regularpackages(regularpackages, user_perfs['localcopy_path']))
 
 
