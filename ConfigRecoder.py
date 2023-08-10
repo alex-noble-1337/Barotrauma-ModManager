@@ -228,7 +228,7 @@ def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
 
     for managed_mod in managed_mods:
         if not 'type' in managed_mod:
-            id_test = re.findall("\d*?$", managed_mod['path'])
+            id_test = re.findall("\d*?$", managed_mod['id'])
             if len(id_test) > 0:
                 managed_mod['type'] = "Workshop"
             else:
@@ -236,10 +236,10 @@ def modlist_to_ModListsXml(managed_mods, corecontentpackage = "Vanilla"):
         if managed_mod['type'] == "Workshop":
             mod = ET.SubElement(modlist_xml, 'Workshop')
             mod.attrib['name'] = managed_mod['name']
-            mod.attrib['id'] = str(os.path.basename(managed_mod['path']))
+            mod.attrib['id'] = str(managed_mod['id'])
         else:
             mod = ET.SubElement(modlist_xml, 'Local')
-            mod.attrib['name'] = str(os.path.basename(managed_mod['path']))
+            mod.attrib['name'] = str(managed_mod['id'])
     return modlist_xml
 # This is probbably getting from ModListsXml created by barotrauma. TODO check
 def textfilef(fileposition):

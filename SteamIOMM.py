@@ -130,9 +130,6 @@ def get_modlist_data_webapi(modlist):
                                 new_modlist[i]['name'] = moddetails['title']
                         # TODO why????
                         new_modlist[i]['steamworkshopid'] = new_modlist[i]['id']
-                        if 'path' in new_modlist[i]:
-                            if not os.path.isabs(new_modlist[i]['path']):
-                                new_modlist[i]['path'] = os.path.abspath(new_modlist[i]['path'])
         elif output.status_code == 400:
             logger.error("BAD REQUEST! {0}".format(output.text))
             print(_("BAD REQUEST! Consult logfile for more deatails!"))
@@ -332,14 +329,17 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
             # iterator += 1
             # bar.update(iterator)
         # change timestamp
-        with open(os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml"),
-                    'r', encoding="utf8") as f:
-            filelist_xml = ET.fromstring(f.read())
-        filelist_xml.attrib['installtime'] = str(int(time.time()))
-        filelist_str = ET.tostring(filelist_xml, encoding="utf-8", method="xml", xml_declaration=True)
-        with open(os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml"), 
-                    'wb') as f:
-            f.write(filelist_str)
+        filelist_path = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml")
+        if os.path.exists(filelist_path):
+            with open(filelist_path, 'r', encoding="utf8") as f:
+                filelist_xml = ET.fromstring(f.read())
+            filelist_xml.attrib['installtime'] = str(int(time.time()))
+            filelist_str = ET.tostring(filelist_xml, encoding="utf-8", method="xml", xml_declaration=True)
+            with open(filelist_path, 'wb') as f:
+                f.write(filelist_str)
+        else:
+            logger.critical("Cant find filelist (mod id: {0})! {1}".format(mod['id'], filelist_path))
+            print(_("Cant find filelist (mod id: {0})! {1}").format(mod['id'], filelist_path))
     return numberofupdatedmods
 
 # return false on negative test resoult, on positive resoult return collection site string
@@ -365,4 +365,5 @@ def check_collection_link(collection_site, no_input = False):
         isvalid_collection_link = False
     else:
         isvalid_collection_link = True
+    logger.info("Collection link validity check is: {0}".format(isvalid_collection_link))
     return isvalid_collection_link
