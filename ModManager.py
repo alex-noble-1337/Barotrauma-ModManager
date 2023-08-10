@@ -31,7 +31,6 @@ configs = ['barotrauma', 'steamcmd', 'collection_link', 'mode',
 import os
 import shutil
 import re
-from functools import reduce
 import time
 import datetime
 import xml.etree.ElementTree as ET
@@ -41,8 +40,7 @@ import logging.config
 logger = logging.getLogger(__name__)
 import gettext
 _ = gettext.gettext
-
-# For nameing of logs
+# For naming of logs
 current_time = datetime.datetime.now()
 current_time = current_time.replace(second=0, microsecond=0)
 current_time = str(current_time)[0:-3]
@@ -53,14 +51,14 @@ try:
 except ImportError:
     print("Trying to Install required module: requests\n")
     os.system('python3 -m pip install requests json')
+    import requests
+    import json
 
 # load submodules
-from BackupUtil import backup_option
 import SteamIOMM
-from BackupUtil import backupBarotraumaData
-from ConfigRecoder import modlist_to_ModListsXml
 import BaroRewrites
-
+import BackupUtil
+import ConfigRecoder
 
 # set up all default values and paths
 # TODO rework
@@ -177,16 +175,17 @@ def get_user_perfs():
         logging.disable(logging.NOTSET)
 
     # TODO go over this again, handing of command line arguments
+    command_line_args = ['--barotraumapath', '-b', '--toolpath', '-t', '--steamcmdpath', '-s', '--collection', '-c', '--performancefix', '-p',
+                         '--backup', '--installdir', '-o']
     if len(options_arr) >= 1:
         for i in range(0,len(options_arr)):
             tempval = 1
-            for j in range(i + 1,len(options_arr)):
-                if (options_arr[j] == '--barotraumapath' or options_arr[j] == '-b' or options_arr[j] == '--toolpath' or options_arr[j] == '-t' or options_arr[j] == '--steamcmdpath' or
-                   options_arr[j] == '-s' or options_arr[j] == '--collection' or options_arr[j] == '-c' or options_arr[j] == '--performancefix' or options_arr[j] == '-p' or
-                   options_arr[j] == '--backup'):
-                    break
-                else:
-                    tempval += 1
+            if options_arr[i] in command_line_args:
+                for j in range(i + 1,len(options_arr)):
+                    if options_arr[j] in command_line_args:
+                        break
+                    else:
+                        tempval += 1
 
             # override installation dir
             if options_arr[i] == '--installdir' or options_arr[i] == '-o':
@@ -295,7 +294,7 @@ def save_user_perfs(managed_mods, user_perfs, corecontentpackage = "Vanilla"):
         else:
             config_xml.attrib[val] = ""
     
-    config_xml.append(modlist_to_ModListsXml(managed_mods, corecontentpackage))
+    config_xml.append(ConfigRecoder.modlist_to_ModListsXml(managed_mods, corecontentpackage))
     ET.indent(config_xml, space="\t", level=0)
     with open(user_perfs['config_path'], 'wb') as open_file:
         open_file.write(ET.tostring(config_xml))
@@ -368,7 +367,7 @@ def get_modlist_regularpackages(regularpackages: str,localcopy_path: str):
                     mod['modificationtime'] = int(mod_filelist.attrib['installtime'])
         
     return modlist
-def get_localcopy_path(regularpackages: str):
+def get_localcopy_path(regularpackages: str, barotrauma_path: str):
     """
     returns localcopy path (path to where mods should be installed) from config_player.xml
     """
@@ -686,7 +685,7 @@ def modmanager(user_perfs):
 
     # TODO todo changed below condition cuz it disslallowed pwd
     if 'save_dir' in user_perfs and 'max_saves' in user_perfs:
-        backupBarotraumaData(user_perfs['barotrauma'], user_perfs['localcopy_path'], user_perfs['save_dir'], user_perfs['backup_path'], user_perfs['max_saves'])
+        BackupUtil.backupBarotraumaData(user_perfs['barotrauma'], user_perfs['localcopy_path'], user_perfs['save_dir'], user_perfs['backup_path'], user_perfs['max_saves'])
     if requrescs and not hascs:
         # TODO kind hacky way to do this
         temp_luacs = [{'name': "Cs For Barotrauma", 'id': "2795927223"}]
@@ -761,8 +760,8 @@ def modmanager(user_perfs):
 
 
     # config backup and conservation
-    backup_option(os.path.join(user_perfs['tool'], "BestDefaultConfigsTM"), steamcmd_downloads)
-    backup_option(user_perfs['localcopy_path'], steamcmd_downloads)
+    BackupUtil.backup_option(os.path.join(user_perfs['tool'], "BestDefaultConfigsTM"), steamcmd_downloads)
+    BackupUtil.backup_option(user_perfs['localcopy_path'], steamcmd_downloads)
 
 
     deleting_not_managed_modlist(not_managedmods)
