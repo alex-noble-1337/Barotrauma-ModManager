@@ -48,12 +48,10 @@ current_time = str(current_time)[0:-3]
 
 try:
     import requests
-    import json
 except ImportError:
     print("Trying to Install required module: requests\n")
-    os.system('python3 -m pip install requests json')
+    os.system('python3 -m pip install requests')
     import requests
-    import json
 
 # load submodules
 import SteamIOMM
