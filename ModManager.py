@@ -35,7 +35,6 @@ import time
 import datetime
 import xml.etree.ElementTree as ET
 import pprint
-import json
 
 import logging
 import logging.config
@@ -308,6 +307,8 @@ def get_config_player_str(config_player_path: str):
     Prints formatted exception on not finding it to log and command line
     """
     fixed_path = config_player_path
+    if not os.path.isabs(fixed_path):
+        fixed_path = os.path.abspath(fixed_path)
     if os.path.isdir(fixed_path):
         fixed_path = os.path.join(fixed_path, "config_player.xml")
     try:
@@ -346,7 +347,7 @@ def get_modlist_regularpackages(regularpackages: str, localcopy_path: str):
     modlist = []
     for element in root:
         if element.tag == "package":
-            mod = {'id': os.path.split(element.attrib['path'])[-1:]}
+            mod = {'id': os.path.basename(os.path.dirname(element.attrib['path']))}
             id_test = re.findall("\d*?$", mod['id'])
             if len(id_test) > 0:
                 mod['id'] = id_test[0]
@@ -670,9 +671,6 @@ def modmanager(user_perfs):
     else:
         if ((regularpackages.replace("</regularpackages>", "")).replace("<regularpackages>","")).strip() == "" or regularpackages == "<regularpackages/>":
             logger.warning("regularpackages empty!")
-            modlist = []
-            not_managedmods = get_not_managed_modlist(user_perfs['old_managedmods'], modlist)
-            deleting_not_managed_modlist(not_managedmods)
             save_user_perfs(modlist, user_perfs)
             print(_("[ModManager] No mods detected"))
             return 
@@ -721,8 +719,6 @@ def modmanager(user_perfs):
 
     # modless?
     if len(modlist) == 0:
-        not_managedmods = get_not_managed_modlist(user_perfs['old_managedmods'], modlist)
-        deleting_not_managed_modlist(not_managedmods)
         save_user_perfs(modlist, user_perfs)
         print(_("[ModManager] No mods detected"))
         return 
@@ -748,7 +744,7 @@ def modmanager(user_perfs):
 
 
     modlist = get_managed_modlist(modlist, user_perfs['localcopy_path'])
-    not_managedmods = get_not_managed_modlist(user_perfs['old_managedmods'], modlist)
+    not_managedmods = get_not_managed_modlist(user_perfs['old_managedmods'], modlist, user_perfs['localcopy_path'])
     buffer = []
                 
 
@@ -786,7 +782,7 @@ def modmanager(user_perfs):
     BackupUtil.backup_option(user_perfs['localcopy_path'], steamcmd_downloads)
 
 
-    deleting_not_managed_modlist(not_managedmods)
+    deleting_not_managed_modlist(not_managedmods, user_perfs['localcopy_path'])
 
 
     # actually moving mods to localcopy

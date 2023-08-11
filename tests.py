@@ -301,7 +301,7 @@ class TestModManager(unittest.TestCase):
         arr_old_managed_modlist = [[]]
         arr_test_modlist = [[]]
         for i in range(len(arr_managed_modlist)):
-            not_managed_modlist = ModManager.get_not_managed_modlist(arr_managed_modlist[i], arr_old_managed_modlist[i])
+            not_managed_modlist = ModManager.get_not_managed_modlist(arr_managed_modlist[i], arr_old_managed_modlist[i], 'LocaLMods')
             self.assertEqual(arr_test_modlist[i], not_managed_modlist, "Modlists not equal!")
     # def test_deleting_not_managed_modlist(self):
     #     ModManager.deleting_not_managed_modlist(not_managed_modlist)
