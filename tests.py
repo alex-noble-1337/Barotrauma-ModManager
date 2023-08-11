@@ -3,7 +3,7 @@ import shutil
 from lxml import etree as ET
 import re
 import xmldiff.main as xml_diff
-from configbackup import config_files_find
+from BackupUtil import config_files_find
 import unittest
 
 import ModManager
