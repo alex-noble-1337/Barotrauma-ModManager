@@ -35,6 +35,7 @@ import time
 import datetime
 import xml.etree.ElementTree as ET
 import pprint
+import json
 
 import logging
 import logging.config
@@ -48,12 +49,10 @@ current_time = str(current_time)[0:-3]
 
 try:
     import requests
-    import json
 except ImportError:
     print("Trying to Install required module: requests\n")
-    os.system('python3 -m pip install requests json')
+    os.system('python3 -m pip install requests')
     import requests
-    import json
 
 # load submodules
 import SteamIOMM
@@ -176,8 +175,11 @@ def get_user_perfs():
         logging.disable(logging.NOTSET)
 
     # TODO go over this again, handing of command line arguments
-    command_line_args = ['--barotraumapath', '-b', '--toolpath', '-t', '--steamcmdpath', '-s', '--collection', '-c', '--performancefix', '-p',
-                         '--backup', '--installdir', '-o']
+    command_line_args_shorted = { '-b': '--barotraumapath', '-t': '--toolpath', '-s': '--steamcmdpath', '-c': '--collection', '-p': '--performancefix',
+                                  '-o': '--installdir'}
+    command_line_args = {'--barotraumapath': 'barotrauma', '--toolpath': 'tool', '--steamcmdpath': 'steamcmd', 'collection': 'collection_link,localcopy_path',
+                         '--performancefix': 'addperformancefix', '--installdir': 'localcopy_path_override'}
+    '--backup'
     if len(options_arr) >= 1:
         for i in range(0,len(options_arr)):
             tempval = 1
@@ -228,7 +230,7 @@ def get_user_perfs():
                 logger.info("Collection link set from command line as {0}".format(user_perfs['collection_link']))
                 logger.info("localcopy path override set from command line as {0}".format(user_perfs['localcopy_path']))
 
-             # TODO add it to the documentaton
+            # TODO add it to the documentaton
             if options_arr[i] == '--performancefix' or options_arr[i] == '-p':
                 if tempval >= 1:
                     user_perfs['addperformancefix'] = True
