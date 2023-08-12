@@ -666,7 +666,8 @@ def modmanager(user_perfs):
         print(_("[ModManager] Collection mode ENABLED, Downloading collection data (This might take a sec)"))
         modlist.extend(SteamIOMM.get_modlist_collection_site(collection_site))
     else:
-        if ((regularpackages.replace("</regularpackages>", "")).replace("<regularpackages>","")).strip() == "" or regularpackages == "<regularpackages/>":
+        # Hotfix TODO
+        if ((regularpackages.replace("</regularpackages>", "")).replace("<regularpackages>","")).strip() == "" or regularpackages.strip() == "<regularpackages/>" or regularpackages.strip() == "<regularpackages />":
             logger.warning("regularpackages empty!")
             save_user_perfs(modlist, user_perfs)
             print(_("[ModManager] No mods detected"))
