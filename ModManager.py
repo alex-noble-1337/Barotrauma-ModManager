@@ -188,7 +188,7 @@ def get_user_perfs():
 
             # override installation dir
             if options_arr[i] == '--installdir' or options_arr[i] == '-o':
-                if tempval >= 3:
+                if tempval >= 2:
                     user_perfs['localcopy_path_override'] = options_arr[i+1]
                     logger.info("Localcopy Path Override set {0}".format(user_perfs['localcopy_path_override']))
 
