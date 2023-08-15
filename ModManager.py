@@ -79,7 +79,7 @@ def get_user_perfs():
                   'barotrauma': default_barotrauma_path, 'steamcmd': default_steamcmd_path,
                   'addperformancefix': default_addperformancefix}
     logging_config = {}
-    logger.info("Default user_perfs are {0}".format(str(pprint.pformat(user_perfs))))
+    logger.info("DEFAULT user_perfs are {0}".format(str(user_perfs)))
     # toolpath or config path
     #  Must be a path to THE FOLDER.  Does not accept "" use "." instead
     for i in range(len(options_arr)):
@@ -96,7 +96,7 @@ def get_user_perfs():
     user_perfs['config_path'] = os.path.join(user_perfs['tool'], "config.xml")
     logger.debug("config_path is set as {0}".format(user_perfs['config_path']))
 
-
+    # get config from file
     if os.path.exists(user_perfs['config_path']):
         with open(user_perfs['config_path'] , 'r', encoding="utf8") as f:
             config_xml = ET.fromstring(f.read())
@@ -173,7 +173,7 @@ def get_user_perfs():
         logging.config.dictConfig(logging_config)
         logging.disable(logging.NOTSET)
 
-    # TODO go over this again, handing of command line arguments
+    # get config from command line arguments
     command_line_args = ['--barotraumapath', '-b', '--toolpath', '-t', '--steamcmdpath', '-s', '--collection', '-c', '--performancefix', '-p',
                          '--backup', '--installdir', '-o']
     if len(options_arr) >= 1:
@@ -240,6 +240,7 @@ def get_user_perfs():
                     user_perfs['save_dir'] = options_arr[i+2]
                 logger.info("save dir for backups is set: {0} and max backup ammout is set to: {1}".format(user_perfs['save_dir'], user_perfs['max_saves']))
 
+
     # setting up default values and path handling
     if not os.path.isabs(user_perfs['barotrauma']):
         user_perfs['barotrauma'] = os.path.abspath(user_perfs['barotrauma'])
@@ -269,7 +270,9 @@ def get_user_perfs():
     # user_perfs['managedmods_path'] = os.path.join(user_perfs['tool'], "managed_mods.txt")
     if flush_previous_col:
         user_perfs.pop('collection_link')
-        user_perfs.pop('localcopy_path')
+        if 'localcopy_path' in user_perfs:
+            user_perfs['old_localcopy_path'] = user_perfs['localcopy_path']
+            user_perfs.pop('localcopy_path')
         logger.info("Collection mode configuration flushed")
     elif 'collection_link' in user_perfs and user_perfs['mode'] == "collection" and 'localcopy_path' in user_perfs:
         logger.info("Collection mode enabled from perfs, collection_link:{0}, mode:{1}, localcopy_path:{2}"
