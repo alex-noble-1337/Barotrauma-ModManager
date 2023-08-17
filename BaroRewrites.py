@@ -115,7 +115,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                 with open(file_path, 'w', encoding="utf8") as open_file:
                     open_file.write(content)
         if old_paths:
-            logger.warn("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
+            logger.warning("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
                         .format(downloaded_mod['id'], downloaded_mod['name']))
             if warnings_as_errors:
                 print(_("Treating warnings as errors:"))
@@ -190,7 +190,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                 if not 'expectedhash' in def_file.attrib:
                     # we are srewed if this is missing
                     if len(def_content) > 0:
-                        logger.warn("Mod of id:{0} and name: {1} does not have hash! Remove it if possible".format(downloaded_mod['id'], downloaded_mod['name']))
+                        logger.warning("Mod of id:{0} and name: {1} does not have hash! Remove it if possible".format(downloaded_mod['id'], downloaded_mod['name']))
                         if warnings_as_errors:
                             raise Exception(_("Treating warnings as errors") + "\n" + _("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['id'], downloaded_mod['name']))
 

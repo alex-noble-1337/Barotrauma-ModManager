@@ -374,7 +374,11 @@ def get_modlist_regularpackages(regularpackages: str, localcopy_path: str):
                 if 'installtime' in mod_filelist.attrib:
                     mod['installtime'] = int(mod_filelist.attrib['installtime'])
         else:
-            logger.warn("get_modlist_regularpackages: Cant find filelist! id:{0} name:{1} path:{2}".format(mod['id'], mod['name'], filelist_path))
+            mod_data = ""
+            if 'name' in mod:
+                mod_data += "name: " + mod['name'] 
+            mod_data += " " + filelist_path
+            logger.warning("get_modlist_regularpackages: Cant find filelist! {0}".format(filelist_path))
         
     return modlist
 def get_localcopy_path(regularpackages: str):
@@ -568,7 +572,7 @@ def is_serverside_mod(mod_path: str):
         if xmlitems <= 0:
             pure_lua_mod = True
     else:
-        logger.warn("is_serverside_mod: Cant find filelist! path:{0}".format(filelist_path))
+        logger.warning("is_serverside_mod: Cant find filelist! path:{0}".format(filelist_path))
     return pure_lua_mod
 
 def remove_all_occurences_from_arr(arr, remove_arr):
