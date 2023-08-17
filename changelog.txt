@@ -1,4 +1,1 @@
 This Changelog is for nightly build (stuff on the branch not on release)
-- fixed bug messing up localcopy path in config_player mode
-- fixed bug about not getting -o option
-- a bit of fixing of imports

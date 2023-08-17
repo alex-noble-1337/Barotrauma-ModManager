@@ -1,0 +1,473 @@
+<config
+  language="English"
+  verboselogging="false"
+  savedebugconsolelogs="false"
+  savepath=""
+  subeditorundobuffer="32"
+  maxautosaves="8"
+  autosaveintervalseconds="300"
+  subeditorbackground="#0D2545"
+  enablesplashscreen="true"
+  pauseonfocuslost="true"
+  aimassistamount="0.5"
+  enablemouselook="true"
+  showenemyhealthbars="ShowAll"
+  chatopen="false"
+  crewmenuopen="true"
+  showoffensiveserverprompt="false"
+  tutorialskipwarning="false"
+  corpsedespawndelay="600"
+  corpsespersubdespawnthreshold="5"
+  usedualmodesockets="true"
+  disableingamehints="true"
+  enablesubmarineautosave="true"
+  quickstartsub=""
+  remotemainmenucontenturl="https://www.barotraumagame.com/gamedata/"
+  savedcampaignsettings="&lt;campaignsettings PresetName=&quot;Normal&quot; TutorialEnabled=&quot;True&quot; RadiationEnabled=&quot;False&quot; MaxMissionCount=&quot;2&quot; StartingBalanceAmount=&quot;Medium&quot; Difficulty=&quot;Medium&quot; StartItemSet=&quot;normal&quot; /&gt;">
+  <graphicssettings
+    width="1920"
+    height="1080"
+    vsync="true"
+    compresstextures="true"
+    framelimit="300"
+    displaymode="BorderlessWindowed"
+    particlelimit="1500"
+    specularity="true"
+    chromaticaberration="true"
+    losmode="Transparent"
+    hudscale="1"
+    inventoryscale="1"
+    lightmapscale="1"
+    visiblelightlimit="200"
+    textscale="1"
+    radialdistortion="true" />
+  <audio
+    musicvolume="0.12"
+    soundvolume="0.089999996"
+    uivolume="0.089999996"
+    voicechatvolume="0.5"
+    voicechatcutoffprevention="0"
+    microphonevolume="5"
+    muteonfocuslost="false"
+    dynamicrangecompressionenabled="true"
+    usedirectionalvoicechat="true"
+    voipattenuationenabled="true"
+    voicesetting="PushToTalk"
+    audiooutputdevice="OpenAL_x0020_Soft_x0020_on_x0020_Lautsprecher_x0020__x0028_Realtek_x0028_R_x0029__x0020_Audio_x0020_Codec_x0020_with_x0020_THX_x0020_Spatial_x0020_Audio_x0029_"
+    voicecapturedevice=""
+    noisegatethreshold="0"
+    disablevoicechatfilters="false" />
+  <contentpackages>
+    <!--Vanilla-->
+    <corepackage
+      path="Content/ContentPackages/Vanilla.xml" />
+    <regularpackages>
+      <!--DynamicEuropa - Frith's Biomes Compatibility Patch-->
+      <package
+        path="LocalMods/2911529819/filelist.xml" />
+      <!--Frith's Biomes-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2020332046/filelist.xml" />
+      <!--DynamicEuropa-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2532991202/filelist.xml" />
+      <!--NT Blood work-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2976434626/filelist.xml" />
+      <!--Neurotrauma-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2776270649/filelist.xml" />
+      <!--NT Surgery Plus-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2790455798/filelist.xml" />
+      <!--NT Pharmacy-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2804655816/filelist.xml" />
+      <!--NT Cybernetics-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2788543375/filelist.xml" />
+      <!--NT pill containers-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2876677996/filelist.xml" />
+      <!--Neurotrauma - Sound Fix-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2994417387/filelist.xml" />
+      <!--BetterHealthUI-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2807158602/filelist.xml" />
+      <!--EK Mods for 1.x.x.x-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2954237072/filelist.xml" />
+      <!--Enhanced Armaments Neurotrauma Patch-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2807556435/filelist.xml" />
+      <!--Enhanced Armaments Fuel for the Fire Expansion-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2976013863/filelist.xml" />
+      <!--Enhanced Armaments-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2764968387/filelist.xml" />
+      <!--OxyGear-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2260683656/filelist.xml" />
+      <!--Visual Variety Pack-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2161488150/filelist.xml" />
+      <!--Alarms Extended-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2972196919/filelist.xml" />
+      <!--MineTorpedo-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2282010683/filelist.xml" />
+      <!--Meaningful Upgrades-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2183524355/filelist.xml" />
+      <!--Modular Backpack-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2964144541/filelist.xml" />
+      <!--Portable Torpedoes-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2471443438/filelist.xml" />
+      <!--Beacons Extended-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2389600483/filelist.xml" />
+      <!--Shipwrecks Extended-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2095211492/filelist.xml" />
+      <!--MannaBuildables-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2809102161/filelist.xml" />
+      <!--Wifi Camera-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/3020618603/filelist.xml" />
+      <!--Lua For Barotrauma-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2559634234/filelist.xml" />
+      <!--CsForBarotrauma-->
+      <package
+        path="C:/Users/ortho/AppData/Local/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed/2795927223/filelist.xml" />
+      <!--Fire Extinguisher in Bracket-->
+      <package
+        path="LocalMods/Fire Extinguisher in Bracket/filelist.xml" />
+      <!--Automated blast door airlock-->
+      <package
+        path="LocalMods/Automated blast door airlock/filelist.xml" />
+      <!--blast door with buttons-->
+      <package
+        path="LocalMods/blast door with buttons/filelist.xml" />
+      <!--Supply Standard-->
+      <package
+        path="LocalMods/Supply Standard/filelist.xml" />
+      <!--emergency station-->
+      <package
+        path="LocalMods/emergency station/filelist.xml" />
+      <!--Krankenstation-->
+      <package
+        path="LocalMods/Krankenstation/filelist.xml" />
+      <!--Kajüten-->
+      <package
+        path="LocalMods/Kajüten/filelist.xml" />
+      <!--Brücke-->
+      <package
+        path="LocalMods/Brücke/filelist.xml" />
+      <!--Waffenkontrolle-->
+      <package
+        path="LocalMods/Waffenkontrolle/filelist.xml" />
+      <!--Waffenkammer-->
+      <package
+        path="LocalMods/Waffenkammer/filelist.xml" />
+      <!--Sauerstoffraum-->
+      <package
+        path="LocalMods/Sauerstoffraum/filelist.xml" />
+      <!--Brig-->
+      <package
+        path="LocalMods/Brig/filelist.xml" />
+      <!--Elektroraum-->
+      <package
+        path="LocalMods/Elektroraum/filelist.xml" />
+      <!--Luke-->
+      <package
+        path="LocalMods/Luke/filelist.xml" />
+      <!--Schild-->
+      <package
+        path="LocalMods/Schild/filelist.xml" />
+      <!--Heck-->
+      <package
+        path="LocalMods/Heck/filelist.xml" />
+      <!--Engine-->
+      <package
+        path="LocalMods/Engine/filelist.xml" />
+      <!--Mast Monitor-->
+      <package
+        path="LocalMods/Mast Monitor/filelist.xml" />
+      <!--Airlock Lights-->
+      <package
+        path="LocalMods/Airlock Lights/filelist.xml" />
+      <!--Exit Sign-->
+      <package
+        path="LocalMods/Exit Sign/filelist.xml" />
+      <!--Brücke 2-->
+      <package
+        path="LocalMods/Brücke 2/filelist.xml" />
+      <!--Heck 2-->
+      <package
+        path="LocalMods/Heck 2/filelist.xml" />
+      <!--Docking Hatch 2-->
+      <package
+        path="LocalMods/Docking Hatch 2/filelist.xml" />
+      <!--Junction Boxes-->
+      <package
+        path="LocalMods/Junction Boxes/filelist.xml" />
+      <!--duct automated-->
+      <package
+        path="LocalMods/duct automated/filelist.xml" />
+      <!--TA-22-->
+      <package
+        path="LocalMods/TA-22/filelist.xml" />
+      <!--automated door TA-22-->
+      <package
+        path="LocalMods/automated door TA-22/filelist.xml" />
+      <!--Automated Hatch TA-22-->
+      <package
+        path="LocalMods/Automated Hatch TA-22/filelist.xml" />
+      <!--Statusmonitor Bridge-->
+      <package
+        path="LocalMods/Statusmonitor Bridge/filelist.xml" />
+      <!--Cabinet Reactor Fuel-->
+      <package
+        path="LocalMods/Cabinet Reactor Fuel/filelist.xml" />
+      <!--Test Flood Automatic Doors-->
+      <package
+        path="LocalMods/Test Flood Automatic Doors/filelist.xml" />
+      <!--Test-->
+      <package
+        path="LocalMods/Test/filelist.xml" />
+      <!--Door Flood Automatic TA-22-->
+      <package
+        path="LocalMods/Door Flood Automatic TA-22/filelist.xml" />
+      <!--Test Tobi-->
+      <package
+        path="LocalMods/Test Tobi/filelist.xml" />
+      <!--Tobis Lab 1.3-->
+      <package
+        path="LocalMods/Tobis Lab 1.3/filelist.xml" />
+      <!--Blast Door Flood Automatic TA-22-->
+      <package
+        path="LocalMods/Blast Door Flood Automatic TA-22/filelist.xml" />
+      <!--Hatch Flood Automatic TA-22-->
+      <package
+        path="LocalMods/Hatch Flood Automatic TA-22/filelist.xml" />
+      <!--Hatch Ballast Tank TA-22-->
+      <package
+        path="LocalMods/Hatch Ballast Tank TA-22/filelist.xml" />
+      <!--Airlock Test-->
+      <package
+        path="LocalMods/Airlock Test/filelist.xml" />
+      <!--Airlock Automatic TA-22-->
+      <package
+        path="LocalMods/Airlock Automatic TA-22/filelist.xml" />
+      <!--hatch test-->
+      <package
+        path="LocalMods/hatch test/filelist.xml" />
+      <!--Hatch Ballast Tank TA-22 Final-->
+      <package
+        path="LocalMods/Hatch Ballast Tank TA-22 Final/filelist.xml" />
+      <!--Emergency Light-->
+      <package
+        path="LocalMods/Emergency Light/filelist.xml" />
+      <!--Reactor Complex Prometheus-->
+      <package
+        path="LocalMods/Reactor Complex Prometheus/filelist.xml" />
+      <!--Airlock Sign-->
+      <package
+        path="LocalMods/Airlock Sign/filelist.xml" />
+      <!--Emergency Equipment-->
+      <package
+        path="LocalMods/Emergency Equipment/filelist.xml" />
+      <!--Scout Parts-->
+      <package
+        path="LocalMods/Scout Parts/filelist.xml" />
+      <!--Sign-->
+      <package
+        path="LocalMods/Sign/filelist.xml" />
+      <!--Preiscope Doube conrol-->
+      <package
+        path="LocalMods/Preiscope Doube conrol/filelist.xml" />
+      <!--Periscope Double Control-->
+      <package
+        path="LocalMods/Periscope Double Control/filelist.xml" />
+      <!--Automatic Bilge Pump2-->
+      <package
+        path="LocalMods/Automatic Bilge Pump2/filelist.xml" />
+      <!--Pillbug TA-23-->
+      <package
+        path="LocalMods/Pillbug TA-23/filelist.xml" />
+      <!--outside medical compartment-->
+      <package
+        path="LocalMods/outside medical compartment/filelist.xml" />
+      <!--Fire & water resistant sign-->
+      <package
+        path="LocalMods/Fire &amp; water resistant sign/filelist.xml" />
+      <!--Communication Systems on Sub-->
+      <package
+        path="LocalMods/Communication Systems on Sub/filelist.xml" />
+      <!--Torpedo Rooms-->
+      <package
+        path="LocalMods/Torpedo Rooms/filelist.xml" />
+      <!--CIWIS Automatic Ship Weapons-->
+      <package
+        path="LocalMods/CIWIS Automatic Ship Weapons/filelist.xml" />
+      <!--Reactor Meltdown Alarm-->
+      <package
+        path="LocalMods/Reactor Meltdown Alarm/filelist.xml" />
+      <!--Shuttle Docking Alarm-->
+      <package
+        path="LocalMods/Shuttle Docking Alarm/filelist.xml" />
+      <!--Fire Alarm-->
+      <package
+        path="LocalMods/Fire Alarm/filelist.xml" />
+      <!--General Quarters Alarm-->
+      <package
+        path="LocalMods/General Quarters Alarm/filelist.xml" />
+      <!--Intruder Alarm-->
+      <package
+        path="LocalMods/Intruder Alarm/filelist.xml" />
+      <!--Hull Breach Alarm-->
+      <package
+        path="LocalMods/Hull Breach Alarm/filelist.xml" />
+      <!--Glimmer Drone Control Setting-->
+      <package
+        path="LocalMods/Glimmer Drone Control Setting/filelist.xml" />
+      <!--Litte Richard Drone 1-->
+      <package
+        path="LocalMods/Litte Richard Drone 1/filelist.xml" />
+      <!--Storage Water Fire Sign-->
+      <package
+        path="LocalMods/Storage Water Fire Sign/filelist.xml" />
+      <!--TA-23 (Neurotrauma, EK, EHA)-->
+      <package
+        path="LocalMods/TA-23 (Neurotrauma, EK, EHA)/filelist.xml" />
+      <!--Little Richard Vortex Drone-->
+      <package
+        path="LocalMods/Little Richard Vortex Drone/filelist.xml" />
+      <!--Pillbug 23-->
+      <package
+        path="LocalMods/Pillbug 23/filelist.xml" />
+      <!--Kitchen Big-->
+      <package
+        path="LocalMods/Kitchen Big/filelist.xml" />
+      <!--Kitchen Middle-->
+      <package
+        path="LocalMods/Kitchen Middle/filelist.xml" />
+      <!--Ballast Tank Idea-->
+      <package
+        path="LocalMods/Ballast Tank Idea/filelist.xml" />
+      <!--Medbay Idea-->
+      <package
+        path="LocalMods/Medbay Idea/filelist.xml" />
+      <!--Kitchen Small-->
+      <package
+        path="LocalMods/Kitchen Small/filelist.xml" />
+      <!--Kitchen TA-24 Elements-->
+      <package
+        path="LocalMods/Kitchen TA-24 Elements/filelist.xml" />
+    </regularpackages>
+  </contentpackages>
+  <serverfilters
+    FilterSameVersion="True"
+    FilterPassword="False"
+    FilterFullServers="False"
+    FilterEmptyServers="False"
+    FilterOffensiveServers="False"
+    servertag.Serious="True"
+    servertag.Casual="True"
+    servertag.Roleplay="True"
+    servertag.Rampage="True"
+    servertag.SomethingDifferent="True"
+    sandbox="True"
+    mission="True"
+    pvp="True"
+    multiplayercampaign="True"
+    karma="Any"
+    traitors="Any"
+    friendlyfire="Any"
+    voip="Any"
+    modded="Any" />
+  <player
+    name=""
+    tags="head16,male"
+    HairIndex="3"
+    BeardIndex="16"
+    MoustacheIndex="0"
+    FaceAttachmentIndex="0"
+    HairColor="#6A3B37"
+    FacialHairColor="#C77D52"
+    SkinColor="#774929">
+    <job
+      identifier="medicaldoctor"
+      variant="0" />
+  </player>
+  <ignoredhints
+    identifiers="" />
+  <debugconsolemapping />
+  <tutorials>
+    <Tutorial
+      name="tutorial.basic" />
+    <Tutorial
+      name="tutorial.roles" />
+  </tutorials>
+  <keymapping
+    Select="PrimaryMouse"
+    Use="E"
+    Aim="SecondaryMouse"
+    Up="W"
+    Down="S"
+    Left="A"
+    Right="D"
+    Attack="R"
+    Run="LeftShift"
+    Crouch="LeftControl"
+    InfoTab="Tab"
+    Chat="None"
+    RadioChat="None"
+    CrewOrders="C"
+    Ragdoll="Space"
+    Health="H"
+    Grab="G"
+    SelectNextCharacter="Y"
+    SelectPreviousCharacter="X"
+    Voice="V"
+    RadioVoice="None"
+    LocalVoice="None"
+    Deselect="SecondaryMouse"
+    Shoot="PrimaryMouse"
+    Command="MiddleMouse"
+    ToggleInventory="Q"
+    TakeOneFromInventorySlot="LeftControl"
+    TakeHalfFromInventorySlot="LeftShift"
+    NextFireMode="MouseWheelUp"
+    PreviousFireMode="MouseWheelDown"
+    ActiveChat="T"
+    ToggleChatMode="R"
+    ChatBox="B" />
+  <inventorykeymapping
+    slot0="D1"
+    slot1="D2"
+    slot2="D3"
+    slot3="D4"
+    slot4="D5"
+    slot5="D6"
+    slot6="D7"
+    slot7="D8"
+    slot8="D9"
+    slot9="D0" />
+  <editorimages />
+  <campaignsettings
+    PresetName="Normal"
+    TutorialEnabled="True"
+    RadiationEnabled="False"
+    MaxMissionCount="2"
+    StartingBalanceAmount="Medium"
+    Difficulty="Medium"
+    StartItemSet="normal" />
+</config>

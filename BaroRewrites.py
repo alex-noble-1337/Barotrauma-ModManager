@@ -212,7 +212,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                     open_file.write(filelist_str)
     else:
         logger.exception("Cant find filelist in mod ({0}, {1}) directory ({2})! This can be caused by incorrectly downloaded mod!".format(downloaded_mod['id'], downloaded_mod['name'], filelist_path))
-        raise Exception((_("Cant find filelist in mod ({0}, {1}) directory ({2})! This can be caused by incorrectly downloaded mod!").format(downloaded_mod['id'], downloaded_mod['name'], filelist_path)))
+        print((_("Cant find filelist in mod ({0}, {1}) directory ({2})! This can be caused by incorrectly downloaded mod!").format(downloaded_mod['id'], downloaded_mod['name'], filelist_path)))
 
 # Expressions from c# that dont translate to python:
 # this is:

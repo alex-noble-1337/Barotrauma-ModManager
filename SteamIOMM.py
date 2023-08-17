@@ -103,9 +103,15 @@ def get_modlist_data_webapi(modlist):
     new_modlist = modlist
     if modlist != []:
         adress_of_request = "https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/"
-        option_tuple = {'itemcount': len(modlist)}
+        number_of_workshop_mods = 0
+        option_tuple = {}
         for i in range(len(modlist)):
-            option_tuple['publishedfileids[' + str(i) + ']'] = modlist[i]['id']
+            mod = modlist[i]
+            if 'type' in mod:
+                if mod['type'] == "Workshop":
+                    option_tuple['publishedfileids[' + str(i) + ']'] = mod['id']
+                    number_of_workshop_mods += 1
+        option_tuple['itemcount'] = number_of_workshop_mods
         output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
         if output.status_code == 200:
             data = json.loads(output.text)
@@ -255,19 +261,37 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
 
     # get total size of modlist
     modlist_file_size = 0
+    modlist_workshop = []
     for mod in modlist:
-        if 'file_size' in mod:
-            modlist_file_size += mod['file_size']
-    completed_file_size = 0
+        if not 'type' in mod:
+            id_test = re.findall("\d+$", mod['id'])
+            if len(id_test) >= 1:
+                if len(id_test[0]) == len(mod['id']):
+                    mod['id'] = id_test[0]
+                    mod['type'] = "Workshop"
+                else:
+                    mod['type'] = "Local"
+            else:
+                mod['type'] = "Local"
+        if mod['type'] == "Workshop":
+            if 'file_size' in mod:
+                modlist_file_size += mod['file_size']
+            modlist_workshop.append(mod)
+        else:
+            print(_("[ModManager] Skipped mod!: {name:s} ({id:s})").format(**mod))
+            # bar.update(1)
+            print()
+            # iterator += 1
+            # bar.update(iterator)
 
-    for mod in modlist:
-        pattern = "^\d*?$"
-        if re.match(pattern, mod['id']):
+    completed_file_size = 0
+    for mod in modlist_workshop:
+        if re.match("^\d*?$", mod['id']):
             one_time = int(round(time.time()))
             # main part running moddlownloader
             print(_("[ModManager] Starting steamcmd, Updating mod:{id:s}: {name:s}").format(**mod), end='')
-            print("\t" + _("Update Progress: {0}/{1}").format(str(iterator+1), str(len(modlist))), end='')
-            if len(modlist) >= 3:
+            print("\t" + _("Update Progress: {0}/{1}").format(str(iterator+1), str(len(modlist_workshop))), end='')
+            if len(modlist_workshop) >= 3:
                 if iterator >= 3:
                     # TODO dirty quickfix
                     if completed_file_size > 0:
@@ -321,13 +345,6 @@ def download_modlist(modlist, steamdir_path, location_with_steamcmd):
             else:
                 logger.critical("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!\n{0}".format(str(proc.errors)))
                 raise Exception(_("[ModManager] Steamcmd return code is not 0! That means steamcd had problems!\n{0}".format(str(proc.errors))))
-        else:
-            iterator += 1
-            print(_("[ModManager] Skipped mod!: {name:s} ( + {id:s})").format(**mod))
-            # bar.update(1)
-            print()
-            # iterator += 1
-            # bar.update(iterator)
         # change timestamp
         filelist_path = os.path.join(steamdir_path, "steamapps", "workshop", "content", "602960", mod['id'], "filelist.xml")
         if os.path.exists(filelist_path):

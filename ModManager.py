@@ -115,8 +115,11 @@ def get_user_perfs():
                 if subconfig.tag.lower() == 'mods':
                     for mod_xml in subconfig:
                         if mod_xml.tag in ['Workshop', 'Local']:
-                            # TODO get type of its workshop from tag
-                            mod = {'type': mod_xml.tag, 'id': mod_xml.attrib['id']}
+                            if mod_xml.tag == 'Workshop':
+                                # TODO get type of its workshop from tag
+                                mod = {'type': mod_xml.tag, 'id': mod_xml.attrib['id']}
+                            else:
+                                mod = {'type': mod_xml.tag, 'id': mod_xml.attrib['name'], 'name': mod_xml.attrib['name']}
                             # TODO get name from name attrib
                             if 'name' in mod_xml.attrib:
                                 mod['name'] = mod_xml.attrib['name']
@@ -348,10 +351,13 @@ def get_modlist_regularpackages(regularpackages: str, localcopy_path: str):
     for element in root:
         if element.tag == "package":
             mod = {'id': os.path.basename(os.path.dirname(element.attrib['path']))}
-            id_test = re.findall("\d*?$", mod['id'])
-            if len(id_test) > 0:
-                mod['id'] = id_test[0]
-                mod['type'] = "Workshop"
+            id_test = re.findall("\d+$", mod['id'])
+            if len(id_test) >= 1:
+                if len(id_test[0]) == len(mod['id']):
+                    mod['id'] = id_test[0]
+                    mod['type'] = "Workshop"
+                else:
+                    mod['type'] = "Local"
             else:
                 mod['type'] = "Local"
             modlist.append(mod)
@@ -379,6 +385,10 @@ def get_modlist_regularpackages(regularpackages: str, localcopy_path: str):
                 mod_data += "name: " + mod['name'] 
             mod_data += " " + filelist_path
             logger.warning("get_modlist_regularpackages: Cant find filelist! {0}".format(filelist_path))
+            if (not 'name' in mod) and (mod['type'] == "Local"):
+                # last resort option, if it coudnt find name
+                mod['name'] = mod['id']
+                logger.warning("Set name of id:{0} as {1}".format(mod['id'], mod['name']))
         
     return modlist
 def get_localcopy_path(regularpackages: str):
@@ -448,6 +458,8 @@ def set_modlist_regularpackages(modlist, localcopy_path_og: str, barotrauma_path
             temp_mod_path = temp_mod_path
 
         modname_formatted = mod['name'].replace("--", "- -")
+        modname_formatted = modname_formatted.replace("&", "&amp;")
+        temp_mod_path = temp_mod_path.replace("&", "&amp;")
         regularpackages_new += "      <!--" + modname_formatted + "-->\n"
         regularpackages_new += "      <package\n"
         regularpackages_new += "        path=\"" + temp_mod_path + "/filelist.xml" + "\"/>\n"
