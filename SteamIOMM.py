@@ -107,10 +107,20 @@ def get_modlist_data_webapi(modlist):
         option_tuple = {}
         for i in range(len(modlist)):
             mod = modlist[i]
-            if 'type' in mod:
-                if mod['type'] == "Workshop":
-                    option_tuple['publishedfileids[' + str(i) + ']'] = mod['id']
-                    number_of_workshop_mods += 1
+            if not 'type' in mod:
+                id_test = re.findall("\d+$", mod['id'])
+                if len(id_test) >= 1:
+                    if len(id_test[0]) == len(mod['id']):
+                        mod['id'] = id_test[0]
+                        mod['type'] = "Workshop"
+                    else:
+                        mod['type'] = "Local"
+                else:
+                    mod['type'] = "Local"
+
+            if mod['type'] == "Workshop":
+                option_tuple['publishedfileids[' + str(i) + ']'] = mod['id']
+                number_of_workshop_mods += 1
         option_tuple['itemcount'] = number_of_workshop_mods
         output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
         if output.status_code == 200:
