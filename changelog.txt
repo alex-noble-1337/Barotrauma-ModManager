@@ -1,4 +1,3 @@
 This Changelog is for nightly build (stuff on the branch not on release)
-- HOTFIX 'Local' mods didnt work
-    - kinda botched exception on not finding a filelist
-    - make it skip by most of parts of the MM
+- HOTFIX bad requests problem
+    - this fixes function get_modlist_data_webapi, which is very important to the MM
