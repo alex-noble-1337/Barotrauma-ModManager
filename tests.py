@@ -77,7 +77,7 @@ def test_FIX_barodev_moment():
     for mod_dir in mod_dirs:
         if mod_dir in mod_dirs_daedelic:
             full_path = os.path.join(steam_library_installedmods, mod_dir)
-            full_path_output = os.path.join("test_fix_barodev_moment", mod_dir)
+            full_path_output = os.path.join("LocalMods", mod_dir)
             if os.path.exists(full_path):
                 # copy to "test_fix_barodev_moment"
                 ModManager.robocopysubsttute(full_path, full_path_output)
@@ -133,7 +133,7 @@ def test_FIX_barodev_moment():
                             # TODO only define dcontent should matter, take a look
                             # apperently it does:
                             # https://github.com/Regalis11/Barotrauma/blob/c67f6688fdf4dcffa224711a0d4f4181d9a1fad4/Barotrauma/BarotraumaShared/SharedSource/ContentManagement/ContentPackage/ContentPackage.cs#L189
-                            if src_dir.replace("test_fix_barodev_moment/" + mod_dir + "/", "") in def_content:
+                            if src_dir.replace("LocalMods/" + mod_dir + "/", "") in def_content:
                                 if not config_files_find(os.path.basename(file_)):
                                     WINDOWS_LINE_ENDING = b'\r\n'
                                     UNIX_LINE_ENDING = b'\n'
@@ -142,7 +142,7 @@ def test_FIX_barodev_moment():
                                         # TODO line endings shoudnt matter, take a look at code
                                         src_file = src_file.replace(WINDOWS_LINE_ENDING, b'')
                                         src_file = src_file.replace(UNIX_LINE_ENDING, b'')
-                                    dst_dir = src_dir.replace("test_fix_barodev_moment", daedalic_entertainment_ghmbh_installedmods, 1)
+                                    dst_dir = src_dir.replace("LocalMods", daedalic_entertainment_ghmbh_installedmods, 1)
                                     with open(dst_dir, 'rb') as open_file:
                                         dst_file = open_file.read()
                                         # TODO line endings shoudnt matter, take a look at code
