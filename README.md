@@ -1,5 +1,3 @@
-
-
 # README Languages
 - [English](README.md)
 - [Русский](README.ru.md)
@@ -8,6 +6,9 @@
 Mod manager for Barotrauma server. Allows for easier keeping mods up to date.
 
 Barotrauma game github: https://github.com/Regalis11/Barotrauma
+_ _ _ _ _ _ _
+Licenced by [CC BY-NC 4.0](https://creativecommons.org/licenses/by-nc/4.0/)
+(In short, means you can use this software for non comertial purpouses, and also you can use this software in your work, but credit me then. Using this software for comertial purpouses is forbidden)
 
 ## Setup
 ***Requres installation of steamcmd!*** 
