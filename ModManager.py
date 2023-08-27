@@ -46,13 +46,6 @@ current_time = datetime.datetime.now()
 current_time = current_time.replace(second=0, microsecond=0)
 current_time = str(current_time)[0:-3]
 
-try:
-    import requests
-except ImportError:
-    print("Trying to Install required module: requests\n")
-    os.system('python3 -m pip install requests')
-    import requests
-
 # load submodules
 import SteamIOMM
 import BaroRewrites
@@ -351,15 +344,7 @@ def get_modlist_regularpackages(regularpackages: str, localcopy_path: str):
     for element in root:
         if element.tag == "package":
             mod = {'id': os.path.basename(os.path.dirname(element.attrib['path']))}
-            id_test = re.findall("\d+$", mod['id'])
-            if len(id_test) >= 1:
-                if len(id_test[0]) == len(mod['id']):
-                    mod['id'] = id_test[0]
-                    mod['type'] = "Workshop"
-                else:
-                    mod['type'] = "Local"
-            else:
-                mod['type'] = "Local"
+            mod = set_mod_type(mod)
             modlist.append(mod)
 
     # reason i need to look in filelist is because of:
@@ -504,10 +489,7 @@ def get_managed_modlist(modlist, localcopy_path_og):
     for mod in modlist:
         mod_b = mod
         if not 'type' in mod_b:
-            if re.match("^\d*?$", str(os.path.basename(mod['id']))):
-                mod_b['type'] = "Workshop"
-            else:
-                mod_b['type'] = "Local"
+            mod_b = set_mod_type(mod_b)
         managed_mods.append(mod_b)
     return managed_mods
 def get_not_managed_modlist(old_managed_modlist, managed_modlist, localcopy_path: str):
@@ -586,12 +568,26 @@ def is_serverside_mod(mod_path: str):
     else:
         logger.warning("is_serverside_mod: Cant find filelist! path:{0}".format(filelist_path))
     return pure_lua_mod
+def set_mod_type(mod):
+    """
+    returns mod dict with 'type' set to appropiriate value. "Workshop" or "Local"
+    """
+    id_test = re.findall("\d+$", mod['id'])
+    if len(id_test) >= 1:
+        if len(id_test[0]) == len(mod['id']):
+            mod['id'] = id_test[0]
+            mod['type'] = "Workshop"
+        else:
+            mod['type'] = "Local"
+    else:
+        mod['type'] = "Local"
+    return mod
 
 def remove_all_occurences_from_arr(arr, remove_arr):
     """
     returns array with all occurences of elements in remove_arr, removed
     """
-    new_arr = arr
+    new_arr = arr.copy()
     for item_to_remove in remove_arr:
         if item_to_remove in new_arr:
             new_arr.remove(item_to_remove)
@@ -641,9 +637,8 @@ def robocopysubsttute(root_src_dir, root_dst_dir, replace_option = False):
             shutil.copy(src_file, dst_dir)
         logger.debug("Copied directory {0} to {1}".format(src_dir, dst_dir))
 
-
 def modmanager(user_perfs):
-    logger.info("User perfs: {0}".format(str(pprint.pformat(user_perfs))))
+    logger.info("Aqquired user perfs: {0}".format(str(pprint.pformat(user_perfs))))
     # TODO fix this stupid shit, idk if that is my ocd but this amout of variables looks wrong
     warning_LFBnotinstalled = False
     requreslua = False
@@ -804,9 +799,11 @@ def modmanager(user_perfs):
 
     # actually moving mods to localcopy
     for mod in modlist_to_update:
-        mod_path = os.path.join(steamcmd_downloads, mod['id'])
-        BaroRewrites.FIX_barodev_moment(mod, mod_path)
-        robocopysubsttute(mod_path, os.path.join(user_perfs['localcopy_path'], mod['id']))
+        if 'type' in mod:
+            if mod['type'] == 'Workshop':
+                mod_path = os.path.join(steamcmd_downloads, mod['id'])
+                BaroRewrites.FIX_barodev_moment(mod, mod_path)
+                robocopysubsttute(mod_path, os.path.join(user_perfs['localcopy_path'], mod['id']))
     
     # TODO installed_mods
     for mod in modlist:
@@ -859,7 +856,6 @@ def main():
     user_perfs = get_user_perfs()
     # TEST
     # user_perfs['localcopy_path_override'] = "LocalMods"
-    logger.info("Aqquired user perfs: {0}".format(str(pprint.pformat(user_perfs))))
     while(True):
         if 'collection_link' in user_perfs and 'localcopy_path' in user_perfs:
             print(_("[ModManager] Type \'h\' or \'help\' then enter for help and information about commands."))

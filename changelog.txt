@@ -1,1 +1,3 @@
 This Changelog is for nightly build (stuff on the branch not on release)
+- config_player mode not working (it setted up steamid automatically)
+- automatic fixing of names not working due to arrays being passed as a refence and it fustrated me. fixed

@@ -79,7 +79,7 @@ if __name__ == '__main__':
     # copy BestDefaultConfigsTM to ModManager
     robocopysubsttute("BestDefaultConfigsTM", os.path.join(output_path, "BestDefaultConfigsTM"))
     # copy LICENSE to ModManager
-    copy_optimized("LICENSE", os.path.join(output_path, "LICENSE"))
+    copy_optimized("LICENSE.md", os.path.join(output_path, "LICENSE.md"))
     # copy README.md to ModManager
     copy_optimized("README.md", os.path.join(output_path, "README.md"))
     copy_optimized("README.ru.md", os.path.join(output_path, "README.ru.md"))

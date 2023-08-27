@@ -133,20 +133,21 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
 
             def_file = ET.fromstring(filelist_str)
             if def_file.tag.lower() == "contentpackage":
-                if not 'steamworkshopid' in def_file.attrib:
-                    def_file.attrib['steamworkshopid'] = downloaded_mod['id']
-                else:
-                    if def_file.attrib['steamworkshopid'] != downloaded_mod['id']:
-                        logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible"
-                                    .format(downloaded_mod['id'], downloaded_mod['name']))
-                        if warnings_as_errors:
-                            raise Exception(_("Treating warnings as errors:") + "\n" 
-                                        + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible")
-                                            .format(downloaded_mod['id'], downloaded_mod['name']))
-                        else:
-                            logger.info("Applying workaround for not matching steam id...")
-                            # fix?
-                            def_file.attrib['steamworkshopid'] = downloaded_mod['id']
+                if downloaded_mod['type'] == 'Workshop':
+                    if not 'steamworkshopid' in def_file.attrib:
+                        def_file.attrib['steamworkshopid'] = downloaded_mod['id']
+                    else:
+                        if def_file.attrib['steamworkshopid'] != downloaded_mod['id']:
+                            logger.warning("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible"
+                                        .format(downloaded_mod['id'], downloaded_mod['name']))
+                            if warnings_as_errors:
+                                raise Exception(_("Treating warnings as errors:") + "\n" 
+                                            + _("Mod of id:{0} and name: {1} steamid does not match one in workshop link! Remove it if possible")
+                                                .format(downloaded_mod['id'], downloaded_mod['name']))
+                            else:
+                                logger.info("Applying workaround for not matching steam id...")
+                                # fix?
+                                def_file.attrib['steamworkshopid'] = downloaded_mod['id']
                 if not 'name' in def_file.attrib:
                     def_file.attrib['name'] = downloaded_mod['name']
                 else:
