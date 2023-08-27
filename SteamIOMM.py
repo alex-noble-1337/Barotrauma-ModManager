@@ -27,7 +27,21 @@ _ = gettext.gettext
 import logging
 import logging.config
 logger = logging.getLogger(__name__)
-from ModManager import set_mod_type
+# TODO fix circular import problems
+def set_mod_type(mod):
+    """
+    returns mod dict with 'type' set to appropiriate value. "Workshop" or "Local"
+    """
+    id_test = re.findall("\d+$", mod['id'])
+    if len(id_test) >= 1:
+        if len(id_test[0]) == len(mod['id']):
+            mod['id'] = id_test[0]
+            mod['type'] = "Workshop"
+        else:
+            mod['type'] = "Local"
+    else:
+        mod['type'] = "Local"
+    return mod
 
 # TODO use a fucking API instead i think
 # TODO this is main bottleneck, need to optimize it
