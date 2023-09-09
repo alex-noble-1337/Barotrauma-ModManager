@@ -196,7 +196,7 @@ class TestModManager(unittest.TestCase):
                 test_config = f.read()
                 test_config_xml = ET.fromstring(f.read())
             
-            ModManager.save_user_perfs(test_managed_mods, test_user_perfs)
+            ModManager.save_user_perfs_cfg(test_managed_mods, test_user_perfs)
             with open("config.xml", "r", encoding="utf8") as f:
                 config = f.read()
                 config_xml = ET.fromstring(config)
