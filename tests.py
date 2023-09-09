@@ -14,7 +14,7 @@ import SteamIOMM
 
 from BaroRewrites import content_types
 
-steam_library_installedmods = "/mnt/Share/SteamLibrary/steamapps/workshop/content/602960"
+steam_library_installedmods = "/mnt/Share/Steam/SteamLibrary/steamapps/workshop/content/602960"
 daedalic_entertainment_ghmbh_installedmods = "/mnt/Share/milord/.local/share/Daedalic Entertainment GmbH/Barotrauma/WorkshopMods/Installed"
 
 # first test output of all functions used in the program

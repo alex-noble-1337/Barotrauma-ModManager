@@ -10,7 +10,13 @@ import xml.etree.ElementTree as ET
 import subprocess
 import io
 
-import requests
+try:
+    import requests
+except ImportError:
+    print("Trying to Install required module: requests\n")
+    os.system('python3 -m pip install requests')
+    import requests
+
 import json
 
 import time
@@ -21,6 +27,21 @@ _ = gettext.gettext
 import logging
 import logging.config
 logger = logging.getLogger(__name__)
+# TODO fix circular import problems
+def set_mod_type(mod):
+    """
+    returns mod dict with 'type' set to appropiriate value. "Workshop" or "Local"
+    """
+    id_test = re.findall("\d+$", mod['id'])
+    if len(id_test) >= 1:
+        if len(id_test[0]) == len(mod['id']):
+            mod['id'] = id_test[0]
+            mod['type'] = "Workshop"
+        else:
+            mod['type'] = "Local"
+    else:
+        mod['type'] = "Local"
+    return mod
 
 # TODO use a fucking API instead i think
 # TODO this is main bottleneck, need to optimize it
@@ -108,21 +129,12 @@ def get_modlist_data_webapi(modlist):
         for i in range(len(modlist)):
             mod = modlist[i]
             if not 'type' in mod:
-                id_test = re.findall("\d+$", mod['id'])
-                if len(id_test) >= 1:
-                    if len(id_test[0]) == len(mod['id']):
-                        mod['id'] = id_test[0]
-                        mod['type'] = "Workshop"
-                    else:
-                        mod['type'] = "Local"
-                else:
-                    mod['type'] = "Local"
-
+                mod = set_mod_type(mod)
             if mod['type'] == "Workshop":
                 option_tuple['publishedfileids[' + str(i) + ']'] = mod['id']
                 number_of_workshop_mods += 1
         option_tuple['itemcount'] = number_of_workshop_mods
-        output = requests.post("https://api.steampowered.com/ISteamRemoteStorage/GetPublishedFileDetails/v1/", option_tuple)
+        output = requests.post(adress_of_request, option_tuple)
         if output.status_code == 200:
             data = json.loads(output.text)
             publishedfiledetails = data['response']['publishedfiledetails']
@@ -146,12 +158,12 @@ def get_modlist_data_webapi(modlist):
                                 new_modlist[i]['name'] = moddetails['title']
                         # TODO why????
                         new_modlist[i]['steamworkshopid'] = new_modlist[i]['id']
-        elif output.status_code == 400:
+        elif output.status_code == 404:
+            logger.critical("Connection to steam WebAPI FAILED! Consult logfile for more deatails!")
+            raise Exception(_("Connection to steam WebAPI FAILED! Consult logfile for more deatails!"))
+        else: 
             logger.error("BAD REQUEST! {0}".format(output.text))
             print(_("BAD REQUEST! Consult logfile for more deatails!"))
-        else: 
-            logger.critical("Connection to steam WebAPI FAILED!")
-            raise Exception(_("Connection to steam WebAPI FAILED!"))
 
     return new_modlist
 def get_modlist_collection_site_legacy(collection_site, mods, input_options = {'addnames': True, 'addlastupdated': True, 'dependencies': True}):
