@@ -54,14 +54,16 @@ import ConfigRecoder
 
 # set up all default values and paths
 # TODO rework
-def get_user_perfs():
-    """returns user_perfs dict
+def get_user_perfs(config_path = None):
+    """
+    returns user_perfs dict
     gets it from:
         - defaults
         - tool/config path from command line args
         - config file
         - then from command line args
-    any value defined previously gets overrwritten by next option"""
+    any value defined previously gets overrwritten by next option
+    """
     options_arr = sys.argv[1:]
     # stuff not in config: toolpath - configuration path (and path of cashe for now)
     # TODO defaults defined when user_perfs is created
@@ -73,6 +75,13 @@ def get_user_perfs():
                   'addperformancefix': default_addperformancefix}
     logging_config = {}
     logger.info("DEFAULT user_perfs are {0}".format(str(user_perfs)))
+
+    if config_path == None:
+        user_perfs['config_path'] = os.path.join(os.path.dirname(sys.argv[0]), "config.xml")
+    else:
+        user_perfs['config_path'] = config_path
+    # TODO soon to replace toolpath
+    logger.debug("config_path is set as {0}".format(user_perfs['config_path']))
     # toolpath or config path
     #  Must be a path to THE FOLDER.  Does not accept "" use "." instead
     for i in range(len(options_arr)):
@@ -85,9 +94,6 @@ def get_user_perfs():
                 else:
                     user_perfs['tool'] = options_arr[i+1]
                     logger.info("Tool path is set as {0}".format(user_perfs['tool']))
-    # TODO soon to replace toolpath
-    user_perfs['config_path'] = os.path.join(user_perfs['tool'], "config.xml")
-    logger.debug("config_path is set as {0}".format(user_perfs['config_path']))
 
     # get config from file
     if os.path.exists(user_perfs['config_path']):
