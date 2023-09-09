@@ -1,30 +1,27 @@
-- uhhhh i fricked up with imports, need to re-test whole thing, DONT FUCKING USE SYNCTHING NOW USE GITHUB ONLY FUUUUrrraked...
 - improve unittests STILL HAS PROBLEMS sometimes names on filelist does not match
 - set up locale change, but remember to force steamcmd language on statup
-- config file in xml instead of get_user_perfs TODO shitty formatting fix it
++ config file in xml instead of get_user_perfs TODO shitty formatting fix it
     - split save backup functionality to separate xml element
 - go over this again, handing of command line arguments
-- mods that dont have id shoudnt be removed when you remove them from config_player or when you enable collection mode
++ mods that dont have id shoudnt be removed when you remove them from config_player or when you enable collection mode
 - optimize to the max, or at a very least we are looking at someting that isat average less than lineral in O
     - steamcmd downloading all mods at once
     - go over all import, convert them to import only specific function
-- fix and remake functionality to check dependencies of a mod
-    - use steamapi instead webapi
-- get dependency check and output dependencies you need, get that data from: steam, mod xml's
 - functionality to selectivly force-update a mod
-- move all parts of code that have over 3 lines AND output one (1) variable
 - make an escape invalid xml of old names
 - rewrite documentation to include new functions, and make it much more comprehasable
+- rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely (mabe use ET?)
+    - FIX problem with ET where it removes comments
 (PERIODIC) go over all todo's from comments post them here
 
 Ptero Egg TODO
 - fix output not formatting correctly new line etc https://github.com/pterodactyl/panel/issues/4782
-- rework getting of regularpackages, sometimes overwries and gets what it isnt supposed to or fails entirely (mabe use ET?)
-    - FIX problem with ET where it removes comments
 
 
 
 (hopes and dreams)
+- get dependency check and output dependencies you need, get that data from: steam, mod xml's
+- fix and remake functionality to check dependencies of a mod
 - autmatically download all dependencies and enable them (except movable wrecks) (make it opt in opt out by command line just in case)
 - set up a petrodactyl, or pseudo-gui (gui on command line) to access all functions of mod manager by it rather than commands
 - set up a way to save mod conflicts to db
