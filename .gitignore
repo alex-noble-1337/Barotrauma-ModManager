@@ -2,7 +2,7 @@
 __pycache__/**
 **sync-conflict**
 LocalMods**
-backup**
+backup/**
 ModManager/__pycache__**
 steamcmd**
 managed_mods.txt
