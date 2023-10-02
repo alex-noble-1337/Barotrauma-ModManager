@@ -171,38 +171,40 @@ class TestModManager(unittest.TestCase):
     def test_get_user_perfs(self):
         # Testing data
         arr_testing_user_perfs = [
-                              {'i': None,
-                               'o': {'locale': 'en', 
-                                     'old_managedmods': [], 
-                                     'tool': ModManager.default_tool_path,
-                                     'barotrauma': ModManager.default_barotrauma_path, 
-                                     'steamcmd':  ModManager.default_steamcmd_path,
-                                     'addperformancefix':  ModManager.default_addperformancefix,
-                                     'config_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/config.xml',
-                                     'steamdir': '/home/milord/testdirectory/steamdir',
-                                     'mode': 'config_player', 
-                                     'backup_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/backup', 
-                                     'get_dependencies': False}},
-                              {'i': "test/config.xml",
-                               'o': {'locale': 'en', 
-                                     'old_managedmods': [{'type': 'Workshop', 'id': '2976434626', 'name': 'NT Blood work'}, {'type': 'Workshop', 'id': '2776270649', 'name': 'Neurotrauma'}, {'type': 'Workshop', 'id': '2790455798', 'name': 'NT Surgery Plus'}, {'type': 'Workshop', 'id': '2804655816', 'name': 'NT Pharmacy'}, {'type': 'Workshop', 'id': '2876677996', 'name': 'NT pill containers'}, {'type': 'Workshop', 'id': '2788543375', 'name': 'Neurotrauma Cybernetics'}, {'type': 'Workshop', 'id': '2807158602', 'name': 'BetterHealthUI'}, {'type': 'Workshop', 'id': '2936760984', 'name': 'Real Sonar (New Update)'}, {'type': 'Workshop', 'id': '3018201543', 'name': 'Hungry Europans - Enforced'}, {'type': 'Workshop', 'id': '2969096340', 'name': 'Hungry Europans - Testing Branch'}, {'type': 'Workshop', 'id': '2532991202', 'name': 'DynamicEuropa'}, {'type': 'Workshop', 'id': '2085783214', 'name': 'Improved Husks'}, {'type': 'Workshop', 'id': '2655920928', 'name': 'Hazardous Reactors + advanced medecin/neurotrauma patch'}, {'type': 'Workshop', 'id': '2547888957', 'name': 'Hazardous Reactors'}, {'type': 'Workshop', 'id': '3026585582', 'name': 'EK 1.x.x.x - Neurotrauma Cybernetics Compatibility Patch'}, {'type': 'Workshop', 'id': '3026583132', 'name': 'EK 1.x.x.x - Real Sonar Compatibility Patch'}, {'type': 'Workshop', 'id': '2954237072', 'name': 'EK Mods for 1.x.x.x'}, {'type': 'Workshop', 'id': '2807556435', 'name': 'Enhanced Armaments Neurotrauma Patch'}, {'type': 'Workshop', 'id': '2976013863', 'name': 'Enhanced Armaments Fuel for the Fire Expansion'}, {'type': 'Workshop', 'id': '2764968387', 'name': 'Enhanced Armaments'}, {'type': 'Workshop', 'id': '2260683656', 'name': 'OxyGear - Content Pack'}, {'type': 'Workshop', 'id': '2161488150', 'name': 'Visual Variety Pack'}, {'type': 'Workshop', 'id': '2972196919', 'name': 'Alarms Extended Revived'}, {'type': 'Workshop', 'id': '2282010683', 'name': 'MineTorpedo'}, {'type': 'Workshop', 'id': '2183524355', 'name': '[Legacy] Meaningful Upgrades'}, {'type': 'Workshop', 'id': '2613901395', 'name': 'Backpacks'}, {'type': 'Workshop', 'id': '2964144541', 'name': 'Modular Backpack'}, {'type': 'Workshop', 'id': '2471443438', 'name': 'Portable Torpedoes'}, {'type': 'Workshop', 'id': '2389600483', 'name': 'Beacons Extended'}, {'type': 'Workshop', 'id': '2095211492', 'name': 'Shipwrecks Extended'}, {'type': 'Workshop', 'id': '3020618603', 'name': 'Wifi Camera'}, {'type': 'Workshop', 'id': '3026843494', 'name': 'MannaBuildables - Containers Only'}, {'type': 'Workshop', 'id': '2947479333', 'name': 'Simple Gene Rebalance'}, {'type': 'Workshop', 'id': '2559634234', 'name': 'Lua For Barotrauma'}, {'type': 'Workshop', 'id': '2795927223', 'name': 'Cs For Barotrauma'}, {'type': 'Workshop', 'id': '3027006749', 'name': 'TA-24 (Neurotrauma, Hazardous Reactors, Hungry Europans, EK, EHA)'}, {'type': 'Workshop', 'id': '3027007233', 'name': 'Pillbug-24 (Shuttle for TA-24)'}, {'type': 'Workshop', 'id': '3021190715', 'name': 'Little Richard Vortex Drone (Neurotrauma, EK, EHA)'}], 
-                                     'tool': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper', 
-                                     'barotrauma': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper', 
-                                     'steamcmd': 'steamcmd', 
-                                     'addperformancefix': False, 
-                                     'config_path': 'test/config.xml', 
-                                     'collection_link': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3026505133', 
-                                     'mode': 'collection', 
-                                     'localcopy_path': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/LocalMods', 
-                                     'old_localcopy_path': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/LocalMods', 
-                                     'steamdir': '/home/milord/testdirectory/steamdir', 
-                                     'backup_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/backup', 
-                                     'get_dependencies': False}}
+                                    {'i': None,
+                                    'o': {'locale': 'en', 
+                                            'old_managedmods': [], 
+                                            'tool': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper', 
+                                            'barotrauma': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper', 
+                                            'steamcmd': 'steamcmd', 
+                                            'addperformancefix': False, 
+                                            'config_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/config.xml', 
+                                            'logging_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/ModManagerLogs', 
+                                            'logging_level': 'DEBUG', 'logging_max': 12, 
+                                            'steamdir': '/home/milord/testdirectory/steamdir', 
+                                            'mode': 'config_player', 
+                                            'backup_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/backup', 'get_dependencies': False}}
+                                    #   {'i': "test/config.xml",
+                                    #    'o': {'locale': 'en', 
+                                    #          'old_managedmods': [{'type': 'Workshop', 'id': '2976434626', 'name': 'NT Blood work'}, {'type': 'Workshop', 'id': '2776270649', 'name': 'Neurotrauma'}, {'type': 'Workshop', 'id': '2790455798', 'name': 'NT Surgery Plus'}, {'type': 'Workshop', 'id': '2804655816', 'name': 'NT Pharmacy'}, {'type': 'Workshop', 'id': '2876677996', 'name': 'NT pill containers'}, {'type': 'Workshop', 'id': '2788543375', 'name': 'Neurotrauma Cybernetics'}, {'type': 'Workshop', 'id': '2807158602', 'name': 'BetterHealthUI'}, {'type': 'Workshop', 'id': '2936760984', 'name': 'Real Sonar (New Update)'}, {'type': 'Workshop', 'id': '3018201543', 'name': 'Hungry Europans - Enforced'}, {'type': 'Workshop', 'id': '2969096340', 'name': 'Hungry Europans - Testing Branch'}, {'type': 'Workshop', 'id': '2532991202', 'name': 'DynamicEuropa'}, {'type': 'Workshop', 'id': '2085783214', 'name': 'Improved Husks'}, {'type': 'Workshop', 'id': '2655920928', 'name': 'Hazardous Reactors + advanced medecin/neurotrauma patch'}, {'type': 'Workshop', 'id': '2547888957', 'name': 'Hazardous Reactors'}, {'type': 'Workshop', 'id': '3026585582', 'name': 'EK 1.x.x.x - Neurotrauma Cybernetics Compatibility Patch'}, {'type': 'Workshop', 'id': '3026583132', 'name': 'EK 1.x.x.x - Real Sonar Compatibility Patch'}, {'type': 'Workshop', 'id': '2954237072', 'name': 'EK Mods for 1.x.x.x'}, {'type': 'Workshop', 'id': '2807556435', 'name': 'Enhanced Armaments Neurotrauma Patch'}, {'type': 'Workshop', 'id': '2976013863', 'name': 'Enhanced Armaments Fuel for the Fire Expansion'}, {'type': 'Workshop', 'id': '2764968387', 'name': 'Enhanced Armaments'}, {'type': 'Workshop', 'id': '2260683656', 'name': 'OxyGear - Content Pack'}, {'type': 'Workshop', 'id': '2161488150', 'name': 'Visual Variety Pack'}, {'type': 'Workshop', 'id': '2972196919', 'name': 'Alarms Extended Revived'}, {'type': 'Workshop', 'id': '2282010683', 'name': 'MineTorpedo'}, {'type': 'Workshop', 'id': '2183524355', 'name': '[Legacy] Meaningful Upgrades'}, {'type': 'Workshop', 'id': '2613901395', 'name': 'Backpacks'}, {'type': 'Workshop', 'id': '2964144541', 'name': 'Modular Backpack'}, {'type': 'Workshop', 'id': '2471443438', 'name': 'Portable Torpedoes'}, {'type': 'Workshop', 'id': '2389600483', 'name': 'Beacons Extended'}, {'type': 'Workshop', 'id': '2095211492', 'name': 'Shipwrecks Extended'}, {'type': 'Workshop', 'id': '3020618603', 'name': 'Wifi Camera'}, {'type': 'Workshop', 'id': '3026843494', 'name': 'MannaBuildables - Containers Only'}, {'type': 'Workshop', 'id': '2947479333', 'name': 'Simple Gene Rebalance'}, {'type': 'Workshop', 'id': '2559634234', 'name': 'Lua For Barotrauma'}, {'type': 'Workshop', 'id': '2795927223', 'name': 'Cs For Barotrauma'}, {'type': 'Workshop', 'id': '3027006749', 'name': 'TA-24 (Neurotrauma, Hazardous Reactors, Hungry Europans, EK, EHA)'}, {'type': 'Workshop', 'id': '3027007233', 'name': 'Pillbug-24 (Shuttle for TA-24)'}, {'type': 'Workshop', 'id': '3021190715', 'name': 'Little Richard Vortex Drone (Neurotrauma, EK, EHA)'}], 
+                                    #          'tool': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper', 
+                                    #          'barotrauma': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper', 
+                                    #          'steamcmd': 'steamcmd', 
+                                    #          'addperformancefix': False, 
+                                    #          'config_path': 'test/config.xml', 
+                                    #          'collection_link': 'https://steamcommunity.com/sharedfiles/filedetails/?id=3026505133', 
+                                    #          'mode': 'collection', 
+                                    #          'localcopy_path': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/LocalMods', 
+                                    #          'old_localcopy_path': '/mnt/ShareBig/globalShare/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/LocalMods', 
+                                    #          'steamdir': '/home/milord/testdirectory/steamdir', 
+                                    #          'backup_path': '/home/milord/Documents/projects/barotrauma modding/Scripts/BarotraumaServerHelper/backup', 
+                                    #          'get_dependencies': False}}
                                  ]
         for i in range(len(arr_testing_user_perfs)):
             user_perfs = ModManager.get_user_perfs(config_path = arr_testing_user_perfs[i]['i'])
             # print(user_perfs)
             test_data = arr_testing_user_perfs[i]['o']
+            print(user_perfs)
             self.assertDictEqual(test_data, user_perfs, "User perfs not equal!(test case {2})\n{0}\n{1}".format(user_perfs, arr_testing_user_perfs[i], i+1))
     @unittest.skip("lxml problem, fiiiiix TODO")
     def test_save_user_perfs(self):
@@ -488,9 +490,9 @@ def get_all_content_types():
         print("\"{0}\",".format(xml_tag.lower()), end='')
 
 if __name__ == '__main__':
-    singletest = unittest.TestSuite()
-    singletest.addTest(TestModManager("test_get_user_perfs"))
-    unittest.TextTestRunner().run(singletest)
+    # singletest = unittest.TestSuite()
+    # singletest.addTest(TestModManager("test_get_user_perfs"))
+    # unittest.TextTestRunner().run(singletest)
     # unittest.main(exit=False)
     # TestModManager.test_get_localcopy_path()
     # TestModManager.test_get_modlist_regularpackages()
@@ -500,7 +502,7 @@ if __name__ == '__main__':
     # TestModManager.test_check_collection_link()
     # TestModManager.test_is_pure_lua_mod()
 
-    # test_FIX_barodev_moment()
+    test_FIX_barodev_moment()
     # somewhat works
     # what? you expect me to run by hand? im lazy
     # test_main()

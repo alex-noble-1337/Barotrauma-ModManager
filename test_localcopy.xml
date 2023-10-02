@@ -1,20 +1,116 @@
 <regularpackages>
-  <!--Minigun Revived-->
+  <!--NT Blood work-->
   <package
-    path="LocalMods/2972867060/filelist.xml"/>
-  <!--Artifacts extended Revived-->
+    path="LocalMods/2976434626/filelist.xml"/>
+  <!--Neurotrauma-->
   <package
-    path="LocalMods/2973435246/filelist.xml"/>
-  <!--Acolyte Job-->
+    path="LocalMods/2776270649/filelist.xml"/>
+  <!--NT Surgery Plus-->
   <package
-    path="LocalMods/2870519815/filelist.xml"/>
-  <!--Alarms Extended-->
+    path="LocalMods/2790455798/filelist.xml"/>
+  <!--NT Pharmacy-->
   <package
-    path="LocalMods/2638494991/filelist.xml"/>
-  <!--Backpack-->
+    path="LocalMods/2804655816/filelist.xml"/>
+  <!--NT pill containers-->
   <package
-    path="LocalMods/2451803481/filelist.xml"/>
+    path="LocalMods/2876677996/filelist.xml"/>
+  <!--Neurotrauma Cybernetics-->
+  <package
+    path="LocalMods/2788543375/filelist.xml"/>
+  <!--BetterHealthUI-->
+  <package
+    path="LocalMods/2807158602/filelist.xml"/>
+  <!--Real Sonar (New Update)-->
+  <package
+    path="LocalMods/2936760984/filelist.xml"/>
+  <!--Hungry Europans - Enforced-->
+  <package
+    path="LocalMods/3018201543/filelist.xml"/>
+  <!--Hungry Europans - Testing Branch-->
+  <package
+    path="LocalMods/2969096340/filelist.xml"/>
+  <!--DynamicEuropa-->
+  <package
+    path="LocalMods/2532991202/filelist.xml"/>
+  <!--Improved Husks-->
+  <package
+    path="LocalMods/2085783214/filelist.xml"/>
+  <!--Hazardous Reactors damage patch for neurotrauma-->
+  <package
+    path="LocalMods/2655920928/filelist.xml"/>
+  <!--Hazardous Reactors-->
+  <package
+    path="LocalMods/2547888957/filelist.xml"/>
+  <!--EK 1.x.x.x - Neurotrauma Cybernetics Compatibility Patch-->
+  <package
+    path="LocalMods/3026585582/filelist.xml"/>
+  <!--EK 1.x.x.x - Real Sonar Compatibility Patch-->
+  <package
+    path="LocalMods/3026583132/filelist.xml"/>
+  <!--EK Mods for 1.x.x.x-->
+  <package
+    path="LocalMods/2954237072/filelist.xml"/>
+  <!--Enhanced Armaments Neurotrauma Patch-->
+  <package
+    path="LocalMods/2807556435/filelist.xml"/>
+  <!--Enhanced Armaments Fuel for the Fire Expansion-->
+  <package
+    path="LocalMods/2976013863/filelist.xml"/>
+  <!--Enhanced Armaments-->
+  <package
+    path="LocalMods/2764968387/filelist.xml"/>
+  <!--OxyGear - Content Pack-->
+  <package
+    path="LocalMods/2260683656/filelist.xml"/>
+  <!--Visual Variety Pack-->
+  <package
+    path="LocalMods/2161488150/filelist.xml"/>
   <!--Alarms Extended Revived-->
   <package
     path="LocalMods/2972196919/filelist.xml"/>
+  <!--MineTorpedo-->
+  <package
+    path="LocalMods/2282010683/filelist.xml"/>
+  <!--Meaningful Upgrades-->
+  <package
+    path="LocalMods/2183524355/filelist.xml"/>
+  <!--Backpacks-->
+  <package
+    path="LocalMods/2613901395/filelist.xml"/>
+  <!--Modular Backpack-->
+  <package
+    path="LocalMods/2964144541/filelist.xml"/>
+  <!--Portable Torpedoes-->
+  <package
+    path="LocalMods/2471443438/filelist.xml"/>
+  <!--Beacons Extended-->
+  <package
+    path="LocalMods/2389600483/filelist.xml"/>
+  <!--Shipwrecks Extended-->
+  <package
+    path="LocalMods/2095211492/filelist.xml"/>
+  <!--Wifi Camera-->
+  <package
+    path="LocalMods/3020618603/filelist.xml"/>
+  <!--MannaBuildables - Containers Only-->
+  <package
+    path="LocalMods/3026843494/filelist.xml"/>
+  <!--Simple Gene Rebalance-->
+  <package
+    path="LocalMods/2947479333/filelist.xml"/>
+  <!--Lua For Barotrauma-->
+  <package
+    path="LocalMods/2559634234/filelist.xml"/>
+  <!--Cs For Barotrauma-->
+  <package
+    path="LocalMods/2795927223/filelist.xml"/>
+  <!--TA-24 (Neurotrauma, Hazardous Reactors, Hungry Europans, EK, EHA)-->
+  <package
+    path="LocalMods/3027006749/filelist.xml"/>
+  <!--Pillbug-24 (Shuttle for TA-24)-->
+  <package
+    path="LocalMods/3027007233/filelist.xml"/>
+  <!--Little Richard Vortex Drone (Neurotrauma, EK, EHA)-->
+  <package
+    path="LocalMods/3021190715/filelist.xml"/>
 </regularpackages>

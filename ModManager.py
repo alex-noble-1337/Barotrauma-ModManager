@@ -264,7 +264,7 @@ def get_user_perfs(config_path = None):
         
     return user_perfs
 def get_user_perfs_cfg(user_perfs_in, config_path_in = None):
-    if config_path != None:
+    if config_path_in == None:
         config_path = user_perfs_in['config_path']
     else:
         config_path = config_path_in
@@ -925,6 +925,8 @@ def main():
                 print(f.open())
             print("\n\n")
             continue
+        # elif user_command == "exit":
+        #     print("Exiting the mod manager")
         else:
             print(_("[ModManager] Provide a valid anwser: \"y\" or \"yes\" / \"n\" or \"no\""))
 
