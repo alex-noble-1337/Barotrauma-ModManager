@@ -33,8 +33,6 @@ Best to run it right before barotrauma, like in `download_script_exmple.sh`.
 ### Way to use it for auto-updating of mods before launching the game:
 TODO
 
-### Contact information
-Any other problems ask `Noble#3103` (Discord) or github or my [mail](m1l0rd30467@gmail.com)
 ## How-to-use:
 localcopy -> means a path to the directory where your local downloaded copy of the mods are stored
 
@@ -69,7 +67,10 @@ if `toolpath` is not given, ModManager will assume the Present Working Directory
 
 You can hide warnings about long modlists if they anoy you, in program just change `disablewarnings` to `True`
 
+### Contact information
+Any other problems ask [Noble](url=discordapp.com/users/307229125083529216) or [github](https://github.com/Milord-ThatOneModder/Barotrauma-ModManager) or my [mail](m1l0rd30467@gmail.com)
+You can reach out to me easiest on discord! (link to my profile)[/url]
+
 ## Other things to mention:
 This ModManager woudnt be possible without MasonMachineGuns, person with whom co-developed previous shell version.
-Also many thanks for testing and patence of Trusted Seas Barotrauma hosting, and being patient when ModManager was in early stages of development. https://discord.gg/trustedseas
-Also Chandler because he made trusted seas possible.
+Also many thanks for testing and patence of Lighthouse Servers Barotrauma hosting, and being patient when ModManager was in early stages of development. https://discord.gg/lighthouse

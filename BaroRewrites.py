@@ -31,7 +31,10 @@ content_types_binary = ["beaconstation"]
 
 
 # written in 3-4h so this is probbabbly bad, if you curious why this is needed, uhhhh :barodev: <- probbabbly them
+# returns error list of all problems with a mod
 def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors = False):
+    errors = []
+
     WINDOWS_LINE_ENDING = b'\r\n'
     UNIX_LINE_ENDING = b'\n'
     filelist_path = os.path.join(downloaded_mod_path, "filelist.xml")
@@ -115,16 +118,11 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                 with open(file_path, 'w', encoding="utf8") as open_file:
                     open_file.write(content)
         if old_paths:
-            logger.warning("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
-                        .format(downloaded_mod['id'], downloaded_mod['name']))
+            logger.warning("Mod of id:{0} and name:{1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!".format(downloaded_mod['id'], downloaded_mod['name']))
             if warnings_as_errors:
                 print(_("Treating warnings as errors:"))
-                raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
-                                .format(downloaded_mod['id'], downloaded_mod['name'])))
-            else:
-                print(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!"
-                        .format(downloaded_mod['id'], downloaded_mod['name'])))
-
+                raise Exception(_("Mod of id:{0} and name: {1} does have old paths! Stable behaviour cannot be made sure of! Remove if possible!").format(downloaded_mod['id'], downloaded_mod['name']))
+            errors.append("old_paths")
 
         desired_order_list = ['name', 'steamworkshopid', 'corepackage', 'modversion', 'gameversion', 'installtime', 'altnames', 'expectedhash']
         if os.path.exists(filelist_path):
@@ -148,12 +146,15 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                                 logger.info("Applying workaround for not matching steam id...")
                                 # fix?
                                 def_file.attrib['steamworkshopid'] = downloaded_mod['id']
+                            errors.append("idnotmatch")
                 if not 'name' in def_file.attrib:
                     def_file.attrib['name'] = downloaded_mod['name']
+                    errors.append("noname")
                 else:
                     if 'name' in downloaded_mod:
                         if def_file.attrib['name'] != downloaded_mod['name']:
                             logger.warning("Name of {0} was changed via steam! Applying workaround...".format(def_file.attrib['steamworkshopid']))
+                            errors.append("namechangedviasteam")
                             oldname = def_file.attrib['name']
                             def_file.attrib['name'] = downloaded_mod['name']
                             # if 'corepackage' in element.attrib:
@@ -194,7 +195,7 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
                         logger.warning("Mod of id:{0} and name: {1} does not have hash! Remove it if possible".format(downloaded_mod['id'], downloaded_mod['name']))
                         if warnings_as_errors:
                             raise Exception(_("Treating warnings as errors") + "\n" + _("Mod of id:{0} and name: {1} does not have hash! Remove it if possible").format(downloaded_mod['id'], downloaded_mod['name']))
-
+                        errors.append("hashmissing")
                 # i dont understand it, this is shit, too hacky
                 # TOO BAD!
                 def_file.attrib = {k: def_file.attrib[k] for k in desired_order_list if k in def_file.attrib}
@@ -214,6 +215,30 @@ def FIX_barodev_moment(downloaded_mod, downloaded_mod_path, warnings_as_errors =
     else:
         logger.exception("Cant find filelist in mod ({0}, {1}) directory ({2})! This can be caused by incorrectly downloaded mod!".format(downloaded_mod['id'], downloaded_mod['name'], filelist_path))
         print((_("Cant find filelist in mod ({0}, {1}) directory ({2})! This can be caused by incorrectly downloaded mod!").format(downloaded_mod['id'], downloaded_mod['name'], filelist_path)))
+    return errors
+
+def interpret_errors(errors, mod):
+    if 'id' in mod:
+        id_ = mod['id']
+    else:
+        id_ = "[not assigned]"
+    if 'name' in mod:
+        name = mod['name']
+    else:
+        name = "[not assigned]"
+    print("\033[1;31m" + _("Mod of id:{0} and name:{1}").format(id_, name) + "\033[0;0m", end='')
+    if 'old_paths' in errors:
+        print("\033[1;31m" + _(" does have old paths!") + "\033[0;0m", end='')
+    if 'noname' in errors:
+        print("\033[1;31m" + _(" does not have name in filelist!") + "\033[0;0m", end='')
+    if 'idnotmatch' in errors:
+        print("\033[1;31m" + _(" steamid does not match one in workshop link!") + "\033[0;0m", end='')
+    if 'namechangedviasteam' in errors:
+        print("\033[1;31m" + _(" name was changed via steam! Workaround applied.") + "\033[0;0m", end='')
+    if 'hashmissing' in errors:
+        print("\033[1;31m" + _(" does not have hash!"), end='')
+    print("\033[1;31m" + _(" Stable behaviour cannot be made sure of! Remove if possible!") + "\033[0;0m")
+
 
 # Expressions from c# that dont translate to python:
 # this is:

@@ -1,3 +1,9 @@
 This Changelog is for nightly build (stuff on the branch not on release)
-- config_player mode not working (it setted up steamid automatically)
-- automatic fixing of names not working due to arrays being passed as a refence and it fustrated me. fixed
+- warning user and loging bad mods detected by FIX_barodev_moment', also a way to store them betweeen runs of MM
+- fixed circular imports
+- fixed not working finding of config_plyaer and improved exception messages
+- added ability to clear out mods with an command line arguments
+- improved and fixed help menu
+- improved tests
+- fixed warning logging
+- added noconfirm mode for mod manager, setted by command line values
