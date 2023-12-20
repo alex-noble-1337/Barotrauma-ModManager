@@ -1,9 +1,3 @@
 This Changelog is for nightly build (stuff on the branch not on release)
-- warning user and loging bad mods detected by FIX_barodev_moment', also a way to store them betweeen runs of MM
-- fixed circular imports
-- fixed not working finding of config_plyaer and improved exception messages
-- added ability to clear out mods with an command line arguments
-- improved and fixed help menu
-- improved tests
-- fixed warning logging
-- added noconfirm mode for mod manager, setted by command line values
+- fixed directory of configs inside Lua/Cs folder causing crash - now directories of congis are supported, they just need to have 'config' in a name
+- fixed text about reving mods that are completly fine appearing on first download of mods

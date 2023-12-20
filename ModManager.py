@@ -923,7 +923,8 @@ def modmanager(user_perfs):
         if is_serverside_mod(os.path.join(user_perfs['localcopy_path'], mod['id'])):
             number_of_pure_lua_mods += 1
         if 'errors' in mod:
-            BaroRewrites.interpret_errors(mod['errors'], mod)
+            if len(mod['errors']) > 0:
+                BaroRewrites.interpret_errors(mod['errors'], mod)
 
 
     # finishing anc cleaning up

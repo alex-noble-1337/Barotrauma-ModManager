@@ -33,7 +33,8 @@ def config_files_find(filename):
     if b_filename == "configGui.lua":
         check = True
     return check
-# find mods that have 'Lua' folder or 'CSharp' folder
+# find mods that have 'Lua' folder or 'CSharp' folder, get their config locations.
+# if config file has 'example' in their file name, it will be skipped
 # input: modslocation
 # output: config files path from mods location: configfilespathfrommodslocation
 def find_LuaCs_mods(modslocation):
@@ -47,25 +48,65 @@ def find_LuaCs_mods(modslocation):
                 # search in root
                 for item in insidemoddir:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, item))
+                        path = os.path.join(modslocation, moddir, item)
+                        if os.path.isfile(path):
+                            configfilespathfrommodslocation.append(path)
+                        else:
+                            testarr = []
+                            for root, dirs, files in os.walk(path):
+                                for config_file in files:
+                                    config_file = os.path.join(root, config_file)
+                                    if os.path.isfile(config_file):
+                                        if config_file.find("example") < 0:
+                                            configfilespathfrommodslocation.append(config_file)
             if "Lua" in insidemoddir:
                 # search in lua
                 moddir_x = os.path.join(moddir_x, "Lua")
                 insidemoddir_x = os.listdir(moddir_x)
                 for item in insidemoddir_x:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, "Lua", item))
+                        path = os.path.join(modslocation, moddir, "Lua", item)
+                        if os.path.isfile(path):
+                            configfilespathfrommodslocation.append(path)
+                        else:
+                            testarr = []
+                            for root, dirs, files in os.walk(path):
+                                for config_file in files:
+                                    config_file = os.path.join(root, config_file)
+                                    if os.path.isfile(config_file):
+                                        if config_file.find("example") < 0:
+                                            configfilespathfrommodslocation.append(config_file)
             if "CSharp" in insidemoddir:
                 # search in CSharp
                 moddir_x = os.path.join(moddir_x, "CSharp")
                 insidemoddir_x = os.listdir(moddir_x)
                 for item in insidemoddir_x:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, "CSharp", item))
+                        path = os.path.join(modslocation, moddir, "CSharp", item)
+                        if os.path.isfile(path):
+                            configfilespathfrommodslocation.append(path)
+                        else:
+                            testarr = []
+                            for root, dirs, files in os.walk(path):
+                                for config_file in files:
+                                    config_file = os.path.join(root, config_file)
+                                    if os.path.isfile(config_file):
+                                        if config_file.find("example") < 0:
+                                            configfilespathfrommodslocation.append(config_file)
             if len(configfilespathfrommodslocation) <= 0:
                 for item in insidemoddir:
                     if config_files_find(item):
-                        configfilespathfrommodslocation.append(os.path.join(modslocation, moddir, item))
+                        path = os.path.join(modslocation, moddir, item)
+                        if os.path.isfile(path):
+                            configfilespathfrommodslocation.append(path)
+                        else:
+                            testarr = []
+                            for root, dirs, files in os.walk(path):
+                                for config_file in files:
+                                    config_file = os.path.join(root, config_file)
+                                    if os.path.isfile(config_file):
+                                        if config_file.find("example") < 0:
+                                            configfilespathfrommodslocation.append(config_file)
     return(configfilespathfrommodslocation)
 # create backup folders and copy files
 # input: configfilespathfrommodslocation
